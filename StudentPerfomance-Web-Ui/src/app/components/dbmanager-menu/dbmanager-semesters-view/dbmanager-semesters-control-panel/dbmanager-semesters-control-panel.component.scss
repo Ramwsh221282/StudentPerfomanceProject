@@ -1,0 +1,18 @@
+.dbmanager-control-panel-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dbmanager-control-panel-header {
+  font-size: 24px;
+  font-weight: lighter;
+  color: #a1e3ff;
+}
+
+.dbmanager-control-form-wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 320px);
+  grid-template-rows: repeat(2, 175px);
+  grid-gap: 40px;
+}

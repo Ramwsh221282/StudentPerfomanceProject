@@ -1,0 +1,36 @@
+<div class="dbmanager-department-menu-create-teacher-form-layout">
+  <form
+    [formGroup]="form"
+    class="dbmanager-department-menu-create-teacher-form"
+    (submit)="submit()"
+  >
+    <div class="form-header-wrapper">
+      <strong>{{ title }}</strong>
+    </div>
+    <div class="dbmanager-department-menu-create-teacher-form-content">
+      <input formControlName="name" class="default-input" placeholder="Имя" />
+      <input
+        formControlName="surname"
+        class="default-input"
+        placeholder="Фамилия"
+      />
+      <input
+        formControlName="thirdname"
+        class="default-input"
+        placeholder="Отчество"
+      />
+      <button class="btn btn-info w-100 margin-top-15">Добавить</button>
+    </div>
+  </form>
+</div>
+<div id="success-modal-renderer" *ngIf="successModalState.Visibility">
+  <app-success-notification-form
+    (modalDisabled)="successModalState.turn($event)"
+  ></app-success-notification-form>
+</div>
+<div id="failure-modal-renderer" *ngIf="failureModalState.Visibility">
+  <app-failure-notification-form
+    (modalDisabled)="failureModalState.turn($event)"
+  >
+  </app-failure-notification-form>
+</div>

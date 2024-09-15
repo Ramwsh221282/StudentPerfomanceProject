@@ -1,0 +1,18 @@
+using StudentPerfomance.Domain.Entities;
+using StudentPerfomance.Domain.Interfaces.Repositories;
+
+namespace StudentPerfomance.Application.Queries.Departments.GetDepartmentsByPage;
+
+internal sealed class GetDepartmentsByPageQueryHandler(IRepository<TeachersDepartment> repository)
+: IQueryHandler<GetDepartmentsByPageQuery, OperationResult<IReadOnlyCollection<TeachersDepartment>>>
+{
+	private readonly IRepository<TeachersDepartment> _repository = repository;
+	public async Task<OperationResult<IReadOnlyCollection<TeachersDepartment>>> Handle(GetDepartmentsByPageQuery query)
+	{
+		return await this.ProcessAsync(async () =>
+		{
+			IReadOnlyCollection<TeachersDepartment> departments = await _repository.GetPaged(query.Page, query.PageSize);
+			return new OperationResult<IReadOnlyCollection<TeachersDepartment>>(departments);
+		});
+	}
+}

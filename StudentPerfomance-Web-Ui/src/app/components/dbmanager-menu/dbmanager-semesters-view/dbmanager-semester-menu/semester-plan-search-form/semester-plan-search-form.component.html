@@ -1,0 +1,24 @@
+<div class="dbmanager-semester-menu-search-plan-form-layout">
+  <form
+    [formGroup]="form"
+    class="dbmanager-semester-menu-search-plan-form"
+    (submit)="submit()"
+  >
+    <div class="form-header-wrapper">
+      <strong>{{ title }}</strong>
+    </div>
+    <div class="dbmanager-semester-menu-search-plan-form-content">
+      <input
+        formControlName="disciplineName"
+        class="default-input"
+        placeholder="Название дисциплины"
+      />
+      <div class="form-button-list">
+        <button class="btn btn-info margin-top-15">Найти</button>
+        <button class="btn btn-danger margin-top-15 color-black">
+          Отменить
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

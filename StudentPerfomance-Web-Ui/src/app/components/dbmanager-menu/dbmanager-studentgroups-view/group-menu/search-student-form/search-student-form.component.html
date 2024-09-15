@@ -1,0 +1,47 @@
+<div class="dbmanager-group-menu-search-student-form-layout">
+  <form [formGroup]="form" class="dbmanager-group-menu-search-student-form">
+    <div class="form-header-wrapper">
+      <strong>{{ title }}</strong>
+    </div>
+    <div class="dbmanager-group-menu-search-student-form-content">
+      <input formControlName="name" class="default-input" placeholder="Имя" />
+      <input
+        formControlName="surname"
+        class="default-input"
+        placeholder="Фамилия"
+      />
+      <input
+        formControlName="thirdname"
+        class="default-input"
+        placeholder="Отчество"
+      />
+      <input
+        type="number"
+        formControlName="recordBook"
+        class="default-input"
+        placeholder="Зачётная книжка"
+      />
+      <select class="default-select" formControlName="state">
+        <option value="Активен">Активен</option>
+        <option value="Неактивен">Неактивен</option>
+      </select>
+      <label class="error-label" [hidden]="isErrorHidden">{{
+        errorMessage
+      }}</label>
+      <div
+        class="dbmanager-group-menu-search-student-form-button-list margin-top-15"
+      >
+        <button type="button" class="btn btn-info" (click)="searchClick()">
+          Найти
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger color-black"
+          (click)="cancelClick()"
+        >
+          Отменить
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

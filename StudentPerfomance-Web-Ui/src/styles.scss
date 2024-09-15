@@ -1,0 +1,45 @@
+@import "modals.scss";
+
+@font-face {
+  font-family: OpenSans;
+  src: url("./assets/OpenSans-Regular.ttf");
+}
+
+html,
+body,
+:root {
+  font-family: "OpenSans";
+  background-color: #1b2b32;
+}
+
+.default-input {
+  outline: none;
+  padding: 5px;
+  border: none;
+  color: #a1e3ff;
+  background-color: #22343c;
+  transition: 0.3s;
+
+  &:focus {
+    border: 1px solid #a1e3ff;
+    background-color: #3e5a66;
+  }
+}
+
+.number-input {
+  -moz-appearance: textfield;
+}
+
+.default-select {
+  outline: none;
+  padding: 5px;
+  border: none;
+  color: #a1e3ff;
+  background-color: #22343c;
+  transition: 0.3s;
+
+  &:focus {
+    border: 1px solid #a1e3ff;
+    background-color: #3e5a66;
+  }
+}

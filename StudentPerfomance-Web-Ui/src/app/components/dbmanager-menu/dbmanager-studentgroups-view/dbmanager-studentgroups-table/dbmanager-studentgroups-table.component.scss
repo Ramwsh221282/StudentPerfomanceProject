@@ -1,0 +1,63 @@
+.dbmanager-studentgroups-table-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.dbmanager-studentgroups-table-header {
+  padding: 5px;
+  font-weight: bold;
+  font-size: 14px;
+  color: #a1e3ff;
+  background-color: #2d4048;
+}
+
+.dbmanager-studentgroups-search-input {
+  outline: none;
+  padding: 5px;
+  border: none;
+  color: #a1e3ff;
+  background-color: #22343c;
+  transition: 0.3s;
+
+  &:focus {
+    border: 1px solid #a1e3ff;
+    background-color: #3e5a66;
+  }
+}
+
+.groups-table {
+  color: #a1e3ff;
+  border-collapse: collapse;
+  background-color: #0b1622;
+  min-width: 700px;
+
+  & thead tr {
+    background-color: #2d4048;
+    color: #a1e3ff;
+    text-align: left;
+  }
+
+  & td,
+  & th {
+    padding: 5px 5px;
+  }
+
+  & tbody tr {
+    border-bottom: 1px solid #3e5a66;
+  }
+
+  & tbody tr:nth-of-type(even) {
+    background-color: #2d4048;
+  }
+
+  & tbody tr:last-of-type {
+    border-bottom: 2px solid #3e5a66;
+  }
+}
+
+.button-list {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}

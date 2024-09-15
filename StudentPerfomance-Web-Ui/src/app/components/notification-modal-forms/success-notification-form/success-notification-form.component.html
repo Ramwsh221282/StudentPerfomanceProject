@@ -1,0 +1,22 @@
+<ng-template #template>
+  <div class="modal-header-wrapper">
+    <h4 class="modal-title pull-left">Операция успешна.</h4>
+    <button
+      type="button"
+      class="btn-close close pull-right"
+      aria-label="Закрыть"
+      (click)="close()"
+    >
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="content-section">
+      <div class="content-section-row">
+        <strong>
+          <pre>{{ notificationService.Message }}</pre>
+        </strong>
+      </div>
+    </div>
+  </div>
+</ng-template>

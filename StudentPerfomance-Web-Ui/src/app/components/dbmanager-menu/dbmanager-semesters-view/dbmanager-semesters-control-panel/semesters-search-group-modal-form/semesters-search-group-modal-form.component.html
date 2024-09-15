@@ -1,0 +1,49 @@
+<ng-template #template>
+  <div class="modal-header-wrapper">
+    <h4 class="modal-title pull-left">Поиск группы</h4>
+    <button
+      type="button"
+      class="btn-close close pull-right"
+      aria-label="Закрыть"
+      (click)="closeModal()"
+    >
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="content-section">
+      <div class="content-section-row">
+        <input
+          [(ngModel)]="inputText"
+          type="text"
+          class="default-input w-500"
+          placeholder="Название группы"
+          aria-label="Название группы"
+          aria-describedby="basic-addon2"
+        />
+        <button class="btn btn-info" type="button" (click)="searchClick()">
+          Найти
+        </button>
+      </div>
+      <div class="content-section-row" *ngIf="isErrorVisible">
+        <strong>{{ errorMessage }}</strong>
+      </div>
+      <div class="content-section-row" *ngIf="searchedResults.length > 0">
+        <strong>Результаты поиска:</strong>
+      </div>
+      <div class="content-section-row" *ngIf="searchedResults.length > 0">
+        <select
+          class="default-select w-500"
+          (change)="selectStudentGroup($any($event.target).value)"
+        >
+          <option></option>
+          @for (group of searchedResults; track group.groupName) {
+          <option>
+            {{ group.groupName }}
+          </option>
+          }
+        </select>
+      </div>
+    </div>
+  </div>
+</ng-template>

@@ -1,0 +1,25 @@
+<section class="group-menu-layout">
+  <div class="group-menu-navigation">
+    <a
+      class="link-navigation"
+      [routerLink]="['/database-manager-studentgroups']"
+      routerLinkActive="router-link-active"
+      >Вернуться в меню групп</a
+    >
+  </div>
+  <div class="group-menu-header">
+    <strong>Группа: {{ facadeService.currentGroup.groupName }}</strong>
+  </div>
+  <section class="group-menu-content">
+    <div class="group-menu-left-side">
+      <app-add-student-form></app-add-student-form>
+      <app-manage-student-form></app-manage-student-form>
+    </div>
+    <div class="group-menu-center-side">
+      <app-students-list></app-students-list>
+    </div>
+    <div class="group-menu-right-side">
+      <app-search-student-form></app-search-student-form>
+    </div>
+  </section>
+</section>

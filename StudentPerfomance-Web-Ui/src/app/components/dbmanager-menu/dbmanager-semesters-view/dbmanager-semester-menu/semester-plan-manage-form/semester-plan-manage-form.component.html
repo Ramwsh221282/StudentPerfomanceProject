@@ -1,0 +1,32 @@
+<div class="dbmanager-semester-menu-manage-plan-form-layout">
+  <form
+    [formGroup]="form"
+    class="dbmanager-semester-menu-manage-plan-form"
+    (submit)="submit()"
+  >
+    <div class="form-header-wrapper">
+      <strong>{{ title }}</strong>
+    </div>
+    <div class="dbmanager-semester-menu-manage-plan-form-content">
+      <input
+        [(ngModel)]="facadeService.selected.disciplineName"
+        formControlName="disciplineName"
+        class="default-input"
+        placeholder="Название дисциплины"
+      />
+      <button class="btn btn-danger w-100 margin-top-15 color-black">
+        Удалить
+      </button>
+    </div>
+  </form>
+</div>
+<div id="success-modal-renderer" *ngIf="successModalState.Visibility">
+  <app-success-notification-form
+    (modalDisabled)="successModalState.turn($event)"
+  ></app-success-notification-form>
+</div>
+<div id="failure-modal-renderer" *ngIf="failureModalState.Visibility">
+  <app-failure-notification-form
+    (modalDisabled)="failureModalState.turn($event)"
+  ></app-failure-notification-form>
+</div>

@@ -1,0 +1,30 @@
+<ng-template #template>
+  <div class="modal-header-wrapper">
+    <h4 class="modal-title pull-left">Выберите номер семестра</h4>
+    <button
+      type="button"
+      class="btn-close close pull-right"
+      aria-label="Закрыть"
+      (click)="closeModal()"
+    >
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="content-section">
+      <div class="content-section-row">
+        <select
+          class="default-select w-500"
+          (change)="selectNumberValue($any($event.target).value)"
+        >
+          <option></option>
+          @for (number of numbersList; track number) {
+          <option>
+            {{ number }}
+          </option>
+          }
+        </select>
+      </div>
+    </div>
+  </div>
+</ng-template>

@@ -1,0 +1,32 @@
+<div class="dbmanager-departments-create-group-form-layout">
+  <form
+    [formGroup]="form"
+    class="dbmanager-departments-create-group-form"
+    (submit)="submit()"
+  >
+    <div class="form-header-wrapper">
+      <strong>{{ title }}</strong>
+    </div>
+    <div class="dbmanager-departments-create-group-form-content">
+      <input
+        formControlName="departmentName"
+        class="default-input"
+        placeholder="Название кафедры"
+      />
+      <label class="error-label" [hidden]="isErrorHidden">{{
+        errorMessage
+      }}</label>
+      <button class="btn btn-info w-100 margin-top-15">Добавить</button>
+    </div>
+  </form>
+</div>
+<div id="success-modal-renderer" *ngIf="successModalState.Visibility">
+  <app-success-notification-form
+    (modalDisabled)="successModalState.turn($event)"
+  ></app-success-notification-form>
+</div>
+<div id="failure-modal-renderer" *ngIf="failureModalState.Visibility">
+  <app-failure-notification-form
+    (modalDisabled)="failureModalState.turn($event)"
+  ></app-failure-notification-form>
+</div>

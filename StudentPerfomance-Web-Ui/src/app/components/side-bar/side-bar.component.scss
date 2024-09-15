@@ -1,0 +1,36 @@
+.side-bar {
+  display: flex;
+  flex-direction: column;
+  max-width: 250px;
+  height: 100vh;
+  color: #ffffff;
+  background-color: #21333b;
+}
+
+.menu-header {
+  padding: 10px 10px;
+}
+
+.menu-button {
+  cursor: pointer;
+  padding: 10px 10px;
+  font-size: 14px;
+  width: 100%;
+  font-weight: bold;
+  text-align: left;
+  color: #ffffff;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  transition: 0.3s;
+
+  &:hover {
+    background-color: #2d4048;
+  }
+
+  &:focus {
+    color: #a1e3ff;
+    border-right: 3px solid #a1e3ff;
+    background-color: #3e5a66;
+  }
+}

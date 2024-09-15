@@ -1,0 +1,31 @@
+.modal-body {
+  background-color: #0b1622;
+  color: #a1e3ff;
+}
+
+.modal-header-wrapper {
+  background-color: #2d4048;
+  color: #a1e3ff;
+  padding: 5px;
+  display: grid;
+  grid-template-columns: 300px 300px;
+  grid-gap: 165px;
+}
+
+.content-section {
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.content-section-row {
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+  gap: 5px;
+}
+
+.w-500 {
+  width: 500px;
+}

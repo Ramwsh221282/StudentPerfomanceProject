@@ -1,0 +1,35 @@
+<section class="semester-menu-layout">
+  <div class="semester-menu-navigation">
+    <a
+      class="link-navigation"
+      [routerLink]="['/database-manager-semesters']"
+      routerLinkActive="router-link-active"
+      >Вернуться в меню семестров</a
+    >
+  </div>
+  <div class="semester-menu-header">
+    <strong
+      >Семестр группы: {{ facadeService.currentSemester.groupName }}. Номер
+      семестра: {{ facadeService.currentSemester.number }}</strong
+    >
+  </div>
+  <section class="semester-menu-content">
+    <div class="department-menu-left-side">
+      <app-semester-plan-create-form
+        [currentSemester]="facadeService.currentSemester"
+      ></app-semester-plan-create-form>
+      <app-semester-plan-manage-form
+        [currentSemester]="facadeService.currentSemester"
+      ></app-semester-plan-manage-form>
+      <app-semester-plan-search-form
+        [currentSemester]="facadeService.currentSemester"
+      >
+      </app-semester-plan-search-form>
+    </div>
+    <div class="semester-menu-center-side">
+      <app-semester-plan-list
+        [semesterPlans]="facadeService.plans"
+      ></app-semester-plan-list>
+    </div>
+  </section>
+</section>
