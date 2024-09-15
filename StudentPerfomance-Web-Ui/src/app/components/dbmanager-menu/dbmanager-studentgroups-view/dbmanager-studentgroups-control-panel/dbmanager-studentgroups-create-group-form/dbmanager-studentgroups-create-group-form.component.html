@@ -26,9 +26,9 @@
   >
   </app-success-notification-form>
 </div>
-<div id="failure-modal-form-renderer" *ngIf="successModalState.Visibility">
+<div id="failure-modal-form-renderer" *ngIf="failureModalState.Visibility">
   <app-failure-notification-form
-    (modalDisabled)="successModalState.turn($event)"
+    (modalDisabled)="failureModalState.turn($event)"
   >
   </app-failure-notification-form>
 </div>
