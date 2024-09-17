@@ -3,7 +3,6 @@ import { BaseSemesterService } from './base-semester.service';
 import { Observable } from 'rxjs';
 import { IRequestBodyFactory } from '../../../../../models/RequestParamsFactory/irequest-body-factory.interface';
 import { Semester } from '../models/semester.interface';
-import { SemestersModule } from '../semesters.module';
 
 @Injectable({
   providedIn: 'any',

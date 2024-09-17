@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { SemesterPlan } from '../../../../../modules/administration/submodules/semester-plans/models/semester-plan.interface';
-import { SemesterPlansModule } from '../semester-plans.module';
 
 @Injectable({
   providedIn: 'any',

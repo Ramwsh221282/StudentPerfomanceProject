@@ -8,6 +8,7 @@ import { Department } from '../../../departments/models/departments.interface';
   selector: 'app-teacher-page',
   templateUrl: './teacher-page.component.html',
   styleUrl: './teacher-page.component.scss',
+  providers: [FacadeTeacherService],
 })
 export class TeacherPageComponent implements OnInit {
   protected readonly fetchService: FetchTeacherService;

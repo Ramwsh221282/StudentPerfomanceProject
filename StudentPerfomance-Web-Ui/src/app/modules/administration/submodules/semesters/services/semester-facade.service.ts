@@ -6,10 +6,9 @@ import { SemesterPaginationService } from './semester-pagination.service';
 import { SemesterSelectionService } from './semester-selection.service';
 import { Observable } from 'rxjs';
 import { Semester } from '../models/semester.interface';
-import { SemestersModule } from '../semesters.module';
 
 @Injectable({
-  providedIn: 'any',
+  providedIn: SemesterFacadeService,
 })
 export class SemesterFacadeService {
   public constructor(

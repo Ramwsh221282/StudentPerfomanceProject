@@ -12,7 +12,7 @@ import { Teacher } from '../../teachers/models/teacher.interface';
 import { SemesterPlansModule } from '../semester-plans.module';
 
 @Injectable({
-  providedIn: 'any',
+  providedIn: SemesterPlansModule,
 })
 export class SemesterPlanFacadeService {
   public constructor(

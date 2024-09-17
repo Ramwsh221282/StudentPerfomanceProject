@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { StudentsModule } from '../students.module';
 import { Student } from '../models/student.interface';
 
 @Injectable({

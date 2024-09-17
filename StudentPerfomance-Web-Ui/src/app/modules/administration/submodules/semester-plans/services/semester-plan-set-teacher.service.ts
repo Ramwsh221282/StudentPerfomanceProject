@@ -4,7 +4,6 @@ import { IRequestBodyFactory } from '../../../../../models/RequestParamsFactory/
 import { SemesterPlan } from '../../../../../modules/administration/submodules/semester-plans/models/semester-plan.interface';
 import { Observable } from 'rxjs';
 import { Teacher } from '../../teachers/models/teacher.interface';
-import { SemesterPlansModule } from '../semester-plans.module';
 
 @Injectable({
   providedIn: 'any',

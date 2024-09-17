@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { SemesterCreateComponent } from './components/semester-create/semester-create.component';
 import { SemesterManageComponent } from './components/semester-manage/semester-manage.component';
 import { SemesterFilterComponent } from './components/semester-filter/semester-filter.component';
@@ -12,7 +12,6 @@ import { SearchGroupComponent } from '../student-groups/components/search-group/
 import { FailureNotificationFormComponent } from '../../../../shared/components/notification-modal-forms/failure-notification-form/failure-notification-form.component';
 import { SuccessNotificationFormComponent } from '../../../../shared/components/notification-modal-forms/success-notification-form/success-notification-form.component';
 import { SemestersRoutingModule } from './semesters-routing.module';
-import { SemesterFacadeService } from './services/semester-facade.service';
 
 @NgModule({
   declarations: [
@@ -27,13 +26,11 @@ import { SemesterFacadeService } from './services/semester-facade.service';
   imports: [
     CommonModule,
     SemestersRoutingModule,
-    FormsModule,
     ReactiveFormsModule,
     SearchGroupComponent,
     FailureNotificationFormComponent,
     SuccessNotificationFormComponent,
   ],
   exports: [SemesterPageComponent],
-  providers: [SemesterFacadeService],
 })
 export class SemestersModule {}

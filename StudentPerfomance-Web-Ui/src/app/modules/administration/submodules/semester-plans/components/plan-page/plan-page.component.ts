@@ -7,6 +7,7 @@ import { Semester } from '../../../semesters/models/semester.interface';
   selector: 'app-plan-page',
   templateUrl: './plan-page.component.html',
   styleUrl: './plan-page.component.scss',
+  providers: [SemesterPlanFacadeService],
 })
 export class PlanPageComponent implements OnInit {
   public constructor(

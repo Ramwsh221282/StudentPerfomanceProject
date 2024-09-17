@@ -4,7 +4,6 @@ import { HttpParams } from '@angular/common/http';
 import { PaginationTeacherService } from './pagination-teacher.service';
 import { Department } from '../../departments/models/departments.interface';
 import { Teacher } from '../models/teacher.interface';
-import { TeachersModule } from '../teachers.module';
 import { IRequestParamsFactory } from '../../../../../models/RequestParamsFactory/irequest-params-factory.interface';
 
 @Injectable({

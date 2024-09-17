@@ -9,10 +9,10 @@ import { StudentGroupsUpdateDataService } from './student-groups-update-data.ser
 import { StudentGroup } from './studentsGroup.interface';
 import { Observable } from 'rxjs';
 import { StudentGroupsSelectionService } from './student-groups-selection.service';
-import { StudentGroupsModule } from '../student-groups.module';
+import { StudentsModule } from '../../students/students.module';
 
 @Injectable({
-  providedIn: 'any',
+  providedIn: StudentsModule,
 })
 export class StudentGroupsFacadeService {
   public constructor(

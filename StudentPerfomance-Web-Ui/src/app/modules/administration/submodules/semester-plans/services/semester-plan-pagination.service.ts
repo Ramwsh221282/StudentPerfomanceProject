@@ -3,7 +3,6 @@ import { SemesterPlanBaseService } from './semester-plan-base.service';
 import { Semester } from '../../../../../modules/administration/submodules/semesters/models/semester.interface';
 import { IRequestParamsFactory } from '../../../../../models/RequestParamsFactory/irequest-params-factory.interface';
 import { HttpParams } from '@angular/common/http';
-import { SemesterPlansModule } from '../semester-plans.module';
 
 @Injectable({
   providedIn: 'any',

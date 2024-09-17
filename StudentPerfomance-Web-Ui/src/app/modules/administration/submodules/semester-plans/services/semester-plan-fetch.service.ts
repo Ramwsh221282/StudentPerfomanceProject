@@ -5,7 +5,6 @@ import { Semester } from '../../../../../modules/administration/submodules/semes
 import { IRequestParamsFactory } from '../../../../../models/RequestParamsFactory/irequest-params-factory.interface';
 import { HttpParams } from '@angular/common/http';
 import { SemesterPlanPaginationService } from './semester-plan-pagination.service';
-import { SemesterPlansModule } from '../semester-plans.module';
 
 @Injectable({
   providedIn: 'any',

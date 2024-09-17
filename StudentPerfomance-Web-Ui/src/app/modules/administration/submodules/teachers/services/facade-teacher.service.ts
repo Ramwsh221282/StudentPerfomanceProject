@@ -11,7 +11,7 @@ import { Teacher } from '../models/teacher.interface';
 import { TeachersModule } from '../teachers.module';
 
 @Injectable({
-  providedIn: 'any',
+  providedIn: TeachersModule,
 })
 export class FacadeTeacherService {
   constructor(

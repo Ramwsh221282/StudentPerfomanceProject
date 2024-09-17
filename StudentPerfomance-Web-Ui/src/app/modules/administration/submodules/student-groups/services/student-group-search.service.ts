@@ -3,11 +3,10 @@ import { StudentGroupsService } from './student-groups-base-service';
 import { StudentGroup } from './studentsGroup.interface';
 import { HttpParams } from '@angular/common/http';
 import { IRequestParamsFactory } from '../../../../../models/RequestParamsFactory/irequest-params-factory.interface';
-import { StudentGroupsModule } from '../student-groups.module';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'any',
 })
 export class StudentGroupSearchService extends StudentGroupsService {
   public constructor() {

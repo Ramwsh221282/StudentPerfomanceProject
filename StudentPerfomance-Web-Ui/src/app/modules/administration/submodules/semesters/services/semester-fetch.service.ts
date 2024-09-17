@@ -4,7 +4,6 @@ import { HttpParams } from '@angular/common/http';
 import { SemesterPaginationService } from './semester-pagination.service';
 import { IRequestParamsFactory } from '../../../../../models/RequestParamsFactory/irequest-params-factory.interface';
 import { Semester } from '../models/semester.interface';
-import { SemestersModule } from '../semesters.module';
 
 @Injectable({
   providedIn: 'any',

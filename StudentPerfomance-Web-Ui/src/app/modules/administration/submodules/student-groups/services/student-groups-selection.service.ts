@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { StudentGroup } from './studentsGroup.interface';
-import { StudentGroupsModule } from '../student-groups.module';
 
 @Injectable({
   providedIn: 'any',

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { BaseSemesterService } from './base-semester.service';
-import { SemestersModule } from '../semesters.module';
 
 @Injectable({
   providedIn: 'any',

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { DepartmentsBaseService } from './departments-base.service';
-import { DepartmentsModule } from '../departments.module';
 import { Department } from '../models/departments.interface';
 import { IRequestBodyFactory } from '../../../../../models/RequestParamsFactory/irequest-body-factory.interface';
 

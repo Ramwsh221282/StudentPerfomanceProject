@@ -7,7 +7,7 @@ import { Teacher } from '../models/teacher.interface';
 import { IRequestParamsFactory } from '../../../../../models/RequestParamsFactory/irequest-params-factory.interface';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'any',
 })
 export class SearchTeacherService extends BaseTeacherService {
   public constructor() {

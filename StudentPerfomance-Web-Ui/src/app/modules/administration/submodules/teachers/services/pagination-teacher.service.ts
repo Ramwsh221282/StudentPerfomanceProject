@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { BaseTeacherService } from './base-teacher.service';
 import { HttpParams } from '@angular/common/http';
 import { Department } from '../../departments/models/departments.interface';
-import { TeachersModule } from '../teachers.module';
 import { IRequestParamsFactory } from '../../../../../models/RequestParamsFactory/irequest-params-factory.interface';
 
 @Injectable({

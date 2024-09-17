@@ -12,10 +12,6 @@ import { PlanCardInfoComponent } from './components/plan-table/plan-card/plan-ca
 import { FailureNotificationFormComponent } from '../../../../shared/components/notification-modal-forms/failure-notification-form/failure-notification-form.component';
 import { SuccessNotificationFormComponent } from '../../../../shared/components/notification-modal-forms/success-notification-form/success-notification-form.component';
 import { SemesterPlansRoutingModule } from './semester-plans-routing.module';
-import { SemesterPlanFacadeService } from './services/semester-plan-facade.service';
-import { SearchTeacherService } from '../teachers/services/search-teacher.service';
-import { DepartmentsFetchService } from '../departments/services/departments-fetch.service';
-import { BsModalService } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -36,11 +32,5 @@ import { BsModalService } from 'ngx-bootstrap/modal';
     SuccessNotificationFormComponent,
   ],
   exports: [PlanPageComponent],
-  providers: [
-    SemesterPlanFacadeService,
-    DepartmentsFetchService,
-    SearchTeacherService,
-    BsModalService,
-  ],
 })
 export class SemesterPlansModule {}

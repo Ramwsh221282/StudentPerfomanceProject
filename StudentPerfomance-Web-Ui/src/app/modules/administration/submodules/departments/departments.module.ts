@@ -6,11 +6,10 @@ import { ManageDepartmentComponent } from './components/manage-department/manage
 import { PageDepartmentComponent } from './components/page-department/page-department.component';
 import { TableDepartmentComponent } from './components/table-department/table-department.component';
 import { PaginationDepartmentComponent } from './components/table-department/pagination-department/pagination-department.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { FailureNotificationFormComponent } from '../../../../shared/components/notification-modal-forms/failure-notification-form/failure-notification-form.component';
 import { SuccessNotificationFormComponent } from '../../../../shared/components/notification-modal-forms/success-notification-form/success-notification-form.component';
 import { DepartmentsRoutingModule } from './departments-routing.module';
-import { DepartmentsFacadeService } from './services/departments-facade.service';
 
 @NgModule({
   declarations: [
@@ -24,12 +23,10 @@ import { DepartmentsFacadeService } from './services/departments-facade.service'
   imports: [
     CommonModule,
     DepartmentsRoutingModule,
-    FormsModule,
     ReactiveFormsModule,
     FailureNotificationFormComponent,
     SuccessNotificationFormComponent,
   ],
   exports: [PageDepartmentComponent],
-  providers: [DepartmentsFacadeService],
 })
 export class DepartmentsModule {}

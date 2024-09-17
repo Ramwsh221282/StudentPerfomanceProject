@@ -6,12 +6,12 @@ import { PaginationStudentsService } from './pagination-students.service';
 import { SelectionStudentService } from './selection-student.service';
 import { UpdateStudentService } from './update-student.service';
 import { Observable } from 'rxjs';
-import { StudentsModule } from '../students.module';
 import { StudentGroup } from '../../student-groups/services/studentsGroup.interface';
 import { Student } from '../models/student.interface';
+import { StudentsModule } from '../students.module';
 
 @Injectable({
-  providedIn: 'any',
+  providedIn: StudentsModule,
 })
 export class FacadeStudentService {
   public constructor(

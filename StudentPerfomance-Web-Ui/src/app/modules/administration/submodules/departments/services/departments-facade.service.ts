@@ -6,11 +6,11 @@ import { DepartmentsPaginationService } from './departments-pagination.service';
 import { DepartmentsUpdateService } from './departments-update.service';
 import { DepartmentsSelectionService } from './departments-selection.service';
 import { Observable } from 'rxjs';
-import { DepartmentsModule } from '../departments.module';
 import { Department } from '../models/departments.interface';
+import { DepartmentsModule } from '../departments.module';
 
 @Injectable({
-  providedIn: 'any',
+  providedIn: DepartmentsModule,
 })
 export class DepartmentsFacadeService {
   public constructor(

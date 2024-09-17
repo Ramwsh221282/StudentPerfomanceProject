@@ -3,7 +3,6 @@ import { DepartmentsBaseService } from './departments-base.service';
 import { HttpParams } from '@angular/common/http';
 import { DepartmentsPaginationService } from './departments-pagination.service';
 import { Observable } from 'rxjs';
-import { DepartmentsModule } from '../departments.module';
 import { Department } from '../models/departments.interface';
 import { IRequestParamsFactory } from '../../../../../models/RequestParamsFactory/irequest-params-factory.interface';
 

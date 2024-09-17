@@ -19,6 +19,7 @@ import { SearchTeacherService } from '../../../../../teachers/services/search-te
   selector: 'app-plan-card-info',
   templateUrl: './plan-card-info.component.html',
   styleUrl: './plan-card-info.component.scss',
+  providers: [DepartmentsFetchService, SearchTeacherService, BsModalService],
 })
 export class PlanCardInfoComponent implements OnInit, AfterViewInit {
   @ViewChild('template') template: TemplateRef<any>;

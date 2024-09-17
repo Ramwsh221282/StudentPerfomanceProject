@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Teacher } from '../models/teacher.interface';
-import { TeachersModule } from '../teachers.module';
 
 @Injectable({
   providedIn: 'any',

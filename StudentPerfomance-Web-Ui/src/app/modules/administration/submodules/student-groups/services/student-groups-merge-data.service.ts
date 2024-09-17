@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { StudentGroupsService } from './student-groups-base-service';
 import { StudentGroup } from './studentsGroup.interface';
-import { StudentGroupsModule } from '../student-groups.module';
 import { IRequestBodyFactory } from '../../../../../models/RequestParamsFactory/irequest-body-factory.interface';
 
 @Injectable({

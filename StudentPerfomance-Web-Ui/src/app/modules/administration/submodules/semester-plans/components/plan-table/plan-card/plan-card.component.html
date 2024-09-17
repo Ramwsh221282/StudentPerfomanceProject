@@ -7,9 +7,13 @@
           ? 'teacher-state-info teacher-exists'
           : 'teacher-state-info teacher-empty'
       ]"
-      [hidden]="isTeacherAttached"
     >
-      <strong>Преподаватель не закреплён.</strong>
+      <strong *ngIf="!isTeacherAttached">Преподаватель не закреплён.</strong>
+      <strong *ngIf="isTeacherAttached"
+        >Преподаватель: {{ semesterPlan.attachedTeacherSurname }}
+        {{ semesterPlan.attachedTeacherName[0] }}.
+        {{ semesterPlan.attachedTeacherThirdname[0] }}.</strong
+      >
     </div>
   </div>
   <div class="plan-card-button-list">

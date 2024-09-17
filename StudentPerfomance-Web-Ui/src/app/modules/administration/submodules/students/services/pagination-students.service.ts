@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { StudentBaseService } from './student-base.service';
-import { StudentsModule } from '../students.module';
 import { HttpParams } from '@angular/common/http';
 import { StudentGroup } from '../../student-groups/services/studentsGroup.interface';
 import { IRequestParamsFactory } from '../../../../../models/RequestParamsFactory/irequest-params-factory.interface';

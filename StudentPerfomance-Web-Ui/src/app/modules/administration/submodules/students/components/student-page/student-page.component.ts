@@ -7,6 +7,7 @@ import { StudentGroup } from '../../../student-groups/services/studentsGroup.int
   selector: 'app-student-page',
   templateUrl: './student-page.component.html',
   styleUrl: './student-page.component.scss',
+  providers: [FacadeStudentService],
 })
 export class StudentPageComponent implements OnInit {
   public constructor(

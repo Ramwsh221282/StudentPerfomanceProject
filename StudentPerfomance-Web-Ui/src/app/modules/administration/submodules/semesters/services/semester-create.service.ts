@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BaseSemesterService } from './base-semester.service';
 import { Observable } from 'rxjs';
-import { SemestersModule } from '../semesters.module';
 import { IRequestBodyFactory } from '../../../../../models/RequestParamsFactory/irequest-body-factory.interface';
 import { Semester } from '../models/semester.interface';
 

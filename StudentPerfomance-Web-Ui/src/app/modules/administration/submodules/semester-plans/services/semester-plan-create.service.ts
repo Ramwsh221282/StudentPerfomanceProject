@@ -3,7 +3,6 @@ import { SemesterPlanBaseService } from './semester-plan-base.service';
 import { IRequestBodyFactory } from '../../../../../models/RequestParamsFactory/irequest-body-factory.interface';
 import { SemesterPlan } from '../../../../../modules/administration/submodules/semester-plans/models/semester-plan.interface';
 import { Observable } from 'rxjs';
-import { SemesterPlansModule } from '../semester-plans.module';
 
 @Injectable({
   providedIn: 'any',

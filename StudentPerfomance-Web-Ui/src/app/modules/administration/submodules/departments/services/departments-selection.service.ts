@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { DepartmentsModule } from '../departments.module';
 import { Department } from '../models/departments.interface';
 
 @Injectable({
