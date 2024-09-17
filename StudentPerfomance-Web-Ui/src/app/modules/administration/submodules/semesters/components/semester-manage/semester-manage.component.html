@@ -1,0 +1,40 @@
+<div class="semester-manage-form-layout">
+  <form [formGroup]="form" class="semester-manage-form">
+    <div class="form-header-wrapper">
+      <strong>{{ title }}</strong>
+    </div>
+    <div class="semester-manage-form-content">
+      <input
+        [(ngModel)]="facadeService.selected.groupName"
+        formControlName="groupName"
+        class="default-input"
+        placeholder="Название группы"
+      />
+      <input
+        [(ngModel)]="facadeService.selected.number"
+        formControlName="number"
+        class="default-input"
+        placeholder="Номер семестра"
+      />
+      <div class="buttons-wrapper margin-top-15">
+        <button
+          type="button"
+          class="btn btn-danger color-black w-100"
+          (click)="deleteClick()"
+        >
+          Удалить
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+<div id="success-modal-renderer" *ngIf="successModalState.Visibility">
+  <app-success-notification-form
+    (modalDisabled)="successModalState.turn($event)"
+  ></app-success-notification-form>
+</div>
+<div id="failure-modal-renderer" *ngIf="failureModalState.Visibility">
+  <app-failure-notification-form
+    (modalDisabled)="failureModalState.turn($event)"
+  ></app-failure-notification-form>
+</div>

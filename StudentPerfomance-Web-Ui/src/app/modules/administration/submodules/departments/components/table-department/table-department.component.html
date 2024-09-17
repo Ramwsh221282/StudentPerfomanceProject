@@ -1,0 +1,41 @@
+<div class="department-table-wrapper">
+  <div class="department-table-header">
+    <strong>Текущие кафедры</strong>
+  </div>
+  <div class="department-table-header">
+    <strong>Количество кафедр: {{ facadeService.count }}</strong>
+  </div>
+  <table class="department-table">
+    <thead>
+      <tr>
+        <th>Название</th>
+        <th>Число преподавателей</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (department of facadeService.departments; track department.name) {
+      <tr>
+        <td>{{ department.name }}</td>
+        <td>{{ department.teachersCount }}</td>
+        <td class="button-list">
+          <button
+            class="btn btn-info"
+            [routerLink]="['/teachers', department.name]"
+            routerLinkActive="router-link-active"
+          >
+            Открыть меню
+          </button>
+          <button
+            class="btn btn-info"
+            (click)="facadeService.setSelection = department"
+          >
+            Выбрать
+          </button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+  <app-pagination-department></app-pagination-department>
+</div>

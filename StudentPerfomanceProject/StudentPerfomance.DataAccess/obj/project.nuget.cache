@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "0D1tnjyCVAxIVRtn/Tq1nKmGj9GDfp7Jf0iXbFhqJkI5CIHZATcUEDJoLopbWpdxXNXRMJrDfcWPaerZjqNiqA==",
+  "dgSpecHash": "XKiSe9cYrZdTNtFpUgUOe0NHoXuEZFYQMIwkP2Min19nmTwxyM7qeVAf9yTo7Dst0TPXGwgpOLru6jvLeTX6gw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Ramwsh\\Desktop\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.DataAccess\\StudentPerfomance.DataAccess.csproj",
+  "projectFilePath": "c:\\Users\\Ramwsh\\Desktop\\project-to-modular-refactor\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.DataAccess\\StudentPerfomance.DataAccess.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Ramwsh\\.nuget\\packages\\csharpfunctionalextensions\\2.42.5\\csharpfunctionalextensions.2.42.5.nupkg.sha512",
     "C:\\Users\\Ramwsh\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

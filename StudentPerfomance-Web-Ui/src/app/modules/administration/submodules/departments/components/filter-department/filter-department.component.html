@@ -1,0 +1,30 @@
+<div class="department-filter-form-layout">
+  <form [formGroup]="form" class="department-filter-form">
+    <div class="form-header-wrapper">
+      <strong>{{ title }}</strong>
+    </div>
+    <div class="department-filter-form-content">
+      <input
+        formControlName="departmentName"
+        class="default-input"
+        placeholder="Название кафедры"
+      />
+      <div class="buttons-wrapper margin-top-15">
+        <button
+          type="button"
+          class="btn btn-info w-100"
+          (click)="filterClick()"
+        >
+          Найти
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger color-black w-100"
+          (click)="cancelClick()"
+        >
+          Отменить
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

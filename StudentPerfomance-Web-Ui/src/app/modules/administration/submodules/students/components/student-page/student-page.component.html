@@ -1,0 +1,31 @@
+<section class="student-page-layout">
+  <div class="student-page-navigation">
+    <a
+      class="link-navigation"
+      [routerLink]="['/database-manager-studentgroups']"
+      routerLinkActive="router-link-active"
+      >Вернуться в меню групп</a
+    >
+  </div>
+  <div class="student-page-header">
+    <strong>Группа: {{ facadeService.currentGroup.groupName }}</strong>
+  </div>
+  <section class="student-page-content">
+    <div class="student-page-left-side">
+      <app-student-create
+        [currentGroup]="facadeService.currentGroup"
+      ></app-student-create>
+      <app-student-manage
+        [currentGroup]="facadeService.currentGroup"
+      ></app-student-manage>
+    </div>
+    <div class="student-page-center-side">
+      <app-student-table></app-student-table>
+    </div>
+    <div class="student-page-right-side">
+      <app-student-filter
+        [currentGroup]="facadeService.currentGroup"
+      ></app-student-filter>
+    </div>
+  </section>
+</section>

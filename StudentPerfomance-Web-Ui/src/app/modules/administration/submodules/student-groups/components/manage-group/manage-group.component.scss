@@ -1,0 +1,45 @@
+.manage-group-form-layout {
+  height: 250px;
+  width: 350px;
+}
+
+.manage-group-form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background-color: #0b1622;
+}
+
+.manage-group-form-content {
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.form-header-wrapper {
+  padding: 5px;
+  font-weight: bold;
+  font-size: 14px;
+  color: #a1e3ff;
+  background-color: #2d4048;
+}
+
+.color-black {
+  color: black;
+}
+
+.buttons-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
+.w-100 {
+  padding: 5px;
+  width: 100px;
+}
+
+.margin-top-15 {
+  margin-top: 15px;
+}

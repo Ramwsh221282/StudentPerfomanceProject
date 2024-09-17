@@ -1,0 +1,36 @@
+<div class="teacher-table-wrapper">
+  <div class="teacher-table-header">
+    <strong>Преподаватели кафедры</strong>
+  </div>
+  <div class="teacher-table-header">
+    <strong>Количество преподавателей: {{ facadeService.count }}</strong>
+  </div>
+  <table class="teacher-table">
+    <thead>
+      <tr>
+        <th>Фамилия</th>
+        <th>Имя</th>
+        <th>Отчество</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (teacher of facadeService.teachers; track $index) {
+      <tr>
+        <td>{{ teacher.name }}</td>
+        <td>{{ teacher.surname }}</td>
+        <td>{{ teacher.thirdname }}</td>
+        <td>
+          <button
+            class="btn btn-info"
+            (click)="facadeService.setSelection = teacher"
+          >
+            Выбрать
+          </button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+  <app-teacher-pagination></app-teacher-pagination>
+</div>

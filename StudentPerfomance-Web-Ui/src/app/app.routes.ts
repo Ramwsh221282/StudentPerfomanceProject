@@ -1,39 +1,53 @@
 import { Routes } from '@angular/router';
-import { DbmanagerMenuComponent } from './components/dbmanager-menu/dbmanager-menu.component';
-import { DbmanagerStudentgroupsViewComponent } from './components/dbmanager-menu/dbmanager-studentgroups-view/dbmanager-studentgroups-view.component';
-import { DbmanagerDepartmentsViewComponent } from './components/dbmanager-menu/dbmanager-departments-view/dbmanager-departments-view.component';
-import { GroupMenuComponent } from './components/dbmanager-menu/dbmanager-studentgroups-view/group-menu/group-menu.component';
-import { DepartmentMenuComponent } from './components/dbmanager-menu/dbmanager-departments-view/department-menu/department-menu.component';
-import { DbmanagerSemestersViewComponent } from './components/dbmanager-menu/dbmanager-semesters-view/dbmanager-semesters-view.component';
-import { DbmanagerSemesterMenuComponent } from './components/dbmanager-menu/dbmanager-semesters-view/dbmanager-semester-menu/dbmanager-semester-menu.component';
 
 export const routes: Routes = [
   {
-    path: 'database-manager-menu',
-    component: DbmanagerMenuComponent,
+    path: 'administration',
+    loadChildren: () =>
+      import('./modules/administration/administration.module').then(
+        (mod) => mod.AdministrationModule
+      ),
   },
   {
-    path: 'database-manager-studentgroups',
-    component: DbmanagerStudentgroupsViewComponent,
+    path: 'groups',
+    loadChildren: () =>
+      import(
+        './modules/administration/submodules/student-groups/student-groups.module'
+      ).then((mod) => mod.StudentGroupsModule),
   },
   {
-    path: 'studentgroup-menu/:groupName',
-    component: GroupMenuComponent,
+    path: 'students/:groupName',
+    loadChildren: () =>
+      import(
+        './modules/administration/submodules/students/students.module'
+      ).then((mod) => mod.StudentsModule),
   },
   {
-    path: 'database-manager-departments',
-    component: DbmanagerDepartmentsViewComponent,
+    path: 'departments',
+    loadChildren: () =>
+      import(
+        './modules/administration/submodules/departments/departments.module'
+      ).then((mod) => mod.DepartmentsModule),
   },
   {
-    path: 'department-menu/:departmentName',
-    component: DepartmentMenuComponent,
+    path: 'teachers/:departmentName',
+    loadChildren: () =>
+      import(
+        './modules/administration/submodules/teachers/teachers.module'
+      ).then((mod) => mod.TeachersModule),
   },
   {
-    path: 'database-manager-semesters',
-    component: DbmanagerSemestersViewComponent,
+    path: 'semesters',
+    loadChildren: () =>
+      import(
+        './modules/administration/submodules/semesters/semesters.module'
+      ).then((mod) => mod.SemestersModule),
   },
   {
-    path: 'semester-menu/:groupName/:number/:contractsCount',
-    component: DbmanagerSemesterMenuComponent,
+    path: 'plans/:groupName/:number/:contractsCount',
+    loadChildren: () =>
+      import(
+        './modules/administration/submodules/semester-plans/semester-plans.module'
+      ).then((mod) => mod.SemesterPlansModule),
   },
 ];

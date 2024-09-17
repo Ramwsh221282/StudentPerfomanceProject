@@ -1,0 +1,50 @@
+<div class="semester-table-wrapper">
+  <div class="semester-table-header">
+    <strong>Текущие семестры</strong>
+  </div>
+  <div class="semester-table-header">
+    <strong>Количество семестров: {{ facadeService.count }}</strong>
+  </div>
+  <table class="semester-table">
+    <thead>
+      <tr>
+        <th>Номер семестра</th>
+        <th>Группа</th>
+        <th>Количество дисциплин</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (semester of facadeService.semesters; track $index) {
+      <tr>
+        <td>{{ semester.number }}</td>
+        <td>{{ semester.groupName }}</td>
+        <td>{{ semester.contractsCount }}</td>
+        <td class="button-list">
+          <button
+            type="button"
+            class="btn btn-info"
+            [routerLink]="[
+              '/plans',
+              semester.groupName,
+              semester.number,
+              semester.contractsCount
+            ]"
+            routerLinkActive="router-link-active"
+          >
+            Открыть меню
+          </button>
+          <button
+            type="button"
+            class="btn btn-info"
+            (click)="facadeService.setSelection = semester"
+          >
+            Выбрать
+          </button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+  <app-semester-pagination></app-semester-pagination>
+</div>

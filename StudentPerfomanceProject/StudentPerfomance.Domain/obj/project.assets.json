@@ -60,11 +60,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Ramwsh\\Desktop\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Domain\\StudentPerfomance.Domain.csproj",
+      "projectUniqueName": "C:\\Users\\Ramwsh\\Desktop\\project-to-modular-refactor\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Domain\\StudentPerfomance.Domain.csproj",
       "projectName": "StudentPerfomance.Domain",
-      "projectPath": "C:\\Users\\Ramwsh\\Desktop\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Domain\\StudentPerfomance.Domain.csproj",
+      "projectPath": "C:\\Users\\Ramwsh\\Desktop\\project-to-modular-refactor\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Domain\\StudentPerfomance.Domain.csproj",
       "packagesPath": "C:\\Users\\Ramwsh\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ramwsh\\Desktop\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Domain\\obj\\",
+      "outputPath": "C:\\Users\\Ramwsh\\Desktop\\project-to-modular-refactor\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

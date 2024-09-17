@@ -1,0 +1,35 @@
+<div class="plan-card-wrapper">
+  <div class="plan-card-content">
+    <strong>{{ semesterPlan.planName }}</strong>
+    <div
+      [ngClass]="[
+        isTeacherAttached
+          ? 'teacher-state-info teacher-exists'
+          : 'teacher-state-info teacher-empty'
+      ]"
+      [hidden]="isTeacherAttached"
+    >
+      <strong>Преподаватель не закреплён.</strong>
+    </div>
+  </div>
+  <div class="plan-card-button-list">
+    <button type="button" class="btn btn-info" (click)="openCardInfoModal()">
+      Информация
+    </button>
+    <button
+      type="button"
+      class="btn btn-info"
+      (click)="facadeService.setSelection = semesterPlan"
+    >
+      Выбрать
+    </button>
+  </div>
+</div>
+<div id="plan-card-info-modal-renderer" *ngIf="isModalEnabled">
+  <app-plan-card-info
+    [cardPlanInfo]="semesterPlan"
+    (modalDisabled)="checkModalState($event)"
+    (selectedTeacher)="getTeacherInfoFromModal($event)"
+  >
+  </app-plan-card-info>
+</div>

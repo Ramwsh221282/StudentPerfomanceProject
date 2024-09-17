@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Ramwsh\\Desktop\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.DataAccess\\StudentPerfomance.DataAccess.csproj": {}
+    "c:\\Users\\Ramwsh\\Desktop\\project-to-modular-refactor\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.DataAccess\\StudentPerfomance.DataAccess.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Ramwsh\\Desktop\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.DataAccess\\StudentPerfomance.DataAccess.csproj": {
+    "c:\\Users\\Ramwsh\\Desktop\\project-to-modular-refactor\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.DataAccess\\StudentPerfomance.DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ramwsh\\Desktop\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.DataAccess\\StudentPerfomance.DataAccess.csproj",
+        "projectUniqueName": "c:\\Users\\Ramwsh\\Desktop\\project-to-modular-refactor\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.DataAccess\\StudentPerfomance.DataAccess.csproj",
         "projectName": "StudentPerfomance.DataAccess",
-        "projectPath": "C:\\Users\\Ramwsh\\Desktop\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.DataAccess\\StudentPerfomance.DataAccess.csproj",
+        "projectPath": "c:\\Users\\Ramwsh\\Desktop\\project-to-modular-refactor\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.DataAccess\\StudentPerfomance.DataAccess.csproj",
         "packagesPath": "C:\\Users\\Ramwsh\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ramwsh\\Desktop\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.DataAccess\\obj\\",
+        "outputPath": "c:\\Users\\Ramwsh\\Desktop\\project-to-modular-refactor\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.DataAccess\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,8 +32,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Ramwsh\\Desktop\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Domain\\StudentPerfomance.Domain.csproj": {
-                "projectPath": "C:\\Users\\Ramwsh\\Desktop\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Domain\\StudentPerfomance.Domain.csproj"
+              "c:\\Users\\Ramwsh\\Desktop\\project-to-modular-refactor\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Domain\\StudentPerfomance.Domain.csproj": {
+                "projectPath": "c:\\Users\\Ramwsh\\Desktop\\project-to-modular-refactor\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Domain\\StudentPerfomance.Domain.csproj"
               }
             }
           }
@@ -88,14 +88,14 @@
         }
       }
     },
-    "C:\\Users\\Ramwsh\\Desktop\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Domain\\StudentPerfomance.Domain.csproj": {
+    "c:\\Users\\Ramwsh\\Desktop\\project-to-modular-refactor\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Domain\\StudentPerfomance.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ramwsh\\Desktop\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Domain\\StudentPerfomance.Domain.csproj",
+        "projectUniqueName": "c:\\Users\\Ramwsh\\Desktop\\project-to-modular-refactor\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Domain\\StudentPerfomance.Domain.csproj",
         "projectName": "StudentPerfomance.Domain",
-        "projectPath": "C:\\Users\\Ramwsh\\Desktop\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Domain\\StudentPerfomance.Domain.csproj",
+        "projectPath": "c:\\Users\\Ramwsh\\Desktop\\project-to-modular-refactor\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Domain\\StudentPerfomance.Domain.csproj",
         "packagesPath": "C:\\Users\\Ramwsh\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ramwsh\\Desktop\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Domain\\obj\\",
+        "outputPath": "c:\\Users\\Ramwsh\\Desktop\\project-to-modular-refactor\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

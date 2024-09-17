@@ -1,0 +1,68 @@
+<div class="student-manage-form-layout">
+  <form [formGroup]="form" class="student-manage-form">
+    <div class="form-header-wrapper">
+      <strong>{{ title }}</strong>
+    </div>
+    <div class="student-manage-form-content">
+      <input
+        [readOnly]="facadeService.selected.name == null"
+        [(ngModel)]="facadeService.selected.name"
+        formControlName="name"
+        class="default-input"
+        placeholder="Имя"
+      />
+      <input
+        [readOnly]="facadeService.selected.surname == null"
+        [(ngModel)]="facadeService.selected.surname"
+        formControlName="surname"
+        class="default-input"
+        placeholder="Фамилия"
+      />
+      <input
+        [readOnly]="facadeService.selected.thirdname == null"
+        [(ngModel)]="facadeService.selected.thirdname"
+        formControlName="thirdname"
+        class="default-input"
+        placeholder="Отчество"
+      />
+      <input
+        type="number"
+        [readOnly]="facadeService.selected.recordBook == null"
+        [(ngModel)]="facadeService.selected.recordBook"
+        formControlName="recordBook"
+        class="default-input"
+        placeholder="Зачётная книжка"
+      />
+      <select
+        [(ngModel)]="facadeService.selected.state"
+        class="default-select"
+        formControlName="state"
+      >
+        <option value="Активен">Активен</option>
+        <option value="Неактивен">Неактивен</option>
+      </select>
+      <div class="student-manage-form-button-list margin-top-15">
+        <button type="button" class="btn btn-info" (click)="editClick()">
+          Изменить
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger color-black"
+          (click)="deleteClick()"
+        >
+          Удалить
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+<div id="success-modal-renderer" *ngIf="successModalState.Visibility">
+  <app-success-notification-form
+    (modalDisabled)="successModalState.turn($event)"
+  ></app-success-notification-form>
+</div>
+<div id="failure-modal-renderer" *ngIf="failureModalState.Visibility">
+  <app-failure-notification-form
+    (modalDisabled)="failureModalState.turn($event)"
+  ></app-failure-notification-form>
+</div>

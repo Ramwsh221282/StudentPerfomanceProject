@@ -1,0 +1,53 @@
+.student-page-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 10px;
+}
+
+.student-page-navigation {
+  padding: 5px;
+  background-color: #2d4048;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  color: #a1e3ff;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.link-navigation {
+  color: #a1e3ff;
+  text-decoration: none;
+}
+
+.student-page-header {
+  background-color: #2d4048;
+  font-size: 14px;
+  font-weight: 400px;
+  color: #a1e3ff;
+  width: auto;
+  padding: 5px;
+}
+
+.student-page-content {
+  display: grid;
+  grid-template-columns: 350px 985px 350px;
+  grid-gap: 5px;
+}
+
+.student-page-left-side {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.student-page-center-side {
+  display: flex;
+  flex-direction: column;
+}
+
+.student-page-right-side {
+  display: flex;
+  flex-direction: column;
+}

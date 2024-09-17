@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "DSPXy3rL1hukLFgIhX0yl8CnOeSfuIlFz2w3OjMzg+TPiOmCtfbFCjJoshPHIKyzEZ7JeOh1EuEggFW8vMdagg==",
+  "dgSpecHash": "rLJrPIsEwWYa+z/VOTp/Rfu7oTq/njoyPs6ovamjmOowrgBwui5usoXMZWT5ZLEV4+ZRakf0nIzKamooaELmaA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Ramwsh\\Desktop\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Tests\\StudentPerfomance.Tests.csproj",
+  "projectFilePath": "C:\\Users\\Ramwsh\\Desktop\\project-to-modular-refactor\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Tests\\StudentPerfomance.Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Ramwsh\\.nuget\\packages\\csharpfunctionalextensions\\2.42.5\\csharpfunctionalextensions.2.42.5.nupkg.sha512",
     "C:\\Users\\Ramwsh\\.nuget\\packages\\microsoft.aspnetcore.openapi\\8.0.2\\microsoft.aspnetcore.openapi.8.0.2.nupkg.sha512",

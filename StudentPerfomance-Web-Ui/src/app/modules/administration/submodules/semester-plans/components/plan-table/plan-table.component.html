@@ -1,0 +1,17 @@
+<div class="plan-table-wrapper">
+  <table class="plan-table">
+    <thead>
+      <tr>
+        <th>Дисциплины. {{ facadeService.count }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (semesterPlan of semesterPlans; track semesterPlan.disciplineName) {
+      <tr>
+        <app-plan-card [semesterPlan]="semesterPlan"> </app-plan-card>
+      </tr>
+      }
+    </tbody>
+  </table>
+  <app-plan-pagination></app-plan-pagination>
+</div>

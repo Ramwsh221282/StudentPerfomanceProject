@@ -1,0 +1,13 @@
+.group-page-layout {
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 800px 500px;
+  grid-gap: 10px;
+}
+
+.control-section {
+  display: grid;
+  grid-template-columns: 200px 200px;
+  grid-template-rows: 10px;
+  grid-gap: 165px;
+}

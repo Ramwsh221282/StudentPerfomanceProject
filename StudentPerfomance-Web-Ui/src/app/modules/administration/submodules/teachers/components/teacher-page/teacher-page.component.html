@@ -1,0 +1,25 @@
+<section class="teacher-page-layout">
+  <div class="teacher-page-navigation">
+    <a
+      class="link-navigation"
+      [routerLink]="['/database-manager-departments']"
+      routerLinkActive="router-link-active"
+      >Вернуться в меню кафедр</a
+    >
+  </div>
+  <div class="teacher-page-header">
+    <strong>Кафедра: {{ facadeTeacherService.currentDepartment.name }}</strong>
+  </div>
+  <section class="teacher-page-content">
+    <div class="teacher-page-left-side">
+      <app-teacher-create></app-teacher-create>
+      <app-teacher-manage></app-teacher-manage>
+    </div>
+    <div class="teacher-page-center-side">
+      <app-teacher-table></app-teacher-table>
+    </div>
+    <div class="teacher-page-right-side">
+      <app-teacher-filter></app-teacher-filter>
+    </div>
+  </section>
+</section>
