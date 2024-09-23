@@ -17,7 +17,7 @@ public sealed class TeacherPaginationTest(int page, int pageSize, DepartmentSche
 
 	public async Task<OperationResult<IReadOnlyCollection<Teacher>>> DoOperation()
 	{
-		TeachersDepartmentRepositoryParameter parameter = DepartmentSchemaConverter.ToRepositoryParameter(_request.Schema);
+		TeachersDepartmentRepositoryParameter parameter = DepartmentSchemaConverter.ToRepositoryParameter(_request.Department);
 		IService<IReadOnlyCollection<Teacher>> service = new TeachersPaginationService
 		(
 			_request.Page,

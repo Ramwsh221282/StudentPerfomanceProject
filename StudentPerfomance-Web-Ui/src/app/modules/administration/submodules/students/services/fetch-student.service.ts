@@ -11,7 +11,6 @@ import { IRequestParamsFactory } from '../../../../../models/RequestParamsFactor
 })
 export class FetchStudentService extends StudentBaseService {
   private _group: StudentGroup = {} as StudentGroup;
-  private _isInitedOnce: boolean = false;
   private _students: Student[] = [];
 
   constructor() {
@@ -27,10 +26,7 @@ export class FetchStudentService extends StudentBaseService {
   }
 
   public initStudents(studentGroup: StudentGroup): void {
-    if (!this._isInitedOnce) {
-      this._group.groupName = studentGroup.groupName;
-      this._isInitedOnce = true;
-    }
+    this._group.groupName = studentGroup.groupName;
   }
 
   public fetchStudents(factory: IRequestParamsFactory): void {

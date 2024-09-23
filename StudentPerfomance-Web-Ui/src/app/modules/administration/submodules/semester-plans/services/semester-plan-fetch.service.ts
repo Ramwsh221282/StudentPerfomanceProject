@@ -12,7 +12,6 @@ import { SemesterPlanPaginationService } from './semester-plan-pagination.servic
 export class SemesterPlanFetchService extends SemesterPlanBaseService {
   private _semesterPlans: SemesterPlan[] = [];
   private _currentSemester: Semester = {} as Semester;
-  private _isSemesterSet: boolean = false;
 
   constructor() {
     super();
@@ -27,10 +26,7 @@ export class SemesterPlanFetchService extends SemesterPlanBaseService {
   }
 
   public setSemester(semester: Semester): void {
-    if (!this._isSemesterSet) {
-      this._currentSemester = semester;
-      this._isSemesterSet = true;
-    }
+    this._currentSemester = semester;
   }
 
   public fetch(factory: IRequestParamsFactory): void {

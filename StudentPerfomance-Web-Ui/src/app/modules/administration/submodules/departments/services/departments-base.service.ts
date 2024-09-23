@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject } from '@angular/core';
+import { BASE_API_URI } from '../../../../../shared/models/api/api-constants';
 
 export class DepartmentsBaseService {
   protected readonly httpClient: HttpClient;
@@ -7,6 +8,6 @@ export class DepartmentsBaseService {
 
   public constructor() {
     this.httpClient = inject(HttpClient);
-    this.baseApiUri = 'http://localhost:5005/TeacherDepartments';
+    this.baseApiUri = `${BASE_API_URI}/TeacherDepartments`;
   }
 }

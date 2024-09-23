@@ -78,11 +78,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\Ramwsh\\Desktop\\project-to-modular-refactor\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Application\\StudentPerfomance.Application.csproj",
+      "projectUniqueName": "c:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Application\\StudentPerfomance.Application.csproj",
       "projectName": "StudentPerfomance.Application",
-      "projectPath": "c:\\Users\\Ramwsh\\Desktop\\project-to-modular-refactor\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Application\\StudentPerfomance.Application.csproj",
+      "projectPath": "c:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Application\\StudentPerfomance.Application.csproj",
       "packagesPath": "C:\\Users\\Ramwsh\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\Ramwsh\\Desktop\\project-to-modular-refactor\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Application\\obj\\",
+      "outputPath": "c:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Application\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -103,8 +103,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "c:\\Users\\Ramwsh\\Desktop\\project-to-modular-refactor\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Domain\\StudentPerfomance.Domain.csproj": {
-              "projectPath": "c:\\Users\\Ramwsh\\Desktop\\project-to-modular-refactor\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Domain\\StudentPerfomance.Domain.csproj"
+            "c:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Domain\\StudentPerfomance.Domain.csproj": {
+              "projectPath": "c:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Domain\\StudentPerfomance.Domain.csproj"
             }
           }
         }

@@ -12,7 +12,6 @@ import { IRequestParamsFactory } from '../../../../../models/RequestParamsFactor
 export class FetchTeacherService extends BaseTeacherService {
   private _teachers: Teacher[] = [];
   private _currentDepartment: Department = {} as Department;
-  private _isInited: boolean = false;
 
   public constructor() {
     super();
@@ -27,10 +26,7 @@ export class FetchTeacherService extends BaseTeacherService {
   }
 
   public initialize(department: Department) {
-    if (!this._isInited) {
-      this._currentDepartment = { ...department };
-      this._isInited = true;
-    }
+    this._currentDepartment = { ...department };
   }
 
   public fetchByDepartmentName(factory: IRequestParamsFactory) {

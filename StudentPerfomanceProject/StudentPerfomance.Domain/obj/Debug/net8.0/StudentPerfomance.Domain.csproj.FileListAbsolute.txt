@@ -47,3 +47,16 @@ c:\Users\Ramwsh\Desktop\project-to-modular-refactor\StudentPerfomanceProject\Stu
 c:\Users\Ramwsh\Desktop\project-to-modular-refactor\StudentPerfomanceProject\StudentPerfomanceProject\StudentPerfomance.Domain\obj\Debug\net8.0\refint\StudentPerfomance.Domain.dll
 c:\Users\Ramwsh\Desktop\project-to-modular-refactor\StudentPerfomanceProject\StudentPerfomanceProject\StudentPerfomance.Domain\obj\Debug\net8.0\StudentPerfomance.Domain.pdb
 c:\Users\Ramwsh\Desktop\project-to-modular-refactor\StudentPerfomanceProject\StudentPerfomanceProject\StudentPerfomance.Domain\obj\Debug\net8.0\ref\StudentPerfomance.Domain.dll
+C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomanceProject\StudentPerfomance.Domain\bin\Debug\net8.0\StudentPerfomance.Domain.deps.json
+C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomanceProject\StudentPerfomance.Domain\bin\Debug\net8.0\StudentPerfomance.Domain.dll
+C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomanceProject\StudentPerfomance.Domain\bin\Debug\net8.0\StudentPerfomance.Domain.pdb
+C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomanceProject\StudentPerfomance.Domain\obj\Debug\net8.0\StudentPerfomance.Domain.csproj.AssemblyReference.cache
+C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomanceProject\StudentPerfomance.Domain\obj\Debug\net8.0\StudentPerfomance.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomanceProject\StudentPerfomance.Domain\obj\Debug\net8.0\StudentPerfomance.Domain.AssemblyInfoInputs.cache
+C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomanceProject\StudentPerfomance.Domain\obj\Debug\net8.0\StudentPerfomance.Domain.AssemblyInfo.cs
+C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomanceProject\StudentPerfomance.Domain\obj\Debug\net8.0\StudentPerfomance.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomanceProject\StudentPerfomance.Domain\obj\Debug\net8.0\StudentPerfomance.Domain.sourcelink.json
+C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomanceProject\StudentPerfomance.Domain\obj\Debug\net8.0\StudentPerfomance.Domain.dll
+C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomanceProject\StudentPerfomance.Domain\obj\Debug\net8.0\refint\StudentPerfomance.Domain.dll
+C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomanceProject\StudentPerfomance.Domain\obj\Debug\net8.0\StudentPerfomance.Domain.pdb
+C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomanceProject\StudentPerfomance.Domain\obj\Debug\net8.0\ref\StudentPerfomance.Domain.dll

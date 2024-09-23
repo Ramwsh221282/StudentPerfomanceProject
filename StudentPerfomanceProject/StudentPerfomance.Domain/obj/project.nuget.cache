@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Tws4Gq8J9oetQjxYf5IfqQKXemNzIH0EDHaJN0UzxkP2W3kXva2E1UGrtEVvS83EMMVg7/RhEQGlJl67p5vIQQ==",
+  "dgSpecHash": "HD/fsRqQnw1egaSZOSUKSBbF+lF4KWfQC91oQVxRYT5QONvWkLU7p9cLLNCdftRPVxz41to/zD7uHpiGka73TA==",
   "success": true,
-  "projectFilePath": "c:\\Users\\Ramwsh\\Desktop\\project-to-modular-refactor\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Domain\\StudentPerfomance.Domain.csproj",
+  "projectFilePath": "c:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Domain\\StudentPerfomance.Domain.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Ramwsh\\.nuget\\packages\\csharpfunctionalextensions\\2.42.5\\csharpfunctionalextensions.2.42.5.nupkg.sha512"
   ],
