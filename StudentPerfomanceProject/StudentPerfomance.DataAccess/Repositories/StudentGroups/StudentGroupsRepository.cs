@@ -47,6 +47,7 @@ public sealed class StudentGroupsRepository : IRepository<StudentGroup>
 	{
 		List<StudentGroup> groups = await _context.Groups
 		.Include(g => g.Students)
+		.Include(g => g.EducationPlan)
 		.Skip((page - 1) * pageSize)
 		.Take(pageSize)
 		.AsNoTracking()
@@ -58,11 +59,13 @@ public sealed class StudentGroupsRepository : IRepository<StudentGroup>
 	public async Task<StudentGroup?> GetByParameter(IRepositoryExpression<StudentGroup> expression) =>
 		await _context.Groups
 		.Include(g => g.Students)
+		.Include(g => g.EducationPlan)
 		.FirstOrDefaultAsync(expression.Build());
 
 	public async Task<IReadOnlyCollection<StudentGroup>> GetFiltered(IRepositoryExpression<StudentGroup> expression) =>
 		await _context.Groups
 		.Include(g => g.Students)
+		.Include(g => g.EducationPlan)
 		.OrderByDescending(g => g.Name.Name)
 		.Where(expression.Build())
 		.AsNoTracking()
@@ -72,6 +75,7 @@ public sealed class StudentGroupsRepository : IRepository<StudentGroup>
 	{
 		List<StudentGroup> groups = await _context.Groups
 		.Include(g => g.Students)
+		.Include(g => g.EducationPlan)
 		.OrderByDescending(g => g.Name.Name)
 		.Where(expression.Build())
 		.Skip((1 - page) * pageSize)

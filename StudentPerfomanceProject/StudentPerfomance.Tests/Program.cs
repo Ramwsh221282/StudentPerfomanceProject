@@ -1,4 +1,8 @@
-﻿using StudentPerfomance.Tests.ApplicationLayerTests.SemesterPlanTests;
+﻿using CSharpFunctionalExtensions;
+using StudentPerfomance.Domain.Entities;
+using StudentPerfomance.Domain.ValueObjects.EducationDirections;
+using StudentPerfomance.Domain.ValueObjects.EducationPlans;
+using StudentPerfomance.Tests.ApplicationLayerTests.StudentGroupTests;
 
 namespace StudentPerfomance.Tests
 {
@@ -6,8 +10,7 @@ namespace StudentPerfomance.Tests
 	{
 		static void Main()
 		{
-			var successScenarios = SemesterPlanTester.SuccessScenarios.CreateSuccessScenarios();
-			successScenarios.SemesterPlansPaginationCountTest();
+
 		}
 	}
 }

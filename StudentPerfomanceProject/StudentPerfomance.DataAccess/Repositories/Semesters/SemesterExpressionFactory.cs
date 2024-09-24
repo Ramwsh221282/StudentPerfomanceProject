@@ -10,4 +10,6 @@ public static class SemesterExpressionFactory
 		new HasSemesterExpression(semester, group);
 	public static IRepositoryExpression<Semester> CreateFilter(SemestersRepositoryParameter semester, StudentGroupsRepositoryParameter group) =>
 		new SemestersRepositoryFilterExpression(semester, group);
+	public static IRepositoryExpression<Semester> CreateSemestersByGroupExpression(StudentGroupsRepositoryParameter group) =>
+		new SemestersByGroupExpression(group);
 }

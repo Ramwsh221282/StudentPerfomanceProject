@@ -4,7 +4,6 @@ using StudentPerfomance.Api.Converters;
 using StudentPerfomance.Api.Requests.GroupRequests;
 using StudentPerfomance.Api.Responses.StudentGroup;
 using StudentPerfomance.Application;
-using StudentPerfomance.Application.Commands.Group.ChangeGroupName;
 using StudentPerfomance.Application.Commands.Group.CreateStudentGroup;
 using StudentPerfomance.Application.Commands.Group.DeleteStudentGroup;
 using StudentPerfomance.Application.Commands.Group.MergeStudentGroups;
@@ -12,6 +11,9 @@ using StudentPerfomance.Application.Queries.Group.GetGroupByName;
 using StudentPerfomance.Application.Queries.Group.GetGroupsByFilter;
 using StudentPerfomance.Application.Queries.Group.GetGroupsByPage;
 using StudentPerfomance.Application.Queries.Group.GetGroupsStartsWithSearchParam;
+using StudentPerfomance.DataAccess.Repositories.EducationDirections;
+using StudentPerfomance.DataAccess.Repositories.EducationPlans;
+using StudentPerfomance.DataAccess.Repositories.Semesters;
 using StudentPerfomance.DataAccess.Repositories.StudentGroups;
 using StudentPerfomance.Domain.Entities;
 using StudentPerfomance.Domain.Interfaces.Repositories;
@@ -22,26 +24,28 @@ namespace StudentPerfomance.Api.Controllers;
 [Route("[controller]")]
 public sealed class StudentGroupsController : Controller
 {
-	private readonly IRepository<StudentGroup> _repository = new StudentGroupsRepository();
+	private readonly IRepository<StudentGroup> _groups = new StudentGroupsRepository();
+	private readonly IRepository<Semester> _semesters = new SemestersRepository();
+	private readonly IRepository<EducationPlan> _educationPlans = new EducationPlansRepository();
 
 	[HttpGet("totalCount")]
 	public async Task<ActionResult<int>> GetTotalCount()
 	{
-		int count = await _repository.Count();
+		int count = await _groups.Count();
 		return Ok(count);
 	}
 
 	[HttpGet("byPage")]
 	public async Task<ActionResult<IReadOnlyCollection<StudentGroupResponse>>> GetGroupsByPage([FromQuery] GroupByPageRequest request)
 	{
-		IService<IReadOnlyCollection<StudentGroup>> service = new StudentGroupsPaginationService(request.Page, request.PageSize, _repository);
+		IService<IReadOnlyCollection<StudentGroup>> service = new StudentGroupsPaginationService(request.Page, request.PageSize, _groups);
 		return StudentGroupResponse.FromResult(await service.DoOperation());
 	}
 
 	[HttpGet("all")]
 	public async Task<ActionResult<IReadOnlyCollection<StudentGroupResponse>>> GetAllGroups()
 	{
-		IReadOnlyCollection<StudentGroup> groups = await _repository.GetAll();
+		IReadOnlyCollection<StudentGroup> groups = await _groups.GetAll();
 		OperationResult<IReadOnlyCollection<StudentGroup>> result = new OperationResult<IReadOnlyCollection<StudentGroup>>(groups);
 		return StudentGroupResponse.FromResult(result);
 	}
@@ -55,7 +59,7 @@ public sealed class StudentGroupsController : Controller
 			request.Group,
 			request.Page,
 			request.PageSize,
-			_repository,
+			_groups,
 			StudentGroupsExpressionFactory.CreateFilterExpression(parameter)
 		);
 		return StudentGroupResponse.FromResult(await service.DoOperation());
@@ -68,7 +72,7 @@ public sealed class StudentGroupsController : Controller
 		IService<StudentGroup> service = new StudentGroupByNameService
 		(
 			request.Group,
-			_repository,
+			_groups,
 			StudentGroupsExpressionFactory.CreateFilterExpression(parameter)
 		);
 		return StudentGroupResponse.FromResult(await service.DoOperation());
@@ -81,7 +85,7 @@ public sealed class StudentGroupsController : Controller
 		IService<IReadOnlyCollection<StudentGroup>> service = new StudentGroupsSearchByNameService
 		(
 			request.Group,
-			_repository,
+			_groups,
 			StudentGroupsExpressionFactory.CreateSearchWithNameParamExpression(parameter)
 		);
 		return StudentGroupResponse.FromResult(await service.DoOperation());
@@ -90,12 +94,17 @@ public sealed class StudentGroupsController : Controller
 	[HttpPost]
 	public async Task<ActionResult<StudentGroupResponse>> CreateGroup([FromBody] GroupCreateRequest request)
 	{
-		StudentGroupsRepositoryParameter parameter = StudentsGroupSchemaConverter.ToRepositoryParameter(request.Group);
+		StudentGroupsRepositoryParameter groupParameter = StudentsGroupSchemaConverter.ToRepositoryParameter(request.Group);
+		EducationPlanRepositoryParameter planParameter = EducationPlanSchemaConverter.ToRepositoryParameter(request.EducationPlan);
+		EducationDirectionRepositoryParameter directionParameter = EducationDirectionSchemaConverter.ToRepositoryParameter(request.EducationPlan.Direction);
 		IService<StudentGroup> service = new StudentGroupCreationService
 		(
 			request.Group,
-			_repository,
-			StudentGroupsExpressionFactory.CreateHasGroupExpression(parameter)
+			request.EducationPlan,
+			_groups,
+			_educationPlans,
+			StudentGroupsExpressionFactory.CreateHasGroupExpression(groupParameter),
+			EducationPlanExpressionsFactory.CreateFindPlan(planParameter, directionParameter)
 		);
 		return StudentGroupResponse.FromResult(await service.DoOperation());
 	}
@@ -107,7 +116,7 @@ public sealed class StudentGroupsController : Controller
 		IService<StudentGroup> service = new StudentGroupsDeleteService
 		(
 			request.Group,
-			_repository,
+			_groups,
 			StudentGroupsExpressionFactory.CreateHasGroupExpression(parameter)
 		);
 		return StudentGroupResponse.FromResult(await service.DoOperation());
@@ -116,16 +125,7 @@ public sealed class StudentGroupsController : Controller
 	[HttpPut]
 	public async Task<ActionResult<StudentGroupResponse>> ChangeGroupName([FromBody] GroupUpdateRequest request)
 	{
-		StudentGroupsRepositoryParameter oldParameter = StudentsGroupSchemaConverter.ToRepositoryParameter(request.OldGroup);
-		StudentGroupsRepositoryParameter newParameter = StudentsGroupSchemaConverter.ToRepositoryParameter(request.NewGroup);
-		IService<StudentGroup> service = new StudentGroupsUpdateService
-		(
-			request.NewGroup,
-			_repository,
-			StudentGroupsExpressionFactory.CreateHasGroupExpression(oldParameter),
-			StudentGroupsExpressionFactory.CreateHasGroupExpression(newParameter)
-		);
-		return StudentGroupResponse.FromResult(await service.DoOperation());
+		throw new NotImplementedException();
 	}
 
 	[HttpPut("mergeGroups")]
@@ -137,7 +137,7 @@ public sealed class StudentGroupsController : Controller
 		(
 			request.TargetGroup,
 			request.MergeGroup,
-			_repository,
+			_groups,
 			StudentGroupsExpressionFactory.CreateHasGroupExpression(parameterA),
 			StudentGroupsExpressionFactory.CreateHasGroupExpression(parameterB)
 		);

@@ -26,6 +26,12 @@ public sealed class StudentGroupDeleteTest(StudentsGroupSchema schema) : IServic
 		OperationResultLogger<OperationResult<StudentGroup>, StudentGroup> logger;
 		logger = new(result, "Student group deletion test");
 		logger.ShowInfo();
+		if (result != null && result.Result != null)
+		{
+			Console.WriteLine("Group by name search request results:");
+			Console.WriteLine($"Student Group name: {result.Result.Name.Name}");
+			Console.WriteLine($"Student Group Students Count: {result.Result.Students.Count}");
+		}
 		return result;
 	}
 }

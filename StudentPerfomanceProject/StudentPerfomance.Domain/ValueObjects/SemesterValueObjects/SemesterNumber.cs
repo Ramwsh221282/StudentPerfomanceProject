@@ -16,7 +16,8 @@ public class SemesterNumber : ValueObject
 	public static SemesterNumber EightSemester = new SemesterNumber(8);
 	public static SemesterNumber NineSemester = new SemesterNumber(9);
 	public static SemesterNumber TenSemester = new SemesterNumber(10);
-	public SemesterNumber() { }
+	public static SemesterNumber ElevenSemester = new SemesterNumber(11);
+	private SemesterNumber() => Value = default;
 	private SemesterNumber(byte value) => Value = value;
 	public byte Value { get; }
 	public override IEnumerable<object> GetEqualityComponents()
@@ -34,4 +35,6 @@ public class SemesterNumber : ValueObject
 			false => Result.Failure<SemesterNumber>(validator.GetErrorText()),
 		};
 	}
+
+	public static SemesterNumber CreateDefault() => new SemesterNumber();
 }

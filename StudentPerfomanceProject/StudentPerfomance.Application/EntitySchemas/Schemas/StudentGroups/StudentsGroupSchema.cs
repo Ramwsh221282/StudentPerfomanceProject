@@ -1,13 +1,16 @@
+using CSharpFunctionalExtensions;
+
+using StudentPerfomance.Domain.ValueObjects.StudentGroup;
+
 namespace StudentPerfomance.Application.EntitySchemas.Schemas.StudentGroups;
 
 public sealed record StudentsGroupSchema : EntitySchema
 {
-	public string? Name { get; init; } = string.Empty;
-
+	public Result<GroupName> Name { get; private set; }
 	public StudentsGroupSchema() { }
 
 	public StudentsGroupSchema(string? name)
 	{
-		if (!string.IsNullOrWhiteSpace(name)) Name = name;
+		if (!string.IsNullOrWhiteSpace(name)) Name = GroupName.Create(name);
 	}
 }

@@ -17,6 +17,8 @@ internal static class OperationResultExtensions
 		return await func();
 	}
 
+	public static async Task<T> ProcessAsync<T>(this CommandWithErrorBuilder builder, Func<Task<T>> func) => await func();
+
 	public static async Task<OperationResult<T>> ProcessAsync<TQuery, T>(this IQueryHandler<TQuery, OperationResult<T>> handler, Func<Task<OperationResult<T>>> func)
 	where TQuery : IQuery => await func();
 }

@@ -1,26 +1,28 @@
 using StudentPerfomance.Application.EntitySchemas.Validators;
 using StudentPerfomance.Domain.Entities;
 using StudentPerfomance.Domain.Interfaces.Repositories;
-using StudentPerfomance.Domain.ValueObjects.StudentGroup;
 
 namespace StudentPerfomance.Application.Commands.Group.CreateStudentGroup;
 
 internal sealed class CreateStudentGroupCommandHandler
 (
-	IRepository<StudentGroup> repository
+	IRepository<StudentGroup> groups, IRepository<EducationPlan> educationPlans
 )
 : CommandWithErrorBuilder, ICommandHandler<CreateStudentGroupCommand, OperationResult<StudentGroup>>
 {
-	private readonly IRepository<StudentGroup> _repository = repository;
+	private readonly IRepository<StudentGroup> _groups = groups;
+	private readonly IRepository<EducationPlan> _educationPlans = educationPlans;
 	public async Task<OperationResult<StudentGroup>> Handle(CreateStudentGroupCommand command)
 	{
-		command.Validator.ValidateSchema(this);
-		await _repository.ValidateExistance(command.Expression, "Такая группа уже существует", this);
+		command.GroupValidator.ValidateSchema(this);
+		command.EducationPlanValidator.ValidateSchema(this);
+		await _groups.ValidateExistance(command.CheckForDublicate, "Такая группа уже существует", this);
+		EducationPlan? educationPlan = await _educationPlans.GetByParameter(command.CheckForExistance);
+		educationPlan.ValidateNullability("Учебный план не найден. Невозможно создать группу.", this);
 		return await this.ProcessAsync(async () =>
 		{
-			GroupName name = GroupName.Create(command.Group.Name).Value;
-			StudentGroup group = StudentGroup.Create(Guid.NewGuid(), name).Value;
-			await _repository.Create(group);
+			StudentGroup group = StudentGroup.Create(command.Group.Name.Value, educationPlan).Value;
+			await _groups.Create(group);
 			return new OperationResult<StudentGroup>(group);
 		});
 	}

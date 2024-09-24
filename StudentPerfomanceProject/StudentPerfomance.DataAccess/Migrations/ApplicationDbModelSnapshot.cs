@@ -24,6 +24,10 @@ namespace StudentPerfomance.DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("EntityNumber")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -40,13 +44,55 @@ namespace StudentPerfomance.DataAccess.Migrations
                     b.ToTable("Disciplines", (string)null);
                 });
 
+            modelBuilder.Entity("StudentPerfomance.Domain.Entities.EducationDirection", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("EntityNumber")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("EducationDirections");
+                });
+
+            modelBuilder.Entity("StudentPerfomance.Domain.Entities.EducationPlan", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("DirectionId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("EntityNumber")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DirectionId");
+
+                    b.ToTable("EducationPlans");
+                });
+
             modelBuilder.Entity("StudentPerfomance.Domain.Entities.Semester", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("EntityNumber")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
                     b.Property<Guid>("GroupId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("PlanId")
                         .HasColumnType("TEXT");
 
                     b.ComplexProperty<Dictionary<string, object>>("Number", "StudentPerfomance.Domain.Entities.Semester.Number#SemesterNumber", b1 =>
@@ -61,6 +107,8 @@ namespace StudentPerfomance.DataAccess.Migrations
 
                     b.HasIndex("GroupId");
 
+                    b.HasIndex("PlanId");
+
                     b.ToTable("Semesters", (string)null);
                 });
 
@@ -69,6 +117,10 @@ namespace StudentPerfomance.DataAccess.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
+
+                    b.Property<int>("EntityNumber")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
 
                     b.Property<Guid>("LinkedDisciplineId")
                         .HasColumnType("TEXT");
@@ -94,6 +146,10 @@ namespace StudentPerfomance.DataAccess.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
+
+                    b.Property<int>("EntityNumber")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
 
                     b.Property<Guid>("GroupId")
                         .HasColumnType("TEXT");
@@ -152,6 +208,10 @@ namespace StudentPerfomance.DataAccess.Migrations
                     b.Property<Guid>("DisciplineId")
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("EntityNumber")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
                     b.Property<DateTime>("GradeDate")
                         .HasColumnType("TEXT");
 
@@ -187,6 +247,13 @@ namespace StudentPerfomance.DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
+                    b.Property<Guid>("EducationPlanId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("EntityNumber")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
                     b.ComplexProperty<Dictionary<string, object>>("Name", "StudentPerfomance.Domain.Entities.StudentGroup.Name#GroupName", b1 =>
                         {
                             b1.IsRequired();
@@ -199,6 +266,8 @@ namespace StudentPerfomance.DataAccess.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("EducationPlanId");
+
                     b.ToTable("Groups", (string)null);
                 });
 
@@ -210,6 +279,10 @@ namespace StudentPerfomance.DataAccess.Migrations
 
                     b.Property<Guid>("DepartmentId")
                         .HasColumnType("TEXT");
+
+                    b.Property<int>("EntityNumber")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
 
                     b.ComplexProperty<Dictionary<string, object>>("Name", "StudentPerfomance.Domain.Entities.Teacher.Name#TeacherName", b1 =>
                         {
@@ -243,6 +316,10 @@ namespace StudentPerfomance.DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("EntityNumber")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -264,6 +341,103 @@ namespace StudentPerfomance.DataAccess.Migrations
                     b.Navigation("Teacher");
                 });
 
+            modelBuilder.Entity("StudentPerfomance.Domain.Entities.EducationDirection", b =>
+                {
+                    b.OwnsOne("StudentPerfomance.Domain.ValueObjects.EducationDirections.DirectionCode", "Code", b1 =>
+                        {
+                            b1.Property<Guid>("EducationDirectionId")
+                                .HasColumnType("TEXT");
+
+                            b1.Property<string>("Code")
+                                .IsRequired()
+                                .HasColumnType("TEXT")
+                                .HasColumnName("DirectionCode");
+
+                            b1.HasKey("EducationDirectionId");
+
+                            b1.ToTable("EducationDirections");
+
+                            b1.WithOwner()
+                                .HasForeignKey("EducationDirectionId");
+                        });
+
+                    b.OwnsOne("StudentPerfomance.Domain.ValueObjects.EducationDirections.DirectionName", "Name", b1 =>
+                        {
+                            b1.Property<Guid>("EducationDirectionId")
+                                .HasColumnType("TEXT");
+
+                            b1.Property<string>("Name")
+                                .IsRequired()
+                                .HasColumnType("TEXT")
+                                .HasColumnName("DirectionName");
+
+                            b1.HasKey("EducationDirectionId");
+
+                            b1.ToTable("EducationDirections");
+
+                            b1.WithOwner()
+                                .HasForeignKey("EducationDirectionId");
+                        });
+
+                    b.OwnsOne("StudentPerfomance.Domain.ValueObjects.EducationDirections.DirectionType", "Type", b1 =>
+                        {
+                            b1.Property<Guid>("EducationDirectionId")
+                                .HasColumnType("TEXT");
+
+                            b1.Property<string>("Type")
+                                .IsRequired()
+                                .HasColumnType("TEXT")
+                                .HasColumnName("DirectionType");
+
+                            b1.HasKey("EducationDirectionId");
+
+                            b1.ToTable("EducationDirections");
+
+                            b1.WithOwner()
+                                .HasForeignKey("EducationDirectionId");
+                        });
+
+                    b.Navigation("Code")
+                        .IsRequired();
+
+                    b.Navigation("Name")
+                        .IsRequired();
+
+                    b.Navigation("Type")
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("StudentPerfomance.Domain.Entities.EducationPlan", b =>
+                {
+                    b.HasOne("StudentPerfomance.Domain.Entities.EducationDirection", "Direction")
+                        .WithMany()
+                        .HasForeignKey("DirectionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.OwnsOne("StudentPerfomance.Domain.ValueObjects.EducationPlans.YearOfCreation", "Year", b1 =>
+                        {
+                            b1.Property<Guid>("EducationPlanId")
+                                .HasColumnType("TEXT");
+
+                            b1.Property<uint>("Year")
+                                .HasColumnType("INTEGER")
+                                .HasColumnName("YearOfCreation");
+
+                            b1.HasKey("EducationPlanId");
+
+                            b1.ToTable("EducationPlans");
+
+                            b1.WithOwner()
+                                .HasForeignKey("EducationPlanId");
+                        });
+
+                    b.Navigation("Direction");
+
+                    b.Navigation("Year")
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("StudentPerfomance.Domain.Entities.Semester", b =>
                 {
                     b.HasOne("StudentPerfomance.Domain.Entities.StudentGroup", "Group")
@@ -272,7 +446,15 @@ namespace StudentPerfomance.DataAccess.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("StudentPerfomance.Domain.Entities.EducationPlan", "Plan")
+                        .WithMany("Semesters")
+                        .HasForeignKey("PlanId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Group");
+
+                    b.Navigation("Plan");
                 });
 
             modelBuilder.Entity("StudentPerfomance.Domain.Entities.SemesterPlan", b =>
@@ -332,6 +514,17 @@ namespace StudentPerfomance.DataAccess.Migrations
                     b.Navigation("Teacher");
                 });
 
+            modelBuilder.Entity("StudentPerfomance.Domain.Entities.StudentGroup", b =>
+                {
+                    b.HasOne("StudentPerfomance.Domain.Entities.EducationPlan", "EducationPlan")
+                        .WithMany()
+                        .HasForeignKey("EducationPlanId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("EducationPlan");
+                });
+
             modelBuilder.Entity("StudentPerfomance.Domain.Entities.Teacher", b =>
                 {
                     b.HasOne("StudentPerfomance.Domain.Entities.TeachersDepartment", "Department")
@@ -341,6 +534,11 @@ namespace StudentPerfomance.DataAccess.Migrations
                         .IsRequired();
 
                     b.Navigation("Department");
+                });
+
+            modelBuilder.Entity("StudentPerfomance.Domain.Entities.EducationPlan", b =>
+                {
+                    b.Navigation("Semesters");
                 });
 
             modelBuilder.Entity("StudentPerfomance.Domain.Entities.Semester", b =>

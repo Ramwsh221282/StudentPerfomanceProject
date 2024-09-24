@@ -22,10 +22,11 @@ internal sealed class CreateSemesterCommandHandler
 		group.ValidateNullability("Группа не найдена", this);
 		return await this.ProcessAsync(async () =>
 		{
-			SemesterNumber number = SemesterNumber.Create(command.Semester.Number).Value;
+			/*SemesterNumber number = SemesterNumber.Create(command.Semester.Number).Value;
 			Semester semester = Semester.Create(Guid.NewGuid(), group, number).Value;
 			await _semesters.Create(semester);
-			return new OperationResult<Semester>(semester);
+			return new OperationResult<Semester>(semester);*/
+			return new OperationResult<Semester>("semester");
 		});
 	}
 }

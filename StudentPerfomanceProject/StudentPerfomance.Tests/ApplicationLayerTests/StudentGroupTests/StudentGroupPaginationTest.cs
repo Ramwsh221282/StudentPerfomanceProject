@@ -23,6 +23,15 @@ public sealed class StudentGroupPaginationTest(int page, int pageSize) : IServic
 		OperationResultLogger<OperationResult<IReadOnlyCollection<StudentGroup>>, IReadOnlyCollection<StudentGroup>> logger =
 		new(result, "Student group pagination test");
 		logger.ShowInfo();
+		if (result != null)
+		{
+			foreach (var group in result.Result)
+			{
+				Console.WriteLine("Group by name search request results:");
+				Console.WriteLine($"Student Group name: {group.Name.Name}");
+				Console.WriteLine($"Student Group Students Count: {group.Students.Count}");
+			}
+		}
 		return result;
 	}
 }

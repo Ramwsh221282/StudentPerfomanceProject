@@ -25,6 +25,12 @@ public sealed class StudentGroupByNameTest(StudentsGroupSchema schema) : IServic
 		var result = service.DoOperation().Result;
 		OperationResultLogger<OperationResult<StudentGroup>, StudentGroup> logger = new(result, "Student Group Get By Name Test");
 		logger.ShowInfo();
+		if (result != null)
+		{
+			Console.WriteLine("Group by name search request results:");
+			Console.WriteLine($"Student Group name: {result.Result.Name.Name}");
+			Console.WriteLine($"Student Group Students Count: {result.Result.Students.Count}");
+		}
 		return result;
 	}
 }
