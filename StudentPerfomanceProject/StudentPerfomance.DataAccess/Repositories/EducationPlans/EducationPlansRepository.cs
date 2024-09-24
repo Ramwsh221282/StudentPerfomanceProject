@@ -75,4 +75,10 @@ public sealed class EducationPlansRepository : IRepository<EducationPlan>
 		await _db.EducationPlans.Where(p => p.Id == entity.Id).ExecuteDeleteAsync();
 		await Commit();
 	}
+
+	public async Task<int> GenerateEntityNumber()
+	{
+		int count = await Count();
+		return count == 0 ? 1 : count++;
+	}
 }

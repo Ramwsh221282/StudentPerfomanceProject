@@ -78,4 +78,10 @@ public sealed class TeachersRepository : IRepository<Teacher>
 
 	public async Task<int> CountWithExpression(IRepositoryExpression<Teacher> expression) =>
 		await _context.Teachers.CountAsync(expression.Build());
+
+	public async Task<int> GenerateEntityNumber()
+	{
+		int count = await Count();
+		return count == 0 ? 1 : count++;
+	}
 }

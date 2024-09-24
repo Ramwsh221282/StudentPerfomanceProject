@@ -14,7 +14,7 @@ internal sealed class DirectionCodeValidator(DirectionCode code) : Validator<Dir
 		if (!string.IsNullOrEmpty(_code.Code) && _code.Code.Length > MAX_LENGTH_SIZE)
 			_errorBuilder.AppendLine($"Недопустимая длина кода направления. Максимально {MAX_LENGTH_SIZE} символов");
 		if (!string.IsNullOrEmpty(_code.Code) && _code.Code.Any(char.IsLetter))
-			_errorBuilder.AppendLine("Код должен содержать только цифры и точки. Например 09.03.01");
+			_errorBuilder.AppendLine("Код направления должен содержать только цифры и точки. Например 09.03.01");
 		return _errorBuilder.Length == 0;
 	}
 }

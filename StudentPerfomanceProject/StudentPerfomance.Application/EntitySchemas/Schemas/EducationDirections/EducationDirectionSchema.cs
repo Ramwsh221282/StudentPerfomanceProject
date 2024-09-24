@@ -1,3 +1,6 @@
+using StudentPerfomance.Domain.Entities;
+using StudentPerfomance.Domain.ValueObjects.EducationDirections;
+
 namespace StudentPerfomance.Application.EntitySchemas.Schemas.EducationDirections;
 
 public record EducationDirectionSchema : EntitySchema
@@ -11,5 +14,13 @@ public record EducationDirectionSchema : EntitySchema
 		if (!string.IsNullOrWhiteSpace(code)) Code = code;
 		if (!string.IsNullOrWhiteSpace(name)) Name = name;
 		if (!string.IsNullOrWhiteSpace(type)) Type = type;
+	}
+
+	public EducationDirection CreateDomainObject()
+	{
+		DirectionCode code = DirectionCode.Create(Code).Value;
+		DirectionName name = DirectionName.Create(Name).Value;
+		DirectionType type = DirectionType.Create(Type).Value;
+		return EducationDirection.Create(code, name, type).Value;
 	}
 }

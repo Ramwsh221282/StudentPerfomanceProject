@@ -15,4 +15,5 @@ public interface IRepository<TEntity> where TEntity : Entity
 	Task<TEntity?> GetByParameter(IRepositoryExpression<TEntity> expression);
 	Task<IReadOnlyCollection<TEntity>> GetFiltered(IRepositoryExpression<TEntity> expression);
 	Task<IReadOnlyCollection<TEntity>> GetFilteredAndPaged(IRepositoryExpression<TEntity> expression, int page, int pageSize);
+	Task<int> GenerateEntityNumber();
 }

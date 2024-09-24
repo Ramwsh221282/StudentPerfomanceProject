@@ -88,4 +88,10 @@ public sealed class StudentGroupsRepository : IRepository<StudentGroup>
 
 	public async Task<int> CountWithExpression(IRepositoryExpression<StudentGroup> expression) =>
 		await _context.Groups.CountAsync(expression.Build());
+
+	public async Task<int> GenerateEntityNumber()
+	{
+		int count = await Count();
+		return count == 0 ? 1 : count++;
+	}
 }

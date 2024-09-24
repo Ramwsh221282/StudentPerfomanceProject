@@ -95,4 +95,10 @@ public sealed class SemesterPlansRepository : IRepository<SemesterPlan>
 	public async Task<int> CountWithExpression(IRepositoryExpression<SemesterPlan> expression) =>
 		await _context.SemesterPlans
 		.CountAsync(expression.Build());
+
+	public async Task<int> GenerateEntityNumber()
+	{
+		int count = await Count();
+		return count == 0 ? 1 : count++;
+	}
 }

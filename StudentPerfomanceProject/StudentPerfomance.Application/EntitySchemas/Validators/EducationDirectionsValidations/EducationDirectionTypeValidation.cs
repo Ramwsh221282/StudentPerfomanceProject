@@ -13,7 +13,7 @@ internal sealed class EducationDirectionTypeValidation(EducationDirectionSchema 
 	public Func<EntitySchema, bool> BuildCriteria(EducationDirectionSchema schema) => (schema) => Validate();
 	protected override bool Validate()
 	{
-		Result<DirectionName> result = DirectionName.Create(_schema.Name);
+		Result<DirectionType> result = DirectionType.Create(_schema.Type);
 		return result.IsFailure ? ReturnError(result.Error) : ReturnSuccess();
 	}
 }

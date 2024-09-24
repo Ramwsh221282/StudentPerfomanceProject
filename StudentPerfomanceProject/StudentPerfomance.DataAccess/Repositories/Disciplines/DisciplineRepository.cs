@@ -76,4 +76,10 @@ public sealed class DisciplineRepository : IRepository<Discipline>
 		.ExecuteDeleteAsync();
 		await Commit();
 	}
+
+	public async Task<int> GenerateEntityNumber()
+	{
+		int count = await Count();
+		return count == 0 ? 1 : count++;
+	}
 }

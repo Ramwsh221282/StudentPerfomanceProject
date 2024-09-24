@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 
-using StudentPerfomance.DataAccess.Repositories.EducationPlans;
 using StudentPerfomance.Domain.Entities;
 using StudentPerfomance.Domain.Interfaces.Repositories;
 
@@ -15,6 +14,7 @@ public sealed class EducationDirectionRepository : IRepository<EducationDirectio
 		await _db.EducationDirections.CountAsync(expression.Build());
 	public async Task Create(EducationDirection entity)
 	{
+		entity.SetNumber(await GenerateEntityNumber());
 		await _db.EducationDirections.AddAsync(entity);
 		await Commit();
 	}
@@ -49,5 +49,11 @@ public sealed class EducationDirectionRepository : IRepository<EducationDirectio
 	{
 		await _db.EducationDirections.Where(d => d.Id == entity.Id).ExecuteDeleteAsync();
 		await Commit();
+	}
+
+	public async Task<int> GenerateEntityNumber()
+	{
+		int count = await Count();
+		return count == 0 ? 1 : count++;
 	}
 }
