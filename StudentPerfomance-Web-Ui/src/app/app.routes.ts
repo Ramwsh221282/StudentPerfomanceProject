@@ -9,6 +9,13 @@ export const routes: Routes = [
       ),
   },
   {
+    path: 'education-directions',
+    loadChildren: () =>
+      import(
+        './modules/administration/submodules/education-directions/education-directions.module'
+      ).then((mod) => mod.EducationDirectionsModule),
+  },
+  {
     path: 'groups',
     loadChildren: () =>
       import(

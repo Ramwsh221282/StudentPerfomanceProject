@@ -8,10 +8,11 @@ public sealed class CreateEducationDirectionService
 (
 	EducationDirectionSchema schema,
 	IRepositoryExpression<EducationDirection> dublicate,
+	IRepositoryExpression<EducationDirection> codeUniqueness,
 	IRepository<EducationDirection> repository
 ) : IService<EducationDirection>
 {
-	private readonly CreateEducationDirectionCommand _command = new CreateEducationDirectionCommand(schema, dublicate);
+	private readonly CreateEducationDirectionCommand _command = new CreateEducationDirectionCommand(schema, dublicate, codeUniqueness);
 	private readonly CreateEducationDirectionCommandHandler _handler = new CreateEducationDirectionCommandHandler(repository);
 	public async Task<OperationResult<EducationDirection>> DoOperation() => await _handler.Handle(_command);
 }

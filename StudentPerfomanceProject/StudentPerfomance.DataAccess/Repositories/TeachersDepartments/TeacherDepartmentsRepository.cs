@@ -88,6 +88,6 @@ public sealed class TeacherDepartmentsRepository : IRepository<TeachersDepartmen
 	public async Task<int> GenerateEntityNumber()
 	{
 		int count = await Count();
-		return count == 0 ? 1 : count++;
+		return count + 1;
 	}
 }

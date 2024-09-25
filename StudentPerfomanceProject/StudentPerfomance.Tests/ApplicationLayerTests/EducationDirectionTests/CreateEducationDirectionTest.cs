@@ -20,6 +20,7 @@ public sealed class CreateEducationDirectionTest(CreateEducationDirectionRequest
 		(
 			_direction,
 			EducationDirectionExpressionsFactory.FindDirection(parameter),
+			EducationDirectionExpressionsFactory.FindDirectionByCode(parameter),
 			_repository
 		);
 		OperationResult<EducationDirection> result = await service.DoOperation();

@@ -75,7 +75,7 @@ public sealed class SemestersRepository : IRepository<Semester>
 		.Include(s => s.Contracts)
 		.OrderByDescending(s => s.Number.Value)
 		.Where(expression.Build())
-		.Skip((1 - page) * pageSize)
+		.Skip((page - 1) * pageSize)
 		.Take(pageSize)
 		.AsNoTracking()
 		.ToListAsync();
@@ -87,6 +87,6 @@ public sealed class SemestersRepository : IRepository<Semester>
 	public async Task<int> GenerateEntityNumber()
 	{
 		int count = await Count();
-		return count == 0 ? 1 : count++;
+		return count + 1;
 	}
 }

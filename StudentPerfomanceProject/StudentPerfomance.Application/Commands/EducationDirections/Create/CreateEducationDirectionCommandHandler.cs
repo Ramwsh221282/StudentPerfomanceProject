@@ -14,6 +14,7 @@ internal sealed class CreateEducationDirectionCommandHandler
 	{
 		command.Validator.ValidateSchema(this);
 		await _repository.ValidateExistance(command.Dublicate, "Невозможно создать дубликат направления подготовки", this);
+		await _repository.ValidateExistance(command.CodeUniqueness, "Направление подготовки с таким кодом уже есть в системе", this);
 		return await this.ProcessAsync(async () =>
 		{
 			EducationDirection direction = command.Schema.CreateDomainObject();

@@ -1,0 +1,58 @@
+<div class="education-direction-table-wrapper">
+  <div class="education-direction-table-header">
+    <strong>Текущие направления подготовки</strong>
+  </div>
+  <div class="education-direction-table-header">
+    <strong>Количество направлений: {{ facadeService.count }}</strong>
+  </div>
+  <div class="education-direction-table-header">
+    <button
+      type="button"
+      class="btn btn-success font-black"
+      (click)="creationModalState.turnOn()"
+    >
+      Добавить направление
+    </button>
+    <button
+      type="button"
+      class="btn btn-warning"
+      (click)="filterModalState.turnOn()"
+    >
+      Применить фильтр
+    </button>
+    <button
+      type="button"
+      class="btn btn-warning"
+      (click)="facadeService.fetch()"
+    >
+      Отменить фильтр
+    </button>
+  </div>
+  <table class="education-direction-table">
+    <thead>
+      <tr>
+        <th>Список направлений подготовки</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (direction of facadeService.directions; track direction.code) {
+      <tr>
+        <app-education-directions-card
+          [direction]="direction"
+        ></app-education-directions-card>
+      </tr>
+      }
+    </tbody>
+  </table>
+  <app-education-directions-pagination></app-education-directions-pagination>
+</div>
+<div id="create-modal-renderer" *ngIf="creationModalState.Visibility">
+  <app-education-directions-create-modal
+    (modalDisabled)="creationModalState.turn($event)"
+  ></app-education-directions-create-modal>
+</div>
+<div id="filter-modal-renderer" *ngIf="filterModalState.Visibility">
+  <app-education-directions-filter-modal
+    (modalDisabled)="filterModalState.turn($event)"
+  ></app-education-directions-filter-modal>
+</div>

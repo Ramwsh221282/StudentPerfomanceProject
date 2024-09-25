@@ -26,8 +26,25 @@ body,
   }
 }
 
+.readonly-input {
+  outline: none;
+  padding: 5px;
+  border: 1px solid #ffca2c;
+  color: #a1e3ff;
+  background-color: #22343c;
+  transition: 0.3s;
+
+  &:focus {
+    background-color: #bb2d3b;
+  }
+}
+
 .number-input {
   -moz-appearance: textfield;
+}
+
+.font-black {
+  color: black;
 }
 
 .default-select {

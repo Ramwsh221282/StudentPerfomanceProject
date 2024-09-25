@@ -47,7 +47,7 @@ public sealed class EducationPlansRepository : IRepository<EducationPlan>
 		.Include(p => p.Direction)
 		.Include(p => p.Semesters)
 		.Where(expression.Build())
-		.Skip((1 - page) * pageSize)
+		.Skip((page - 1) * pageSize)
 		.Take(pageSize)
 		.AsNoTracking()
 		.ToListAsync();
@@ -56,7 +56,7 @@ public sealed class EducationPlansRepository : IRepository<EducationPlan>
 		await _db.EducationPlans
 		.Include(p => p.Direction)
 		.Include(p => p.Semesters)
-		.Skip((1 - page) * pageSize)
+		.Skip((page - 1) * pageSize)
 		.Take(pageSize)
 		.AsNoTracking()
 		.ToListAsync();
@@ -79,6 +79,6 @@ public sealed class EducationPlansRepository : IRepository<EducationPlan>
 	public async Task<int> GenerateEntityNumber()
 	{
 		int count = await Count();
-		return count == 0 ? 1 : count++;
+		return count + 1;
 	}
 }

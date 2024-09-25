@@ -57,7 +57,7 @@ public sealed class DisciplineRepository : IRepository<Discipline>
 		await _context.Disciplines
 		.Include(d => d.Teacher)
 		.ThenInclude(t => t.Disciplines)
-		.Skip((1 - page) * pageSize)
+		.Skip((page - 1) * pageSize)
 		.Take(pageSize)
 		.AsNoTracking()
 		.ToListAsync();
@@ -80,6 +80,6 @@ public sealed class DisciplineRepository : IRepository<Discipline>
 	public async Task<int> GenerateEntityNumber()
 	{
 		int count = await Count();
-		return count == 0 ? 1 : count++;
+		return count + 1;
 	}
 }

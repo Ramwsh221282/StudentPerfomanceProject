@@ -9,7 +9,7 @@ internal sealed class DirectionTypeValidator(DirectionType type) : Validator<Dir
 	public override bool Validate()
 	{
 		if (_types.Any(t => t.Type == _type.Type) == false)
-			_errorBuilder.AppendLine("Недопустимый тип направления подготовки. Допустимы только магистратура и бакалавриат");
+			_errorBuilder.AppendLine("Недопустимый тип направления подготовки.").AppendLine("Допустимы только магистратура и бакалавриат.");
 		return _errorBuilder.Length == 0;
 	}
 }

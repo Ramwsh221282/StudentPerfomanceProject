@@ -12,7 +12,7 @@ internal sealed class EducationDirectionValidator(EducationDirection direction) 
 	private readonly Validator<DirectionType> _typeValidator = new DirectionTypeValidator(direction.Type);
 	public override bool Validate()
 	{
-		if (_direction == null) _errorBuilder.AppendLine("Новая запись направление подготовки некорректна.");
+		if (_direction == null) _errorBuilder.AppendLine("Направление подготовки некорректно");
 		if (!_codeValidator.Validate()) _errorBuilder.AppendLine(_codeValidator.GetErrorText());
 		if (!_nameValidator.Validate()) _errorBuilder.AppendLine(_nameValidator.GetErrorText());
 		if (!_typeValidator.Validate()) _errorBuilder.AppendLine(_typeValidator.GetErrorText());

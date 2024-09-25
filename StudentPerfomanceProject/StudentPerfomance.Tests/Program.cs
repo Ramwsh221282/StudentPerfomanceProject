@@ -14,10 +14,19 @@ namespace StudentPerfomance.Tests
 		{
 			var SuccessScenarios = EducationDirectionTester.SuccessScenarios.CreateSucces();
 			//SuccessScenarios.CreateSuccess();
+			//SuccessScenarios.UpdateNameSuccess();
+			//SuccessScenarios.FetchFiltered();
+			//SuccessScenarios.FetchFilteredByName();
+			//SuccessScenarios.FetchFilteredByName();
+			SuccessScenarios.PagedFetchFiltered();
+			//SuccessScenarios.PagedFetchFilteredByCode();
+			//SuccessScenarios.PagedFetchFilteredByName();
+			//SuccessScenarios.CountTest();
+			//SuccessScenarios.FetchPaged();
+
 			var FailureScenarios = EducationDirectionTester.FailureScenarios.CreateFailure();
-			FailureScenarios.CreateDublicate();
-			FailureScenarios.CreateWithInvalidType();
-			FailureScenarios.CreateWithInvalidCode();
+			//FailureScenarios.CreateWithDublicateCode();
+			//FailureScenarios.UpdateNameWithNotExisted();
 		}
 	}
 }

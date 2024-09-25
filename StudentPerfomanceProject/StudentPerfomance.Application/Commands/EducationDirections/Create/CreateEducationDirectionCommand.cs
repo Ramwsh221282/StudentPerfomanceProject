@@ -10,16 +10,19 @@ internal sealed class CreateEducationDirectionCommand : ICommand
 {
 	public EducationDirectionSchema Schema { get; init; }
 	public IRepositoryExpression<EducationDirection> Dublicate { get; init; }
+	public IRepositoryExpression<EducationDirection> CodeUniqueness { get; init; }
 	public ISchemaValidator Validator { get; init; }
 
 	public CreateEducationDirectionCommand
 	(
 		EducationDirectionSchema schema,
-		IRepositoryExpression<EducationDirection> dublicate
+		IRepositoryExpression<EducationDirection> dublicate,
+		IRepositoryExpression<EducationDirection> codeUniqueness
 	)
 	{
 		Schema = schema;
 		Dublicate = dublicate;
+		CodeUniqueness = codeUniqueness;
 		Validator = new EducationDirectionValidator()
 		.WithNameValidation(schema)
 		.WithCodeValidator(schema)

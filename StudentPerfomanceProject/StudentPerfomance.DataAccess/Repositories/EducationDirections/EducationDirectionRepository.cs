@@ -32,13 +32,13 @@ public sealed class EducationDirectionRepository : IRepository<EducationDirectio
 	public async Task<IReadOnlyCollection<EducationDirection>> GetFilteredAndPaged(IRepositoryExpression<EducationDirection> expression, int page, int pageSize) =>
 		await _db.EducationDirections
 		.Where(expression.Build())
-		.Skip((1 - page) * pageSize)
+		.Skip((page - 1) * pageSize)
 		.Take(pageSize)
 		.AsNoTracking()
 		.ToListAsync();
 	public async Task<IReadOnlyCollection<EducationDirection>> GetPaged(int page, int pageSize) =>
 		await _db.EducationDirections
-		.Skip((1 - page) * pageSize)
+		.Skip((page - 1) * pageSize)
 		.Take(pageSize)
 		.AsNoTracking()
 		.ToListAsync();
@@ -54,6 +54,6 @@ public sealed class EducationDirectionRepository : IRepository<EducationDirectio
 	public async Task<int> GenerateEntityNumber()
 	{
 		int count = await Count();
-		return count == 0 ? 1 : count++;
+		return count + 1;
 	}
 }

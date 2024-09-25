@@ -78,7 +78,7 @@ public sealed class StudentGroupsRepository : IRepository<StudentGroup>
 		.Include(g => g.EducationPlan)
 		.OrderByDescending(g => g.Name.Name)
 		.Where(expression.Build())
-		.Skip((1 - page) * pageSize)
+		.Skip((page - 1) * pageSize)
 		.Take(pageSize)
 		.AsNoTracking()
 		.ToListAsync();
@@ -92,6 +92,6 @@ public sealed class StudentGroupsRepository : IRepository<StudentGroup>
 	public async Task<int> GenerateEntityNumber()
 	{
 		int count = await Count();
-		return count == 0 ? 1 : count++;
+		return count + 1;
 	}
 }

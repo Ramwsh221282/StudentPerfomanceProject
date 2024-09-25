@@ -1,0 +1,48 @@
+<div class="education-directions-card-layout">
+  <div class="information-part">
+    <strong>Номер: {{ direction.entityNumber }}</strong>
+    <strong>Код направления: {{ direction.code }}</strong>
+    <strong>Название направления: {{ direction.name }}</strong>
+    <strong>Тип направления: {{ direction.type }}</strong>
+  </div>
+  <div class="controls-part">
+    <button
+      type="button"
+      class="btn btn-info"
+      (click)="startUpdateTransaction()"
+    >
+      Редактировать
+    </button>
+    <button
+      type="button"
+      class="btn btn-danger font-black"
+      (click)="startDeletionTransaction()"
+    >
+      Удалить
+    </button>
+  </div>
+</div>
+<div
+  id="deletion-transaction-confirmation-renderer"
+  *ngIf="deletionConfirmationModalState.Visibility"
+>
+  <app-action-confirmation-modal
+    (actionResult)="processDeletionTransaction($event)"
+  >
+  </app-action-confirmation-modal>
+</div>
+<div id="deletion-success-modal-renderer" *ngIf="successModalState.Visibility">
+  <app-success-notification-form
+    (modalDisabled)="successModalState.turn($event)"
+  ></app-success-notification-form>
+</div>
+<div id="deletion-failure-modal-renderer" *ngIf="failureModalState.Visibility">
+  <app-failure-notification-form
+    (modalDisabled)="failureModalState.turn($event)"
+  ></app-failure-notification-form>
+</div>
+<div id="update-transaction-renderer" *ngIf="editModalState.Visibility">
+  <app-education-directions-edit-modal
+    (modalDisabled)="editModalState.turn($event)"
+  ></app-education-directions-edit-modal>
+</div>

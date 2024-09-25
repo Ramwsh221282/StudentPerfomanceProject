@@ -8,7 +8,7 @@ public record EducationDirectionSchema : EntitySchema
 	public string? Code { get; init; } = string.Empty;
 	public string? Name { get; init; } = string.Empty;
 	public string? Type { get; init; } = string.Empty;
-
+	public EducationDirectionSchema() { }
 	public EducationDirectionSchema(string? code, string? name, string? type)
 	{
 		if (!string.IsNullOrWhiteSpace(code)) Code = code;
@@ -23,4 +23,6 @@ public record EducationDirectionSchema : EntitySchema
 		DirectionType type = DirectionType.Create(Type).Value;
 		return EducationDirection.Create(code, name, type).Value;
 	}
+
+	public DirectionName CreateDirectionName() => DirectionName.Create(Name).Value;
 }

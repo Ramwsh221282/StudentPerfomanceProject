@@ -41,7 +41,7 @@ public sealed class TeachersRepository : IRepository<Teacher>
 		await _context.Teachers
 		.Include(t => t.Department)
 		.OrderByDescending(t => t.Name.Surname)
-		.Skip((1 - page) * pageSize)
+		.Skip((page - 1) * pageSize)
 		.Take(pageSize)
 		.AsNoTracking()
 		.ToListAsync();
@@ -70,7 +70,7 @@ public sealed class TeachersRepository : IRepository<Teacher>
 		return await _context.Teachers
 		.Include(t => t.Department)
 		.Where(criteria)
-		.Skip((1 - page) * pageSize)
+		.Skip((page - 1) * pageSize)
 		.Take(pageSize)
 		.AsNoTracking()
 		.ToListAsync();
@@ -82,6 +82,6 @@ public sealed class TeachersRepository : IRepository<Teacher>
 	public async Task<int> GenerateEntityNumber()
 	{
 		int count = await Count();
-		return count == 0 ? 1 : count++;
+		return count + 1;
 	}
 }
