@@ -17,12 +17,9 @@ internal sealed class UpdateEducationDirectionCodeHandler : UpdateEducationDirec
 	{
 		OperationResult<EducationDirection> result = await base.Handle(command);
 		if (result.IsFailed) return result;
-		if (result.Result.Code.Code != command.NewSchema.Code)
-		{
-			if (await _repository.HasEqualRecord(command.CheckForCodeDublicate))
-				return new OperationResult<EducationDirection>("Направление подготовки с таким кодом существует");
-			result.Result.ChangeDirectionCode(command.NewSchema.CreateDirectionCode());
-		}
+		if (await _repository.HasEqualRecord(command.CheckForCodeDublicate))
+			return new OperationResult<EducationDirection>("Направление подготовки с таким кодом существует");
+		result.Result.ChangeDirectionCode(command.NewSchema.CreateDirectionCode());
 		return new OperationResult<EducationDirection>(result.Result);
 	}
 }

@@ -1,0 +1,135 @@
+<ng-template #template class="w-800 centered">
+  <form [formGroup]="form" class="w-800 centered">
+    <div class="modal-controls-wrapper">
+      <h4 class="modal-title pull-left">{{ title }}</h4>
+      <button
+        type="button"
+        class="btn-close close pull-right"
+        aria-label="Закрыть"
+        (click)="close()"
+      ></button>
+    </div>
+    <div class="modal-body">
+      <div class="content-section">
+        <div class="content-section-row">
+          <input
+            formControlName="year"
+            type="text"
+            class="default-input w-500"
+            placeholder="Год набора (2000-3000)"
+          />
+        </div>
+        <div class="content-section-row">
+          <input
+            [value]="selectedDirection.code"
+            readonly
+            formControlName="code"
+            type="text"
+            class="readonly-input w-500"
+            placeholder="Код направления"
+          />
+        </div>
+        <div class="content-section-row">
+          <input
+            [value]="selectedDirection.name"
+            readonly
+            formControlName="name"
+            type="text"
+            class="readonly-input w-500"
+            placeholder="Название направления"
+          />
+        </div>
+        <div class="content-section-row">
+          <input
+            [value]="selectedDirection.type"
+            readonly
+            formControlName="type"
+            type="text"
+            class="readonly-input w-500"
+            placeholder="Тип направления"
+          />
+        </div>
+        <div class="content-section-row">
+          <p>Выберите направление подготовки:</p>
+        </div>
+        <div class="content-section-row">
+          <button type="button" class="btn btn-success font-black">
+            Найти по коду
+          </button>
+          <button type="button" class="btn btn-success font-black">
+            Найти по названию
+          </button>
+        </div>
+        <div class="content-section-row">
+          <input
+            type="text"
+            class="default-input w-500"
+            placeholder="Код направления"
+          />
+          <input
+            type="text"
+            class="default-input w-500"
+            placeholder="Название направления"
+          />
+        </div>
+        <div class="content-section-row">
+          <div class="table-container">
+            <table class="education-plans-create-modal-directions-table">
+              <thead>
+                <tr>
+                  <th>Код</th>
+                  <th>Название</th>
+                  <th>Тип</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (direction of _directions; track direction.code) {
+                <tr>
+                  <td>{{ direction.code }}</td>
+                  <td>{{ direction.name }}</td>
+                  <td>{{ direction.type }}</td>
+                  <td>
+                    <button
+                      type="button"
+                      class="btn btn-info font-black"
+                      (click)="selectDirection(direction)"
+                    >
+                      Выбрать
+                    </button>
+                  </td>
+                </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="content-section-row">
+          <button
+            type="button"
+            class="btn btn-success font-black"
+            (click)="submit()"
+          >
+            Добавить
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</ng-template>
+<ng-template #success>
+  <div id="success-modal-renderer" *ngIf="successModalState.Visibility">
+    <app-success-notification-form
+      (modalDisabled)="successModalState.turn($event)"
+    >
+    </app-success-notification-form>
+  </div>
+</ng-template>
+<ng-template #failure>
+  <div id="failure-modal-renderer" *ngIf="failureModalState.Visibility">
+    <app-failure-notification-form
+      (modalDisabled)="failureModalState.turn($event)"
+    >
+    </app-failure-notification-form>
+  </div>
+</ng-template>

@@ -45,12 +45,15 @@ public sealed class EducationDirection : Entity
 	public override bool Equals(object? obj)
 	{
 		if (obj == null) return false;
-		EducationDirection other = obj as EducationDirection;
-		return other.Id == Id &&
-			   other.EntityNumber == EntityNumber &&
-			   other.Name == Name &&
-			   other.Code == Code &&
-			   other.Type == Type;
+		if (obj is EducationDirection other)
+		{
+			return other.Id == Id &&
+						   other.EntityNumber == EntityNumber &&
+						   other.Name == Name &&
+						   other.Code == Code &&
+						   other.Type == Type;
+		}
+		return false;
 	}
 
 	public override int GetHashCode() => GetHashCode();

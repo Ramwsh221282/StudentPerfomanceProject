@@ -23,6 +23,9 @@ public sealed class EducationDirectionsController : Controller
 	public async Task<ActionResult<EducationDirectionResponse>> UpdateDirection([FromBody] UpdateEducationDirectionRequest request) =>
 		await new EducationDirectionUpdateFacade(request).Process();
 
+	[HttpGet("all")]
+	public async Task<ActionResult<IReadOnlyCollection<EducationDirectionResponse>>> GetAll() => await new EducationDirectionGetAllFacade().Process();
+
 	[HttpGet("totalCount")]
 	public async Task<ActionResult<int>> GetTotalCount() => await new EducationDirectionCountFacade().Process();
 
@@ -34,11 +37,11 @@ public sealed class EducationDirectionsController : Controller
 	public async Task<ActionResult<IReadOnlyCollection<EducationDirectionResponse>>> Search([FromQuery] FilterEducationDirectionRequest request) =>
 		await new EducationDirectionSearchFacade(request, new FilterConstraint(FilterConstraint.General)).Process();
 
-	[HttpGet("searchbyName")]
+	[HttpGet("searchByName")]
 	public async Task<ActionResult<IReadOnlyCollection<EducationDirectionResponse>>> SearchByName([FromQuery] FilterEducationDirectionRequest request) =>
 		await new EducationDirectionSearchByNameFacade(request, new FilterConstraint(FilterConstraint.NameOnly)).Process();
 
-	[HttpGet("searchCode")]
+	[HttpGet("searchByCode")]
 	public async Task<ActionResult<IReadOnlyCollection<EducationDirectionResponse>>> SearchByCode([FromQuery] FilterEducationDirectionRequest request) =>
 		await new EducationDirectionSearchByCodeFacade(request, new FilterConstraint(FilterConstraint.CodeOnly)).Process();
 

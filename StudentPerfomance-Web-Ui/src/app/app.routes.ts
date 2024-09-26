@@ -16,6 +16,13 @@ export const routes: Routes = [
       ).then((mod) => mod.EducationDirectionsModule),
   },
   {
+    path: 'education-plans',
+    loadChildren: () =>
+      import(
+        './modules/administration/submodules/education-plans/education-plans.module'
+      ).then((mod) => mod.EducationPlansModule),
+  },
+  {
     path: 'groups',
     loadChildren: () =>
       import(

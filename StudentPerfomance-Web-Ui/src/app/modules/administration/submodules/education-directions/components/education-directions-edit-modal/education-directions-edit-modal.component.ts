@@ -61,7 +61,7 @@ export class EducationDirectionsEditModalComponent
         }),
         catchError((error: HttpErrorResponse) => {
           this._modalService.hide();
-          this._modalService.show(this.successTemplate);
+          this._modalService.show(this.failureTemplate);
           return handler.handleError(error);
         })
       )

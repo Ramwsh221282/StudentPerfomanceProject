@@ -11,8 +11,7 @@ internal sealed class UpdateEducationDirectionNameHandler : UpdateEducationDirec
 	{
 		OperationResult<EducationDirection> result = await base.Handle(command);
 		if (result.IsFailed) return result;
-		if (result.Result.Name.Name != command.NewSchema.Name)
-			result.Result.ChangeDirectionName(command.NewSchema.CreateDirectionName());
+		result.Result.ChangeDirectionName(command.NewSchema.CreateDirectionName());
 		return new OperationResult<EducationDirection>(result.Result);
 	}
 }

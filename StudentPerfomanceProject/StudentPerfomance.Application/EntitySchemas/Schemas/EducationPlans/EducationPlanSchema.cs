@@ -1,4 +1,6 @@
 using StudentPerfomance.Application.EntitySchemas.Schemas.EducationDirections;
+using StudentPerfomance.Domain.Entities;
+using StudentPerfomance.Domain.ValueObjects.EducationPlans;
 
 namespace StudentPerfomance.Application.EntitySchemas.Schemas.EducationPlans;
 
@@ -11,5 +13,11 @@ public record EducationPlanSchema : EntitySchema
 	{
 		Year = year;
 		if (direction != null) Direction = direction;
+	}
+
+	public EducationPlan CreateDomainObject(EducationDirection direction)
+	{
+		YearOfCreation year = YearOfCreation.Create(Year).Value;
+		return EducationPlan.Create(direction, year).Value;
 	}
 }

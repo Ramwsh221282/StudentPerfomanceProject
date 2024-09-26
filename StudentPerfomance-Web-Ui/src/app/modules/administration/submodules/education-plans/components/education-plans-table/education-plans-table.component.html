@@ -1,0 +1,42 @@
+<div class="education-plans-table-wrapper">
+  <div class="education-plans-table-header">
+    <strong>Текущие учебные планы</strong>
+  </div>
+  <div class="education-plans-table-header">
+    <strong>Количество учебных планов: {{ facadeService.count }}</strong>
+  </div>
+  <div class="education-plans-table-header">
+    <button
+      type="button"
+      class="btn btn-success font-black"
+      (click)="creationModalState.turnOn()"
+    >
+      Добавить учебный план
+    </button>
+    <button type="button" class="btn btn-warning">Фильтр по году</button>
+    <button type="button" class="btn btn-warning">Фильтр по направлению</button>
+    <button type="button" class="btn btn-warning">Отменить фильтр</button>
+  </div>
+  <table class="education-plans-table">
+    <thead>
+      <tr>
+        <th>Список учебных планов</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (plan of facadeService.plans; track plan.year) {
+      <tr>
+        <app-education-plans-card [plan]="plan"> </app-education-plans-card>
+      </tr>
+      }
+    </tbody>
+  </table>
+  <app-education-plans-pagination></app-education-plans-pagination>
+</div>
+<div id="create-modal-renderer" *ngIf="creationModalState.Visibility">
+  <app-education-plans-create-modal
+    (modalDisabled)="creationModalState.turn($event)"
+    [formTitle]="'Добавление плана'"
+  >
+  </app-education-plans-create-modal>
+</div>

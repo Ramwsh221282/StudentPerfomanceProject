@@ -52,4 +52,19 @@ public sealed class EducationPlan : Entity
 		Validator<EducationPlan> validator = new EducationPlanValidator(plan);
 		return validator.Validate() ? plan : Result.Failure<EducationPlan>(validator.GetErrorText());
 	}
+
+	public override bool Equals(object? obj)
+	{
+		if (obj == null) return false;
+		if (obj is EducationPlan other)
+		{
+			return other.Year == Year &&
+				   other.Direction.Name == Direction.Name &&
+				   other.Direction.Code == Direction.Code &&
+				   other.Direction.Type == Direction.Type;
+		}
+		return false;
+	}
+
+	public override int GetHashCode() => GetHashCode();
 }

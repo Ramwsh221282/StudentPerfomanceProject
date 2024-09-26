@@ -17,10 +17,9 @@ public sealed class UpdateEducationDirectionService
 	private readonly IRepository<EducationDirection> _repository = repository;
 	public async Task<OperationResult<EducationDirection>> DoOperation()
 	{
-		ICommandHandler<UpdateEducationDirectionCommand, OperationResult<EducationDirection>> defaultHandler = new UpdateEducationDirectionDefaultHandler(_repository);
-		ICommandHandler<UpdateEducationDirectionCommand, OperationResult<EducationDirection>> codeUpdate = new UpdateEducationDirectionCodeHandler(defaultHandler, _repository);
-		ICommandHandler<UpdateEducationDirectionCommand, OperationResult<EducationDirection>> nameUpdate = new UpdateEducationDirectionNameHandler(codeUpdate);
-		OperationResult<EducationDirection> result = await nameUpdate.Handle(_command);
+		UpdateEducationDirectionDecoratorBuilder builder = new UpdateEducationDirectionDecoratorBuilder(_repository, _command);
+		ICommandHandler<UpdateEducationDirectionCommand, OperationResult<EducationDirection>> handler = builder.Build();
+		OperationResult<EducationDirection> result = await handler.Handle(_command);
 		if (result.Result != null && !result.IsFailed && _repository is IForceUpdatableRepository<EducationDirection> forceUpdatable)
 			await forceUpdatable.ForceUpdate(result.Result);
 		return result;

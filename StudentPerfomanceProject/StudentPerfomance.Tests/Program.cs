@@ -5,6 +5,7 @@ using StudentPerfomance.Domain.Entities;
 using StudentPerfomance.Domain.ValueObjects.EducationDirections;
 using StudentPerfomance.Domain.ValueObjects.EducationPlans;
 using StudentPerfomance.Tests.ApplicationLayerTests.EducationDirectionTests;
+using StudentPerfomance.Tests.ApplicationLayerTests.EducationPlansTests;
 using StudentPerfomance.Tests.ApplicationLayerTests.StudentGroupTests;
 
 namespace StudentPerfomance.Tests
@@ -13,24 +14,19 @@ namespace StudentPerfomance.Tests
 	{
 		static void Main()
 		{
-			var SuccessScenarios = EducationDirectionTester.SuccessScenarios.CreateSucces();
-			//SuccessScenarios.CreateSuccess();
-			//SuccessScenarios.FetchFiltered();
-			//SuccessScenarios.FetchFilteredByName();
-			//SuccessScenarios.FetchFilteredByName();
-			//SuccessScenarios.PagedFetchFiltered();
-			//SuccessScenarios.PagedFetchFilteredByCode();
-			//SuccessScenarios.PagedFetchFilteredByName();
-			//SuccessScenarios.CountTest();
-			//SuccessScenarios.FetchPaged();
-			//SuccessScenarios.UpdateNameTest();
-			//SuccessScenarios.UpdateCodeTest();
-			//SuccessScenarios.UpdateFullTest();
+			var success = EducationPlanTester.SuccessScenarios.BuildSuccess();
+			//success.CreatePlanTest();
+			//success.CreateFewPlansTest();
+			//success.CountTest();
+			//success.GetAllTest();
+			//success.GetPagedTest();
+			//success.GetFilteredTest();
+			//success.GetFilteredByYearTest();
+			//success.GetFilteredByDirection();
 
-			var FailureScenarios = EducationDirectionTester.FailureScenarios.CreateFailure();
-			//FailureScenarios.CreateWithDublicateCode();
-			//FailureScenarios.UpdateWithNotExist();
-			//FailureScenarios.UpdateWithCodeDublicateExist();
+			var failure = EducationPlanTester.FailureScenarios.BuildFailure();
+			//failure.CreateWithoutDirection();
+			//failure.CreateWithDublication();
 		}
 	}
 }

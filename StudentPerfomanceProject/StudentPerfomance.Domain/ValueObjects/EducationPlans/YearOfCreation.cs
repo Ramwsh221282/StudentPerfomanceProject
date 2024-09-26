@@ -28,4 +28,6 @@ public sealed class YearOfCreation : ValueObject
 	{
 		yield return Year;
 	}
+
+	public override string ToString() => Year.ToString();
 }

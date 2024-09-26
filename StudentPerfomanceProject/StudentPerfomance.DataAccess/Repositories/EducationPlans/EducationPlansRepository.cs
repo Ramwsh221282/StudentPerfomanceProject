@@ -15,7 +15,8 @@ public sealed class EducationPlansRepository : IRepository<EducationPlan>
 		await _db.EducationPlans.CountAsync(expression.Build());
 	public async Task Create(EducationPlan entity)
 	{
-		_db.Attach(entity.Direction);
+		_db.EducationDirections.Attach(entity.Direction);
+		entity.SetNumber(await GenerateEntityNumber());
 		await _db.EducationPlans.AddAsync(entity);
 		await Commit();
 	}

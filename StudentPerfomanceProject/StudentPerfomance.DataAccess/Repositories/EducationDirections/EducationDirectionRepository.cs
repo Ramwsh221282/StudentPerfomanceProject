@@ -60,6 +60,7 @@ public sealed class EducationDirectionRepository : IRepository<EducationDirectio
 	public async Task<EducationDirection> ForceUpdate(EducationDirection entity)
 	{
 		await _db.EducationDirections
+		.Where(d => d.Id == entity.Id)
 		.ExecuteUpdateAsync
 		(e => e
 		.SetProperty(e => e.Code.Code, entity.Code.Code)
