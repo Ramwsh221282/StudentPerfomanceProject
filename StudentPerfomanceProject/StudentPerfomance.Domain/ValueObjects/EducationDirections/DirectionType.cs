@@ -21,4 +21,6 @@ public class DirectionType : ValueObject
 	{
 		yield return Type;
 	}
+
+	public override string ToString() => Type;
 }

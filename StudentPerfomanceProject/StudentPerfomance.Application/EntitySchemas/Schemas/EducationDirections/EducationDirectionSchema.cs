@@ -25,4 +25,5 @@ public record EducationDirectionSchema : EntitySchema
 	}
 
 	public DirectionName CreateDirectionName() => DirectionName.Create(Name).Value;
+	public DirectionCode CreateDirectionCode() => DirectionCode.Create(Code).Value;
 }

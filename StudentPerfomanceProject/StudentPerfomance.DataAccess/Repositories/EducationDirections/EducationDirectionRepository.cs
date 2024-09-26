@@ -5,7 +5,7 @@ using StudentPerfomance.Domain.Interfaces.Repositories;
 
 namespace StudentPerfomance.DataAccess.Repositories.EducationDirections;
 
-public sealed class EducationDirectionRepository : IRepository<EducationDirection>
+public sealed class EducationDirectionRepository : IRepository<EducationDirection>, IForceUpdatableRepository<EducationDirection>
 {
 	private readonly ApplicationDb _db = new ApplicationDb();
 	public async Task Commit() => await _db.SaveChangesAsync();
@@ -55,5 +55,16 @@ public sealed class EducationDirectionRepository : IRepository<EducationDirectio
 	{
 		int count = await Count();
 		return count + 1;
+	}
+
+	public async Task<EducationDirection> ForceUpdate(EducationDirection entity)
+	{
+		await _db.EducationDirections
+		.ExecuteUpdateAsync
+		(e => e
+		.SetProperty(e => e.Code.Code, entity.Code.Code)
+		.SetProperty(e => e.Name.Name, entity.Name.Name)
+		);
+		return entity;
 	}
 }

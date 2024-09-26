@@ -32,4 +32,6 @@ public sealed class DirectionCode : ValueObject
 	{
 		yield return Code;
 	}
+
+	public override string ToString() => Code;
 }

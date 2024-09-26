@@ -20,8 +20,8 @@ public sealed class EducationDirectionsController : Controller
 		await new EducationDirectionDeleteFacade(request).Process();
 
 	[HttpPut]
-	public async Task<ActionResult<EducationDirectionResponse>> UpdateDirection([FromBody] UpdateEducationDirectionNameRequest request) =>
-		await new EducationDirectionUpdateNameFacade(request).Process();
+	public async Task<ActionResult<EducationDirectionResponse>> UpdateDirection([FromBody] UpdateEducationDirectionRequest request) =>
+		await new EducationDirectionUpdateFacade(request).Process();
 
 	[HttpGet("totalCount")]
 	public async Task<ActionResult<int>> GetTotalCount() => await new EducationDirectionCountFacade().Process();

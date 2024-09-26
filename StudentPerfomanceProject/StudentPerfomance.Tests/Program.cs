@@ -1,4 +1,5 @@
 ﻿using CSharpFunctionalExtensions;
+
 using StudentPerfomance.Application.EntitySchemas.Schemas.EducationDirections;
 using StudentPerfomance.Domain.Entities;
 using StudentPerfomance.Domain.ValueObjects.EducationDirections;
@@ -14,19 +15,22 @@ namespace StudentPerfomance.Tests
 		{
 			var SuccessScenarios = EducationDirectionTester.SuccessScenarios.CreateSucces();
 			//SuccessScenarios.CreateSuccess();
-			//SuccessScenarios.UpdateNameSuccess();
 			//SuccessScenarios.FetchFiltered();
 			//SuccessScenarios.FetchFilteredByName();
 			//SuccessScenarios.FetchFilteredByName();
-			SuccessScenarios.PagedFetchFiltered();
+			//SuccessScenarios.PagedFetchFiltered();
 			//SuccessScenarios.PagedFetchFilteredByCode();
 			//SuccessScenarios.PagedFetchFilteredByName();
 			//SuccessScenarios.CountTest();
 			//SuccessScenarios.FetchPaged();
+			//SuccessScenarios.UpdateNameTest();
+			//SuccessScenarios.UpdateCodeTest();
+			//SuccessScenarios.UpdateFullTest();
 
 			var FailureScenarios = EducationDirectionTester.FailureScenarios.CreateFailure();
 			//FailureScenarios.CreateWithDublicateCode();
-			//FailureScenarios.UpdateNameWithNotExisted();
+			//FailureScenarios.UpdateWithNotExist();
+			//FailureScenarios.UpdateWithCodeDublicateExist();
 		}
 	}
 }

@@ -4,7 +4,7 @@ public class OperationResult<TResult>
 {
 	private readonly TResult? _result;
 	private readonly string _errorMessage;
-	private readonly bool _isFailed;
+	private bool _isFailed;
 
 	public OperationResult(TResult result)
 	{
@@ -17,6 +17,8 @@ public class OperationResult<TResult>
 		_isFailed = true;
 		_errorMessage = errorMessage;
 	}
+
+	public void SetFailureFlag() => _isFailed = true;
 
 	public TResult? Result => _result;
 	public bool IsFailed => _isFailed;

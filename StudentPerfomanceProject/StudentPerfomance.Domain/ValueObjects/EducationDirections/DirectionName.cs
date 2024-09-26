@@ -29,4 +29,6 @@ public sealed class DirectionName : ValueObject
 	{
 		yield return Name;
 	}
+
+	public override string ToString() => Name;
 }

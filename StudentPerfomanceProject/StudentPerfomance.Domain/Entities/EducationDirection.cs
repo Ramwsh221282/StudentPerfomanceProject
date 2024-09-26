@@ -28,8 +28,10 @@ public sealed class EducationDirection : Entity
 	// Тип направления подготовки магистратура/бакалавриат;
 	public DirectionType Type { get; private set; } = null!;
 
-	// Метод изменения направления подготовки.
+	// Метод изменения имени направления подготовки.
 	public void ChangeDirectionName(DirectionName name) => Name = name;
+	// Метод изменения кода направления подготовки
+	public void ChangeDirectionCode(DirectionCode code) => Code = code;
 	// Фабричный метод создания объекта.
 	public static Result<EducationDirection> Create(DirectionCode code, DirectionName name, DirectionType type)
 	{
@@ -39,4 +41,17 @@ public sealed class EducationDirection : Entity
 	}
 	// Создание дефолтного объекта.
 	public static EducationDirection CreateDefault() => new EducationDirection();
+
+	public override bool Equals(object? obj)
+	{
+		if (obj == null) return false;
+		EducationDirection other = obj as EducationDirection;
+		return other.Id == Id &&
+			   other.EntityNumber == EntityNumber &&
+			   other.Name == Name &&
+			   other.Code == Code &&
+			   other.Type == Type;
+	}
+
+	public override int GetHashCode() => GetHashCode();
 }

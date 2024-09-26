@@ -18,19 +18,44 @@ public class EducationDirectionTester
 			new DeleteEducationDirectionTest(deleteRequest).DoOperation().Wait();
 		}
 
-		public void UpdateNameSuccess()
+		public void UpdateNameTest()
 		{
 			EducationDirectionSchema schema = new EducationDirectionSchema("09.03.01", "Информатика и вычислительная техника", "Бакалавриат");
 			CreateEducationDirectionRequest createRequest = new CreateEducationDirectionRequest(schema);
 			new CreateEducationDirectionTest(createRequest).DoOperation().Wait();
-
-			EducationDirectionSchema newSchema = new EducationDirectionSchema("09.03.01", "Программная инженерия", "Бакалавриат");
-			UpdateEducationDirectionNameRequest updateRequest = new UpdateEducationDirectionNameRequest(schema, newSchema);
-			new UpdateEducationDirectionNameTest(updateRequest).DoOperation().Wait();
-
+			EducationDirectionSchema newSchema = new EducationDirectionSchema("09.03.01", "Новое название", "Бакалавриат");
+			UpdateEducationDirectionRequest updateRequest = new UpdateEducationDirectionRequest(schema, newSchema);
+			new UpdateEducationDirectionTest(updateRequest).DoOperation().Wait();
 			DeleteEducationDirectionRequest deleteRequest = new DeleteEducationDirectionRequest(schema);
 			new DeleteEducationDirectionTest(deleteRequest).DoOperation().Wait();
+			DeleteEducationDirectionRequest deleteNewRequest = new DeleteEducationDirectionRequest(newSchema);
+			new DeleteEducationDirectionTest(deleteNewRequest).DoOperation().Wait();
+		}
 
+		public void UpdateCodeTest()
+		{
+			EducationDirectionSchema schema = new EducationDirectionSchema("09.03.01", "Информатика и вычислительная техника", "Бакалавриат");
+			CreateEducationDirectionRequest createRequest = new CreateEducationDirectionRequest(schema);
+			new CreateEducationDirectionTest(createRequest).DoOperation().Wait();
+			EducationDirectionSchema newSchema = new EducationDirectionSchema("01.01.01", "Информатика и вычислительная техника", "Бакалавриат");
+			UpdateEducationDirectionRequest updateRequest = new UpdateEducationDirectionRequest(schema, newSchema);
+			new UpdateEducationDirectionTest(updateRequest).DoOperation().Wait();
+			DeleteEducationDirectionRequest deleteRequest = new DeleteEducationDirectionRequest(schema);
+			new DeleteEducationDirectionTest(deleteRequest).DoOperation().Wait();
+			DeleteEducationDirectionRequest deleteNewRequest = new DeleteEducationDirectionRequest(newSchema);
+			new DeleteEducationDirectionTest(deleteNewRequest).DoOperation().Wait();
+		}
+
+		public void UpdateFullTest()
+		{
+			EducationDirectionSchema schema = new EducationDirectionSchema("09.03.01", "Информатика и вычислительная техника", "Бакалавриат");
+			CreateEducationDirectionRequest createRequest = new CreateEducationDirectionRequest(schema);
+			new CreateEducationDirectionTest(createRequest).DoOperation().Wait();
+			EducationDirectionSchema newSchema = new EducationDirectionSchema("01.01.01", "Новое название", "Бакалавриат");
+			UpdateEducationDirectionRequest updateRequest = new UpdateEducationDirectionRequest(schema, newSchema);
+			new UpdateEducationDirectionTest(updateRequest).DoOperation().Wait();
+			DeleteEducationDirectionRequest deleteRequest = new DeleteEducationDirectionRequest(schema);
+			new DeleteEducationDirectionTest(deleteRequest).DoOperation().Wait();
 			DeleteEducationDirectionRequest deleteNewRequest = new DeleteEducationDirectionRequest(newSchema);
 			new DeleteEducationDirectionTest(deleteNewRequest).DoOperation().Wait();
 		}
@@ -305,6 +330,35 @@ public class EducationDirectionTester
 	{
 		public static FailureScenarios CreateFailure() => new FailureScenarios();
 
+		public void UpdateWithNotExist()
+		{
+			EducationDirectionSchema oldschema = new EducationDirectionSchema("09.03.01", "Информатика и вычислительная техника", "Бакалавриат");
+			EducationDirectionSchema newSchema = new EducationDirectionSchema("08.03.01", "Информатика и вычислительная техника", "Бакалавриат");
+			UpdateEducationDirectionRequest updateRequest = new UpdateEducationDirectionRequest(oldschema, newSchema);
+			new UpdateEducationDirectionTest(updateRequest).DoOperation().Wait();
+		}
+
+		public void UpdateWithCodeDublicateExist()
+		{
+			EducationDirectionSchema firstSchema = new EducationDirectionSchema("09.03.01", "ED1", "Бакалавриат");
+			EducationDirectionSchema secondSchema = new EducationDirectionSchema("09.04.01", "ED2", "Магистратура");
+
+			CreateEducationDirectionRequest firstRequest = new CreateEducationDirectionRequest(firstSchema);
+			CreateEducationDirectionRequest secondRequest = new CreateEducationDirectionRequest(secondSchema);
+			new CreateEducationDirectionTest(firstRequest).DoOperation().Wait();
+			new CreateEducationDirectionTest(secondRequest).DoOperation().Wait();
+
+			EducationDirectionSchema newSecondSchema = new EducationDirectionSchema("09.03.01", "ED3", "Магистратура");
+			UpdateEducationDirectionRequest updateRequest = new UpdateEducationDirectionRequest(secondSchema, newSecondSchema);
+			new UpdateEducationDirectionTest(updateRequest).DoOperation().Wait();
+
+			DeleteEducationDirectionRequest firstDelete = new DeleteEducationDirectionRequest(firstSchema);
+			DeleteEducationDirectionRequest secondDelete = new DeleteEducationDirectionRequest(secondSchema);
+
+			new DeleteEducationDirectionTest(firstDelete).DoOperation().Wait();
+			new DeleteEducationDirectionTest(secondDelete).DoOperation().Wait();
+		}
+
 		public void CreateDublicate()
 		{
 			EducationDirectionSchema schema = new EducationDirectionSchema("09.03.01", "Информатика и вычислительная техника", "Бакалавриат");
@@ -343,24 +397,6 @@ public class EducationDirectionTester
 			new CreateEducationDirectionTest(createNewRequest).DoOperation().Wait();
 			DeleteEducationDirectionRequest deleteRequest = new DeleteEducationDirectionRequest(schema);
 			new DeleteEducationDirectionTest(deleteRequest).DoOperation().Wait();
-		}
-
-		public void UpdateNameWithNotExisted()
-		{
-			EducationDirectionSchema schema = new EducationDirectionSchema("09.03.01", "Информатика и вычислительная техника", "Бакалавриат");
-			CreateEducationDirectionRequest createRequest = new CreateEducationDirectionRequest(schema);
-			new CreateEducationDirectionTest(createRequest).DoOperation().Wait();
-
-			EducationDirectionSchema notExistedSchema = new EducationDirectionSchema("09.03.01", "Каокй-то текст", "Бакалавриат");
-			EducationDirectionSchema newSchema = new EducationDirectionSchema("09.03.01", "Программная инженерия", "Бакалавриат");
-			UpdateEducationDirectionNameRequest updateRequest = new UpdateEducationDirectionNameRequest(notExistedSchema, newSchema);
-			new UpdateEducationDirectionNameTest(updateRequest).DoOperation().Wait();
-
-			DeleteEducationDirectionRequest deleteRequest = new DeleteEducationDirectionRequest(schema);
-			new DeleteEducationDirectionTest(deleteRequest).DoOperation().Wait();
-
-			DeleteEducationDirectionRequest deleteNewRequest = new DeleteEducationDirectionRequest(newSchema);
-			new DeleteEducationDirectionTest(deleteNewRequest).DoOperation().Wait();
 		}
 	}
 }
