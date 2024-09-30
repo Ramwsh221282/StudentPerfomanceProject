@@ -11,6 +11,5 @@ public sealed class SemestersByGroupExpression(StudentGroupsRepositoryParameter 
 
 	public Expression<Func<Semester, bool>> Build() =>
 		(Semester entity) =>
-			!string.IsNullOrWhiteSpace(_group.Name) &&
-			entity.Group.Name.Name == _group.Name;
+			true;
 }

@@ -18,6 +18,5 @@ public sealed class SemestersRepositoryFilterExpression
 
 	public Expression<Func<Semester, bool>> Build() =>
 		(Semester entity) =>
-			!string.IsNullOrWhiteSpace(_group.Name) && entity.Group.Name.Name.Contains(_group.Name) ||
 			_semester.Number == entity.Number.Value;
 }

@@ -19,26 +19,6 @@ public sealed class SemesterCreateTest(SemesterSchema semester, StudentsGroupSch
 
 	public async Task<OperationResult<Semester>> DoOperation()
 	{
-		SemestersRepositoryParameter semesterParam = SemesterSchemaConverter.ToRepositoryParameter(_request.Semester);
-		StudentGroupsRepositoryParameter groupParam = StudentsGroupSchemaConverter.ToRepositoryParameter(_request.Group);
-		IService<Semester> service = new SemestersCreationService
-		(
-			_request.Semester,
-			SemesterExpressionFactory.CreateHasSemesterExpression(semesterParam, groupParam),
-			StudentGroupsExpressionFactory.CreateHasGroupExpression(groupParam),
-			_semesters,
-			_groups
-		);
-		var result = service.DoOperation().Result;
-		OperationResultLogger<OperationResult<Semester>, Semester> logger = new(result, "Semester creation test");
-		logger.ShowInfo();
-		if (result.Result != null)
-		{
-			Console.WriteLine("Created semester info: ");
-			Console.WriteLine($"ID: {result.Result.Id}");
-			Console.WriteLine($"Semester number: {result.Result.Number.Value}");
-			Console.WriteLine($"Semester of group: {result.Result.Group.Name.Name}");
-		}
-		return result;
+		throw new NotImplementedException();
 	}
 }

@@ -16,8 +16,8 @@ internal sealed class CreateEducationPlanCommandHandler
 
 	public async Task<OperationResult<EducationPlan>> Handle(CreateEducationPlanCommand command)
 	{
-		command.Validator.ValidateSchema(this);
-		await _plans.ValidateExistance(command.FindDublicate, new EducationPlanDublicateError().ToString(), this);
+		command.PlanValidator.ValidateSchema(this);
+		await _plans.ValidateExistance(command.FindPlanDublicate, new EducationPlanDublicateError().ToString(), this);
 		EducationDirection? direction = await _directions.GetByParameter(command.FindDirection);
 		direction.ValidateNullability(new EducationPlanWithoutDirectionError().ToString(), this);
 		return await this.ProcessAsync(async () =>

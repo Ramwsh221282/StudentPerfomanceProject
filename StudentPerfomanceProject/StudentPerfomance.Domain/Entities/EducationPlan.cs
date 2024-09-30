@@ -36,20 +36,15 @@ public sealed class EducationPlan : Entity
 	public YearOfCreation Year { get; private set; } = null!;
 	// Получение списка семестров только для чтения.
 	public IReadOnlyCollection<Semester> Semesters => _semesters;
+	// Добавление семестра
+	public void AddSemester(Semester semester) => _semesters.Add(semester);
 	// Фабричный метод создания дефолтного объекта.
 	public static EducationPlan CreateDefault() => new EducationPlan();
 	// Фабричный метод создания учебного плана без семестров.
 	public static Result<EducationPlan> Create(EducationDirection direction, YearOfCreation year)
 	{
 		EducationPlan plan = new EducationPlan(Guid.NewGuid(), direction, year);
-		Validator<EducationPlan> validator = new EducationPlanValidator(plan);
-		return validator.Validate() ? plan : Result.Failure<EducationPlan>(validator.GetErrorText());
-	}
-	// Фабричный метод создания учебного плана с семестрами.
-	public static Result<EducationPlan> CreateWithSemesters(EducationDirection direction, YearOfCreation year, List<Semester> semesters)
-	{
-		EducationPlan plan = new EducationPlan(Guid.NewGuid(), direction, year, semesters);
-		Validator<EducationPlan> validator = new EducationPlanValidator(plan);
+		Validator<YearOfCreation> validator = new YearOfCreationValidator(year);
 		return validator.Validate() ? plan : Result.Failure<EducationPlan>(validator.GetErrorText());
 	}
 

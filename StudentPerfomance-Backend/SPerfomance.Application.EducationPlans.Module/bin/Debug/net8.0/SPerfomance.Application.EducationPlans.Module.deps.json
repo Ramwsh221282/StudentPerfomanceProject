@@ -1,0 +1,67 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "SPerfomance.Application.EducationPlans.Module/1.0.0": {
+        "dependencies": {
+          "SPerfomance.Application.Shared.Module": "1.0.0"
+        },
+        "runtime": {
+          "SPerfomance.Application.EducationPlans.Module.dll": {}
+        }
+      },
+      "CSharpFunctionalExtensions/3.1.0": {
+        "runtime": {
+          "lib/net8.0/CSharpFunctionalExtensions.dll": {
+            "assemblyVersion": "3.1.0.0",
+            "fileVersion": "3.1.0.0"
+          }
+        }
+      },
+      "SPerfomance.Application.Shared.Module/1.0.0": {
+        "dependencies": {
+          "SPerfomance.Domain.Module.Shared": "1.0.0"
+        },
+        "runtime": {
+          "SPerfomance.Application.Shared.Module.dll": {}
+        }
+      },
+      "SPerfomance.Domain.Module.Shared/1.0.0": {
+        "dependencies": {
+          "CSharpFunctionalExtensions": "3.1.0"
+        },
+        "runtime": {
+          "SPerfomance.Domain.Module.Shared.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "SPerfomance.Application.EducationPlans.Module/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CSharpFunctionalExtensions/3.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-cLVWFoYqn7xI7LVAIgnxr1CNCPFjqM8Q5ya8pbYST1ZdDg6SZxEoyQx8tpe5hkib0+cVyruv82IUiKk3fMEG7w==",
+      "path": "csharpfunctionalextensions/3.1.0",
+      "hashPath": "csharpfunctionalextensions.3.1.0.nupkg.sha512"
+    },
+    "SPerfomance.Application.Shared.Module/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SPerfomance.Domain.Module.Shared/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

@@ -9,6 +9,8 @@ public record EducationPlanSchema : EntitySchema
 	public uint Year { get; init; }
 	public EducationDirectionSchema Direction { get; init; } = new EducationDirectionSchema("", "", "");
 
+	public EducationPlanSchema() { }
+
 	public EducationPlanSchema(uint year, EducationDirectionSchema? direction)
 	{
 		Year = year;

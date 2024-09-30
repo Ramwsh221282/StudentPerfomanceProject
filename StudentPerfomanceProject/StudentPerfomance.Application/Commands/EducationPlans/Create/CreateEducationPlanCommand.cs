@@ -9,18 +9,23 @@ namespace StudentPerfomance.Application.Commands.EducationPlans.Create;
 internal sealed class CreateEducationPlanCommand : ICommand
 {
 	public EducationPlanSchema Plan { get; init; }
-	public IRepositoryExpression<EducationPlan> FindDublicate { get; init; }
+	public IRepositoryExpression<EducationPlan> FindPlanDublicate { get; init; }
 	public IRepositoryExpression<EducationDirection> FindDirection { get; init; }
-	public ISchemaValidator Validator { get; init; }
+	public ISchemaValidator PlanValidator { get; init; }
 
-	public CreateEducationPlanCommand(EducationPlanSchema plan, IRepositoryExpression<EducationPlan> findDublicate, IRepositoryExpression<EducationDirection> findDirection)
+	public CreateEducationPlanCommand
+	(
+		EducationPlanSchema plan,
+		IRepositoryExpression<EducationPlan> findPlanDublicate,
+		IRepositoryExpression<EducationDirection> findDirection
+	)
 	{
 		Plan = plan;
-		FindDublicate = findDublicate;
+		FindPlanDublicate = findPlanDublicate;
 		FindDirection = findDirection;
-		Validator = new EducationPlanValidator()
+		PlanValidator = new EducationPlanValidator()
 		.WithYearValidation(plan)
 		.WithDirectionValidation(plan);
-		Validator.ProcessValidation();
+		PlanValidator.ProcessValidation();
 	}
 }

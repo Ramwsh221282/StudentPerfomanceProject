@@ -1,11 +1,11 @@
-﻿using System.Text;
+﻿using StudentPerfomance.Domain.Errors;
 
 namespace StudentPerfomance.Domain.Validators;
 
 internal abstract class Validator<T> where T : class
 {
-    protected readonly StringBuilder _errorBuilder;
-    public Validator() => _errorBuilder = new StringBuilder();
-    public abstract bool Validate();
-    public string GetErrorText() => _errorBuilder.ToString();
+	protected Error error;
+	public Validator() => error = new DefaultError();
+	public abstract bool Validate();
+	public string GetErrorText() => error.ToString();
 }

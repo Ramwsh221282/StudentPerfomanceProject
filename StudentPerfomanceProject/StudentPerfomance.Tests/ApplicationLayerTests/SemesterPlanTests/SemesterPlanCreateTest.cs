@@ -24,7 +24,7 @@ public sealed class SemesterPlanCreateTest(SemesterSchema semester, DisciplineSc
 
 	public async Task<OperationResult<SemesterPlan>> DoOperation()
 	{
-		SemestersRepositoryParameter semesterParam = SemesterSchemaConverter.ToRepositoryParameter(_request.Semester);
+		/*SemestersRepositoryParameter semesterParam = SemesterSchemaConverter.ToRepositoryParameter(_request.Semester);
 		DisciplineRepositoryParameter disciplineParam = DisciplineSchemaConverter.ToRepositoryParameter(_request.Discipline);
 		StudentGroupsRepositoryParameter groupParam = StudentsGroupSchemaConverter.ToRepositoryParameter(_request.Group);
 		IService<SemesterPlan> service = new SemesterPlanCreationService
@@ -48,8 +48,8 @@ public sealed class SemesterPlanCreateTest(SemesterSchema semester, DisciplineSc
 			Console.WriteLine($"Full plan name: {result.Result.PlanName}");
 			Console.WriteLine($"Discipline attached: {result.Result.LinkedDiscipline.Name}");
 			Console.WriteLine($"Semester number: {result.Result.LinkedSemester.Number.Value}");
-			Console.WriteLine($"Plan of group: {result.Result.LinkedSemester.Group.Name.Name}");
 		}
-		return result;
+		return result;*/
+		throw new NotImplementedException();
 	}
 }

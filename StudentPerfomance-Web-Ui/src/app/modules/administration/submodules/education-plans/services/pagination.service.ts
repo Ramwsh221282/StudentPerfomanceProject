@@ -6,7 +6,7 @@ import { BaseService } from './base.service';
 })
 export class PaginationService extends BaseService {
   private _totalCount: number = 0;
-  private _pageSize: number = 5;
+  private _pageSize: number = 4;
   private _pagesCount: number = 0;
   private _currentPage: number = 1;
   private _displayPages: number[] = [];

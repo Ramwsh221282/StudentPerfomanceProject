@@ -18,23 +18,6 @@ public sealed class SemesterDeletionTest(SemesterSchema semester, StudentsGroupS
 
 	public async Task<OperationResult<Semester>> DoOperation()
 	{
-		SemestersRepositoryParameter semesterParam = SemesterSchemaConverter.ToRepositoryParameter(_request.Semester);
-		StudentGroupsRepositoryParameter groupParam = StudentsGroupSchemaConverter.ToRepositoryParameter(_request.Group);
-		IService<Semester> service = new SemesterDeletionService
-		(
-			SemesterExpressionFactory.CreateHasSemesterExpression(semesterParam, groupParam),
-			_repository
-		);
-		var result = service.DoOperation().Result;
-		OperationResultLogger<OperationResult<Semester>, Semester> logger = new(result, "Semester delete test");
-		logger.ShowInfo();
-		if (result.Result != null)
-		{
-			Console.WriteLine("Deleted semester info: ");
-			Console.WriteLine($"ID: {result.Result.Id}");
-			Console.WriteLine($"Semester number: {result.Result.Number.Value}");
-			Console.WriteLine($"Semester of group: {result.Result.Group.Name}");
-		}
-		return result;
+		throw new NotImplementedException();
 	}
 }

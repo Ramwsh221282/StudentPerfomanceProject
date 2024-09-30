@@ -16,6 +16,5 @@ public sealed class SemesterPlansByGroupSemesterExpression
 {
 	public Expression<Func<SemesterPlan, bool>> Build() =>
 		(SemesterPlan entity) =>
-			entity.LinkedSemester.Number.Value == semester.Number &&
-			entity.LinkedSemester.Group.Name.Name == group.Name;
+			entity.LinkedSemester.Number.Value == semester.Number;
 }

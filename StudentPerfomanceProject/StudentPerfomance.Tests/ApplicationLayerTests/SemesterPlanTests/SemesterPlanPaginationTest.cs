@@ -42,7 +42,6 @@ public sealed class SemesterPlanPaginationTest(int page, int pageSize, SemesterS
 				Console.WriteLine($"Item ID: {item.Id}");
 				Console.WriteLine($"Full plan name: {item.PlanName}");
 				Console.WriteLine($"Item semester number: {item.LinkedSemester.Number.Value}");
-				Console.WriteLine($"Semester of group: {item.LinkedSemester.Group.Name.Name}");
 			}
 		}
 		return result;

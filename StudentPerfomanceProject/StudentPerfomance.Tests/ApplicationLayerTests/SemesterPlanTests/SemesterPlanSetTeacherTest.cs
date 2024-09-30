@@ -42,7 +42,6 @@ public sealed class SemesterPlanSetTeacherTest(SemesterSchema semester, Discipli
 			Console.WriteLine($"Full plan name: {result.Result.PlanName}");
 			Console.WriteLine($"Attached discipline: {result.Result.LinkedDiscipline.Name}");
 			Console.WriteLine($"Semester Number: {result.Result.LinkedSemester.Number.Value}");
-			Console.WriteLine($"Plan of group: {result.Result.LinkedSemester.Group.Name.Name}");
 			Console.WriteLine($"Attached teacher name: {result.Result.LinkedDiscipline.Teacher.Name.Name}");
 			Console.WriteLine($"Attached teacher surname: {result.Result.LinkedDiscipline.Teacher.Name.Surname}");
 			Console.WriteLine($"Attached teacher thirdname: {result.Result.LinkedDiscipline.Teacher.Name.Thirdname}");

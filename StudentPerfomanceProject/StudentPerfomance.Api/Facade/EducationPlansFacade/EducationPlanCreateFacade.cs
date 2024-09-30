@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-
 using StudentPerfomance.Api.Converters;
 using StudentPerfomance.Api.Requests.EducationPlanRequests;
 using StudentPerfomance.Api.Responses.EducationPlans;
@@ -8,6 +7,7 @@ using StudentPerfomance.Application.Commands.EducationPlans.Create;
 using StudentPerfomance.Application.EntitySchemas.Schemas.EducationPlans;
 using StudentPerfomance.DataAccess.Repositories.EducationDirections;
 using StudentPerfomance.DataAccess.Repositories.EducationPlans;
+using StudentPerfomance.DataAccess.Repositories.Semesters;
 using StudentPerfomance.Domain.Entities;
 using StudentPerfomance.Domain.Interfaces.Repositories;
 
@@ -21,15 +21,17 @@ internal sealed class EducationPlanCreateFacade(EducationPlanGeneralRequest requ
 		EducationPlanSchema plan = _request.Plan;
 		IRepository<EducationPlan> plans = new EducationPlansRepository();
 		IRepository<EducationDirection> directions = new EducationDirectionRepository();
-		EducationPlanRepositoryParameter checkDublicateParameter = EducationPlanSchemaConverter.ToRepositoryParameter(plan);
-		EducationDirectionRepositoryParameter findDirectionParameter = EducationDirectionSchemaConverter.ToRepositoryParameter(plan.Direction);
+		IRepository<Semester> semesters = new SemestersRepository();
+		EducationPlanRepositoryParameter checkDublicateParameter = EducationPlanSchemaConverter.ToRepositoryParameter(_request.Plan);
+		EducationDirectionRepositoryParameter findDirectionParameter = EducationDirectionSchemaConverter.ToRepositoryParameter(_request.Plan.Direction);
 		IService<EducationPlan> service = new CreateEducationPlanService
 		(
 			plan,
 			EducationPlanExpressionsFactory.CreateFindPlan(checkDublicateParameter, findDirectionParameter),
 			EducationDirectionExpressionsFactory.FindDirection(findDirectionParameter),
 			plans,
-			directions
+			directions,
+			semesters
 		);
 		return EducationPlanResponse.FromResult(await service.DoOperation());
 	}

@@ -45,7 +45,6 @@ public sealed class SemesterPlanFilterTest(int page, int pageSize, StudentsGroup
 				Console.WriteLine($"ID: {item.Id}");
 				Console.WriteLine($"Full plan name: {item.PlanName}");
 				Console.WriteLine($"Semester number: {item.LinkedSemester.Number.Value}");
-				Console.WriteLine($"Plan of group: {item.LinkedSemester.Group.Name.Name}");
 				Console.WriteLine($"Linked discipline: {item.LinkedDiscipline.Name}");
 				Console.WriteLine($"Attached teacher name: {item.LinkedDiscipline.Teacher.Name.Name}");
 				Console.WriteLine($"Attached teacher surname: {item.LinkedDiscipline.Teacher.Name.Surname}");

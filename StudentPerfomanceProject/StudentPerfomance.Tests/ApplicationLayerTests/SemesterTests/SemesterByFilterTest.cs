@@ -40,7 +40,6 @@ public sealed class SemesterByFilterTest(int page, int pageSize, SemesterSchema 
 			{
 				Console.WriteLine($"ID: {item.Id}");
 				Console.WriteLine($"Semester number: {item.Number.Value}");
-				Console.WriteLine($"Semester of group {item.Group.Name.Name}");
 			}
 		}
 		return result;

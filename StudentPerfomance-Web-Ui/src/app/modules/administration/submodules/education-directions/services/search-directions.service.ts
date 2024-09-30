@@ -38,22 +38,16 @@ export class SearchDirectionsService extends BaseService {
   }
 
   public createSearchRequestParamFactory(
-    direction: EducationDirection,
-    page: number,
-    pageSize: number
+    direction: EducationDirection
   ): IRequestParamsFactory {
-    return new FilterPagedRequestParamFactory(direction, page, pageSize);
+    return new FilterPagedRequestParamFactory(direction);
   }
 }
 
 class FilterPagedRequestParamFactory implements IRequestParamsFactory {
   private readonly _httpParams: HttpParams;
 
-  public constructor(
-    direction: EducationDirection,
-    page: number,
-    pageSize: number
-  ) {
+  public constructor(direction: EducationDirection) {
     this._httpParams = new HttpParams()
       .set('Direction.Code', direction.code)
       .set('Direction.Name', direction.name)

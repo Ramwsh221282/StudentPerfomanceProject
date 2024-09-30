@@ -25,6 +25,39 @@ public sealed class EducationPlanTester
 			new DeleteEducationDirectionTest(deleteDirectionRequest).DoOperation().Wait();
 		}
 
+		public void CreatePlanWithSemestersTest()
+		{
+			EducationDirectionSchema direction = new EducationDirectionSchema("09.03.01", "Информатика и вычислительная техника", "Бакалавриат");
+			CreateEducationDirectionRequest createDirectionRequest = new CreateEducationDirectionRequest(direction);
+			new CreateEducationDirectionTest(createDirectionRequest).DoOperation().Wait();
+			EducationPlanSchema planSchema = new EducationPlanSchema(2021, direction);
+			EducationPlanGeneralRequest request = new EducationPlanGeneralRequest(planSchema);
+			new CreateEducationPlanWithSemestersTest(request).DoOperation().Wait();
+			new DeleteEducationPlanTest(request).DoOperation().Wait();
+			DeleteEducationDirectionRequest deleteDirectionRequest = new DeleteEducationDirectionRequest(direction);
+			new DeleteEducationDirectionTest(deleteDirectionRequest).DoOperation().Wait();
+		}
+
+		public void CreatePlanWithFewDirectionsTest()
+		{
+			EducationDirectionSchema direction1 = new EducationDirectionSchema("09.03.01", "Информатика и вычислительная техника", "Бакалавриат");
+			EducationDirectionSchema direction2 = new EducationDirectionSchema("09.04.01", "Информатика и вычислительная техника", "Магистратура");
+			CreateEducationDirectionRequest createDirectionRequest1 = new CreateEducationDirectionRequest(direction1);
+			CreateEducationDirectionRequest createDirectionRequest2 = new CreateEducationDirectionRequest(direction2);
+			new CreateEducationDirectionTest(createDirectionRequest1).DoOperation().Wait();
+			new CreateEducationDirectionTest(createDirectionRequest2).DoOperation().Wait();
+			EducationPlanSchema plan1 = new EducationPlanSchema(2021, direction1);
+			EducationPlanSchema plan2 = new EducationPlanSchema(2021, direction2);
+			EducationPlanGeneralRequest request1 = new EducationPlanGeneralRequest(plan1);
+			EducationPlanGeneralRequest request2 = new EducationPlanGeneralRequest(plan2);
+			new CreateEducationPlanWithSemestersTest(request1).DoOperation().Wait();
+			new CreateEducationPlanWithSemestersTest(request2).DoOperation().Wait();
+			DeleteEducationDirectionRequest deleteDirectionRequest1 = new DeleteEducationDirectionRequest(direction1);
+			DeleteEducationDirectionRequest deleteDirectionRequest2 = new DeleteEducationDirectionRequest(direction2);
+			new DeleteEducationDirectionTest(deleteDirectionRequest1).DoOperation().Wait();
+			new DeleteEducationDirectionTest(deleteDirectionRequest2).DoOperation().Wait();
+		}
+
 		public void CreateFewPlansTest()
 		{
 			EducationDirectionSchema direction = new EducationDirectionSchema("09.03.01", "Информатика и вычислительная техника", "Бакалавриат");

@@ -1,3 +1,4 @@
+using StudentPerfomance.Domain.Errors.EducationPlans;
 using StudentPerfomance.Domain.ValueObjects.EducationPlans;
 
 namespace StudentPerfomance.Domain.Validators.EducationPlans;
@@ -10,8 +11,8 @@ internal sealed class YearOfCreationValidator(YearOfCreation year) : Validator<Y
 	private readonly YearOfCreation _year = year;
 	public override bool Validate()
 	{
-		if (_year.Year < MIN_VALUE_SIZE) _errorBuilder.AppendLine("Недопустимое значение года направления");
-		if (_year.Year > MAX_VALUE_SIZE) _errorBuilder.AppendLine("Недопустимое значение года направления");
-		return _errorBuilder.Length == 0;
+		if (_year.Year < MIN_VALUE_SIZE) error.AppendError(new EducationPlanIncorrectYearError());
+		if (_year.Year > MAX_VALUE_SIZE) error.AppendError(new EducationPlanIncorrectYearError());
+		return error.ToString().Length == 0;
 	}
 }

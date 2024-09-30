@@ -4,8 +4,6 @@ using StudentPerfomance.Api.Converters;
 using StudentPerfomance.Api.Requests.SemesterRequests;
 using StudentPerfomance.Api.Responses.Semesters;
 using StudentPerfomance.Application;
-using StudentPerfomance.Application.Commands.Semesters.CreateSemester;
-using StudentPerfomance.Application.Commands.Semesters.DeleteSemester;
 using StudentPerfomance.Application.Queries.Semesters.GetSemestersByFilter;
 using StudentPerfomance.Application.Queries.Semesters.GetSemestersByPage;
 using StudentPerfomance.DataAccess.Repositories.Semesters;
@@ -54,7 +52,7 @@ public sealed class SemestersController : Controller
 	[HttpPost]
 	public async Task<ActionResult<SemesterResponse>> CreateSemester([FromBody] SemesterCreateRequest request)
 	{
-		SemestersRepositoryParameter semesterParameter = SemesterSchemaConverter.ToRepositoryParameter(request.Semester);
+		/*SemestersRepositoryParameter semesterParameter = SemesterSchemaConverter.ToRepositoryParameter(request.Semester);
 		StudentGroupsRepositoryParameter groupParameter = StudentsGroupSchemaConverter.ToRepositoryParameter(request.Group);
 		IService<Semester> service = new SemestersCreationService
 		(
@@ -64,19 +62,21 @@ public sealed class SemestersController : Controller
 			_semesters,
 			_groups
 		);
-		return SemesterResponse.FromResult(await service.DoOperation());
+		return SemesterResponse.FromResult(await service.DoOperation());*/
+		throw new NotImplementedException();
 	}
 
 	[HttpDelete]
 	public async Task<ActionResult<SemesterResponse>> DeleteSemester([FromBody] SemesterDeleteRequest request)
 	{
-		SemestersRepositoryParameter semesterParameter = SemesterSchemaConverter.ToRepositoryParameter(request.Semester);
+		/*SemestersRepositoryParameter semesterParameter = SemesterSchemaConverter.ToRepositoryParameter(request.Semester);
 		StudentGroupsRepositoryParameter groupParameter = StudentsGroupSchemaConverter.ToRepositoryParameter(request.Group);
 		IService<Semester> service = new SemesterDeletionService
 		(
 			SemesterExpressionFactory.CreateHasSemesterExpression(semesterParameter, groupParameter),
 			_semesters
 		);
-		return SemesterResponse.FromResult(await service.DoOperation());
+		return SemesterResponse.FromResult(await service.DoOperation());*/
+		throw new NotImplementedException();
 	}
 }

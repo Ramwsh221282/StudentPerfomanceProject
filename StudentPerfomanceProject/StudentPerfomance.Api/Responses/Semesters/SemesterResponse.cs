@@ -6,11 +6,10 @@ namespace StudentPerfomance.Api.Responses.Semesters;
 
 public sealed class SemesterResponse
 {
-	private SemesterResponse(int number, string groupName, int contractsCount) =>
-		 (Number, GroupName, ContractsCount) = (number, groupName, contractsCount);
+	private SemesterResponse(int number, int contractsCount) =>
+		 (Number, ContractsCount) = (number, contractsCount);
 
 	public int Number { get; }
-	public string GroupName { get; }
 	public int ContractsCount { get; }
 
 	public static SemesterResponse FromSemester(Semester semester)
@@ -18,7 +17,6 @@ public sealed class SemesterResponse
 		return new SemesterResponse
 		(
 			 semester.Number.Value,
-			 semester.Group.Name.Name,
 			 semester.Contracts.Count
 		);
 	}

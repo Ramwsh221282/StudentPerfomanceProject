@@ -2,7 +2,6 @@ import {
   AfterViewInit,
   Component,
   EventEmitter,
-  Input,
   OnInit,
   Output,
   TemplateRef,
@@ -17,7 +16,6 @@ import { EducationDirectionCreationHandler } from './education-directions-create
 import { UserOperationNotificationService } from '../../../../../../shared/services/user-notifications/user-operation-notification-service.service';
 import { catchError, tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
-import { TransactionState } from '../../../../../../shared/models/transaction-state/transtaction-state';
 
 @Component({
   selector: 'app-education-directions-create-modal',

@@ -1,12 +1,45 @@
 <div class="education-plans-card-layout">
   <div class="information-part">
-    <strong>Номер: {{ plan.entityNumber }}</strong>
-    <strong>Год набора: {{ plan.year }}</strong>
-    <strong>Код направления: {{ plan.direction.code }}</strong>
-    <strong>Название направления: {{ plan.direction.name }}</strong>
-    <strong>Тип направления: {{ plan.direction.type }}</strong>
+    <div class="plan-information">
+      <strong>Учебный план:</strong>
+      <strong>Номер: {{ plan.entityNumber }}</strong>
+      <strong>Год: {{ plan.year }}</strong>
+    </div>
+    <div class="direction-information">
+      <strong>Направление подготовки: {{ plan.direction.code }}</strong>
+      <strong>Код: {{ plan.direction.code }}</strong>
+      <strong>Название: {{ plan.direction.name }}</strong>
+      <strong>Тип: {{ plan.direction.type }}</strong>
+    </div>
   </div>
   <div class="controls-part">
-    <button type="button" class="btn btn-danger font-black">Удалить</button>
+    <button
+      type="button"
+      class="btn btn-danger font-black"
+      (click)="startDeleteTransaction()"
+    >
+      Удалить
+    </button>
   </div>
+</div>
+<div
+  id="deletion-transaction-confirmation-renderer"
+  *ngIf="deletionConfirmationModalState.Visibility"
+>
+  <app-education-plan-deletion-confirmation
+    (actionResult)="processDeletion($event)"
+  >
+  </app-education-plan-deletion-confirmation>
+</div>
+<div id="success-deletion-renderer" *ngIf="successModalState.Visibility">
+  <app-success-notification-form
+    (modalDisabled)="successModalState.turn($event)"
+  >
+  </app-success-notification-form>
+</div>
+<div id="failure-deletion-renderer" *ngIf="failureModalState.Visibility">
+  <app-failure-notification-form
+    (modalDisabled)="failureModalState.turn($event)"
+  >
+  </app-failure-notification-form>
 </div>

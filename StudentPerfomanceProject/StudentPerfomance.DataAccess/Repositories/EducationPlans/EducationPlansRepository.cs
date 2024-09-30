@@ -6,7 +6,7 @@ using StudentPerfomance.Domain.Interfaces.Repositories;
 
 namespace StudentPerfomance.DataAccess.Repositories.EducationPlans;
 
-public sealed class EducationPlansRepository : IRepository<EducationPlan>
+public sealed class EducationPlansRepository : IRepository<EducationPlan>, IFluentCreatableRepository<EducationPlan>
 {
 	private readonly ApplicationDb _db = new ApplicationDb();
 	public async Task Commit() => await _db.SaveChangesAsync();
@@ -81,5 +81,13 @@ public sealed class EducationPlansRepository : IRepository<EducationPlan>
 	{
 		int count = await Count();
 		return count + 1;
+	}
+
+	public async Task<EducationPlan> FluentCreate(EducationPlan entity)
+	{
+		_db.Attach(entity.Direction);
+		entity.SetNumber(await GenerateEntityNumber());
+		await _db.EducationPlans.AddAsync(entity);
+		return entity;
 	}
 }

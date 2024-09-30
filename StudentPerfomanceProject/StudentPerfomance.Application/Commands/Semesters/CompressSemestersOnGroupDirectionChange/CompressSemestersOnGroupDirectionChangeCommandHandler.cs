@@ -1,5 +1,4 @@
 using StudentPerfomance.Application.Commands.Group.UpdateStudentGroup;
-using StudentPerfomance.Domain.Constants;
 using StudentPerfomance.Domain.Entities;
 using StudentPerfomance.Domain.Interfaces.Repositories;
 

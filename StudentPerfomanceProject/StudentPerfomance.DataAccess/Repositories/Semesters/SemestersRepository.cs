@@ -16,7 +16,6 @@ public sealed class SemestersRepository : IRepository<Semester>
 
 	public async Task<IReadOnlyCollection<Semester>> GetAll() =>
 		await _context.Semesters
-		.Include(s => s.Group)
 		.Include(s => s.Contracts)
 		.ThenInclude(c => c.LinkedSemester)
 		.OrderByDescending(s => s.Number.Value)
@@ -27,7 +26,6 @@ public sealed class SemestersRepository : IRepository<Semester>
 
 	public async Task Remove(Semester entity)
 	{
-		_context.Groups.Attach(entity.Group);
 		await _context.SemesterPlans
 		.Where(p => p.LinkedSemester.Id == entity.Id)
 		.ExecuteDeleteAsync();
@@ -39,14 +37,14 @@ public sealed class SemestersRepository : IRepository<Semester>
 
 	public async Task Create(Semester entity)
 	{
-		_context.Groups.Attach(entity.Group);
+		entity.SetNumber(await GenerateEntityNumber());
+		Console.WriteLine(entity.Number);
 		await _context.Semesters.AddAsync(entity);
 		await Commit();
 	}
 
 	public async Task<IReadOnlyCollection<Semester>> GetPaged(int page, int pageSize) =>
 		await _context.Semesters
-		.Include(s => s.Group)
 		.Include(s => s.Contracts)
 		.OrderByDescending(s => s.Number.Value)
 		.Skip((page - 1) * pageSize)
@@ -56,13 +54,11 @@ public sealed class SemestersRepository : IRepository<Semester>
 
 	public async Task<Semester?> GetByParameter(IRepositoryExpression<Semester> expression) =>
 		await _context.Semesters
-		.Include(s => s.Group)
 		.Include(s => s.Contracts)
 		.FirstOrDefaultAsync(expression.Build());
 
 	public async Task<IReadOnlyCollection<Semester>> GetFiltered(IRepositoryExpression<Semester> expression) =>
 		await _context.Semesters
-		.Include(s => s.Group)
 		.Include(s => s.Contracts)
 		.OrderByDescending(s => s.Number.Value)
 		.Where(expression.Build())
@@ -71,7 +67,6 @@ public sealed class SemestersRepository : IRepository<Semester>
 
 	public async Task<IReadOnlyCollection<Semester>> GetFilteredAndPaged(IRepositoryExpression<Semester> expression, int page, int pageSize) =>
 		await _context.Semesters
-		.Include(s => s.Group)
 		.Include(s => s.Contracts)
 		.OrderByDescending(s => s.Number.Value)
 		.Where(expression.Build())

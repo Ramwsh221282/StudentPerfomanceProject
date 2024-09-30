@@ -5,9 +5,9 @@ using StudentPerfomance.Application.Commands.EducationPlans.Create;
 using StudentPerfomance.Application.EntitySchemas.Schemas.EducationPlans;
 using StudentPerfomance.DataAccess.Repositories.EducationDirections;
 using StudentPerfomance.DataAccess.Repositories.EducationPlans;
+using StudentPerfomance.DataAccess.Repositories.Semesters;
 using StudentPerfomance.Domain.Entities;
 using StudentPerfomance.Domain.Interfaces.Repositories;
-
 namespace StudentPerfomance.Tests.ApplicationLayerTests.EducationPlansTests;
 
 public sealed class CreateEducationPlanTest(EducationPlanGeneralRequest request) : IService<EducationPlan>
@@ -15,6 +15,7 @@ public sealed class CreateEducationPlanTest(EducationPlanGeneralRequest request)
 	private readonly EducationPlanSchema _plan = request.Plan;
 	private readonly IRepository<EducationPlan> _plans = new EducationPlansRepository();
 	private readonly IRepository<EducationDirection> _directions = new EducationDirectionRepository();
+	private readonly IRepository<Semester> _semesters = new SemestersRepository();
 	public async Task<OperationResult<EducationPlan>> DoOperation()
 	{
 		EducationPlanRepositoryParameter checkDublicateParameter = EducationPlanSchemaConverter.ToRepositoryParameter(_plan);
@@ -25,7 +26,8 @@ public sealed class CreateEducationPlanTest(EducationPlanGeneralRequest request)
 			EducationPlanExpressionsFactory.CreateFindPlan(checkDublicateParameter, findDirectionParameter),
 			EducationDirectionExpressionsFactory.FindDirection(findDirectionParameter),
 			_plans,
-			_directions
+			_directions,
+			_semesters
 		);
 		OperationResult<EducationPlan> result = await service.DoOperation();
 		OperationResultLogger<OperationResult<EducationPlan>, EducationPlan> logger =

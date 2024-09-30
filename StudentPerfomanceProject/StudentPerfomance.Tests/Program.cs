@@ -23,6 +23,7 @@ namespace StudentPerfomance.Tests
 			//success.GetFilteredTest();
 			//success.GetFilteredByYearTest();
 			//success.GetFilteredByDirection();
+			success.CreatePlanWithFewDirectionsTest();
 
 			var failure = EducationPlanTester.FailureScenarios.BuildFailure();
 			//failure.CreateWithoutDirection();

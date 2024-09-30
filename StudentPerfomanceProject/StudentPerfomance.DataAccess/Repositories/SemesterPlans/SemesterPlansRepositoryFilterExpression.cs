@@ -22,6 +22,5 @@ public sealed class SemesterPlansRepositoryFilterExpression
 	public Expression<Func<SemesterPlan, bool>> Build() =>
 		(SemesterPlan entity) =>
 			_semester.Number == entity.LinkedSemester.Number.Value &&
-			!string.IsNullOrWhiteSpace(_group.Name) && entity.LinkedSemester.Group.Name.Name == _group.Name &&
 			!string.IsNullOrWhiteSpace(_discipline.Name) && entity.LinkedDiscipline.Name.Contains(_discipline.Name);
 }

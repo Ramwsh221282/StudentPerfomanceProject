@@ -11,5 +11,6 @@ public sealed class FilterEducationDirectionByName(EducationDirectionRepositoryP
 
 	public Expression<Func<EducationDirection, bool>> Build() =>
 		(EducationDirection entity) =>
-			entity.Name.Name.Contains(_direction.Name);
+			entity.Name.Name.Contains(_direction.Name) ||
+			entity.Name.Name.StartsWith(_direction.Name);
 }

@@ -36,7 +36,6 @@ public sealed class SemesterPlanDeleteTest(SemesterSchema semester, DisciplineSc
 			Console.WriteLine($"Full plan name: {result.Result.PlanName}");
 			Console.WriteLine($"Attached discipline: {result.Result.LinkedDiscipline.Name}");
 			Console.WriteLine($"Semester number: {result.Result.LinkedSemester.Number.Value}");
-			Console.WriteLine($"Plan of group: {result.Result.LinkedSemester.Group.Name.Name}");
 		}
 		return result;
 	}

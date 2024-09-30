@@ -18,8 +18,6 @@ public class OperationResult<TResult>
 		_errorMessage = errorMessage;
 	}
 
-	public void SetFailureFlag() => _isFailed = true;
-
 	public TResult? Result => _result;
 	public bool IsFailed => _isFailed;
 	public string Error => _errorMessage;

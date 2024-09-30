@@ -21,7 +21,7 @@
         </div>
         <div class="content-section-row">
           <input
-            [value]="selectedDirection.code"
+            [(ngModel)]="selectedDirection.code"
             readonly
             formControlName="code"
             type="text"
@@ -31,7 +31,7 @@
         </div>
         <div class="content-section-row">
           <input
-            [value]="selectedDirection.name"
+            [(ngModel)]="selectedDirection.name"
             readonly
             formControlName="name"
             type="text"
@@ -41,7 +41,7 @@
         </div>
         <div class="content-section-row">
           <input
-            [value]="selectedDirection.type"
+            [(ngModel)]="selectedDirection.type"
             readonly
             formControlName="type"
             type="text"
@@ -53,20 +53,39 @@
           <p>Выберите направление подготовки:</p>
         </div>
         <div class="content-section-row">
-          <button type="button" class="btn btn-success font-black">
+          <button
+            type="button"
+            class="btn btn-success font-black"
+            (click)="searchByCodeClick()"
+          >
             Найти по коду
           </button>
-          <button type="button" class="btn btn-success font-black">
+          <button
+            type="button"
+            class="btn btn-success font-black"
+            (click)="searchByNameClick()"
+          >
             Найти по названию
+          </button>
+          <button
+            type="button"
+            class="btn btn-warning font-black"
+            (click)="defaultSearch()"
+          >
+            Отменить фильтр
           </button>
         </div>
         <div class="content-section-row">
           <input
+            [(ngModel)]="_codeSearchInput"
+            [ngModelOptions]="{ standalone: true }"
             type="text"
             class="default-input w-500"
             placeholder="Код направления"
           />
           <input
+            [(ngModel)]="_nameSearchInput"
+            [ngModelOptions]="{ standalone: true }"
             type="text"
             class="default-input w-500"
             placeholder="Название направления"

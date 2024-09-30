@@ -1,3 +1,4 @@
+using StudentPerfomance.Domain.Errors.EducationDirections;
 using StudentPerfomance.Domain.ValueObjects.EducationDirections;
 
 namespace StudentPerfomance.Domain.Validators.EducationDIrections;
@@ -9,10 +10,12 @@ internal sealed class DirectionNameValidator(DirectionName name) : Validator<Dir
 	private readonly DirectionName _name = name;
 	public override bool Validate()
 	{
-		if (string.IsNullOrWhiteSpace(_name.Name))
-			_errorBuilder.AppendLine("Пустое название направления подготовки");
-		if (!string.IsNullOrWhiteSpace(_name.Name) && _name.Name.Length > MAX_NAME_LENGTH)
-			_errorBuilder.AppendLine("Название направления подготовки превышает ограничание в 100 символов");
-		return _errorBuilder.Length == 0;
+		if (_name == null)
+			error.AppendError(new EducationDirectionNameError());
+		if (_name != null && string.IsNullOrWhiteSpace(_name.Name))
+			error.AppendError(new EducationDirectionNameError());
+		if (_name != null && !string.IsNullOrWhiteSpace(_name.Name) && _name.Name.Length > MAX_NAME_LENGTH)
+			error.AppendError(new EducationDirectionNameLengthError(MAX_NAME_LENGTH));
+		return error.ToString().Length == 0;
 	}
 }

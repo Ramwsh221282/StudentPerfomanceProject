@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Api\\StudentPerfomance.Api.csproj": {}
+    "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Api\\StudentPerfomance.Api.csproj": {}
   },
   "projects": {
-    "c:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Api\\StudentPerfomance.Api.csproj": {
+    "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Api\\StudentPerfomance.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Api\\StudentPerfomance.Api.csproj",
+        "projectUniqueName": "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Api\\StudentPerfomance.Api.csproj",
         "projectName": "StudentPerfomance.Api",
-        "projectPath": "c:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Api\\StudentPerfomance.Api.csproj",
+        "projectPath": "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Api\\StudentPerfomance.Api.csproj",
         "packagesPath": "C:\\Users\\Ramwsh\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Api\\obj\\",
+        "outputPath": "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,11 +32,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "c:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Application\\StudentPerfomance.Application.csproj": {
-                "projectPath": "c:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Application\\StudentPerfomance.Application.csproj"
+              "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Application\\StudentPerfomance.Application.csproj": {
+                "projectPath": "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Application\\StudentPerfomance.Application.csproj"
               },
-              "c:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.DataAccess\\StudentPerfomance.DataAccess.csproj": {
-                "projectPath": "c:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.DataAccess\\StudentPerfomance.DataAccess.csproj"
+              "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.DataAccess\\StudentPerfomance.DataAccess.csproj": {
+                "projectPath": "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.DataAccess\\StudentPerfomance.DataAccess.csproj"
               }
             }
           }
@@ -88,14 +88,14 @@
         }
       }
     },
-    "c:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Application\\StudentPerfomance.Application.csproj": {
+    "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Application\\StudentPerfomance.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Application\\StudentPerfomance.Application.csproj",
+        "projectUniqueName": "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Application\\StudentPerfomance.Application.csproj",
         "projectName": "StudentPerfomance.Application",
-        "projectPath": "c:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Application\\StudentPerfomance.Application.csproj",
+        "projectPath": "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Application\\StudentPerfomance.Application.csproj",
         "packagesPath": "C:\\Users\\Ramwsh\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Application\\obj\\",
+        "outputPath": "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -116,8 +116,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "c:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Domain\\StudentPerfomance.Domain.csproj": {
-                "projectPath": "c:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Domain\\StudentPerfomance.Domain.csproj"
+              "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Domain\\StudentPerfomance.Domain.csproj": {
+                "projectPath": "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Domain\\StudentPerfomance.Domain.csproj"
               }
             }
           }
@@ -156,14 +156,14 @@
         }
       }
     },
-    "c:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.DataAccess\\StudentPerfomance.DataAccess.csproj": {
+    "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.DataAccess\\StudentPerfomance.DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.DataAccess\\StudentPerfomance.DataAccess.csproj",
+        "projectUniqueName": "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.DataAccess\\StudentPerfomance.DataAccess.csproj",
         "projectName": "StudentPerfomance.DataAccess",
-        "projectPath": "c:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.DataAccess\\StudentPerfomance.DataAccess.csproj",
+        "projectPath": "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.DataAccess\\StudentPerfomance.DataAccess.csproj",
         "packagesPath": "C:\\Users\\Ramwsh\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.DataAccess\\obj\\",
+        "outputPath": "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.DataAccess\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -184,8 +184,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "c:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Domain\\StudentPerfomance.Domain.csproj": {
-                "projectPath": "c:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Domain\\StudentPerfomance.Domain.csproj"
+              "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Domain\\StudentPerfomance.Domain.csproj": {
+                "projectPath": "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Domain\\StudentPerfomance.Domain.csproj"
               }
             }
           }
@@ -240,14 +240,14 @@
         }
       }
     },
-    "c:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Domain\\StudentPerfomance.Domain.csproj": {
+    "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Domain\\StudentPerfomance.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Domain\\StudentPerfomance.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Domain\\StudentPerfomance.Domain.csproj",
         "projectName": "StudentPerfomance.Domain",
-        "projectPath": "c:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Domain\\StudentPerfomance.Domain.csproj",
+        "projectPath": "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Domain\\StudentPerfomance.Domain.csproj",
         "packagesPath": "C:\\Users\\Ramwsh\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Domain\\obj\\",
+        "outputPath": "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomanceProject\\StudentPerfomance.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

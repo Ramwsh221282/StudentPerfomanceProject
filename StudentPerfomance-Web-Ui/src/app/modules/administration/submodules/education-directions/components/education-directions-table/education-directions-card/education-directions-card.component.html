@@ -26,10 +26,9 @@
   id="deletion-transaction-confirmation-renderer"
   *ngIf="deletionConfirmationModalState.Visibility"
 >
-  <app-action-confirmation-modal
+  <app-education-direction-deletion-confirmation
     (actionResult)="processDeletionTransaction($event)"
-  >
-  </app-action-confirmation-modal>
+  ></app-education-direction-deletion-confirmation>
 </div>
 <div id="deletion-success-modal-renderer" *ngIf="successModalState.Visibility">
   <app-success-notification-form

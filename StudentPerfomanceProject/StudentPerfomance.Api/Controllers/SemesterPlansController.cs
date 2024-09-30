@@ -77,21 +77,7 @@ public class SemesterPlansController : Controller
 	[HttpPost]
 	public async Task<ActionResult<SemesterPlanResponse>> CreateSemesterPlan([FromBody] SemesterPlanCreateRequest request)
 	{
-		SemestersRepositoryParameter semesterParameter = SemesterSchemaConverter.ToRepositoryParameter(request.Semester);
-		DisciplineRepositoryParameter disciplineParameter = DisciplineSchemaConverter.ToRepositoryParameter(request.Discipline);
-		StudentGroupsRepositoryParameter groupParameter = StudentsGroupSchemaConverter.ToRepositoryParameter(request.Group);
-		IService<SemesterPlan> service = new SemesterPlanCreationService
-		(
-			request.Discipline,
-			request.Semester,
-			SemesterPlansExpressionFactory.CreateHasExpression(semesterParameter, disciplineParameter),
-			DisciplineExpressionFactory.CreateHasExpression(disciplineParameter),
-			SemesterExpressionFactory.CreateHasSemesterExpression(semesterParameter, groupParameter),
-			_plans,
-			_semesters,
-			_disciplines
-		);
-		return SemesterPlanResponse.FromResult(await service.DoOperation());
+		throw new NotImplementedException();
 	}
 
 	[HttpDelete]

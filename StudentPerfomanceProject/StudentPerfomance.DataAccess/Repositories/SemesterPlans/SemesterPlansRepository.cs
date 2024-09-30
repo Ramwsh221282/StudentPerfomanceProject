@@ -47,7 +47,6 @@ public sealed class SemesterPlansRepository : IRepository<SemesterPlan>
 	public async Task<IReadOnlyCollection<SemesterPlan>> GetPaged(int page, int pageSize) =>
 		await _context.SemesterPlans
 		.Include(p => p.LinkedSemester)
-		.ThenInclude(s => s.Group)
 		.Include(p => p.LinkedDiscipline)
 		.ThenInclude(d => d.Teacher)
 		.ThenInclude(t => t.Department)
@@ -60,7 +59,6 @@ public sealed class SemesterPlansRepository : IRepository<SemesterPlan>
 	public async Task<SemesterPlan?> GetByParameter(IRepositoryExpression<SemesterPlan> expression) =>
 		await _context.SemesterPlans
 		.Include(p => p.LinkedSemester)
-		.ThenInclude(s => s.Group)
 		.Include(p => p.LinkedDiscipline)
 		.ThenInclude(d => d.Teacher)
 		.ThenInclude(t => t.Department)
@@ -69,7 +67,6 @@ public sealed class SemesterPlansRepository : IRepository<SemesterPlan>
 	public async Task<IReadOnlyCollection<SemesterPlan>> GetFiltered(IRepositoryExpression<SemesterPlan> expression) =>
 		await _context.SemesterPlans
 		.Include(p => p.LinkedSemester)
-		.ThenInclude(s => s.Group)
 		.Include(p => p.LinkedDiscipline)
 		.ThenInclude(d => d.Teacher)
 		.ThenInclude(t => t.Department)
@@ -81,7 +78,6 @@ public sealed class SemesterPlansRepository : IRepository<SemesterPlan>
 	public async Task<IReadOnlyCollection<SemesterPlan>> GetFilteredAndPaged(IRepositoryExpression<SemesterPlan> expression, int page, int pageSize) =>
 		await _context.SemesterPlans
 		.Include(p => p.LinkedSemester)
-		.ThenInclude(s => s.Group)
 		.Include(p => p.LinkedDiscipline)
 		.ThenInclude(d => d.Teacher)
 		.ThenInclude(t => t.Department)

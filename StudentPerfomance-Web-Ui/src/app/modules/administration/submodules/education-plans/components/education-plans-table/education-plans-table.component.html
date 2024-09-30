@@ -13,9 +13,27 @@
     >
       Добавить учебный план
     </button>
-    <button type="button" class="btn btn-warning">Фильтр по году</button>
-    <button type="button" class="btn btn-warning">Фильтр по направлению</button>
-    <button type="button" class="btn btn-warning">Отменить фильтр</button>
+    <button
+      type="button"
+      class="btn btn-warning"
+      (click)="filterByYearModalState.turnOn()"
+    >
+      Фильтр по году
+    </button>
+    <button
+      type="button"
+      class="btn btn-warning"
+      (click)="filterByDirectionModalState.turnOn()"
+    >
+      Фильтр по направлению
+    </button>
+    <button
+      type="button"
+      class="btn btn-warning"
+      (click)="facadeService.fetch()"
+    >
+      Отменить фильтр
+    </button>
   </div>
   <table class="education-plans-table">
     <thead>
@@ -24,7 +42,7 @@
       </tr>
     </thead>
     <tbody>
-      @for (plan of facadeService.plans; track plan.year) {
+      @for (plan of facadeService.plans; track plan.entityNumber) {
       <tr>
         <app-education-plans-card [plan]="plan"> </app-education-plans-card>
       </tr>
@@ -39,4 +57,22 @@
     [formTitle]="'Добавление плана'"
   >
   </app-education-plans-create-modal>
+</div>
+<div
+  id="filter-by-year-modal-renderer"
+  *ngIf="filterByYearModalState.Visibility"
+>
+  <app-education-plans-filter-by-plan-year-modal
+    [formTitle]="'Фильтр по году'"
+    (modalDisabled)="filterByYearModalState.turn($event)"
+  ></app-education-plans-filter-by-plan-year-modal>
+</div>
+<div
+  id="filter-by-direction-modal-renderer"
+  *ngIf="filterByDirectionModalState.Visibility"
+>
+  <app-education-plans-filter-by-direction-modal
+    [formTitle]="'Фильтр по названию направления'"
+    (modalDisabled)="filterByDirectionModalState.turn($event)"
+  ></app-education-plans-filter-by-direction-modal>
 </div>

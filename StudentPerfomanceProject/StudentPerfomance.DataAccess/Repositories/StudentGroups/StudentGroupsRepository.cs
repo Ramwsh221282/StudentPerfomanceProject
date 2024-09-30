@@ -32,10 +32,6 @@ public sealed class StudentGroupsRepository : IRepository<StudentGroup>
 	{
 		await _context.Students.Where(s => s.Group.Name.Name == entity.Name.Name)
 		.ExecuteDeleteAsync();
-		await _context.SemesterPlans.Where(s => s.LinkedSemester.Group.Id == entity.Id)
-		.ExecuteDeleteAsync();
-		await _context.Semesters.Where(s => s.Group.Id == entity.Id)
-		.ExecuteDeleteAsync();
 		await _context.Groups.Where(g => g.Name.Name == entity.Name.Name)
 		.ExecuteDeleteAsync();
 		await Commit();

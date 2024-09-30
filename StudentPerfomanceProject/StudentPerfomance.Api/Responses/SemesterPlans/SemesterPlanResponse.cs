@@ -8,18 +8,16 @@ public sealed class SemesterPlanResponse
 {
 	private SemesterPlanResponse
 	(
-	    int semesterNumber,
-	    string groupName,
-	    string planName,
-	    string disciplineName,
-	    string attachedTeacherName,
-	    string attachedTeacherSurname,
-	    string attachedTeacherThirdName,
-	    string attachedTeacherDepartmentName
+		int semesterNumber,
+		string planName,
+		string disciplineName,
+		string attachedTeacherName,
+		string attachedTeacherSurname,
+		string attachedTeacherThirdName,
+		string attachedTeacherDepartmentName
 	)
 	{
 		SemesterNumber = semesterNumber;
-		GroupName = groupName;
 		PlanName = planName;
 		DisciplineName = disciplineName;
 		AttachedTeacherName = attachedTeacherName;
@@ -41,14 +39,13 @@ public sealed class SemesterPlanResponse
 	{
 		return new SemesterPlanResponse
 		(
-		    plan.LinkedSemester.Number.Value,
-		    plan.LinkedSemester.Group.Name.Name,
-		    plan.PlanName,
-		    plan.LinkedDiscipline.Name,
-		    plan.LinkedDiscipline.Teacher == null ? null : plan.LinkedDiscipline.Teacher.Name.Name,
-		    plan.LinkedDiscipline.Teacher == null ? null : plan.LinkedDiscipline.Teacher.Name.Surname,
-		    plan.LinkedDiscipline.Teacher == null ? null : plan.LinkedDiscipline.Teacher.Name.Thirdname,
-		    plan.LinkedDiscipline.Teacher == null ? null : plan.LinkedDiscipline.Teacher.Department.Name
+			plan.LinkedSemester.Number.Value,
+			plan.PlanName,
+			plan.LinkedDiscipline.Name,
+			plan.LinkedDiscipline.Teacher == null ? null : plan.LinkedDiscipline.Teacher.Name.Name,
+			plan.LinkedDiscipline.Teacher == null ? null : plan.LinkedDiscipline.Teacher.Name.Surname,
+			plan.LinkedDiscipline.Teacher == null ? null : plan.LinkedDiscipline.Teacher.Name.Thirdname,
+			plan.LinkedDiscipline.Teacher == null ? null : plan.LinkedDiscipline.Teacher.Department.Name
 		);
 	}
 

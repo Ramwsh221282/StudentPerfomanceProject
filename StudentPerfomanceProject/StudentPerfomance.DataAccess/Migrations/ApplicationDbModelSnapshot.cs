@@ -89,9 +89,6 @@ namespace StudentPerfomance.DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<Guid>("GroupId")
-                        .HasColumnType("TEXT");
-
                     b.Property<Guid>("PlanId")
                         .HasColumnType("TEXT");
 
@@ -104,8 +101,6 @@ namespace StudentPerfomance.DataAccess.Migrations
                         });
 
                     b.HasKey("Id");
-
-                    b.HasIndex("GroupId");
 
                     b.HasIndex("PlanId");
 
@@ -440,19 +435,11 @@ namespace StudentPerfomance.DataAccess.Migrations
 
             modelBuilder.Entity("StudentPerfomance.Domain.Entities.Semester", b =>
                 {
-                    b.HasOne("StudentPerfomance.Domain.Entities.StudentGroup", "Group")
-                        .WithMany()
-                        .HasForeignKey("GroupId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("StudentPerfomance.Domain.Entities.EducationPlan", "Plan")
                         .WithMany("Semesters")
                         .HasForeignKey("PlanId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Group");
 
                     b.Navigation("Plan");
                 });
