@@ -1,18 +1,19 @@
+using SPerfomance.DataAccess.Module.Shared.Repositories.EducationPlans;
+
 namespace SPerfomance.DataAccess.Module.Shared.Repositories.Semesters;
 
 public sealed class SemestersRepositoryObject
 {
 	public byte Number { get; private set; }
-	public int PlanYear { get; private set; }
+	public EducationPlansRepositoryObject Plan { get; private set; } = new EducationPlansRepositoryObject();
 	public SemestersRepositoryObject WithNumber(byte number)
 	{
 		Number = number;
 		return this;
 	}
-
-	public SemestersRepositoryObject WithPlanYear(int planYear)
+	public SemestersRepositoryObject WithPlan(EducationPlansRepositoryObject plan)
 	{
-		PlanYear = planYear;
+		Plan = plan;
 		return this;
 	}
 }

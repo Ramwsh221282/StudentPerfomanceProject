@@ -7,7 +7,8 @@ public static class TeachersDepartmentsExpressionsFactory
 {
 	public static IRepositoryExpression<TeachersDepartment> HasDepartment(DepartmentRepositoryObject department) =>
 		new HasDepartment(department);
-
 	public static IRepositoryExpression<TeachersDepartment> Filter(DepartmentRepositoryObject department) =>
 		new DepartmentFilter(department);
+	public static IRepositoryExpression<TeachersDepartment> FindByName(DepartmentRepositoryObject department) =>
+		new DepartmentByName(department);
 }

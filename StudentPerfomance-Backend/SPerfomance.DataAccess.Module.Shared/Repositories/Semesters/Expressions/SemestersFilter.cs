@@ -14,5 +14,5 @@ internal sealed class SemestersFilter
 	public Expression<Func<Semester, bool>> Build() =>
 		(Semester entity) =>
 			_semester.Number == entity.Number.Value ||
-			_semester.PlanYear == entity.Plan.Year.Year;
+			_semester.Plan.Year == entity.Plan.Year.Year;
 }

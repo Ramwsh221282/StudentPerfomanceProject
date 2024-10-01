@@ -155,3 +155,5 @@ C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backe
 C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api.Module\obj\Debug\net8.0\SPerfomance.Api.Module.pdb
 C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api.Module\obj\Debug\net8.0\SPerfomance.Api.Module.genruntimeconfig.cache
 C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api.Module\obj\Debug\net8.0\ref\SPerfomance.Api.Module.dll
+C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api.Module\bin\Debug\net8.0\SPerfomance.Application.TeacherDepartments.Module.dll
+C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api.Module\bin\Debug\net8.0\SPerfomance.Application.TeacherDepartments.Module.pdb

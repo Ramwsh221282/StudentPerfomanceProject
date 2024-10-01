@@ -24,8 +24,7 @@ public sealed class StudentGroupSchemaValidator : BaseSchemaValidator, ISchemaVa
 
 	public StudentGroupSchemaValidator WithNameValidation(StudentsGroupSchema schema)
 	{
-		if (!string.IsNullOrWhiteSpace(schema.NameInfo))
-			_validations.Add(new GroupNameValidation(schema), schema);
+		_validations.Add(new GroupNameValidation(schema), schema);
 		return this;
 	}
 }

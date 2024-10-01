@@ -13,6 +13,7 @@
           "SPerfomance.Application.EducationPlans.Module": "1.0.0",
           "SPerfomance.Application.Semesters.Module": "1.0.0",
           "SPerfomance.Application.StudentGroups.Module": "1.0.0",
+          "SPerfomance.Application.TeacherDepartments.Module": "1.0.0",
           "SPerfomance.DataAccess.Module.Shared": "1.0.0",
           "Swashbuckle.AspNetCore": "6.4.0"
         },
@@ -398,6 +399,14 @@
           "SPerfomance.Application.StudentGroups.Module.dll": {}
         }
       },
+      "SPerfomance.Application.TeacherDepartments.Module/1.0.0": {
+        "dependencies": {
+          "SPerfomance.Application.Shared.Module": "1.0.0"
+        },
+        "runtime": {
+          "SPerfomance.Application.TeacherDepartments.Module.dll": {}
+        }
+      },
       "SPerfomance.DataAccess.Module.Shared/1.0.0": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "8.0.7",
@@ -669,6 +678,11 @@
       "sha512": ""
     },
     "SPerfomance.Application.StudentGroups.Module/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SPerfomance.Application.TeacherDepartments.Module/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

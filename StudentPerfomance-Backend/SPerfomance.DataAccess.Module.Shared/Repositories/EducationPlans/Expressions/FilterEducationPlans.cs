@@ -14,6 +14,7 @@ internal sealed class FilterEducationPlans
 	public Expression<Func<EducationPlan, bool>> Build() =>
 		(EducationPlan entity) =>
 			entity.Year.Year == _plan.Year ||
-			entity.Direction.Name.Name.Contains(_plan.Direction.Name) ||
-			entity.Direction.Code.Code.Contains(_plan.Direction.Code);
+			(!string.IsNullOrWhiteSpace(_plan.Direction.Name) && entity.Direction.Name.Name.Contains(_plan.Direction.Name)) ||
+			(!string.IsNullOrWhiteSpace(_plan.Direction.Code) && entity.Direction.Code.Code.Contains(_plan.Direction.Code)) ||
+			(!string.IsNullOrWhiteSpace(_plan.Direction.Type) && entity.Direction.Type.Type == _plan.Direction.Type);
 }

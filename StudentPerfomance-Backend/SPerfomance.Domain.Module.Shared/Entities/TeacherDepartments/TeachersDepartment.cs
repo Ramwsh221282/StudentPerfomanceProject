@@ -1,4 +1,5 @@
 using System.Text;
+
 using SPerfomance.Domain.Module.Shared.Common.Abstractions.Entities;
 using SPerfomance.Domain.Module.Shared.Common.Abstractions.EntityValidators;
 using SPerfomance.Domain.Module.Shared.Entities.TeacherDepartments.Validators;
@@ -23,7 +24,11 @@ public sealed class TeachersDepartment : Entity
 	public string ShortName { get; private set; }
 	public string FullName { get; private set; }
 	public IReadOnlyCollection<Teacher> Teachers => _teachers;
-	public void ChangeDepartmentName(string name) => FullName = name;
+	public void ChangeDepartmentName(string name)
+	{
+		FullName = name;
+		ShortName = ConstructShortName(name);
+	}
 	public Teacher? TryFindTeacher(TeacherName name) =>
 		_teachers.FirstOrDefault
 		(
