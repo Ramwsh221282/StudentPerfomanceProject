@@ -69,11 +69,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomance-Backend\\SPerfomance.Application.Shared.Module\\SPerfomance.Application.Shared.Module.csproj",
+      "projectUniqueName": "c:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomance-Backend\\SPerfomance.Application.Shared.Module\\SPerfomance.Application.Shared.Module.csproj",
       "projectName": "SPerfomance.Application.Shared.Module",
-      "projectPath": "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomance-Backend\\SPerfomance.Application.Shared.Module\\SPerfomance.Application.Shared.Module.csproj",
+      "projectPath": "c:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomance-Backend\\SPerfomance.Application.Shared.Module\\SPerfomance.Application.Shared.Module.csproj",
       "packagesPath": "C:\\Users\\Ramwsh\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomance-Backend\\SPerfomance.Application.Shared.Module\\obj\\",
+      "outputPath": "c:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomance-Backend\\SPerfomance.Application.Shared.Module\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

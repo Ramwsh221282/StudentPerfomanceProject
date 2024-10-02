@@ -55,6 +55,8 @@ public sealed class TeachersDepartment : Entity
 
 	private string ConstructShortName(string fullname)
 	{
+		if (string.IsNullOrWhiteSpace(fullname))
+			return string.Empty;
 		StringBuilder nameBuilder = new StringBuilder();
 		string[] nameParts = fullname.Split(' ');
 		foreach (var part in nameParts)

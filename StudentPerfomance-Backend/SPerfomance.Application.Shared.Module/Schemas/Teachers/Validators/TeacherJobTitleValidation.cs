@@ -12,7 +12,7 @@ internal sealed class TeacherJobTitleValidation(TeacherSchema teacher) : BaseSch
 	public Func<EntitySchema, bool> BuildCriteria(TeacherSchema schema) => (schema) => Validate();
 	protected override bool Validate()
 	{
-		Result<JobTitle> result = JobTitle.Create(_schema.JobTitle);
+		Result<JobTitle> result = JobTitle.Create(_schema.Job);
 		return result.IsFailure ? ReturnError(result.Error) : ReturnSuccess();
 	}
 }

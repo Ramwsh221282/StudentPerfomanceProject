@@ -9,11 +9,11 @@ namespace SPerfomance.Application.EducationDirections.Module.Commands.Update.Dec
 internal sealed class UpdateEducationDirectionCodeHandler : UpdateEducationDirectionDecorator
 {
 	private readonly IRepository<EducationDirection> _repository;
-	public UpdateEducationDirectionCodeHandler(
-		ICommandHandler<UpdateEducationDirectionCommand,
-		OperationResult<EducationDirection>> handler,
+	public UpdateEducationDirectionCodeHandler
+	(
+		ICommandHandler<UpdateEducationDirectionCommand, OperationResult<EducationDirection>> handler,
 		IRepository<EducationDirection> repository
-		)
+	)
 	: base(handler) => _repository = repository;
 
 	public override async Task<OperationResult<EducationDirection>> Handle(UpdateEducationDirectionCommand command)

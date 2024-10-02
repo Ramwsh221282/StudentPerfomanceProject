@@ -1,5 +1,7 @@
 ﻿using SPerfomance.Tests.Module.TestsFolder.EducationDirectionTests;
 using SPerfomance.Tests.Module.TestsFolder.EducationPlanTests;
+using SPerfomance.Tests.Module.TestsFolder.TeacherDepartmentsTests;
+using SPerfomance.Tests.Module.TestsFolder.TeacherTests;
 
 namespace SPerfomance.Tests.Module
 {
@@ -7,17 +9,9 @@ namespace SPerfomance.Tests.Module
 	{
 		static void Main()
 		{
-			var success = new EducationPlanSuccessTests();
-			//success.CreateSingleBachelorPlan();
-			//success.CreateMultiplePlans();
-			//success.CreateGetCountEducationPlansTest();
-			//success.CreateEducationDirectionSearchByYearTest();
-			success.CreateEducationDirectionSearchByDirectionNameTest();
-
-
-			var failure = new EducationPlanFailureTests();
-			//failure.CreateEducationPlanWithYearTypeError();
-			//failure.CreateEducationPlanWithYearDublicate();
+			var success = new TeacherSuccessTests();
+			//success.CreateTeacherTest();
+			success.UpdateTeacherTest();
 		}
 	}
 }

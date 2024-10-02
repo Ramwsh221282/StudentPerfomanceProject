@@ -6,12 +6,10 @@ namespace SPerfomance.Application.Shared.Module.Schemas.Departments;
 public record DepartmentSchema : EntitySchema
 {
 	public string FullName { get; init; } = string.Empty;
-	public string ShortName { get; init; } = string.Empty;
-
-	public DepartmentSchema(string? fullName, string? shortName)
+	public DepartmentSchema() { }
+	public DepartmentSchema(string? fullName)
 	{
 		if (!string.IsNullOrWhiteSpace(fullName)) FullName = fullName;
-		if (!string.IsNullOrWhiteSpace(shortName)) ShortName = shortName;
 	}
 
 	public TeachersDepartment CreateDomainObject() => TeachersDepartment.Create(FullName).Value;

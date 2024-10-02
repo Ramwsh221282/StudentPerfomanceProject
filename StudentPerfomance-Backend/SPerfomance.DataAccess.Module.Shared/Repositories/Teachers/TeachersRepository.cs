@@ -16,8 +16,8 @@ internal sealed class TeachersRepository : IRepository<Teacher>
 	public async Task<IReadOnlyCollection<Teacher>> GetAll() =>
 		await _context.Teachers
 		.Include(t => t.Department)
-		.ThenInclude(d => d.Teachers)
-		.OrderByDescending(t => t.Name.Surname)
+		.OrderBy(t => t.EntityNumber)
+		.ThenByDescending(t => t.Name.Surname)
 		.AsNoTracking()
 		.ToListAsync();
 
@@ -33,6 +33,7 @@ internal sealed class TeachersRepository : IRepository<Teacher>
 	public async Task Create(Teacher entity)
 	{
 		_context.Departments.Attach(entity.Department);
+		entity.SetNumber(await GenerateEntityNumber());
 		await _context.Teachers.AddAsync(entity);
 		await _context.SaveChangesAsync();
 		await Commit();
@@ -41,7 +42,8 @@ internal sealed class TeachersRepository : IRepository<Teacher>
 	public async Task<IReadOnlyCollection<Teacher>> GetPaged(int page, int pageSize) =>
 		await _context.Teachers
 		.Include(t => t.Department)
-		.OrderByDescending(t => t.Name.Surname)
+		.OrderBy(t => t.EntityNumber)
+		.ThenByDescending(t => t.Name.Surname)
 		.Skip((page - 1) * pageSize)
 		.Take(pageSize)
 		.AsNoTracking()
