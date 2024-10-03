@@ -359,6 +359,7 @@
           "SPerfomance.Application.EducationPlans.Module": "1.0.0",
           "SPerfomance.Application.Semesters.Module": "1.0.0",
           "SPerfomance.Application.StudentGroups.Module": "1.0.0",
+          "SPerfomance.Application.Students.Module": "1.0.0",
           "SPerfomance.Application.TeacherDepartments.Module": "1.0.0",
           "SPerfomance.Application.Teachers.Module": "1.0.0",
           "SPerfomance.DataAccess.Module.Shared": "1.0.0",
@@ -406,6 +407,14 @@
         },
         "runtime": {
           "SPerfomance.Application.StudentGroups.Module.dll": {}
+        }
+      },
+      "SPerfomance.Application.Students.Module/1.0.0": {
+        "dependencies": {
+          "SPerfomance.Application.Shared.Module": "1.0.0"
+        },
+        "runtime": {
+          "SPerfomance.Application.Students.Module.dll": {}
         }
       },
       "SPerfomance.Application.TeacherDepartments.Module/1.0.0": {
@@ -700,6 +709,11 @@
       "sha512": ""
     },
     "SPerfomance.Application.StudentGroups.Module/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SPerfomance.Application.Students.Module/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

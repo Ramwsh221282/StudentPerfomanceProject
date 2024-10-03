@@ -7,7 +7,7 @@ namespace SPerfomance.Api.Module.Converters.StudentGroups;
 
 public static class StudentGroupSchemaConverter
 {
-	public static StudentGroupsRepositoryObject ToRepositoryObject(StudentsGroupSchema schema)
+	public static StudentGroupsRepositoryObject ToRepositoryObject(this StudentsGroupSchema schema)
 	{
 		EducationPlansRepositoryObject plan = EducationPlanSchemaConverter.ToRepositoryObject(schema.PlanInfo);
 		StudentGroupsRepositoryObject group = new StudentGroupsRepositoryObject()

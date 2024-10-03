@@ -5,7 +5,7 @@ using SPerfomance.Domain.Module.Shared.Entities.StudentGroups;
 
 namespace SPerfomance.DataAccess.Module.Shared.Repositories.StudentGroups;
 
-internal sealed class StudentGroupsRepository : IRepository<StudentGroup>
+public sealed class StudentGroupsRepository : IRepository<StudentGroup>
 {
 	private readonly ApplicationDb _context = new ApplicationDb();
 	public async Task<IReadOnlyCollection<StudentGroup>> GetAll() =>

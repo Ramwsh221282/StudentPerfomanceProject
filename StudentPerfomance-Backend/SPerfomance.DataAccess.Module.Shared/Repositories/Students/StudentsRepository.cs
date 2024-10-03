@@ -5,7 +5,7 @@ using SPerfomance.Domain.Module.Shared.Entities.Students;
 
 namespace SPerfomance.DataAccess.Module.Shared.Repositories.Students;
 
-internal sealed class StudentsRepository : IRepository<Student>
+public sealed class StudentsRepository : IRepository<Student>
 {
 	private readonly ApplicationDb _context = new ApplicationDb();
 	public async Task<int> Count() =>
@@ -19,7 +19,8 @@ internal sealed class StudentsRepository : IRepository<Student>
 		await _context.Students
 		.Include(s => s.Group)
 		.ThenInclude(g => g.Students)
-		.OrderByDescending(s => s.Name.Surname)
+		.OrderBy(s => s.EntityNumber)
+		.ThenByDescending(s => s.Name.Surname)
 		.AsNoTracking()
 		.ToListAsync();
 
@@ -44,7 +45,8 @@ internal sealed class StudentsRepository : IRepository<Student>
 	public async Task<IReadOnlyCollection<Student>> GetPaged(int page, int pageSize) =>
 		await _context.Students
 		.Include(s => s.Group)
-		.OrderByDescending(s => s.Name.Surname)
+		.OrderBy(s => s.EntityNumber)
+		.ThenByDescending(s => s.Name.Surname)
 		.Skip((page - 1) * pageSize)
 		.Take(pageSize)
 		.AsNoTracking()
@@ -76,7 +78,8 @@ internal sealed class StudentsRepository : IRepository<Student>
 		var criteria = expression.Build();
 		return await _context.Students
 		.Include(s => s.Group)
-		.OrderByDescending(s => s.Name.Surname)
+		.OrderBy(s => s.EntityNumber)
+		.ThenByDescending(s => s.Name.Surname)
 		.Where(criteria)
 		.Skip((page - 1) * pageSize)
 		.Take(pageSize)

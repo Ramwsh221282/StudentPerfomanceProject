@@ -5,7 +5,7 @@ using SPerfomance.Domain.Module.Shared.Entities.EducationPlans;
 
 namespace SPerfomance.DataAccess.Module.Shared.Repositories.EducationPlans;
 
-internal sealed class EducationPlansRepository : IRepository<EducationPlan>, IFluentCreatableRepository<EducationPlan>
+public sealed class EducationPlansRepository : IRepository<EducationPlan>, IFluentCreatableRepository<EducationPlan>
 {
 	private readonly ApplicationDb _db = new ApplicationDb();
 	public async Task Commit() => await _db.SaveChangesAsync();

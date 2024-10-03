@@ -159,3 +159,5 @@ C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backe
 C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api.Module\bin\Debug\net8.0\SPerfomance.Application.TeacherDepartments.Module.pdb
 C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api.Module\bin\Debug\net8.0\SPerfomance.Application.Teachers.Module.dll
 C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api.Module\bin\Debug\net8.0\SPerfomance.Application.Teachers.Module.pdb
+C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api.Module\bin\Debug\net8.0\SPerfomance.Application.Students.Module.dll
+C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api.Module\bin\Debug\net8.0\SPerfomance.Application.Students.Module.pdb

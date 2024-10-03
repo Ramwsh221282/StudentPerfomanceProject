@@ -7,7 +7,7 @@ namespace SPerfomance.Api.Module.Converters.EducationPlans;
 
 public static class EducationPlanSchemaConverter
 {
-	public static EducationPlansRepositoryObject ToRepositoryObject(EducationPlanSchema schema)
+	public static EducationPlansRepositoryObject ToRepositoryObject(this EducationPlanSchema schema)
 	{
 		EducationDirectionsRepositoryObject direction = EducationDirectionSchemaConverter.ToRepositoryObject(schema.Direction);
 		EducationPlansRepositoryObject plan = new EducationPlansRepositoryObject()

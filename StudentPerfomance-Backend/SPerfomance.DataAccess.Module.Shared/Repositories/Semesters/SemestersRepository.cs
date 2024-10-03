@@ -5,7 +5,7 @@ using SPerfomance.Domain.Module.Shared.Entities.Semesters;
 
 namespace SPerfomance.DataAccess.Module.Shared.Repositories.Semesters;
 
-internal sealed class SemestersRepository : IRepository<Semester>
+public sealed class SemestersRepository : IRepository<Semester>
 {
 	private readonly ApplicationDb _context = new ApplicationDb();
 	public async Task<int> Count() => await _context.Semesters.CountAsync();

@@ -1,12 +1,13 @@
 using Microsoft.EntityFrameworkCore;
 
 using SPerfomance.Domain.Module.Shared.Common.Abstractions.Repositories;
+using SPerfomance.Domain.Module.Shared.Entities.StudentGroups;
 using SPerfomance.Domain.Module.Shared.Entities.TeacherDepartments;
 using SPerfomance.Domain.Module.Shared.Entities.Teachers;
 
 namespace SPerfomance.DataAccess.Module.Shared.Repositories.TeachersDepartments;
 
-internal sealed class TeachersDepartmentsRepository : IRepository<TeachersDepartment>
+public sealed class TeachersDepartmentsRepository : IRepository<TeachersDepartment>
 {
 	private readonly ApplicationDb _context = new ApplicationDb();
 	public async Task<int> Count() => await _context.Departments.CountAsync();

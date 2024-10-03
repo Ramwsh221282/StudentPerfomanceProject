@@ -5,7 +5,7 @@ using SPerfomance.Domain.Module.Shared.Entities.EducationDirections;
 
 namespace SPerfomance.DataAccess.Module.Shared.Repositories.EducationDirections;
 
-internal sealed class EducationDirectionsRepository : IRepository<EducationDirection>, IForceUpdatableRepository<EducationDirection>
+public sealed class EducationDirectionsRepository : IRepository<EducationDirection>, IForceUpdatableRepository<EducationDirection>
 {
 	private readonly ApplicationDb _db = new ApplicationDb();
 	public async Task Commit() => await _db.SaveChangesAsync();

@@ -25,13 +25,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPerfomance.Tests.Module", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPerfomance.Application.TeacherDepartments.Module", "SPerfomance.Application.TeacherDepartments.Module\SPerfomance.Application.TeacherDepartments.Module.csproj", "{357F2430-AC19-4A41-BC1B-EF9D62251139}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPerfomance.Application.Students.Module", "SPerfomance.Application.Students.Module\SPerfomance.Application.Students.Module.csproj", "{DEEB2F2D-881A-4AE9-B86D-E49A1D2CFAFC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{37656E64-339F-4C9D-95BA-15BEDBF5912D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -78,5 +77,12 @@ Global
 		{357F2430-AC19-4A41-BC1B-EF9D62251139}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{357F2430-AC19-4A41-BC1B-EF9D62251139}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{357F2430-AC19-4A41-BC1B-EF9D62251139}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEEB2F2D-881A-4AE9-B86D-E49A1D2CFAFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEEB2F2D-881A-4AE9-B86D-E49A1D2CFAFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEEB2F2D-881A-4AE9-B86D-E49A1D2CFAFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEEB2F2D-881A-4AE9-B86D-E49A1D2CFAFC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal

@@ -1,3 +1,5 @@
+using SPerfomance.DataAccess.Module.Shared.Repositories.StudentGroups;
+
 namespace SPerfomance.DataAccess.Module.Shared.Repositories.Students;
 
 public sealed class StudentsRepositoryObject
@@ -7,7 +9,7 @@ public sealed class StudentsRepositoryObject
 	public string Thirdname { get; private set; } = string.Empty;
 	public string State { get; private set; } = string.Empty;
 	public ulong Recordbook { get; private set; }
-
+	public StudentGroupsRepositoryObject Group { get; private set; } = new StudentGroupsRepositoryObject();
 	public StudentsRepositoryObject WithName(string name)
 	{
 		if (!string.IsNullOrEmpty(name)) Name = name;
@@ -35,6 +37,12 @@ public sealed class StudentsRepositoryObject
 	public StudentsRepositoryObject WithRecordbook(ulong recordBook)
 	{
 		Recordbook = recordBook;
+		return this;
+	}
+
+	public StudentsRepositoryObject WithGroup(StudentGroupsRepositoryObject group)
+	{
+		Group = group;
 		return this;
 	}
 }

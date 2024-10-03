@@ -667,6 +667,19 @@
           "bin/placeholder/SPerfomance.Application.StudentGroups.Module.dll": {}
         }
       },
+      "SPerfomance.Application.Students.Module/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "SPerfomance.Application.Shared.Module": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/SPerfomance.Application.Students.Module.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SPerfomance.Application.Students.Module.dll": {}
+        }
+      },
       "SPerfomance.Application.TeacherDepartments.Module/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
@@ -1803,6 +1816,11 @@
       "path": "../SPerfomance.Application.StudentGroups.Module/SPerfomance.Application.StudentGroups.Module.csproj",
       "msbuildProject": "../SPerfomance.Application.StudentGroups.Module/SPerfomance.Application.StudentGroups.Module.csproj"
     },
+    "SPerfomance.Application.Students.Module/1.0.0": {
+      "type": "project",
+      "path": "../SPerfomance.Application.Students.Module/SPerfomance.Application.Students.Module.csproj",
+      "msbuildProject": "../SPerfomance.Application.Students.Module/SPerfomance.Application.Students.Module.csproj"
+    },
     "SPerfomance.Application.TeacherDepartments.Module/1.0.0": {
       "type": "project",
       "path": "../SPerfomance.Application.TeacherDepartments.Module/SPerfomance.Application.TeacherDepartments.Module.csproj",
@@ -1831,6 +1849,7 @@
       "SPerfomance.Application.EducationPlans.Module >= 1.0.0",
       "SPerfomance.Application.Semesters.Module >= 1.0.0",
       "SPerfomance.Application.StudentGroups.Module >= 1.0.0",
+      "SPerfomance.Application.Students.Module >= 1.0.0",
       "SPerfomance.Application.TeacherDepartments.Module >= 1.0.0",
       "SPerfomance.Application.Teachers.Module >= 1.0.0",
       "SPerfomance.DataAccess.Module.Shared >= 1.0.0",
@@ -1880,6 +1899,9 @@
             },
             "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomance-Backend\\SPerfomance.Application.StudentGroups.Module\\SPerfomance.Application.StudentGroups.Module.csproj": {
               "projectPath": "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomance-Backend\\SPerfomance.Application.StudentGroups.Module\\SPerfomance.Application.StudentGroups.Module.csproj"
+            },
+            "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomance-Backend\\SPerfomance.Application.Students.Module\\SPerfomance.Application.Students.Module.csproj": {
+              "projectPath": "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomance-Backend\\SPerfomance.Application.Students.Module\\SPerfomance.Application.Students.Module.csproj"
             },
             "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomance-Backend\\SPerfomance.Application.TeacherDepartments.Module\\SPerfomance.Application.TeacherDepartments.Module.csproj": {
               "projectPath": "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomance-Backend\\SPerfomance.Application.TeacherDepartments.Module\\SPerfomance.Application.TeacherDepartments.Module.csproj"

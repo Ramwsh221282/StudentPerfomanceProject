@@ -5,7 +5,7 @@ using SPerfomance.Domain.Module.Shared.Entities.Disciplines;
 
 namespace SPerfomance.DataAccess.Module.Shared.Repositories.Disciplines;
 
-internal sealed class DisciplineRepository : IRepository<Discipline>
+public sealed class DisciplineRepository : IRepository<Discipline>
 {
 	private readonly ApplicationDb _context = new ApplicationDb();
 

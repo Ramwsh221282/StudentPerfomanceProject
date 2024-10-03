@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "gscDA0xWsujgdwwMakZ1wN/66UWZiOluFUsncpdooL/ph7rH6Oy0Ifeyx3PJ+f47VKGxCV8UO5qjYebh6xR31A==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomance-Backend\\SPerfomance.Application.Students.Module\\SPerfomance.Application.Students.Module.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Ramwsh\\.nuget\\packages\\csharpfunctionalextensions\\3.1.0\\csharpfunctionalextensions.3.1.0.nupkg.sha512"
+  ],
+  "logs": []
+}

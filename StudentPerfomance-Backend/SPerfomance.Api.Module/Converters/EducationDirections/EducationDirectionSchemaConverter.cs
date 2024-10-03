@@ -5,7 +5,7 @@ namespace SPerfomance.Api.Module.Converters.EducationDirections;
 
 public static class EducationDirectionSchemaConverter
 {
-	public static EducationDirectionsRepositoryObject ToRepositoryObject(EducationDirectionSchema schema)
+	public static EducationDirectionsRepositoryObject ToRepositoryObject(this EducationDirectionSchema schema)
 	{
 		EducationDirectionsRepositoryObject direction = new EducationDirectionsRepositoryObject()
 		.WithDirectionName(schema.Name)

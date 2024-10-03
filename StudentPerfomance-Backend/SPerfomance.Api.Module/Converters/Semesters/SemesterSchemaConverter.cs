@@ -7,7 +7,7 @@ namespace SPerfomance.Api.Module.Converters.Semesters;
 
 public static class SemesterSchemaConverter
 {
-	public static SemestersRepositoryObject ToRepositoryParameter(SemesterSchema schema)
+	public static SemestersRepositoryObject ToRepositoryObject(this SemesterSchema schema)
 	{
 		EducationPlansRepositoryObject plan = EducationPlanSchemaConverter.ToRepositoryObject(schema.Plan);
 		SemestersRepositoryObject semester = new SemestersRepositoryObject()

@@ -1,6 +1,0 @@
-using StudentPerfomance.Application.EntitySchemas.Schemas.EducationPlans;
-using StudentPerfomance.Application.EntitySchemas.Schemas.StudentGroups;
-
-namespace StudentPerfomance.Api.Requests.GroupRequests;
-
-public record GroupCreateRequest(StudentsGroupSchema Group, EducationPlanSchema EducationPlan);
