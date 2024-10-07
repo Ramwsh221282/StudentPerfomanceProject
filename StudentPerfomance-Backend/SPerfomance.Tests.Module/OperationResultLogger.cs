@@ -1,4 +1,4 @@
-using SPerfomance.Domain.Module.Shared.Common.Models.OperationResults;
+using SPerfomance.Application.Shared.Module.Operations;
 
 namespace SPerfomance.Tests.Module;
 

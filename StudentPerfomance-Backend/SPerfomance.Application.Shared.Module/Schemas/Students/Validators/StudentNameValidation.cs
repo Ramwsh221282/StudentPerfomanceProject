@@ -1,5 +1,5 @@
 using CSharpFunctionalExtensions;
-using SPerfomance.Domain.Module.Shared.Common.Abstractions.EntitySchemas;
+
 using SPerfomance.Domain.Module.Shared.Entities.Students.ValueObjects;
 
 namespace SPerfomance.Application.Shared.Module.Schemas.Students.Validators;

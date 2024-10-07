@@ -12,7 +12,7 @@ internal sealed class TeacherConfiguration : IEntityTypeConfiguration<Teacher>
 		builder.ToTable("Teachers");
 		builder.HasKey(t => t.Id);
 		builder.Property(t => t.EntityNumber).ValueGeneratedOnAdd();
-		builder.HasMany(t => t.Disciplines).WithOne(d => d.Teacher).IsRequired(false);
+		builder.HasMany(t => t.Disciplines).WithOne(d => d.AttachedTeacher).IsRequired(false);
 		builder.HasOne(t => t.Department).WithMany(d => d.Teachers).IsRequired();
 		builder.ComplexProperty(t => t.Name, columns =>
 		{

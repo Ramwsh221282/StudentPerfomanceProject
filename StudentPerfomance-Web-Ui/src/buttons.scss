@@ -1,0 +1,104 @@
+.accept-button {
+  background: #7dc71c;
+  border-radius: 999px;
+  box-shadow: #7dc71c 0 10px 20px -10px;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  opacity: 1;
+  outline: 0 solid transparent;
+  padding: 8px 18px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: fit-content;
+  word-break: break-word;
+  border: 0;
+
+  &:hover {
+    background-color: #629c16;
+    box-shadow: #629c16 0 10px 20px -10px;
+  }
+}
+
+.accept-outline-button {
+  background: transparent;
+  border: 2px solid #7dc71c;
+  border-radius: 999px;
+  box-shadow: none;
+  box-sizing: border-box;
+  color: #7dc71c;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  opacity: 1;
+  outline: 0 solid transparent;
+  padding: 8px 18px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: fit-content;
+  word-break: break-word;
+
+  &:hover {
+    background-color: rgba(125, 199, 28, 0.1);
+    border-color: #629c16;
+    color: #629c16;
+  }
+}
+
+.edit-button {
+  background: #ffcc33;
+  border-radius: 999px;
+  box-shadow: #ffcc33 0 10px 20px -10px;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  opacity: 1;
+  outline: 0 solid transparent;
+  padding: 8px 18px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: fit-content;
+  word-break: break-word;
+  border: 0;
+
+  &:hover {
+    background-color: #e6ac00;
+    box-shadow: #e6ac00 0 10px 20px -10px;
+  }
+}
+
+.remove-button {
+  background: #ce0000;
+  border-radius: 999px;
+  box-shadow: #ce0000 0 10px 20px -10px;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  opacity: 1;
+  outline: 0 solid transparent;
+  padding: 8px 18px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: fit-content;
+  word-break: break-word;
+  border: 0;
+
+  &:hover {
+    background-color: #990000;
+    box-shadow: #990000 0 10px 20px -10px;
+  }
+}

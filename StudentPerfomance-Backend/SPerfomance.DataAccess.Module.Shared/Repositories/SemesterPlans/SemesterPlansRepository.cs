@@ -15,10 +15,10 @@ public sealed class SemesterPlansRepository : IRepository<SemesterPlan>
 
 	public async Task<IReadOnlyCollection<SemesterPlan>> GetAll() =>
 		await _context.SemesterPlans
-		.Include(p => p.LinkedSemester)
+		.Include(p => p.Semester)
 		.ThenInclude(s => s.Contracts)
-		.Include(p => p.LinkedDiscipline)
-		.OrderByDescending(p => p.LinkedDiscipline.Name)
+		.Include(p => p.Discipline)
+		.OrderByDescending(p => p.Discipline.Name)
 		.AsNoTracking()
 		.ToListAsync();
 
@@ -26,10 +26,6 @@ public sealed class SemesterPlansRepository : IRepository<SemesterPlan>
 
 	public async Task Remove(SemesterPlan entity)
 	{
-		await _context.Grades.Where(g => g.Discipline.Id == entity.LinkedDiscipline.Id)
-		.ExecuteDeleteAsync();
-		await _context.Disciplines.Where(d => d.Id == entity.LinkedDiscipline.Id)
-		.ExecuteDeleteAsync();
 		await _context.SemesterPlans.Where(p => p.Id == entity.Id)
 		.ExecuteDeleteAsync();
 		await Commit();
@@ -37,20 +33,19 @@ public sealed class SemesterPlansRepository : IRepository<SemesterPlan>
 
 	public async Task Create(SemesterPlan entity)
 	{
-		_context.Semesters.Attach(entity.LinkedSemester);
-		if (entity.LinkedDiscipline != null)
-			_context.Attach(entity.LinkedDiscipline);
+		_context.Semesters.Attach(entity.Semester);
+		if (entity.Discipline != null)
+			_context.Attach(entity.Discipline);
 		await _context.SemesterPlans.AddAsync(entity);
 		await Commit();
 	}
 
 	public async Task<IReadOnlyCollection<SemesterPlan>> GetPaged(int page, int pageSize) =>
 		await _context.SemesterPlans
-		.Include(p => p.LinkedSemester)
-		.Include(p => p.LinkedDiscipline)
-		.ThenInclude(d => d.Teacher)
-		//.ThenInclude(t => t.Department)
-		.OrderByDescending(p => p.LinkedDiscipline.Name)
+		.Include(p => p.Semester)
+		.Include(p => p.Discipline)
+		.Include(p => p.AttachedTeacher)
+		.OrderByDescending(p => p.Discipline.Name)
 		.Skip((page - 1) * pageSize)
 		.Take(pageSize)
 		.AsNoTracking()
@@ -58,30 +53,27 @@ public sealed class SemesterPlansRepository : IRepository<SemesterPlan>
 
 	public async Task<SemesterPlan?> GetByParameter(IRepositoryExpression<SemesterPlan> expression) =>
 		await _context.SemesterPlans
-		.Include(p => p.LinkedSemester)
-		.Include(p => p.LinkedDiscipline)
-		.ThenInclude(d => d.Teacher)
-		//.ThenInclude(t => t.Department)
+		.Include(p => p.Semester)
+		.Include(p => p.Discipline)
+		.Include(p => p.AttachedTeacher)
 		.FirstOrDefaultAsync(expression.Build());
 
 	public async Task<IReadOnlyCollection<SemesterPlan>> GetFiltered(IRepositoryExpression<SemesterPlan> expression) =>
 		await _context.SemesterPlans
-		.Include(p => p.LinkedSemester)
-		.Include(p => p.LinkedDiscipline)
-		.ThenInclude(d => d.Teacher)
-		//.ThenInclude(t => t.Department)
-		.OrderByDescending(p => p.LinkedDiscipline.Name)
+		.Include(p => p.Semester)
+		.Include(p => p.Discipline)
+		.Include(p => p.AttachedTeacher)
+		.OrderByDescending(p => p.Discipline.Name)
 		.Where(expression.Build())
 		.AsNoTracking()
 		.ToListAsync();
 
 	public async Task<IReadOnlyCollection<SemesterPlan>> GetFilteredAndPaged(IRepositoryExpression<SemesterPlan> expression, int page, int pageSize) =>
 		await _context.SemesterPlans
-		.Include(p => p.LinkedSemester)
-		.Include(p => p.LinkedDiscipline)
-		.ThenInclude(d => d.Teacher)
-		//.ThenInclude(t => t.Department)
-		.OrderByDescending(p => p.LinkedDiscipline.Name)
+		.Include(p => p.Semester)
+		.Include(p => p.Discipline)
+		.Include(p => p.AttachedTeacher)
+		.OrderByDescending(p => p.Discipline.Name)
 		.Where(expression.Build())
 		.Skip((page - 1) * pageSize)
 		.Take(pageSize)

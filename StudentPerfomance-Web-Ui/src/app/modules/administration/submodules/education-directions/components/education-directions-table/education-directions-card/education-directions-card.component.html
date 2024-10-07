@@ -1,21 +1,23 @@
 <div class="education-directions-card-layout">
-  <div class="information-part">
+  <div class="header-part">
     <strong>Номер: {{ direction.entityNumber }}</strong>
-    <strong>Код направления: {{ direction.code }}</strong>
-    <strong>Название направления: {{ direction.name }}</strong>
-    <strong>Тип направления: {{ direction.type }}</strong>
+  </div>
+  <div class="information-part">
+    <strong>Код: {{ direction.code }}</strong>
+    <strong>Название: {{ direction.name }}</strong>
+    <strong>Тип: {{ direction.type }}</strong>
   </div>
   <div class="controls-part">
     <button
       type="button"
-      class="btn btn-info"
+      class="edit-button"
       (click)="startUpdateTransaction()"
     >
       Редактировать
     </button>
     <button
       type="button"
-      class="btn btn-danger font-black"
+      class="remove-button"
       (click)="startDeletionTransaction()"
     >
       Удалить

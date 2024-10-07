@@ -1,16 +1,15 @@
 using SPerfomance.Domain.Module.Shared.Common.Abstractions.Entities;
-using SPerfomance.Domain.Module.Shared.Entities.Disciplines;
-using SPerfomance.Domain.Module.Shared.Entities.StudentGrades;
-using SPerfomance.Domain.Module.Shared.Entities.StudentGrades.ValueObjects;
-using SPerfomance.Domain.Module.Shared.Entities.Students;
+using SPerfomance.Domain.Module.Shared.Common.Abstractions.EntityValidators;
+using SPerfomance.Domain.Module.Shared.Entities.SemesterPlans;
 using SPerfomance.Domain.Module.Shared.Entities.TeacherDepartments;
+using SPerfomance.Domain.Module.Shared.Entities.Teachers.Validators;
 using SPerfomance.Domain.Module.Shared.Entities.Teachers.ValueObjects;
 
 namespace SPerfomance.Domain.Module.Shared.Entities.Teachers;
 
 public sealed class Teacher : Entity
 {
-	private List<Discipline> _disciplines = [];
+	private List<SemesterPlan> _disciplines = [];
 
 	private Teacher() : base(Guid.Empty)
 	{
@@ -30,20 +29,31 @@ public sealed class Teacher : Entity
 	public WorkingCondition Condition { get; private set; } = null!;
 	public JobTitle JobTitle { get; private set; } = null!;
 	public TeacherName Name { get; private set; }
-	public IReadOnlyCollection<Discipline> Disciplines => _disciplines.AsReadOnly();
 	public TeachersDepartment Department { get; } = null!;
-	public void ChangeName(TeacherName newName) => Name = newName;
-	public void ChangeCondition(WorkingCondition condition) => Condition = condition;
-	public void ChangeJobTitle(JobTitle jobTitle) => JobTitle = jobTitle;
-	public CSharpFunctionalExtensions.Result<StudentGrade> GradeStudent(Student student, Discipline discipline, GradeValue value)
+	public IReadOnlyCollection<SemesterPlan> Disciplines => _disciplines.AsReadOnly();
+	public CSharpFunctionalExtensions.Result ChangeName(TeacherName newName)
 	{
-		Discipline? target = _disciplines.FirstOrDefault(d => d.Id == discipline.Id);
-		if (target == null)
-			return CSharpFunctionalExtensions.Result.Failure<StudentGrade>("Преподаватель не ведёт эту дисциплину");
-		CSharpFunctionalExtensions.Result<StudentGrade> request = StudentGrade.Create(this, target, student, value);
-		if (request.IsFailure)
-			return CSharpFunctionalExtensions.Result.Failure<StudentGrade>(request.Error);
-		return request.Value;
+		var validator = new TeacherNameValidator(newName.Name, newName.Surname, newName.Thirdname);
+		if (!validator.Validate())
+			return Failure(validator.GetErrorText());
+		Name = newName;
+		return Success();
+	}
+	public CSharpFunctionalExtensions.Result ChangeCondition(WorkingCondition condition)
+	{
+		Validator<WorkingCondition> validator = new WorkingConditionValidator(condition);
+		if (!validator.Validate())
+			return Failure(validator.GetErrorText());
+		Condition = condition;
+		return Success();
+	}
+	public CSharpFunctionalExtensions.Result ChangeJobTitle(JobTitle jobTitle)
+	{
+		Validator<JobTitle> validator = new JobTitleValidator(jobTitle);
+		if (!validator.Validate())
+			return Failure(validator.GetErrorText());
+		JobTitle = jobTitle;
+		return Success();
 	}
 
 	public static CSharpFunctionalExtensions.Result<Teacher> Create

@@ -1,21 +1,23 @@
 <div class="education-direction-pagination-wrapper">
   <div class="education-direction-pages-list">
-    <div class="btn btn-info" (click)="facadeService.moveInitialPage()">
+    <div class="accept-button" (click)="facadeService.moveInitialPage()">
       Начальная
     </div>
-    <div class="btn btn-info" (click)="facadeService.movePreviousPage()"><</div>
+    <div class="accept-button" (click)="facadeService.movePreviousPage()">
+      <
+    </div>
     @for (page of facadeService.displayPages; track page) {
     <button
       (click)="facadeService.setPage = page"
       [ngClass]="[
-        page == facadeService.currentPage ? 'btn btn-warning' : 'btn btn-info'
+        page == facadeService.currentPage ? 'edit-button' : 'accept-button'
       ]"
     >
       {{ page }}
     </button>
     }
-    <div class="btn btn-info" (click)="facadeService.moveNextPage()">></div>
-    <div class="btn btn-info" (click)="facadeService.moveLastPage()">
+    <div class="accept-button" (click)="facadeService.moveNextPage()">></div>
+    <div class="accept-button" (click)="facadeService.moveLastPage()">
       Конечная
     </div>
   </div>

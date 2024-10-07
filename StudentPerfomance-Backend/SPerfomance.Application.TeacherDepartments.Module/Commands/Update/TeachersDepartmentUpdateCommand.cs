@@ -1,41 +1,33 @@
+using SPerfomance.Application.Shared.Module.CQRS.Commands;
+using SPerfomance.Application.Shared.Module.Operations;
 using SPerfomance.Application.Shared.Module.Schemas.Departments;
-using SPerfomance.Application.Shared.Module.Schemas.Departments.Validators;
-using SPerfomance.Domain.Module.Shared.Common.Abstractions.CQRS.Commands;
-using SPerfomance.Domain.Module.Shared.Common.Abstractions.EntitySchemas;
+using SPerfomance.Application.TeacherDepartments.Module.Repository;
+using SPerfomance.Application.TeacherDepartments.Module.Repository.Expressions;
 using SPerfomance.Domain.Module.Shared.Common.Abstractions.Repositories;
-using SPerfomance.Domain.Module.Shared.Common.Models.OperationResults;
 using SPerfomance.Domain.Module.Shared.Entities.TeacherDepartments;
 using SPerfomance.Domain.Module.Shared.Entities.TeacherDepartments.Errors;
 
 namespace SPerfomance.Application.TeacherDepartments.Module.Commands.Update;
 
-public sealed class TeachersDepartmentUpdateCommand : ICommand
+internal sealed class TeachersDepartmentUpdateCommand : ICommand
 {
 	private readonly DepartmentSchema _newSchema;
 	private readonly IRepositoryExpression<TeachersDepartment> _findInitial;
 	private readonly IRepositoryExpression<TeachersDepartment> _findNameDublicate;
-	private readonly ISchemaValidator _validator;
+	private readonly TeacherDepartmentsQueryRepository _repository;
 	public readonly ICommandHandler<TeachersDepartmentUpdateCommand, TeachersDepartment> Handler;
-	public TeachersDepartmentUpdateCommand
-	(
-		DepartmentSchema newSchema,
-		IRepositoryExpression<TeachersDepartment> findInitial,
-		IRepositoryExpression<TeachersDepartment> findNameDublicate,
-		IRepository<TeachersDepartment> repository
-	)
+	public TeachersDepartmentUpdateCommand(DepartmentSchema newSchema, DepartmentSchema oldSchema)
 	{
 		_newSchema = newSchema;
-		_findInitial = findInitial;
-		_findNameDublicate = findNameDublicate;
-		_validator = new DepartmentSchemaValidator()
-		.WithNameValidation(newSchema);
-		_validator.ProcessValidation();
-		Handler = new CommandHandler(repository);
+		_findInitial = ExpressionsFactory.GetDepartment(oldSchema.ToRepositoryObject());
+		_findNameDublicate = ExpressionsFactory.GetByName(newSchema.ToRepositoryObject());
+		_repository = new TeacherDepartmentsQueryRepository();
+		Handler = new CommandHandler(_repository);
 	}
 
-	internal sealed class CommandHandler(IRepository<TeachersDepartment> repository) : ICommandHandler<TeachersDepartmentUpdateCommand, TeachersDepartment>
+	internal sealed class CommandHandler(TeacherDepartmentsQueryRepository repository) : ICommandHandler<TeachersDepartmentUpdateCommand, TeachersDepartment>
 	{
-		private readonly IRepository<TeachersDepartment> _repository = repository;
+		private readonly TeacherDepartmentsQueryRepository _repository = repository;
 		public async Task<OperationResult<TeachersDepartment>> Handle(TeachersDepartmentUpdateCommand command)
 		{
 			TeachersDepartment? department = await _repository.GetByParameter(command._findInitial);

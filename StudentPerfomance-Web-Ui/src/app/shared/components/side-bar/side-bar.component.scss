@@ -4,33 +4,33 @@
   max-width: 250px;
   height: 100vh;
   color: #ffffff;
-  background-color: #21333b;
+  background-color: #7c91d0;
+  box-shadow: #1b274b 10px 10px 20px -10px;
 }
 
 .menu-header {
   padding: 10px 10px;
 }
 
-.menu-button {
+.side-bar-menu-button {
+  color: #ffffff;
   cursor: pointer;
   padding: 10px 10px;
   font-size: 14px;
   width: 100%;
   font-weight: bold;
   text-align: left;
-  color: #ffffff;
   background-color: transparent;
   border: none;
   outline: none;
-  transition: 0.3s;
+  transition: 0.1s;
 
   &:hover {
-    background-color: #2d4048;
+    background-color: #3d58a9;
   }
+}
 
-  &:focus {
-    color: #a1e3ff;
-    border-right: 3px solid #a1e3ff;
-    background-color: #3e5a66;
-  }
+.focused {
+  border-right: 3px solid #7dc71c;
+  background-color: #3d58a9;
 }

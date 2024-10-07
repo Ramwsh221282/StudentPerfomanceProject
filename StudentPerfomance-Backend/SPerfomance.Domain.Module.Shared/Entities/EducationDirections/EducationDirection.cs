@@ -1,4 +1,7 @@
 using SPerfomance.Domain.Module.Shared.Common.Abstractions.Entities;
+using SPerfomance.Domain.Module.Shared.Common.Abstractions.EntityValidators;
+using SPerfomance.Domain.Module.Shared.Entities.EducationDirections.Errors;
+using SPerfomance.Domain.Module.Shared.Entities.EducationDirections.Validators;
 using SPerfomance.Domain.Module.Shared.Entities.EducationDirections.ValueObjects;
 
 namespace SPerfomance.Domain.Module.Shared.Entities.EducationDirections;
@@ -27,9 +30,27 @@ public sealed class EducationDirection : Entity
 	public DirectionType Type { get; private set; } = null!;
 
 	// Метод изменения имени направления подготовки.
-	public void ChangeDirectionName(DirectionName name) => Name = name;
+	public CSharpFunctionalExtensions.Result ChangeDirectionName(DirectionName name)
+	{
+		Validator<DirectionName> validator = new DirectionNameValidator(name);
+		if (!validator.Validate())
+			return CSharpFunctionalExtensions.Result.Failure(validator.GetErrorText());
+		if (Name == name)
+			return CSharpFunctionalExtensions.Result.Failure(new DirectionSameNameError(this).ToString());
+		Name = name;
+		return CSharpFunctionalExtensions.Result.Success();
+	}
 	// Метод изменения кода направления подготовки
-	public void ChangeDirectionCode(DirectionCode code) => Code = code;
+	public CSharpFunctionalExtensions.Result ChangeDirectionCode(DirectionCode code)
+	{
+		Validator<DirectionCode> validator = new DirectionCodeValidator(code);
+		if (!validator.Validate())
+			return CSharpFunctionalExtensions.Result.Failure(validator.GetErrorText());
+		if (Code == code)
+			return CSharpFunctionalExtensions.Result.Failure(new DirectionCodeSameError(this).ToString());
+		Code = code;
+		return CSharpFunctionalExtensions.Result.Success();
+	}
 	// Фабричный метод создания объекта.
 	public static CSharpFunctionalExtensions.Result<EducationDirection> Create(DirectionCode code, DirectionName name, DirectionType type)
 	{

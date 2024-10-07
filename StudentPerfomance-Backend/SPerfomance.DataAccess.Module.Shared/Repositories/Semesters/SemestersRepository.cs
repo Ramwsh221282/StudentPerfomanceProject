@@ -17,7 +17,7 @@ public sealed class SemestersRepository : IRepository<Semester>
 	public async Task<IReadOnlyCollection<Semester>> GetAll() =>
 		await _context.Semesters
 		.Include(s => s.Contracts)
-		.ThenInclude(c => c.LinkedSemester)
+		.ThenInclude(c => c.Semester)
 		.OrderByDescending(s => s.Number.Value)
 		.AsNoTracking()
 		.ToListAsync();
@@ -27,7 +27,7 @@ public sealed class SemestersRepository : IRepository<Semester>
 	public async Task Remove(Semester entity)
 	{
 		await _context.SemesterPlans
-		.Where(p => p.LinkedSemester.Id == entity.Id)
+		.Where(p => p.Semester.Id == entity.Id)
 		.ExecuteDeleteAsync();
 		await _context.Semesters
 		.Where(s => s.Id == entity.Id)

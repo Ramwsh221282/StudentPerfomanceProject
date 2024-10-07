@@ -12,9 +12,11 @@ internal sealed class SemesterPlanConfiguration : IEntityTypeConfiguration<Semes
 		builder.ToTable("SemesterPlans");
 		builder.Property(p => p.EntityNumber).ValueGeneratedOnAdd();
 		builder.HasKey(p => p.Id);
-		builder.Property(p => p.PlanName).IsRequired();
-		builder.HasOne(p => p.LinkedSemester);
-		builder.HasOne(p => p.LinkedDiscipline);
+		builder.OwnsOne(p => p.Discipline, onv =>
+		{
+			onv.Property(d => d.Name).IsRequired();
+		});
+		builder.HasOne(p => p.Semester);
 		builder.HasIndex(d => d.EntityNumber).IsUnique(true);
 	}
 }

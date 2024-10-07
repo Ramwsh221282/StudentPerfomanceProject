@@ -18,35 +18,6 @@ namespace SPerfomance.DataAccess.Module.Shared.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.7");
 
-            modelBuilder.Entity("SPerfomance.Domain.Module.Shared.Entities.Disciplines.Discipline", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("EntityNumber")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid?>("TeacherId")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("EntityNumber")
-                        .IsUnique();
-
-                    b.HasIndex("Name");
-
-                    b.HasIndex("TeacherId");
-
-                    b.ToTable("Disciplines", (string)null);
-                });
-
             modelBuilder.Entity("SPerfomance.Domain.Module.Shared.Entities.EducationDirections.EducationDirection", b =>
                 {
                     b.Property<Guid>("Id")
@@ -94,28 +65,24 @@ namespace SPerfomance.DataAccess.Module.Shared.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
+                    b.Property<Guid?>("AttachedTeacherId")
+                        .HasColumnType("TEXT");
+
                     b.Property<int>("EntityNumber")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<Guid>("LinkedDisciplineId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("LinkedSemesterId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("PlanName")
-                        .IsRequired()
+                    b.Property<Guid>("SemesterId")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AttachedTeacherId");
+
                     b.HasIndex("EntityNumber")
                         .IsUnique();
 
-                    b.HasIndex("LinkedDisciplineId");
-
-                    b.HasIndex("LinkedSemesterId");
+                    b.HasIndex("SemesterId");
 
                     b.ToTable("SemesterPlans", (string)null);
                 });
@@ -149,51 +116,6 @@ namespace SPerfomance.DataAccess.Module.Shared.Migrations
                     b.HasIndex("PlanId");
 
                     b.ToTable("Semesters", (string)null);
-                });
-
-            modelBuilder.Entity("SPerfomance.Domain.Module.Shared.Entities.StudentGrades.StudentGrade", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("DisciplineId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("EntityNumber")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("GradeDate")
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("StudentId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("TeacherId")
-                        .HasColumnType("TEXT");
-
-                    b.ComplexProperty<Dictionary<string, object>>("Value", "SPerfomance.Domain.Module.Shared.Entities.StudentGrades.StudentGrade.Value#GradeValue", b1 =>
-                        {
-                            b1.IsRequired();
-
-                            b1.Property<string>("Value")
-                                .IsRequired()
-                                .HasColumnType("TEXT");
-                        });
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DisciplineId");
-
-                    b.HasIndex("EntityNumber")
-                        .IsUnique();
-
-                    b.HasIndex("StudentId");
-
-                    b.HasIndex("TeacherId");
-
-                    b.ToTable("Grades", (string)null);
                 });
 
             modelBuilder.Entity("SPerfomance.Domain.Module.Shared.Entities.StudentGroups.StudentGroup", b =>
@@ -313,15 +235,6 @@ namespace SPerfomance.DataAccess.Module.Shared.Migrations
                     b.ToTable("Teachers", (string)null);
                 });
 
-            modelBuilder.Entity("SPerfomance.Domain.Module.Shared.Entities.Disciplines.Discipline", b =>
-                {
-                    b.HasOne("SPerfomance.Domain.Module.Shared.Entities.Teachers.Teacher", "Teacher")
-                        .WithMany("Disciplines")
-                        .HasForeignKey("TeacherId");
-
-                    b.Navigation("Teacher");
-                });
-
             modelBuilder.Entity("SPerfomance.Domain.Module.Shared.Entities.EducationDirections.EducationDirection", b =>
                 {
                     b.OwnsOne("SPerfomance.Domain.Module.Shared.Entities.EducationDirections.ValueObjects.DirectionCode", "Code", b1 =>
@@ -424,21 +337,39 @@ namespace SPerfomance.DataAccess.Module.Shared.Migrations
 
             modelBuilder.Entity("SPerfomance.Domain.Module.Shared.Entities.SemesterPlans.SemesterPlan", b =>
                 {
-                    b.HasOne("SPerfomance.Domain.Module.Shared.Entities.Disciplines.Discipline", "LinkedDiscipline")
-                        .WithMany()
-                        .HasForeignKey("LinkedDisciplineId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasOne("SPerfomance.Domain.Module.Shared.Entities.Teachers.Teacher", "AttachedTeacher")
+                        .WithMany("Disciplines")
+                        .HasForeignKey("AttachedTeacherId");
 
-                    b.HasOne("SPerfomance.Domain.Module.Shared.Entities.Semesters.Semester", "LinkedSemester")
+                    b.HasOne("SPerfomance.Domain.Module.Shared.Entities.Semesters.Semester", "Semester")
                         .WithMany("Contracts")
-                        .HasForeignKey("LinkedSemesterId")
+                        .HasForeignKey("SemesterId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("LinkedDiscipline");
+                    b.OwnsOne("SPerfomance.Domain.Module.Shared.Entities.SemesterPlans.ValueObjects.Discipline", "Discipline", b1 =>
+                        {
+                            b1.Property<Guid>("SemesterPlanId")
+                                .HasColumnType("TEXT");
 
-                    b.Navigation("LinkedSemester");
+                            b1.Property<string>("Name")
+                                .IsRequired()
+                                .HasColumnType("TEXT");
+
+                            b1.HasKey("SemesterPlanId");
+
+                            b1.ToTable("SemesterPlans");
+
+                            b1.WithOwner()
+                                .HasForeignKey("SemesterPlanId");
+                        });
+
+                    b.Navigation("AttachedTeacher");
+
+                    b.Navigation("Discipline")
+                        .IsRequired();
+
+                    b.Navigation("Semester");
                 });
 
             modelBuilder.Entity("SPerfomance.Domain.Module.Shared.Entities.Semesters.Semester", b =>
@@ -450,33 +381,6 @@ namespace SPerfomance.DataAccess.Module.Shared.Migrations
                         .IsRequired();
 
                     b.Navigation("Plan");
-                });
-
-            modelBuilder.Entity("SPerfomance.Domain.Module.Shared.Entities.StudentGrades.StudentGrade", b =>
-                {
-                    b.HasOne("SPerfomance.Domain.Module.Shared.Entities.Disciplines.Discipline", "Discipline")
-                        .WithMany()
-                        .HasForeignKey("DisciplineId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("SPerfomance.Domain.Module.Shared.Entities.Students.Student", "Student")
-                        .WithMany()
-                        .HasForeignKey("StudentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("SPerfomance.Domain.Module.Shared.Entities.Teachers.Teacher", "Teacher")
-                        .WithMany()
-                        .HasForeignKey("TeacherId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Discipline");
-
-                    b.Navigation("Student");
-
-                    b.Navigation("Teacher");
                 });
 
             modelBuilder.Entity("SPerfomance.Domain.Module.Shared.Entities.StudentGroups.StudentGroup", b =>

@@ -1,16 +1,24 @@
-using SPerfomance.Domain.Module.Shared.Common.Abstractions.CQRS.Queries;
-using SPerfomance.Domain.Module.Shared.Common.Abstractions.Repositories;
-using SPerfomance.Domain.Module.Shared.Common.Models.OperationResults;
+using SPerfomance.Application.Shared.Module.CQRS.Queries;
+using SPerfomance.Application.Shared.Module.Operations;
+using SPerfomance.Application.TeacherDepartments.Module.Repository;
 using SPerfomance.Domain.Module.Shared.Entities.TeacherDepartments;
 
 namespace SPerfomance.Application.TeacherDepartments.Module.Queries.All;
 
-public sealed class GetAllTeacherDepartmentsQuery(IRepository<TeachersDepartment> repository) : IQuery
+internal sealed class GetAllTeacherDepartmentsQuery : IQuery
 {
-	public readonly IQueryHandler<GetAllTeacherDepartmentsQuery, IReadOnlyCollection<TeachersDepartment>> Handler = new QueryHandler(repository);
-	internal sealed class QueryHandler(IRepository<TeachersDepartment> repository) : IQueryHandler<GetAllTeacherDepartmentsQuery, IReadOnlyCollection<TeachersDepartment>>
+	private readonly TeacherDepartmentsQueryRepository _repository;
+	public readonly IQueryHandler<GetAllTeacherDepartmentsQuery, IReadOnlyCollection<TeachersDepartment>> Handler;
+
+	public GetAllTeacherDepartmentsQuery()
 	{
-		private readonly IRepository<TeachersDepartment> _repository = repository;
+		_repository = new TeacherDepartmentsQueryRepository();
+		Handler = new QueryHandler(_repository);
+	}
+
+	internal sealed class QueryHandler(TeacherDepartmentsQueryRepository repository) : IQueryHandler<GetAllTeacherDepartmentsQuery, IReadOnlyCollection<TeachersDepartment>>
+	{
+		private readonly TeacherDepartmentsQueryRepository _repository = repository;
 		public async Task<OperationResult<IReadOnlyCollection<TeachersDepartment>>> Handle(GetAllTeacherDepartmentsQuery query)
 		{
 			IReadOnlyCollection<TeachersDepartment> departments = await _repository.GetAll();

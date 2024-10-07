@@ -1,17 +1,36 @@
 .education-directions-card-layout {
   display: flex;
   flex-direction: column;
+  background-color: #dae0f1;
+  height: 180px;
+  width: 350px;
+  border-radius: 10px;
+  box-shadow: #1b274b 0 10px 20px -10px;
+  transition: transform 1s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.header-part {
+  background-color: #7c91d0;
+  border-radius: 10px 10px 0px 0px;
+  padding: 5px;
+  box-shadow: #b4c0e4 0 10px 20px -10px;
+  color: #ffffff;
 }
 
 .information-part {
   padding: 5px;
-  color: #a1e3ff;
+  color: #1b274b;
   font-size: 14px;
   display: flex;
   flex-direction: column;
 }
 
 .controls-part {
+  border-top: 1px solid #1b274b;
   display: flex;
   flex-direction: row;
   gap: 10px;

@@ -12,6 +12,20 @@ export class FetchService extends BaseService {
   private _directions: EducationDirection[] = [];
   public constructor() {
     super();
+    const direction1: EducationDirection = {
+      entityNumber: 1,
+      code: '09.03.01',
+      type: 'Бакалавриат',
+      name: 'Информатика и вычислительная техника',
+    } as EducationDirection;
+    const direction2: EducationDirection = {
+      entityNumber: 2,
+      code: '09.04.01',
+      type: 'Магистратура',
+      name: 'Информатика и вычислительная техника',
+    } as EducationDirection;
+    this._directions.push(direction1);
+    this._directions.push(direction2);
   }
 
   public get directions(): EducationDirection[] {
@@ -19,12 +33,12 @@ export class FetchService extends BaseService {
   }
 
   public fetchPaged(factory: IRequestParamsFactory): void {
-    const params = factory.Params;
+    /*const params = factory.Params;
     this.httpClient
       .get<EducationDirection[]>(`${this.baseApiUri}/byPage`, { params })
       .subscribe((response) => {
         this._directions = response;
-      });
+      });*/
   }
 
   public fetchFilteredAndPaged(factory: IRequestParamsFactory): void {

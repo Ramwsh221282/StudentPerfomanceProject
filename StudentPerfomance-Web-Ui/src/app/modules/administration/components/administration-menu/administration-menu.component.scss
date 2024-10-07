@@ -1,21 +1,26 @@
 .menu-element-form-wrapper {
-  background-color: #22343c;
-  height: 115px;
+  background-color: #e6eaf6;
+  height: 150px;
   width: 300px;
+  border-radius: 10px;
+  box-shadow: #e6eaf6 0 10px 20px -10px;
 }
 
 .menu-element-header-wrapper {
+  border-radius: 10px 10px 0px 0px;
   padding: 5px;
-  background-color: #2d4048;
+  background-color: #7c91d0;
+  box-shadow: #7c91d0 0 10px 20px -10px;
 }
 
 .menu-element-form-header {
-  color: #a1e3ff;
+  color: #ffffff;
   font-weight: bold;
   font-size: 14px;
 }
 
 .button-container {
   padding: 5px;
-  margin-top: 30px;
+  position: relative;
+  bottom: -65px;
 }

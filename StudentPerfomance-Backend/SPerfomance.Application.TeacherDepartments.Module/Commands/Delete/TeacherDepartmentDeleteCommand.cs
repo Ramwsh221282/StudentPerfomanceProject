@@ -1,25 +1,37 @@
-using SPerfomance.Domain.Module.Shared.Common.Abstractions.CQRS.Commands;
+using CSharpFunctionalExtensions;
+
+using SPerfomance.Application.Shared.Module.CQRS.Commands;
+using SPerfomance.Application.Shared.Module.Operations;
+using SPerfomance.Application.Shared.Module.Schemas.Departments;
+using SPerfomance.Application.TeacherDepartments.Module.Repository;
+using SPerfomance.Application.TeacherDepartments.Module.Repository.Expressions;
 using SPerfomance.Domain.Module.Shared.Common.Abstractions.Repositories;
-using SPerfomance.Domain.Module.Shared.Common.Models.OperationResults;
 using SPerfomance.Domain.Module.Shared.Entities.TeacherDepartments;
-using SPerfomance.Domain.Module.Shared.Entities.TeacherDepartments.Errors;
 
 namespace SPerfomance.Application.TeacherDepartments.Module.Commands.Delete;
 
-public sealed class TeacherDepartmentDeleteCommand(IRepositoryExpression<TeachersDepartment> expression, IRepository<TeachersDepartment> repository) : ICommand
+internal sealed class TeacherDepartmentDeleteCommand : ICommand
 {
-	private readonly IRepositoryExpression<TeachersDepartment> _expression = expression;
-	public readonly ICommandHandler<TeacherDepartmentDeleteCommand, TeachersDepartment> Handler = new CommandHandler(repository);
-	internal sealed class CommandHandler(IRepository<TeachersDepartment> repository) : ICommandHandler<TeacherDepartmentDeleteCommand, TeachersDepartment>
+	private readonly IRepositoryExpression<TeachersDepartment> _expression;
+	private readonly TeacherDepartmentsCommandRepository _repository;
+	public readonly ICommandHandler<TeacherDepartmentDeleteCommand, TeachersDepartment> Handler;
+
+	public TeacherDepartmentDeleteCommand(DepartmentSchema department)
 	{
-		private readonly IRepository<TeachersDepartment> _repository = repository;
+		_expression = ExpressionsFactory.GetDepartment(department.ToRepositoryObject());
+		_repository = new TeacherDepartmentsCommandRepository();
+		Handler = new CommandHandler(_repository);
+	}
+
+	internal sealed class CommandHandler(TeacherDepartmentsCommandRepository repository) : ICommandHandler<TeacherDepartmentDeleteCommand, TeachersDepartment>
+	{
+		private readonly TeacherDepartmentsCommandRepository _repository = repository;
 		public async Task<OperationResult<TeachersDepartment>> Handle(TeacherDepartmentDeleteCommand command)
 		{
-			TeachersDepartment? department = await _repository.GetByParameter(command._expression);
-			if (department == null)
-				return new OperationResult<TeachersDepartment>(new DepartmentNotFountError().ToString());
-			await _repository.Remove(department);
-			return new OperationResult<TeachersDepartment>(department);
+			Result<TeachersDepartment> delete = await _repository.Remove(command._expression);
+			return delete.IsFailure ?
+				new OperationResult<TeachersDepartment>(delete.Error) :
+				new OperationResult<TeachersDepartment>(delete.Value);
 		}
 	}
 }

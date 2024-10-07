@@ -12,6 +12,8 @@ import { FailureNotificationFormComponent } from '../../../../shared/components/
 import { SuccessNotificationFormComponent } from '../../../../shared/components/notification-modal-forms/success-notification-form/success-notification-form.component';
 import { EducationDirectionsPaginationComponent } from './components/education-directions-table/education-directions-pagination/education-directions-pagination.component';
 import { EducationDirectionDeletionConfirmationComponent } from './components/education-direction-deletion-confirmation/education-direction-deletion-confirmation.component';
+import { EducationDirectionFilterFormComponent } from './components/education-direction-filter-form/education-direction-filter-form.component';
+import { EducationDirectionStatisticsCardComponent } from './components/education-direction-statistics-card/education-direction-statistics-card.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import { EducationDirectionDeletionConfirmationComponent } from './components/ed
     EducationDirectionsCardComponent,
     EducationDirectionsPaginationComponent,
     EducationDirectionDeletionConfirmationComponent,
+    EducationDirectionFilterFormComponent,
+    EducationDirectionStatisticsCardComponent,
   ],
   imports: [
     CommonModule,

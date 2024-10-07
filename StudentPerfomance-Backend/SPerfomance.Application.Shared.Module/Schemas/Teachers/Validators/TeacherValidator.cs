@@ -1,5 +1,3 @@
-using SPerfomance.Domain.Module.Shared.Common.Abstractions.EntitySchemas;
-
 namespace SPerfomance.Application.Shared.Module.Schemas.Teachers.Validators;
 
 public sealed class TeacherValidator : BaseSchemaValidator, ISchemaValidator

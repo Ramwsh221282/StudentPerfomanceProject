@@ -1,5 +1,8 @@
 using SPerfomance.Domain.Module.Shared.Common.Abstractions.Entities;
+using SPerfomance.Domain.Module.Shared.Common.Abstractions.EntityValidators;
 using SPerfomance.Domain.Module.Shared.Entities.StudentGroups;
+using SPerfomance.Domain.Module.Shared.Entities.StudentGroups.Errors;
+using SPerfomance.Domain.Module.Shared.Entities.Students.Validators;
 using SPerfomance.Domain.Module.Shared.Entities.Students.ValueObjects;
 
 namespace SPerfomance.Domain.Module.Shared.Entities.Students;
@@ -24,13 +27,40 @@ public sealed class Student : Entity
 	public StudentState State { get; private set; } = null!;
 	public StudentRecordBook Recordbook { get; private set; } = null!;
 
-	public void ChangeGroup(StudentGroup group) => Group = group;
+	public CSharpFunctionalExtensions.Result ChangeGroup(StudentGroup? group)
+	{
+		if (group == null)
+			return Failure(new GroupNotFoundError().ToString());
+		Group = group;
+		return Success();
+	}
 
-	public void ChangeName(StudentName name) => Name = name;
+	public CSharpFunctionalExtensions.Result ChangeName(StudentName name)
+	{
+		Validator<StudentName> validator = new StudentNameValidator(name);
+		if (!validator.Validate())
+			return Failure(validator.GetErrorText());
+		Name = name;
+		return Success();
+	}
 
-	public void ChangeState(StudentState state) => State = state;
+	public CSharpFunctionalExtensions.Result ChangeState(StudentState state)
+	{
+		Validator<StudentState> validator = new StudentStateValidator(state);
+		if (!validator.Validate())
+			return Failure(validator.GetErrorText());
+		State = state;
+		return Success();
+	}
 
-	public void ChangeRecordBook(StudentRecordBook recordBook) => Recordbook = recordBook;
+	public CSharpFunctionalExtensions.Result ChangeRecordBook(StudentRecordBook recordBook)
+	{
+		Validator<StudentRecordBook> validator = new StudentRecordBookValidator(recordBook);
+		if (!validator.Validate())
+			return Failure(validator.GetErrorText());
+		Recordbook = recordBook;
+		return Success();
+	}
 
 	public static CSharpFunctionalExtensions.Result<Student> Create
 	(

@@ -1,6 +1,12 @@
 .education-directions-page-layout {
   padding: 10px;
   display: grid;
-  grid-template-columns: 800px 500px;
+  grid-template-columns: 780px 900px;
   grid-gap: 10px;
+}
+
+.extra-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }

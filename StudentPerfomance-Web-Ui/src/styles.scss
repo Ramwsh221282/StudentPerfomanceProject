@@ -1,4 +1,5 @@
 @import "modals.scss";
+@import "buttons.scss";
 
 @font-face {
   font-family: OpenSans;
@@ -9,20 +10,27 @@ html,
 body,
 :root {
   font-family: "OpenSans";
-  background-color: #1b2b32;
+  background-color: #ffffff;
 }
 
 .default-input {
-  outline: none;
-  padding: 5px;
-  border: none;
-  color: #a1e3ff;
-  background-color: #22343c;
-  transition: 0.3s;
+  position: relative;
+  cursor: text;
+  font-size: 14px;
+  line-height: 20px;
+  padding: 0 16px;
+  height: 30px;
+  background-color: #fff;
+  border: 1px solid #d6d6e7;
+  border-radius: 3px;
+  color: rgb(35, 38, 59);
+  box-shadow: inset 0 1px 4px 0 rgb(119 122 175 / 30%);
+  overflow: hidden;
+  transition: all 100ms ease-in-out;
 
   &:focus {
-    border: 1px solid #a1e3ff;
-    background-color: #3e5a66;
+    border-color: #3c4fe0;
+    box-shadow: 0 1px 0 0 rgb(35 38 59 / 5%);
   }
 }
 

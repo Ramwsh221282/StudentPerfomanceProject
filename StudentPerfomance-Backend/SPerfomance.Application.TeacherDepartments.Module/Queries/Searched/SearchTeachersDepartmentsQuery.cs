@@ -1,17 +1,27 @@
-using SPerfomance.Domain.Module.Shared.Common.Abstractions.CQRS.Queries;
+using SPerfomance.Application.Shared.Module.CQRS.Queries;
+using SPerfomance.Application.Shared.Module.Operations;
+using SPerfomance.Application.Shared.Module.Schemas.Departments;
+using SPerfomance.Application.TeacherDepartments.Module.Repository;
+using SPerfomance.Application.TeacherDepartments.Module.Repository.Expressions;
 using SPerfomance.Domain.Module.Shared.Common.Abstractions.Repositories;
-using SPerfomance.Domain.Module.Shared.Common.Models.OperationResults;
 using SPerfomance.Domain.Module.Shared.Entities.TeacherDepartments;
 
 namespace SPerfomance.Application.TeacherDepartments.Module.Queries.Searched;
 
-public sealed class SearchTeachersDepartmentsQuery(IRepositoryExpression<TeachersDepartment> expression, IRepository<TeachersDepartment> repository) : IQuery
+internal sealed class SearchTeachersDepartmentsQuery : IQuery
 {
-	private readonly IRepositoryExpression<TeachersDepartment> _expression = expression;
-	public readonly IQueryHandler<SearchTeachersDepartmentsQuery, IReadOnlyCollection<TeachersDepartment>> Handler = new QueryHandler(repository);
-	internal sealed class QueryHandler(IRepository<TeachersDepartment> repository) : IQueryHandler<SearchTeachersDepartmentsQuery, IReadOnlyCollection<TeachersDepartment>>
+	private readonly IRepositoryExpression<TeachersDepartment> _expression;
+	private readonly TeacherDepartmentsQueryRepository _repository;
+	public readonly IQueryHandler<SearchTeachersDepartmentsQuery, IReadOnlyCollection<TeachersDepartment>> Handler;
+	public SearchTeachersDepartmentsQuery(DepartmentSchema department)
 	{
-		private readonly IRepository<TeachersDepartment> _repository = repository;
+		_expression = ExpressionsFactory.GetByName(department.ToRepositoryObject());
+		_repository = new TeacherDepartmentsQueryRepository();
+		Handler = new QueryHandler(_repository);
+	}
+	internal sealed class QueryHandler(TeacherDepartmentsQueryRepository repository) : IQueryHandler<SearchTeachersDepartmentsQuery, IReadOnlyCollection<TeachersDepartment>>
+	{
+		private readonly TeacherDepartmentsQueryRepository _repository = repository;
 		public async Task<OperationResult<IReadOnlyCollection<TeachersDepartment>>> Handle(SearchTeachersDepartmentsQuery query)
 		{
 			IReadOnlyCollection<TeachersDepartment> departments = await _repository.GetFiltered(query._expression);

@@ -2,8 +2,10 @@ C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backe
 C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Application.Students.Module\bin\Debug\net8.0\SPerfomance.Application.Students.Module.dll
 C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Application.Students.Module\bin\Debug\net8.0\SPerfomance.Application.Students.Module.pdb
 C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Application.Students.Module\bin\Debug\net8.0\SPerfomance.Application.Shared.Module.dll
+C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Application.Students.Module\bin\Debug\net8.0\SPerfomance.DataAccess.Module.Shared.dll
 C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Application.Students.Module\bin\Debug\net8.0\SPerfomance.Domain.Module.Shared.dll
 C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Application.Students.Module\bin\Debug\net8.0\SPerfomance.Application.Shared.Module.pdb
+C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Application.Students.Module\bin\Debug\net8.0\SPerfomance.DataAccess.Module.Shared.pdb
 C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Application.Students.Module\bin\Debug\net8.0\SPerfomance.Domain.Module.Shared.pdb
 C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Application.Students.Module\obj\Debug\net8.0\SPerfomance.Application.Students.Module.csproj.AssemblyReference.cache
 C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Application.Students.Module\obj\Debug\net8.0\SPerfomance.Application.Students.Module.GeneratedMSBuildEditorConfig.editorconfig

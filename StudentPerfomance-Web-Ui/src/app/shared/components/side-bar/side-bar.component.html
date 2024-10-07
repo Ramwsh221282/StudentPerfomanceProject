@@ -1,7 +1,19 @@
 <div class="side-bar">
   <h5 class="menu-header">Основное меню</h5>
-  <button class="menu-button" [routerLink]="['/administration']">
+  <button
+    #menuButton
+    class="side-bar-menu-button"
+    (click)="selectMenu($event, this.menuButton)"
+    [routerLink]="['/administration']"
+  >
     Администрирование
   </button>
-  <button class="menu-button" disabled>Преподавателям (WIP)</button>
+  <button
+    #menuButton
+    class="side-bar-menu-button"
+    (click)="selectMenu($event, this.menuButton)"
+    disabled
+  >
+    Преподавателям (WIP)
+  </button>
 </div>

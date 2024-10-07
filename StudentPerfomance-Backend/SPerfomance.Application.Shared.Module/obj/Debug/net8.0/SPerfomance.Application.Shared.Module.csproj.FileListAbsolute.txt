@@ -29,3 +29,5 @@ C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backe
 C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Application.Shared.Module\obj\Debug\net8.0\refint\SPerfomance.Application.Shared.Module.dll
 C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Application.Shared.Module\obj\Debug\net8.0\SPerfomance.Application.Shared.Module.pdb
 C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Application.Shared.Module\obj\Debug\net8.0\ref\SPerfomance.Application.Shared.Module.dll
+C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Application.Shared.Module\bin\Debug\net8.0\SPerfomance.DataAccess.Module.Shared.dll
+C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Application.Shared.Module\bin\Debug\net8.0\SPerfomance.DataAccess.Module.Shared.pdb

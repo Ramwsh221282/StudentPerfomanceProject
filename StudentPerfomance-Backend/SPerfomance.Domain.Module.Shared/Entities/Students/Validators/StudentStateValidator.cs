@@ -10,9 +10,11 @@ internal sealed class StudentStateValidator(StudentState state) : Validator<Stud
 	private static readonly StudentState[] _states = { StudentState.Active, StudentState.NotActive };
 	public override bool Validate()
 	{
-		if (string.IsNullOrWhiteSpace(_state.State))
+		if (_state == null)
 			error.AppendError(new StudentStateError());
-		if (_states.Any(item => item.State == _state.State) == false)
+		if (_state != null && string.IsNullOrWhiteSpace(_state.State))
+			error.AppendError(new StudentStateError());
+		if (_state != null && _states.Any(item => item.State == _state.State) == false)
 			error.AppendError(new StudentStateError());
 		return HasError;
 	}

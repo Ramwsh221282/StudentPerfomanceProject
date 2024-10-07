@@ -1,6 +1,4 @@
 using CSharpFunctionalExtensions;
-
-using SPerfomance.Domain.Module.Shared.Common.Abstractions.EntitySchemas;
 using SPerfomance.Domain.Module.Shared.Entities.TeacherDepartments;
 
 namespace SPerfomance.Application.Shared.Module.Schemas.Departments.Validators;

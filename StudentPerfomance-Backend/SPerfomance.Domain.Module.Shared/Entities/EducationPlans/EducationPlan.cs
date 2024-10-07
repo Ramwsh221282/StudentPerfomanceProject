@@ -1,9 +1,12 @@
 using SPerfomance.Domain.Module.Shared.Common.Abstractions.Entities;
 using SPerfomance.Domain.Module.Shared.Common.Abstractions.EntityValidators;
 using SPerfomance.Domain.Module.Shared.Entities.EducationDirections;
+using SPerfomance.Domain.Module.Shared.Entities.EducationDirections.ValueObjects;
+using SPerfomance.Domain.Module.Shared.Entities.EducationPlans.Errors;
 using SPerfomance.Domain.Module.Shared.Entities.EducationPlans.Validators;
 using SPerfomance.Domain.Module.Shared.Entities.EducationPlans.ValueObjects;
 using SPerfomance.Domain.Module.Shared.Entities.Semesters;
+using SPerfomance.Domain.Module.Shared.Entities.Semesters.Errors;
 
 namespace SPerfomance.Domain.Module.Shared.Entities.EducationPlans;
 
@@ -32,7 +35,19 @@ public sealed class EducationPlan : Entity
 	// Получение списка семестров только для чтения.
 	public IReadOnlyCollection<Semester> Semesters => _semesters;
 	// Добавление семестра
-	public void AddSemester(Semester semester) => _semesters.Add(semester);
+	public CSharpFunctionalExtensions.Result AddSemester(Semester semester)
+	{
+		if (semester == null)
+			return CSharpFunctionalExtensions.Result.Failure(new SemesterNullError().ToString());
+		if (Direction.Type == new BachelorDirection() && _semesters.Count > DirectionTypeConstraints.BachelorSemestersLimit)
+			return CSharpFunctionalExtensions.Result.Failure(new EducationPlanSemestersLimitError(this).ToString());
+		if (Direction.Type == new MagisterDirection() && _semesters.Count > DirectionTypeConstraints.MagisterSemestersLimit)
+			return CSharpFunctionalExtensions.Result.Failure(new EducationPlanSemestersLimitError(this).ToString());
+		if (_semesters.Any(s => s.Number == semester.Number))
+			return CSharpFunctionalExtensions.Result.Failure(new EducationPlanSemesterDublicateError(this).ToString());
+		_semesters.Add(semester);
+		return CSharpFunctionalExtensions.Result.Success();
+	}
 	// Фабричный метод создания дефолтного объекта.
 	public static EducationPlan CreateDefault() => new EducationPlan();
 	// Фабричный метод создания учебного плана без семестров.

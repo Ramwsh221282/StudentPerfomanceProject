@@ -1,41 +1,40 @@
+using CSharpFunctionalExtensions;
+
+using SPerfomance.Application.Shared.Module.CQRS.Commands;
+using SPerfomance.Application.Shared.Module.Operations;
 using SPerfomance.Application.Shared.Module.Schemas.Departments;
-using SPerfomance.Application.Shared.Module.Schemas.Departments.Validators;
-using SPerfomance.Domain.Module.Shared.Common.Abstractions.CQRS.Commands;
-using SPerfomance.Domain.Module.Shared.Common.Abstractions.EntitySchemas;
+using SPerfomance.Application.TeacherDepartments.Module.Repository;
+using SPerfomance.Application.TeacherDepartments.Module.Repository.Expressions;
 using SPerfomance.Domain.Module.Shared.Common.Abstractions.Repositories;
-using SPerfomance.Domain.Module.Shared.Common.Models.OperationResults;
 using SPerfomance.Domain.Module.Shared.Entities.TeacherDepartments;
-using SPerfomance.Domain.Module.Shared.Entities.TeacherDepartments.Errors;
 
 namespace SPerfomance.Application.TeacherDepartments.Module.Commands.Create;
 
-public sealed class TeacherDepartmentCreateCommand : ICommand
+internal sealed class TeacherDepartmentCreateCommand : ICommand
 {
 	private readonly DepartmentSchema _department;
 	private readonly IRepositoryExpression<TeachersDepartment> _nameDublicate;
-	private readonly ISchemaValidator _validator;
+	private readonly TeacherDepartmentsCommandRepository _repository;
 	public readonly ICommandHandler<TeacherDepartmentCreateCommand, TeachersDepartment> Handler;
-	public TeacherDepartmentCreateCommand(DepartmentSchema department, IRepositoryExpression<TeachersDepartment> nameDublicate, IRepository<TeachersDepartment> repository)
+
+	public TeacherDepartmentCreateCommand(DepartmentSchema department)
 	{
 		_department = department;
-		_nameDublicate = nameDublicate;
-		_validator = new DepartmentSchemaValidator().WithNameValidation(department);
-		_validator.ProcessValidation();
-		Handler = new CommandHandler(repository);
+		_repository = new TeacherDepartmentsCommandRepository();
+		Handler = new CommandHandler(_repository);
+		_nameDublicate = ExpressionsFactory.GetByName(department.ToRepositoryObject());
 	}
 
-	internal sealed class CommandHandler(IRepository<TeachersDepartment> repository) : ICommandHandler<TeacherDepartmentCreateCommand, TeachersDepartment>
+	internal sealed class CommandHandler(TeacherDepartmentsCommandRepository repository) : ICommandHandler<TeacherDepartmentCreateCommand, TeachersDepartment>
 	{
-		private readonly IRepository<TeachersDepartment> _repository = repository;
+		private readonly TeacherDepartmentsCommandRepository _repository = repository;
 		public async Task<OperationResult<TeachersDepartment>> Handle(TeacherDepartmentCreateCommand command)
 		{
-			if (!command._validator.IsValid)
-				return new OperationResult<TeachersDepartment>(command._validator.Error);
-			if (await _repository.HasEqualRecord(command._nameDublicate))
-				return new OperationResult<TeachersDepartment>(new DepartmentNameDublicateError(command._department.FullName).ToString());
-			TeachersDepartment department = command._department.CreateDomainObject();
-			await _repository.Create(department);
-			return new OperationResult<TeachersDepartment>(department);
+
+			Result<TeachersDepartment> create = await _repository.Create(command._department, command._nameDublicate);
+			return create.IsFailure ?
+				new OperationResult<TeachersDepartment>(create.Error) :
+				new OperationResult<TeachersDepartment>(create.Value);
 		}
 	}
 }

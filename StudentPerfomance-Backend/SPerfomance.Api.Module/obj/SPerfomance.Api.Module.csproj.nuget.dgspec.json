@@ -38,8 +38,8 @@
               "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomance-Backend\\SPerfomance.Application.EducationPlans.Module\\SPerfomance.Application.EducationPlans.Module.csproj": {
                 "projectPath": "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomance-Backend\\SPerfomance.Application.EducationPlans.Module\\SPerfomance.Application.EducationPlans.Module.csproj"
               },
-              "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomance-Backend\\SPerfomance.Application.Semesters.Module\\SPerfomance.Application.Semesters.Module.csproj": {
-                "projectPath": "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomance-Backend\\SPerfomance.Application.Semesters.Module\\SPerfomance.Application.Semesters.Module.csproj"
+              "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomance-Backend\\SPerfomance.Application.Semester.Module\\SPerfomance.Application.Semester.Module.csproj": {
+                "projectPath": "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomance-Backend\\SPerfomance.Application.Semester.Module\\SPerfomance.Application.Semester.Module.csproj"
               },
               "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomance-Backend\\SPerfomance.Application.StudentGroups.Module\\SPerfomance.Application.StudentGroups.Module.csproj": {
                 "projectPath": "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomance-Backend\\SPerfomance.Application.StudentGroups.Module\\SPerfomance.Application.StudentGroups.Module.csproj"
@@ -52,9 +52,6 @@
               },
               "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomance-Backend\\SPerfomance.Application.Teachers.Module\\SPerfomance.Application.Teachers.Module.csproj": {
                 "projectPath": "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomance-Backend\\SPerfomance.Application.Teachers.Module\\SPerfomance.Application.Teachers.Module.csproj"
-              },
-              "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomance-Backend\\SPerfomance.DataAccess.Module.Shared\\SPerfomance.DataAccess.Module.Shared.csproj": {
-                "projectPath": "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomance-Backend\\SPerfomance.DataAccess.Module.Shared\\SPerfomance.DataAccess.Module.Shared.csproj"
               }
             }
           }
@@ -242,14 +239,14 @@
         }
       }
     },
-    "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomance-Backend\\SPerfomance.Application.Semesters.Module\\SPerfomance.Application.Semesters.Module.csproj": {
+    "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomance-Backend\\SPerfomance.Application.Semester.Module\\SPerfomance.Application.Semester.Module.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomance-Backend\\SPerfomance.Application.Semesters.Module\\SPerfomance.Application.Semesters.Module.csproj",
-        "projectName": "SPerfomance.Application.Semesters.Module",
-        "projectPath": "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomance-Backend\\SPerfomance.Application.Semesters.Module\\SPerfomance.Application.Semesters.Module.csproj",
+        "projectUniqueName": "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomance-Backend\\SPerfomance.Application.Semester.Module\\SPerfomance.Application.Semester.Module.csproj",
+        "projectName": "SPerfomance.Application.Semester.Module",
+        "projectPath": "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomance-Backend\\SPerfomance.Application.Semester.Module\\SPerfomance.Application.Semester.Module.csproj",
         "packagesPath": "C:\\Users\\Ramwsh\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomance-Backend\\SPerfomance.Application.Semesters.Module\\obj\\",
+        "outputPath": "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomance-Backend\\SPerfomance.Application.Semester.Module\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -338,6 +335,9 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
+              "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomance-Backend\\SPerfomance.DataAccess.Module.Shared\\SPerfomance.DataAccess.Module.Shared.csproj": {
+                "projectPath": "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomance-Backend\\SPerfomance.DataAccess.Module.Shared\\SPerfomance.DataAccess.Module.Shared.csproj"
+              },
               "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomance-Backend\\SPerfomance.Domain.Module.Shared\\SPerfomance.Domain.Module.Shared.csproj": {
                 "projectPath": "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomance-Backend\\SPerfomance.Domain.Module.Shared\\SPerfomance.Domain.Module.Shared.csproj"
               }
@@ -358,6 +358,12 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Mvc.Core": {
+              "target": "Package",
+              "version": "[2.2.5, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

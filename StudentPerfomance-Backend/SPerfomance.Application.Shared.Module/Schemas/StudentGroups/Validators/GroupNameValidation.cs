@@ -1,6 +1,5 @@
 using CSharpFunctionalExtensions;
 
-using SPerfomance.Domain.Module.Shared.Common.Abstractions.EntitySchemas;
 using SPerfomance.Domain.Module.Shared.Entities.StudentGroups.ValueObjects;
 
 namespace SPerfomance.Application.Shared.Module.Schemas.StudentGroups.Validators;
@@ -12,7 +11,7 @@ internal sealed class GroupNameValidation(StudentsGroupSchema schema) : BaseSche
 	public Func<EntitySchema, bool> BuildCriteria(StudentsGroupSchema schema) => (schema) => Validate();
 	protected override bool Validate()
 	{
-		Result<GroupName> result = GroupName.Create(_schema.NameInfo);
+		Result<GroupName> result = GroupName.Create(_schema.Name);
 		return result.IsFailure ? ReturnError(result.Error) : ReturnSuccess();
 	}
 }

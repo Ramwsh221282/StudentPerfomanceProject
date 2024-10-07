@@ -15,7 +15,7 @@ internal sealed class SemesterConfiguration : IEntityTypeConfiguration<Semester>
 		{
 			builder.Property(n => n.Value).IsRequired();
 		});
-		builder.HasMany(s => s.Contracts).WithOne(c => c.LinkedSemester);
+		builder.HasMany(s => s.Contracts).WithOne(c => c.Semester);
 		builder.HasIndex(d => d.EntityNumber).IsUnique(true);
 	}
 }

@@ -2,9 +2,10 @@ using System.Text;
 
 using SPerfomance.Domain.Module.Shared.Common.Abstractions.Entities;
 using SPerfomance.Domain.Module.Shared.Common.Abstractions.EntityValidators;
+using SPerfomance.Domain.Module.Shared.Entities.TeacherDepartments.Errors;
 using SPerfomance.Domain.Module.Shared.Entities.TeacherDepartments.Validators;
 using SPerfomance.Domain.Module.Shared.Entities.Teachers;
-using SPerfomance.Domain.Module.Shared.Entities.Teachers.ValueObjects;
+using SPerfomance.Domain.Module.Shared.Entities.Teachers.Errors;
 
 namespace SPerfomance.Domain.Module.Shared.Entities.TeacherDepartments;
 
@@ -24,26 +25,40 @@ public sealed class TeachersDepartment : Entity
 	public string ShortName { get; private set; }
 	public string FullName { get; private set; }
 	public IReadOnlyCollection<Teacher> Teachers => _teachers;
-	public void ChangeDepartmentName(string name)
+	public CSharpFunctionalExtensions.Result ChangeDepartmentName(string name)
 	{
+		Validator<string> validator = new DepartmentNameValidator(name);
+		if (!validator.Validate())
+			return Failure(validator.GetErrorText());
 		FullName = name;
 		ShortName = ConstructShortName(name);
+		return Success();
 	}
-	public Teacher? TryFindTeacher(TeacherName name) =>
-		_teachers.FirstOrDefault
-		(
-			t => t.Name.Name == name.Name &&
-			t.Name.Surname == name.Surname &&
-			t.Name.Thirdname == name.Thirdname
-		);
 
-	public void AddTeacher(Teacher teacher) => _teachers.Add(teacher);
+	public CSharpFunctionalExtensions.Result AddTeacher(Teacher? teacher)
+	{
+		if (teacher == null)
+			return Failure(new TeacherNotFoundError().ToString());
+		if (_teachers.Any(t => t.Id == teacher.Id &&
+			t.Name == teacher.Name &&
+			t.JobTitle == teacher.JobTitle &&
+			t.Condition == teacher.Condition))
+			return Failure(new DepartmentTeacherDublicateError().ToString());
+		if (_teachers.Any(t => t.Name == teacher.Name &&
+		t.JobTitle == teacher.JobTitle &&
+		t.Condition == teacher.Condition))
+			return Failure(new DepartmentTeacherDublicateError().ToString());
+		_teachers.Add(teacher);
+		return Success();
+	}
 
-	public void RemoveTeacher(Teacher teacher)
+	public CSharpFunctionalExtensions.Result RemoveTeacher(Teacher teacher)
 	{
 		Teacher? target = _teachers.FirstOrDefault(t => t.Id == teacher.Id);
-		if (target != null)
-			_teachers.Remove(target);
+		if (target == null)
+			return Failure(new TeacherNotFoundError().ToString());
+		_teachers.Remove(target);
+		return Success();
 	}
 
 	public static CSharpFunctionalExtensions.Result<TeachersDepartment> Create(string name)

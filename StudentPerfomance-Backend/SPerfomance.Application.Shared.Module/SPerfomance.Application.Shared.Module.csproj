@@ -8,6 +8,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SPerfomance.Domain.Module.Shared\SPerfomance.Domain.Module.Shared.csproj" />
+    <ProjectReference Include="..\SPerfomance.DataAccess.Module.Shared\SPerfomance.DataAccess.Module.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
   </ItemGroup>
 
 </Project>

@@ -11,15 +11,17 @@ internal sealed class StudentNameValidator(StudentName name) : Validator<Student
 
 	public override bool Validate()
 	{
-		if (string.IsNullOrWhiteSpace(_name.Name))
+		if (_name == null)
 			error.AppendError(new StudentNameError());
-		if (string.IsNullOrWhiteSpace(_name.Surname))
+		if (_name != null && string.IsNullOrWhiteSpace(_name.Name))
+			error.AppendError(new StudentNameError());
+		if (_name != null && string.IsNullOrWhiteSpace(_name.Surname))
 			error.AppendError(new StudentSurnameError());
-		if (!string.IsNullOrWhiteSpace(_name.Name) && _name.Name.Length > _maxLength)
+		if (_name != null && !string.IsNullOrWhiteSpace(_name.Name) && _name.Name.Length > _maxLength)
 			error.AppendError(new StudentNameLengthError(_maxLength));
-		if (!string.IsNullOrWhiteSpace(_name.Surname) && _name.Surname.Length > _maxLength)
+		if (_name != null && !string.IsNullOrWhiteSpace(_name.Surname) && _name.Surname.Length > _maxLength)
 			error.AppendError(new StudentSurnameLengthError(_maxLength));
-		if (!string.IsNullOrWhiteSpace(_name.Thirdname) && _name.Thirdname.Length > _maxLength)
+		if (_name != null && !string.IsNullOrWhiteSpace(_name.Thirdname) && _name.Thirdname.Length > _maxLength)
 			error.AppendError(new StudentThirdnameLengthError(_maxLength));
 		return HasError;
 	}

@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
 using SPerfomance.Domain.Module.Shared.Common.Abstractions.Repositories;
-using SPerfomance.Domain.Module.Shared.Entities.StudentGroups;
 using SPerfomance.Domain.Module.Shared.Entities.TeacherDepartments;
 using SPerfomance.Domain.Module.Shared.Entities.Teachers;
 
@@ -30,8 +29,6 @@ public sealed class TeachersDepartmentsRepository : IRepository<TeachersDepartme
 	{
 		foreach (Teacher teacher in entity.Teachers)
 		{
-			await _context.Grades.Where(g => g.Teacher.Id == teacher.Id).ExecuteDeleteAsync();
-			await _context.Disciplines.Where(d => d.Teacher != null && d.Teacher.Id == teacher.Id).ExecuteDeleteAsync();
 			await _context.Teachers.Where(t => t.Id == teacher.Id).ExecuteDeleteAsync();
 		}
 		await _context.Departments.Where(d => d.Id == entity.Id)

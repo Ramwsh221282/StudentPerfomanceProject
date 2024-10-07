@@ -1,5 +1,9 @@
+using Microsoft.AspNetCore.Mvc;
+
+using SPerfomance.Application.Shared.Module.Operations;
 using SPerfomance.Application.Shared.Module.Schemas.Departments;
-using SPerfomance.Domain.Module.Shared.Common.Abstractions.EntitySchemas;
+using SPerfomance.DataAccess.Module.Shared.Repositories.Teachers;
+using SPerfomance.DataAccess.Module.Shared.Repositories.TeachersDepartments;
 using SPerfomance.Domain.Module.Shared.Entities.TeacherDepartments;
 using SPerfomance.Domain.Module.Shared.Entities.Teachers;
 using SPerfomance.Domain.Module.Shared.Entities.Teachers.ValueObjects;
@@ -49,5 +53,42 @@ public sealed record TeacherSchema : EntitySchema
 			CreateJobTitle(),
 			department
 		).Value;
+	}
+}
+
+public static class TeacherSchemaExtensions
+{
+	public static TeacherRepositoryObject ToRepositoryObject(this TeacherSchema teacher)
+	{
+		DepartmentRepositoryObject department = teacher.Department.ToRepositoryObject();
+		TeacherRepositoryObject parameter = new TeacherRepositoryObject()
+		.WithName(teacher.Name)
+		.WithSurname(teacher.Surname)
+		.WithThirdname(teacher.Thirdname)
+		.WithJobTitle(teacher.Job)
+		.WithWorkingCondition(teacher.Condition)
+		.WithDepartment(department);
+		return parameter;
+	}
+
+	public static TeacherSchema ToSchema(this Teacher teacher)
+	{
+		DepartmentSchema department = teacher.Department.ToSchema();
+		TeacherSchema schema = new TeacherSchema(teacher.Name.Name, teacher.Name.Surname, teacher.Name.Thirdname, teacher.Condition.Value, teacher.JobTitle.Value, department);
+		return schema;
+	}
+
+	public static ActionResult<TeacherSchema> ToActionResult(this OperationResult<Teacher> result)
+	{
+		return result.Result == null || result.IsFailed ?
+			new BadRequestObjectResult(result.Error) :
+			new OkObjectResult(result.Result.ToSchema());
+	}
+
+	public static ActionResult<IReadOnlyCollection<TeacherSchema>> ToActionResult(this OperationResult<IReadOnlyCollection<Teacher>> result)
+	{
+		return result.Result == null || result.IsFailed ?
+			new BadRequestObjectResult(result.Error) :
+			new OkObjectResult(result.Result.Select(ToSchema));
 	}
 }

@@ -1,5 +1,7 @@
+using Microsoft.AspNetCore.Mvc;
+using SPerfomance.Application.Shared.Module.Operations;
 using SPerfomance.Application.Shared.Module.Schemas.StudentGroups;
-using SPerfomance.Domain.Module.Shared.Common.Abstractions.EntitySchemas;
+using SPerfomance.DataAccess.Module.Shared.Repositories.Students;
 using SPerfomance.Domain.Module.Shared.Entities.StudentGroups;
 using SPerfomance.Domain.Module.Shared.Entities.Students;
 using SPerfomance.Domain.Module.Shared.Entities.Students.ValueObjects;
@@ -43,5 +45,40 @@ public sealed record StudentSchema : EntitySchema
 	public Student CreateDomainObject(StudentGroup group)
 	{
 		return Student.Create(CreateName(), CreateState(), CreateRecordBook(), group).Value;
+	}
+}
+
+public static class StudentSchemaExtensions
+{
+	public static StudentsRepositoryObject ToRepositoryObject(this StudentSchema student)
+	{
+		StudentsRepositoryObject parameter = new StudentsRepositoryObject()
+		.WithName(student.Name)
+		.WithSurname(student.Surname)
+		.WithThirdname(student.Thirdname)
+		.WithRecordbook(student.Recordbook)
+		.WithState(student.State)
+		.WithGroup(student.Group.ToRepositoryObject());
+		return parameter;
+	}
+
+	public static StudentSchema ToSchema(this Student student)
+	{
+		StudentSchema schema = new StudentSchema(student.Name.Name, student.Name.Surname, student.Name.Thirdname, student.State.State, student.Recordbook.Recordbook, student.Group.ToSchema());
+		return schema;
+	}
+
+	public static ActionResult<StudentSchema> ToActionResult(this OperationResult<Student> result)
+	{
+		return result.Result == null || result.IsFailed ?
+			new BadRequestObjectResult(result.Error) :
+			new OkObjectResult(result.Result.ToSchema());
+	}
+
+	public static ActionResult<IReadOnlyCollection<StudentSchema>> ToActionResult(this OperationResult<IReadOnlyCollection<Student>> result)
+	{
+		return result.Result == null || result.IsFailed ?
+			new BadRequestObjectResult(result.Error) :
+			new OkObjectResult(result.Result.Select(ToSchema));
 	}
 }

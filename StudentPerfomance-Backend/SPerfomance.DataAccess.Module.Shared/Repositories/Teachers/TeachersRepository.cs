@@ -25,7 +25,6 @@ public sealed class TeachersRepository : IRepository<Teacher>
 
 	public async Task Remove(Teacher entity)
 	{
-		await _context.Grades.Where(g => g.Teacher.Id == entity.Id).ExecuteDeleteAsync();
 		await _context.Teachers.Where(t => t.Id == entity.Id).ExecuteDeleteAsync();
 		await Commit();
 	}
