@@ -15,12 +15,14 @@ public sealed class EducationPlan : Entity
 {
 	// Список семестров.
 	private List<Semester> _semesters = [];
+
 	// Конструктор создания дефолтного объекта.
 	private EducationPlan() : base(Guid.Empty)
 	{
 		Year = YearOfCreation.CreateDefault();
 		Direction = EducationDirection.CreateDefault();
 	}
+
 	// Конструктор создания объекта без семестров.
 	private EducationPlan(Guid id, EducationDirection direction, YearOfCreation year) : base(id)
 	{

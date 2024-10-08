@@ -11,7 +11,11 @@
           "Microsoft.AspNetCore.OpenApi": "8.0.2",
           "SPerfomance.Application.EducationDirections.Module": "1.0.0",
           "SPerfomance.Application.EducationPlans.Module": "1.0.0",
+          "SPerfomance.Application.Semester.Module": "1.0.0",
+          "SPerfomance.Application.StudentGroups.Module": "1.0.0",
+          "SPerfomance.Application.Students.Module": "1.0.0",
           "SPerfomance.Application.TeacherDepartments.Module": "1.0.0",
+          "SPerfomance.Application.Teachers.Module": "1.0.0",
           "Swashbuckle.AspNetCore": "6.4.0"
         },
         "runtime": {
@@ -512,6 +516,14 @@
           "SPerfomance.Application.EducationPlans.Module.dll": {}
         }
       },
+      "SPerfomance.Application.Semester.Module/1.0.0": {
+        "dependencies": {
+          "SPerfomance.Application.Shared.Module": "1.0.0"
+        },
+        "runtime": {
+          "SPerfomance.Application.Semester.Module.dll": {}
+        }
+      },
       "SPerfomance.Application.Shared.Module/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Mvc.Core": "2.2.5",
@@ -522,12 +534,36 @@
           "SPerfomance.Application.Shared.Module.dll": {}
         }
       },
+      "SPerfomance.Application.StudentGroups.Module/1.0.0": {
+        "dependencies": {
+          "SPerfomance.Application.Shared.Module": "1.0.0"
+        },
+        "runtime": {
+          "SPerfomance.Application.StudentGroups.Module.dll": {}
+        }
+      },
+      "SPerfomance.Application.Students.Module/1.0.0": {
+        "dependencies": {
+          "SPerfomance.Application.Shared.Module": "1.0.0"
+        },
+        "runtime": {
+          "SPerfomance.Application.Students.Module.dll": {}
+        }
+      },
       "SPerfomance.Application.TeacherDepartments.Module/1.0.0": {
         "dependencies": {
           "SPerfomance.Application.Shared.Module": "1.0.0"
         },
         "runtime": {
           "SPerfomance.Application.TeacherDepartments.Module.dll": {}
+        }
+      },
+      "SPerfomance.Application.Teachers.Module/1.0.0": {
+        "dependencies": {
+          "SPerfomance.Application.Shared.Module": "1.0.0"
+        },
+        "runtime": {
+          "SPerfomance.Application.Teachers.Module.dll": {}
         }
       },
       "SPerfomance.DataAccess.Module.Shared/1.0.0": {
@@ -951,12 +987,32 @@
       "serviceable": false,
       "sha512": ""
     },
+    "SPerfomance.Application.Semester.Module/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
     "SPerfomance.Application.Shared.Module/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
+    "SPerfomance.Application.StudentGroups.Module/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SPerfomance.Application.Students.Module/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
     "SPerfomance.Application.TeacherDepartments.Module/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SPerfomance.Application.Teachers.Module/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

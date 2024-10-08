@@ -1030,6 +1030,19 @@
           "bin/placeholder/SPerfomance.Application.Semester.Module.dll": {}
         }
       },
+      "SPerfomance.Application.SemesterPlans.Module/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "SPerfomance.Application.Shared.Module": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/SPerfomance.Application.SemesterPlans.Module.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SPerfomance.Application.SemesterPlans.Module.dll": {}
+        }
+      },
       "SPerfomance.Application.Shared.Module/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
@@ -2552,6 +2565,11 @@
       "path": "../SPerfomance.Application.Semester.Module/SPerfomance.Application.Semester.Module.csproj",
       "msbuildProject": "../SPerfomance.Application.Semester.Module/SPerfomance.Application.Semester.Module.csproj"
     },
+    "SPerfomance.Application.SemesterPlans.Module/1.0.0": {
+      "type": "project",
+      "path": "../SPerfomance.Application.SemesterPlans.Module/SPerfomance.Application.SemesterPlans.Module.csproj",
+      "msbuildProject": "../SPerfomance.Application.SemesterPlans.Module/SPerfomance.Application.SemesterPlans.Module.csproj"
+    },
     "SPerfomance.Application.Shared.Module/1.0.0": {
       "type": "project",
       "path": "../SPerfomance.Application.Shared.Module/SPerfomance.Application.Shared.Module.csproj",
@@ -2594,6 +2612,7 @@
       "SPerfomance.Application.EducationDirections.Module >= 1.0.0",
       "SPerfomance.Application.EducationPlans.Module >= 1.0.0",
       "SPerfomance.Application.Semester.Module >= 1.0.0",
+      "SPerfomance.Application.SemesterPlans.Module >= 1.0.0",
       "SPerfomance.Application.StudentGroups.Module >= 1.0.0",
       "SPerfomance.Application.Students.Module >= 1.0.0",
       "SPerfomance.Application.TeacherDepartments.Module >= 1.0.0",
@@ -2627,7 +2646,8 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {},
+        "https://pkgs.dev.azure.com/tgbots/Telegram.Bot/_packaging/release/nuget/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
@@ -2641,6 +2661,9 @@
             },
             "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomance-Backend\\SPerfomance.Application.Semester.Module\\SPerfomance.Application.Semester.Module.csproj": {
               "projectPath": "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomance-Backend\\SPerfomance.Application.Semester.Module\\SPerfomance.Application.Semester.Module.csproj"
+            },
+            "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomance-Backend\\SPerfomance.Application.SemesterPlans.Module\\SPerfomance.Application.SemesterPlans.Module.csproj": {
+              "projectPath": "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomance-Backend\\SPerfomance.Application.SemesterPlans.Module\\SPerfomance.Application.SemesterPlans.Module.csproj"
             },
             "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomance-Backend\\SPerfomance.Application.StudentGroups.Module\\SPerfomance.Application.StudentGroups.Module.csproj": {
               "projectPath": "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomance-Backend\\SPerfomance.Application.StudentGroups.Module\\SPerfomance.Application.StudentGroups.Module.csproj"

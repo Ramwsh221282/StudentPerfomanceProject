@@ -12,6 +12,7 @@
           "SPerfomance.Application.EducationDirections.Module": "1.0.0",
           "SPerfomance.Application.EducationPlans.Module": "1.0.0",
           "SPerfomance.Application.Semester.Module": "1.0.0",
+          "SPerfomance.Application.SemesterPlans.Module": "1.0.0",
           "SPerfomance.Application.StudentGroups.Module": "1.0.0",
           "SPerfomance.Application.Students.Module": "1.0.0",
           "SPerfomance.Application.TeacherDepartments.Module": "1.0.0",
@@ -524,6 +525,14 @@
           "SPerfomance.Application.Semester.Module.dll": {}
         }
       },
+      "SPerfomance.Application.SemesterPlans.Module/1.0.0": {
+        "dependencies": {
+          "SPerfomance.Application.Shared.Module": "1.0.0"
+        },
+        "runtime": {
+          "SPerfomance.Application.SemesterPlans.Module.dll": {}
+        }
+      },
       "SPerfomance.Application.Shared.Module/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Mvc.Core": "2.2.5",
@@ -988,6 +997,11 @@
       "sha512": ""
     },
     "SPerfomance.Application.Semester.Module/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SPerfomance.Application.SemesterPlans.Module/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

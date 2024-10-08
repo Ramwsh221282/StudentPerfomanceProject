@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPerfomance.Application.Stu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPerfomance.Application.Semester.Module", "SPerfomance.Application.Semester.Module\SPerfomance.Application.Semester.Module.csproj", "{B2DB7310-DFAD-44F7-9C4B-71C1729D4F79}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPerfomance.Application.SemesterPlans.Module", "SPerfomance.Application.SemesterPlans.Module\SPerfomance.Application.SemesterPlans.Module.csproj", "{3D01C2F8-BC6C-410B-9959-CEC4BD6FFD89}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,10 @@ Global
 		{B2DB7310-DFAD-44F7-9C4B-71C1729D4F79}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B2DB7310-DFAD-44F7-9C4B-71C1729D4F79}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B2DB7310-DFAD-44F7-9C4B-71C1729D4F79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D01C2F8-BC6C-410B-9959-CEC4BD6FFD89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D01C2F8-BC6C-410B-9959-CEC4BD6FFD89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D01C2F8-BC6C-410B-9959-CEC4BD6FFD89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D01C2F8-BC6C-410B-9959-CEC4BD6FFD89}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

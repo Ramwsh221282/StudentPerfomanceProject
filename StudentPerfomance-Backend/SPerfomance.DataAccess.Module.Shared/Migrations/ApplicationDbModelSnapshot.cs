@@ -124,7 +124,7 @@ namespace SPerfomance.DataAccess.Module.Shared.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid>("EducationPlanId")
+                    b.Property<Guid?>("EducationPlanId")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("EntityNumber")
@@ -387,9 +387,7 @@ namespace SPerfomance.DataAccess.Module.Shared.Migrations
                 {
                     b.HasOne("SPerfomance.Domain.Module.Shared.Entities.EducationPlans.EducationPlan", "EducationPlan")
                         .WithMany()
-                        .HasForeignKey("EducationPlanId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("EducationPlanId");
 
                     b.OwnsOne("SPerfomance.Domain.Module.Shared.Entities.StudentGroups.ValueObjects.GroupName", "Name", b1 =>
                         {
