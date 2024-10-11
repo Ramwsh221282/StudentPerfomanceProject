@@ -1,7 +1,7 @@
-import { Student } from '../../students/models/student.interface';
+import { EducationPlan } from '../../education-plans/models/education-plan-interface';
 
 export interface StudentGroup {
-  groupName: string;
-  studentsCount: number;
-  students: Student[];
+  entityNumber: number;
+  name: string;
+  plan: EducationPlan;
 }

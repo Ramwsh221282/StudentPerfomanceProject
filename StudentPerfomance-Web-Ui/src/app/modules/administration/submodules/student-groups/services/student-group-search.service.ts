@@ -17,12 +17,9 @@ export class StudentGroupSearchService extends StudentGroupsService {
     factory: IRequestParamsFactory
   ): Observable<StudentGroup[]> {
     const params = factory.Params;
-    return this.httpClient.get<StudentGroup[]>(
-      `${this.baseApiUri}/bySearchNameParam`,
-      {
-        params,
-      }
-    );
+    return this.httpClient.get<StudentGroup[]>(`${this.readApiUri}/search`, {
+      params,
+    });
   }
 
   public createRequestParamsFactory(

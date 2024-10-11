@@ -1,0 +1,35 @@
+<div class="student-groups-table-wrapper">
+  <div class="student-groups-controls-container">
+    <button class="accept-button" (click)="openCreationModal()">
+      Добавить студенческую группу
+    </button>
+    <button class="accept-button" (click)="openFilterModal()">
+      Отфильтровать список
+    </button>
+  </div>
+  <div class="student-groups-table-container">
+    <div class="student-groups-table-grid">
+      <div class="student-groups-table-header">
+        <strong>Номер</strong>
+        <strong>Название группы</strong>
+        <strong>Название направления</strong>
+        <strong>Код направления</strong>
+        <strong>Тип направления</strong>
+        <strong>Год набора</strong>
+        <strong>Действия</strong>
+      </div>
+      @for (group of facadeService.groups; track group.name) {
+      <app-table-row [group]="group"></app-table-row>
+      }
+    </div>
+  </div>
+  <div class="pagination-wrapper">
+    <app-table-pagination></app-table-pagination>
+  </div>
+</div>
+<div id="creation-modal-renderer" *ngIf="creationModalVisibility">
+  <app-student-group-create-modal
+    (visibility)="closeCreationModal($event)"
+  ></app-student-group-create-modal>
+</div>
+<div id="filter-modal-renderer" *ngIf="filterModalVisibility"></div>

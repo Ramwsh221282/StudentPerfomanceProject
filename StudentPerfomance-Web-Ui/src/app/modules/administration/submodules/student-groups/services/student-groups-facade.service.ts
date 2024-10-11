@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { StudentGroupSearchService } from './student-group-search.service';
 import { StudentGroupsCreateDataService } from './student-groups-create-data.service';
 import { StudentGroupsDeleteDataService } from './student-groups-delete-data.service';
 import { StudentGroupsFetchDataService } from './student-groups-fetch-data.service';
@@ -8,22 +7,19 @@ import { StudentGroupsPaginationService } from './student-groups-pagination.serv
 import { StudentGroupsUpdateDataService } from './student-groups-update-data.service';
 import { StudentGroup } from './studentsGroup.interface';
 import { Observable } from 'rxjs';
-import { StudentGroupsSelectionService } from './student-groups-selection.service';
-import { StudentsModule } from '../../students/students.module';
+import { IFetchPolicy } from '../../../../../shared/models/fetch-policices/fetch-policy-interface';
 
 @Injectable({
-  providedIn: StudentsModule,
+  providedIn: 'any',
 })
 export class StudentGroupsFacadeService {
   public constructor(
-    private readonly _searchService: StudentGroupSearchService,
     private readonly _createService: StudentGroupsCreateDataService,
     private readonly _deleteService: StudentGroupsDeleteDataService,
     private readonly _fetchService: StudentGroupsFetchDataService,
     private readonly _mergeService: StudentGroupsMergeDataService,
     private readonly _paginationService: StudentGroupsPaginationService,
-    private readonly _updateService: StudentGroupsUpdateDataService,
-    private readonly _selectionService: StudentGroupsSelectionService
+    private readonly _updateService: StudentGroupsUpdateDataService
   ) {}
 
   public create(group: StudentGroup): Observable<StudentGroup> {
@@ -37,21 +33,16 @@ export class StudentGroupsFacadeService {
   }
 
   public fetchData(): void {
-    const factory = this._paginationService.createPaginationRequestFactory();
-    this._fetchService.fetch(factory);
+    this._fetchService.addPages(this.currentPage, this.pageSize);
+    this._fetchService.fetch();
+  }
+
+  public setPolicy(policy: IFetchPolicy<StudentGroup[]>): void {
+    this._fetchService.setPolicy(policy);
   }
 
   public refreshPagination(): void {
     this._paginationService.refreshPagination();
-  }
-
-  public filterData(group: StudentGroup) {
-    const factory = this._fetchService.createFilterRequestFactory(
-      group,
-      this._paginationService.currentPage,
-      this._paginationService.pageSize
-    );
-    this._fetchService.filter(factory);
   }
 
   public merge(
@@ -62,21 +53,12 @@ export class StudentGroupsFacadeService {
     return this._mergeService.merge(factory);
   }
 
-  public update(group: StudentGroup): Observable<StudentGroup> {
-    const factory = this._updateService.requestBodyFactory(
-      this._selectionService.copy,
-      group
-    );
+  public update(
+    initial: StudentGroup,
+    newGroup: StudentGroup
+  ): Observable<StudentGroup> {
+    const factory = this._updateService.requestBodyFactory(initial, newGroup);
     return this._updateService.update(factory);
-  }
-
-  public clear(): void {
-    this._selectionService.clear();
-  }
-
-  public search(group: StudentGroup): Observable<StudentGroup[]> {
-    const factory = this._searchService.createRequestParamsFactory(group);
-    return this._searchService.searchByName(factory);
   }
 
   public moveNextPage(): void {
@@ -99,20 +81,8 @@ export class StudentGroupsFacadeService {
     this.fetchData();
   }
 
-  public set select(group: StudentGroup) {
-    this._selectionService.set = group;
-  }
-
-  public get selected(): StudentGroup {
-    return this._selectionService.selected;
-  }
-
-  public get copy(): StudentGroup {
-    return this._selectionService.copy;
-  }
-
   public get groups(): StudentGroup[] {
-    return this._fetchService.studentGroups;
+    return this._fetchService.groups;
   }
 
   public get count(): number {
@@ -121,6 +91,10 @@ export class StudentGroupsFacadeService {
 
   public get currentPage(): number {
     return this._paginationService.currentPage;
+  }
+
+  public get pageSize(): number {
+    return this._paginationService.pageSize;
   }
 
   public get pages(): number[] {

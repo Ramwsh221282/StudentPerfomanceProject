@@ -1,7 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 
+using SPerfomance.Application.Shared.Module.DTOs.StudentGroups;
 using SPerfomance.Application.Shared.Module.Operations;
 using SPerfomance.Application.Shared.Module.Schemas.StudentGroups;
+using SPerfomance.Application.StudentGroups.Module.Api.Requests;
 using SPerfomance.Application.StudentGroups.Module.Queries.All;
 using SPerfomance.Application.StudentGroups.Module.Queries.Count;
 using SPerfomance.Application.StudentGroups.Module.Queries.Filter;
@@ -13,7 +15,7 @@ namespace SPerfomance.Application.StudentGroups.Module.Api;
 
 [ApiController]
 [Route("/student-groups/api/read")]
-public sealed class StudentGroupsReadApi : ControllerBase
+public sealed class StudentGroupsReadApi : Controller
 {
 	[HttpGet(CrudOperationNames.GetCount)]
 	public async Task<ActionResult<int>> GetCount()
@@ -40,8 +42,11 @@ public sealed class StudentGroupsReadApi : ControllerBase
 	}
 
 	[HttpGet(CrudOperationNames.Filter)]
-	public async Task<ActionResult<IReadOnlyCollection<StudentsGroupSchema>>> Filter([FromQuery] StudentsGroupSchema group, int page, int pageSize)
+	public async Task<ActionResult<IReadOnlyCollection<StudentsGroupSchema>>> Filter([FromQuery] StudentGroupsFilterRequest request)
 	{
+		int page = request.Page;
+		int pageSize = request.PageSize;
+		StudentsGroupSchema group = request.Group.ToSchema();
 		FilterQuery query = new FilterQuery(group, page, pageSize);
 		OperationResult<IReadOnlyCollection<StudentGroup>> result = await query.Handler.Handle(query);
 		return result.ToActionResult();

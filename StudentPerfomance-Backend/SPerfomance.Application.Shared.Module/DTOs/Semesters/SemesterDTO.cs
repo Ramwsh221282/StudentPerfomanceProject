@@ -21,10 +21,10 @@ public static class SemesterDTOExtensions
 	public static SemesterSchema ToSchema(this SemesterDTO? semesterDTO)
 	{
 		if (semesterDTO == null)
-			return new SemesterSchema(0);
+			return new SemesterSchema(0, null);
 
 		EducationPlanSchema plan = semesterDTO.Plan.ToSchema();
-		SemesterSchema semester = new SemesterSchema(semesterDTO.Number);
+		SemesterSchema semester = new SemesterSchema(semesterDTO.Number, plan);
 		semester.SetEducationPlan(plan);
 		return semester;
 	}

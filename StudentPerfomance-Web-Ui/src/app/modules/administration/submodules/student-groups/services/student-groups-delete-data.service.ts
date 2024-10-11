@@ -13,7 +13,10 @@ export class StudentGroupsDeleteDataService extends StudentGroupsService {
 
   public delete(factory: IRequestBodyFactory) {
     const body = factory.Body;
-    return this.httpClient.delete<StudentGroup>(this.baseApiUri, { body });
+    return this.httpClient.delete<StudentGroup>(
+      `${this.managementApiUri}remove`,
+      { body }
+    );
   }
 
   public createRequestBodyFactory(group: StudentGroup): IRequestBodyFactory {
@@ -25,7 +28,7 @@ class HttpRequestBody implements IRequestBodyFactory {
   private readonly _body: object;
 
   public constructor(group: StudentGroup) {
-    this._body = { group: { name: group.groupName } };
+    this._body = { group: { name: group.name } };
   }
 
   public get Body(): object {

@@ -14,7 +14,7 @@ export class StudentGroupsMergeDataService extends StudentGroupsService {
   public merge(factory: IRequestBodyFactory) {
     const body = factory.Body;
     return this.httpClient.put<StudentGroup>(
-      `${this.baseApiUri}/mergeGroups`,
+      `${this.managementApiUri}merge`,
       body
     );
   }
@@ -33,10 +33,10 @@ class HttpRequestBody implements IRequestBodyFactory {
   public constructor(targetGroup: StudentGroup, mergeGroup: StudentGroup) {
     this._body = {
       targetGroup: {
-        name: targetGroup.groupName,
+        name: targetGroup.name,
       },
       mergeGroup: {
-        name: mergeGroup.groupName,
+        name: mergeGroup.name,
       },
     };
   }

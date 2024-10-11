@@ -1,0 +1,134 @@
+<div id="container">
+  <div id="header">
+    <strong>Закрепление учебного плана {{ group.name }}</strong>
+  </div>
+  <div id="content">
+    <section class="creation-form">
+      <strong class="font-white">Состояние учебного плана: </strong>
+      <strong class="font-white"
+        >Год: {{ activePlan.year == 0 ? "Не выбран" : activePlan.year }}</strong
+      >
+      <strong class="font-white"
+        >Наименование:
+        {{
+          activePlan.direction.name == ""
+            ? "Не выбран"
+            : activePlan.direction.name
+        }}</strong
+      >
+      <strong class="font-white"
+        >Код:
+        {{
+          activePlan.direction.code == ""
+            ? "Не выбран"
+            : activePlan.direction.code
+        }}</strong
+      >
+      <strong class="font-white"
+        >Тип:
+        {{
+          activePlan.direction.type == ""
+            ? "Не выбран"
+            : activePlan.direction.type
+        }}</strong
+      >
+      <button
+        *ngIf="activePlan.year != 0"
+        class="danger-button-modal"
+        type="button"
+        (click)="submitDeattachment()"
+      >
+        Открепить учебный план
+      </button>
+    </section>
+    <strong class="font-white">Параметры фильтра</strong>
+    <div class="search-container">
+      <div class="search-inputs">
+        <label class="font-white">Год: </label>
+        <input
+          class="default-input w-400"
+          [(ngModel)]="filterPlan.year"
+          placeholder="Год"
+        />
+        <label class="font-white">Тип: </label>
+        <select class="default-select w-400" [(ngModel)]="filterPlan.direction">
+          <option disabled selected>Направление</option>
+          <option [defaultSelected]="true" [value]="'Тип направления'">
+            Тип направления
+          </option>
+          <option value="Бакалавриат">Бакалавриат</option>
+          <option value="Бакалавриат">Магистратура</option>
+        </select>
+      </div>
+      <div class="search-inputs"></div>
+      <div class="search-inputs">
+        <label class="font-white">Наименование:</label>
+        <input
+          class="default-input w-400"
+          [(ngModel)]="filterPlan.direction.name"
+          placeholder="Наименование направления"
+        />
+        <label class="font-white">Код: </label>
+        <input
+          class="default-input w-400"
+          [(ngModel)]="filterPlan.direction.code"
+          placeholder="Код направления"
+        />
+      </div>
+      <div class="search-controls">
+        <button class="accept-button-modal" (click)="searchPlans()">
+          Отфильтровать
+        </button>
+        <button class="danger-button-modal" (click)="fetchPlans()">
+          Отменить фильтр
+        </button>
+      </div>
+      <table class="search-table">
+        <thead>
+          <tr>
+            <th>Название</th>
+            <th>Код</th>
+            <th>Тип</th>
+            <th>Год</th>
+            <th>Действия</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (plan of plans; track plan.direction.code) {
+          <tr>
+            <td>{{ plan.direction.name }}</td>
+            <td>{{ plan.direction.code }}</td>
+            <td>{{ plan.direction.type }}</td>
+            <td>{{ plan.year }}</td>
+            <td>
+              <button class="accept-button" (click)="selectPlan(plan)">
+                Выбрать
+              </button>
+            </td>
+          </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div id="controls">
+    <button class="accept-button-modal" type="button" (click)="submit()">
+      Закрепить
+    </button>
+    <button class="danger-button-modal" type="button" (click)="close()">
+      Закрыть окно
+    </button>
+  </div>
+</div>
+<div id="success-pop-up" *ngIf="isSuccess">
+  <app-success-result-notification
+    [message]="notificationService.Message"
+    (visibilityEmitter)="manageSuccess($event)"
+  ></app-success-result-notification>
+</div>
+<div id="failure-pop-up" *ngIf="isFailure">
+  <app-failure-result-notification
+    [message]="notificationService.Message"
+    (visibilityEmitter)="manageFailure($event)"
+  ></app-failure-result-notification>
+</div>

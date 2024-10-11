@@ -29,7 +29,6 @@ internal sealed class StudentGroupCommandRepository
 	{
 		StudentGroup? group = await _context.Groups.FirstOrDefaultAsync(getGroup.Build());
 		if (group == null) return Result.Failure<StudentGroup>(new GroupNotFoundError().ToString());
-		await _context.Students.Where(s => s.Group.Id == group.Id).ExecuteDeleteAsync();
 		await _context.Groups.Where(g => g.Id == group.Id).ExecuteDeleteAsync();
 		await Commit();
 		return group;

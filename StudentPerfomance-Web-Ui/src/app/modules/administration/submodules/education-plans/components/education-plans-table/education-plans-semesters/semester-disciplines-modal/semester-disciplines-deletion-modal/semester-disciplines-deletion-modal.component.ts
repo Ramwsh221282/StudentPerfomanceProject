@@ -4,7 +4,7 @@ import { Semester } from '../../../../../../semesters/models/semester.interface'
 import { UserOperationNotificationService } from '../../../../../../../../../shared/services/user-notifications/user-operation-notification-service.service';
 import { IFailureNotificatable } from '../../../../../../../../../shared/models/interfaces/ifailure-notificatable';
 import { SemesterPlan } from '../../../../../../semester-plans/models/semester-plan.interface';
-import { catchError, Observable, tap } from 'rxjs';
+import { catchError, tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ISuccessNotificatable } from '../../../../../../../../../shared/models/interfaces/isuccess-notificatable';
 import { SemesterDisciplineDeletionHandler } from './semester-discipline-deletion-handler';

@@ -66,7 +66,7 @@ export class StudentGroupsPaginationService extends StudentGroupsService {
 
   public refreshPagination() {
     this.httpClient
-      .get<number>(`${this.baseApiUri}/totalCount`)
+      .get<number>(`${this.readApiUri}/count`)
       .subscribe((response) => {
         this._totalCount = response;
         this._pagesCount = Math.ceil(this._totalCount / this._pageSize);
@@ -84,24 +84,14 @@ export class StudentGroupsPaginationService extends StudentGroupsService {
         for (let i = startPage; i <= endPage; i++) {
           this._displayPages.push(i);
         }
+
+        this.pushFirstPage();
       });
   }
 
-  public createPaginationRequestFactory(): IRequestParamsFactory {
-    return new HttpRequestParams(this._currentPage, this._pageSize);
-  }
-}
-
-class HttpRequestParams implements IRequestParamsFactory {
-  private readonly _httpParams: HttpParams;
-
-  public constructor(page: number, pageSize: number) {
-    this._httpParams = new HttpParams()
-      .set('Page', page)
-      .set('PageSize', pageSize);
-  }
-
-  public get Params(): HttpParams {
-    return this._httpParams;
+  private pushFirstPage() {
+    if (this.displayPages.length == 0) {
+      this.displayPages.push(1);
+    }
   }
 }

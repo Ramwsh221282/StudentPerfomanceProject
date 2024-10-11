@@ -13,7 +13,10 @@ export class StudentGroupsCreateDataService extends StudentGroupsService {
 
   public create(factory: IRequestBodyFactory) {
     const body = factory.Body;
-    return this.httpClient.post<StudentGroup>(this.baseApiUri, body);
+    return this.httpClient.post<StudentGroup>(
+      `${this.managementApiUri}create`,
+      body
+    );
   }
 
   public createRequestBodyFactory(group: StudentGroup): IRequestBodyFactory {
@@ -25,7 +28,7 @@ class HttpRequestBody implements IRequestBodyFactory {
   private readonly _body: object;
 
   public constructor(group: StudentGroup) {
-    this._body = { group: { name: group.groupName } };
+    this._body = { group: { name: group.name } };
   }
 
   public get Body(): object {

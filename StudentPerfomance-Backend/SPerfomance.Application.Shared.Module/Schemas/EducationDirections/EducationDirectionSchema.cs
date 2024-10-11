@@ -10,7 +10,7 @@ namespace SPerfomance.Application.Shared.Module.Schemas.EducationDirections;
 
 public sealed record EducationDirectionSchema : EntitySchema
 {
-	public int EntityNumber { get; set; }
+	public int EntityNumber { get; set; } = 0;
 	public string Code { get; init; } = string.Empty;
 	public string Name { get; init; } = string.Empty;
 	public string Type { get; init; } = string.Empty;

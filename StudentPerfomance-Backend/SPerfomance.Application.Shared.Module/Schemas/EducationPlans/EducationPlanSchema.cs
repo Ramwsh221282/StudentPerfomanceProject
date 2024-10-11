@@ -13,10 +13,9 @@ namespace SPerfomance.Application.Shared.Module.Schemas.EducationPlans;
 
 public record EducationPlanSchema : EntitySchema
 {
-	public int EntityNumber { get; set; }
+	public int EntityNumber { get; set; } = 0;
 	public uint Year { get; init; }
 	public EducationDirectionSchema Direction { get; init; } = new EducationDirectionSchema();
-	public List<SemesterSchema> Semesters { get; set; } = new List<SemesterSchema>();
 
 	public EducationPlanSchema() { }
 
@@ -50,12 +49,7 @@ public static class EducationPlanSchemaExtensions
 		EducationDirectionSchema directionSchema = new EducationDirectionSchema(code, name, type);
 		directionSchema.EntityNumber = plan.Direction.EntityNumber;
 		EducationPlanSchema planSchema = new EducationPlanSchema(plan.Year.Year, directionSchema);
-		List<Domain.Module.Shared.Entities.Semesters.Semester> semesters = plan.Semesters.ToList();
-		List<SemesterSchema> semesterSchemas = semesters.Select(s => s.ToSchema()).ToList();
-		foreach (var semester in semesterSchemas)
-		{
-			semester.SetEducationPlan(planSchema);
-		}
+		planSchema.EntityNumber = plan.EntityNumber;
 		return planSchema;
 	}
 

@@ -1,0 +1,34 @@
+<div id="container">
+  <div id="header">
+    <strong>Редактирование студенческой группы</strong>
+  </div>
+  <div id="content">
+    <section class="edit-form">
+      <input
+        class="default-input"
+        placeholder="Наименование группы"
+        [(ngModel)]="editableGroup.name"
+      />
+    </section>
+  </div>
+  <div id="controls">
+    <button class="accept-button-modal" type="button" (click)="submit()">
+      Изменить
+    </button>
+    <button class="danger-button-modal" type="button" (click)="close()">
+      Закрыть окно
+    </button>
+  </div>
+</div>
+<div id="success-pop-up" *ngIf="isSuccess">
+  <app-success-result-notification
+    [message]="notificationService.Message"
+    (visibilityEmitter)="manageSuccess($event)"
+  ></app-success-result-notification>
+</div>
+<div id="failure-pop-up" *ngIf="isFailure">
+  <app-failure-result-notification
+    [message]="notificationService.Message"
+    (visibilityEmitter)="manageFailure($event)"
+  ></app-failure-result-notification>
+</div>

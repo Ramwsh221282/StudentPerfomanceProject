@@ -1,0 +1,36 @@
+<div id="container">
+  <div id="header">
+    <strong>Добавление студенческой группы</strong>
+  </div>
+  <div id="content">
+    <form class="creation-form" [formGroup]="form">
+      <input
+        formControlName="name"
+        class="default-input"
+        placeholder="Наименование группы"
+      />
+    </form>
+  </div>
+  <div id="controls">
+    <button class="accept-button-modal" type="button" (click)="submit()">
+      Добавить
+    </button>
+    ><button class="danger-button-modal" type="button" (click)="close()">
+      Закрыть окно
+    </button>
+  </div>
+</div>
+<div id="success-pop-up" *ngIf="isSuccess">
+  <app-success-result-notification
+    [message]="notificationService.Message"
+    (visibilityEmitter)="manageNotification($event)"
+  ></app-success-result-notification>
+</div>
+
+<div id="failure-pop-up" *ngIf="isFailure">
+  <app-failure-result-notification
+    [message]="notificationService.Message"
+    (visibilityEmitter)="manageNotification($event)"
+  >
+  </app-failure-result-notification>
+</div>

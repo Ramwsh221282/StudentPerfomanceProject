@@ -12,7 +12,10 @@ export class StudentGroupsUpdateDataService extends StudentGroupsService {
   }
 
   public update(body: IRequestBodyFactory) {
-    return this.httpClient.put<StudentGroup>(this.baseApiUri, body.Body);
+    return this.httpClient.put<StudentGroup>(
+      `${this.managementApiUri}update`,
+      body.Body
+    );
   }
 
   public requestBodyFactory(
@@ -28,8 +31,46 @@ class HttpRequestBody implements IRequestBodyFactory {
 
   public constructor(oldGroup: StudentGroup, newGroup: StudentGroup) {
     this._body = {
-      oldGroup: { name: oldGroup.groupName },
-      newGroup: { name: newGroup.groupName },
+      initial: {
+        name: oldGroup.name,
+        educationPlan: {
+          year: oldGroup.plan.year == undefined ? 0 : oldGroup.plan.year,
+          direction: {
+            code:
+              oldGroup.plan.direction.code == undefined
+                ? ' '
+                : oldGroup.plan.direction.code,
+            name:
+              oldGroup.plan.direction.name == undefined
+                ? ' '
+                : oldGroup.plan.direction.name,
+            type:
+              oldGroup.plan.direction.type == undefined
+                ? ' '
+                : oldGroup.plan.direction.type,
+          },
+        },
+      },
+      updated: {
+        name: newGroup.name,
+        educationPlan: {
+          year: newGroup.plan.year == undefined ? 0 : newGroup.plan.year,
+          direction: {
+            code:
+              newGroup.plan.direction.code == undefined
+                ? ' '
+                : newGroup.plan.direction.code,
+            name:
+              newGroup.plan.direction.name == undefined
+                ? ' '
+                : newGroup.plan.direction.name,
+            type:
+              newGroup.plan.direction.type == undefined
+                ? ' '
+                : newGroup.plan.direction.type,
+          },
+        },
+      },
     };
   }
 

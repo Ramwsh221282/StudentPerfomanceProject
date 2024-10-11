@@ -23,7 +23,6 @@ export class EducationDirectionsEditModalComponent
   @Input({ required: true }) direction: EducationDirection;
   @Input({ required: true }) copy: EducationDirection;
   @Output() modalDisabled: EventEmitter<boolean> = new EventEmitter<boolean>();
-  private readonly _copy: EducationDirection;
 
   protected isSuccess: boolean;
   protected isFailure: boolean;
@@ -50,7 +49,6 @@ export class EducationDirectionsEditModalComponent
   }
 
   public override submit(): void {
-    console.log(this.copy);
     const newDirection = this.createEducationDirectionFromForm();
     const handler = CreateEducationDirectionEditHandler(
       this.copy,

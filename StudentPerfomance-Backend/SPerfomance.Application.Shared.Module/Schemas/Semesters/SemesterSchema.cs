@@ -18,9 +18,10 @@ public record SemesterSchema : EntitySchema
 
 	public SemesterSchema() { }
 
-	public SemesterSchema(byte number)
+	public SemesterSchema(byte number, EducationPlanSchema? plan)
 	{
 		if (number > 0) Number = number;
+		if (plan != null) Plan = plan;
 	}
 
 	public void SetEducationPlan(EducationPlanSchema educationPlan) => Plan = educationPlan;
@@ -40,7 +41,8 @@ public static class SemesterSchemaExtensions
 
 	public static SemesterSchema ToSchema(this Semester semester)
 	{
-		SemesterSchema schema = new SemesterSchema(semester.Number.Value);
+		EducationPlanSchema plan = semester.Plan.ToSchema();
+		SemesterSchema schema = new SemesterSchema(semester.Number.Value, plan);
 		schema.ContractsCount = semester.Contracts.Count;
 		return schema;
 	}

@@ -1,63 +1,43 @@
 import { Injectable } from '@angular/core';
 import { StudentGroupsService } from './student-groups-base-service';
 import { StudentGroup } from './studentsGroup.interface';
-import { HttpParams } from '@angular/common/http';
-import { IRequestParamsFactory } from '../../../../../models/RequestParamsFactory/irequest-params-factory.interface';
+import { IFetchable } from '../../../../../shared/models/fetch-policices/ifetchable-interface';
+import { IFetchPolicy } from '../../../../../shared/models/fetch-policices/fetch-policy-interface';
+import { DefaultFetchPolicy } from '../models/fetch-policies/default-fetch-policy';
 
 @Injectable({
   providedIn: 'any',
 })
-export class StudentGroupsFetchDataService extends StudentGroupsService {
-  private _studentGroups: StudentGroup[] = [];
+export class StudentGroupsFetchDataService
+  extends StudentGroupsService
+  implements IFetchable<StudentGroup[]>
+{
+  private _currentPolicy: IFetchPolicy<StudentGroup[]>;
+  private _groups: StudentGroup[];
 
   public constructor() {
     super();
+    this._groups = [];
+    this._currentPolicy = new DefaultFetchPolicy();
   }
 
-  public get studentGroups(): StudentGroup[] {
-    return this._studentGroups;
+  public setPolicy(policy: IFetchPolicy<StudentGroup[]>): void {
+    this._currentPolicy = policy;
   }
 
-  public fetch(factory: IRequestParamsFactory): void {
-    const params = factory.Params;
-    this.httpClient
-      .get<StudentGroup[]>(`${this.baseApiUri}/byPage`, {
-        params,
-      })
+  public fetch(): void {
+    this._currentPolicy
+      .executeFetchPolicy(this.httpClient)
       .subscribe((response) => {
-        this._studentGroups = response;
+        this._groups = response;
       });
   }
 
-  public filter(factory: IRequestParamsFactory): void {
-    const params = factory.Params;
-    this.httpClient
-      .get<StudentGroup[]>(`${this.baseApiUri}/byFilter`, { params })
-      .subscribe((response) => {
-        this._studentGroups = response;
-      });
+  public addPages(page: number, pageSize: number): void {
+    this._currentPolicy.addPages(page, pageSize);
   }
 
-  public createFilterRequestFactory(
-    group: StudentGroup,
-    page: number,
-    pageSize: number
-  ): IRequestParamsFactory {
-    return new HttpRequestParams(group, page, pageSize);
-  }
-}
-
-class HttpRequestParams implements IRequestParamsFactory {
-  private readonly _httpParams: HttpParams;
-
-  public constructor(group: StudentGroup, page: number, pageSize: number) {
-    this._httpParams = new HttpParams()
-      .set('Group.Name', group.groupName)
-      .set('Page', page)
-      .set('PageSize', pageSize);
-  }
-
-  public get Params(): HttpParams {
-    return this._httpParams;
+  public get groups(): StudentGroup[] {
+    return this._groups;
   }
 }

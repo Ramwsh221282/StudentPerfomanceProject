@@ -1,10 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
+
 using SPerfomance.Application.EducationPlans.Module.Api.Requests;
 using SPerfomance.Application.EducationPlans.Module.Queries.All;
 using SPerfomance.Application.EducationPlans.Module.Queries.Count;
 using SPerfomance.Application.EducationPlans.Module.Queries.GetFiltered;
 using SPerfomance.Application.EducationPlans.Module.Queries.GetPaged;
 using SPerfomance.Application.EducationPlans.Module.Queries.Search;
+using SPerfomance.Application.Shared.Module.DTOs.EducationPlans;
 using SPerfomance.Application.Shared.Module.Operations;
 using SPerfomance.Application.Shared.Module.Schemas.EducationPlans;
 using SPerfomance.Domain.Module.Shared.Entities.EducationPlans;
@@ -48,8 +50,9 @@ public sealed class EducationPlansReadApi : ControllerBase
 	}
 
 	[HttpGet(CrudOperationNames.Search)]
-	public async Task<ActionResult<IReadOnlyCollection<EducationPlanSchema>>> Search([FromQuery] EducationPlanSchema plan)
+	public async Task<ActionResult<IReadOnlyCollection<EducationPlanSchema>>> Search([FromQuery] EducationPlanDTO dto)
 	{
+		EducationPlanSchema plan = dto.ToSchema();
 		SearchQuery query = new SearchQuery(plan);
 		OperationResult<IReadOnlyCollection<EducationPlan>> result = await query.Handler.Handle(query);
 		return result.ToActionResult();

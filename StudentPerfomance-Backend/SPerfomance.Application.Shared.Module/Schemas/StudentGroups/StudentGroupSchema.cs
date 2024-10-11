@@ -12,6 +12,7 @@ namespace SPerfomance.Application.Shared.Module.Schemas.StudentGroups;
 
 public sealed record StudentsGroupSchema : EntitySchema
 {
+	public int EntityNumber { get; set; } = 0;
 	public string Name { get; private set; } = string.Empty;
 	public EducationPlanSchema Plan { get; private set; } = new EducationPlanSchema();
 
@@ -47,6 +48,7 @@ public static class StudentGroupSchemaExtensions
 			plan = group.EducationPlan.ToSchema();
 
 		StudentsGroupSchema schema = new StudentsGroupSchema(group.Name.Name, plan);
+		schema.EntityNumber = group.EntityNumber;
 		return schema;
 	}
 

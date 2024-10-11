@@ -1,0 +1,35 @@
+<div id="container">
+  <div id="header">
+    <strong>Редактирование студенческой группы</strong>
+  </div>
+  <div id="content">
+    <section class="edit-form">
+      <button class="accept-button-modal" (click)="openNameChangeModal()">
+        Изменить название группы
+      </button>
+      <button class="accept-button-modal" (click)="openPlanAttachmentModal()">
+        Настроить учебный план
+      </button>
+      <button class="accept-button-modal">Смешать с группой</button>
+    </section>
+  </div>
+  <div id="controls">
+    ><button class="danger-button-modal" type="button" (click)="close()">
+      Закрыть окно
+    </button>
+  </div>
+</div>
+<div id="name-change-modal-renderer" *ngIf="nameUpdateModalVisibility">
+  <app-name-change-modal
+    [group]="group"
+    (visibility)="closeNameChangeModal($event)"
+    (returnGroup)="refreshGroup($event)"
+  ></app-name-change-modal>
+</div>
+<div id="plan-attachment-modal-renderer" *ngIf="planAttachmentModalVisibility">
+  <app-plan-attachment-modal
+    [group]="group"
+    (visibility)="closePlanAttachmentModal($event)"
+    (returnGroup)="refreshGroup($event)"
+  ></app-plan-attachment-modal>
+</div>

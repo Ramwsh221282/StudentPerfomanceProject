@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 
 using SPerfomance.DataAccess.Module.Shared;
 using SPerfomance.Domain.Module.Shared.Common.Abstractions.Repositories;
+using SPerfomance.Domain.Module.Shared.Entities.EducationPlans;
 using SPerfomance.Domain.Module.Shared.Entities.StudentGroups;
 
 namespace SPerfomance.Application.StudentGroups.Module.Repository;
@@ -9,23 +10,30 @@ namespace SPerfomance.Application.StudentGroups.Module.Repository;
 internal sealed class StudentGroupQueryRepository
 {
 	private readonly ApplicationDb _context = new ApplicationDb();
+
 	public async Task Commit() => await _context.SaveChangesAsync();
+
 	public async Task<IReadOnlyCollection<StudentGroup>> GetAll() =>
 		await _context.Groups
 		.Include(g => g.Students)
+		.Include(g => g.EducationPlan)
+		.ThenInclude(p => p.Direction)
 		.OrderByDescending(g => g.Name.Name)
 		.AsNoTracking()
 		.ToListAsync();
+
 	public async Task<IReadOnlyCollection<StudentGroup>> GetPaged(int page, int pageSize)
 	{
 		List<StudentGroup> groups = await _context.Groups
 		.Include(g => g.Students)
 		.Include(g => g.EducationPlan)
+		.ThenInclude(p => p.Direction)
+		.OrderBy(g => g.EntityNumber)
+		.ThenByDescending(g => g.Name.Name)
 		.Skip((page - 1) * pageSize)
 		.Take(pageSize)
 		.AsNoTracking()
 		.ToListAsync();
-		//groups.Sort(new AlphabetSorting());
 		return groups;
 	}
 
@@ -33,13 +41,22 @@ internal sealed class StudentGroupQueryRepository
 		await _context.Groups
 		.Include(g => g.Students)
 		.Include(g => g.EducationPlan)
+		.ThenInclude(p => p.Direction)
+		.FirstOrDefaultAsync(expression.Build());
+
+	public async Task<EducationPlan?> GetByParameter(IRepositoryExpression<EducationPlan> expression) =>
+		await _context.EducationPlans
+		.Include(p => p.Direction)
+		.AsNoTracking()
 		.FirstOrDefaultAsync(expression.Build());
 
 	public async Task<IReadOnlyCollection<StudentGroup>> GetFiltered(IRepositoryExpression<StudentGroup> expression) =>
 		await _context.Groups
 		.Include(g => g.Students)
 		.Include(g => g.EducationPlan)
-		.OrderByDescending(g => g.Name.Name)
+		.ThenInclude(p => p.Direction)
+		.OrderBy(g => g.EntityNumber)
+		.ThenByDescending(g => g.Name.Name)
 		.Where(expression.Build())
 		.AsNoTracking()
 		.ToListAsync();
@@ -49,13 +66,13 @@ internal sealed class StudentGroupQueryRepository
 		List<StudentGroup> groups = await _context.Groups
 		.Include(g => g.Students)
 		.Include(g => g.EducationPlan)
+		.ThenInclude(p => p.Direction)
 		.OrderByDescending(g => g.Name.Name)
 		.Where(expression.Build())
 		.Skip((page - 1) * pageSize)
 		.Take(pageSize)
 		.AsNoTracking()
 		.ToListAsync();
-		//groups.Sort(new AlphabetSorting());
 		return groups;
 	}
 
