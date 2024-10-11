@@ -1,5 +1,7 @@
+import { EducationPlan } from '../../education-plans/models/education-plan-interface';
+
 export interface Semester {
   number: number;
-  groupName: string;
+  plan: EducationPlan;
   contractsCount: number;
 }

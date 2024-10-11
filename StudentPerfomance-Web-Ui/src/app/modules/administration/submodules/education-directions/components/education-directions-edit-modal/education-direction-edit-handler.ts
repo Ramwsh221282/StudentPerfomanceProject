@@ -1,17 +1,19 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { INotificatable } from '../../../../../../shared/models/inotificated-component-interface/inotificatable.interface';
 import { UserOperationNotificationService } from '../../../../../../shared/services/user-notifications/user-operation-notification-service.service';
 import { EducationDirection } from '../../models/education-direction-interface';
 import { FacadeService } from '../../services/facade.service';
 import { EducationDirectionEditNotificationBulder } from './education-direction-edit-notification';
 import { Observable } from 'rxjs';
 import { IOperationHandler } from '../../../../../../shared/models/ihandable-component-interface/Ioperation-handler-interface';
+import { ISuccessNotificatable } from '../../../../../../shared/models/interfaces/isuccess-notificatable';
+import { IFailureNotificatable } from '../../../../../../shared/models/interfaces/ifailure-notificatable';
 
 type HandlerDependencies = {
   oldDirection: EducationDirection;
   facadeService: FacadeService;
   notificationService: UserOperationNotificationService;
-  notificatable: INotificatable;
+  success: ISuccessNotificatable;
+  failure: IFailureNotificatable;
 };
 
 const createHandler =
@@ -22,15 +24,14 @@ const createHandler =
     ).buildMessage(parameter);
     dependecies.notificationService.SetMessage = message;
     dependecies.facadeService.fetch();
-    dependecies.notificatable.successModalState.turnOn();
-    dependecies.facadeService.refreshSelection();
+    dependecies.success.notifySuccess();
   };
 
 const createErrorHandler =
   (dependencies: HandlerDependencies) =>
   (error: HttpErrorResponse): Observable<never> => {
     dependencies.notificationService.SetMessage = error.error;
-    dependencies.notificatable.failureModalState.turnOn();
+    dependencies.failure.notifyFailure();
     return new Observable();
   };
 
@@ -38,16 +39,17 @@ export const CreateEducationDirectionEditHandler = (
   oldDirection: EducationDirection,
   facadeService: FacadeService,
   notificationService: UserOperationNotificationService,
-  notificatable: INotificatable
+  success: ISuccessNotificatable,
+  failure: IFailureNotificatable
 ): IOperationHandler<EducationDirection> => {
   const dependecies: HandlerDependencies = {
     oldDirection: oldDirection,
     facadeService: facadeService,
     notificationService: notificationService,
-    notificatable: notificatable,
+    success: success,
+    failure: failure,
   };
   const handle = createHandler(dependecies);
   const handleError = createErrorHandler(dependecies);
-  dependecies.facadeService.refreshSelection();
   return { handle, handleError };
 };

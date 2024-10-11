@@ -436,9 +436,13 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
-            "Microsoft.AspNetCore.Mvc.Core": {
+            "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
-              "version": "[2.2.5, )"
+              "version": "[8.0.2, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.4.0, )"
             }
           },
           "imports": [

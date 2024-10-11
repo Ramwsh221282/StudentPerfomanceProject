@@ -14,25 +14,15 @@ export class SearchDirectionsService extends BaseService {
   }
 
   public getAll(): Observable<EducationDirection[]> {
-    return this.httpClient.get<EducationDirection[]>(`${this.baseApiUri}/all`);
+    return this.httpClient.get<EducationDirection[]>(`${this.readApiUri}all`);
   }
 
-  public filterPagedByCode(
+  public search(
     factory: IRequestParamsFactory
   ): Observable<EducationDirection[]> {
     const params = factory.Params;
     return this.httpClient.get<EducationDirection[]>(
-      `${this.baseApiUri}/searchByCode`,
-      { params }
-    );
-  }
-
-  public filterPagedByName(
-    factory: IRequestParamsFactory
-  ): Observable<EducationDirection[]> {
-    const params = factory.Params;
-    return this.httpClient.get<EducationDirection[]>(
-      `${this.baseApiUri}/searchByName`,
+      `${this.readApiUri}search`,
       { params }
     );
   }
@@ -49,9 +39,9 @@ class FilterPagedRequestParamFactory implements IRequestParamsFactory {
 
   public constructor(direction: EducationDirection) {
     this._httpParams = new HttpParams()
-      .set('Direction.Code', direction.code)
-      .set('Direction.Name', direction.name)
-      .set('Direction.Type', direction.type);
+      .set('Code', direction.code)
+      .set('Name', direction.name)
+      .set('Type', direction.type);
   }
 
   public get Params(): HttpParams {

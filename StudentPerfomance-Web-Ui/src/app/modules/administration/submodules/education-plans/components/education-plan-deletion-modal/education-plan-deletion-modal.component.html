@@ -1,0 +1,20 @@
+<div id="container">
+  <div id="header">
+    <strong>Подтверждение</strong>
+  </div>
+  <div id="content">
+    <a>Вы уверены, что Вы хотите удалить запись учебного плана?</a>
+    <a>При удалении учебного плана удалятся связанные с ним записи:</a>
+    <a>Семестры</a>
+    <a>Дисциплины</a>
+    <a>Оценки</a>
+  </div>
+  <div id="controls">
+    <button class="accept-button-modal" type="button" (click)="confirm()">
+      Подтвердить
+    </button>
+    ><button class="danger-button-modal" type="button" (click)="decline()">
+      Отмена
+    </button>
+  </div>
+</div>

@@ -29,7 +29,8 @@ internal sealed class EducationDirectionsCommandRepository
 	{
 		EducationDirection? direction = await _db.EducationDirections.FirstOrDefaultAsync(expression.Build());
 		if (direction == null) return Result.Failure<EducationDirection>(new EducationDirectionNotFoundError().ToString());
-		await _db.EducationPlans.Where(p => p.Direction.Id == direction.Id).ExecuteDeleteAsync();
+		//await _db.EducationPlans.Where(p => p.Direction.Id == direction.Id).ExecuteDeleteAsync();
+		//await Commit();
 		await _db.EducationDirections.Where(d => d.Id == direction.Id).ExecuteDeleteAsync();
 		await Commit();
 		return direction;

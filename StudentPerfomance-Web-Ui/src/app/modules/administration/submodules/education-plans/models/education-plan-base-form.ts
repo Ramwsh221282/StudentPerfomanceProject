@@ -2,11 +2,12 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { EducationPlan } from './education-plan-interface';
 import { FormValueBuilder } from '../../../../../shared/models/form-value-builder/form-value-builder';
 import { EducationDirection } from '../../education-directions/models/education-direction-interface';
+import { ISubbmittable } from '../../../../../shared/models/interfaces/isubbmitable';
 
-export abstract class EducationPlanBaseForm {
+export abstract class EducationPlanBaseForm implements ISubbmittable {
   protected title: string;
   protected form: FormGroup;
-  protected abstract submit(): void;
+  public abstract submit(): void;
   protected initForm(): void {
     this.form = new FormGroup({
       year: new FormControl(null, [Validators.required]),

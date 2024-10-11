@@ -11,10 +11,12 @@ internal sealed class EducationPlanQueryRepository
 	private readonly ApplicationDb _db = new ApplicationDb();
 	public async Task Commit() => await _db.SaveChangesAsync();
 	public async Task<int> Count() => await _db.EducationPlans.CountAsync();
+
 	public async Task<IReadOnlyCollection<EducationPlan>> GetAll() =>
 		await _db.EducationPlans
 		.Include(p => p.Direction)
 		.Include(p => p.Semesters)
+		.ThenInclude(s => s.Contracts)
 		.AsNoTracking()
 		.ToListAsync();
 
@@ -22,12 +24,14 @@ internal sealed class EducationPlanQueryRepository
 		await _db.EducationPlans
 		.Include(p => p.Direction)
 		.Include(p => p.Semesters)
+		.ThenInclude(s => s.Contracts)
 		.FirstOrDefaultAsync(expression.Build());
 
 	public async Task<IReadOnlyCollection<EducationPlan>> GetFiltered(IRepositoryExpression<EducationPlan> expression) =>
 		await _db.EducationPlans
 		.Include(p => p.Direction)
 		.Include(p => p.Semesters)
+		.ThenInclude(s => s.Contracts)
 		.Where(expression.Build())
 		.AsNoTracking()
 		.ToListAsync();
@@ -36,6 +40,8 @@ internal sealed class EducationPlanQueryRepository
 		await _db.EducationPlans
 		.Include(p => p.Direction)
 		.Include(p => p.Semesters)
+		.ThenInclude(s => s.Contracts)
+		.OrderBy(p => p.EntityNumber)
 		.Where(expression.Build())
 		.Skip((page - 1) * pageSize)
 		.Take(pageSize)
@@ -46,6 +52,8 @@ internal sealed class EducationPlanQueryRepository
 		await _db.EducationPlans
 		.Include(p => p.Direction)
 		.Include(p => p.Semesters)
+		.ThenInclude(s => s.Contracts)
+		.OrderBy(p => p.EntityNumber)
 		.Skip((page - 1) * pageSize)
 		.Take(pageSize)
 		.AsNoTracking()

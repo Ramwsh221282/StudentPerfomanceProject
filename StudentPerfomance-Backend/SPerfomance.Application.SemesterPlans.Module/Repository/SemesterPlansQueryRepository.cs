@@ -19,7 +19,6 @@ internal sealed class SemesterPlansQueryRepository
 	public async Task<IReadOnlyCollection<SemesterPlan>> GetAll() =>
 		await _context.SemesterPlans
 		.Include(p => p.Semester)
-		.ThenInclude(s => s.Contracts)
 		.Include(p => p.AttachedTeacher)
 		.OrderByDescending(p => p.EntityNumber)
 		.AsNoTracking()
@@ -28,7 +27,6 @@ internal sealed class SemesterPlansQueryRepository
 	public async Task<IReadOnlyCollection<SemesterPlan>> GetPaged(int page, int pageSize) =>
 		await _context.SemesterPlans
 		.Include(p => p.Semester)
-		.ThenInclude(s => s.Contracts)
 		.Include(p => p.AttachedTeacher)
 		.OrderByDescending(p => p.EntityNumber)
 		.Skip((page - 1) * pageSize)
@@ -39,7 +37,6 @@ internal sealed class SemesterPlansQueryRepository
 	public async Task<SemesterPlan?> GetByParameter(IRepositoryExpression<SemesterPlan> expression) =>
 		await _context.SemesterPlans
 		.Include(p => p.Semester)
-		.ThenInclude(s => s.Contracts)
 		.Include(p => p.AttachedTeacher)
 		.FirstOrDefaultAsync(expression.Build());
 
@@ -52,7 +49,6 @@ internal sealed class SemesterPlansQueryRepository
 	public async Task<IReadOnlyCollection<SemesterPlan>> GetFiltered(IRepositoryExpression<SemesterPlan> expression) =>
 		await _context.SemesterPlans
 		.Include(p => p.Semester)
-		.ThenInclude(s => s.Contracts)
 		.Include(p => p.AttachedTeacher)
 		.Where(expression.Build())
 		.AsNoTracking()
@@ -61,7 +57,6 @@ internal sealed class SemesterPlansQueryRepository
 	public async Task<IReadOnlyCollection<SemesterPlan>> GetFilteredAndPaged(IRepositoryExpression<SemesterPlan> expression, int page, int pageSize) =>
 		await _context.SemesterPlans
 		.Include(p => p.Semester)
-		.ThenInclude(s => s.Contracts)
 		.Include(p => p.AttachedTeacher)
 		.Where(expression.Build())
 		.Skip((page - 1) * pageSize)

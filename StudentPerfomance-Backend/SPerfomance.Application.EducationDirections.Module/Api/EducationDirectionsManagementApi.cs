@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
+using SPerfomance.Application.EducationDirections.Module.Api.Requests;
 using SPerfomance.Application.EducationDirections.Module.Commands.CreateDirection;
 using SPerfomance.Application.EducationDirections.Module.Commands.DeleteDirection;
 using SPerfomance.Application.EducationDirections.Module.Commands.UpdateDirection;
@@ -11,7 +12,7 @@ namespace SPerfomance.Application.EducationDirections.Module.Api;
 
 [ApiController]
 [Route("/education-directions/api/management")]
-public sealed class EducationDirectionsManagementApi : ControllerBase
+public sealed class EducationDirectionsManagementApi : Controller
 {
 	[HttpPost(CrudOperationNames.Create)]
 	public async Task<ActionResult<EducationDirectionSchema>> Create([FromBody] EducationDirectionSchema direction)
@@ -30,9 +31,9 @@ public sealed class EducationDirectionsManagementApi : ControllerBase
 	}
 
 	[HttpPut(CrudOperationNames.Update)]
-	public async Task<ActionResult<EducationDirectionSchema>> Update([FromQuery] EducationDirectionSchema oldSchema, [FromQuery] EducationDirectionSchema newSchema)
+	public async Task<ActionResult<EducationDirectionSchema>> Update([FromBody] UpdateRequest request)
 	{
-		UpdateDirectionCommand command = new UpdateDirectionCommand(oldSchema, newSchema);
+		UpdateDirectionCommand command = new UpdateDirectionCommand(request.initial, request.updated);
 		OperationResult<EducationDirection> result = await command.Handler.Handle(command);
 		return result.ToActionResult();
 	}

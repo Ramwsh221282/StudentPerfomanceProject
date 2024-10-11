@@ -1,24 +1,22 @@
 import { Injectable } from '@angular/core';
-import { EducationDirectionsModule } from '../education-directions.module';
 import { CreateService } from './create.service';
 import { DeleteService } from './delete.service';
 import { FetchService } from './fetch.service';
 import { PaginationService } from './pagination.service';
-import { SelectionService } from './selection.service';
 import { UpdateService } from './update.service';
 import { EducationDirection } from '../models/education-direction-interface';
 import { Observable } from 'rxjs';
+import { IFetchPolicy } from '../../../../../shared/models/fetch-policices/fetch-policy-interface';
 
 @Injectable({
-  providedIn: EducationDirectionsModule,
+  providedIn: 'any',
 })
 export class FacadeService {
   constructor(
     private readonly _createService: CreateService,
     private readonly _deleteService: DeleteService,
-    private readonly _fetchService: FetchService,
     private readonly _paginationService: PaginationService,
-    private readonly _selectionService: SelectionService,
+    private readonly _fetchService: FetchService,
     private readonly _updateService: UpdateService
   ) {}
 
@@ -33,35 +31,23 @@ export class FacadeService {
   }
 
   public fetch(): void {
-    const factory = this._fetchService.createFetchPagedRequestParamsFactory(
-      this._paginationService
-    );
-    this._fetchService.fetchPaged(factory);
+    this._fetchService.addPages(this.currentPage, this.pageSize);
+    this._fetchService.fetch();
   }
 
-  public filter(direction: EducationDirection): void {
-    const factory =
-      this._fetchService.createPagedAndFilteredRequestParamsFactory(
-        direction,
-        this._paginationService
-      );
-    this._fetchService.fetchFilteredAndPaged(factory);
+  public setFetchPolicy(policy: IFetchPolicy<EducationDirection[]>) {
+    this._fetchService.setPolicy(policy);
   }
 
   public update(
     oldDirection: EducationDirection,
     newDirection: EducationDirection
   ): Observable<EducationDirection> {
-    console.log(oldDirection);
     const factory = this._updateService.createRequestBodyFactory(
       oldDirection,
       newDirection
     );
     return this._updateService.update(factory);
-  }
-
-  public refreshSelection(): void {
-    this._selectionService.refreshSelection();
   }
 
   public refreshPagination(): void {
@@ -76,24 +62,16 @@ export class FacadeService {
     return this._paginationService.currentPage;
   }
 
+  public get pageSize(): number {
+    return this._paginationService.pageSize;
+  }
+
   public get displayPages(): number[] {
     return this._paginationService.displayPages;
   }
 
   public get count(): number {
     return this._paginationService.totalCount;
-  }
-
-  public get selected(): EducationDirection {
-    return this._selectionService.Selected;
-  }
-
-  public get copy(): EducationDirection {
-    return this._selectionService.Copy;
-  }
-
-  public set setSelection(direction: EducationDirection) {
-    this._selectionService.Select = direction;
   }
 
   public set setPage(page: number) {

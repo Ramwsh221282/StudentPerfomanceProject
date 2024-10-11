@@ -38,19 +38,22 @@ internal sealed class UpdateCommand : ICommand
 		{
 			if (!command._validator.IsValid)
 				return new OperationResult<SemesterPlan>(command._validator.Error);
+
 			SemesterPlan? initial = await _repository.GetByParameter(command._getInitial);
 			if (initial == null)
 				return new OperationResult<SemesterPlan>(new SemesterPlanNotFoundError().ToString());
+
 			if (await _repository.HasEqualRecord(command._findDublicate))
 				return new OperationResult<SemesterPlan>(new SemesterPlanDublicateError
 				(
-					command._newSchema.Semester.Number,
-					command._newSchema.Semester.Plan.Year,
-					command._newSchema.Semester.Plan.Direction.Name,
-					command._newSchema.DisciplineName
+					initial.Semester.Number.Value,
+					initial.Semester.Plan.Year.Year,
+					initial.Semester.Plan.Direction.Name.Name,
+					command._newSchema.Discipline
 				)
 				.ToString());
-			initial.Discipline.ChangeName(command._newSchema.DisciplineName);
+
+			initial.Discipline.ChangeName(command._newSchema.Discipline);
 			await _repository.Commit();
 			return new OperationResult<SemesterPlan>(initial);
 		}

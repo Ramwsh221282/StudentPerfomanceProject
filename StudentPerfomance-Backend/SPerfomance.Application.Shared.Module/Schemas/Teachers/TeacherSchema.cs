@@ -74,7 +74,15 @@ public static class TeacherSchemaExtensions
 	public static TeacherSchema ToSchema(this Teacher teacher)
 	{
 		DepartmentSchema department = teacher.Department.ToSchema();
-		TeacherSchema schema = new TeacherSchema(teacher.Name.Name, teacher.Name.Surname, teacher.Name.Thirdname, teacher.Condition.Value, teacher.JobTitle.Value, department);
+		TeacherSchema schema = new TeacherSchema()
+		{
+			Name = teacher.Name.Name,
+			Surname = teacher.Name.Surname,
+			Thirdname = teacher.Name.Thirdname,
+			Condition = teacher.Condition.Value,
+			Job = teacher.JobTitle.Value,
+			Department = department
+		};
 		return schema;
 	}
 

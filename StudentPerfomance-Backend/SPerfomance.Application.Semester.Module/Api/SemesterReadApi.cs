@@ -1,7 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 
+using SPerfomance.Application.Semester.Module.Api.Requests;
 using SPerfomance.Application.Semester.Module.Queries.All;
 using SPerfomance.Application.Semester.Module.Queries.Count;
+using SPerfomance.Application.Semester.Module.Queries.EducationPlanSemestersRequest;
 using SPerfomance.Application.Semester.Module.Queries.Filter;
 using SPerfomance.Application.Semester.Module.Queries.Paged;
 using SPerfomance.Application.Semester.Module.Queries.Search;
@@ -50,6 +52,14 @@ public sealed class SemesterReadApi : ControllerBase
 	public async Task<ActionResult<IReadOnlyCollection<SemesterSchema>>> Search([FromQuery] SemesterSchema semester)
 	{
 		SearchQuery query = new SearchQuery(semester);
+		OperationResult<IReadOnlyCollection<Domain.Module.Shared.Entities.Semesters.Semester>> result = await query.Handler.Handle(query);
+		return result.ToActionResult();
+	}
+
+	[HttpGet("education-plan-semesters")]
+	public async Task<ActionResult<IReadOnlyCollection<SemesterSchema>>> GetByEducationPlan([FromQuery] EducationPlanSemestersRequest request)
+	{
+		GetSemestersByEducationPlanQuery query = new GetSemestersByEducationPlanQuery(request.schema);
 		OperationResult<IReadOnlyCollection<Domain.Module.Shared.Entities.Semesters.Semester>> result = await query.Handler.Handle(query);
 		return result.ToActionResult();
 	}

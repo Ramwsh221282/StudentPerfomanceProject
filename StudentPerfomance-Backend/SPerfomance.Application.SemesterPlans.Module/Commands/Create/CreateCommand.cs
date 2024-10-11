@@ -7,6 +7,7 @@ using SPerfomance.Application.Shared.Module.Operations;
 using SPerfomance.Application.Shared.Module.Schemas;
 using SPerfomance.Application.Shared.Module.Schemas.SemesterPlans;
 using SPerfomance.Application.Shared.Module.Schemas.SemesterPlans.Validators;
+using SPerfomance.Application.Shared.Module.Schemas.Semesters;
 using SPerfomance.Domain.Module.Shared.Common.Abstractions.Repositories;
 using SPerfomance.Domain.Module.Shared.Entities.SemesterPlans;
 using SPerfomance.Domain.Module.Shared.Entities.Semesters;
@@ -17,15 +18,15 @@ internal sealed class CreateCommand : ICommand
 {
 	private readonly SemesterPlanSchema _plan;
 	private readonly IRepositoryExpression<Semester> _getSemester;
-	private readonly IRepositoryExpression<SemesterPlan> _findDublicate;
 	private readonly SemesterPlansCommandRepository _repository;
 	private readonly ISchemaValidator _validator;
+
 	public readonly ICommandHandler<CreateCommand, SemesterPlan> Handler;
-	public CreateCommand(SemesterPlanSchema plan)
+
+	public CreateCommand(SemesterSchema semester, SemesterPlanSchema plan)
 	{
 		_plan = plan;
-		_getSemester = ExpressionsFactory.GetSemester(plan.ToRepositoryObject());
-		_findDublicate = ExpressionsFactory.GetPlan(plan.ToRepositoryObject());
+		_getSemester = ExpressionsFactory.GetSemester(semester.ToRepositoryObject());
 		_repository = new SemesterPlansCommandRepository();
 		_validator = new SemesterPlanValidator()
 		.WithDisciplineValidation(plan);
@@ -41,7 +42,7 @@ internal sealed class CreateCommand : ICommand
 		{
 			if (!command._validator.IsValid)
 				return new OperationResult<SemesterPlan>(command._validator.Error);
-			Result<SemesterPlan> create = await _repository.Create(command._plan, command._getSemester, command._findDublicate);
+			Result<SemesterPlan> create = await _repository.Create(command._plan, command._getSemester);
 			return create.IsFailure ?
 				new OperationResult<SemesterPlan>(create.Error) :
 				new OperationResult<SemesterPlan>(create.Value);

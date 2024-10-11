@@ -14,7 +14,9 @@ export class FormValueBuilder {
   }
 
   public extractNumberOrDefault(formControlName: string): number {
-    return this._form.value[formControlName] == null || undefined
+    return this._form.value[formControlName] == null ||
+      this._form.value[formControlName] == undefined ||
+      this._form.value[formControlName].length == 0
       ? 0
       : this._form.value[formControlName];
   }

@@ -66,7 +66,7 @@ export class DepartmentsPaginationService extends DepartmentsBaseService {
 
   public refreshPagination(): void {
     this.httpClient
-      .get<number>(`${this.baseApiUri}/totalCount`)
+      .get<number>(`${this.readApiUri}count`)
       .subscribe((response) => {
         this._totalCount = response;
         this._pagesCount = Math.ceil(this._totalCount / this._pageSize);

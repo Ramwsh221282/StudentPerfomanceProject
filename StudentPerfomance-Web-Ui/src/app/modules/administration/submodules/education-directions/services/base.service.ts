@@ -6,6 +6,13 @@ import { BASE_API_URI } from '../../../../../shared/models/api/api-constants';
   providedIn: 'any',
 })
 export class BaseService {
-  protected readonly httpClient: HttpClient = inject(HttpClient);
-  protected readonly baseApiUri: string = `${BASE_API_URI}/EducationDirections`;
+  protected readonly httpClient: HttpClient;
+  protected readonly managementApiUri: string;
+  protected readonly readApiUri: string;
+
+  public constructor() {
+    this.httpClient = inject(HttpClient);
+    this.managementApiUri = `${BASE_API_URI}/education-directions/api/management/`;
+    this.readApiUri = `${BASE_API_URI}/education-directions/api/read/`;
+  }
 }

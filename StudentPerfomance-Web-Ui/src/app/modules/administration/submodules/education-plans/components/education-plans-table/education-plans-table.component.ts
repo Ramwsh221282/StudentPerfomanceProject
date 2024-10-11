@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FacadeService } from '../../services/facade.service';
-import { ModalState } from '../../../../../../shared/models/modals/modal-state';
 
 @Component({
   selector: 'app-education-plans-table',
@@ -8,15 +7,28 @@ import { ModalState } from '../../../../../../shared/models/modals/modal-state';
   styleUrl: './education-plans-table.component.scss',
 })
 export class EducationPlansTableComponent implements OnInit {
-  protected readonly creationModalState: ModalState;
-  protected readonly filterByYearModalState: ModalState;
-  protected readonly filterByDirectionModalState: ModalState;
-  public constructor(protected readonly facadeService: FacadeService) {
-    this.creationModalState = new ModalState();
-    this.filterByYearModalState = new ModalState();
-    this.filterByDirectionModalState = new ModalState();
-  }
+  protected creationModalVisibility = false;
+  protected filterModalVisibility = false;
+
+  public constructor(protected readonly facadeService: FacadeService) {}
+
   public ngOnInit(): void {
     this.facadeService.fetch();
+  }
+
+  protected startCreation(): void {
+    this.creationModalVisibility = true;
+  }
+
+  protected stopCreation(value: boolean): void {
+    this.creationModalVisibility = value;
+  }
+
+  protected startFilter(): void {
+    this.filterModalVisibility = true;
+  }
+
+  protected stopFilter(value: boolean): void {
+    this.filterModalVisibility = value;
   }
 }

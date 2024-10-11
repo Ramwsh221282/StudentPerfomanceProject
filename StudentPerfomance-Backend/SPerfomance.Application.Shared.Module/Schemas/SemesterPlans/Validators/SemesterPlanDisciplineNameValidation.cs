@@ -13,7 +13,7 @@ internal sealed class SemesterPlanDisciplineNameValidation(SemesterPlanSchema sc
 
 	protected override bool Validate()
 	{
-		Result<Discipline> result = Discipline.Create(_schema.DisciplineName);
+		Result<Discipline> result = Discipline.Create(_schema.Discipline);
 		return result.IsFailure ? ReturnError(result.Error) : ReturnSuccess();
 	}
 }

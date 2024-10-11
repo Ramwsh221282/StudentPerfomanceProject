@@ -1,24 +1,41 @@
-<section class="administration-page-layout">
-  <app-administration-menu
-    [title]="'Направления подготовки'"
-    [routerLink]="['/education-directions']"
-  >
-  </app-administration-menu>
-  <app-administration-menu
-    [title]="'Учебные планы'"
-    [routerLink]="['/education-plans']"
-  >
-  </app-administration-menu>
-  <app-administration-menu
-    [title]="'Студенческие группы'"
-    [routerLink]="['/groups']"
-  ></app-administration-menu>
-  <app-administration-menu
-    [title]="'Кафедры'"
-    [routerLink]="['/departments']"
-  ></app-administration-menu>
-  <app-administration-menu
-    [title]="'Семестры'"
-    [routerLink]="['/semesters']"
-  ></app-administration-menu>
+<section class="group-elements-wrapper">
+  <strong class="group-header">Организационные структуры</strong>
+  <div class="group-structures">
+    <app-administration-menu
+      [title]="'Направления подготовки'"
+      [routerLink]="['/education-directions']"
+    >
+    </app-administration-menu>
+    <app-administration-menu
+      [title]="'Учебные планы'"
+      [routerLink]="['/education-plans']"
+    >
+    </app-administration-menu>
+  </div>
+</section>
+<section class="group-elements-wrapper">
+  <strong class="group-header">Субъекты</strong>
+  <div class="group-structures">
+    <app-administration-menu
+      [title]="'Студенческие группы'"
+      [routerLink]="['/groups']"
+    ></app-administration-menu>
+    <app-administration-menu
+      [title]="'Кафедры'"
+      [routerLink]="['/departments']"
+    ></app-administration-menu>
+  </div>
+</section>
+<section class="group-elements-wrapper">
+  <strong class="group-header">Технические службы</strong>
+  <div class="group-structures">
+    <app-administration-menu
+      [title]="'Резерв базы данных'"
+      [routerLink]="['123']"
+    ></app-administration-menu>
+    <app-administration-menu
+      [title]="'Импорт данных'"
+      [routerLink]="['123']"
+    ></app-administration-menu>
+  </div>
 </section>

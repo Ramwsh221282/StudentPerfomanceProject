@@ -8,7 +8,8 @@ import { FacadeService } from '../../../services/facade.service';
 })
 export class EducationPlansPaginationComponent implements OnInit {
   public constructor(protected readonly facadeService: FacadeService) {}
-  public ngOnInit(): void {
+
+  ngOnInit(): void {
     this.facadeService.refreshPagination();
   }
 }

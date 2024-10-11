@@ -4,10 +4,12 @@ import { BASE_API_URI } from '../../../../../shared/models/api/api-constants';
 
 export class DepartmentsBaseService {
   protected readonly httpClient: HttpClient;
-  protected readonly baseApiUri: string;
+  protected readonly managementApiUri: string;
+  protected readonly readApiUri: string;
 
   public constructor() {
     this.httpClient = inject(HttpClient);
-    this.baseApiUri = `${BASE_API_URI}/TeacherDepartments`;
+    this.managementApiUri = `${BASE_API_URI}/education-directions/api/management/`;
+    this.readApiUri = `${BASE_API_URI}/education-directions/api/read/`;
   }
 }

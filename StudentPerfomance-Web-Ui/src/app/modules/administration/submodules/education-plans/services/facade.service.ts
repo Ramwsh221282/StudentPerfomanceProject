@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
-import { EducationPlansModule } from '../education-plans.module';
 import { CreateService } from './create.service';
 import { DeleteService } from './delete.service';
 import { FetchService } from './fetch.service';
 import { PaginationService } from './pagination.service';
 import { Observable } from 'rxjs';
 import { EducationPlan } from '../models/education-plan-interface';
+import { IFetchPolicy } from '../../../../../shared/models/fetch-policices/fetch-policy-interface';
 
 @Injectable({
-  providedIn: EducationPlansModule,
+  providedIn: 'any',
 })
 export class FacadeService {
   public constructor(
@@ -29,26 +29,12 @@ export class FacadeService {
   }
 
   public fetch(): void {
-    const factory = this._fetchService.createFetchRequestParamsFactory(
-      this._paginationService
-    );
-    this._fetchService.fetch(factory);
+    this._fetchService.addPages(this.currentPage, this.pageSize);
+    this._fetchService.fetch();
   }
 
-  public filterByYear(plan: EducationPlan): void {
-    const factory = this._fetchService.createFilterRequestParamsFactory(
-      this._paginationService,
-      plan
-    );
-    this._fetchService.filterByYear(factory);
-  }
-
-  public filterByDirection(plan: EducationPlan): void {
-    const factory = this._fetchService.createFilterRequestParamsFactory(
-      this._paginationService,
-      plan
-    );
-    this._fetchService.filterByDirection(factory);
+  public setFetchPolicy(policy: IFetchPolicy<EducationPlan[]>): void {
+    this._fetchService.setPolicy(policy);
   }
 
   public refreshPagination(): void {
@@ -57,22 +43,22 @@ export class FacadeService {
 
   public movePreviousPage(): void {
     this._paginationService.movePreviousPage();
-    this._paginationService.refreshPagination();
+    this.fetch();
   }
 
   public moveNextPage(): void {
     this._paginationService.moveNextPage();
-    this._paginationService.refreshPagination();
+    this.fetch();
   }
 
   public moveInitialPage(): void {
     this._paginationService.moveInitialPage();
-    this._paginationService.refreshPagination();
+    this.fetch();
   }
 
   public moveLastPage(): void {
     this._paginationService.moveLastPage();
-    this._paginationService.refreshPagination();
+    this.fetch();
   }
 
   public get plans(): EducationPlan[] {
@@ -87,12 +73,16 @@ export class FacadeService {
     return this._paginationService.currentPage;
   }
 
+  public get pageSize(): number {
+    return this._paginationService.pageSize;
+  }
+
   public get count(): number {
     return this._paginationService.totalCount;
   }
 
   public set setPage(page: number) {
     this._paginationService.selectPage(page);
-    this._paginationService.refreshPagination();
+    this.fetch();
   }
 }

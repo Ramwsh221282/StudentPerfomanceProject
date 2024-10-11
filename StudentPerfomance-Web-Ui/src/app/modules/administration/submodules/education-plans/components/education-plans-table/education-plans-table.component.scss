@@ -1,53 +1,44 @@
 .education-plans-table-wrapper {
-  display: flex;
-  flex-direction: column;
   gap: 5px;
+  background-color: #ffffff;
+  border: solid 1px #d9d9d9;
+  border-radius: 10px;
 }
 
-.education-plans-table-header {
-  padding: 5px;
-  font-weight: bold;
-  font-size: 14px;
-  color: #a1e3ff;
-  background-color: #2d4048;
+.education-plans-controls-container {
+  padding: 15px;
+  color: #ffffff;
+  border-radius: 10px 10px 0px 0px;
+  height: 45px;
+  font-size: 24px;
   display: flex;
-  flex-direction: row;
   gap: 10px;
 }
 
-.education-plans-table {
-  color: #a1e3ff;
-  border-collapse: collapse;
-  background-color: #0b1622;
-  min-width: 700px;
-  font-size: 14px;
-
-  & thead tr {
-    background-color: #2d4048;
-    color: #a1e3ff;
-    text-align: left;
-  }
-
-  & td,
-  & th {
-    padding: 5px 5px;
-  }
-
-  & tbody tr {
-    border-bottom: 1px solid #3e5a66;
-  }
-
-  & tbody tr:nth-of-type(even) {
-    background-color: #2d4048;
-  }
-
-  & tbody tr:last-of-type {
-    border-bottom: 2px solid #3e5a66;
-  }
+.education-plans-table-container {
+  padding: 50px;
 }
 
-.button-list {
-  display: flex;
-  flex-direction: row;
-  gap: 5px;
+.education-plans-table-grid {
+  align-items: center;
+  justify-content: center;
+  display: grid;
+  grid-template-columns: auto;
+  grid-gap: 10px 10px;
+  font-size: 14px;
+  font-weight: 600px;
+  width: 100%;
+}
+
+.education-plans-table-header {
+  display: grid;
+  grid-template-columns: 50px 50px 400px 150px 150px auto;
+  grid-gap: 30px;
+  text-align: center;
+}
+
+.pagination-wrapper {
+  position: inherit;
+  bottom: 0;
+  align-self: center;
 }

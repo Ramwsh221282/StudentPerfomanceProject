@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-
+using SPerfomance.Application.EducationPlans.Module.Api.Requests;
 using SPerfomance.Application.EducationPlans.Module.Queries.All;
 using SPerfomance.Application.EducationPlans.Module.Queries.Count;
 using SPerfomance.Application.EducationPlans.Module.Queries.GetFiltered;
@@ -38,13 +38,15 @@ public sealed class EducationPlansReadApi : ControllerBase
 		OperationResult<IReadOnlyCollection<EducationPlan>> result = await query.Handler.Handle(query);
 		return result.ToActionResult();
 	}
+
 	[HttpGet(CrudOperationNames.Filter)]
-	public async Task<ActionResult<IReadOnlyCollection<EducationPlanSchema>>> Filter([FromQuery] EducationPlanSchema plan, int page, int pageSize)
+	public async Task<ActionResult<IReadOnlyCollection<EducationPlanSchema>>> Filter([FromQuery] FilterRequest request)
 	{
-		GetFilteredQuery query = new GetFilteredQuery(plan, page, pageSize);
+		GetFilteredQuery query = new GetFilteredQuery(request.Plan, request.Page, request.PageSize);
 		OperationResult<IReadOnlyCollection<EducationPlan>> result = await query.Handler.Handle(query);
 		return result.ToActionResult();
 	}
+
 	[HttpGet(CrudOperationNames.Search)]
 	public async Task<ActionResult<IReadOnlyCollection<EducationPlanSchema>>> Search([FromQuery] EducationPlanSchema plan)
 	{

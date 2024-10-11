@@ -1,30 +1,44 @@
-.education-direction-items-list-wrapper {
-  display: flex;
-  flex-direction: column;
+.education-direction-table-wrapper {
   gap: 5px;
-  background-color: #e6eaf6;
+  background-color: #ffffff;
+  border: solid 1px #d9d9d9;
   border-radius: 10px;
-  box-shadow: #1b274b 0 10px 20px -10px;
-  height: 97.5vh;
 }
 
-.education-direction-items-list-header {
-  padding: 5px;
+.education-direction-controls-container {
+  padding: 15px;
   color: #ffffff;
   border-radius: 10px 10px 0px 0px;
-  background-color: #7c91d0;
-  box-shadow: #7c91d0 0 10px 20px -10px;
   height: 45px;
   font-size: 24px;
+  display: flex;
+  gap: 10px;
 }
 
-.education-direction-items-list {
-  padding: 10px;
+.education-direction-table-container {
+  padding: 50px;
+}
+
+.education-direction-table-grid {
+  align-items: center;
+  justify-content: center;
   display: grid;
-  grid-template-columns: 400px 400px;
-  grid-gap: 10px;
+  grid-template-columns: auto;
+  grid-gap: 10px 10px;
+  font-size: 14px;
+  font-weight: 600px;
+  width: 100%;
+}
+
+.education-direction-table-header {
+  display: grid;
+  grid-template-columns: 100px 450px 200px 150px auto;
+  grid-gap: 30px;
+  text-align: center;
 }
 
 .pagination-wrapper {
-  margin-top: auto;
+  position: inherit;
+  bottom: 0;
+  align-self: center;
 }

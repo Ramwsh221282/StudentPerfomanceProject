@@ -14,7 +14,10 @@ export class DepartmentsDeleteService extends DepartmentsBaseService {
 
   public delete(factory: IRequestBodyFactory): Observable<Department> {
     const body = factory.Body;
-    return this.httpClient.delete<Department>(`${this.baseApiUri}`, { body });
+    return this.httpClient.delete<Department>(
+      `${this.managementApiUri}delete`,
+      { body }
+    );
   }
 
   public createRequestBodyFactory(department: Department) {

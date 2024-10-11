@@ -14,7 +14,10 @@ export class DepartmentsUpdateService extends DepartmentsBaseService {
 
   public update(factory: IRequestBodyFactory): Observable<Department> {
     const body = factory.Body;
-    return this.httpClient.put<Department>(`${this.baseApiUri}`, body);
+    return this.httpClient.put<Department>(
+      `${this.managementApiUri}update`,
+      body
+    );
   }
 
   public createRequestBodyFactory(

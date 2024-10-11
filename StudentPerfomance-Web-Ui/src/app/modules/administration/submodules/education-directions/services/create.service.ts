@@ -14,7 +14,10 @@ export class CreateService extends BaseService {
 
   public create(factory: IRequestBodyFactory): Observable<EducationDirection> {
     const body = factory.Body;
-    return this.httpClient.post<EducationDirection>(this.baseApiUri, body);
+    return this.httpClient.post<EducationDirection>(
+      `${this.managementApiUri}create`,
+      body
+    );
   }
 
   public createRequestBodyFactory(
@@ -29,11 +32,9 @@ class RequestBodyFactory implements IRequestBodyFactory {
 
   public constructor(direction: EducationDirection) {
     this._body = {
-      direction: {
-        code: direction.code,
-        name: direction.name,
-        type: direction.type,
-      },
+      code: direction.code,
+      name: direction.name,
+      type: direction.type,
     };
   }
 

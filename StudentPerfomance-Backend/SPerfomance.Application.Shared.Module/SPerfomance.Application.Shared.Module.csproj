@@ -7,12 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SPerfomance.Domain.Module.Shared\SPerfomance.Domain.Module.Shared.csproj" />
-    <ProjectReference Include="..\SPerfomance.DataAccess.Module.Shared\SPerfomance.DataAccess.Module.Shared.csproj" />
+  	<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.2" />
+	<PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+    <ProjectReference Include="..\SPerfomance.Domain.Module.Shared\SPerfomance.Domain.Module.Shared.csproj" />
+    <ProjectReference Include="..\SPerfomance.DataAccess.Module.Shared\SPerfomance.DataAccess.Module.Shared.csproj" />
   </ItemGroup>
 
 </Project>

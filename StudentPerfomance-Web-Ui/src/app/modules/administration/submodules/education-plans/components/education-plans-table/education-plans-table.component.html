@@ -1,78 +1,40 @@
 <div class="education-plans-table-wrapper">
-  <div class="education-plans-table-header">
-    <strong>Текущие учебные планы</strong>
-  </div>
-  <div class="education-plans-table-header">
-    <strong>Количество учебных планов: {{ facadeService.count }}</strong>
-  </div>
-  <div class="education-plans-table-header">
-    <button
-      type="button"
-      class="btn btn-success font-black"
-      (click)="creationModalState.turnOn()"
-    >
+  <div class="education-plans-controls-container">
+    <button class="accept-button" (click)="startCreation()">
       Добавить учебный план
     </button>
-    <button
-      type="button"
-      class="btn btn-warning"
-      (click)="filterByYearModalState.turnOn()"
-    >
-      Фильтр по году
-    </button>
-    <button
-      type="button"
-      class="btn btn-warning"
-      (click)="filterByDirectionModalState.turnOn()"
-    >
-      Фильтр по направлению
-    </button>
-    <button
-      type="button"
-      class="btn btn-warning"
-      (click)="facadeService.fetch()"
-    >
-      Отменить фильтр
+    <button class="accept-button" (click)="startFilter()">
+      Отфильтровать список
     </button>
   </div>
-  <table class="education-plans-table">
-    <thead>
-      <tr>
-        <th>Список учебных планов</th>
-      </tr>
-    </thead>
-    <tbody>
+  <div class="education-plans-table-container">
+    <div class="education-plans-table-grid">
+      <div class="education-plans-table-header">
+        <strong>Номер</strong>
+        <strong>Год</strong>
+        <strong>Наименование направления</strong>
+        <strong>Код направления</strong>
+        <strong>Тип направления</strong>
+        <strong>Действия</strong>
+      </div>
       @for (plan of facadeService.plans; track plan.entityNumber) {
-      <tr>
-        <app-education-plans-card [plan]="plan"> </app-education-plans-card>
-      </tr>
+      <app-education-plans-table-row
+        [plan]="plan"
+      ></app-education-plans-table-row>
       }
-    </tbody>
-  </table>
-  <app-education-plans-pagination></app-education-plans-pagination>
+    </div>
+  </div>
+  <div class="pagination-wrapper">
+    <app-education-plans-pagination></app-education-plans-pagination>
+  </div>
 </div>
-<div id="create-modal-renderer" *ngIf="creationModalState.Visibility">
-  <app-education-plans-create-modal
-    (modalDisabled)="creationModalState.turn($event)"
-    [formTitle]="'Добавление плана'"
-  >
-  </app-education-plans-create-modal>
+<div id="creation-modal-renderer" *ngIf="creationModalVisibility">
+  <app-education-plan-creation-modal
+    (visibility)="stopCreation($event)"
+  ></app-education-plan-creation-modal>
 </div>
-<div
-  id="filter-by-year-modal-renderer"
-  *ngIf="filterByYearModalState.Visibility"
->
-  <app-education-plans-filter-by-plan-year-modal
-    [formTitle]="'Фильтр по году'"
-    (modalDisabled)="filterByYearModalState.turn($event)"
-  ></app-education-plans-filter-by-plan-year-modal>
-</div>
-<div
-  id="filter-by-direction-modal-renderer"
-  *ngIf="filterByDirectionModalState.Visibility"
->
-  <app-education-plans-filter-by-direction-modal
-    [formTitle]="'Фильтр по названию направления'"
-    (modalDisabled)="filterByDirectionModalState.turn($event)"
-  ></app-education-plans-filter-by-direction-modal>
+<div id="filter-modal-renderer" *ngIf="filterModalVisibility">
+  <app-education-plan-filter-modal
+    (visibility)="stopFilter($event)"
+  ></app-education-plan-filter-modal>
 </div>

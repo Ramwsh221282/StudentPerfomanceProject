@@ -1,99 +1,43 @@
 import { Injectable } from '@angular/core';
 import { BaseService } from './base.service';
 import { EducationDirection } from '../models/education-direction-interface';
-import { IRequestParamsFactory } from '../../../../../models/RequestParamsFactory/irequest-params-factory.interface';
-import { HttpParams } from '@angular/common/http';
-import { PaginationService } from './pagination.service';
+import { IFetchable } from '../../../../../shared/models/fetch-policices/ifetchable-interface';
+import { IFetchPolicy } from '../../../../../shared/models/fetch-policices/fetch-policy-interface';
+import { DefaultFetchPolicy } from '../models/fetch-policies/default-fetch-policy';
 
 @Injectable({
   providedIn: 'any',
 })
-export class FetchService extends BaseService {
-  private _directions: EducationDirection[] = [];
+export class FetchService
+  extends BaseService
+  implements IFetchable<EducationDirection[]>
+{
+  private _currentPolicy: IFetchPolicy<EducationDirection[]>;
+  private _directions: EducationDirection[];
+
   public constructor() {
     super();
-    const direction1: EducationDirection = {
-      entityNumber: 1,
-      code: '09.03.01',
-      type: 'Бакалавриат',
-      name: 'Информатика и вычислительная техника',
-    } as EducationDirection;
-    const direction2: EducationDirection = {
-      entityNumber: 2,
-      code: '09.04.01',
-      type: 'Магистратура',
-      name: 'Информатика и вычислительная техника',
-    } as EducationDirection;
-    this._directions.push(direction1);
-    this._directions.push(direction2);
+    this._directions = [];
+    this._currentPolicy = new DefaultFetchPolicy();
   }
 
-  public get directions(): EducationDirection[] {
-    return this._directions;
+  public addPages(page: number, pageSize: number): void {
+    this._currentPolicy.addPages(page, pageSize);
   }
 
-  public fetchPaged(factory: IRequestParamsFactory): void {
-    /*const params = factory.Params;
-    this.httpClient
-      .get<EducationDirection[]>(`${this.baseApiUri}/byPage`, { params })
-      .subscribe((response) => {
-        this._directions = response;
-      });*/
-  }
-
-  public fetchFilteredAndPaged(factory: IRequestParamsFactory): void {
-    const params = factory.Params;
-    this.httpClient
-      .get<EducationDirection[]>(`${this.baseApiUri}/filter`, { params })
+  public fetch(): void {
+    this._currentPolicy
+      .executeFetchPolicy(this.httpClient)
       .subscribe((response) => {
         this._directions = response;
       });
   }
 
-  public createFetchPagedRequestParamsFactory(
-    service: PaginationService
-  ): IRequestParamsFactory {
-    return new PagedRequestParamFactory(service.currentPage, service.pageSize);
+  public setPolicy(policy: IFetchPolicy<EducationDirection[]>): void {
+    this._currentPolicy = policy;
   }
 
-  public createPagedAndFilteredRequestParamsFactory(
-    direction: EducationDirection,
-    service: PaginationService
-  ): IRequestParamsFactory {
-    return new PagedFilterRequestParamFactory(
-      direction,
-      service.currentPage,
-      service.pageSize
-    );
-  }
-}
-
-class PagedRequestParamFactory implements IRequestParamsFactory {
-  private readonly _params: HttpParams;
-  public constructor(page: number, pageSize: number) {
-    this._params = new HttpParams().set('page', page).set('pageSize', pageSize);
-  }
-  public get Params(): HttpParams {
-    return this._params;
-  }
-}
-
-class PagedFilterRequestParamFactory implements IRequestParamsFactory {
-  private readonly _params: HttpParams;
-  public constructor(
-    direction: EducationDirection,
-    page: number,
-    pageSize: number
-  ) {
-    this._params = new HttpParams()
-      .set('Direction.Code', direction.code)
-      .set('Direction.Name', direction.name)
-      .set('Direction.Type', direction.type)
-      .set('page', page)
-      .set('pageSize', pageSize);
-  }
-
-  public get Params(): HttpParams {
-    return this._params;
+  public get directions(): EducationDirection[] {
+    return this._directions;
   }
 }

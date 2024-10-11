@@ -1,53 +1,44 @@
-import {
-  AfterViewInit,
-  Component,
-  EventEmitter,
-  OnInit,
-  Output,
-  TemplateRef,
-  ViewChild,
-} from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { EducationDirectionBaseForm } from '../../models/education-direction-base-form';
-import { BsModalService } from 'ngx-bootstrap/modal';
 import { FacadeService } from '../../services/facade.service';
+import { FilterFetchPolicy } from '../../models/fetch-policies/filter-fetch-policy';
+import { DefaultFetchPolicy } from '../../models/fetch-policies/default-fetch-policy';
 
 @Component({
   selector: 'app-education-directions-filter-modal',
   templateUrl: './education-directions-filter-modal.component.html',
   styleUrl: './education-directions-filter-modal.component.scss',
-  providers: [BsModalService],
 })
 export class EducationDirectionsFilterModalComponent
   extends EducationDirectionBaseForm
-  implements AfterViewInit, OnInit
+  implements OnInit
 {
-  @ViewChild('template') template!: TemplateRef<any>;
-  @Output() modalDisabled: EventEmitter<boolean> = new EventEmitter<boolean>();
-  public constructor(
-    private readonly _facadeService: FacadeService,
-    private readonly _modalService: BsModalService
-  ) {
+  @Output() visibility: EventEmitter<boolean> = new EventEmitter<boolean>();
+  public constructor(private readonly _facadeService: FacadeService) {
     super();
-    this._modalService.onHide.subscribe(() => this.close());
-  }
-
-  public ngAfterViewInit(): void {
-    this._modalService.show(this.template);
   }
 
   public ngOnInit(): void {
     this.initForm();
-    this.setTitle('Фильтрация');
   }
 
   protected override submit(): void {
-    this._facadeService.filter(this.createEducationDirectionFromForm());
-    this.initForm();
+    const direction = this.createEducationDirectionFromForm();
+    const policy = new FilterFetchPolicy(direction);
+    this._facadeService.setFetchPolicy(policy);
+    this._facadeService.fetch();
+    this.close();
+  }
+
+  protected cancel(): void {
+    const policy = new DefaultFetchPolicy();
+    this._facadeService.setFetchPolicy(policy);
+    this._facadeService.fetch();
     this.close();
   }
 
   protected close(): void {
-    this._modalService.hide();
-    this.modalDisabled.emit(false);
+    this.ngOnInit();
+    this.visibility.emit(false);
   }
 }

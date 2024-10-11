@@ -14,7 +14,7 @@ internal sealed class SemesterPlanConfiguration : IEntityTypeConfiguration<Semes
 		builder.HasKey(p => p.Id);
 		builder.OwnsOne(p => p.Discipline, onv =>
 		{
-			onv.Property(d => d.Name).IsRequired();
+			onv.Property(d => d.Name);
 		});
 		builder.HasOne(p => p.Semester);
 		builder.HasIndex(d => d.EntityNumber).IsUnique(true);

@@ -5,15 +5,13 @@ import { EducationDirectionsEditModalComponent } from './components/education-di
 import { EducationDirectionsFilterModalComponent } from './components/education-directions-filter-modal/education-directions-filter-modal.component';
 import { EducationDirectionsPageComponent } from './components/education-directions-page/education-directions-page.component';
 import { EducationDirectionsTableComponent } from './components/education-directions-table/education-directions-table.component';
-import { EducationDirectionsCardComponent } from './components/education-directions-table/education-directions-card/education-directions-card.component';
 import { EducationDirectionsRoutingModule } from './education-directions-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
-import { FailureNotificationFormComponent } from '../../../../shared/components/notification-modal-forms/failure-notification-form/failure-notification-form.component';
-import { SuccessNotificationFormComponent } from '../../../../shared/components/notification-modal-forms/success-notification-form/success-notification-form.component';
 import { EducationDirectionsPaginationComponent } from './components/education-directions-table/education-directions-pagination/education-directions-pagination.component';
-import { EducationDirectionDeletionConfirmationComponent } from './components/education-direction-deletion-confirmation/education-direction-deletion-confirmation.component';
-import { EducationDirectionFilterFormComponent } from './components/education-direction-filter-form/education-direction-filter-form.component';
-import { EducationDirectionStatisticsCardComponent } from './components/education-direction-statistics-card/education-direction-statistics-card.component';
+import { EducationDirectionsTableRowComponent } from './components/education-directions-table/education-directions-table-row/education-directions-table-row.component';
+import { FailureResultNotificationComponent } from '../../../../shared/components/failure-result-notification/failure-result-notification.component';
+import { SuccessResultNotificationComponent } from '../../../../shared/components/success-result-notification/success-result-notification.component';
+import { EducationDirectionDeleteModalComponent } from './components/education-direction-delete-modal/education-direction-delete-modal.component';
 
 @NgModule({
   declarations: [
@@ -22,18 +20,16 @@ import { EducationDirectionStatisticsCardComponent } from './components/educatio
     EducationDirectionsFilterModalComponent,
     EducationDirectionsPageComponent,
     EducationDirectionsTableComponent,
-    EducationDirectionsCardComponent,
+    EducationDirectionsTableRowComponent,
     EducationDirectionsPaginationComponent,
-    EducationDirectionDeletionConfirmationComponent,
-    EducationDirectionFilterFormComponent,
-    EducationDirectionStatisticsCardComponent,
+    EducationDirectionDeleteModalComponent,
   ],
   imports: [
     CommonModule,
     EducationDirectionsRoutingModule,
     ReactiveFormsModule,
-    FailureNotificationFormComponent,
-    SuccessNotificationFormComponent,
+    FailureResultNotificationComponent,
+    SuccessResultNotificationComponent,
   ],
   exports: [EducationDirectionsPageComponent],
 })

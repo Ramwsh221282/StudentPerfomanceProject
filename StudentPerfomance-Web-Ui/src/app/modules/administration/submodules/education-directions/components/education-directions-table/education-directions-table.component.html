@@ -1,31 +1,40 @@
-<div class="education-direction-items-list-wrapper">
-  <div class="education-direction-items-list-header">
-    <strong>Список направлений</strong>
+<div class="education-direction-table-wrapper">
+  <div class="education-direction-controls-container">
+    <button class="accept-button" (click)="startCreation()">
+      Добавить направление
+    </button>
+    <button class="accept-button" (click)="startFilter()">
+      Отфильтровать список
+    </button>
   </div>
-  <div class="education-direction-items-list">
-    @for (direction of facadeService.directions; track direction.code) {
-    <app-education-directions-card
-      [direction]="direction"
-    ></app-education-directions-card>
-    }
+  <div class="education-direction-table-container">
+    <div class="education-direction-table-grid">
+      <div class="education-direction-table-header">
+        <strong>Номер</strong>
+        <strong>Название направления</strong>
+        <strong>Код направления</strong>
+        <strong>Тип направления</strong>
+        <strong>Действия</strong>
+      </div>
+
+      @for (direction of facadeService.directions; track direction.code) {
+      <app-education-directions-table-row
+        [Direction]="direction"
+      ></app-education-directions-table-row>
+      }
+    </div>
   </div>
-  <table class="education-direction-table">
-    <thead>
-      <tr></tr>
-    </thead>
-    <tbody></tbody>
-  </table>
   <div class="pagination-wrapper">
     <app-education-directions-pagination></app-education-directions-pagination>
   </div>
 </div>
-<div id="create-modal-renderer" *ngIf="creationModalState.Visibility">
+<div id="creation-modal-renderer" *ngIf="creationModalVisibility">
   <app-education-directions-create-modal
-    (modalDisabled)="creationModalState.turn($event)"
+    (visibility)="stopCreation($event)"
   ></app-education-directions-create-modal>
 </div>
-<div id="filter-modal-renderer" *ngIf="filterModalState.Visibility">
+<div id="filter-modal-renderer" *ngIf="filterModalVisibility">
   <app-education-directions-filter-modal
-    (modalDisabled)="filterModalState.turn($event)"
+    (visibility)="stopFilter($event)"
   ></app-education-directions-filter-modal>
 </div>

@@ -1,0 +1,27 @@
+<div class="grid-item">
+  <strong>{{ plan.entityNumber }}</strong>
+  <strong>{{ plan.year }}</strong>
+  <strong>{{ plan.direction.name }}</strong>
+  <strong>{{ plan.direction.code }}</strong>
+  <strong>{{ plan.direction.type }}</strong>
+  <div class="button-items">
+    <button class="danger-button-outline" (click)="startDeletion()">
+      Удалить
+    </button>
+    <button class="accept-button-outline" (click)="openSemestersInfo()">
+      Семестры
+    </button>
+  </div>
+</div>
+<div id="deletion-modal-renderer" *ngIf="deletionModalVisibility">
+  <app-education-plan-deletion-modal
+    [plan]="plan"
+    (visibility)="manageDeletion($event)"
+  ></app-education-plan-deletion-modal>
+</div>
+<div id="semester-menu-modal-renderer" *ngIf="semestersInfoVisibility">
+  <app-education-plans-semesters
+    [plan]="plan"
+    (visibility)="closeSemestersInfo($event)"
+  ></app-education-plans-semesters>
+</div>

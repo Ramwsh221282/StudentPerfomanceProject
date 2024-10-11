@@ -15,30 +15,54 @@ namespace SPerfomance.Application.SemesterPlans.Module.Repository;
 internal sealed class SemesterPlansCommandRepository
 {
 	private readonly ApplicationDb _context = new ApplicationDb();
+
 	public async Task Commit() => await _context.SaveChangesAsync();
 
-	public async Task<Result<SemesterPlan>> Create(SemesterPlanSchema plan, IRepositoryExpression<Semester> getSemester, IRepositoryExpression<SemesterPlan> findDublicate)
+	public async Task<Result<SemesterPlan>> Create(
+		SemesterPlanSchema plan,
+		IRepositoryExpression<Semester> getSemester
+	)
 	{
-		if (await _context.SemesterPlans.AnyAsync(findDublicate.Build()))
-			return Result.Failure<SemesterPlan>(new SemesterPlanDublicateError(plan.Semester.Number, plan.Semester.Plan.Year, plan.Semester.Plan.Direction.Name, plan.DisciplineName).ToString());
-		Semester? semester = await _context.Semesters.FirstOrDefaultAsync(getSemester.Build());
+		Semester? semester = await _context.Semesters
+		.Include(s => s.Plan)
+		.ThenInclude(p => p.Direction)
+		.Include(s => s.Contracts)
+		.FirstOrDefaultAsync(getSemester.Build());
+
 		if (semester == null)
 			return Result.Failure<SemesterPlan>(new SemesterNotFoundError().ToString());
+
 		SemesterPlan entry = plan.CreateDomainObject(semester);
 		Result create = semester.AddContract(entry);
 		if (create.IsFailure)
 			return Result.Failure<SemesterPlan>(create.Error);
+
+		entry.SetNumber(await GenerateEntityNumber());
 		_context.Semesters.Attach(entry.Semester);
 		await _context.SemesterPlans.AddAsync(entry);
 		await Commit();
 		return entry;
 	}
 
-	public async Task<Result<SemesterPlan>> Remove(IRepositoryExpression<SemesterPlan> getPlan)
+	public async Task<Result<SemesterPlan>> Remove(IRepositoryExpression<Semester> getSemester, IRepositoryExpression<SemesterPlan> getPlan)
 	{
+		Semester? semester = await _context.Semesters
+		.Include(s => s.Plan)
+		.ThenInclude(p => p.Direction)
+		.Include(s => s.Contracts)
+		.AsNoTracking()
+		.FirstOrDefaultAsync(getSemester.Build());
+		if (semester == null)
+			return Result.Failure<SemesterPlan>(new SemesterNotFoundError().ToString());
+
 		SemesterPlan? plan = await _context.SemesterPlans.FirstOrDefaultAsync(getPlan.Build());
 		if (plan == null)
 			return Result.Failure<SemesterPlan>(new SemesterPlanNotFoundError().ToString());
+
+		Result remove = semester.RemoveContract(plan);
+		if (remove.IsFailure)
+			return Result.Failure<SemesterPlan>(remove.Error);
+
 		await _context.SemesterPlans.Where(p => p.Id == plan.Id)
 		.ExecuteDeleteAsync();
 		await Commit();

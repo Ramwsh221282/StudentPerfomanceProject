@@ -1,0 +1,33 @@
+<div id="container">
+  <div id="header">
+    <p>Добавление дисциплины для</p>
+    <p>{{ semester.number }} семестра</p>
+    <p>Направления {{ semester.plan.direction.name }}</p>
+    <p>Учебного плана года {{ semester.plan.year }}</p>
+  </div>
+  <div id="content">
+    <form class="creation-form" [formGroup]="form">
+      <input
+        formControlName="name"
+        class="default-input"
+        placeholder="Название дисциплины"
+      />
+    </form>
+  </div>
+  <div id="controls">
+    <button class="accept-button-modal" (click)="submit()">Добавить</button>
+    <button class="danger-button-modal" (click)="close()">Закрыть окно</button>
+  </div>
+</div>
+<div id="success-modal-renderer" *ngIf="isSuccess">
+  <app-success-result-notification
+    [message]="notificationService.Message"
+    (visibilityEmitter)="manageSuccess($event)"
+  ></app-success-result-notification>
+</div>
+<div id="failure-modal-renderer" *ngIf="isFailure">
+  <app-failure-result-notification
+    [message]="notificationService.Message"
+    (visibilityEmitter)="manageFailure($event)"
+  ></app-failure-result-notification>
+</div>

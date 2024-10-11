@@ -21,13 +21,13 @@ export class DepartmentsFetchService extends DepartmentsBaseService {
   }
 
   public fetchAll(): Observable<Department[]> {
-    return this.httpClient.get<Department[]>(`${this.baseApiUri}/all`);
+    return this.httpClient.get<Department[]>(`${this.readApiUri}all`);
   }
 
   public fetchPaged(factory: IRequestParamsFactory): void {
     const params = factory.Params;
     this.httpClient
-      .get<Department[]>(`${this.baseApiUri}/byPage`, { params })
+      .get<Department[]>(`${this.readApiUri}byPage`, { params })
       .subscribe((response) => {
         this._departments = response;
       });
@@ -36,7 +36,7 @@ export class DepartmentsFetchService extends DepartmentsBaseService {
   public filter(factory: IRequestParamsFactory): void {
     const params = factory.Params;
     this.httpClient
-      .get<Department[]>(`${this.baseApiUri}/byFilter`, {
+      .get<Department[]>(`${this.readApiUri}filter`, {
         params,
       })
       .subscribe((response) => {

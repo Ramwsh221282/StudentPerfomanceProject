@@ -1,36 +1,66 @@
 .side-bar {
   display: flex;
   flex-direction: column;
-  max-width: 250px;
+  min-width: 350px;
   height: 100vh;
   color: #ffffff;
-  background-color: #7c91d0;
+  background-color: #007aff;
+  background: rgb(0, 111, 230);
+  background: linear-gradient(
+    0deg,
+    rgba(0, 111, 230, 1) 0%,
+    rgba(0, 122, 255, 1) 100%,
+    rgba(2, 0, 36, 1) 100%
+  );
   box-shadow: #1b274b 10px 10px 20px -10px;
 }
 
+.side-bar-title-container {
+  padding: 20px;
+}
+
+.side-bar-title {
+  font-size: 32px;
+  font-weight: 800;
+  border-bottom: 1px solid #ffffff;
+  cursor: default;
+}
+
 .menu-header {
-  padding: 10px 10px;
+  padding: 0px 40px;
+  font-size: 24px;
+  font-weight: 800;
+  cursor: default;
+}
+
+.menu-content-container {
+  padding: 10px 45px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .side-bar-menu-button {
+  text-align: left;
   color: #ffffff;
   cursor: pointer;
-  padding: 10px 10px;
-  font-size: 14px;
-  width: 100%;
+  font-size: 16px;
   font-weight: bold;
-  text-align: left;
   background-color: transparent;
   border: none;
   outline: none;
   transition: 0.1s;
+  height: 45px;
 
   &:hover {
-    background-color: #3d58a9;
+    border-radius: 9999px 0px 0px 9999px;
+    background-color: #ecf4ff;
+    color: #007aff;
   }
 }
 
 .focused {
-  border-right: 3px solid #7dc71c;
-  background-color: #3d58a9;
+  border-radius: 9999px 0px 0px 9999px;
+  background-color: #ecf4ff;
+  color: #007aff;
 }

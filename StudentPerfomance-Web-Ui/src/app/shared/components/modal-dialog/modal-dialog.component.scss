@@ -1,0 +1,46 @@
+:host {
+  display: flex;
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  align-items: center;
+  justify-content: center;
+}
+
+#container {
+  width: 40%;
+  box-shadow: 5px 5px 6px #ccc;
+  border-radius: 15px;
+  background-color: #fff;
+
+  #header {
+    display: flex;
+    font-size: 32px;
+    font-weight: 800;
+    align-items: center;
+    align-self: center;
+    padding: 10px;
+    border-bottom: solid 1px #d9d9d9;
+  }
+
+  #content {
+    flex-grow: 1;
+    padding: 30px;
+    font-size: 20px;
+    width: 100%;
+    height: 75%;
+  }
+
+  #controls {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    border-top: solid 1px #d9d9d9;
+    bottom: 0px;
+    right: 0px;
+    padding: 20px;
+  }
+}

@@ -1,19 +1,24 @@
 <div class="side-bar">
-  <h5 class="menu-header">Основное меню</h5>
-  <button
-    #menuButton
-    class="side-bar-menu-button"
-    (click)="selectMenu($event, this.menuButton)"
-    [routerLink]="['/administration']"
-  >
-    Администрирование
-  </button>
-  <button
-    #menuButton
-    class="side-bar-menu-button"
-    (click)="selectMenu($event, this.menuButton)"
-    disabled
-  >
-    Преподавателям (WIP)
-  </button>
+  <div class="side-bar-title-container">
+    <strong class="side-bar-title">SPerfomance</strong>
+  </div>
+  <strong class="menu-header">Основное меню:</strong>
+  <div class="menu-content-container">
+    <button
+      #menuButton
+      class="side-bar-menu-button"
+      (click)="selectMenu($event, this.menuButton)"
+      [routerLink]="['/administration']"
+    >
+      • Администрирование
+    </button>
+    <button
+      #menuButton
+      class="side-bar-menu-button"
+      (click)="selectMenu($event, this.menuButton)"
+      disabled
+    >
+      • Преподавателям
+    </button>
+  </div>
 </div>

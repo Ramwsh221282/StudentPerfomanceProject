@@ -12,10 +12,5 @@ internal sealed class GetPlan(SemesterPlanRepositoryObject plan) : IRepositoryEx
 
 	public Expression<Func<SemesterPlan, bool>> Build() =>
 		(SemesterPlan entity) =>
-			entity.Discipline.Name == _plan.DisciplineName &&
-			entity.Semester.Number.Value == _plan.Semester.Number &&
-			entity.Semester.Plan.Year.Year == _plan.Semester.Plan.Year &&
-			entity.Semester.Plan.Direction.Name.Name == _plan.Semester.Plan.Direction.Name &&
-			entity.Semester.Plan.Direction.Code.Code == _plan.Semester.Plan.Direction.Code &&
-			entity.Semester.Plan.Direction.Type.Type == _plan.Semester.Plan.Direction.Type;
+			entity.Discipline.Name == _plan.DisciplineName;
 }

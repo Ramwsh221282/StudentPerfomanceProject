@@ -13,7 +13,10 @@ export class DepartmentsCreateService extends DepartmentsBaseService {
 
   public create(factory: IRequestBodyFactory) {
     const body = factory.Body;
-    return this.httpClient.post<Department>(`${this.baseApiUri}`, body);
+    return this.httpClient.post<Department>(
+      `${this.managementApiUri}create`,
+      body
+    );
   }
 
   public createRequestBodyFactory(department: Department) {

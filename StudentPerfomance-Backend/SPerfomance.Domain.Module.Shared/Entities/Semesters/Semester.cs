@@ -10,6 +10,7 @@ namespace SPerfomance.Domain.Module.Shared.Entities.Semesters;
 public sealed class Semester : Entity
 {
 	private List<SemesterPlan> _contracts = [];
+
 	public Semester() : base(Guid.Empty)
 	{
 		Number = SemesterNumber.CreateDefault();
@@ -26,8 +27,10 @@ public sealed class Semester : Entity
 	{
 		if (plan == null)
 			return Failure(new SemesterPlanDisciplineNullError().ToString());
+
 		if (_contracts.Any(c => c.Discipline == plan.Discipline))
 			return Failure(new SemesterHasDisciplineAlreadyError(this).ToString());
+
 		_contracts.Add(plan);
 		return Success();
 	}
@@ -36,9 +39,11 @@ public sealed class Semester : Entity
 	{
 		if (plan == null)
 			return Failure(new SemesterPlanDisciplineNullError().ToString());
+
 		SemesterPlan? target = _contracts.FirstOrDefault(c => c.Discipline == plan.Discipline);
 		if (target == null)
 			return Failure(new SemesterHasNotDisciplineError(this).ToString());
+			
 		_contracts.Remove(target);
 		return Success();
 	}

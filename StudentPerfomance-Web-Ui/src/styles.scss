@@ -1,5 +1,7 @@
 @import "modals.scss";
 @import "buttons.scss";
+@import "inputs.scss";
+@import "selects.scss";
 
 @font-face {
   font-family: OpenSans;
@@ -13,58 +15,13 @@ body,
   background-color: #ffffff;
 }
 
-.default-input {
-  position: relative;
-  cursor: text;
-  font-size: 14px;
-  line-height: 20px;
-  padding: 0 16px;
-  height: 30px;
-  background-color: #fff;
-  border: 1px solid #d6d6e7;
-  border-radius: 3px;
-  color: rgb(35, 38, 59);
-  box-shadow: inset 0 1px 4px 0 rgb(119 122 175 / 30%);
-  overflow: hidden;
-  transition: all 100ms ease-in-out;
-
-  &:focus {
-    border-color: #3c4fe0;
-    box-shadow: 0 1px 0 0 rgb(35 38 59 / 5%);
-  }
-}
-
-.readonly-input {
-  outline: none;
+.navigation-links {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
   padding: 5px;
-  border: 1px solid #ffca2c;
-  color: #a1e3ff;
-  background-color: #22343c;
-  transition: 0.3s;
-
-  &:focus {
-    background-color: #bb2d3b;
-  }
-}
-
-.number-input {
-  -moz-appearance: textfield;
-}
-
-.font-black {
-  color: black;
-}
-
-.default-select {
-  outline: none;
-  padding: 5px;
-  border: none;
-  color: #a1e3ff;
-  background-color: #22343c;
-  transition: 0.3s;
-
-  &:focus {
-    border: 1px solid #a1e3ff;
-    background-color: #3e5a66;
-  }
+  font-size: 20px;
+  font-weight: 800;
+  text-decoration: underline;
+  cursor: pointer;
 }

@@ -14,7 +14,12 @@ export class DeleteService extends BaseService {
 
   public delete(factory: IRequestBodyFactory): Observable<EducationPlan> {
     const body = factory.Body;
-    return this.httpClient.delete<EducationPlan>(this.baseApiUri, { body });
+    return this.httpClient.delete<EducationPlan>(
+      `${this.managementApiUri}remove`,
+      {
+        body,
+      }
+    );
   }
 
   public createRequestBodyFactory(plan: EducationPlan): IRequestBodyFactory {
@@ -27,13 +32,11 @@ class RequestBodyFactory implements IRequestBodyFactory {
 
   public constructor(plan: EducationPlan) {
     this._body = {
-      plan: {
-        year: plan.year,
-        direction: {
-          code: plan.direction.code,
-          name: plan.direction.name,
-          type: plan.direction.type,
-        },
+      year: plan.year,
+      direction: {
+        code: plan.direction.code,
+        name: plan.direction.name,
+        type: plan.direction.type,
       },
     };
   }

@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 
 using SPerfomance.Application.Shared.Module.Operations;
 using SPerfomance.Application.Shared.Module.Schemas.EducationPlans;
+using SPerfomance.Application.Shared.Module.Schemas.SemesterPlans;
 using SPerfomance.DataAccess.Module.Shared.Repositories.Semesters;
 using SPerfomance.Domain.Module.Shared.Entities.EducationPlans;
 using SPerfomance.Domain.Module.Shared.Entities.Semesters;
@@ -11,14 +12,18 @@ namespace SPerfomance.Application.Shared.Module.Schemas.Semesters;
 
 public record SemesterSchema : EntitySchema
 {
-	public byte Number { get; init; } = 0;
-	public EducationPlanSchema Plan { get; init; } = new EducationPlanSchema();
+	public byte Number { get; init; }
+	public EducationPlanSchema Plan { get; private set; } = new EducationPlanSchema();
+	public int ContractsCount { get; set; }
+
 	public SemesterSchema() { }
-	public SemesterSchema(byte number, EducationPlanSchema? plan)
+
+	public SemesterSchema(byte number)
 	{
 		if (number > 0) Number = number;
-		if (plan != null) Plan = plan;
 	}
+
+	public void SetEducationPlan(EducationPlanSchema educationPlan) => Plan = educationPlan;
 	public SemesterNumber CreateNumber() => SemesterNumber.Create(Number).Value;
 	public Semester CreateDomainObject(EducationPlan plan) => Semester.Create(CreateNumber(), plan).Value;
 }
@@ -35,7 +40,8 @@ public static class SemesterSchemaExtensions
 
 	public static SemesterSchema ToSchema(this Semester semester)
 	{
-		SemesterSchema schema = new SemesterSchema(semester.Number.Value, semester.Plan.ToSchema());
+		SemesterSchema schema = new SemesterSchema(semester.Number.Value);
+		schema.ContractsCount = semester.Contracts.Count;
 		return schema;
 	}
 

@@ -10,6 +10,8 @@ internal sealed class SemesterQueryRepository
 	private readonly ApplicationDb _context = new ApplicationDb();
 	public async Task<IReadOnlyCollection<Domain.Module.Shared.Entities.Semesters.Semester>> GetPaged(int page, int pageSize) =>
 		await _context.Semesters
+		.Include(s => s.Plan)
+		.ThenInclude(p => p.Direction)
 		.Include(s => s.Contracts)
 		.OrderByDescending(s => s.Number.Value)
 		.Skip((page - 1) * pageSize)
@@ -19,11 +21,15 @@ internal sealed class SemesterQueryRepository
 
 	public async Task<Domain.Module.Shared.Entities.Semesters.Semester?> GetByParameter(IRepositoryExpression<Domain.Module.Shared.Entities.Semesters.Semester> expression) =>
 		await _context.Semesters
+		.Include(s => s.Plan)
+		.ThenInclude(p => p.Direction)
 		.Include(s => s.Contracts)
 		.FirstOrDefaultAsync(expression.Build());
 
 	public async Task<IReadOnlyCollection<Domain.Module.Shared.Entities.Semesters.Semester>> GetFiltered(IRepositoryExpression<Domain.Module.Shared.Entities.Semesters.Semester> expression) =>
 		await _context.Semesters
+		.Include(s => s.Plan)
+		.ThenInclude(p => p.Direction)
 		.Include(s => s.Contracts)
 		.OrderByDescending(s => s.Number.Value)
 		.Where(expression.Build())
@@ -32,6 +38,8 @@ internal sealed class SemesterQueryRepository
 
 	public async Task<IReadOnlyCollection<Domain.Module.Shared.Entities.Semesters.Semester>> GetFilteredAndPaged(IRepositoryExpression<Domain.Module.Shared.Entities.Semesters.Semester> expression, int page, int pageSize) =>
 		await _context.Semesters
+		.Include(s => s.Plan)
+		.ThenInclude(p => p.Direction)
 		.Include(s => s.Contracts)
 		.OrderByDescending(s => s.Number.Value)
 		.Where(expression.Build())
@@ -44,10 +52,15 @@ internal sealed class SemesterQueryRepository
 
 	public async Task<bool> HasEqualRecord(IRepositoryExpression<Domain.Module.Shared.Entities.Semesters.Semester> expression) =>
 		await _context.Semesters
+		.Include(s => s.Plan)
+		.ThenInclude(p => p.Direction)
+		.Include(s => s.Contracts)
 		.AnyAsync(expression.Build());
 
 	public async Task<IReadOnlyCollection<Domain.Module.Shared.Entities.Semesters.Semester>> GetAll() =>
 		await _context.Semesters
+		.Include(s => s.Plan)
+		.ThenInclude(p => p.Direction)
 		.Include(s => s.Contracts)
 		.OrderByDescending(s => s.Number.Value)
 		.AsNoTracking()

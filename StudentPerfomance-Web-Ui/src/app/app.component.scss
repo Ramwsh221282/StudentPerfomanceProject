@@ -1,6 +1,17 @@
-.ui-layout {
+.ui-grid {
   display: grid;
-  grid-template-columns: 205px 0px auto;
-  height: 100%;
+  grid-template-columns: 350px auto;
+  height: 100vh;
   width: 100%;
+}
+
+.grid-left-side {
+  background-color: #007aff;
+}
+
+.grid-right-side {
+  padding: 30px;
+  border-radius: 30px 0 0 30px;
+  margin-left: -60px;
+  background-color: #ecf4ff;
 }

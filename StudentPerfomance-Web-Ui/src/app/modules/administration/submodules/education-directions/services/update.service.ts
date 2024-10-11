@@ -14,7 +14,10 @@ export class UpdateService extends BaseService {
 
   public update(factory: IRequestBodyFactory): Observable<EducationDirection> {
     const body = factory.Body;
-    return this.httpClient.put<EducationDirection>(this.baseApiUri, body);
+    return this.httpClient.put<EducationDirection>(
+      `${this.managementApiUri}update`,
+      body
+    );
   }
 
   public createRequestBodyFactory(
@@ -32,12 +35,12 @@ class RequestBodyFactory implements IRequestBodyFactory {
     newDirection: EducationDirection
   ) {
     this._body = {
-      oldSchema: {
+      initial: {
         code: oldDirection.code,
         name: oldDirection.name,
         type: oldDirection.type,
       },
-      newSchema: {
+      updated: {
         code: newDirection.code,
         name: newDirection.name,
         type: newDirection.type,

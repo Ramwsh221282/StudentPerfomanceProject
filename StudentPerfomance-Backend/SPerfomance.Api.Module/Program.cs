@@ -39,12 +39,13 @@ builder.Services.AddScoped<IRepository<Teacher>, TeachersRepository>();
 
 
 
+
 var app = builder.Build();
 
 app.UseSwagger();
 app.UseSwaggerUI();
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 app.MapControllers();
 app.UseCors();
 

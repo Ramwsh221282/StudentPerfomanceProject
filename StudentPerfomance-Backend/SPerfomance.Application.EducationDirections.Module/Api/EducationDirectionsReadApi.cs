@@ -13,7 +13,7 @@ namespace SPerfomance.Application.EducationDirections.Module.Api;
 
 [ApiController]
 [Route("/education-directions/api/read")]
-public sealed class EducationDirectionsReadApi : ControllerBase
+public sealed class EducationDirectionsReadApi : Controller
 {
 	[HttpGet(CrudOperationNames.GetAll)]
 	public async Task<ActionResult<IReadOnlyCollection<EducationDirectionSchema>>> GetAll()
@@ -42,6 +42,10 @@ public sealed class EducationDirectionsReadApi : ControllerBase
 	[HttpGet(CrudOperationNames.Filter)]
 	public async Task<ActionResult<IReadOnlyCollection<EducationDirectionSchema>>> Filter([FromQuery] EducationDirectionSchema schema, int page, int pageSize)
 	{
+		Console.WriteLine(schema.Name);
+		Console.WriteLine(schema.Code);
+		Console.WriteLine(schema.Type);
+
 		FilterQuery query = new FilterQuery(schema, page, pageSize);
 		OperationResult<IReadOnlyCollection<EducationDirection>> result = await query.Handler.Handle(query);
 		return result.ToActionResult();

@@ -58,7 +58,7 @@ export class PaginationService extends BaseService {
 
   public refreshPagination(): void {
     this.httpClient
-      .get<number>(`${this.baseApiUri}/totalCount`)
+      .get<number>(`${this.readApiUri}count`)
       .subscribe((response) => {
         this._totalCount = response;
         this._pagesCount = Math.ceil(this._totalCount / this._pageSize);
@@ -76,6 +76,13 @@ export class PaginationService extends BaseService {
         for (let i = startPage; i <= endPage; i++) {
           this._displayPages.push(i);
         }
+        this.pushFirstPage();
       });
+  }
+
+  private pushFirstPage() {
+    if (this.displayPages.length == 0) {
+      this.displayPages.push(1);
+    }
   }
 }

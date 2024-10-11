@@ -1,5 +1,6 @@
 <div class="education-direction-pagination-wrapper">
   <div class="education-direction-pages-list">
+    <strong>Страницы: </strong>
     <div class="accept-button" (click)="facadeService.moveInitialPage()">
       Начальная
     </div>
@@ -10,7 +11,9 @@
     <button
       (click)="facadeService.setPage = page"
       [ngClass]="[
-        page == facadeService.currentPage ? 'edit-button' : 'accept-button'
+        page == facadeService.currentPage
+          ? 'accept-button-outline'
+          : 'accept-button-outline'
       ]"
     >
       {{ page }}

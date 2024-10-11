@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 
 using SPerfomance.Application.Shared.Module.Operations;
 using SPerfomance.Application.Shared.Module.Schemas.Semesters;
+using SPerfomance.Application.Shared.Module.Schemas.Teachers;
 using SPerfomance.DataAccess.Module.Shared.Repositories.SemesterPlans;
 using SPerfomance.Domain.Module.Shared.Entities.SemesterPlans;
 using SPerfomance.Domain.Module.Shared.Entities.SemesterPlans.ValueObjects;
@@ -13,18 +14,22 @@ namespace SPerfomance.Application.Shared.Module.Schemas.SemesterPlans;
 public sealed record SemesterPlanSchema : EntitySchema
 {
 	// Название дисциплины.
-	public string DisciplineName { get; init; } = string.Empty;
+	public string Discipline { get; init; } = string.Empty;
+
+	// Закрепленный преподаватель
+	public TeacherSchema Teacher { get; init; } = new TeacherSchema();
+
 	// Создание стандартного DTO.
-	public SemesterSchema Semester { get; init; } = new SemesterSchema();
 	public SemesterPlanSchema() { }
 	// Создание DTO с инициализацией объекта при условии.
-	public SemesterPlanSchema(string? disciplineName, SemesterSchema? semester)
+	public SemesterPlanSchema(string? disciplineName, TeacherSchema? teacher)
 	{
-		if (!string.IsNullOrWhiteSpace(disciplineName)) DisciplineName = disciplineName;
-		if (semester != null) Semester = semester;
+		if (!string.IsNullOrWhiteSpace(disciplineName)) Discipline = disciplineName;
+		if (teacher != null) Teacher = teacher;
 	}
+
 	// Создание Value Object Discipline.
-	public Discipline CreateDiscipline() => Discipline.Create(DisciplineName).Value;
+	public Discipline CreateDiscipline() => Domain.Module.Shared.Entities.SemesterPlans.ValueObjects.Discipline.Create(Discipline).Value;
 	// Создание Domain Object SemesterPlan.
 	public SemesterPlan CreateDomainObject(Semester semester) => SemesterPlan.Create(semester, CreateDiscipline()).Value;
 }
@@ -34,14 +39,15 @@ public static class SemesterPlanSchemaExtensions
 	public static SemesterPlanRepositoryObject ToRepositoryObject(this SemesterPlanSchema schema)
 	{
 		SemesterPlanRepositoryObject parameter = new SemesterPlanRepositoryObject()
-		.WithDisciplineName(schema.DisciplineName)
-		.WithSemester(schema.Semester.ToRepositoryObject());
+		.WithDisciplineName(schema.Discipline)
+		.WithTeacher(schema.Teacher.ToRepositoryObject());
 		return parameter;
 	}
 
 	public static SemesterPlanSchema ToSchema(this SemesterPlan plan)
 	{
-		SemesterPlanSchema schema = new SemesterPlanSchema(plan.Discipline.Name, plan.Semester.ToSchema());
+		TeacherSchema teacherSchema = plan.AttachedTeacher == null ? new TeacherSchema() : plan.AttachedTeacher.ToSchema();
+		SemesterPlanSchema schema = new SemesterPlanSchema(plan.Discipline.Name, teacherSchema);
 		return schema;
 	}
 

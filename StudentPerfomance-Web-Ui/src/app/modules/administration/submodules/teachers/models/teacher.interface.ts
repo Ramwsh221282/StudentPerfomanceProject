@@ -1,6 +1,10 @@
+import { Department } from '../../departments/models/departments.interface';
+
 export interface Teacher {
-  departmentName: string;
   name: string;
   surname: string;
   thirdname: string;
+  condition: string;
+  job: string;
+  department: Department;
 }

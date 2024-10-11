@@ -1,18 +1,11 @@
-import {
-  AfterViewInit,
-  Component,
-  EventEmitter,
-  OnInit,
-  Output,
-  TemplateRef,
-  ViewChild,
-} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { FacadeService } from '../../services/facade.service';
 import { UserOperationNotificationService } from '../../../../../../shared/services/user-notifications/user-operation-notification-service.service';
-import { INotificatable } from '../../../../../../shared/models/inotificated-component-interface/inotificatable.interface';
 import { EducationDirectionBaseForm } from '../../models/education-direction-base-form';
-import { ModalState } from '../../../../../../shared/models/modals/modal-state';
+import { ISuccessNotificatable } from '../../../../../../shared/models/interfaces/isuccess-notificatable';
+import { IFailureNotificatable } from '../../../../../../shared/models/interfaces/ifailure-notificatable';
+import { EducationDirection } from '../../models/education-direction-interface';
 import { CreateEducationDirectionEditHandler } from './education-direction-edit-handler';
 import { catchError, tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -25,59 +18,63 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class EducationDirectionsEditModalComponent
   extends EducationDirectionBaseForm
-  implements OnInit, AfterViewInit, INotificatable
+  implements OnInit, ISuccessNotificatable, IFailureNotificatable
 {
-  @ViewChild('template') template!: TemplateRef<any>;
-  @ViewChild('success') successTemplate!: TemplateRef<any>;
-  @ViewChild('failure') failureTemplate!: TemplateRef<any>;
+  @Input({ required: true }) direction: EducationDirection;
+  @Input({ required: true }) copy: EducationDirection;
   @Output() modalDisabled: EventEmitter<boolean> = new EventEmitter<boolean>();
-  public readonly successModalState: ModalState;
-  public readonly failureModalState: ModalState;
+  private readonly _copy: EducationDirection;
+
+  protected isSuccess: boolean;
+  protected isFailure: boolean;
+
   public constructor(
     protected readonly facadeService: FacadeService,
-    private readonly _notificationService: UserOperationNotificationService,
-    private readonly _modalService: BsModalService
+    protected readonly notificationService: UserOperationNotificationService
   ) {
     super();
-    this.successModalState = new ModalState();
-    this.failureModalState = new ModalState();
-    this._modalService.onHide.subscribe(() => this.close());
+    this.isSuccess = false;
+    this.isFailure = false;
   }
-  protected override submit(): void {
-    const oldDirection = this.facadeService.copy;
+
+  public notifyFailure(): void {
+    this.isFailure = true;
+  }
+
+  public notifySuccess(): void {
+    this.isSuccess = true;
+  }
+
+  public ngOnInit(): void {
+    this.initForm();
+  }
+
+  public override submit(): void {
+    console.log(this.copy);
+    const newDirection = this.createEducationDirectionFromForm();
     const handler = CreateEducationDirectionEditHandler(
-      oldDirection,
+      this.copy,
       this.facadeService,
-      this._notificationService,
+      this.notificationService,
+      this,
       this
     );
     this.facadeService
-      .update(oldDirection, this.createEducationDirectionFromForm())
+      .update(this.copy, newDirection)
       .pipe(
-        tap((response) => {
-          handler.handle(response);
-          this._modalService.hide();
-          this._modalService.show(this.successTemplate);
-        }),
-        catchError((error: HttpErrorResponse) => {
-          this._modalService.hide();
-          this._modalService.show(this.failureTemplate);
-          return handler.handleError(error);
-        })
+        tap((response) => handler.handle(response)),
+        catchError((error: HttpErrorResponse) => handler.handleError(error))
       )
       .subscribe();
-    this.initForm();
-  }
-  ngAfterViewInit(): void {
-    this._modalService.show(this.template);
-  }
-  ngOnInit(): void {
-    this.initForm();
-    this.setTitle('Редактирование');
   }
 
   protected close(): void {
-    this._modalService.hide();
+    this.ngOnInit();
     this.modalDisabled.emit(false);
+  }
+
+  protected manageNotification(value: boolean): void {
+    this.isSuccess = value;
+    this.isFailure = value;
   }
 }

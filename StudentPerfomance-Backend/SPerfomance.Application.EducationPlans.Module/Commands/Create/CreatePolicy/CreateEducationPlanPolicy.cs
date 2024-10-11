@@ -14,10 +14,11 @@ internal sealed class CreateEducationPlanPolicy(EducationPlan plan) : ICreateEdu
 			await new CreateBachelorPolicy(_plan).ExecutePolicy();
 		if (_plan.Direction.Type.Type == DirectionTypeConstraints.MagisterType)
 			await new CreateMagisterPolicy(_plan).ExecutePolicy();
-		int entityNumber = await _repository.Count();
+		int entityNumber = await _repository.Count() + 1;
 		foreach (var semester in _plan.Semesters)
 		{
-			semester.SetNumber(await _repository.GenerateEntityNumber());
+			semester.SetNumber(entityNumber);
+			entityNumber += 1;
 		}
 	}
 }

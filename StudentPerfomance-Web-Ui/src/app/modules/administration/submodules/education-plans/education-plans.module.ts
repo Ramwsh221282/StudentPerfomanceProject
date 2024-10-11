@@ -1,36 +1,45 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { EducationPlansCreateModalComponent } from './components/education-plans-create-modal/education-plans-create-modal.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EducationPlansRoutingModule } from './education-plans-routing.module';
 import { EducationPlansPageComponent } from './components/education-plans-page/education-plans-page.component';
 import { EducationPlansTableComponent } from './components/education-plans-table/education-plans-table.component';
+import { EducationPlansTableRowComponent } from './components/education-plans-table/education-plans-table-row/education-plans-table-row.component';
 import { EducationPlansPaginationComponent } from './components/education-plans-table/education-plans-pagination/education-plans-pagination.component';
-import { EducationPlansCardComponent } from './components/education-plans-table/education-plans-card/education-plans-card.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FailureNotificationFormComponent } from '../../../../shared/components/notification-modal-forms/failure-notification-form/failure-notification-form.component';
-import { SuccessNotificationFormComponent } from '../../../../shared/components/notification-modal-forms/success-notification-form/success-notification-form.component';
-import { EducationPlansRoutingModule } from './education-plans-routing.module';
-import { EducationPlansFilterByDirectionModalComponent } from './components/education-plans-filter-by-direction-modal/education-plans-filter-by-direction-modal.component';
-import { EducationPlansFilterByPlanYearModalComponent } from './components/education-plans-filter-by-plan-year-modal/education-plans-filter-by-plan-year-modal.component';
-import { EducationPlanDeletionConfirmationComponent } from './components/education-plan-deletion-confirmation/education-plan-deletion-confirmation.component';
+import { EducationPlanCreationModalComponent } from './components/education-plan-creation-modal/education-plan-creation-modal.component';
+import { EducationPlanDeletionModalComponent } from './components/education-plan-deletion-modal/education-plan-deletion-modal.component';
+import { EducationPlanDisciplinesModalComponent } from './components/education-plan-disciplines-modal/education-plan-disciplines-modal.component';
+import { SuccessResultNotificationComponent } from '../../../../shared/components/success-result-notification/success-result-notification.component';
+import { FailureResultNotificationComponent } from '../../../../shared/components/failure-result-notification/failure-result-notification.component';
+import { EducationPlanFilterModalComponent } from './components/education-plan-filter-modal/education-plan-filter-modal.component';
+import { EducationPlansSemestersComponent } from './components/education-plans-table/education-plans-semesters/education-plans-semesters.component';
+import { SemesterDisciplinesModalComponent } from './components/education-plans-table/education-plans-semesters/semester-disciplines-modal/semester-disciplines-modal.component';
+import { SemesterDisciplinesCreationModalComponent } from './components/education-plans-table/education-plans-semesters/semester-disciplines-modal/semester-disciplines-creation-modal/semester-disciplines-creation-modal.component';
+import { SemesterDisciplinesDeletionModalComponent } from './components/education-plans-table/education-plans-semesters/semester-disciplines-modal/semester-disciplines-deletion-modal/semester-disciplines-deletion-modal.component';
 
 @NgModule({
   declarations: [
-    EducationPlansCreateModalComponent,
     EducationPlansPageComponent,
     EducationPlansTableComponent,
+    EducationPlansTableRowComponent,
+    EducationPlansPageComponent,
     EducationPlansPaginationComponent,
-    EducationPlansCardComponent,
-    EducationPlansFilterByDirectionModalComponent,
-    EducationPlansFilterByPlanYearModalComponent,
-    EducationPlanDeletionConfirmationComponent,
+    EducationPlanCreationModalComponent,
+    EducationPlanDeletionModalComponent,
+    EducationPlanDisciplinesModalComponent,
+    EducationPlanFilterModalComponent,
+    EducationPlansSemestersComponent,
+    SemesterDisciplinesModalComponent,
+    SemesterDisciplinesCreationModalComponent,
+    SemesterDisciplinesDeletionModalComponent,
   ],
   imports: [
     CommonModule,
     EducationPlansRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    FailureNotificationFormComponent,
-    SuccessNotificationFormComponent,
+    SuccessResultNotificationComponent,
+    FailureResultNotificationComponent,
   ],
   exports: [EducationPlansPageComponent],
 })
