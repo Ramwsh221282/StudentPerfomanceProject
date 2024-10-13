@@ -10,8 +10,10 @@ using SPerfomance.Application.StudentGroups.Module.Commands.AttachEducationPlan;
 using SPerfomance.Application.StudentGroups.Module.Commands.Create;
 using SPerfomance.Application.StudentGroups.Module.Commands.DeattachEducationPlan;
 using SPerfomance.Application.StudentGroups.Module.Commands.Delete;
+using SPerfomance.Application.StudentGroups.Module.Commands.MergeGroups;
 using SPerfomance.Application.StudentGroups.Module.Commands.Update;
 using SPerfomance.Domain.Module.Shared.Entities.StudentGroups;
+using SPerfomance.Domain.Module.Shared.Entities.StudentGroups.Errors;
 
 namespace SPerfomance.Application.StudentGroups.Module.Api;
 
@@ -62,6 +64,19 @@ public sealed class StudentGroupsManagementApi : ControllerBase
 	{
 		StudentsGroupSchema group = request.Group.ToSchema();
 		DeattachEducationPlanCommand command = new DeattachEducationPlanCommand(group);
+		OperationResult<StudentGroup> result = await command.Handler.Handle(command);
+		return result.ToActionResult();
+	}
+
+	[HttpPut("group-merge")]
+	public async Task<ActionResult<StudentsGroupSchema>> Merge([FromBody] StudentGroupMergeRequest request)
+	{
+		if (request.initial == null || request.target == null)
+			return new BadRequestObjectResult(new GroupNotFoundError().ToString());
+
+		StudentsGroupSchema initial = request.initial.ToSchema();
+		StudentsGroupSchema target = request.target.ToSchema();
+		MergeGroupCommand command = new MergeGroupCommand(initial, target);
 		OperationResult<StudentGroup> result = await command.Handler.Handle(command);
 		return result.ToActionResult();
 	}

@@ -53,8 +53,9 @@ public sealed class StudentGroupsReadApi : Controller
 	}
 
 	[HttpGet(CrudOperationNames.Search)]
-	public async Task<ActionResult<IReadOnlyCollection<StudentsGroupSchema>>> Search([FromQuery] StudentsGroupSchema group)
+	public async Task<ActionResult<IReadOnlyCollection<StudentsGroupSchema>>> Search([FromQuery] StudentGroupsSearchRequest request)
 	{
+		StudentsGroupSchema group = request.Group.ToSchema();
 		SearchQuery query = new SearchQuery(group);
 		OperationResult<IReadOnlyCollection<StudentGroup>> result = await query.Handler.Handle(query);
 		return result.ToActionResult();

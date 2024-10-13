@@ -36,14 +36,14 @@ class HttpRequestBody implements IRequestBodyFactory {
         surname: oldData.surname,
         thirdname: oldData.thirdname,
         state: oldData.state,
-        recordbook: oldData.recordBook,
+        recordbook: oldData.recordbook,
       },
       newData: {
         name: newData.name,
         surname: newData.surname,
         thirdname: newData.thirdname,
         state: newData.state,
-        recordbook: newData.recordBook,
+        recordbook: newData.recordbook,
       },
       group: {
         name: group.groupName,

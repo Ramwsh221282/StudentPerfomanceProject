@@ -14,30 +14,26 @@ export class StudentGroupsMergeDataService extends StudentGroupsService {
   public merge(factory: IRequestBodyFactory) {
     const body = factory.Body;
     return this.httpClient.put<StudentGroup>(
-      `${this.managementApiUri}merge`,
+      `${this.managementApiUri}group-merge`,
       body
     );
   }
 
   public createRequestBodyFactory(
-    targetGroup: StudentGroup,
-    mergeGroup: StudentGroup
+    initial: StudentGroup,
+    target: StudentGroup
   ): IRequestBodyFactory {
-    return new HttpRequestBody(targetGroup, mergeGroup);
+    return new HttpRequestBody(initial, target);
   }
 }
 
 class HttpRequestBody implements IRequestBodyFactory {
   private readonly _body: object;
 
-  public constructor(targetGroup: StudentGroup, mergeGroup: StudentGroup) {
+  public constructor(initial: StudentGroup, target: StudentGroup) {
     this._body = {
-      targetGroup: {
-        name: targetGroup.name,
-      },
-      mergeGroup: {
-        name: mergeGroup.name,
-      },
+      initial: { ...initial },
+      target: { ...target },
     };
   }
 

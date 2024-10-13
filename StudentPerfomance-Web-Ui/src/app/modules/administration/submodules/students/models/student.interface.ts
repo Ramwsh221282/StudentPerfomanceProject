@@ -1,8 +1,10 @@
+import { StudentGroup } from '../../student-groups/services/studentsGroup.interface';
+
 export interface Student {
   name: string;
   surname: string;
   thirdname: string;
-  recordBook: number;
+  recordbook: number;
   state: string;
-  groupName: string;
+  group: StudentGroup;
 }

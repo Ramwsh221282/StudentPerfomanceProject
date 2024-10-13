@@ -10,7 +10,9 @@
       <button class="accept-button-modal" (click)="openPlanAttachmentModal()">
         Настроить учебный план
       </button>
-      <button class="accept-button-modal">Смешать с группой</button>
+      <button class="accept-button-modal" (click)="openMergeGroupModal()">
+        Смешать с группой
+      </button>
     </section>
   </div>
   <div id="controls">
@@ -32,4 +34,10 @@
     (visibility)="closePlanAttachmentModal($event)"
     (returnGroup)="refreshGroup($event)"
   ></app-plan-attachment-modal>
+</div>
+<div id="group-merge-modal-renderer" *ngIf="mergeGroupModalVisibility">
+  <app-merge-group-modal
+    [initial]="group"
+    (visibility)="closeMergeGroupModal($event)"
+  ></app-merge-group-modal>
 </div>

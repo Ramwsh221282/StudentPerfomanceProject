@@ -12,7 +12,9 @@
   }}</strong>
   <strong>{{ group.plan.year == 0 ? "Не задан" : group.plan.year }}</strong>
   <div class="button-items">
-    <button class="accept-button-outline">Студенты</button>
+    <button class="accept-button-outline" (click)="openStudentsModal()">
+      Студенты
+    </button>
     <button class="warning-button-outline" (click)="openEditModal()">
       Редактирование
     </button>
@@ -33,4 +35,10 @@
     [copy]="group"
     (visibility)="closeEditModal($event)"
   ></app-student-group-edit-modal>
+</div>
+<div id="students-modal-renderer" *ngIf="studentsModalState">
+  <app-students-menu-modal
+    [group]="group"
+    (visibility)="closeStudentsModal($event)"
+  ></app-students-menu-modal>
 </div>

@@ -15,6 +15,6 @@ internal sealed class Filter(StudentsRepositoryObject student) : IRepositoryExpr
 			(!string.IsNullOrWhiteSpace(_student.Surname) && entity.Name.Name.Contains(_student.Surname)) ||
 			(!string.IsNullOrWhiteSpace(_student.Thirdname) && entity.Name.Name.Contains(_student.Thirdname)) ||
 			(!string.IsNullOrWhiteSpace(_student.State) && entity.State.State == _student.State) ||
-			(_student.Recordbook == entity.Recordbook.Recordbook) ||
-			(!string.IsNullOrWhiteSpace(_student.Group.Name) && entity.Group.Name.Name.Contains(_student.Group.Name));
+			(_student.Recordbook == entity.Recordbook.Recordbook) &&
+			!string.IsNullOrWhiteSpace(_student.Group.Name) && entity.Group.Name.Name.Contains(_student.Group.Name);
 }

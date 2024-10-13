@@ -7,6 +7,7 @@ using SPerfomance.DataAccess.Module.Shared;
 using SPerfomance.Domain.Module.Shared.Common.Abstractions.Repositories;
 using SPerfomance.Domain.Module.Shared.Entities.StudentGroups;
 using SPerfomance.Domain.Module.Shared.Entities.StudentGroups.Errors;
+using SPerfomance.Domain.Module.Shared.Extensions;
 
 namespace SPerfomance.Application.StudentGroups.Module.Repository;
 
@@ -38,7 +39,7 @@ internal sealed class StudentGroupCommandRepository
 
 	public async Task<int> GenerateEntityNumber()
 	{
-		int count = await _context.Groups.CountAsync();
-		return count + 1;
+		int[] numbers = await _context.Groups.Select(s => s.EntityNumber).ToArrayAsync();
+		return numbers.GetOrderedValue();
 	}
 }

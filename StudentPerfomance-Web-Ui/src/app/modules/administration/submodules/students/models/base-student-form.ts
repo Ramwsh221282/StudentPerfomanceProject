@@ -29,7 +29,7 @@ export abstract class BaseStudentForm {
       name: builder.extractStringOrDefault('name'),
       surname: builder.extractStringOrDefault('surname'),
       thirdname: builder.extractStringOrDefault('thirdname'),
-      recordBook: builder.extractNumberOrDefault('recordBook'),
+      recordbook: builder.extractNumberOrDefault('recordBook'),
       state: builder.extractStringOrDefault('state'),
       groupName: group.groupName,
     } as Student;

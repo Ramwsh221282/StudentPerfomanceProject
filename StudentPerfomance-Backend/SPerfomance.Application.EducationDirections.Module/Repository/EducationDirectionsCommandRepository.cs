@@ -7,6 +7,7 @@ using SPerfomance.DataAccess.Module.Shared;
 using SPerfomance.Domain.Module.Shared.Common.Abstractions.Repositories;
 using SPerfomance.Domain.Module.Shared.Entities.EducationDirections;
 using SPerfomance.Domain.Module.Shared.Entities.EducationDirections.Errors;
+using SPerfomance.Domain.Module.Shared.Extensions;
 
 namespace SPerfomance.Application.EducationDirections.Module.Repository;
 
@@ -38,7 +39,7 @@ internal sealed class EducationDirectionsCommandRepository
 
 	public async Task<int> GenerateEntityNumber()
 	{
-		int count = await _db.EducationDirections.CountAsync();
-		return count + 1;
+		int[] numbers = await _db.EducationDirections.Select(s => s.EntityNumber).ToArrayAsync();
+		return numbers.GetOrderedValue();
 	}
 }

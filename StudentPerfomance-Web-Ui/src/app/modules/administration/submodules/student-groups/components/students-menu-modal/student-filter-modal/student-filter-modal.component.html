@@ -1,0 +1,43 @@
+<div id="container">
+  <div id="header">
+    <strong>Фильтр списка студентов группы {{ group.name }}</strong>
+  </div>
+  <div id="content">
+    <strong class="font-white">Параметры отбора: </strong>
+    <div class="creation-form" [formGroup]="form">
+      <input
+        class="default-input"
+        formControlName="surname"
+        placeholder="Фамилия"
+      />
+      <input class="default-input" formControlName="name" placeholder="Имя" />
+      <input
+        class="default-input"
+        formControlName="thirdname"
+        placeholder="Отчество (необязательно)"
+      />
+      <input
+        class="default-input"
+        formControlName="recordbook"
+        placeholder="Зачётная книжка"
+      />
+    </div>
+    <strong class="font-white">Состояние студента: {{ selectedState }}</strong>
+    <div class="controls-container">
+      <button class="accept-button-modal" (click)="selectState('Активен')">
+        Назначить "Активен"
+      </button>
+      <button class="danger-button-modal" (click)="selectState('Неактивен')">
+        Назначить "Неактивен"
+      </button>
+    </div>
+  </div>
+  <div id="controls">
+    <button class="accept-button-modal" type="button" (click)="submit()">
+      Применить фильтр
+    </button>
+    <button class="danger-button-modal" type="button" (click)="close()">
+      Отменить фильтр
+    </button>
+  </div>
+</div>

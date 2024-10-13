@@ -15,6 +15,13 @@ import { StudentGroupEditModalComponent } from './components/student-group-edit-
 import { NameChangeModalComponent } from './components/student-group-edit-modal/name-change-modal/name-change-modal.component';
 import { PlanAttachmentModalComponent } from './components/student-group-edit-modal/plan-attachment-modal/plan-attachment-modal.component';
 import { FailureNotificationFormComponent } from '../../../../shared/components/notification-modal-forms/failure-notification-form/failure-notification-form.component';
+import { MergeGroupModalComponent } from './components/student-group-edit-modal/merge-group-modal/merge-group-modal.component';
+import { StudentsMenuModalComponent } from './components/students-menu-modal/students-menu-modal.component';
+import { StudentEditModalComponent } from './components/students-menu-modal/student-edit-modal/student-edit-modal.component';
+import { StudentDeletionModalComponent } from './components/students-menu-modal/student-deletion-modal/student-deletion-modal.component';
+import { StudentCreationModalComponent } from './components/students-menu-modal/student-creation-modal/student-creation-modal.component';
+import { StudentFilterModalComponent } from './components/students-menu-modal/student-filter-modal/student-filter-modal.component';
+import { StudentSwitchGroupModalComponent } from './components/students-menu-modal/student-edit-modal/student-switch-group-modal/student-switch-group-modal.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +35,13 @@ import { FailureNotificationFormComponent } from '../../../../shared/components/
     StudentGroupEditModalComponent,
     NameChangeModalComponent,
     PlanAttachmentModalComponent,
+    MergeGroupModalComponent,
+    StudentsMenuModalComponent,
+    StudentEditModalComponent,
+    StudentDeletionModalComponent,
+    StudentCreationModalComponent,
+    StudentFilterModalComponent,
+    StudentSwitchGroupModalComponent,
   ],
   imports: [
     CommonModule,

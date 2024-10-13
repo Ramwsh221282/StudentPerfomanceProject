@@ -1,0 +1,73 @@
+<div id="container">
+  <div id="header">
+    <strong>Изменение данных студента</strong>
+  </div>
+  <div id="content">
+    <strong class="font-white">Личные данные: </strong>
+    <div class="creation-form" [formGroup]="form">
+      <input
+        [(ngModel)]="activeStudent.surname"
+        class="default-input"
+        formControlName="surname"
+        placeholder="Фамилия"
+      />
+      <input
+        [(ngModel)]="activeStudent.name"
+        class="default-input"
+        formControlName="name"
+        placeholder="Имя"
+      />
+      <input
+        [(ngModel)]="activeStudent.thirdname"
+        class="default-input"
+        formControlName="thirdname"
+        placeholder="Отчество (необязательно)"
+      />
+      <input
+        [(ngModel)]="activeStudent.recordbook"
+        class="default-input"
+        formControlName="recordbook"
+        placeholder="Зачётная книжка"
+      />
+    </div>
+    <strong class="font-white">Состояние студента: {{ activeState }}</strong>
+    <div class="controls-container">
+      <button class="accept-button-modal" (click)="selectState('Активен')">
+        Назначить "Активен"
+      </button>
+      <button class="danger-button-modal" (click)="selectState('Неактивен')">
+        Назначить "Неактивен"
+      </button>
+      <button class="accept-button-modal" (click)="openGroupSelectionModal()">
+        Назначить другую группу
+      </button>
+    </div>
+  </div>
+  <div id="controls">
+    <button class="accept-button-modal" type="button" (click)="submit()">
+      Обновить данные
+    </button>
+    <button class="danger-button-modal" type="button" (click)="close()">
+      Закрыть окно
+    </button>
+  </div>
+</div>
+<div id="success-modal-renderer" *ngIf="isSuccess">
+  <app-success-result-notification
+    [message]="notificationService.Message"
+    (visibilityEmitter)="manageSuccess($event)"
+  ></app-success-result-notification>
+</div>
+<div id="failure-modal-renderer" *ngIf="isFailure">
+  <app-failure-result-notification
+    [message]="notificationService.Message"
+    (visibilityEmitter)="manageFailure($event)"
+  ></app-failure-result-notification>
+</div>
+<div id="group-selection-modal-renderer" *ngIf="groupSelectionModalVisibility">
+  <app-student-switch-group-modal
+    [initialGroup]="activeStudent.group"
+    (selectedGroup)="selectGroup($event)"
+    (visibility)="closeGroupSelectionModal($event)"
+  ></app-student-switch-group-modal>
+</div>

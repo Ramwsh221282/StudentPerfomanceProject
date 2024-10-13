@@ -9,6 +9,7 @@ using SPerfomance.Domain.Module.Shared.Entities.SemesterPlans;
 using SPerfomance.Domain.Module.Shared.Entities.SemesterPlans.Errors;
 using SPerfomance.Domain.Module.Shared.Entities.Semesters;
 using SPerfomance.Domain.Module.Shared.Entities.Semesters.Errors;
+using SPerfomance.Domain.Module.Shared.Extensions;
 
 namespace SPerfomance.Application.SemesterPlans.Module.Repository;
 
@@ -71,7 +72,7 @@ internal sealed class SemesterPlansCommandRepository
 
 	public async Task<int> GenerateEntityNumber()
 	{
-		int count = await _context.SemesterPlans.CountAsync();
-		return count + 1;
+		int[] numbers = await _context.SemesterPlans.Select(s => s.EntityNumber).ToArrayAsync();
+		return numbers.GetOrderedValue();
 	}
 }

@@ -10,6 +10,7 @@ using SPerfomance.Domain.Module.Shared.Entities.EducationPlans;
 using SPerfomance.Domain.Module.Shared.Entities.EducationPlans.Errors;
 using SPerfomance.Application.EducationPlans.Module.Commands.Create.CreatePolicy;
 using SPerfomance.Application.Shared.Module.Schemas.EducationPlans;
+using SPerfomance.Domain.Module.Shared.Extensions;
 
 namespace SPerfomance.Application.EducationPlans.Module.Repository;
 
@@ -47,8 +48,9 @@ internal sealed class EducationPlanCommandRepository
 
 	public async Task<int> GenerateEntityNumber()
 	{
-		int count = await _db.EducationPlans.CountAsync();
-		return count + 1;
+		int[] numbers = await _db.EducationPlans.Select(s => s.EntityNumber).ToArrayAsync();
+		return numbers.GetOrderedValue();
 	}
+
 	public async Task Commit() => await _db.SaveChangesAsync();
 }

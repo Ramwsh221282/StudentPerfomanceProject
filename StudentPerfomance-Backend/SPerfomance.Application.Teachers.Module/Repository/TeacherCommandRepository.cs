@@ -9,6 +9,7 @@ using SPerfomance.Domain.Module.Shared.Entities.TeacherDepartments;
 using SPerfomance.Domain.Module.Shared.Entities.TeacherDepartments.Errors;
 using SPerfomance.Domain.Module.Shared.Entities.Teachers;
 using SPerfomance.Domain.Module.Shared.Entities.Teachers.Errors;
+using SPerfomance.Domain.Module.Shared.Extensions;
 
 namespace SPerfomance.Application.Teachers.Module.Repository;
 
@@ -47,7 +48,7 @@ internal sealed class TeacherCommandRepository
 
 	public async Task<int> GenerateEntityNumber()
 	{
-		int count = await _context.Teachers.CountAsync();
-		return count + 1;
+		int[] numbers = await _context.Teachers.Select(s => s.EntityNumber).ToArrayAsync();
+		return numbers.GetOrderedValue();
 	}
 }

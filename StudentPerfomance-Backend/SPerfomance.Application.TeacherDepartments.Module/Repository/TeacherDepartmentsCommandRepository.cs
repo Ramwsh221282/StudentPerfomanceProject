@@ -10,6 +10,7 @@ using SPerfomance.Domain.Module.Shared.Entities.Teachers;
 using SPerfomance.Application.Shared.Module.Schemas.Departments;
 using SPerfomance.Application.Shared.Module.Schemas.Teachers;
 using SPerfomance.Domain.Module.Shared.Entities.Teachers.Errors;
+using SPerfomance.Domain.Module.Shared.Extensions;
 
 namespace SPerfomance.Application.TeacherDepartments.Module.Repository;
 
@@ -75,7 +76,7 @@ internal sealed class TeacherDepartmentsCommandRepository
 
 	public async Task<int> GenerateTeacherNumber()
 	{
-		int count = await _db.Teachers.CountAsync();
-		return count + 1;
+		int[] numbers = await _db.Departments.Select(s => s.EntityNumber).ToArrayAsync();
+		return numbers.GetOrderedValue();
 	}
 }

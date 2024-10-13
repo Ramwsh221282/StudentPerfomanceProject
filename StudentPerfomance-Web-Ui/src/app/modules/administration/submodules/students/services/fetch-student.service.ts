@@ -96,7 +96,7 @@ class FilterHttpRequestParam implements IRequestParamsFactory {
       .set('Student.Surname', student.surname)
       .set('Student.Thirdname', student.thirdname)
       .set('Student.State', student.state)
-      .set('Student.Recordbook', student.recordBook)
+      .set('Student.Recordbook', student.recordbook)
       .set('Group.Name', group.groupName);
   }
 

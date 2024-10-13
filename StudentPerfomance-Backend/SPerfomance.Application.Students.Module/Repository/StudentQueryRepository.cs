@@ -25,7 +25,8 @@ internal sealed class StudentQueryRepository
 		var criteria = expression.Build();
 		return await _context.Students
 		.Include(s => s.Group)
-		.ThenInclude(g => g.Students)
+		.ThenInclude(g => g.EducationPlan)
+		.ThenInclude(p => p.Direction)
 		.OrderByDescending(s => s.Name.Surname)
 		.FirstOrDefaultAsync(criteria);
 	}
@@ -35,6 +36,8 @@ internal sealed class StudentQueryRepository
 		var criteria = expression.Build();
 		return await _context.Students
 		.Include(s => s.Group)
+		.ThenInclude(g => g.EducationPlan)
+		.ThenInclude(p => p.Direction)
 		.OrderByDescending(s => s.Name.Surname)
 		.Where(criteria)
 		.AsNoTracking()
@@ -46,6 +49,8 @@ internal sealed class StudentQueryRepository
 		var criteria = expression.Build();
 		return await _context.Students
 		.Include(s => s.Group)
+		.ThenInclude(g => g.EducationPlan)
+		.ThenInclude(p => p.Direction)
 		.OrderBy(s => s.EntityNumber)
 		.ThenByDescending(s => s.Name.Surname)
 		.Where(criteria)
@@ -66,12 +71,14 @@ internal sealed class StudentQueryRepository
 		await _context.Groups
 		.Include(g => g.Students)
 		.Include(g => g.EducationPlan)
+		.ThenInclude(p => p.Direction)
 		.FirstOrDefaultAsync(expression.Build());
 
 	public async Task<IReadOnlyCollection<Student>> GetAll() =>
 		await _context.Students
 		.Include(s => s.Group)
-		.ThenInclude(g => g.Students)
+		.ThenInclude(g => g.EducationPlan)
+		.ThenInclude(p => p.Direction)
 		.OrderBy(s => s.EntityNumber)
 		.ThenByDescending(s => s.Name.Surname)
 		.AsNoTracking()

@@ -31,7 +31,7 @@ class HttpRequestBody implements IRequestBodyFactory {
         surname: student.surname,
         thirdname: student.thirdname,
         state: student.state,
-        recordbook: student.recordBook,
+        recordbook: student.recordbook,
       },
     };
   }

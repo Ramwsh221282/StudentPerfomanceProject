@@ -1,10 +1,14 @@
 using Microsoft.AspNetCore.Mvc;
-
+using SPerfomance.Application.Shared.Module.DTOs.StudentGroups;
+using SPerfomance.Application.Shared.Module.DTOs.Students;
 using SPerfomance.Application.Shared.Module.Operations;
+using SPerfomance.Application.Shared.Module.Schemas.StudentGroups;
 using SPerfomance.Application.Shared.Module.Schemas.Students;
+using SPerfomance.Application.Students.Module.Api.Request;
 using SPerfomance.Application.Students.Module.Queries.All;
 using SPerfomance.Application.Students.Module.Queries.Count;
 using SPerfomance.Application.Students.Module.Queries.Filter;
+using SPerfomance.Application.Students.Module.Queries.GetGroupStudents;
 using SPerfomance.Application.Students.Module.Queries.Paged;
 using SPerfomance.Application.Students.Module.Queries.Search;
 using SPerfomance.Domain.Module.Shared.Entities.Students;
@@ -48,9 +52,19 @@ public sealed class StudentReadApi : ControllerBase
 	}
 
 	[HttpGet(CrudOperationNames.Search)]
-	public async Task<ActionResult<IReadOnlyCollection<StudentSchema>>> Search([FromQuery] StudentSchema student)
+	public async Task<ActionResult<IReadOnlyCollection<StudentSchema>>> Search([FromQuery] SearchStudentsRequest request)
 	{
+		StudentSchema student = request.Student.ToSchema();
 		SearchQuery query = new SearchQuery(student);
+		OperationResult<IReadOnlyCollection<Student>> result = await query.Handler.Handle(query);
+		return result.ToActionResult();
+	}
+
+	[HttpGet("by-group")]
+	public async Task<ActionResult<IReadOnlyCollection<StudentSchema>>> GetByGroup([FromQuery] GetGroupStudentsRequest request)
+	{
+		StudentsGroupSchema group = request.Group.ToSchema();
+		GetGroupStudentsQuery query = new GetGroupStudentsQuery(group);
 		OperationResult<IReadOnlyCollection<Student>> result = await query.Handler.Handle(query);
 		return result.ToActionResult();
 	}

@@ -1,92 +1,38 @@
 <div id="container">
   <div id="header">
-    <strong>Смешивание группы {{ group.name }}</strong>
+    <strong>Смешивание группы {{ initial.name }}</strong>
   </div>
   <div id="content">
     <section class="creation-form">
-      <strong class="font-white">Состояние учебного плана: </strong>
+      <strong class="font-white">Выбранная студенческая группа: </strong>
       <strong class="font-white"
-        >Год: {{ activePlan.year == 0 ? "Не выбран" : activePlan.year }}</strong
+        >Выбранная группа:
+        {{ activeGroup.name == "" ? "Не выбрана" : activeGroup.name }}</strong
       >
-      <strong class="font-white"
-        >Наименование:
-        {{
-          activePlan.direction.name == ""
-            ? "Не выбран"
-            : activePlan.direction.name
-        }}</strong
-      >
-      <strong class="font-white"
-        >Код:
-        {{
-          activePlan.direction.code == ""
-            ? "Не выбран"
-            : activePlan.direction.code
-        }}</strong
-      >
-      <strong class="font-white"
-        >Тип:
-        {{
-          activePlan.direction.type == ""
-            ? "Не выбран"
-            : activePlan.direction.type
-        }}</strong
-      >
-      <button
-        *ngIf="activePlan.year != 0"
-        class="danger-button-modal"
-        type="button"
-        (click)="submitDeattachment()"
-      >
-        Открепить учебный план
-      </button>
     </section>
     <strong class="font-white">Параметры фильтра</strong>
     <div class="search-container">
       <div class="search-inputs">
-        <label class="font-white">Год: </label>
+        <label class="font-white">Наименование группы: </label>
         <input
           class="default-input w-400"
-          [(ngModel)]="filterPlan.year"
-          placeholder="Год"
+          [(ngModel)]="filterGroup.name"
+          placeholder="Наименование группы"
         />
-        <label class="font-white">Тип: </label>
-        <select class="default-select w-400" [(ngModel)]="filterPlan.direction">
-          <option disabled selected>Направление</option>
-          <option [defaultSelected]="true" [value]="'Тип направления'">
-            Тип направления
-          </option>
-          <option value="Бакалавриат">Бакалавриат</option>
-          <option value="Бакалавриат">Магистратура</option>
-        </select>
       </div>
-      <div class="search-inputs"></div>
       <div class="search-inputs">
-        <label class="font-white">Наименование:</label>
-        <input
-          class="default-input w-400"
-          [(ngModel)]="filterPlan.direction.name"
-          placeholder="Наименование направления"
-        />
-        <label class="font-white">Код: </label>
-        <input
-          class="default-input w-400"
-          [(ngModel)]="filterPlan.direction.code"
-          placeholder="Код направления"
-        />
-      </div>
-      <div class="search-controls">
-        <button class="accept-button-modal" (click)="searchPlans()">
+        <button class="accept-button-modal" (click)="searchGroups()">
           Отфильтровать
         </button>
-        <button class="danger-button-modal" (click)="fetchPlans()">
+        <button class="danger-button-modal" (click)="fetchAllGroups()">
           Отменить фильтр
         </button>
       </div>
       <table class="search-table">
         <thead>
           <tr>
-            <th>Название</th>
+            <th>Название группы</th>
+            <th>Название направления</th>
             <th>Код</th>
             <th>Тип</th>
             <th>Год</th>
@@ -94,14 +40,15 @@
           </tr>
         </thead>
         <tbody>
-          @for (plan of plans; track plan.direction.code) {
+          @for (group of groups; track group.name) {
           <tr>
-            <td>{{ plan.direction.name }}</td>
-            <td>{{ plan.direction.code }}</td>
-            <td>{{ plan.direction.type }}</td>
-            <td>{{ plan.year }}</td>
+            <td>{{ group.name }}</td>
+            <td>{{ group.plan.direction.name }}</td>
+            <td>{{ group.plan.direction.code }}</td>
+            <td>{{ group.plan.direction.type }}</td>
+            <td>{{ group.plan.year }}</td>
             <td>
-              <button class="accept-button" (click)="selectPlan(plan)">
+              <button class="accept-button" (click)="selectGroup(group)">
                 Выбрать
               </button>
             </td>
@@ -113,7 +60,7 @@
   </div>
   <div id="controls">
     <button class="accept-button-modal" type="button" (click)="submit()">
-      Закрепить
+      Смешать
     </button>
     <button class="danger-button-modal" type="button" (click)="close()">
       Закрыть окно
