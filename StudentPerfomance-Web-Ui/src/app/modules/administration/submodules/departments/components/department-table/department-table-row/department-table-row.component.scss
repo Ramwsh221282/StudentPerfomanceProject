@@ -1,0 +1,16 @@
+.grid-item {
+  padding: 5px 0px;
+  display: grid;
+  grid-template-columns: 50px 450px 175px auto;
+  grid-gap: 20px;
+  text-align: center;
+  border: solid 1px #d9d9d9;
+  border-radius: 10px;
+  align-items: center;
+}
+
+.button-items {
+  padding: 0px 20px;
+  display: flex;
+  gap: 5px;
+}

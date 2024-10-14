@@ -15,6 +15,7 @@ internal sealed class TeacherDepartmentCreateCommand : ICommand
 	private readonly DepartmentSchema _department;
 	private readonly IRepositoryExpression<TeachersDepartment> _nameDublicate;
 	private readonly TeacherDepartmentsCommandRepository _repository;
+
 	public readonly ICommandHandler<TeacherDepartmentCreateCommand, TeachersDepartment> Handler;
 
 	public TeacherDepartmentCreateCommand(DepartmentSchema department)
@@ -22,15 +23,15 @@ internal sealed class TeacherDepartmentCreateCommand : ICommand
 		_department = department;
 		_repository = new TeacherDepartmentsCommandRepository();
 		Handler = new CommandHandler(_repository);
-		_nameDublicate = ExpressionsFactory.GetByName(department.ToRepositoryObject());
+		_nameDublicate = ExpressionsFactory.GetDepartment(department.ToRepositoryObject());
 	}
 
 	internal sealed class CommandHandler(TeacherDepartmentsCommandRepository repository) : ICommandHandler<TeacherDepartmentCreateCommand, TeachersDepartment>
 	{
 		private readonly TeacherDepartmentsCommandRepository _repository = repository;
+
 		public async Task<OperationResult<TeachersDepartment>> Handle(TeacherDepartmentCreateCommand command)
 		{
-
 			Result<TeachersDepartment> create = await _repository.Create(command._department, command._nameDublicate);
 			return create.IsFailure ?
 				new OperationResult<TeachersDepartment>(create.Error) :

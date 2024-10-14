@@ -1,3 +1,5 @@
 export interface Department {
-  fullname: string;
+  entityNumber: number;
+  name: string;
+  shortName: string;
 }

@@ -1,0 +1,23 @@
+<div id="container">
+  <div id="header">
+    <strong>Подтверждение</strong>
+  </div>
+  <div id="content">
+    <a>Вы уверены, что Вы хотите удалить запись кафедры?</a>
+    <a>При удалении направления подготовки удалятся связанные с ним записи:</a>
+    <a>Преподаватели</a>
+    <a>Пользователи с ролью преподаватель</a>
+  </div>
+  <div id="controls">
+    <button class="accept-button-modal" type="button" (click)="submit()">
+      Подтвердить
+    </button>
+    ><button
+      class="danger-button-modal"
+      type="button"
+      (click)="visibility.emit(false)"
+    >
+      Отмена
+    </button>
+  </div>
+</div>

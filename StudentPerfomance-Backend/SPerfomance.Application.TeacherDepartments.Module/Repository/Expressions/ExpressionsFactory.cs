@@ -10,14 +10,16 @@ internal static class ExpressionsFactory
 {
 	public static IRepositoryExpression<TeachersDepartment> GetDepartment(DepartmentRepositoryObject department) =>
 		new GetDepartment(department);
+
 	public static IRepositoryExpression<TeachersDepartment> Filter(DepartmentRepositoryObject department) =>
 		new Filter(department);
-	public static IRepositoryExpression<TeachersDepartment> GetByName(DepartmentRepositoryObject department) =>
-		new GetDepartmentByName(department);
+
 	public static IRepositoryExpression<Teacher> GetTeacher(TeacherRepositoryObject teacher) =>
 		new GetTeacher(teacher);
+
 	public static IRepositoryExpression<Teacher> GetDepartmentTeachers(DepartmentRepositoryObject department) =>
 		new GetDepartmentTeachers(department);
+
 	public static IRepositoryExpression<Teacher> FilterTeachers(TeacherRepositoryObject teacher) =>
 		new TeacherFilter(teacher);
 }

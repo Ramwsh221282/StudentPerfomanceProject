@@ -15,34 +15,29 @@ public sealed record TeacherSchema : EntitySchema
 	public string Name { get; init; } = string.Empty;
 	public string Surname { get; init; } = string.Empty;
 	public string Thirdname { get; init; } = string.Empty;
-	public string Condition { get; init; } = string.Empty;
-	public string Job { get; init; } = string.Empty;
+	public string WorkingCondition { get; init; } = string.Empty;
+	public string JobTitle { get; init; } = string.Empty;
 	public DepartmentSchema Department { get; init; } = new DepartmentSchema();
+
 	public TeacherSchema() { }
+
 	public TeacherSchema(string? name, string? surname, string? thirdname, string? condition, string? job, DepartmentSchema? department)
 	{
 		if (!string.IsNullOrWhiteSpace(name)) Name = name;
 		if (!string.IsNullOrWhiteSpace(surname)) Surname = surname;
 		if (!string.IsNullOrWhiteSpace(thirdname)) Thirdname = thirdname;
-		if (!string.IsNullOrWhiteSpace(condition)) Condition = condition;
-		if (!string.IsNullOrWhiteSpace(job)) Job = job;
+		if (!string.IsNullOrWhiteSpace(condition)) WorkingCondition = condition;
+		if (!string.IsNullOrWhiteSpace(job)) JobTitle = job;
 		if (department != null) Department = department;
 	}
 
-	public TeacherName CreateName()
-	{
-		return TeacherName.Create(Name, Surname, Thirdname).Value;
-	}
+	public TeacherName CreateName() => TeacherName.Create(Name, Surname, Thirdname).Value;
 
-	public WorkingCondition CreateWorkingCondition()
-	{
-		return WorkingCondition.Create(Condition).Value;
-	}
+	public WorkingCondition CreateWorkingCondition() =>
+		Domain.Module.Shared.Entities.Teachers.ValueObjects.WorkingCondition.Create(WorkingCondition).Value;
 
-	public JobTitle CreateJobTitle()
-	{
-		return JobTitle.Create(Job).Value;
-	}
+	public JobTitle CreateJobTitle() =>
+		Domain.Module.Shared.Entities.Teachers.ValueObjects.JobTitle.Create(JobTitle).Value;
 
 	public Teacher CreateDomainObject(TeachersDepartment department)
 	{
@@ -65,8 +60,8 @@ public static class TeacherSchemaExtensions
 		.WithName(teacher.Name)
 		.WithSurname(teacher.Surname)
 		.WithThirdname(teacher.Thirdname)
-		.WithJobTitle(teacher.Job)
-		.WithWorkingCondition(teacher.Condition)
+		.WithJobTitle(teacher.JobTitle)
+		.WithWorkingCondition(teacher.WorkingCondition)
 		.WithDepartment(department);
 		return parameter;
 	}
@@ -74,15 +69,15 @@ public static class TeacherSchemaExtensions
 	public static TeacherSchema ToSchema(this Teacher teacher)
 	{
 		DepartmentSchema department = teacher.Department.ToSchema();
-		TeacherSchema schema = new TeacherSchema()
-		{
-			Name = teacher.Name.Name,
-			Surname = teacher.Name.Surname,
-			Thirdname = teacher.Name.Thirdname,
-			Condition = teacher.Condition.Value,
-			Job = teacher.JobTitle.Value,
-			Department = department
-		};
+		TeacherSchema schema = new TeacherSchema(
+			teacher.Name.Name,
+			teacher.Name.Surname,
+			teacher.Name.Thirdname,
+			teacher.Condition.Value,
+			teacher.JobTitle.Value,
+			department
+		);
+
 		return schema;
 	}
 

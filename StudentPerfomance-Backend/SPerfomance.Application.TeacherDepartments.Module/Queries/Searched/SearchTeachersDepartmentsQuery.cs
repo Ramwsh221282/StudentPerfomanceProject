@@ -12,16 +12,20 @@ internal sealed class SearchTeachersDepartmentsQuery : IQuery
 {
 	private readonly IRepositoryExpression<TeachersDepartment> _expression;
 	private readonly TeacherDepartmentsQueryRepository _repository;
+
 	public readonly IQueryHandler<SearchTeachersDepartmentsQuery, IReadOnlyCollection<TeachersDepartment>> Handler;
+
 	public SearchTeachersDepartmentsQuery(DepartmentSchema department)
 	{
-		_expression = ExpressionsFactory.GetByName(department.ToRepositoryObject());
+		_expression = ExpressionsFactory.GetDepartment(department.ToRepositoryObject());
 		_repository = new TeacherDepartmentsQueryRepository();
 		Handler = new QueryHandler(_repository);
 	}
+
 	internal sealed class QueryHandler(TeacherDepartmentsQueryRepository repository) : IQueryHandler<SearchTeachersDepartmentsQuery, IReadOnlyCollection<TeachersDepartment>>
 	{
 		private readonly TeacherDepartmentsQueryRepository _repository = repository;
+
 		public async Task<OperationResult<IReadOnlyCollection<TeachersDepartment>>> Handle(SearchTeachersDepartmentsQuery query)
 		{
 			IReadOnlyCollection<TeachersDepartment> departments = await _repository.GetFiltered(query._expression);

@@ -1,0 +1,30 @@
+<div class="grid-item">
+  <strong>{{ department.entityNumber }}</strong>
+  <strong>{{ department.name }}</strong>
+  <strong>{{ department.shortName }}</strong>
+  <div class="button-items">
+    <button class="warning-button-outline" (click)="editModalVisible = true">
+      Редактировать
+    </button>
+    <button class="accept-button-outline">Преподаватели</button>
+    <button class="danger-button-outline" (click)="removeModalVisible = true">
+      Удалить
+    </button>
+  </div>
+</div>
+<div id="deletion-modal-renderer" *ngIf="removeModalVisible">
+  <app-department-deletion-modal
+    [department]="department"
+    (visibility)="removeModalVisible = false"
+    (failureEmitter)="emitFailure.emit()"
+    (successEmitter)="emitSuccess.emit()"
+  ></app-department-deletion-modal>
+</div>
+<div id="edit-modal-renderer" *ngIf="editModalVisible">
+  <app-department-edit-modal
+    [initial]="department"
+    (visibility)="editModalVisible = false"
+    (failureEmitter)="emitFailure.emit()"
+    (successEmitter)="emitSuccess.emit()"
+  ></app-department-edit-modal>
+</div>

@@ -15,12 +15,14 @@ internal sealed class TeachersDepartmentUpdateCommand : ICommand
 	private readonly IRepositoryExpression<TeachersDepartment> _findInitial;
 	private readonly IRepositoryExpression<TeachersDepartment> _findNameDublicate;
 	private readonly TeacherDepartmentsQueryRepository _repository;
+
 	public readonly ICommandHandler<TeachersDepartmentUpdateCommand, TeachersDepartment> Handler;
+
 	public TeachersDepartmentUpdateCommand(DepartmentSchema newSchema, DepartmentSchema oldSchema)
 	{
 		_newSchema = newSchema;
 		_findInitial = ExpressionsFactory.GetDepartment(oldSchema.ToRepositoryObject());
-		_findNameDublicate = ExpressionsFactory.GetByName(newSchema.ToRepositoryObject());
+		_findNameDublicate = ExpressionsFactory.GetDepartment(newSchema.ToRepositoryObject());
 		_repository = new TeacherDepartmentsQueryRepository();
 		Handler = new CommandHandler(_repository);
 	}
@@ -28,14 +30,17 @@ internal sealed class TeachersDepartmentUpdateCommand : ICommand
 	internal sealed class CommandHandler(TeacherDepartmentsQueryRepository repository) : ICommandHandler<TeachersDepartmentUpdateCommand, TeachersDepartment>
 	{
 		private readonly TeacherDepartmentsQueryRepository _repository = repository;
+
 		public async Task<OperationResult<TeachersDepartment>> Handle(TeachersDepartmentUpdateCommand command)
 		{
 			TeachersDepartment? department = await _repository.GetByParameter(command._findInitial);
 			if (department == null)
 				return new OperationResult<TeachersDepartment>(new DepartmentNotFountError().ToString());
+
 			if (await _repository.HasEqualRecord(command._findNameDublicate))
-				return new OperationResult<TeachersDepartment>(new DepartmentNameDublicateError(command._newSchema.FullName).ToString());
-			department.ChangeDepartmentName(command._newSchema.FullName);
+				return new OperationResult<TeachersDepartment>(new DepartmentNameDublicateError(command._newSchema.Name).ToString());
+
+			department.ChangeDepartmentName(command._newSchema.Name);
 			await _repository.Commit();
 			return new OperationResult<TeachersDepartment>(department);
 		}

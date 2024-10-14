@@ -1,8 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
 
+using SPerfomance.Application.Shared.Module.DTOs.Departments;
 using SPerfomance.Application.Shared.Module.Operations;
 using SPerfomance.Application.Shared.Module.Schemas.Departments;
 using SPerfomance.Application.Shared.Module.Schemas.Teachers;
+using SPerfomance.Application.TeacherDepartments.Module.Api.Requests;
 using SPerfomance.Application.TeacherDepartments.Module.Queries.All;
 using SPerfomance.Application.TeacherDepartments.Module.Queries.Count;
 using SPerfomance.Application.TeacherDepartments.Module.Queries.Filtered;
@@ -49,8 +51,12 @@ public sealed class TeacherDepartmentsReadApi
 	}
 
 	[HttpGet(CrudOperationNames.Filter)]
-	public async Task<ActionResult<IReadOnlyCollection<DepartmentSchema>>> GetFiltered([FromQuery] DepartmentSchema department, int page, int pageSize)
+	public async Task<ActionResult<IReadOnlyCollection<DepartmentSchema>>> GetFiltered([FromQuery] DepartmentFilterRequest request)
 	{
+		int page = request.Page;
+		int pageSize = request.PageSize;
+		DepartmentSchema department = request.Department.ToSchema();
+
 		FilterTeacherDepartmentsQuery query = new FilterTeacherDepartmentsQuery(department, page, pageSize);
 		OperationResult<IReadOnlyCollection<TeachersDepartment>> result = await query.Handler.Handle(query);
 		return result.ToActionResult();

@@ -10,7 +10,7 @@ internal sealed class DepartmentNameValidation(DepartmentSchema department) : Ba
 	public Func<EntitySchema, bool> BuildCriteria(DepartmentSchema schema) => (schema) => Validate();
 	protected override bool Validate()
 	{
-		Result<TeachersDepartment> result = TeachersDepartment.Create(_schema.FullName);
+		Result<TeachersDepartment> result = TeachersDepartment.Create(_schema.Name);
 		return result.IsFailure ? ReturnError(result.Error) : ReturnSuccess();
 	}
 }

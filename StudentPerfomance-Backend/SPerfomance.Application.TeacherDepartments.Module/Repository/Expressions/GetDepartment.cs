@@ -12,5 +12,5 @@ internal sealed class GetDepartment(DepartmentRepositoryObject department) : IRe
 
 	public Expression<Func<TeachersDepartment, bool>> Build() =>
 		(TeachersDepartment entity) =>
-			entity.FullName == _department.Name;
+			entity.FullName == _department.Name && entity.ShortName == _department.ShortName;
 }

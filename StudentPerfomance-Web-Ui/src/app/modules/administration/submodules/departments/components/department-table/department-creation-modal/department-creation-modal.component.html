@@ -1,0 +1,22 @@
+<div id="container">
+  <div id="header">
+    <strong>Добавление направления подготовки</strong>
+  </div>
+  <div id="content">
+    <form class="creation-form" [formGroup]="form">
+      <input
+        formControlName="name"
+        class="default-input"
+        placeholder="Полное название кафедры"
+      />
+    </form>
+  </div>
+  <div id="controls">
+    <button type="button" class="accept-button-modal" (click)="submit()">
+      Добавить
+    </button>
+    <button type="button" class="danger-button-modal" (click)="close()">
+      Закрыть окно
+    </button>
+  </div>
+</div>

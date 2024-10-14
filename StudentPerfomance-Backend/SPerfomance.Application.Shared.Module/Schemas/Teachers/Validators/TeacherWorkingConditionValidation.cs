@@ -11,7 +11,7 @@ internal sealed class TeacherWorkingConditionValidation(TeacherSchema schema) : 
 	public Func<EntitySchema, bool> BuildCriteria(TeacherSchema schema) => (schema) => Validate();
 	protected override bool Validate()
 	{
-		Result<WorkingCondition> result = WorkingCondition.Create(_schema.Condition);
+		Result<WorkingCondition> result = WorkingCondition.Create(_schema.WorkingCondition);
 		return result.IsFailure ? ReturnError(result.Error) : ReturnSuccess();
 	}
 }

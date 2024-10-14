@@ -5,6 +5,7 @@ using CSharpFunctionalExtensions;
 using SPerfomance.DataAccess.Module.Shared;
 using SPerfomance.Domain.Module.Shared.Common.Abstractions.Repositories;
 using SPerfomance.Domain.Module.Shared.Entities.Teachers;
+using SPerfomance.Domain.Module.Shared.Entities.TeacherDepartments;
 
 namespace SPerfomance.Application.Teachers.Module.Repository;
 
@@ -14,6 +15,7 @@ internal sealed class TeacherQueryRepository
 
 	public async Task<IReadOnlyCollection<Teacher>> GetAll() =>
 		await _context.Teachers
+		.Include(t => t.Disciplines)
 		.Include(t => t.Department)
 		.OrderBy(t => t.EntityNumber)
 		.ThenByDescending(t => t.Name.Surname)
@@ -22,6 +24,7 @@ internal sealed class TeacherQueryRepository
 
 	public async Task<IReadOnlyCollection<Teacher>> GetPaged(int page, int pageSize) =>
 		await _context.Teachers
+		.Include(t => t.Disciplines)
 		.Include(t => t.Department)
 		.OrderBy(t => t.EntityNumber)
 		.ThenByDescending(t => t.Name.Surname)
@@ -34,7 +37,17 @@ internal sealed class TeacherQueryRepository
 	{
 		var criteria = expression.Build();
 		return await _context.Teachers
+		.Include(t => t.Disciplines)
 		.Include(t => t.Department)
+		.FirstOrDefaultAsync(criteria);
+	}
+
+	public async Task<TeachersDepartment?> GetByParameter(IRepositoryExpression<TeachersDepartment> expression)
+	{
+		var criteria = expression.Build();
+		return await _context.Departments
+		.Include(d => d.Teachers)
+		.ThenInclude(t => t.Disciplines)
 		.FirstOrDefaultAsync(criteria);
 	}
 
@@ -42,6 +55,7 @@ internal sealed class TeacherQueryRepository
 	{
 		var criteria = expression.Build();
 		return await _context.Teachers
+		.Include(t => t.Disciplines)
 		.Include(t => t.Department)
 		.Where(criteria)
 		.AsNoTracking()
@@ -52,6 +66,7 @@ internal sealed class TeacherQueryRepository
 	{
 		var criteria = expression.Build();
 		return await _context.Teachers
+		.Include(t => t.Disciplines)
 		.Include(t => t.Department)
 		.Where(criteria)
 		.Skip((page - 1) * pageSize)

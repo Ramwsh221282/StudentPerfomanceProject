@@ -14,6 +14,7 @@ internal sealed class TeacherDepartmentDeleteCommand : ICommand
 {
 	private readonly IRepositoryExpression<TeachersDepartment> _expression;
 	private readonly TeacherDepartmentsCommandRepository _repository;
+
 	public readonly ICommandHandler<TeacherDepartmentDeleteCommand, TeachersDepartment> Handler;
 
 	public TeacherDepartmentDeleteCommand(DepartmentSchema department)
@@ -26,6 +27,7 @@ internal sealed class TeacherDepartmentDeleteCommand : ICommand
 	internal sealed class CommandHandler(TeacherDepartmentsCommandRepository repository) : ICommandHandler<TeacherDepartmentDeleteCommand, TeachersDepartment>
 	{
 		private readonly TeacherDepartmentsCommandRepository _repository = repository;
+
 		public async Task<OperationResult<TeachersDepartment>> Handle(TeacherDepartmentDeleteCommand command)
 		{
 			Result<TeachersDepartment> delete = await _repository.Remove(command._expression);

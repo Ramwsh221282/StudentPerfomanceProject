@@ -21,10 +21,13 @@ internal sealed class TeacherDepartmentsCommandRepository
 	public async Task<Result<TeachersDepartment>> Create(DepartmentSchema department, IRepositoryExpression<TeachersDepartment> expression)
 	{
 		if (await _db.Departments.AnyAsync(expression.Build()))
-			return Result.Failure<TeachersDepartment>(new DepartmentNameDublicateError(department.FullName).ToString());
+			return Result.Failure<TeachersDepartment>(new DepartmentNameDublicateError(department.Name).ToString());
+
 		Result<TeachersDepartment> create = department.CreateDomainObject();
 		create.Value.SetNumber(await GenerateDepartmentNumber());
-		if (create.IsFailure) return Result.Failure<TeachersDepartment>(create.Error);
+		if (create.IsFailure)
+			return Result.Failure<TeachersDepartment>(create.Error);
+
 		await _db.Departments.AddAsync(create.Value);
 		await Commit();
 		return create.Value;
@@ -33,11 +36,17 @@ internal sealed class TeacherDepartmentsCommandRepository
 	public async Task<Result<Teacher>> AddTeacher(IRepositoryExpression<TeachersDepartment> expression, TeacherSchema teacher)
 	{
 		TeachersDepartment? department = await _db.Departments.FirstOrDefaultAsync(expression.Build());
-		if (department == null) return Result.Failure<Teacher>(new DepartmentNotFountError().ToString());
+		if (department == null)
+			return Result.Failure<Teacher>(new DepartmentNotFountError().ToString());
+
 		Result<Teacher> create = teacher.CreateDomainObject(department);
-		if (create.IsFailure) return Result.Failure<Teacher>(create.Error);
+		if (create.IsFailure)
+			return Result.Failure<Teacher>(create.Error);
+
 		Result append = department.AddTeacher(create.Value);
-		if (append.IsFailure) return Result.Failure<Teacher>(append.Error);
+		if (append.IsFailure)
+			return Result.Failure<Teacher>(append.Error);
+
 		create.Value.SetNumber(await GenerateTeacherNumber());
 		await _db.Teachers.AddAsync(create.Value);
 		await Commit();
@@ -47,11 +56,17 @@ internal sealed class TeacherDepartmentsCommandRepository
 	public async Task<Result<Teacher>> RemoveTeacher(IRepositoryExpression<TeachersDepartment> getDepartment, IRepositoryExpression<Teacher> getTeacher)
 	{
 		TeachersDepartment? department = await _db.Departments.FirstOrDefaultAsync(getDepartment.Build());
-		if (department == null) return Result.Failure<Teacher>(new DepartmentNotFountError().ToString());
+		if (department == null)
+			return Result.Failure<Teacher>(new DepartmentNotFountError().ToString());
+
 		Teacher? teacher = await _db.Teachers.FirstOrDefaultAsync(getTeacher.Build());
-		if (teacher == null) return Result.Failure<Teacher>(new TeacherNotFoundError().ToString());
+		if (teacher == null)
+			return Result.Failure<Teacher>(new TeacherNotFoundError().ToString());
+
 		Result operation = department.RemoveTeacher(teacher);
-		if (operation.IsFailure) return Result.Failure<Teacher>(operation.Error);
+		if (operation.IsFailure)
+			return Result.Failure<Teacher>(operation.Error);
+
 		await _db.Teachers.Where(t => t.Id == teacher.Id).ExecuteDeleteAsync();
 		await Commit();
 		return teacher;
@@ -60,8 +75,9 @@ internal sealed class TeacherDepartmentsCommandRepository
 	public async Task<Result<TeachersDepartment>> Remove(IRepositoryExpression<TeachersDepartment> getDepartment)
 	{
 		TeachersDepartment? department = await _db.Departments.FirstOrDefaultAsync(getDepartment.Build());
-		if (department == null) return Result.Failure<TeachersDepartment>(new DepartmentNotFountError().ToString());
-		await _db.Teachers.Where(t => t.Department.Id == department.Id).ExecuteDeleteAsync();
+		if (department == null)
+			return Result.Failure<TeachersDepartment>(new DepartmentNotFountError().ToString());
+
 		await _db.Departments.Where(d => d.Id == department.Id).ExecuteDeleteAsync();
 		return department;
 	}

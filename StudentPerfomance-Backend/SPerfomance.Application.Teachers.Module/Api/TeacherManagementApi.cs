@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+
 using SPerfomance.Application.Shared.Module.Operations;
 using SPerfomance.Application.Shared.Module.Schemas.Teachers;
 using SPerfomance.Application.Teachers.Module.Commands.Create;
@@ -10,7 +11,7 @@ namespace SPerfomance.Application.Teachers.Module.Api;
 
 [ApiController]
 [Route("/teacher/api/management")]
-public sealed class TeacherManagementApi : ControllerBase
+public sealed class TeacherManagementApi : Controller
 {
 	[HttpGet(CrudOperationNames.Create)]
 	public async Task<ActionResult<TeacherSchema>> Create([FromBody] TeacherSchema teacher)

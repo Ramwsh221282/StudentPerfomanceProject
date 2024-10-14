@@ -6,7 +6,7 @@ import { EducationDirectionsFilterModalComponent } from './components/education-
 import { EducationDirectionsPageComponent } from './components/education-directions-page/education-directions-page.component';
 import { EducationDirectionsTableComponent } from './components/education-directions-table/education-directions-table.component';
 import { EducationDirectionsRoutingModule } from './education-directions-routing.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EducationDirectionsPaginationComponent } from './components/education-directions-table/education-directions-pagination/education-directions-pagination.component';
 import { EducationDirectionsTableRowComponent } from './components/education-directions-table/education-directions-table-row/education-directions-table-row.component';
 import { FailureResultNotificationComponent } from '../../../../shared/components/failure-result-notification/failure-result-notification.component';
@@ -28,6 +28,7 @@ import { EducationDirectionDeleteModalComponent } from './components/education-d
     CommonModule,
     EducationDirectionsRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
     FailureResultNotificationComponent,
     SuccessResultNotificationComponent,
   ],

@@ -3,6 +3,7 @@ using CSharpFunctionalExtensions;
 using SPerfomance.Application.Shared.Module.CQRS.Commands;
 using SPerfomance.Application.Shared.Module.Operations;
 using SPerfomance.Application.Shared.Module.Schemas;
+using SPerfomance.Application.Shared.Module.Schemas.Departments;
 using SPerfomance.Application.Shared.Module.Schemas.Teachers;
 using SPerfomance.Application.Shared.Module.Schemas.Teachers.Validators;
 using SPerfomance.Application.Teachers.Module.Repository;
@@ -25,7 +26,7 @@ internal sealed class CreateCommand : ICommand
 	{
 		_teacher = teacher;
 		_findDublicate = ExpressionsFactory.GetTeacher(teacher.ToRepositoryObject());
-		_getDepartment = ExpressionsFactory.GetDepartment(teacher.ToRepositoryObject());
+		_getDepartment = ExpressionsFactory.GetDepartment(teacher.Department.ToRepositoryObject());
 		_repository = new TeacherCommandRepository();
 		_validator = new TeacherValidator()
 		.WithNameValidation(teacher)

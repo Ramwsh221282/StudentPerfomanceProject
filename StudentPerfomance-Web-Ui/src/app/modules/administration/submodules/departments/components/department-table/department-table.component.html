@@ -1,0 +1,55 @@
+<div class="departments-table-wrapper">
+  <div class="departments-controls-container">
+    <button class="accept-button" (click)="creationModalVisibility = true">
+      Добавить кафедру
+    </button>
+    <button class="accept-button" (click)="filterModalVisibility = true">
+      Отфильтровать список
+    </button>
+  </div>
+  <div class="departments-table-container">
+    <div class="departments-table-grid">
+      <div class="departments-table-header">
+        <strong>Номер</strong>
+        <strong>Полное название</strong>
+        <strong>Сокращенное название</strong>
+        <strong>Действия</strong>
+      </div>
+      @for (department of dataService.departments; track department.name) {
+      <app-department-table-row
+        [department]="department"
+        (emitSuccess)="isSuccess = true; refreshData()"
+        (emitFailure)="isFailure = true"
+      ></app-department-table-row>
+      }
+    </div>
+  </div>
+  <div class="pagination-wrapper">
+    <app-department-pagination></app-department-pagination>
+  </div>
+</div>
+<div id="creation-modal-renderer" *ngIf="creationModalVisibility">
+  <app-department-creation-modal
+    (visibility)="creationModalVisibility = $event"
+    (successEmitter)="isSuccess = true; refreshData()"
+    (failureEmitter)="isFailure = true"
+  ></app-department-creation-modal>
+</div>
+<div id="success-modal-renderer" *ngIf="isSuccess">
+  <app-success-result-notification
+    [message]="notificationService.Message"
+    (visibilityEmitter)="isSuccess = false"
+  ></app-success-result-notification>
+</div>
+<div id="failure-modal-renderer" *ngIf="isFailure">
+  <app-failure-result-notification
+    [message]="notificationService.Message"
+    (visibilityEmitter)="isFailure = false"
+  ></app-failure-result-notification>
+</div>
+<div id="filter-modal-renderer" *ngIf="filterModalVisibility">
+  <app-department-filter-modal
+    (visibility)="this.filterModalVisibility = false"
+    (filterAccepted)="appendPages(); fetchData()"
+  ></app-department-filter-modal>
+</div>

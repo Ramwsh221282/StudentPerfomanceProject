@@ -18,7 +18,8 @@ internal sealed class TeacherFilter(TeacherRepositoryObject teacher) : IReposito
 			(!string.IsNullOrWhiteSpace(_teacher.JobTitle) && entity.JobTitle.Value.Contains(_teacher.JobTitle)) ||
 			(!string.IsNullOrWhiteSpace(_teacher.WorkingCondition) && entity.Condition.Value.Contains(_teacher.WorkingCondition)) ||
 			(!string.IsNullOrWhiteSpace(_teacher.Department.Name) && entity.Department.FullName.Contains(_teacher.Department.Name))
-		)
-		 && _teacher.Department.Name == entity.Department.FullName;
+		) &&
+		_teacher.Department.Name == entity.Department.FullName &&
+		_teacher.Department.ShortName == entity.Department.ShortName;
 
 }

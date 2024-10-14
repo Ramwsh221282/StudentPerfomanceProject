@@ -10,5 +10,7 @@ internal sealed class Filter(DepartmentRepositoryObject department) : IRepositor
 {
 	private readonly DepartmentRepositoryObject _department = department;
 	public Expression<Func<TeachersDepartment, bool>> Build() =>
-		(TeachersDepartment entity) => entity.FullName.Contains(_department.Name);
+		(TeachersDepartment entity) =>
+			(!string.IsNullOrWhiteSpace(_department.Name) && entity.FullName.Contains(_department.Name)) ||
+			(!string.IsNullOrWhiteSpace(_department.ShortName) && entity.ShortName.Contains(_department.ShortName));
 }

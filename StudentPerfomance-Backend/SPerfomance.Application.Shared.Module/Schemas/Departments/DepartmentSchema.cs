@@ -8,27 +8,35 @@ namespace SPerfomance.Application.Shared.Module.Schemas.Departments;
 
 public record DepartmentSchema : EntitySchema
 {
-	public string FullName { get; init; } = string.Empty;
+	public int EntityNumber { get; set; } = 0;
+	public string Name { get; init; } = string.Empty;
+	public string ShortName { get; init; } = string.Empty;
+
 	public DepartmentSchema() { }
-	public DepartmentSchema(string? fullName)
+
+	public DepartmentSchema(string? fullName, string? shortName)
 	{
-		if (!string.IsNullOrWhiteSpace(fullName)) FullName = fullName;
+		if (!string.IsNullOrWhiteSpace(fullName)) Name = fullName;
+		if (!string.IsNullOrWhiteSpace(shortName)) ShortName = shortName;
 	}
 
-	public TeachersDepartment CreateDomainObject() => TeachersDepartment.Create(FullName).Value;
+	public TeachersDepartment CreateDomainObject() => TeachersDepartment.Create(Name).Value;
 }
 
 public static class DepartmentSchemaExtensions
 {
 	public static DepartmentRepositoryObject ToRepositoryObject(this DepartmentSchema schema)
 	{
-		DepartmentRepositoryObject parameter = new DepartmentRepositoryObject().WithName(schema.FullName);
+		DepartmentRepositoryObject parameter = new DepartmentRepositoryObject()
+		.WithName(schema.Name)
+		.WithShortName(schema.ShortName);
 		return parameter;
 	}
 
 	public static DepartmentSchema ToSchema(this TeachersDepartment department)
 	{
-		DepartmentSchema schema = new DepartmentSchema(department.FullName);
+		DepartmentSchema schema = new DepartmentSchema(department.FullName, department.ShortName);
+		schema.EntityNumber = department.EntityNumber;
 		return schema;
 	}
 

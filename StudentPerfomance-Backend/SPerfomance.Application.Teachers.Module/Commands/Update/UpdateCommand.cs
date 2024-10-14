@@ -47,8 +47,8 @@ internal sealed class UpdateCommand : ICommand
 					command._newSchema.Name,
 					command._newSchema.Surname,
 					command._newSchema.Thirdname,
-					command._newSchema.Job,
-					command._newSchema.Condition
+					command._newSchema.JobTitle,
+					command._newSchema.WorkingCondition
 				).ToString());
 			Teacher? teacher = await _repository.GetByParameter(command._getInitial);
 			return teacher == null ?
