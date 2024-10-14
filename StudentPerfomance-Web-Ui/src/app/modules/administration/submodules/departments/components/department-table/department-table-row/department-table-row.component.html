@@ -6,7 +6,9 @@
     <button class="warning-button-outline" (click)="editModalVisible = true">
       Редактировать
     </button>
-    <button class="accept-button-outline">Преподаватели</button>
+    <button class="accept-button-outline" (click)="teachersModalVisible = true">
+      Преподаватели
+    </button>
     <button class="danger-button-outline" (click)="removeModalVisible = true">
       Удалить
     </button>
@@ -27,4 +29,10 @@
     (failureEmitter)="emitFailure.emit()"
     (successEmitter)="emitSuccess.emit()"
   ></app-department-edit-modal>
+</div>
+<div id="teacher-modal-renderer" *ngIf="teachersModalVisible">
+  <app-department-teachers-menu-modal
+    [department]="department"
+    (visibilityEmitter)="teachersModalVisible = false"
+  ></app-department-teachers-menu-modal>
 </div>

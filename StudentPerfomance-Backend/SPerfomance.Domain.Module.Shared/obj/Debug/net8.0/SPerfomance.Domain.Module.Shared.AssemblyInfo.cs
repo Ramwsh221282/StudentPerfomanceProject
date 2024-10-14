@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SPerfomance.Domain.Module.Shared")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+30abb146171051212339ef1588a438d701472656")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+27f24a9e10d78d0cea0b7fe4b46dd655844c3467")]
 [assembly: System.Reflection.AssemblyProductAttribute("SPerfomance.Domain.Module.Shared")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SPerfomance.Domain.Module.Shared")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

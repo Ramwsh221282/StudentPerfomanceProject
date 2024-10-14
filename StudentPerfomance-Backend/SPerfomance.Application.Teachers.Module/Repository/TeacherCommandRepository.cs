@@ -21,7 +21,10 @@ internal sealed class TeacherCommandRepository
 
 	public async Task<Result<Teacher>> Remove(IRepositoryExpression<Teacher> getTeacher)
 	{
-		Teacher? teacher = await _context.Teachers.FirstOrDefaultAsync(getTeacher.Build());
+		Teacher? teacher = await _context.Teachers
+		.Include(t => t.Department)
+		.FirstOrDefaultAsync(getTeacher.Build());
+		
 		if (teacher == null)
 			return Result.Failure<Teacher>(new TeacherNotFoundError().ToString());
 

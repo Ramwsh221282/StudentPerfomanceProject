@@ -1,0 +1,23 @@
+<div id="container">
+  <div id="header">
+    <strong>Подтверждение</strong>
+  </div>
+  <div id="content">
+    <a>Вы уверены, что Вы хотите удалить запись преподавателя?</a>
+    <a>При удалении записи преподавателя удалятся связанные с ним записи:</a>
+    <a>Преподаватель</a>
+    <a>Пользователь с ролью преподаватель</a>
+  </div>
+  <div id="controls">
+    <button class="accept-button-modal" type="button" (click)="submit()">
+      Подтвердить
+    </button>
+    ><button
+      class="danger-button-modal"
+      type="button"
+      (click)="visibilityEmitter.emit(false)"
+    >
+      Отмена
+    </button>
+  </div>
+</div>

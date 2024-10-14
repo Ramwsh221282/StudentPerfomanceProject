@@ -18,8 +18,6 @@
       @for (department of dataService.departments; track department.name) {
       <app-department-table-row
         [department]="department"
-        (emitSuccess)="isSuccess = true; refreshData()"
-        (emitFailure)="isFailure = true"
       ></app-department-table-row>
       }
     </div>

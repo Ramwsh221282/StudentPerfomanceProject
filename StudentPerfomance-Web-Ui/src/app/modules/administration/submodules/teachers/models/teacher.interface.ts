@@ -4,7 +4,7 @@ export interface Teacher {
   name: string;
   surname: string;
   thirdname: string;
-  condition: string;
-  job: string;
+  workingCondition: string;
+  jobTitle: string;
   department: Department;
 }

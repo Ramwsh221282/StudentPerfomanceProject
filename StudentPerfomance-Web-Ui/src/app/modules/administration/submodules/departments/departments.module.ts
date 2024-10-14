@@ -12,6 +12,11 @@ import { FailureResultNotificationComponent } from '../../../../shared/component
 import { DepartmentDeletionModalComponent } from './components/department-table/department-deletion-modal/department-deletion-modal.component';
 import { DepartmentEditModalComponent } from './components/department-table/department-edit-modal/department-edit-modal.component';
 import { DepartmentFilterModalComponent } from './components/department-table/department-filter-modal/department-filter-modal.component';
+import { DepartmentTeachersMenuModalComponent } from './components/department-table/department-teachers-menu-modal/department-teachers-menu-modal.component';
+import { TeacherCreationModalComponent } from './components/department-table/department-teachers-menu-modal/teacher-creation-modal/teacher-creation-modal.component';
+import { TeacherEditModalComponent } from './components/department-table/department-teachers-menu-modal/teacher-edit-modal/teacher-edit-modal.component';
+import { TeacherFilterModalComponent } from './components/department-table/department-teachers-menu-modal/teacher-filter-modal/teacher-filter-modal.component';
+import { TeacherRemoveModalComponent } from './components/department-table/department-teachers-menu-modal/teacher-remove-modal/teacher-remove-modal.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +28,11 @@ import { DepartmentFilterModalComponent } from './components/department-table/de
     DepartmentDeletionModalComponent,
     DepartmentEditModalComponent,
     DepartmentFilterModalComponent,
+    DepartmentTeachersMenuModalComponent,
+    TeacherCreationModalComponent,
+    TeacherEditModalComponent,
+    TeacherFilterModalComponent,
+    TeacherRemoveModalComponent,
   ],
   imports: [
     CommonModule,

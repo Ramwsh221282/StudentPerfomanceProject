@@ -21,7 +21,9 @@ internal sealed class CreateCommand : ICommand
 	private readonly IRepositoryExpression<TeachersDepartment> _getDepartment;
 	private readonly TeacherCommandRepository _repository;
 	private readonly ISchemaValidator _validator;
+
 	public readonly ICommandHandler<CreateCommand, Teacher> Handler;
+
 	public CreateCommand(TeacherSchema teacher)
 	{
 		_teacher = teacher;

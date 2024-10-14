@@ -1,1 +1,101 @@
-<p>department-teachers-menu-modal works!</p>
+<div id="container">
+  <div id="header">
+    <div class="header-container">
+      <strong>{{ department.name }}</strong>
+    </div>
+  </div>
+  <div id="content">
+    <strong class="font-white">Управление</strong>
+    <div class="controls-container">
+      <button
+        class="accept-button-modal"
+        (click)="creationModalVisibility = true"
+      >
+        Добавить преподавателя
+      </button>
+      <button class="accept-button-modal">Фильтр списка</button>
+    </div>
+    <div class="search-container">
+      <table class="search-table">
+        <thead>
+          <tr>
+            <th>Фамилия</th>
+            <th>Имя</th>
+            <th>Отчество</th>
+            <th>Должность</th>
+            <th>Условия работы</th>
+            <th>Кафедра</th>
+            <th>Действия</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (teacher of teachers; track $index) {
+          <tr>
+            <td>{{ teacher.surname }}</td>
+            <td>{{ teacher.name }}</td>
+            <td>{{ teacher.thirdname }}</td>
+            <td>{{ teacher.jobTitle }}</td>
+            <td>{{ teacher.workingCondition }}</td>
+            <td>{{ teacher.department.shortName }}</td>
+            <td>
+              <div class="controls-container">
+                <button class="warning-button" type="button">
+                  Редактировать
+                </button>
+                <button
+                  class="danger-button"
+                  type="button"
+                  (click)="
+                    activeTeacher = teacher; deletionModalVisibility = true
+                  "
+                >
+                  Удалить
+                </button>
+              </div>
+            </td>
+          </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div id="controls">
+    <button
+      class="danger-button-modal"
+      type="button"
+      (click)="visibilityEmitter.emit(false)"
+    >
+      Закрыть окно
+    </button>
+  </div>
+</div>
+<div id="creation-modal-renderer" *ngIf="creationModalVisibility">
+  <app-teacher-creation-modal
+    [department]="department"
+    (visibilityEmitter)="creationModalVisibility = $event"
+    (successEmitter)="isSuccess = true"
+    (failureEmitter)="isFailure = true"
+    (refreshEmitter)="fetchData()"
+  ></app-teacher-creation-modal>
+</div>
+<div id="success-modal-renderer" *ngIf="isSuccess">
+  <app-success-result-notification
+    [message]="notificationService.Message"
+    (visibilityEmitter)="isSuccess = $event"
+  ></app-success-result-notification>
+</div>
+<div id="failure-modal-renderer" *ngIf="isFailure">
+  <app-failure-result-notification
+    [message]="notificationService.Message"
+    (visibilityEmitter)="isFailure = $event"
+  ></app-failure-result-notification>
+</div>
+<div id="deletion-modal-renderer" *ngIf="deletionModalVisibility">
+  <app-teacher-remove-modal
+    [teacher]="activeTeacher"
+    (visibilityEmitter)="deletionModalVisibility = $event"
+    (failureEmitter)="isFailure = true"
+    (successEmitter)="isSuccess = true"
+    (refreshEmitter)="fetchData()"
+  ></app-teacher-remove-modal>
+</div>
