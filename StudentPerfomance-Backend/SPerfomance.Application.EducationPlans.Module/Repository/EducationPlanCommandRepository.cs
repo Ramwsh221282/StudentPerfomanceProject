@@ -17,6 +17,7 @@ namespace SPerfomance.Application.EducationPlans.Module.Repository;
 internal sealed class EducationPlanCommandRepository
 {
 	private readonly ApplicationDb _db = new ApplicationDb();
+
 	public async Task<Result<EducationPlan>> Create(EducationPlanSchema plan, IRepositoryExpression<EducationDirection> getDirection)
 	{
 		EducationDirection? direction = await _db.EducationDirections
@@ -42,10 +43,19 @@ internal sealed class EducationPlanCommandRepository
 
 	public async Task<Result<EducationPlan>> Remove(IRepositoryExpression<EducationPlan> getPlan)
 	{
-		EducationPlan? plan = await _db.EducationPlans.FirstOrDefaultAsync(getPlan.Build());
+		EducationPlan? plan = await _db.EducationPlans
+		.Include(p => p.Direction)
+		.Include(p => p.Groups)
+		.ThenInclude(g => g.Students)
+		.FirstOrDefaultAsync(getPlan.Build());
 		if (plan == null)
 			return Result.Failure<EducationPlan>(new EducationPlanNotFoundError().ToString());
 
+		foreach (var group in plan.Groups)
+		{
+			group.DeattachEducationPlan();
+		}
+		await Commit();
 		await _db.EducationPlans.Where(p => p.Id == plan.Id).ExecuteDeleteAsync();
 		await Commit();
 		return plan;

@@ -1,0 +1,4 @@
+C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Domain.Module.Shared\bin\Release\net8.0\publish\SPerfomance.Domain.Module.Shared.dll
+C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Domain.Module.Shared\bin\Release\net8.0\publish\SPerfomance.Domain.Module.Shared.deps.json
+C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Domain.Module.Shared\bin\Release\net8.0\publish\SPerfomance.Domain.Module.Shared.pdb
+C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Domain.Module.Shared\bin\Release\net8.0\publish\CSharpFunctionalExtensions.dll

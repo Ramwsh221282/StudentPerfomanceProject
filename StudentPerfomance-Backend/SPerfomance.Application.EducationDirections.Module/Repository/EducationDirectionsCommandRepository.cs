@@ -31,10 +31,22 @@ internal sealed class EducationDirectionsCommandRepository
 
 	public async Task<Result<EducationDirection>> Remove(IRepositoryExpression<EducationDirection> expression)
 	{
-		EducationDirection? direction = await _db.EducationDirections.FirstOrDefaultAsync(expression.Build());
+		EducationDirection? direction = await _db.EducationDirections
+		.Include(d => d.Plans)
+		.ThenInclude(p => p.Groups)
+		.ThenInclude(g => g.Students)
+		.FirstOrDefaultAsync(expression.Build());
 		if (direction == null)
 			return Result.Failure<EducationDirection>(new EducationDirectionNotFoundError().ToString());
 
+		foreach (var plan in direction.Plans)
+		{
+			foreach (var group in plan.Groups)
+			{
+				group.DeattachEducationPlan();
+			}
+		}
+		await Commit();
 		await _db.EducationDirections.Where(d => d.Id == direction.Id).ExecuteDeleteAsync();
 		await Commit();
 		return direction;

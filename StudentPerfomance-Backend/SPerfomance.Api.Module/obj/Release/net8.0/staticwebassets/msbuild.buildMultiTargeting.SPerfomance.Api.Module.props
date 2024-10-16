@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\SPerfomance.Api.Module.props" />
+</Project>

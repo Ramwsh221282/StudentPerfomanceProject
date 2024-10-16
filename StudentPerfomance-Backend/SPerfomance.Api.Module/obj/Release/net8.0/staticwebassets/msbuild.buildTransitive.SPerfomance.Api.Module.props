@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\SPerfomance.Api.Module.props" />
+</Project>
