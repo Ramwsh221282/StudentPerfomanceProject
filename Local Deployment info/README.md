@@ -11,7 +11,7 @@ Windows IIS. Local deployment instructions:
 
 4. Inside of host folder configure the web.config file:
 
-<?xml version="1.0" encoding="UTF-8"?>
+"<?xml version="1.0" encoding="UTF-8"?>
 <configuration>
     <system.webServer>
         <aspNetCore>
@@ -33,7 +33,7 @@ Windows IIS. Local deployment instructions:
   			</rules>
 		</rewrite>
     </system.webServer>
-</configuration>
+</configuration>"
 
 At the "url=" in "<action type="Rewrite" url="/app/" />" set up the client-app folder (frontend). In my case it is "/app/".
 
@@ -46,13 +46,13 @@ So that once you refresh angular page, the requests will be send correctly.
 
 5. Inside of host folder create API and APP folders. Example of folder structure:
 
-.../test/
+".../test/
 api/
-app/
+app/"
 
 6. Inside of API project configure the web.config:
 
-<?xml version="1.0" encoding="utf-8"?>
+"<?xml version="1.0" encoding="utf-8"?>
 <configuration>
   <location path="." inheritInChildApplications="false">
     <system.webServer>
@@ -62,12 +62,12 @@ app/
       <aspNetCore processPath=".\SPerfomance.Api.Module.exe" stdoutLogEnabled="false" stdoutLogFile=".\logs\stdout" hostingModel="OutOfProcess" />
     </system.webServer>
   </location>
-</configuration>
+</configuration>"
 
 Make sure that processPath matches .exe file of api.
 
 7. Inside of APP project configure the index.html:
 
-Find line of code with <base href="/app/" />
+Find line of code with "<base href="/app/" />"
 
 and set up your APP folder (in my case it is '/app/');
