@@ -2,12 +2,13 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { SemesterDisciplinesDataService } from './semester-disciplines-data.service';
 import { Semester } from '../../../../../semesters/models/semester.interface';
 import { SemesterPlan } from '../../../../../semester-plans/models/semester-plan.interface';
+import { UserOperationNotificationService } from '../../../../../../../../shared/services/user-notifications/user-operation-notification-service.service';
 
 @Component({
   selector: 'app-semester-disciplines-modal',
   templateUrl: './semester-disciplines-modal.component.html',
   styleUrl: './semester-disciplines-modal.component.scss',
-  providers: [SemesterDisciplinesDataService],
+  providers: [SemesterDisciplinesDataService, UserOperationNotificationService],
 })
 export class SemesterDisciplinesModalComponent implements OnInit {
   @Input({ required: true }) semester: Semester;
@@ -18,14 +19,21 @@ export class SemesterDisciplinesModalComponent implements OnInit {
 
   protected creationModalState: boolean;
   protected deletionModalState: boolean;
+  protected editModalState: boolean;
+
+  protected isSuccess: boolean;
+  protected isFailure: boolean;
 
   public constructor(
-    private readonly _dataService: SemesterDisciplinesDataService
+    private readonly _dataService: SemesterDisciplinesDataService,
+    protected readonly _notificationService: UserOperationNotificationService
   ) {
     this.activeSemesterPlan = {} as SemesterPlan;
     this.semesterPlans = [];
     this.creationModalState = false;
     this.deletionModalState = false;
+    this.isSuccess = false;
+    this.isFailure = false;
   }
 
   public ngOnInit(): void {

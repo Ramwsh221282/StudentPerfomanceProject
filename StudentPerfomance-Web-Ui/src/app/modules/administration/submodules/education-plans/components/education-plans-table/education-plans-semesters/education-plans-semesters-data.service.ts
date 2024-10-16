@@ -23,10 +23,10 @@ export class EducationPlanSemestersService {
 
   private buildParameters(plan: EducationPlan): HttpParams {
     const params = new HttpParams()
-      .set('schema.Year', plan.year)
-      .set('schema.Direction.Code', plan.direction.code)
-      .set('schema.Direction.Name', plan.direction.name)
-      .set('schema.Direction.Type', plan.direction.type);
+      .set('Plan.Year', plan.year)
+      .set('Plan.Direction.Code', plan.direction.code)
+      .set('Plan.Direction.Name', plan.direction.name)
+      .set('Plan.Direction.Type', plan.direction.type);
     return params;
   }
 }

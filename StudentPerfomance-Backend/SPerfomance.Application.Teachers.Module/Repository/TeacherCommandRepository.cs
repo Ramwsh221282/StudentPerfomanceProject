@@ -24,7 +24,7 @@ internal sealed class TeacherCommandRepository
 		Teacher? teacher = await _context.Teachers
 		.Include(t => t.Department)
 		.FirstOrDefaultAsync(getTeacher.Build());
-		
+
 		if (teacher == null)
 			return Result.Failure<Teacher>(new TeacherNotFoundError().ToString());
 
@@ -38,7 +38,11 @@ internal sealed class TeacherCommandRepository
 		if (await _context.Teachers.AnyAsync(findDublicate.Build()))
 			return Result.Failure<Teacher>(new TeacherDublicateError(teacher.Name, teacher.Surname, teacher.Thirdname, teacher.JobTitle, teacher.WorkingCondition).ToString());
 
-		TeachersDepartment? department = await _context.Departments.FirstOrDefaultAsync(getDepartment.Build());
+		TeachersDepartment? department = await _context.Departments
+		.Include(t => t.Teachers)
+		.ThenInclude(t => t.Disciplines)
+		.FirstOrDefaultAsync(getDepartment.Build());
+
 		if (department == null)
 			return Result.Failure<Teacher>(new DepartmentNotFountError().ToString());
 

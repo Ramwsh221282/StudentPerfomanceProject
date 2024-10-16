@@ -23,13 +23,23 @@
         <tr>
           <td>{{ plan.discipline }}</td>
           <td>
-            {{ plan.teacher.surname }} {{ plan.teacher.surname }}
-            {{ plan.teacher.surname }}
+            {{ plan.teacher.surname }} {{ plan.teacher.name[0] }}
+            {{ plan.teacher.thirdname[0] }}
           </td>
           <td>
             <div class="controls-container">
-              <button class="warning-button">Редактирование</button>
-              <button class="danger-button" (click)="startDeletion(plan)">
+              <button
+                class="warning-button"
+                (click)="
+                  this.activeSemesterPlan = plan; this.editModalState = true
+                "
+              >
+                Редактирование
+              </button>
+              <button
+                class="danger-button"
+                (click)="this.activeSemesterPlan = plan; startDeletion(plan)"
+              >
                 Удалить
               </button>
             </div>
@@ -57,4 +67,25 @@
     (visibility)="stopDeletion($event)"
     (refreshTable)="updateTable($event)"
   ></app-semester-disciplines-deletion-modal>
+</div>
+<div id="edit-modal-renderer" *ngIf="editModalState">
+  <app-semester-disciplines-edit-modal
+    [plan]="activeSemesterPlan"
+    (visibilityEmitter)="this.editModalState = $event"
+    (refreshEmitter)="updateTable($event)"
+    (successEmitter)="isSuccess = true"
+    (failureEmitter)="isFailure = true"
+  ></app-semester-disciplines-edit-modal>
+</div>
+<div id="success-modal-renderer" *ngIf="isSuccess">
+  <app-success-result-notification
+    [message]="_notificationService.Message"
+    (visibilityEmitter)="this.isSuccess = $event"
+  ></app-success-result-notification>
+</div>
+<div id="failure-modal-renderer" *ngIf="isFailure">
+  <app-failure-result-notification
+    [message]="_notificationService.Message"
+    (visibilityEmitter)="this.isFailure = $event"
+  ></app-failure-result-notification>
 </div>

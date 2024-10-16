@@ -11,6 +11,7 @@ import { UserOperationNotificationService } from '../../../../../../shared/servi
     DepartmentPaginationService,
     DepartmentDataService,
     UserOperationNotificationService,
+    DepartmentPaginationService,
   ],
 })
 export class DepartmentTableComponent implements OnInit {

@@ -16,20 +16,26 @@ public sealed record SemesterPlanSchema : EntitySchema
 	// Название дисциплины.
 	public string Discipline { get; init; } = string.Empty;
 
+	// Семестр дисциплины
+	public SemesterSchema Semester { get; init; } = new SemesterSchema();
+
 	// Закрепленный преподаватель
 	public TeacherSchema Teacher { get; init; } = new TeacherSchema();
 
 	// Создание стандартного DTO.
 	public SemesterPlanSchema() { }
+
 	// Создание DTO с инициализацией объекта при условии.
-	public SemesterPlanSchema(string? disciplineName, TeacherSchema? teacher)
+	public SemesterPlanSchema(string? disciplineName, SemesterSchema? semester, TeacherSchema? teacher)
 	{
 		if (!string.IsNullOrWhiteSpace(disciplineName)) Discipline = disciplineName;
+		if (semester != null) Semester = semester;
 		if (teacher != null) Teacher = teacher;
 	}
 
 	// Создание Value Object Discipline.
 	public Discipline CreateDiscipline() => Domain.Module.Shared.Entities.SemesterPlans.ValueObjects.Discipline.Create(Discipline).Value;
+
 	// Создание Domain Object SemesterPlan.
 	public SemesterPlan CreateDomainObject(Semester semester) => SemesterPlan.Create(semester, CreateDiscipline()).Value;
 }
@@ -46,8 +52,9 @@ public static class SemesterPlanSchemaExtensions
 
 	public static SemesterPlanSchema ToSchema(this SemesterPlan plan)
 	{
+		SemesterSchema semester = plan.Semester.ToSchema();
 		TeacherSchema teacherSchema = plan.AttachedTeacher == null ? new TeacherSchema() : plan.AttachedTeacher.ToSchema();
-		SemesterPlanSchema schema = new SemesterPlanSchema(plan.Discipline.Name, teacherSchema);
+		SemesterPlanSchema schema = new SemesterPlanSchema(plan.Discipline.Name, semester, teacherSchema);
 		return schema;
 	}
 

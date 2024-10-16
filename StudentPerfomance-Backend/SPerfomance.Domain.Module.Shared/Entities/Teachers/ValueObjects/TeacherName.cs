@@ -1,7 +1,9 @@
 using System.Text;
+
 using SPerfomance.Domain.Module.Shared.Common.Abstractions.EntityValidators;
 using SPerfomance.Domain.Module.Shared.Common.Abstractions.ValueObjects;
 using SPerfomance.Domain.Module.Shared.Entities.Teachers.Validators;
+using SPerfomance.Domain.Module.Shared.Extensions;
 
 namespace SPerfomance.Domain.Module.Shared.Entities.Teachers.ValueObjects;
 
@@ -14,8 +16,12 @@ public sealed class TeacherName : ValueObject
 		Thirdname = string.Empty;
 	}
 
-	private TeacherName(string name, string surname, string thirdname) =>
-		(Name, Surname, Thirdname) = (name, surname, thirdname);
+	private TeacherName(string name, string surname, string thirdname)
+	{
+		Name = name.FormatSpaces().FirstCharacterToUpper();
+		Surname = surname.FormatSpaces().FirstCharacterToUpper();
+		Thirdname = thirdname.FormatSpaces().FirstCharacterToUpper();
+	}
 
 	public string Name { get; }
 	public string Surname { get; }

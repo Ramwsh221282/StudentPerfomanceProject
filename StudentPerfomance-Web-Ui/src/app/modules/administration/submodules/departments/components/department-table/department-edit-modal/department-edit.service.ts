@@ -21,7 +21,6 @@ export class DepartmentEditService {
     updated: Department
   ): Observable<Department> {
     const body = this.buildRequestBody(initial, updated);
-    console.log(body);
     return this._httpClient.put<Department>(this._apiUri, body);
   }
 

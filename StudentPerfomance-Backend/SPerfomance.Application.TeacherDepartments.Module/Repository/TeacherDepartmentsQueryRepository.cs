@@ -15,6 +15,7 @@ internal sealed class TeacherDepartmentsQueryRepository
 	public async Task<IReadOnlyCollection<TeachersDepartment>> GetAll() =>
 		await _context.Departments
 		.Include(d => d.Teachers)
+		.ThenInclude(t => t.Disciplines)
 		.OrderBy(d => d.EntityNumber)
 		.ThenByDescending(d => d.FullName)
 		.AsNoTracking()
@@ -23,6 +24,7 @@ internal sealed class TeacherDepartmentsQueryRepository
 	public async Task<IReadOnlyCollection<TeachersDepartment>> GetPaged(int page, int pageSize) =>
 		await _context.Departments
 		.Include(d => d.Teachers)
+		.ThenInclude(t => t.Disciplines)
 		.OrderBy(d => d.EntityNumber)
 		.ThenByDescending(d => d.FullName)
 		.Skip((page - 1) * pageSize)
@@ -35,6 +37,7 @@ internal sealed class TeacherDepartmentsQueryRepository
 		var criteria = expression.Build();
 		return await _context.Departments
 		.Include(d => d.Teachers)
+		.ThenInclude(t => t.Disciplines)
 		.OrderByDescending(d => d.FullName)
 		.Where(criteria)
 		.AsNoTracking()
@@ -46,6 +49,7 @@ internal sealed class TeacherDepartmentsQueryRepository
 		var criteria = expression.Build();
 		return await _context.Departments
 		.Include(d => d.Teachers)
+		.ThenInclude(t => t.Disciplines)
 		.OrderByDescending(d => d.FullName)
 		.Where(criteria)
 		.Skip((page - 1) * pageSize)
@@ -59,6 +63,7 @@ internal sealed class TeacherDepartmentsQueryRepository
 		var criteria = expression.Build();
 		return await _context.Departments
 		.Include(d => d.Teachers)
+		.ThenInclude(t => t.Disciplines)
 		.FirstOrDefaultAsync(criteria);
 	}
 

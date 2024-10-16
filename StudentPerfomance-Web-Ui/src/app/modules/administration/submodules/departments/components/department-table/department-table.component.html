@@ -18,12 +18,17 @@
       @for (department of dataService.departments; track department.name) {
       <app-department-table-row
         [department]="department"
+        (emitFailure)="this.isFailure = true"
+        (emitSuccess)="this.isSuccess = true"
+        (emitRefresh)="this.refreshData()"
       ></app-department-table-row>
       }
     </div>
   </div>
   <div class="pagination-wrapper">
-    <app-department-pagination></app-department-pagination>
+    <app-department-pagination
+      (pageEmitter)="appendPages(); fetchData()"
+    ></app-department-pagination>
   </div>
 </div>
 <div id="creation-modal-renderer" *ngIf="creationModalVisibility">

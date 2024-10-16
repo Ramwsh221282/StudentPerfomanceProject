@@ -17,6 +17,7 @@ export class DepartmentDeletionModalComponent implements ISubbmittable {
   @Output() visibility: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() successEmitter: EventEmitter<void> = new EventEmitter<void>();
   @Output() failureEmitter: EventEmitter<void> = new EventEmitter<void>();
+  @Output() refreshEmitter: EventEmitter<void> = new EventEmitter();
 
   public constructor(
     protected notificationService: UserOperationNotificationService,
@@ -24,17 +25,20 @@ export class DepartmentDeletionModalComponent implements ISubbmittable {
   ) {}
 
   public submit(): void {
-    const handler = DepartmentDeletionHandler(
-      this.notificationService,
-      this.successEmitter,
-      this.failureEmitter
-    );
+    const handler = DepartmentDeletionHandler(this.notificationService);
 
     this._deletionService
       .remove(this.department)
       .pipe(
-        tap((response) => handler.handle(response)),
-        catchError((error) => handler.handleError(error))
+        tap((response) => {
+          this.refreshEmitter.emit();
+          this.successEmitter.emit();
+          handler.handle(response);
+        }),
+        catchError((error) => {
+          this.failureEmitter.emit();
+          return handler.handleError(error);
+        })
       )
       .subscribe();
   }

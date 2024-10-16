@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using SPerfomance.Application.Shared.Module.DTOs.Departments;
+using SPerfomance.Application.Shared.Module.DTOs.Teachers;
 using SPerfomance.Application.Shared.Module.Operations;
 using SPerfomance.Application.Shared.Module.Schemas.Departments;
 using SPerfomance.Application.Shared.Module.Schemas.Teachers;
@@ -52,8 +53,9 @@ public sealed class TeacherReadApi : Controller
 	}
 
 	[HttpGet(CrudOperationNames.Search)]
-	public async Task<ActionResult<IReadOnlyCollection<TeacherSchema>>> Search([FromQuery] TeacherSchema teacher)
+	public async Task<ActionResult<IReadOnlyCollection<TeacherSchema>>> Search([FromQuery] FilterTeacherRequest request)
 	{
+		TeacherSchema teacher = request.Teacher.ToSchema();
 		SearchQuery query = new SearchQuery(teacher);
 		OperationResult<IReadOnlyCollection<Teacher>> result = await query.Handler.Handle(query);
 		return result.ToActionResult();

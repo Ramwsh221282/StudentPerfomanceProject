@@ -14,7 +14,7 @@ namespace SPerfomance.Application.SemesterPlans.Module.Commands.Delete;
 
 internal sealed class DeleteCommand : ICommand
 {
-	private readonly IRepositoryExpression<SemesterPlan> _getPlan;
+	private readonly SemesterPlanSchema _plan;
 	private readonly IRepositoryExpression<Semester> _getSemester;
 	private readonly SemesterPlansCommandRepository _repository;
 
@@ -23,7 +23,7 @@ internal sealed class DeleteCommand : ICommand
 	public DeleteCommand(SemesterSchema semester, SemesterPlanSchema plan)
 	{
 		_getSemester = ExpressionsFactory.GetSemester(semester.ToRepositoryObject());
-		_getPlan = ExpressionsFactory.GetPlan(plan.ToRepositoryObject());
+		_plan = plan;
 		_repository = new SemesterPlansCommandRepository();
 		Handler = new CommandHandler(_repository);
 	}
@@ -34,7 +34,7 @@ internal sealed class DeleteCommand : ICommand
 
 		public async Task<OperationResult<SemesterPlan>> Handle(DeleteCommand command)
 		{
-			Result<SemesterPlan> delete = await _repository.Remove(command._getSemester, command._getPlan);
+			Result<SemesterPlan> delete = await _repository.Remove(command._getSemester, command._plan.Discipline);
 			return delete.IsFailure ?
 				new OperationResult<SemesterPlan>(delete.Error) :
 				new OperationResult<SemesterPlan>(delete.Value);

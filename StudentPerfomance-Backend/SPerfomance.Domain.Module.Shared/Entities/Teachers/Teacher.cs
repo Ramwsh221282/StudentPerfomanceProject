@@ -31,6 +31,7 @@ public sealed class Teacher : Entity
 	public TeacherName Name { get; private set; }
 	public TeachersDepartment Department { get; } = null!;
 	public IReadOnlyCollection<SemesterPlan> Disciplines => _disciplines.AsReadOnly();
+
 	public CSharpFunctionalExtensions.Result ChangeName(TeacherName newName)
 	{
 		var validator = new TeacherNameValidator(newName.Name, newName.Surname, newName.Thirdname);
@@ -39,6 +40,7 @@ public sealed class Teacher : Entity
 		Name = newName;
 		return Success();
 	}
+
 	public CSharpFunctionalExtensions.Result ChangeCondition(WorkingCondition condition)
 	{
 		Validator<WorkingCondition> validator = new WorkingConditionValidator(condition);
@@ -47,6 +49,7 @@ public sealed class Teacher : Entity
 		Condition = condition;
 		return Success();
 	}
+
 	public CSharpFunctionalExtensions.Result ChangeJobTitle(JobTitle jobTitle)
 	{
 		Validator<JobTitle> validator = new JobTitleValidator(jobTitle);
@@ -56,13 +59,7 @@ public sealed class Teacher : Entity
 		return Success();
 	}
 
-	public static CSharpFunctionalExtensions.Result<Teacher> Create
-	(
-		TeacherName name,
-		WorkingCondition condition,
-		JobTitle jobTitle,
-		TeachersDepartment department
-	)
+	public static CSharpFunctionalExtensions.Result<Teacher> Create(TeacherName name, WorkingCondition condition, JobTitle jobTitle, TeachersDepartment department)
 	{
 		Teacher teacher = new Teacher(Guid.NewGuid(), name, condition, jobTitle, department);
 		return teacher;

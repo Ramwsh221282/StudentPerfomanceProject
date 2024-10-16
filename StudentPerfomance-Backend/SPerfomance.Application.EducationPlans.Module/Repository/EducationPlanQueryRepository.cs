@@ -17,6 +17,7 @@ internal sealed class EducationPlanQueryRepository
 		.Include(p => p.Direction)
 		.Include(p => p.Semesters)
 		.ThenInclude(s => s.Contracts)
+		.ThenInclude(c => c.AttachedTeacher)
 		.AsNoTracking()
 		.ToListAsync();
 
@@ -25,6 +26,7 @@ internal sealed class EducationPlanQueryRepository
 		.Include(p => p.Direction)
 		.Include(p => p.Semesters)
 		.ThenInclude(s => s.Contracts)
+		.ThenInclude(c => c.AttachedTeacher)
 		.FirstOrDefaultAsync(expression.Build());
 
 	public async Task<IReadOnlyCollection<EducationPlan>> GetFiltered(IRepositoryExpression<EducationPlan> expression) =>
@@ -32,6 +34,7 @@ internal sealed class EducationPlanQueryRepository
 		.Include(p => p.Direction)
 		.Include(p => p.Semesters)
 		.ThenInclude(s => s.Contracts)
+		.ThenInclude(c => c.AttachedTeacher)
 		.Where(expression.Build())
 		.AsNoTracking()
 		.ToListAsync();
@@ -41,6 +44,7 @@ internal sealed class EducationPlanQueryRepository
 		.Include(p => p.Direction)
 		.Include(p => p.Semesters)
 		.ThenInclude(s => s.Contracts)
+		.ThenInclude(c => c.AttachedTeacher)
 		.OrderBy(p => p.EntityNumber)
 		.Where(expression.Build())
 		.Skip((page - 1) * pageSize)
@@ -53,6 +57,7 @@ internal sealed class EducationPlanQueryRepository
 		.Include(p => p.Direction)
 		.Include(p => p.Semesters)
 		.ThenInclude(s => s.Contracts)
+		.ThenInclude(c => c.AttachedTeacher)
 		.OrderBy(p => p.EntityNumber)
 		.Skip((page - 1) * pageSize)
 		.Take(pageSize)

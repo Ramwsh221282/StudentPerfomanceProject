@@ -6,10 +6,7 @@ using SPerfomance.DataAccess.Module.Shared;
 using SPerfomance.Domain.Module.Shared.Common.Abstractions.Repositories;
 using SPerfomance.Domain.Module.Shared.Entities.TeacherDepartments;
 using SPerfomance.Domain.Module.Shared.Entities.TeacherDepartments.Errors;
-using SPerfomance.Domain.Module.Shared.Entities.Teachers;
 using SPerfomance.Application.Shared.Module.Schemas.Departments;
-using SPerfomance.Application.Shared.Module.Schemas.Teachers;
-using SPerfomance.Domain.Module.Shared.Entities.Teachers.Errors;
 using SPerfomance.Domain.Module.Shared.Extensions;
 
 namespace SPerfomance.Application.TeacherDepartments.Module.Repository;
@@ -31,45 +28,6 @@ internal sealed class TeacherDepartmentsCommandRepository
 		await _db.Departments.AddAsync(create.Value);
 		await Commit();
 		return create.Value;
-	}
-
-	public async Task<Result<Teacher>> AddTeacher(IRepositoryExpression<TeachersDepartment> expression, TeacherSchema teacher)
-	{
-		TeachersDepartment? department = await _db.Departments.FirstOrDefaultAsync(expression.Build());
-		if (department == null)
-			return Result.Failure<Teacher>(new DepartmentNotFountError().ToString());
-
-		Result<Teacher> create = teacher.CreateDomainObject(department);
-		if (create.IsFailure)
-			return Result.Failure<Teacher>(create.Error);
-
-		Result append = department.AddTeacher(create.Value);
-		if (append.IsFailure)
-			return Result.Failure<Teacher>(append.Error);
-
-		create.Value.SetNumber(await GenerateTeacherNumber());
-		await _db.Teachers.AddAsync(create.Value);
-		await Commit();
-		return create.Value;
-	}
-
-	public async Task<Result<Teacher>> RemoveTeacher(IRepositoryExpression<TeachersDepartment> getDepartment, IRepositoryExpression<Teacher> getTeacher)
-	{
-		TeachersDepartment? department = await _db.Departments.FirstOrDefaultAsync(getDepartment.Build());
-		if (department == null)
-			return Result.Failure<Teacher>(new DepartmentNotFountError().ToString());
-
-		Teacher? teacher = await _db.Teachers.FirstOrDefaultAsync(getTeacher.Build());
-		if (teacher == null)
-			return Result.Failure<Teacher>(new TeacherNotFoundError().ToString());
-
-		Result operation = department.RemoveTeacher(teacher);
-		if (operation.IsFailure)
-			return Result.Failure<Teacher>(operation.Error);
-
-		await _db.Teachers.Where(t => t.Id == teacher.Id).ExecuteDeleteAsync();
-		await Commit();
-		return teacher;
 	}
 
 	public async Task<Result<TeachersDepartment>> Remove(IRepositoryExpression<TeachersDepartment> getDepartment)

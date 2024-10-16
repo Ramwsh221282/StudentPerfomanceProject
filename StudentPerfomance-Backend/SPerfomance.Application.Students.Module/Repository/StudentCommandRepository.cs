@@ -53,6 +53,7 @@ internal sealed class StudentCommandRepository
 		.ThenInclude(p => p.Direction)
 		.Include(g => g.Students)
 		.FirstOrDefaultAsync();
+
 		if (group == null)
 			return Result.Failure<Student>(new GroupNotFoundError().ToString());
 

@@ -1,0 +1,17 @@
+.student-groups-pagination-wrapper {
+  display: flex;
+  grid-gap: 5px;
+  flex-direction: row;
+  justify-content: center;
+  border-radius: 0px 0px 10px 10px;
+  padding: 5px;
+}
+
+.student-groups-pages-list {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
+}

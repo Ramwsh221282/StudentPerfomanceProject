@@ -9,7 +9,6 @@ internal sealed class SemesterPlanConfiguration : IEntityTypeConfiguration<Semes
 {
 	public void Configure(EntityTypeBuilder<SemesterPlan> builder)
 	{
-		builder.ToTable("SemesterPlans");
 		builder.Property(p => p.EntityNumber).ValueGeneratedOnAdd();
 		builder.HasKey(p => p.Id);
 		builder.OwnsOne(p => p.Discipline, onv =>

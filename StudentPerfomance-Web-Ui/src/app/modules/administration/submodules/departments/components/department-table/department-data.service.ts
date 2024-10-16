@@ -4,6 +4,8 @@ import { IFetchable } from '../../../../../../shared/models/fetch-policices/ifet
 import { Department } from '../../models/departments.interface';
 import { inject, Injectable } from '@angular/core';
 import { DepartmentDefaultFetchPolicy } from '../../models/fetch-policies/default-fetch-policy';
+import { Observable } from 'rxjs';
+import { BASE_API_URI } from '../../../../../../shared/models/api/api-constants';
 
 @Injectable({
   providedIn: 'any',
@@ -37,5 +39,10 @@ export class DepartmentDataService implements IFetchable<Department[]> {
 
   public addPages(page: number, pageSize: number): void {
     this._currentPolicy.addPages(page, pageSize);
+  }
+
+  public getAllDepartments(): Observable<Department[]> {
+    const apiUri: string = `${BASE_API_URI}/teacher-departments/api/read/all`;
+    return this._httpClient.get<Department[]>(apiUri);
   }
 }

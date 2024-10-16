@@ -17,14 +17,22 @@ namespace SPerfomance.Application.EducationPlans.Module.Repository;
 internal sealed class EducationPlanCommandRepository
 {
 	private readonly ApplicationDb _db = new ApplicationDb();
-	public async Task<Result<EducationPlan>> Create(EducationPlanSchema plan, IRepositoryExpression<EducationDirection> getDirection, IRepositoryExpression<EducationPlan> findDublicate)
+	public async Task<Result<EducationPlan>> Create(EducationPlanSchema plan, IRepositoryExpression<EducationDirection> getDirection)
 	{
-		if (await _db.EducationPlans.AnyAsync(findDublicate.Build())) return Result.Failure<EducationPlan>(new EducationPlanDublicateError().ToString());
-		EducationDirection? direction = await _db.EducationDirections.FirstOrDefaultAsync(getDirection.Build());
-		if (direction == null) return Result.Failure<EducationPlan>(new EducationDirectionNotFoundError().ToString());
+		EducationDirection? direction = await _db.EducationDirections
+		.Include(d => d.Plans)
+		.ThenInclude(p => p.Semesters)
+		.ThenInclude(s => s.Contracts)
+		.ThenInclude(c => c.AttachedTeacher)
+		.FirstOrDefaultAsync(getDirection.Build());
+		if (direction == null)
+			return Result.Failure<EducationPlan>(new EducationDirectionNotFoundError().ToString());
+
 		EducationPlan entry = plan.CreateDomainObject(direction);
-		_db.EducationDirections.Attach(entry.Direction);
 		entry.SetNumber(await GenerateEntityNumber());
+		Result add = direction.AddPlan(entry);
+		if (add.IsFailure)
+			return Result.Failure<EducationPlan>(add.Error);
 		ICreateEducationPlanPolicy policy = new CreateEducationPlanPolicy(entry);
 		await policy.ExecutePolicy();
 		await _db.EducationPlans.AddAsync(entry);
@@ -35,12 +43,9 @@ internal sealed class EducationPlanCommandRepository
 	public async Task<Result<EducationPlan>> Remove(IRepositoryExpression<EducationPlan> getPlan)
 	{
 		EducationPlan? plan = await _db.EducationPlans.FirstOrDefaultAsync(getPlan.Build());
-		if (plan == null) return Result.Failure<EducationPlan>(new EducationPlanNotFoundError().ToString());
-		foreach (var semester in plan.Semesters)
-		{
-			await _db.SemesterPlans.Where(p => p.Semester.Id == semester.Id).ExecuteDeleteAsync();
-		}
-		await _db.Semesters.Where(s => s.Plan.Id == plan.Id).ExecuteDeleteAsync();
+		if (plan == null)
+			return Result.Failure<EducationPlan>(new EducationPlanNotFoundError().ToString());
+
 		await _db.EducationPlans.Where(p => p.Id == plan.Id).ExecuteDeleteAsync();
 		await Commit();
 		return plan;

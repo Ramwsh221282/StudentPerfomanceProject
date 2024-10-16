@@ -1,5 +1,5 @@
-using SPerfomance.Application.Shared.Module.Schemas.EducationPlans;
+using SPerfomance.Application.Shared.Module.DTOs.EducationPlans;
 
 namespace SPerfomance.Application.Semester.Module.Api.Requests;
 
-public record EducationPlanSemestersRequest(EducationPlanSchema schema);
+public record EducationPlanSemestersRequest(EducationPlanDTO? Plan);

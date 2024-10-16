@@ -16,7 +16,6 @@ namespace SPerfomance.Application.EducationPlans.Module.Commands.Create;
 internal sealed class CreateCommand : ICommand
 {
 	private readonly EducationPlanSchema _plan;
-	private readonly IRepositoryExpression<EducationPlan> _findDublicate;
 	private readonly IRepositoryExpression<EducationDirection> _findDirection;
 	private readonly ISchemaValidator _validator;
 	private readonly EducationPlanCommandRepository _repository;
@@ -24,7 +23,6 @@ internal sealed class CreateCommand : ICommand
 	public CreateCommand(EducationPlanSchema plan)
 	{
 		_plan = plan;
-		_findDublicate = ExpressionsFactory.GetPlan(plan.ToRepositoryObject());
 		_findDirection = ExpressionsFactory.GetDirection(plan.ToRepositoryObject());
 		_validator = new EducationPlanValidator().WithYearValidation(_plan);
 		_validator.ProcessValidation();
@@ -38,7 +36,7 @@ internal sealed class CreateCommand : ICommand
 		public async Task<OperationResult<EducationPlan>> Handle(CreateCommand command)
 		{
 			if (!command._validator.IsValid) return new OperationResult<EducationPlan>(command._validator.Error);
-			Result<EducationPlan> create = await _repository.Create(command._plan, command._findDirection, command._findDublicate);
+			Result<EducationPlan> create = await _repository.Create(command._plan, command._findDirection);
 			return create.IsFailure ?
 				new OperationResult<EducationPlan>(create.Error) :
 				new OperationResult<EducationPlan>(create.Value);

@@ -1,6 +1,7 @@
 using SPerfomance.Domain.Module.Shared.Common.Abstractions.EntityValidators;
 using SPerfomance.Domain.Module.Shared.Common.Abstractions.ValueObjects;
 using SPerfomance.Domain.Module.Shared.Entities.EducationDirections.Validators;
+using SPerfomance.Domain.Module.Shared.Extensions;
 
 namespace SPerfomance.Domain.Module.Shared.Entities.EducationDirections.ValueObjects;
 
@@ -10,10 +11,13 @@ public sealed class DirectionName : ValueObject
 	// Пустой конструктор для создания неправильного значения. Валидатором не пройдёт.
 	// Необходим для конфигурарования в EF Core.
 	private DirectionName() => Name = string.Empty;
+
 	// Конструктор для создания объекта.
-	private DirectionName(string name) => Name = name;
+	private DirectionName(string name) => Name = name.FormatSpaces().FirstCharacterToUpper();
+
 	// Поле объекта "Название направления".
 	public string Name { get; } = null!;
+
 	// Фабричный метод создания объекта со встроенным валидатором.
 	public static CSharpFunctionalExtensions.Result<DirectionName> Create(string name)
 	{

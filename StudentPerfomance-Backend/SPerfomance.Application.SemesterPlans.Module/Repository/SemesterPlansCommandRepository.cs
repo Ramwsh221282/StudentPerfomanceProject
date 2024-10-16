@@ -6,7 +6,6 @@ using SPerfomance.Application.Shared.Module.Schemas.SemesterPlans;
 using SPerfomance.DataAccess.Module.Shared;
 using SPerfomance.Domain.Module.Shared.Common.Abstractions.Repositories;
 using SPerfomance.Domain.Module.Shared.Entities.SemesterPlans;
-using SPerfomance.Domain.Module.Shared.Entities.SemesterPlans.Errors;
 using SPerfomance.Domain.Module.Shared.Entities.Semesters;
 using SPerfomance.Domain.Module.Shared.Entities.Semesters.Errors;
 using SPerfomance.Domain.Module.Shared.Extensions;
@@ -28,6 +27,7 @@ internal sealed class SemesterPlansCommandRepository
 		.Include(s => s.Plan)
 		.ThenInclude(p => p.Direction)
 		.Include(s => s.Contracts)
+		.ThenInclude(c => c.AttachedTeacher)
 		.FirstOrDefaultAsync(getSemester.Build());
 
 		if (semester == null)
@@ -45,26 +45,28 @@ internal sealed class SemesterPlansCommandRepository
 		return entry;
 	}
 
-	public async Task<Result<SemesterPlan>> Remove(IRepositoryExpression<Semester> getSemester, IRepositoryExpression<SemesterPlan> getPlan)
+	public async Task<Result<SemesterPlan>> Remove(IRepositoryExpression<Semester> getSemester, string disciplineName)
 	{
 		Semester? semester = await _context.Semesters
 		.Include(s => s.Plan)
 		.ThenInclude(p => p.Direction)
 		.Include(s => s.Contracts)
+		.ThenInclude(c => c.AttachedTeacher)
 		.AsNoTracking()
 		.FirstOrDefaultAsync(getSemester.Build());
+
 		if (semester == null)
 			return Result.Failure<SemesterPlan>(new SemesterNotFoundError().ToString());
 
-		SemesterPlan? plan = await _context.SemesterPlans.FirstOrDefaultAsync(getPlan.Build());
-		if (plan == null)
-			return Result.Failure<SemesterPlan>(new SemesterPlanNotFoundError().ToString());
+		Result<SemesterPlan> plan = semester.GetContract(disciplineName);
+		if (plan.IsFailure)
+			return Result.Failure<SemesterPlan>(plan.Error);
 
-		Result remove = semester.RemoveContract(plan);
+		Result remove = semester.RemoveContract(plan.Value);
 		if (remove.IsFailure)
 			return Result.Failure<SemesterPlan>(remove.Error);
 
-		await _context.SemesterPlans.Where(p => p.Id == plan.Id)
+		await _context.SemesterPlans.Where(p => p.Id == plan.Value.Id)
 		.ExecuteDeleteAsync();
 		await Commit();
 		return plan;

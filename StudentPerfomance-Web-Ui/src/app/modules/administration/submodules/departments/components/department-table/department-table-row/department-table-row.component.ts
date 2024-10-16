@@ -10,6 +10,7 @@ export class DepartmentTableRowComponent {
   @Input({ required: true }) department: Department;
   @Output() emitSuccess: EventEmitter<void> = new EventEmitter();
   @Output() emitFailure: EventEmitter<void> = new EventEmitter();
+  @Output() emitRefresh: EventEmitter<void> = new EventEmitter();
 
   protected editModalVisible: boolean;
   protected removeModalVisible: boolean;

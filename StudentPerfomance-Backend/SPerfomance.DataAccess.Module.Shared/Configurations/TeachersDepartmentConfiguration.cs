@@ -9,12 +9,19 @@ internal sealed class TeachersDepartmentConfiguration : IEntityTypeConfiguration
 {
 	public void Configure(EntityTypeBuilder<TeachersDepartment> builder)
 	{
-		builder.ToTable("Departments");
 		builder.HasKey(d => d.Id);
+
 		builder.Property(t => t.EntityNumber).ValueGeneratedOnAdd();
+
 		builder.Property(d => d.FullName).IsRequired();
-		builder.HasMany(d => d.Teachers).WithOne(t => t.Department);
+
+		builder.HasMany(d => d.Teachers)
+		.WithOne(t => t.Department)
+		.IsRequired()
+		.OnDelete(DeleteBehavior.Cascade);
+
 		builder.HasIndex(d => d.FullName).IsUnique();
+
 		builder.HasIndex(d => d.EntityNumber).IsUnique(true);
 	}
 }

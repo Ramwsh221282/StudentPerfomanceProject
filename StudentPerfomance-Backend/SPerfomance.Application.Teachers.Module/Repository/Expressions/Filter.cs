@@ -12,10 +12,12 @@ internal sealed class Filter(TeacherRepositoryObject teacher) : IRepositoryExpre
 
 	public Expression<Func<Teacher, bool>> Build() =>
 		(Teacher entity) =>
+		(
 			(!string.IsNullOrWhiteSpace(_teacher.Name) && entity.Name.Name.Contains(_teacher.Name)) ||
 			(!string.IsNullOrWhiteSpace(_teacher.Surname) && entity.Name.Surname.Contains(_teacher.Surname)) ||
 			(!string.IsNullOrWhiteSpace(_teacher.Thirdname) && entity.Name.Thirdname.Contains(_teacher.Thirdname)) ||
 			(!string.IsNullOrWhiteSpace(_teacher.JobTitle) && entity.JobTitle.Value.Contains(_teacher.JobTitle)) ||
-			(!string.IsNullOrWhiteSpace(_teacher.WorkingCondition) && entity.Condition.Value.Contains(_teacher.WorkingCondition)) ||
-			(!string.IsNullOrWhiteSpace(_teacher.Department.Name) && entity.Department.FullName.Contains(_teacher.Department.Name));
+			(!string.IsNullOrWhiteSpace(_teacher.WorkingCondition) && entity.Condition.Value.Contains(_teacher.WorkingCondition))
+		) &&
+		entity.Department.FullName == _teacher.Department.Name && entity.Department.ShortName == _teacher.Department.ShortName;
 }

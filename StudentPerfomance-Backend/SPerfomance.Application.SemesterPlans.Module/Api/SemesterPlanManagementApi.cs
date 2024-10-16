@@ -7,6 +7,7 @@ using SPerfomance.Application.SemesterPlans.Module.Commands.DeattachTeacher;
 using SPerfomance.Application.SemesterPlans.Module.Commands.Delete;
 using SPerfomance.Application.Shared.Module.DTOs.SemesterPlans;
 using SPerfomance.Application.Shared.Module.DTOs.Semesters;
+using SPerfomance.Application.Shared.Module.DTOs.Teachers;
 using SPerfomance.Application.Shared.Module.Operations;
 using SPerfomance.Application.Shared.Module.Schemas.EducationDirections;
 using SPerfomance.Application.Shared.Module.Schemas.SemesterPlans;
@@ -40,26 +41,31 @@ public sealed class SemesterPlanManagementApi : Controller
 		return result.ToActionResult();
 	}
 
-	[HttpPut("/attach-teacher")]
-	public async Task<ActionResult<SemesterPlanSchema>> AttachTeacher([FromQuery] SemesterPlanSchema plan, [FromQuery] TeacherSchema teacher)
+	[HttpPut("/semester-plans/api/management/attach-teacher")]
+	public async Task<ActionResult<SemesterPlanSchema>> AttachTeacher([FromBody] TeacherAttachmentRequest request)
 	{
+		SemesterPlanSchema plan = request.Plan.ToSchema();
+		TeacherSchema teacher = request.Teacher.ToSchema();
 		AttachTeacherCommand command = new AttachTeacherCommand(plan, teacher);
 		OperationResult<SemesterPlan> result = await command.Handler.Handle(command);
 		return result.ToActionResult();
 	}
 
-	[HttpPut("/deattach-teacher")]
-	public async Task<ActionResult<SemesterPlanSchema>> DeattachTeacher([FromQuery] SemesterPlanSchema plan)
+	[HttpPut("/semester-plans/api/management/deattach-teacher")]
+	public async Task<ActionResult<SemesterPlanSchema>> DeattachTeacher([FromBody] TeacherDeattachmentRequest request)
 	{
+		SemesterPlanSchema plan = request.Plan.ToSchema();
 		DeattachTeacherCommand command = new DeattachTeacherCommand(plan);
 		OperationResult<SemesterPlan> result = await command.Handler.Handle(command);
 		return result.ToActionResult();
 	}
 
 	[HttpPut(CrudOperationNames.Update)]
-	public async Task<ActionResult<SemesterPlanSchema>> Update([FromQuery] SemesterPlanSchema oldSchema, [FromQuery] SemesterPlanSchema newSchema)
+	public async Task<ActionResult<SemesterPlanSchema>> Update([FromBody] ChangeDisciplineNameRequest request)
 	{
-		UpdateCommand command = new UpdateCommand(oldSchema, newSchema);
+		SemesterPlanSchema initial = request.Initial.ToSchema();
+		SemesterPlanSchema updated = request.Updated.ToSchema();
+		UpdateCommand command = new UpdateCommand(initial, updated);
 		OperationResult<SemesterPlan> result = await command.Handler.Handle(command);
 		return result.ToActionResult();
 	}

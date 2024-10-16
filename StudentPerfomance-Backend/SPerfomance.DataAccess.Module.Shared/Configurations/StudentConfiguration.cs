@@ -8,7 +8,6 @@ internal sealed class StudentConfiguration : IEntityTypeConfiguration<Student>
 {
 	public void Configure(EntityTypeBuilder<Student> builder)
 	{
-		builder.ToTable("Students");
 		builder.HasKey(s => s.Id);
 		builder.Property(s => s.EntityNumber).ValueGeneratedOnAdd();
 		builder.OwnsOne(s => s.Name, columnBuilder =>

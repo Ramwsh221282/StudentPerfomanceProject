@@ -1,1 +1,81 @@
-<p>semester-disciplines-edit-modal works!</p>
+<div id="container">
+  <div id="header">
+    <strong>Управление дисциплиной {{ plan.discipline }}</strong>
+  </div>
+  <div id="content">
+    <strong class="font-white">Название дисциплины: </strong>
+    <section class="creation-form">
+      <input
+        [(ngModel)]="plan.discipline"
+        class="default-input"
+        placeholder="Название дисциплины"
+      />
+    </section>
+    <strong class="font-white">Информация о преподавателе</strong>
+    <section class="creation-form" *ngIf="plan.teacher.name != ''">
+      <strong class="font-white">{{ plan.teacher.surname }}</strong>
+      <strong class="font-white">{{ plan.teacher.name }}</strong>
+      <strong class="font-white">{{ plan.teacher.thirdname }}</strong>
+      <strong class="font-white">{{
+        plan.teacher.department.shortName
+      }}</strong>
+      <div>
+        <button class="danger-button-modal" (click)="deattachTeacher()">
+          Открепить преподавателя
+        </button>
+      </div>
+    </section>
+    <section class="creation-form" *ngIf="plan.teacher.name == ''">
+      <strong class="font-white">Назначение преподавателя</strong>
+      <strong class="font-white">Выбрать кафедру</strong>
+      <select class="default-select" (change)="selectDepartment($event)">
+        @for (department of departments; track department.name) {
+        <option>
+          {{ department.name }}
+        </option>
+        }
+      </select>
+      <table class="search-table">
+        <thead>
+          <tr>
+            <th>Фамилия</th>
+            <th>Имя</th>
+            <th>Отчество</th>
+            <th>Кафедра</th>
+            <th>Действия</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (teacher of deparmtentTeachers; track $index) {
+          <tr>
+            <td>{{ teacher.surname }}</td>
+            <td>{{ teacher.name }}</td>
+            <td>{{ teacher.thirdname }}</td>
+            <td>{{ teacher.department.shortName }}</td>
+            <td>
+              <button
+                class="accept-button"
+                (click)="this.selectTeacher(teacher)"
+              >
+                Выбрать
+              </button>
+            </td>
+          </tr>
+          }
+        </tbody>
+      </table>
+    </section>
+  </div>
+  <div id="controls">
+    <button class="accept-button-modal" type="button" (click)="submit()">
+      Подтвердить
+    </button>
+    <button
+      class="danger-button-modal"
+      type="button"
+      (click)="visibilityEmitter.emit(false)"
+    >
+      Закрыть окно
+    </button>
+  </div>
+</div>

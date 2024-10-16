@@ -16,6 +16,7 @@ import { EducationPlansSemestersComponent } from './components/education-plans-t
 import { SemesterDisciplinesModalComponent } from './components/education-plans-table/education-plans-semesters/semester-disciplines-modal/semester-disciplines-modal.component';
 import { SemesterDisciplinesCreationModalComponent } from './components/education-plans-table/education-plans-semesters/semester-disciplines-modal/semester-disciplines-creation-modal/semester-disciplines-creation-modal.component';
 import { SemesterDisciplinesDeletionModalComponent } from './components/education-plans-table/education-plans-semesters/semester-disciplines-modal/semester-disciplines-deletion-modal/semester-disciplines-deletion-modal.component';
+import { SemesterDisciplinesEditModalComponent } from './components/education-plans-table/education-plans-semesters/semester-disciplines-modal/semester-disciplines-edit-modal/semester-disciplines-edit-modal.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { SemesterDisciplinesDeletionModalComponent } from './components/educatio
     SemesterDisciplinesModalComponent,
     SemesterDisciplinesCreationModalComponent,
     SemesterDisciplinesDeletionModalComponent,
+    SemesterDisciplinesEditModalComponent,
   ],
   imports: [
     CommonModule,

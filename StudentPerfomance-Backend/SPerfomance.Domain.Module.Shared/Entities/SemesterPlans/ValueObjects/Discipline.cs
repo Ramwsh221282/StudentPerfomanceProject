@@ -1,13 +1,18 @@
 using SPerfomance.Domain.Module.Shared.Common.Abstractions.ValueObjects;
+using SPerfomance.Domain.Module.Shared.Extensions;
 
 namespace SPerfomance.Domain.Module.Shared.Entities.SemesterPlans.ValueObjects;
 
 public sealed class Discipline : ValueObject
 {
 	public string Name { get; private set; }
+
 	private Discipline() { Name = string.Empty; }
-	private Discipline(string name) => Name = name;
+
+	private Discipline(string name) => Name = name.FormatSpaces().FirstCharacterToUpper();
+
 	public static Discipline CreateDefault() => new Discipline();
+
 	public static CSharpFunctionalExtensions.Result<Discipline> Create(string name)
 	{
 

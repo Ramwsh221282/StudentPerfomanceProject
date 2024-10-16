@@ -1,1 +1,56 @@
-<p>teacher-filter-modal works!</p>
+<div id="container">
+  <div id="header">
+    <strong>Отбор преподавателей</strong>
+  </div>
+  <div id="content">
+    <section class="creation-form">
+      <input
+        [(ngModel)]="teacher.surname"
+        class="default-input"
+        placeholder="Фамилия"
+      />
+      <input
+        [(ngModel)]="teacher.name"
+        class="default-input"
+        placeholder="Имя"
+      />
+      <input
+        [(ngModel)]="teacher.thirdname"
+        class="default-input"
+        placeholder="Отчество"
+      />
+      <div class="teacher-attributes-selection-container">
+        <strong class="font-white">Выбрать условия работы: </strong>
+        <strong class="font-white">Выбрать должность: </strong>
+        <select [(ngModel)]="teacher.workingCondition" class="default-select">
+          <option>{{ "" }}</option>
+          <option>Штатный</option>
+          <option>Совместитель</option>
+          <option>Удаленный совместитель</option>
+        </select>
+        <select [(ngModel)]="teacher.jobTitle" class="default-select">
+          <option>{{ "" }}</option>
+          <option>Ассистент</option>
+          <option>Доцент</option>
+          <option>Профессор</option>
+          <option>Старший преподаватель</option>
+        </select>
+      </div>
+    </section>
+  </div>
+  <div id="controls">
+    <button type="button" class="accept-button-modal" (click)="submit()">
+      Применить
+    </button>
+    <button type="button" class="danger-button-modal" (click)="cancelFilter()">
+      Отменить фильтр
+    </button>
+    <button
+      type="button"
+      class="danger-button-modal"
+      (click)="visibilityEmitter.emit(false)"
+    >
+      Закрыть окно
+    </button>
+  </div>
+</div>

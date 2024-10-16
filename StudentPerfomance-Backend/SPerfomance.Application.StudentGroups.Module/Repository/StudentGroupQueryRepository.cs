@@ -47,7 +47,8 @@ internal sealed class StudentGroupQueryRepository
 	public async Task<EducationPlan?> GetByParameter(IRepositoryExpression<EducationPlan> expression) =>
 		await _context.EducationPlans
 		.Include(p => p.Direction)
-		.AsNoTracking()
+		.Include(p => p.Groups)
+		.ThenInclude(g => g.Students)
 		.FirstOrDefaultAsync(expression.Build());
 
 	public async Task<IReadOnlyCollection<StudentGroup>> GetFiltered(IRepositoryExpression<StudentGroup> expression) =>

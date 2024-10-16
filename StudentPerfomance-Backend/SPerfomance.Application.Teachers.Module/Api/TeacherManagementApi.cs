@@ -34,7 +34,7 @@ public sealed class TeacherManagementApi : Controller
 	}
 
 	[HttpPut(CrudOperationNames.Update)]
-	public async Task<ActionResult<TeacherSchema>> Update([FromQuery] UpdateTeacherRequest request)
+	public async Task<ActionResult<TeacherSchema>> Update([FromBody] UpdateTeacherRequest request)
 	{
 		TeacherSchema initial = request.Initial.ToSchema();
 		TeacherSchema updated = request.Updated.ToSchema();

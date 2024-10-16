@@ -13,7 +13,12 @@
       >
         Добавить преподавателя
       </button>
-      <button class="accept-button-modal">Фильтр списка</button>
+      <button
+        class="accept-button-modal"
+        (click)="filterModalVisibility = true"
+      >
+        Фильтр списка
+      </button>
     </div>
     <div class="search-container">
       <table class="search-table">
@@ -39,7 +44,11 @@
             <td>{{ teacher.department.shortName }}</td>
             <td>
               <div class="controls-container">
-                <button class="warning-button" type="button">
+                <button
+                  class="warning-button"
+                  type="button"
+                  (click)="activeTeacher = teacher; editModalVisibility = true"
+                >
                   Редактировать
                 </button>
                 <button
@@ -98,4 +107,20 @@
     (successEmitter)="isSuccess = true"
     (refreshEmitter)="fetchData()"
   ></app-teacher-remove-modal>
+</div>
+<div id="edit-modal-renderer" *ngIf="editModalVisibility">
+  <app-teacher-edit-modal
+    [initial]="activeTeacher"
+    (visibilityEmitter)="editModalVisibility = $event"
+    (failureEmitter)="isFailure = true"
+    (successEmitter)="isSuccess = true"
+    (refreshEmitter)="fetchData()"
+  ></app-teacher-edit-modal>
+</div>
+<div id="filter-modal-renderer" *ngIf="filterModalVisibility">
+  <app-teacher-filter-modal
+    [department]="department"
+    (visibilityEmitter)="filterModalVisibility = $event"
+    (refreshEmitter)="fetchData()"
+  ></app-teacher-filter-modal>
 </div>

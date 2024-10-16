@@ -10,10 +10,13 @@ public sealed class DirectionCode : ValueObject
 	// Конструктор для EF Core конфигурирования.
 	// Инициализирует неверное значение по умолчанию. Не проходит валидатором.
 	private DirectionCode() { Code = string.Empty; }
+
 	// Конструктор для создания объекта.
 	private DirectionCode(string code) => Code = code;
+
 	// Поле - код направления подготовки.
 	public string Code { get; } = null!;
+
 	// Фабричный метод создания объекта со встроенным валидатором.
 	public static CSharpFunctionalExtensions.Result<DirectionCode> Create(string code)
 	{

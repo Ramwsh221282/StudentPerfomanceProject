@@ -19,6 +19,7 @@ internal sealed class StudentGroupCommandRepository
 	{
 		if (await _context.Groups.AnyAsync(findDublicate.Build()))
 			return Result.Failure<StudentGroup>(new GroupDublicateNameError(group.Name).ToString());
+
 		StudentGroup entry = group.CreateDomainObject();
 		entry.SetNumber(await GenerateEntityNumber());
 		await _context.Groups.AddAsync(entry);

@@ -15,8 +15,17 @@ internal sealed class EducationPlanConfiguration : IEntityTypeConfiguration<Educ
 		{
 			owb.Property(y => y.Year).HasColumnName("YearOfCreation").IsRequired();
 		});
+
 		builder.HasOne(p => p.Direction);
-		builder.HasMany(p => p.Semesters).WithOne(s => s.Plan).IsRequired();
+
+		builder.HasMany(p => p.Groups).WithOne(g => g.EducationPlan)
+		.IsRequired(false)
+		.OnDelete(DeleteBehavior.SetNull);
+
+		builder.HasMany(p => p.Semesters).WithOne(s => s.Plan)
+		.IsRequired()
+		.OnDelete(DeleteBehavior.Cascade);
+
 		builder.HasIndex(d => d.EntityNumber).IsUnique(true);
 	}
 }

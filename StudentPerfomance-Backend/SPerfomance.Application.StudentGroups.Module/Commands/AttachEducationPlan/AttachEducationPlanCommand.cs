@@ -73,7 +73,7 @@ internal sealed class AttachEducationPlanCommand : ICommand
 			if (plan == null)
 				return new OperationResult<StudentGroup>(new EducationPlanNotFoundError().ToString());
 
-			Result attach = result.Result.AttachEducationPlan(plan);
+			Result attach = plan.RegisterGroup(result.Result);
 			return attach.IsFailure ?
 				new OperationResult<StudentGroup>(attach.Error) :
 				result;

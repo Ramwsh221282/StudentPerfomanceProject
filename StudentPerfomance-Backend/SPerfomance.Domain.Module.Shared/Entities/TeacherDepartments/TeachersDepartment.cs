@@ -6,30 +6,36 @@ using SPerfomance.Domain.Module.Shared.Entities.TeacherDepartments.Errors;
 using SPerfomance.Domain.Module.Shared.Entities.TeacherDepartments.Validators;
 using SPerfomance.Domain.Module.Shared.Entities.Teachers;
 using SPerfomance.Domain.Module.Shared.Entities.Teachers.Errors;
+using SPerfomance.Domain.Module.Shared.Extensions;
 
 namespace SPerfomance.Domain.Module.Shared.Entities.TeacherDepartments;
 
 public sealed class TeachersDepartment : Entity
 {
 	private List<Teacher> _teachers = [];
+
 	private TeachersDepartment() : base(Guid.Empty)
 	{
 		FullName = string.Empty;
 		ShortName = string.Empty;
 	}
+
 	private TeachersDepartment(Guid id, string name) : base(id)
 	{
-		FullName = name;
+		FullName = name.FormatSpaces().FirstCharacterToUpper();
 		ShortName = ConstructShortName(name);
 	}
+
 	public string ShortName { get; private set; }
 	public string FullName { get; private set; }
 	public IReadOnlyCollection<Teacher> Teachers => _teachers;
+
 	public CSharpFunctionalExtensions.Result ChangeDepartmentName(string name)
 	{
 		Validator<string> validator = new DepartmentNameValidator(name);
 		if (!validator.Validate())
 			return Failure(validator.GetErrorText());
+
 		FullName = name;
 		ShortName = ConstructShortName(name);
 		return Success();
@@ -39,15 +45,12 @@ public sealed class TeachersDepartment : Entity
 	{
 		if (teacher == null)
 			return Failure(new TeacherNotFoundError().ToString());
-		if (_teachers.Any(t => t.Id == teacher.Id &&
-			t.Name == teacher.Name &&
-			t.JobTitle == teacher.JobTitle &&
-			t.Condition == teacher.Condition))
-			return Failure(new DepartmentTeacherDublicateError().ToString());
+
 		if (_teachers.Any(t => t.Name == teacher.Name &&
 		t.JobTitle == teacher.JobTitle &&
 		t.Condition == teacher.Condition))
 			return Failure(new DepartmentTeacherDublicateError().ToString());
+
 		_teachers.Add(teacher);
 		return Success();
 	}
@@ -57,6 +60,7 @@ public sealed class TeachersDepartment : Entity
 		Teacher? target = _teachers.FirstOrDefault(t => t.Id == teacher.Id);
 		if (target == null)
 			return Failure(new TeacherNotFoundError().ToString());
+
 		_teachers.Remove(target);
 		return Success();
 	}
@@ -70,15 +74,8 @@ public sealed class TeachersDepartment : Entity
 
 	private string ConstructShortName(string fullname)
 	{
-		if (string.IsNullOrWhiteSpace(fullname))
-			return string.Empty;
-		StringBuilder nameBuilder = new StringBuilder();
-		string[] nameParts = fullname.Split(' ');
-		foreach (var part in nameParts)
-		{
-			nameBuilder.Append(part[0]);
-		}
-		return nameBuilder.ToString();
+		string shortName = fullname.CreateAcronymus();
+		return shortName;
 	}
 
 	public override string ToString() => FullName;

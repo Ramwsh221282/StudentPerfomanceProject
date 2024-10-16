@@ -19,8 +19,10 @@ export class DepartmentTeachersMenuModalComponent implements OnInit {
   protected isSuccess: boolean;
   protected isFailure: boolean;
 
+  protected filterModalVisibility: boolean;
   protected creationModalVisibility: boolean;
   protected deletionModalVisibility: boolean;
+  protected editModalVisibility: boolean;
 
   protected activeTeacher: Teacher;
   protected teachers: Teacher[];
@@ -33,6 +35,7 @@ export class DepartmentTeachersMenuModalComponent implements OnInit {
     this.teachers = [];
     this.creationModalVisibility = false;
     this.deletionModalVisibility = false;
+    this.editModalVisibility = false;
     this.isSuccess = false;
     this.isFailure = false;
   }
