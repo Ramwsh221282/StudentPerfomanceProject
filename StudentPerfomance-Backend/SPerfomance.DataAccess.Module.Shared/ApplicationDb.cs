@@ -9,6 +9,7 @@ using SPerfomance.Domain.Module.Shared.Entities.StudentGroups;
 using SPerfomance.Domain.Module.Shared.Entities.Students;
 using SPerfomance.Domain.Module.Shared.Entities.TeacherDepartments;
 using SPerfomance.Domain.Module.Shared.Entities.Teachers;
+using SPerfomance.Domain.Module.Shared.Entities.Users;
 
 namespace SPerfomance.DataAccess.Module.Shared;
 
@@ -22,6 +23,7 @@ public sealed class ApplicationDb : DbContext
 	public DbSet<SemesterPlan> SemesterPlans { get; set; } = null!;
 	public DbSet<EducationDirection> EducationDirections { get; set; } = null!;
 	public DbSet<EducationPlan> EducationPlans { get; set; } = null!;
+	public DbSet<User> Users { get; set; } = null!;
 
 	protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) => optionsBuilder.UseSqlite("Data Source=Database.db");
 
@@ -35,5 +37,6 @@ public sealed class ApplicationDb : DbContext
 		modelBuilder.ApplyConfiguration(new SemesterConfiguration());
 		modelBuilder.ApplyConfiguration(new EducationDirectionConfiguration());
 		modelBuilder.ApplyConfiguration(new EducationPlanConfiguration());
+		modelBuilder.ApplyConfiguration(new UsersConfiguration());
 	}
 }

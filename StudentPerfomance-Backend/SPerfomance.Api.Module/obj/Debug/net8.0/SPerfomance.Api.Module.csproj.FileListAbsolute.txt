@@ -163,3 +163,14 @@ C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backe
 C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api.Module\bin\Debug\net8.0\SPerfomance.Application.Semester.Module.pdb
 C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api.Module\bin\Debug\net8.0\SPerfomance.Application.SemesterPlans.Module.dll
 C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api.Module\bin\Debug\net8.0\SPerfomance.Application.SemesterPlans.Module.pdb
+C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api.Module\bin\Debug\net8.0\BCrypt.Net-Next.dll
+C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api.Module\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api.Module\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api.Module\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api.Module\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api.Module\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api.Module\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api.Module\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api.Module\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api.Module\bin\Debug\net8.0\SPerfomance.Application.Shared.Users.Module.dll
+C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api.Module\bin\Debug\net8.0\SPerfomance.Application.Shared.Users.Module.pdb

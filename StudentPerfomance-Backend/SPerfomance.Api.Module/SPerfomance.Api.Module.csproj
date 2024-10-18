@@ -20,6 +20,7 @@
     <ProjectReference Include="..\SPerfomance.Application.Students.Module\SPerfomance.Application.Students.Module.csproj" />
     <ProjectReference Include="..\SPerfomance.Application.Semester.Module\SPerfomance.Application.Semester.Module.csproj" />
     <ProjectReference Include="..\SPerfomance.Application.SemesterPlans.Module\SPerfomance.Application.SemesterPlans.Module.csproj" />
+    <ProjectReference Include="..\SPerfomance.Application.Shared.Users.Module\SPerfomance.Application.Shared.Users.Module.csproj" />
   </ItemGroup>
 
 </Project>
