@@ -2,6 +2,7 @@ using SPerfomance.Application.Shared.Module.Authentication;
 using SPerfomance.Application.Shared.Module.CQRS.Commands;
 using SPerfomance.Application.Shared.Module.Extensions;
 using SPerfomance.Application.Shared.Module.Operations;
+using SPerfomance.Application.Shared.Module.SharedServices.Auth;
 using SPerfomance.Application.Shared.Users.Module.DTOs;
 using SPerfomance.Application.Shared.Users.Module.Repositories;
 using SPerfomance.Application.Shared.Users.Module.Repositories.Expressions;
@@ -48,7 +49,7 @@ public class LoginCommand : ICommand
 
 			bool verification = _hasher.Verify(password, user.HashedPassword);
 			if (!verification)
-				return new OperationResult<AuthenticatedUser>(new PasswordEmptyError().ToString());
+				return new OperationResult<AuthenticatedUser>(new PasswordNotValidError().ToString());
 
 			string token = _provider.GenerateToken(user);
 			AuthenticatedUser authenticatedUser = new AuthenticatedUser(token, user);

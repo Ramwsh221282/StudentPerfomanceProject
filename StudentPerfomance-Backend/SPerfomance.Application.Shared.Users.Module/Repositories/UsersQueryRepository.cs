@@ -1,13 +1,15 @@
+using CSharpFunctionalExtensions;
 using Microsoft.EntityFrameworkCore;
 
 using SPerfomance.DataAccess.Module.Shared;
 using SPerfomance.Domain.Module.Shared.Common.Abstractions.Repositories;
 using SPerfomance.Domain.Module.Shared.Entities.Teachers;
 using SPerfomance.Domain.Module.Shared.Entities.Users;
+using SPerfomance.Domain.Module.Shared.Entities.Users.ValueObjects;
 
 namespace SPerfomance.Application.Shared.Users.Module.Repositories;
 
-internal sealed class UsersQueryRepository
+public sealed class UsersQueryRepository
 {
 	private readonly ApplicationDb _db = new ApplicationDb();
 
@@ -46,4 +48,7 @@ internal sealed class UsersQueryRepository
 		.OrderBy(u => u.EntityNumber)
 		.AsNoTracking()
 		.ToListAsync();
+
+	public async Task<User?> GetById(string id) =>
+		await _db.Users.FirstOrDefaultAsync(u => u.Id.ToString() == id.ToUpper());
 }

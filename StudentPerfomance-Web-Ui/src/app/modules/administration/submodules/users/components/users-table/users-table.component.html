@@ -1,0 +1,61 @@
+<div class="users-table-wrapper">
+  <div class="users-controls-container">
+    <button class="accept-button" (click)="isCreationModalVisible = true">
+      Добавить пользователя
+    </button>
+    <button class="accept-button">Отфильтровать список</button>
+  </div>
+  <div class="users-table-container">
+    <div class="users-table-grid">
+      <div class="users-table-header">
+        <strong>Номер</strong>
+        <strong>Фамилия</strong>
+        <strong>Имя</strong>
+        <strong>Отчество</strong>
+        <strong>Роль</strong>
+        <strong>Почта</strong>
+        <strong>Был онлайн</strong>
+        <strong>Зарегистрирован</strong>
+        <strong>Действия</strong>
+      </div>
+      @for (user of userRecords; track user.email) {
+      <app-users-table-row
+        [user]="user"
+        (deletionEmitter)="activeUser = user; isDeletionModalVisible = true"
+      ></app-users-table-row>
+      }
+    </div>
+  </div>
+  <div class="pagination-wrapper">
+    <app-users-table-pagination></app-users-table-pagination>
+  </div>
+</div>
+<div id="success-modal-renderer" *ngIf="isSuccess">
+  <app-success-result-notification
+    [message]="_notificationService.Message"
+    (visibilityEmitter)="isSuccess = $event"
+  ></app-success-result-notification>
+</div>
+<div id="failure-modal-renderer" *ngIf="isFailure">
+  <app-failure-result-notification
+    [message]="_notificationService.Message"
+    (visibilityEmitter)="isFailure = $event"
+  ></app-failure-result-notification>
+</div>
+<div id="creation-modal-renderer" *ngIf="isCreationModalVisible">
+  <app-users-create-modal
+    (failureEmitter)="isFailure = true"
+    (successEmitter)="isSuccess = true"
+    (refreshEmitter)="fetchUsers()"
+    (visibilityEmitter)="isCreationModalVisible = $event"
+  ></app-users-create-modal>
+</div>
+<div id="deletion-modal-renderer" *ngIf="isDeletionModalVisible">
+  <app-users-remove-modal
+    [user]="activeUser"
+    (visibilityEmitter)="isDeletionModalVisible = $event"
+    (refreshEmitter)="refreshActiveUser(); fetchUsers()"
+    (successEmitter)="this.isSuccess = true"
+    (failureEmitter)="this.isFailure = true"
+  ></app-users-remove-modal>
+</div>

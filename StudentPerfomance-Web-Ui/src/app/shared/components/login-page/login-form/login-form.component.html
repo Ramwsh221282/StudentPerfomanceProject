@@ -1,0 +1,37 @@
+<section class="login-form-wrapper">
+  <form [formGroup]="form" class="login-form-container">
+    <div class="login-form-controls-container">
+      <input
+        formControlName="email"
+        class="general-input"
+        placeholder="Email"
+      />
+    </div>
+    <div class="login-form-controls-container">
+      <input
+        formControlName="password"
+        type="password"
+        class="general-input"
+        placeholder="Пароль"
+      />
+    </div>
+    <div class="login-form-controls-container">
+      <button type="button" (click)="submit()" class="accept-button-modal">
+        Авторизоваться
+      </button>
+      <button class="warning-button-outline">Восстановить пароль</button>
+    </div>
+  </form>
+</section>
+<div id="success-modal-renderer" *ngIf="isSuccess">
+  <app-success-result-notification
+    [message]="notificationService.Message"
+    (visibilityEmitter)="isSuccess = $event"
+  ></app-success-result-notification>
+</div>
+<div id="failure-modal-renderer" *ngIf="isFailure">
+  <app-failure-result-notification
+    [message]="notificationService.Message"
+    (visibilityEmitter)="isFailure = $event"
+  ></app-failure-result-notification>
+</div>

@@ -5,6 +5,10 @@ namespace SPerfomance.Domain.Module.Shared.Entities.Users;
 
 public class User : Entity
 {
+	public const string Admin = "Администратор";
+	public const string Teacher = "Преподаватель";
+	public const string AdvancedTeacher = "Преподаватель с правами администратора";
+
 	private User() : base(Guid.Empty)
 	{
 		Name = Username.CreateDefault();
@@ -42,4 +46,6 @@ public class User : Entity
 	}
 
 	public void UpdateLoginDate() => LastLoginDate = DateTime.Now;
+
+	public void UpdatePassword(string newHashedPassword) => HashedPassword = newHashedPassword;
 }

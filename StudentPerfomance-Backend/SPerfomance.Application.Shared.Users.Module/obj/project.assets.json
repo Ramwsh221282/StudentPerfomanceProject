@@ -748,6 +748,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "8.0.10",
           "Microsoft.AspNetCore.OpenApi": "8.0.2",
           "SPerfomance.DataAccess.Module.Shared": "1.0.0",
           "SPerfomance.Domain.Module.Shared": "1.0.0",
@@ -2071,7 +2072,6 @@
   "projectFileDependencyGroups": {
     "net8.0": [
       "BCrypt.Net-Next >= 4.0.3",
-      "Microsoft.AspNetCore.Authentication.JwtBearer >= 8.0.10",
       "SPerfomance.Application.Shared.Module >= 1.0.0"
     ]
   },
@@ -2132,10 +2132,6 @@
           "BCrypt.Net-Next": {
             "target": "Package",
             "version": "[4.0.3, )"
-          },
-          "Microsoft.AspNetCore.Authentication.JwtBearer": {
-            "target": "Package",
-            "version": "[8.0.10, )"
           }
         },
         "imports": [

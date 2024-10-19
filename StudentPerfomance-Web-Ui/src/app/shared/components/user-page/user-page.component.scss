@@ -1,0 +1,16 @@
+.navigation-links {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  padding: 5px;
+  font-size: 20px;
+  font-weight: 800;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.user-page-layout {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}

@@ -8,6 +8,22 @@
       #menuButton
       class="side-bar-menu-button"
       (click)="selectMenu($event, this.menuButton)"
+      [routerLink]="['/login']"
+    >
+      • Авторизация
+    </button>
+    <button
+      #menuButton
+      class="side-bar-menu-button"
+      (click)="selectMenu($event, this.menuButton)"
+      [routerLink]="['/user']"
+    >
+      • Личный кабинет
+    </button>
+    <button
+      #menuButton
+      class="side-bar-menu-button"
+      (click)="selectMenu($event, this.menuButton)"
       [routerLink]="['/administration']"
     >
       • Администрирование
@@ -16,7 +32,6 @@
       #menuButton
       class="side-bar-menu-button"
       (click)="selectMenu($event, this.menuButton)"
-      disabled
     >
       • Преподавателям
     </button>

@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { setTheme } from 'ngx-bootstrap/utils';
 import { SideBarComponent } from './shared/components/side-bar/side-bar.component';
 import { SuccessResultNotificationComponent } from './shared/components/success-result-notification/success-result-notification.component';
 import { FailureResultNotificationComponent } from './shared/components/failure-result-notification/failure-result-notification.component';
+import { AuthService } from './modules/users/services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -17,9 +17,6 @@ import { FailureResultNotificationComponent } from './shared/components/failure-
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
+  providers: [AuthService],
 })
-export class AppComponent {
-  constructor() {
-    setTheme('bs5');
-  }
-}
+export class AppComponent {}

@@ -492,6 +492,7 @@
       },
       "SPerfomance.Application.Shared.Module/1.0.0": {
         "dependencies": {
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "8.0.10",
           "Microsoft.AspNetCore.OpenApi": "8.0.2",
           "SPerfomance.DataAccess.Module.Shared": "1.0.0",
           "SPerfomance.Domain.Module.Shared": "1.0.0",
@@ -504,7 +505,6 @@
       "SPerfomance.Application.Shared.Users.Module/1.0.0": {
         "dependencies": {
           "BCrypt.Net-Next": "4.0.3",
-          "Microsoft.AspNetCore.Authentication.JwtBearer": "8.0.10",
           "SPerfomance.Application.Shared.Module": "1.0.0"
         },
         "runtime": {

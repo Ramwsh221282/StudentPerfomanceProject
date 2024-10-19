@@ -14,3 +14,20 @@
   outline: none;
   text-indent: 0.01px;
 }
+
+.general-input {
+  box-shadow: inset #fff 0 0 0 2px;
+  background: #f0f0f0;
+  border-radius: 30px;
+  border: 1px #fff;
+  appearance: none;
+  width: 100%;
+  position: relative;
+  padding: 0.75em 1.5em;
+  line-height: 1.4;
+  color: darken(#f0f0f0, 35%);
+  height: 40px;
+  transition: all 0.2s ease;
+  outline: none;
+  text-indent: 0.01px;
+}

@@ -9,7 +9,7 @@ using SPerfomance.Domain.Module.Shared.Extensions;
 
 namespace SPerfomance.Application.Shared.Users.Module.Repositories;
 
-internal sealed class UsersCommandRepository
+public sealed class UsersCommandRepository
 {
 	private readonly ApplicationDb _db = new ApplicationDb();
 

@@ -5,7 +5,7 @@ using SPerfomance.Domain.Module.Shared.Entities.Users;
 
 namespace SPerfomance.Application.Shared.Users.Module.Repositories.Expressions;
 
-internal sealed class GetUser(UserRepositoryObject user) : IRepositoryExpression<User>
+public sealed class GetUser(UserRepositoryObject user) : IRepositoryExpression<User>
 {
 	private readonly UserRepositoryObject _user = user;
 

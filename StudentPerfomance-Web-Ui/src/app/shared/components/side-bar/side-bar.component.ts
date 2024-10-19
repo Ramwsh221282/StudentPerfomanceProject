@@ -17,6 +17,5 @@ export class SideBarComponent {
     this.menuButtons.forEach((buttonEl) => {
       buttonEl.nativeElement.classList.remove('focused');
     });
-    button.classList.add('focused');
   }
 }

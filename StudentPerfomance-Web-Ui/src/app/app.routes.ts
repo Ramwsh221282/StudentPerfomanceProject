@@ -2,6 +2,20 @@ import { Routes } from '@angular/router';
 
 export const routes: Routes = [
   {
+    path: 'login',
+    loadComponent: () =>
+      import('./shared/components/login-page/login-page.component').then(
+        (mod) => mod.LoginPageComponent
+      ),
+  },
+  {
+    path: 'user',
+    loadComponent: () =>
+      import('./shared/components/user-page/user-page.component').then(
+        (mod) => mod.UserPageComponent
+      ),
+  },
+  {
     path: 'administration',
     loadChildren: () =>
       import('./modules/administration/administration.module').then(
@@ -35,5 +49,12 @@ export const routes: Routes = [
       import(
         './modules/administration/submodules/departments/departments.module'
       ).then((mod) => mod.DepartmentsModule),
+  },
+  {
+    path: 'users',
+    loadChildren: () =>
+      import('./modules/administration/submodules/users/users.module').then(
+        (mod) => mod.UsersModule
+      ),
   },
 ];
