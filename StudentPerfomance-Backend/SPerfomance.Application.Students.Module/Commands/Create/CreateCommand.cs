@@ -5,11 +5,13 @@ using SPerfomance.Application.Shared.Module.Operations;
 using SPerfomance.Application.Shared.Module.Schemas;
 using SPerfomance.Application.Shared.Module.Schemas.Students;
 using SPerfomance.Application.Shared.Module.Schemas.Students.Validators;
+using SPerfomance.Application.Shared.Users.Module.Commands.Common;
 using SPerfomance.Application.Students.Module.Repository;
 using SPerfomance.Application.Students.Module.Repository.Expressions;
 using SPerfomance.Domain.Module.Shared.Common.Abstractions.Repositories;
 using SPerfomance.Domain.Module.Shared.Entities.StudentGroups;
 using SPerfomance.Domain.Module.Shared.Entities.Students;
+using SPerfomance.Domain.Module.Shared.Entities.Users;
 
 namespace SPerfomance.Application.Students.Module.Commands.Create;
 
@@ -22,7 +24,7 @@ internal sealed class CreateCommand : ICommand
 	private readonly ISchemaValidator _validator;
 	public ICommandHandler<CreateCommand, Student> Handler;
 
-	public CreateCommand(StudentSchema student)
+	public CreateCommand(StudentSchema student, string token)
 	{
 		_student = student;
 		_getGroup = ExpressionsFactory.GetGroupByName(student.ToRepositoryObject());
@@ -33,16 +35,30 @@ internal sealed class CreateCommand : ICommand
 		.WithStateValidation(student)
 		.WithRecordbookValidation(student);
 		_validator.ProcessValidation();
-		Handler = new CommandHandler(_repository);
+		Handler = new VerificationHandler<CreateCommand, Student>(token, User.Admin);
+		Handler = new CommandHandler(Handler, _repository);
 	}
 
-	internal sealed class CommandHandler(StudentCommandRepository repository) : ICommandHandler<CreateCommand, Student>
+	internal sealed class CommandHandler : DecoratedCommandHandler<CreateCommand, Student>
 	{
-		private readonly StudentCommandRepository _repository = repository;
+		private readonly StudentCommandRepository _repository;
 
-		public async Task<OperationResult<Student>> Handle(CreateCommand command)
+		public CommandHandler(
+			ICommandHandler<CreateCommand, Student> handler,
+			StudentCommandRepository repository) : base(handler)
 		{
-			if (!command._validator.IsValid) return new OperationResult<Student>(command._validator.Error);
+			_repository = repository;
+		}
+
+		public override async Task<OperationResult<Student>> Handle(CreateCommand command)
+		{
+			var result = await base.Handle(command);
+			if (result.IsFailed)
+				return result;
+
+			if (!command._validator.IsValid)
+				return new OperationResult<Student>(command._validator.Error);
+
 			Result<Student> create = await _repository.Create(command._student, command._getGroup, command._findDublicate);
 			return create.IsFailure ?
 				new OperationResult<Student>(create.Error) :

@@ -51,4 +51,6 @@ public sealed class UsersQueryRepository
 
 	public async Task<User?> GetById(string id) =>
 		await _db.Users.FirstOrDefaultAsync(u => u.Id.ToString() == id.ToUpper());
+
+	public async Task<int> Count() => await _db.Users.CountAsync();
 }

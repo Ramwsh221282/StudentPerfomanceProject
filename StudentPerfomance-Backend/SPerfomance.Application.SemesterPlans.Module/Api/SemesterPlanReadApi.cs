@@ -1,7 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
+
 using SPerfomance.Application.SemesterPlans.Module.Api.Requests;
 using SPerfomance.Application.SemesterPlans.Module.Queries.GetBySemester;
 using SPerfomance.Application.SemesterPlans.Module.Queries.Searched;
+using SPerfomance.Application.Shared.Module.DTOs.SemesterPlans;
 using SPerfomance.Application.Shared.Module.DTOs.Semesters;
 using SPerfomance.Application.Shared.Module.Operations;
 using SPerfomance.Application.Shared.Module.Schemas.SemesterPlans;
@@ -16,9 +18,11 @@ namespace SPerfomance.Application.SemesterPlans.Module.Api;
 public sealed class SemesterPlanReadApi
 {
 	[HttpGet(CrudOperationNames.Search)]
-	public async Task<ActionResult<IReadOnlyCollection<SemesterPlanSchema>>> Search([FromQuery] SemesterPlanSchema schema)
+	public async Task<ActionResult<IReadOnlyCollection<SemesterPlanSchema>>> Search([FromQuery] SemesterPlanQuery request)
 	{
-		SearchQuery query = new SearchQuery(schema);
+		string token = request.Token;
+		SemesterPlanSchema schema = request.SemesterPlan.ToSchema();
+		SearchQuery query = new SearchQuery(schema, token);
 		OperationResult<IReadOnlyCollection<SemesterPlan>> result = await query.Handler.Handle(query);
 		return result.ToActionResult();
 	}
@@ -29,8 +33,9 @@ public sealed class SemesterPlanReadApi
 		if (request.Semester == null)
 			return new BadRequestObjectResult(new SemesterNotFoundError());
 
+		string token = request.Token;
 		SemesterSchema semester = request.Semester.ToSchema();
-		GetBySemesterQuery query = new GetBySemesterQuery(semester);
+		GetBySemesterQuery query = new GetBySemesterQuery(semester, token);
 		OperationResult<IReadOnlyCollection<SemesterPlan>> result = await query.Handler.Handle(query);
 		return result.ToActionResult();
 	}

@@ -4,6 +4,7 @@ using SPerfomance.Application.Shared.Module.Schemas;
 using SPerfomance.Application.Shared.Module.Schemas.StudentGroups.Validators;
 using SPerfomance.Application.Shared.Module.Schemas.Students;
 using SPerfomance.Application.Shared.Module.Schemas.Students.Validators;
+using SPerfomance.Application.Shared.Users.Module.Commands.Common;
 using SPerfomance.Application.Students.Module.Repository;
 using SPerfomance.Application.Students.Module.Repository.Expressions;
 using SPerfomance.Domain.Module.Shared.Common.Abstractions.Repositories;
@@ -11,6 +12,7 @@ using SPerfomance.Domain.Module.Shared.Entities.StudentGroups;
 using SPerfomance.Domain.Module.Shared.Entities.StudentGroups.Errors;
 using SPerfomance.Domain.Module.Shared.Entities.Students;
 using SPerfomance.Domain.Module.Shared.Entities.Students.Errors;
+using SPerfomance.Domain.Module.Shared.Entities.Users;
 
 namespace SPerfomance.Application.Students.Module.Commands.Update;
 
@@ -22,8 +24,10 @@ internal sealed class UpdateCommand : ICommand
 	private readonly IRepositoryExpression<StudentGroup> _getGroup;
 	private readonly StudentQueryRepository _repository;
 	private readonly ISchemaValidator _validator = new StudentGroupSchemaValidator();
+
 	public readonly ICommandHandler<UpdateCommand, Student> Handler;
-	public UpdateCommand(StudentSchema oldSchema, StudentSchema newSchema)
+
+	public UpdateCommand(StudentSchema oldSchema, StudentSchema newSchema, string token)
 	{
 		_newSchema = newSchema;
 		_getInitial = ExpressionsFactory.GetStudent(oldSchema.ToRepositoryObject());
@@ -35,7 +39,8 @@ internal sealed class UpdateCommand : ICommand
 		.WithStateValidation(newSchema)
 		.WithRecordbookValidation(newSchema);
 		_validator.ProcessValidation();
-		Handler = new DefaultHandler(_repository);
+		Handler = new VerificationHandler<UpdateCommand, Student>(token, User.Admin);
+		Handler = new DefaultHandler(Handler, _repository);
 		Handler = new UpdateRecordBookHandler(Handler, _repository);
 		Handler = new UpdateGroupHandler(Handler, _repository);
 		Handler = new UpdateNameHandler(Handler);
@@ -43,17 +48,24 @@ internal sealed class UpdateCommand : ICommand
 		Handler = new CommitHandler(Handler, _repository);
 	}
 
-	internal abstract class DecoratorHandler(ICommandHandler<UpdateCommand, Student> handler) : ICommandHandler<UpdateCommand, Student>
+	internal sealed class DefaultHandler : DecoratedCommandHandler<UpdateCommand, Student>
 	{
-		private readonly ICommandHandler<UpdateCommand, Student> _handler = handler;
-		public virtual async Task<OperationResult<Student>> Handle(UpdateCommand command) => await _handler.Handle(command);
-	}
+		private readonly StudentQueryRepository _repository;
 
-	internal sealed class DefaultHandler(StudentQueryRepository repository) : ICommandHandler<UpdateCommand, Student>
-	{
-		private readonly StudentQueryRepository _repository = repository;
-		public async Task<OperationResult<Student>> Handle(UpdateCommand command)
+		public DefaultHandler(
+			ICommandHandler<UpdateCommand, Student> handler,
+			StudentQueryRepository repository)
+		 : base(handler)
 		{
+			_repository = repository;
+		}
+
+		public override async Task<OperationResult<Student>> Handle(UpdateCommand command)
+		{
+			var result = await base.Handle(command);
+			if (result.IsFailed)
+				return result;
+
 			if (!command._validator.IsValid) return new OperationResult<Student>(command._validator.Error);
 			Student? student = await _repository.GetByParameter(command._getInitial);
 			return student == null ?
@@ -62,7 +74,7 @@ internal sealed class UpdateCommand : ICommand
 		}
 	}
 
-	internal sealed class UpdateNameHandler : DecoratorHandler
+	internal sealed class UpdateNameHandler : DecoratedCommandHandler<UpdateCommand, Student>
 	{
 		public UpdateNameHandler(ICommandHandler<UpdateCommand, Student> handler) : base(handler) { }
 		public override async Task<OperationResult<Student>> Handle(UpdateCommand command)
@@ -78,7 +90,7 @@ internal sealed class UpdateCommand : ICommand
 		}
 	}
 
-	internal sealed class UpdateStateHandler : DecoratorHandler
+	internal sealed class UpdateStateHandler : DecoratedCommandHandler<UpdateCommand, Student>
 	{
 		public UpdateStateHandler(ICommandHandler<UpdateCommand, Student> handler) : base(handler) { }
 		public override async Task<OperationResult<Student>> Handle(UpdateCommand command)
@@ -91,7 +103,7 @@ internal sealed class UpdateCommand : ICommand
 		}
 	}
 
-	internal sealed class UpdateRecordBookHandler : DecoratorHandler
+	internal sealed class UpdateRecordBookHandler : DecoratedCommandHandler<UpdateCommand, Student>
 	{
 		private readonly StudentQueryRepository _repository;
 		public UpdateRecordBookHandler(ICommandHandler<UpdateCommand, Student> handler, StudentQueryRepository repository) : base(handler)
@@ -113,7 +125,7 @@ internal sealed class UpdateCommand : ICommand
 		}
 	}
 
-	internal sealed class UpdateGroupHandler : DecoratorHandler
+	internal sealed class UpdateGroupHandler : DecoratedCommandHandler<UpdateCommand, Student>
 	{
 		private readonly StudentQueryRepository _repository;
 
@@ -137,7 +149,7 @@ internal sealed class UpdateCommand : ICommand
 		}
 	}
 
-	internal sealed class CommitHandler : DecoratorHandler
+	internal sealed class CommitHandler : DecoratedCommandHandler<UpdateCommand, Student>
 	{
 		private readonly StudentQueryRepository _repository;
 		public CommitHandler(ICommandHandler<UpdateCommand, Student> handler, StudentQueryRepository repository) : base(handler)

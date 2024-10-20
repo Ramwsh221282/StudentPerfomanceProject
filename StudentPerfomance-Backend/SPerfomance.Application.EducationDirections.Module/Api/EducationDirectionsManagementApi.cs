@@ -4,6 +4,7 @@ using SPerfomance.Application.EducationDirections.Module.Api.Requests;
 using SPerfomance.Application.EducationDirections.Module.Commands.CreateDirection;
 using SPerfomance.Application.EducationDirections.Module.Commands.DeleteDirection;
 using SPerfomance.Application.EducationDirections.Module.Commands.UpdateDirection;
+using SPerfomance.Application.Shared.Module.DTOs.EducationDirections;
 using SPerfomance.Application.Shared.Module.Operations;
 using SPerfomance.Application.Shared.Module.Schemas.EducationDirections;
 using SPerfomance.Domain.Module.Shared.Entities.EducationDirections;
@@ -15,17 +16,21 @@ namespace SPerfomance.Application.EducationDirections.Module.Api;
 public sealed class EducationDirectionsManagementApi : Controller
 {
 	[HttpPost(CrudOperationNames.Create)]
-	public async Task<ActionResult<EducationDirectionSchema>> Create([FromBody] EducationDirectionSchema direction)
+	public async Task<ActionResult<EducationDirectionSchema>> Create([FromBody] EducationDirectionActionRequest request)
 	{
-		CreateEducationDirectionCommand command = new CreateEducationDirectionCommand(direction);
+		EducationDirectionDTO direction = request.Direction;
+		string token = request.Token;
+		CreateEducationDirectionCommand command = new CreateEducationDirectionCommand(direction, token);
 		OperationResult<EducationDirection> result = await command.Handler.Handle(command);
 		return result.ToActionResult();
 	}
 
 	[HttpDelete(CrudOperationNames.Remove)]
-	public async Task<ActionResult<EducationDirectionSchema>> Delete([FromBody] EducationDirectionSchema direction)
+	public async Task<ActionResult<EducationDirectionSchema>> Delete([FromBody] EducationDirectionActionRequest request)
 	{
-		DeleteEducationDirectionCommand command = new DeleteEducationDirectionCommand(direction);
+		EducationDirectionDTO direction = request.Direction;
+		string token = request.Token;
+		DeleteEducationDirectionCommand command = new DeleteEducationDirectionCommand(direction, token);
 		OperationResult<EducationDirection> result = await command.Handler.Handle(command);
 		return result.ToActionResult();
 	}
@@ -33,7 +38,10 @@ public sealed class EducationDirectionsManagementApi : Controller
 	[HttpPut(CrudOperationNames.Update)]
 	public async Task<ActionResult<EducationDirectionSchema>> Update([FromBody] UpdateRequest request)
 	{
-		UpdateDirectionCommand command = new UpdateDirectionCommand(request.initial, request.updated);
+		EducationDirectionDTO initial = request.Initial;
+		EducationDirectionDTO updated = request.Updated;
+		string token = request.Token;
+		UpdateDirectionCommand command = new UpdateDirectionCommand(initial, updated, token);
 		OperationResult<EducationDirection> result = await command.Handler.Handle(command);
 		return result.ToActionResult();
 	}

@@ -19,33 +19,40 @@ namespace SPerfomance.Application.TeacherDepartments.Module.Api;
 public sealed class TeacherDepartmentsReadApi
 {
 	[HttpGet(CrudOperationNames.GetCount)]
-	public async Task<ActionResult<int>> GetCount()
+	public async Task<ActionResult<int>> GetCount([FromQuery] DepartmentDataRequest request)
 	{
-		GetTeachersDepartmentsCountQuery query = new GetTeachersDepartmentsCountQuery();
+		string token = request.Token;
+		GetTeachersDepartmentsCountQuery query = new GetTeachersDepartmentsCountQuery(token);
 		OperationResult<int> result = await query.Handler.Handle(query);
 		return new OkObjectResult(result.Result);
 	}
 
 	[HttpGet(CrudOperationNames.GetAll)]
-	public async Task<ActionResult<IReadOnlyCollection<DepartmentSchema>>> GetAllDepartments()
+	public async Task<ActionResult<IReadOnlyCollection<DepartmentSchema>>> GetAllDepartments([FromQuery] DepartmentDataRequest request)
 	{
-		GetAllTeacherDepartmentsQuery query = new GetAllTeacherDepartmentsQuery();
+		string token = request.Token;
+		GetAllTeacherDepartmentsQuery query = new GetAllTeacherDepartmentsQuery(token);
 		OperationResult<IReadOnlyCollection<TeachersDepartment>> result = await query.Handler.Handle(query);
 		return result.ToActionResult();
 	}
 
 	[HttpGet(CrudOperationNames.GetPaged)]
-	public async Task<ActionResult<IReadOnlyCollection<DepartmentSchema>>> GetPagedDepartments(int page, int pageSize)
+	public async Task<ActionResult<IReadOnlyCollection<DepartmentSchema>>> GetPagedDepartments([FromQuery] DepartmentPagedDataRequest request)
 	{
-		GetTeachersDepartmentPagedQuery query = new GetTeachersDepartmentPagedQuery(page, pageSize);
+		int page = request.Page;
+		int pageSize = request.PageSize;
+		string token = request.Token;
+		GetTeachersDepartmentPagedQuery query = new GetTeachersDepartmentPagedQuery(page, pageSize, token);
 		OperationResult<IReadOnlyCollection<TeachersDepartment>> result = await query.Handler.Handle(query);
 		return result.ToActionResult();
 	}
 
 	[HttpGet(CrudOperationNames.Search)]
-	public async Task<ActionResult<IReadOnlyCollection<DepartmentSchema>>> Search([FromQuery] DepartmentSchema department)
+	public async Task<ActionResult<IReadOnlyCollection<DepartmentSchema>>> Search([FromQuery] DepartmentSearchDataRequest request)
 	{
-		SearchTeachersDepartmentsQuery query = new SearchTeachersDepartmentsQuery(department);
+		DepartmentSchema department = request.Department.ToSchema();
+		string token = request.Token;
+		SearchTeachersDepartmentsQuery query = new SearchTeachersDepartmentsQuery(department, token);
 		OperationResult<IReadOnlyCollection<TeachersDepartment>> result = await query.Handler.Handle(query);
 		return result.ToActionResult();
 	}
@@ -56,8 +63,8 @@ public sealed class TeacherDepartmentsReadApi
 		int page = request.Page;
 		int pageSize = request.PageSize;
 		DepartmentSchema department = request.Department.ToSchema();
-
-		FilterTeacherDepartmentsQuery query = new FilterTeacherDepartmentsQuery(department, page, pageSize);
+		string token = request.Token;
+		FilterTeacherDepartmentsQuery query = new FilterTeacherDepartmentsQuery(department, page, pageSize, token);
 		OperationResult<IReadOnlyCollection<TeachersDepartment>> result = await query.Handler.Handle(query);
 		return result.ToActionResult();
 	}

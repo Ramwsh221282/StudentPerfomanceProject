@@ -3,11 +3,13 @@ using CSharpFunctionalExtensions;
 using SPerfomance.Application.Shared.Module.CQRS.Commands;
 using SPerfomance.Application.Shared.Module.Operations;
 using SPerfomance.Application.Shared.Module.Schemas.StudentGroups;
+using SPerfomance.Application.Shared.Users.Module.Commands.Common;
 using SPerfomance.Application.StudentGroups.Module.Repository;
 using SPerfomance.Application.StudentGroups.Module.Repository.Expressions;
 using SPerfomance.Domain.Module.Shared.Common.Abstractions.Repositories;
 using SPerfomance.Domain.Module.Shared.Entities.StudentGroups;
 using SPerfomance.Domain.Module.Shared.Entities.StudentGroups.Errors;
+using SPerfomance.Domain.Module.Shared.Entities.Users;
 
 namespace SPerfomance.Application.StudentGroups.Module.Commands.MergeGroups;
 
@@ -19,20 +21,32 @@ internal sealed class MergeGroupCommand : ICommand
 
 	public readonly ICommandHandler<MergeGroupCommand, StudentGroup> Handler;
 
-	public MergeGroupCommand(StudentsGroupSchema initial, StudentsGroupSchema target)
+	public MergeGroupCommand(StudentsGroupSchema initial, StudentsGroupSchema target, string token)
 	{
 		_getInitial = ExpressionsFactory.GetByName(initial.ToRepositoryObject());
 		_getTarget = ExpressionsFactory.GetByName(target.ToRepositoryObject());
 		_repository = new StudentGroupQueryRepository();
-		Handler = new CommandHandler(_repository);
+		Handler = new VerificationHandler<MergeGroupCommand, StudentGroup>(token, User.Admin);
+		Handler = new CommandHandler(Handler, _repository);
 	}
 
-	internal sealed class CommandHandler(StudentGroupQueryRepository repository) : ICommandHandler<MergeGroupCommand, StudentGroup>
+	internal sealed class CommandHandler : DecoratedCommandHandler<MergeGroupCommand, StudentGroup>
 	{
-		private readonly StudentGroupQueryRepository _repository = repository;
+		private readonly StudentGroupQueryRepository _repository;
 
-		public async Task<OperationResult<StudentGroup>> Handle(MergeGroupCommand command)
+		public CommandHandler(
+			ICommandHandler<MergeGroupCommand, StudentGroup> handler,
+			StudentGroupQueryRepository repository) : base(handler)
 		{
+			_repository = repository;
+		}
+
+		public override async Task<OperationResult<StudentGroup>> Handle(MergeGroupCommand command)
+		{
+			var result = await base.Handle(command);
+			if (result.IsFailed)
+				return result;
+
 			StudentGroup? initial = await _repository.GetByParameter(command._getInitial);
 			if (initial == null)
 				return new OperationResult<StudentGroup>(new GroupNotFoundError().ToString());

@@ -17,9 +17,12 @@
         <strong>Действия</strong>
       </div>
 
-      @for (direction of facadeService.directions; track direction.code) {
+      @for (direction of directions; track direction.code) {
       <app-education-directions-table-row
         [Direction]="direction"
+        (failureEmitter)="isFailure = true"
+        (successEmitter)="isSuccess = true"
+        (refreshEmitter)="ngOnInit()"
       ></app-education-directions-table-row>
       }
     </div>
@@ -31,10 +34,25 @@
 <div id="creation-modal-renderer" *ngIf="creationModalVisibility">
   <app-education-directions-create-modal
     (visibility)="stopCreation($event)"
+    (successEmitter)="isSuccess = true"
+    (failureEmitter)="isFailure = true"
+    (refreshEmitter)="ngOnInit()"
   ></app-education-directions-create-modal>
 </div>
 <div id="filter-modal-renderer" *ngIf="filterModalVisibility">
   <app-education-directions-filter-modal
     (visibility)="stopFilter($event)"
   ></app-education-directions-filter-modal>
+</div>
+<div id="failure-modal-renderer" *ngIf="isFailure">
+  <app-failure-result-notification
+    [message]="notificationService.Message"
+    (visibilityEmitter)="isFailure = $event"
+  ></app-failure-result-notification>
+</div>
+<div id="success-modal-renderer" *ngIf="isSuccess">
+  <app-success-result-notification
+    [message]="notificationService.Message"
+    (visibilityEmitter)="isSuccess = $event"
+  ></app-success-result-notification>
 </div>

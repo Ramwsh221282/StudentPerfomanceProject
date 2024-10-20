@@ -1,53 +1,42 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { BaseService } from './base.service';
 import { IRequestBodyFactory } from '../../../../../models/RequestParamsFactory/irequest-body-factory.interface';
 import { EducationDirection } from '../models/education-direction-interface';
 import { Observable } from 'rxjs';
+import { User } from '../../../../users/services/user-interface';
+import { AuthService } from '../../../../users/services/auth.service';
 
 @Injectable({
   providedIn: 'any',
 })
 export class UpdateService extends BaseService {
+  private readonly _user: User;
+
   public constructor() {
     super();
+    const authService = inject(AuthService);
+    this._user = { ...authService.userData };
   }
 
-  public update(factory: IRequestBodyFactory): Observable<EducationDirection> {
-    const body = factory.Body;
+  public update(
+    initial: EducationDirection,
+    updated: EducationDirection
+  ): Observable<EducationDirection> {
+    const body = this.buildPayload(initial, updated);
     return this.httpClient.put<EducationDirection>(
       `${this.managementApiUri}update`,
       body
     );
   }
 
-  public createRequestBodyFactory(
-    oldDirection: EducationDirection,
-    newDirection: EducationDirection
-  ): IRequestBodyFactory {
-    return new RequestBodyFactory(oldDirection, newDirection);
-  }
-}
-
-class RequestBodyFactory implements IRequestBodyFactory {
-  private readonly _body: object;
-  public constructor(
-    oldDirection: EducationDirection,
-    newDirection: EducationDirection
-  ) {
-    this._body = {
-      initial: {
-        code: oldDirection.code,
-        name: oldDirection.name,
-        type: oldDirection.type,
-      },
-      updated: {
-        code: newDirection.code,
-        name: newDirection.name,
-        type: newDirection.type,
-      },
+  private buildPayload(
+    initial: EducationDirection,
+    updated: EducationDirection
+  ): object {
+    return {
+      initial: initial,
+      updated: updated,
+      token: this._user.token,
     };
-  }
-  public get Body(): object {
-    return this._body;
   }
 }

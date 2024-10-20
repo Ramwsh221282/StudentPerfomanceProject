@@ -25,7 +25,8 @@ public sealed class StudentGroupsManagementApi : ControllerBase
 	public async Task<ActionResult<StudentsGroupSchema>> Create([FromBody] StudentGroupCreateRequest request)
 	{
 		StudentsGroupSchema group = request.Group.ToSchema();
-		CreateCommand command = new CreateCommand(group);
+		string token = request.Token;
+		CreateCommand command = new CreateCommand(group, token);
 		OperationResult<StudentGroup> result = await command.Handler.Handle(command);
 		return result.ToActionResult();
 	}
@@ -34,7 +35,8 @@ public sealed class StudentGroupsManagementApi : ControllerBase
 	public async Task<ActionResult<StudentsGroupSchema>> Remove([FromBody] StudentGroupRemoveRequest request)
 	{
 		StudentsGroupSchema group = request.Group.ToSchema();
-		DeleteCommand command = new DeleteCommand(group);
+		string token = request.Token;
+		DeleteCommand command = new DeleteCommand(group, token);
 		OperationResult<StudentGroup> result = await command.Handler.Handle(command);
 		return result.ToActionResult();
 	}
@@ -44,7 +46,8 @@ public sealed class StudentGroupsManagementApi : ControllerBase
 	{
 		StudentsGroupSchema initial = request.Initial.ToSchema();
 		StudentsGroupSchema updated = request.Updated.ToSchema();
-		UpdateCommand command = new UpdateCommand(initial, updated);
+		string token = request.Token;
+		UpdateCommand command = new UpdateCommand(initial, updated, token);
 		OperationResult<StudentGroup> result = await command.Handler.Handle(command);
 		return result.ToActionResult();
 	}
@@ -54,7 +57,8 @@ public sealed class StudentGroupsManagementApi : ControllerBase
 	{
 		StudentsGroupSchema group = request.Group.ToSchema();
 		EducationPlanSchema plan = request.Plan.ToSchema();
-		AttachEducationPlanCommand command = new AttachEducationPlanCommand(group, plan);
+		string token = request.Token;
+		AttachEducationPlanCommand command = new AttachEducationPlanCommand(group, plan, token);
 		OperationResult<StudentGroup> result = await command.Handler.Handle(command);
 		return result.ToActionResult();
 	}
@@ -63,7 +67,8 @@ public sealed class StudentGroupsManagementApi : ControllerBase
 	public async Task<ActionResult<StudentsGroupSchema>> DeattachPlan([FromBody] DeattachEducationPlanRequest request)
 	{
 		StudentsGroupSchema group = request.Group.ToSchema();
-		DeattachEducationPlanCommand command = new DeattachEducationPlanCommand(group);
+		string token = request.Token;
+		DeattachEducationPlanCommand command = new DeattachEducationPlanCommand(group, token);
 		OperationResult<StudentGroup> result = await command.Handler.Handle(command);
 		return result.ToActionResult();
 	}
@@ -76,7 +81,8 @@ public sealed class StudentGroupsManagementApi : ControllerBase
 
 		StudentsGroupSchema initial = request.initial.ToSchema();
 		StudentsGroupSchema target = request.target.ToSchema();
-		MergeGroupCommand command = new MergeGroupCommand(initial, target);
+		string token = request.Token;
+		MergeGroupCommand command = new MergeGroupCommand(initial, target, token);
 		OperationResult<StudentGroup> result = await command.Handler.Handle(command);
 		return result.ToActionResult();
 	}

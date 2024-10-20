@@ -19,13 +19,11 @@ export class FacadeService {
   ) {}
 
   public create(plan: EducationPlan): Observable<EducationPlan> {
-    const factory = this._createService.createRequestBodyFactory(plan);
-    return this._createService.create(factory);
+    return this._createService.create(plan);
   }
 
   public delete(plan: EducationPlan): Observable<EducationPlan> {
-    const factory = this._deleteService.createRequestBodyFactory(plan);
-    return this._deleteService.delete(factory);
+    return this._deleteService.delete(plan);
   }
 
   public fetch(): void {

@@ -34,22 +34,12 @@
     <button class="warning-button-outline" type="button" (click)="submit()">
       Редактировать
     </button>
-    ><button class="danger-button-modal" type="button" (click)="close()">
+    ><button
+      class="danger-button-modal"
+      type="button"
+      (click)="modalDisabled.emit(false)"
+    >
       Закрыть окно
     </button>
   </div>
-</div>
-<div id="success-pop-up" *ngIf="isSuccess">
-  <app-success-result-notification
-    [message]="notificationService.Message"
-    (visibilityEmitter)="manageNotification($event)"
-  ></app-success-result-notification>
-</div>
-
-<div id="failure-pop-up" *ngIf="isFailure">
-  <app-failure-result-notification
-    [message]="notificationService.Message"
-    (visibilityEmitter)="manageNotification($event)"
-  >
-  </app-failure-result-notification>
 </div>

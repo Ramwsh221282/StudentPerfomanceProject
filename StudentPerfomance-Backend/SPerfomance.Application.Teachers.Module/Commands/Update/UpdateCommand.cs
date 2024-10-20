@@ -5,11 +5,13 @@ using SPerfomance.Application.Shared.Module.Operations;
 using SPerfomance.Application.Shared.Module.Schemas;
 using SPerfomance.Application.Shared.Module.Schemas.Teachers;
 using SPerfomance.Application.Shared.Module.Schemas.Teachers.Validators;
+using SPerfomance.Application.Shared.Users.Module.Commands.Common;
 using SPerfomance.Application.Teachers.Module.Repository;
 using SPerfomance.Application.Teachers.Module.Repository.Expressions;
 using SPerfomance.Domain.Module.Shared.Common.Abstractions.Repositories;
 using SPerfomance.Domain.Module.Shared.Entities.Teachers;
 using SPerfomance.Domain.Module.Shared.Entities.Teachers.Errors;
+using SPerfomance.Domain.Module.Shared.Entities.Users;
 
 namespace SPerfomance.Application.Teachers.Module.Commands.Update;
 
@@ -20,8 +22,10 @@ internal sealed class UpdateCommand : ICommand
 	private readonly IRepositoryExpression<Teacher> _findDublicate;
 	private readonly TeacherQueryRepository _repository;
 	private readonly ISchemaValidator _validator;
+
 	public readonly ICommandHandler<UpdateCommand, Teacher> Handler;
-	public UpdateCommand(TeacherSchema oldSchema, TeacherSchema newSchema)
+
+	public UpdateCommand(TeacherSchema oldSchema, TeacherSchema newSchema, string token)
 	{
 		_newSchema = newSchema;
 		_getInitial = ExpressionsFactory.GetTeacher(oldSchema.ToRepositoryObject());
@@ -29,18 +33,31 @@ internal sealed class UpdateCommand : ICommand
 		_repository = new TeacherQueryRepository();
 		_validator = new TeacherValidator().WithNameValidation(newSchema).WithJobTitle(newSchema).WithConditionValidation(newSchema);
 		_validator.ProcessValidation();
-		Handler = new DefaultHandler(_repository);
+		Handler = new VerificationHandler<UpdateCommand, Teacher>(token, User.Admin);
+		Handler = new DefaultHandler(Handler, _repository);
 		Handler = new UpdateNameHandler(Handler);
 		Handler = new UpdateWorkingCondition(Handler);
 		Handler = new UpdateJobTitleHandler(Handler);
 		Handler = new CommitHandler(Handler, _repository);
 	}
 
-	internal sealed class DefaultHandler(TeacherQueryRepository repository) : ICommandHandler<UpdateCommand, Teacher>
+	internal sealed class DefaultHandler : DecoratedCommandHandler<UpdateCommand, Teacher>
 	{
-		private readonly TeacherQueryRepository _repository = repository;
-		public async Task<OperationResult<Teacher>> Handle(UpdateCommand command)
+		private readonly TeacherQueryRepository _repository;
+
+		public DefaultHandler(
+			ICommandHandler<UpdateCommand, Teacher> handler,
+			TeacherQueryRepository repository) : base(handler)
 		{
+			_repository = repository;
+		}
+
+		public override async Task<OperationResult<Teacher>> Handle(UpdateCommand command)
+		{
+			var result = await base.Handle(command);
+			if (result.IsFailed)
+				return result;
+
 			if (await _repository.HasEqualRecord(command._findDublicate))
 				return new OperationResult<Teacher>(new TeacherDublicateError
 				(
@@ -57,13 +74,7 @@ internal sealed class UpdateCommand : ICommand
 		}
 	}
 
-	internal abstract class HandlerDecorator(ICommandHandler<UpdateCommand, Teacher> handler) : ICommandHandler<UpdateCommand, Teacher>
-	{
-		private readonly ICommandHandler<UpdateCommand, Teacher> _handler = handler;
-		public virtual async Task<OperationResult<Teacher>> Handle(UpdateCommand command) => await _handler.Handle(command);
-	}
-
-	internal sealed class UpdateNameHandler : HandlerDecorator
+	internal sealed class UpdateNameHandler : DecoratedCommandHandler<UpdateCommand, Teacher>
 	{
 		public UpdateNameHandler(ICommandHandler<UpdateCommand, Teacher> handler) : base(handler) { }
 
@@ -76,7 +87,7 @@ internal sealed class UpdateCommand : ICommand
 		}
 	}
 
-	internal sealed class UpdateJobTitleHandler : HandlerDecorator
+	internal sealed class UpdateJobTitleHandler : DecoratedCommandHandler<UpdateCommand, Teacher>
 	{
 		public UpdateJobTitleHandler(ICommandHandler<UpdateCommand, Teacher> handler) : base(handler) { }
 		public override async Task<OperationResult<Teacher>> Handle(UpdateCommand command)
@@ -88,7 +99,7 @@ internal sealed class UpdateCommand : ICommand
 		}
 	}
 
-	internal sealed class UpdateWorkingCondition : HandlerDecorator
+	internal sealed class UpdateWorkingCondition : DecoratedCommandHandler<UpdateCommand, Teacher>
 	{
 		public UpdateWorkingCondition(ICommandHandler<UpdateCommand, Teacher> handler) : base(handler) { }
 		public override async Task<OperationResult<Teacher>> Handle(UpdateCommand command)
@@ -100,7 +111,7 @@ internal sealed class UpdateCommand : ICommand
 		}
 	}
 
-	internal sealed class CommitHandler : HandlerDecorator
+	internal sealed class CommitHandler : DecoratedCommandHandler<UpdateCommand, Teacher>
 	{
 		private readonly TeacherQueryRepository _repository;
 		public CommitHandler(ICommandHandler<UpdateCommand, Teacher> handler, TeacherQueryRepository repository) : base(handler)

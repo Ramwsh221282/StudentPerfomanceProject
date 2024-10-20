@@ -10,10 +10,12 @@ import { HttpErrorResponse } from '@angular/common/http';
   selector: 'app-education-direction-delete-modal',
   templateUrl: './education-direction-delete-modal.component.html',
   styleUrl: './education-direction-delete-modal.component.scss',
-  providers: [UserOperationNotificationService],
 })
 export class EducationDirectionDeleteModalComponent {
   @Input({ required: true }) direction: EducationDirection;
+  @Output() refreshEmitter: EventEmitter<void> = new EventEmitter();
+  @Output() successEmitter: EventEmitter<void> = new EventEmitter();
+  @Output() failureEmitter: EventEmitter<void> = new EventEmitter();
   @Output() visibility: EventEmitter<boolean> = new EventEmitter();
 
   public constructor(
@@ -22,7 +24,14 @@ export class EducationDirectionDeleteModalComponent {
   ) {}
 
   protected confirm(): void {
-    const handler = EducationDirectionDeletionHandler(this._facadeService);
+    const handler = EducationDirectionDeletionHandler(
+      this._facadeService,
+      this.notificationService,
+      this.successEmitter,
+      this.failureEmitter,
+      this.visibility,
+      this.refreshEmitter
+    );
     this._facadeService
       .delete(this.direction)
       .pipe(
@@ -30,13 +39,5 @@ export class EducationDirectionDeleteModalComponent {
         catchError((error: HttpErrorResponse) => handler.handleError(error))
       )
       .subscribe();
-  }
-
-  protected decline(): void {
-    this.close();
-  }
-
-  protected close(): void {
-    this.visibility.emit(false);
   }
 }

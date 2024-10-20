@@ -18,25 +18,32 @@ namespace SPerfomance.Application.StudentGroups.Module.Api;
 public sealed class StudentGroupsReadApi : Controller
 {
 	[HttpGet(CrudOperationNames.GetCount)]
-	public async Task<ActionResult<int>> GetCount()
+	public async Task<ActionResult<int>> GetCount([FromQuery] StudentGroupDataRequest request)
 	{
-		GetCountQuery query = new GetCountQuery();
+		string token = request.Token;
+		GetCountQuery query = new GetCountQuery(token);
 		OperationResult<int> result = await query.Handler.Handle(query);
-		return new OkObjectResult(result.Result);
+		return result.IsFailed ?
+			new BadRequestObjectResult(result.Error) :
+			new OkObjectResult(result.Result);
 	}
 
 	[HttpGet(CrudOperationNames.GetAll)]
-	public async Task<ActionResult<IReadOnlyCollection<StudentsGroupSchema>>> GetAll()
+	public async Task<ActionResult<IReadOnlyCollection<StudentsGroupSchema>>> GetAll([FromQuery] StudentGroupDataRequest request)
 	{
-		GetAllQuery query = new GetAllQuery();
+		string token = request.Token;
+		GetAllQuery query = new GetAllQuery(token);
 		OperationResult<IReadOnlyCollection<StudentGroup>> result = await query.Handler.Handle(query);
 		return result.ToActionResult();
 	}
 
 	[HttpGet(CrudOperationNames.GetPaged)]
-	public async Task<ActionResult<IReadOnlyCollection<StudentsGroupSchema>>> GetPaged(int page, int pageSize)
+	public async Task<ActionResult<IReadOnlyCollection<StudentsGroupSchema>>> GetPaged([FromQuery] StudentGroupPagedDataRequest request)
 	{
-		GetPagedQuery query = new GetPagedQuery(page, pageSize);
+		int page = request.Page;
+		int pageSize = request.PageSize;
+		string token = request.Token;
+		GetPagedQuery query = new GetPagedQuery(page, pageSize, token);
 		OperationResult<IReadOnlyCollection<StudentGroup>> result = await query.Handler.Handle(query);
 		return result.ToActionResult();
 	}
@@ -46,8 +53,9 @@ public sealed class StudentGroupsReadApi : Controller
 	{
 		int page = request.Page;
 		int pageSize = request.PageSize;
+		string token = request.Token;
 		StudentsGroupSchema group = request.Group.ToSchema();
-		FilterQuery query = new FilterQuery(group, page, pageSize);
+		FilterQuery query = new FilterQuery(group, page, pageSize, token);
 		OperationResult<IReadOnlyCollection<StudentGroup>> result = await query.Handler.Handle(query);
 		return result.ToActionResult();
 	}
@@ -55,8 +63,9 @@ public sealed class StudentGroupsReadApi : Controller
 	[HttpGet(CrudOperationNames.Search)]
 	public async Task<ActionResult<IReadOnlyCollection<StudentsGroupSchema>>> Search([FromQuery] StudentGroupsSearchRequest request)
 	{
+		string token = request.Token;
 		StudentsGroupSchema group = request.Group.ToSchema();
-		SearchQuery query = new SearchQuery(group);
+		SearchQuery query = new SearchQuery(group, token);
 		OperationResult<IReadOnlyCollection<StudentGroup>> result = await query.Handler.Handle(query);
 		return result.ToActionResult();
 	}

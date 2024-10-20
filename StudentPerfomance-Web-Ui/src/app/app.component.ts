@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { SideBarComponent } from './shared/components/side-bar/side-bar.component';
 import { SuccessResultNotificationComponent } from './shared/components/success-result-notification/success-result-notification.component';
@@ -19,4 +19,10 @@ import { AuthService } from './modules/users/services/auth.service';
   styleUrl: './app.component.scss',
   providers: [AuthService],
 })
-export class AppComponent {}
+export class AppComponent implements AfterViewInit {
+  public constructor(private readonly auth: AuthService) {}
+
+  ngAfterViewInit(): void {
+    this.auth.verifyAsync();
+  }
+}

@@ -19,7 +19,8 @@ public sealed class TeacherManagementApi : Controller
 	public async Task<ActionResult<TeacherSchema>> Create([FromBody] CreateTeacherRequest request)
 	{
 		TeacherSchema teacher = request.Teacher.ToSchema();
-		CreateCommand command = new CreateCommand(teacher);
+		string token = request.Token;
+		CreateCommand command = new CreateCommand(teacher, token);
 		OperationResult<Teacher> result = await command.Handler.Handle(command);
 		return result.ToActionResult();
 	}
@@ -28,7 +29,8 @@ public sealed class TeacherManagementApi : Controller
 	public async Task<ActionResult<TeacherSchema>> Remove([FromBody] RemoveTeacherRequest request)
 	{
 		TeacherSchema teacher = request.Teacher.ToSchema();
-		RemoveCommand command = new RemoveCommand(teacher);
+		string token = request.Token;
+		RemoveCommand command = new RemoveCommand(teacher, token);
 		OperationResult<Teacher> result = await command.Handler.Handle(command);
 		return result.ToActionResult();
 	}
@@ -38,7 +40,8 @@ public sealed class TeacherManagementApi : Controller
 	{
 		TeacherSchema initial = request.Initial.ToSchema();
 		TeacherSchema updated = request.Updated.ToSchema();
-		UpdateCommand command = new UpdateCommand(initial, updated);
+		string token = request.Token;
+		UpdateCommand command = new UpdateCommand(initial, updated, token);
 		OperationResult<Teacher> result = await command.Handler.Handle(command);
 		return result.ToActionResult();
 	}

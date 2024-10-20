@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { EducationDirection } from '../../../models/education-direction-interface';
 
 @Component({
@@ -8,6 +8,9 @@ import { EducationDirection } from '../../../models/education-direction-interfac
 })
 export class EducationDirectionsTableRowComponent {
   @Input({ required: true }) public Direction: EducationDirection;
+  @Output() successEmitter: EventEmitter<void> = new EventEmitter();
+  @Output() failureEmitter: EventEmitter<void> = new EventEmitter();
+  @Output() refreshEmitter: EventEmitter<void> = new EventEmitter();
 
   protected deletionModalVisibility: boolean;
   protected updateModalVisibility: boolean;

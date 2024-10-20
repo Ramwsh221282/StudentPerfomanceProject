@@ -1,5 +1,5 @@
-using SPerfomance.Application.Shared.Module.Schemas.EducationDirections;
+using SPerfomance.Application.Shared.Module.DTOs.EducationDirections;
 
 namespace SPerfomance.Application.EducationDirections.Module.Api.Requests;
 
-public record UpdateRequest(EducationDirectionSchema initial, EducationDirectionSchema updated);
+public record UpdateRequest(EducationDirectionDTO Initial, EducationDirectionDTO Updated, string Token);

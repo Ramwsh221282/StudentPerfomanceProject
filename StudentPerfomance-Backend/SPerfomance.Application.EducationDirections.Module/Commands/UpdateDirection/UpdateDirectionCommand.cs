@@ -1,13 +1,16 @@
 using SPerfomance.Application.EducationDirections.Module.Repository;
 using SPerfomance.Application.EducationDirections.Module.Repository.Expressions;
 using SPerfomance.Application.Shared.Module.CQRS.Commands;
+using SPerfomance.Application.Shared.Module.DTOs.EducationDirections;
 using SPerfomance.Application.Shared.Module.Operations;
 using SPerfomance.Application.Shared.Module.Schemas;
 using SPerfomance.Application.Shared.Module.Schemas.EducationDirections;
 using SPerfomance.Application.Shared.Module.Schemas.EducationDirections.Validators;
+using SPerfomance.Application.Shared.Users.Module.Commands.Common;
 using SPerfomance.Domain.Module.Shared.Common.Abstractions.Repositories;
 using SPerfomance.Domain.Module.Shared.Entities.EducationDirections;
 using SPerfomance.Domain.Module.Shared.Entities.EducationDirections.Errors;
+using SPerfomance.Domain.Module.Shared.Entities.Users;
 
 namespace SPerfomance.Application.EducationDirections.Module.Commands.UpdateDirection;
 
@@ -18,30 +21,43 @@ internal sealed class UpdateDirectionCommand : ICommand
 	private readonly IRepositoryExpression<EducationDirection> _getInitial;
 	private readonly IRepositoryExpression<EducationDirection> _findDublicate;
 	private readonly EducationDirectionsQueryRepository _repository;
+
 	public readonly ICommandHandler<UpdateDirectionCommand, EducationDirection> Handler;
-	public UpdateDirectionCommand(EducationDirectionSchema oldSchema, EducationDirectionSchema newSchema)
+
+	public UpdateDirectionCommand(EducationDirectionDTO oldSchema, EducationDirectionDTO newSchema, string token)
 	{
-		_getInitial = ExpressionsFactory.GetDirection(oldSchema.ToRepositoryObject());
-		_findDublicate = ExpressionsFactory.GetByCode(newSchema.ToRepositoryObject());
-		_newDirection = newSchema;
+		_getInitial = ExpressionsFactory.GetDirection(oldSchema.ToSchema().ToRepositoryObject());
+		_findDublicate = ExpressionsFactory.GetByCode(newSchema.ToSchema().ToRepositoryObject());
+		_newDirection = newSchema.ToSchema();
 		_validator = new EducationDirectionValidator()
-		.WithNameValidation(newSchema)
-		.WithCodeValidator(newSchema)
-		.WithTypeValidation(newSchema);
+		.WithNameValidation(_newDirection)
+		.WithCodeValidator(_newDirection)
+		.WithTypeValidation(_newDirection);
 		_validator.ProcessValidation();
 		_repository = new EducationDirectionsQueryRepository();
-		Handler = new DefaultUpdateHandler(_repository);
+		Handler = new VerificationHandler<UpdateDirectionCommand, EducationDirection>(token, User.Admin);
+		Handler = new DefaultUpdateHandler(Handler, _repository);
 		Handler = new CodeUpdateHandler(Handler, _repository);
 		Handler = new NameUpdateHandler(Handler);
 		Handler = new CommitHandler(Handler, _repository);
 	}
 
-	internal sealed class DefaultUpdateHandler(EducationDirectionsQueryRepository repository) : ICommandHandler<UpdateDirectionCommand, EducationDirection>
+	internal sealed class DefaultUpdateHandler : HandlerDecorator
 	{
-		private readonly EducationDirectionsQueryRepository _repository = repository;
+		private readonly EducationDirectionsQueryRepository _repository;
 
-		public async Task<OperationResult<EducationDirection>> Handle(UpdateDirectionCommand command)
+		public DefaultUpdateHandler(ICommandHandler<UpdateDirectionCommand, EducationDirection> handler, EducationDirectionsQueryRepository repository)
+		 : base(handler)
 		{
+			_repository = repository;
+		}
+
+		public override async Task<OperationResult<EducationDirection>> Handle(UpdateDirectionCommand command)
+		{
+			OperationResult<EducationDirection> result = await base.Handle(command);
+			if (result.IsFailed)
+				return result;
+
 			if (!command._validator.IsValid) return new OperationResult<EducationDirection>(command._validator.Error);
 			EducationDirection? direction = await _repository.GetByParameter(command._getInitial);
 			return direction == null ?

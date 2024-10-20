@@ -18,42 +18,54 @@ namespace SPerfomance.Application.EducationPlans.Module.Api;
 public sealed class EducationPlansReadApi : ControllerBase
 {
 	[HttpGet(CrudOperationNames.GetCount)]
-	public async Task<ActionResult<int>> GetCount()
+	public async Task<ActionResult<int>> GetCount([FromQuery] EducationPlanDataRequest request)
 	{
-		GetCountQuery query = new GetCountQuery();
+		string token = request.Token;
+		GetCountQuery query = new GetCountQuery(token);
 		OperationResult<int> result = await query.Handler.Handle(query);
-		return new OkObjectResult(result.Result);
+		return result.IsFailed ?
+			new BadRequestObjectResult(result.Error) :
+			new OkObjectResult(result.Result);
 	}
 
 	[HttpGet(CrudOperationNames.GetAll)]
-	public async Task<ActionResult<IReadOnlyCollection<EducationPlanSchema>>> GetAll()
+	public async Task<ActionResult<IReadOnlyCollection<EducationPlanSchema>>> GetAll([FromQuery] EducationPlanDataRequest request)
 	{
-		GetAllQuery query = new GetAllQuery();
+		string token = request.Token;
+		GetAllQuery query = new GetAllQuery(token);
 		OperationResult<IReadOnlyCollection<EducationPlan>> result = await query.Handler.Handle(query);
 		return result.ToActionResult();
 	}
 
 	[HttpGet(CrudOperationNames.GetPaged)]
-	public async Task<ActionResult<IReadOnlyCollection<EducationPlanSchema>>> GetPaged(int page, int pageSize)
+	public async Task<ActionResult<IReadOnlyCollection<EducationPlanSchema>>> GetPaged([FromQuery] EducationPlanPagedDataRequest request)
 	{
-		GetPagedQuery query = new GetPagedQuery(page, pageSize);
+		int page = request.Page;
+		int pageSize = request.PageSize;
+		string token = request.Token;
+		GetPagedQuery query = new GetPagedQuery(page, pageSize, token);
 		OperationResult<IReadOnlyCollection<EducationPlan>> result = await query.Handler.Handle(query);
 		return result.ToActionResult();
 	}
 
 	[HttpGet(CrudOperationNames.Filter)]
-	public async Task<ActionResult<IReadOnlyCollection<EducationPlanSchema>>> Filter([FromQuery] FilterRequest request)
+	public async Task<ActionResult<IReadOnlyCollection<EducationPlanSchema>>> Filter([FromQuery] EducationPlanFilterRequest request)
 	{
-		GetFilteredQuery query = new GetFilteredQuery(request.Plan, request.Page, request.PageSize);
+		int page = request.Page;
+		int pageSize = request.PageSize;
+		string token = request.Token;
+		EducationPlanDTO plan = request.Plan;
+		GetFilteredQuery query = new GetFilteredQuery(plan, page, pageSize, token);
 		OperationResult<IReadOnlyCollection<EducationPlan>> result = await query.Handler.Handle(query);
 		return result.ToActionResult();
 	}
 
 	[HttpGet(CrudOperationNames.Search)]
-	public async Task<ActionResult<IReadOnlyCollection<EducationPlanSchema>>> Search([FromQuery] EducationPlanDTO dto)
+	public async Task<ActionResult<IReadOnlyCollection<EducationPlanSchema>>> Search([FromQuery] EducationPlanSearchRequest request)
 	{
-		EducationPlanSchema plan = dto.ToSchema();
-		SearchQuery query = new SearchQuery(plan);
+		EducationPlanDTO plan = request.Plan;
+		string token = request.Token;
+		SearchQuery query = new SearchQuery(plan, token);
 		OperationResult<IReadOnlyCollection<EducationPlan>> result = await query.Handler.Handle(query);
 		return result.ToActionResult();
 	}

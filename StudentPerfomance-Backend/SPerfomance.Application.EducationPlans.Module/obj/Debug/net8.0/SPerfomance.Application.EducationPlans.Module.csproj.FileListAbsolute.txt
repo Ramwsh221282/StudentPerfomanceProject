@@ -18,3 +18,5 @@ C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backe
 C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Application.EducationPlans.Module\obj\Debug\net8.0\refint\SPerfomance.Application.EducationPlans.Module.dll
 C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Application.EducationPlans.Module\obj\Debug\net8.0\SPerfomance.Application.EducationPlans.Module.pdb
 C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Application.EducationPlans.Module\obj\Debug\net8.0\ref\SPerfomance.Application.EducationPlans.Module.dll
+C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Application.EducationPlans.Module\bin\Debug\net8.0\SPerfomance.Application.Shared.Users.Module.dll
+C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Application.EducationPlans.Module\bin\Debug\net8.0\SPerfomance.Application.Shared.Users.Module.pdb

@@ -24,7 +24,8 @@ public sealed class TeacherDepartmentsManagementApi : ControllerBase
 			return new BadRequestObjectResult(new DepartmentNameError().ToString());
 
 		DepartmentSchema department = request.Department.ToSchema();
-		TeacherDepartmentCreateCommand command = new TeacherDepartmentCreateCommand(department);
+		string token = request.Token;
+		TeacherDepartmentCreateCommand command = new TeacherDepartmentCreateCommand(department, token);
 		OperationResult<TeachersDepartment> result = await command.Handler.Handle(command);
 		return result.ToActionResult();
 	}
@@ -36,7 +37,8 @@ public sealed class TeacherDepartmentsManagementApi : ControllerBase
 			return new BadRequestObjectResult(new DepartmentNotFountError().ToString());
 
 		DepartmentSchema department = request.Department.ToSchema();
-		TeacherDepartmentDeleteCommand command = new TeacherDepartmentDeleteCommand(department);
+		string token = request.Token;
+		TeacherDepartmentDeleteCommand command = new TeacherDepartmentDeleteCommand(department, token);
 		OperationResult<TeachersDepartment> result = await command.Handler.Handle(command);
 		return result.ToActionResult();
 	}
@@ -49,7 +51,8 @@ public sealed class TeacherDepartmentsManagementApi : ControllerBase
 
 		DepartmentSchema initial = request.Initial.ToSchema();
 		DepartmentSchema updated = request.Updated.ToSchema();
-		TeachersDepartmentUpdateCommand command = new TeachersDepartmentUpdateCommand(updated, initial);
+		string token = request.Token;
+		TeachersDepartmentUpdateCommand command = new TeachersDepartmentUpdateCommand(updated, initial, token);
 		OperationResult<TeachersDepartment> result = await command.Handler.Handle(command);
 		return result.ToActionResult();
 	}

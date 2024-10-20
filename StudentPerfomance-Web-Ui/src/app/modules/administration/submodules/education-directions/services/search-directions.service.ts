@@ -1,50 +1,47 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { BaseService } from './base.service';
 import { IRequestParamsFactory } from '../../../../../models/RequestParamsFactory/irequest-params-factory.interface';
 import { HttpParams } from '@angular/common/http';
 import { EducationDirection } from '../models/education-direction-interface';
 import { Observable } from 'rxjs';
+import { User } from '../../../../users/services/user-interface';
+import { AuthService } from '../../../../users/services/auth.service';
 
 @Injectable({
   providedIn: 'any',
 })
 export class SearchDirectionsService extends BaseService {
+  private readonly _user: User;
+
   public constructor() {
     super();
+    const authService = inject(AuthService);
+    this._user = { ...authService.userData };
   }
 
   public getAll(): Observable<EducationDirection[]> {
-    return this.httpClient.get<EducationDirection[]>(`${this.readApiUri}all`);
+    const params: HttpParams = new HttpParams().set('token', this._user.token);
+    return this.httpClient.get<EducationDirection[]>(`${this.readApiUri}all`, {
+      params,
+    });
   }
 
   public search(
-    factory: IRequestParamsFactory
+    direction: EducationDirection
   ): Observable<EducationDirection[]> {
-    const params = factory.Params;
+    const params = this.buildRequestParams(direction);
     return this.httpClient.get<EducationDirection[]>(
       `${this.readApiUri}search`,
       { params }
     );
   }
 
-  public createSearchRequestParamFactory(
-    direction: EducationDirection
-  ): IRequestParamsFactory {
-    return new FilterPagedRequestParamFactory(direction);
-  }
-}
-
-class FilterPagedRequestParamFactory implements IRequestParamsFactory {
-  private readonly _httpParams: HttpParams;
-
-  public constructor(direction: EducationDirection) {
-    this._httpParams = new HttpParams()
-      .set('Code', direction.code)
-      .set('Name', direction.name)
-      .set('Type', direction.type);
-  }
-
-  public get Params(): HttpParams {
-    return this._httpParams;
+  private buildRequestParams(direction: EducationDirection): HttpParams {
+    const params: HttpParams = new HttpParams()
+      .set('Direction.Code', direction.code)
+      .set('Direction.Name', direction.name)
+      .set('Direction.Type', direction.type)
+      .set('Token', this._user.token);
+    return params;
   }
 }

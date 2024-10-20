@@ -5,6 +5,7 @@ import { PaginationService } from '../../services/pagination.service';
 import { FetchService } from '../../services/fetch.service';
 import { UpdateService } from '../../services/update.service';
 import { FacadeService } from '../../services/facade.service';
+import { UserOperationNotificationService } from '../../../../../../shared/services/user-notifications/user-operation-notification-service.service';
 
 @Component({
   selector: 'app-education-directions-page',
@@ -17,6 +18,7 @@ import { FacadeService } from '../../services/facade.service';
     FetchService,
     UpdateService,
     FacadeService,
+    UserOperationNotificationService,
   ],
 })
 export class EducationDirectionsPageComponent {}

@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { BASE_API_URI } from '../../../shared/models/api/api-constants';
-import { Observable } from 'rxjs';
+import { catchError, Observable, tap } from 'rxjs';
 import { User } from './user-interface';
 import { CookieService } from 'ngx-cookie-service';
 
@@ -18,6 +18,7 @@ export class AuthService {
     this._httpClient = inject(HttpClient);
     this._cookieService = inject(CookieService);
     this.tryAuthorizeUsingCookie();
+    this.verify();
   }
 
   public get userData(): User {
@@ -38,6 +39,17 @@ export class AuthService {
 
   private tryAuthorizeUsingCookie(): void {
     const token = this._cookieService.get('token');
+    if (token == '') {
+      this._user = {
+        name: ' ',
+        surname: ' ',
+        thirdname: ' ',
+        email: ' ',
+        token: ' ',
+        role: ' ',
+      } as User;
+      this._isAuthorized = false;
+    }
     if (token != '') {
       this._user = {
         name: this._cookieService.get('name'),
@@ -47,10 +59,16 @@ export class AuthService {
         token: this._cookieService.get('token'),
         role: this._cookieService.get('role'),
       } as User;
-      this._isAuthorized = true;
       return;
     }
-    this._isAuthorized = false;
+  }
+
+  public async verifyAsync() {
+    const updateEveryMS: number = 60000;
+    while (true) {
+      this.verify();
+      await new Promise((resolve) => setTimeout(resolve, updateEveryMS));
+    }
   }
 
   public get isAuthorized(): boolean {
@@ -62,5 +80,21 @@ export class AuthService {
   }): Observable<User> {
     const apiUri: string = `${BASE_API_URI}/api/auth/login`;
     return this._httpClient.post<User>(apiUri, payload);
+  }
+
+  private verify(): void {
+    const token = this._cookieService.get('token');
+    this._httpClient
+      .post(`${BASE_API_URI}/api/auth/verify?Token=${token}`, {})
+      .pipe(
+        tap(() => {
+          this._isAuthorized = true;
+        }),
+        catchError((error: HttpErrorResponse) => {
+          this._isAuthorized = false;
+          return new Observable();
+        })
+      )
+      .subscribe();
   }
 }

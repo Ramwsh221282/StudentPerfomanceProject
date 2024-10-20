@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "LAn8DqAWNn24j06y7NYURAsCaUvHJ2+0rumQeyzViasjNugI1v1fOlsypQNFdkj+iaisKf92bF6i6/9w/97slQ==",
+  "dgSpecHash": "xuCseUJYNjSyEbOx9zMWKyvD9QoxdhM6iW+RGvJwz9FgLaGa/Acy2r/hnzeJtOwtH+1U9Ph1cmpX6nWJpY+hnA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomance-Backend\\SPerfomance.Application.SemesterPlans.Module\\SPerfomance.Application.SemesterPlans.Module.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Ramwsh\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\Ramwsh\\.nuget\\packages\\csharpfunctionalextensions\\3.1.0\\csharpfunctionalextensions.3.1.0.nupkg.sha512",
     "C:\\Users\\Ramwsh\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\8.0.10\\microsoft.aspnetcore.authentication.jwtbearer.8.0.10.nupkg.sha512",
     "C:\\Users\\Ramwsh\\.nuget\\packages\\microsoft.aspnetcore.openapi\\8.0.2\\microsoft.aspnetcore.openapi.8.0.2.nupkg.sha512",

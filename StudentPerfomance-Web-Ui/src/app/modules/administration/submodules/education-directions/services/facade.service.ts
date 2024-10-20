@@ -21,18 +21,17 @@ export class FacadeService {
   ) {}
 
   public create(direction: EducationDirection): Observable<EducationDirection> {
-    const factory = this._createService.createRequestBodyFactory(direction);
-    return this._createService.create(factory);
+    return this._createService.create(direction);
   }
 
   public delete(direction: EducationDirection): Observable<EducationDirection> {
-    const factory = this._deleteService.createRequestBodyFactory(direction);
-    return this._deleteService.delete(factory);
+    return this._deleteService.delete(direction);
   }
 
-  public fetch(): void {
+  public fetch(): Observable<EducationDirection[]> {
+    this.refreshPagination();
     this._fetchService.addPages(this.currentPage, this.pageSize);
-    this._fetchService.fetch();
+    return this._fetchService.fetch();
   }
 
   public setFetchPolicy(policy: IFetchPolicy<EducationDirection[]>) {
@@ -43,19 +42,11 @@ export class FacadeService {
     oldDirection: EducationDirection,
     newDirection: EducationDirection
   ): Observable<EducationDirection> {
-    const factory = this._updateService.createRequestBodyFactory(
-      oldDirection,
-      newDirection
-    );
-    return this._updateService.update(factory);
+    return this._updateService.update(oldDirection, newDirection);
   }
 
   public refreshPagination(): void {
     this._paginationService.refreshPagination();
-  }
-
-  public get directions(): EducationDirection[] {
-    return this._fetchService.directions;
   }
 
   public get currentPage(): number {

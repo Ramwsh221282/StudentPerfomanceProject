@@ -80,10 +80,7 @@ export class EducationPlanCreationModalComponent
   }
 
   public searchDirections(): void {
-    const factory = this._searchService.createSearchRequestParamFactory(
-      this.direction
-    );
-    this._searchService.search(factory).subscribe((response) => {
+    this._searchService.search(this.direction).subscribe((response) => {
       this.directions = response;
     });
   }

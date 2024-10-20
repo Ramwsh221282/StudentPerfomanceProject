@@ -26,7 +26,8 @@ public sealed class SemesterPlanManagementApi : Controller
 	{
 		SemesterSchema semester = request.Semester.ToSchema();
 		SemesterPlanSchema plan = request.SemesterPlan.ToSchema();
-		CreateCommand command = new CreateCommand(semester, plan);
+		string token = request.Token;
+		CreateCommand command = new CreateCommand(semester, plan, token);
 		OperationResult<SemesterPlan> result = await command.Handler.Handle(command);
 		return result.ToActionResult();
 	}
@@ -36,7 +37,8 @@ public sealed class SemesterPlanManagementApi : Controller
 	{
 		SemesterSchema semester = request.Semester.ToSchema();
 		SemesterPlanSchema plan = request.SemesterPlan.ToSchema();
-		DeleteCommand command = new DeleteCommand(semester, plan);
+		string token = request.Token;
+		DeleteCommand command = new DeleteCommand(semester, plan, token);
 		OperationResult<SemesterPlan> result = await command.Handler.Handle(command);
 		return result.ToActionResult();
 	}
@@ -46,7 +48,8 @@ public sealed class SemesterPlanManagementApi : Controller
 	{
 		SemesterPlanSchema plan = request.Plan.ToSchema();
 		TeacherSchema teacher = request.Teacher.ToSchema();
-		AttachTeacherCommand command = new AttachTeacherCommand(plan, teacher);
+		string token = request.Token;
+		AttachTeacherCommand command = new AttachTeacherCommand(plan, teacher, token);
 		OperationResult<SemesterPlan> result = await command.Handler.Handle(command);
 		return result.ToActionResult();
 	}
@@ -55,7 +58,8 @@ public sealed class SemesterPlanManagementApi : Controller
 	public async Task<ActionResult<SemesterPlanSchema>> DeattachTeacher([FromBody] TeacherDeattachmentRequest request)
 	{
 		SemesterPlanSchema plan = request.Plan.ToSchema();
-		DeattachTeacherCommand command = new DeattachTeacherCommand(plan);
+		string token = request.Token;
+		DeattachTeacherCommand command = new DeattachTeacherCommand(plan, token);
 		OperationResult<SemesterPlan> result = await command.Handler.Handle(command);
 		return result.ToActionResult();
 	}
@@ -65,7 +69,8 @@ public sealed class SemesterPlanManagementApi : Controller
 	{
 		SemesterPlanSchema initial = request.Initial.ToSchema();
 		SemesterPlanSchema updated = request.Updated.ToSchema();
-		UpdateCommand command = new UpdateCommand(initial, updated);
+		string token = request.Token;
+		UpdateCommand command = new UpdateCommand(initial, updated, token);
 		OperationResult<SemesterPlan> result = await command.Handler.Handle(command);
 		return result.ToActionResult();
 	}

@@ -22,6 +22,9 @@
     </button>
     <button
       #menuButton
+      *ngIf="
+        authService.isAuthorized && authService.userData.role == 'Администратор'
+      "
       class="side-bar-menu-button"
       (click)="selectMenu($event, this.menuButton)"
       [routerLink]="['/administration']"

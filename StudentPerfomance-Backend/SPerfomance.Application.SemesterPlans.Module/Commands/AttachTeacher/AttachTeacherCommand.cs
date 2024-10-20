@@ -7,6 +7,7 @@ using SPerfomance.Application.Shared.Module.Operations;
 using SPerfomance.Application.Shared.Module.Schemas.SemesterPlans;
 using SPerfomance.Application.Shared.Module.Schemas.Semesters;
 using SPerfomance.Application.Shared.Module.Schemas.Teachers;
+using SPerfomance.Application.Shared.Users.Module.Commands.Common;
 using SPerfomance.Domain.Module.Shared.Common.Abstractions.Repositories;
 using SPerfomance.Domain.Module.Shared.Entities.SemesterPlans;
 using SPerfomance.Domain.Module.Shared.Entities.SemesterPlans.Errors;
@@ -14,6 +15,7 @@ using SPerfomance.Domain.Module.Shared.Entities.Semesters;
 using SPerfomance.Domain.Module.Shared.Entities.Semesters.Errors;
 using SPerfomance.Domain.Module.Shared.Entities.Teachers;
 using SPerfomance.Domain.Module.Shared.Entities.Teachers.Errors;
+using SPerfomance.Domain.Module.Shared.Entities.Users;
 
 namespace SPerfomance.Application.SemesterPlans.Module.Commands.AttachTeacher;
 
@@ -26,21 +28,34 @@ internal sealed class AttachTeacherCommand : ICommand
 
 	public ICommandHandler<AttachTeacherCommand, SemesterPlan> Handler;
 
-	public AttachTeacherCommand(SemesterPlanSchema plan, TeacherSchema teacher)
+	public AttachTeacherCommand(SemesterPlanSchema plan, TeacherSchema teacher, string token)
 	{
 		_plan = plan;
 		_repository = new SemesterPlansQueryRepository();
 		_getSemester = ExpressionsFactory.GetSemester(plan.Semester.ToRepositoryObject());
 		_getTeacher = ExpressionsFactory.GetTeacher(teacher.ToRepositoryObject());
-		Handler = new CommandHandler(_repository);
+		Handler = new VerificationHandler<AttachTeacherCommand, SemesterPlan>(token, User.Admin);
+		Handler = new CommandHandler(Handler, _repository);
 	}
 
-	internal sealed class CommandHandler(SemesterPlansQueryRepository repository) : ICommandHandler<AttachTeacherCommand, SemesterPlan>
+	internal sealed class CommandHandler : DecoratedCommandHandler<AttachTeacherCommand, SemesterPlan>
 	{
-		private readonly SemesterPlansQueryRepository _repository = repository;
+		private readonly SemesterPlansQueryRepository _repository;
 
-		public async Task<OperationResult<SemesterPlan>> Handle(AttachTeacherCommand command)
+		public CommandHandler(
+			ICommandHandler<AttachTeacherCommand, SemesterPlan> handler,
+			SemesterPlansQueryRepository repository
+			) : base(handler)
 		{
+			_repository = repository;
+		}
+
+		public override async Task<OperationResult<SemesterPlan>> Handle(AttachTeacherCommand command)
+		{
+			OperationResult<SemesterPlan> result = await base.Handle(command);
+			if (result.IsFailed)
+				return result;
+
 			Semester? semester = await _repository.GetByParameter(command._getSemester);
 			if (semester == null)
 				return new OperationResult<SemesterPlan>(new SemesterNotFoundError().ToString());

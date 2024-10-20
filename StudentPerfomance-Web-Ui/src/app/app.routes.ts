@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { canActivateAuthAdmin } from './modules/users/services/admin-access-guard';
 
 export const routes: Routes = [
   {
@@ -21,6 +22,7 @@ export const routes: Routes = [
       import('./modules/administration/administration.module').then(
         (mod) => mod.AdministrationModule
       ),
+    canActivate: [canActivateAuthAdmin],
   },
   {
     path: 'education-directions',
@@ -28,6 +30,7 @@ export const routes: Routes = [
       import(
         './modules/administration/submodules/education-directions/education-directions.module'
       ).then((mod) => mod.EducationDirectionsModule),
+    canActivate: [canActivateAuthAdmin],
   },
   {
     path: 'education-plans',
@@ -35,6 +38,7 @@ export const routes: Routes = [
       import(
         './modules/administration/submodules/education-plans/education-plans.module'
       ).then((mod) => mod.EducationPlansModule),
+    canActivate: [canActivateAuthAdmin],
   },
   {
     path: 'groups',
@@ -42,6 +46,7 @@ export const routes: Routes = [
       import(
         './modules/administration/submodules/student-groups/student-groups.module'
       ).then((mod) => mod.StudentGroupsModule),
+    canActivate: [canActivateAuthAdmin],
   },
   {
     path: 'departments',
@@ -49,6 +54,7 @@ export const routes: Routes = [
       import(
         './modules/administration/submodules/departments/departments.module'
       ).then((mod) => mod.DepartmentsModule),
+    canActivate: [canActivateAuthAdmin],
   },
   {
     path: 'users',
@@ -56,5 +62,6 @@ export const routes: Routes = [
       import('./modules/administration/submodules/users/users.module').then(
         (mod) => mod.UsersModule
       ),
+    canActivate: [canActivateAuthAdmin],
   },
 ];

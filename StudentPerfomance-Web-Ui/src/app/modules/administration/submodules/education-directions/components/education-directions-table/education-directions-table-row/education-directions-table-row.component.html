@@ -16,6 +16,9 @@
 </div>
 <div id="deletion-modal-renderer" *ngIf="deletionModalVisibility">
   <app-education-direction-delete-modal
+    (successEmitter)="successEmitter.emit()"
+    (failureEmitter)="failureEmitter.emit()"
+    (refreshEmitter)="refreshEmitter.emit()"
     [direction]="Direction"
     (visibility)="stopDeletion($event)"
   ></app-education-direction-delete-modal>
@@ -23,6 +26,9 @@
 <div id="update-modal-renderer" *ngIf="updateModalVisibility">
   <app-education-directions-edit-modal
     (modalDisabled)="stopUpdate($event)"
+    (successEmitter)="successEmitter.emit()"
+    (failureEmitter)="failureEmitter.emit()"
+    (refreshEmitter)="refreshEmitter.emit()"
     [direction]="Direction"
     [copy]="Direction"
   ></app-education-directions-edit-modal>

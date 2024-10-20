@@ -3,6 +3,7 @@ import { EducationDirectionBaseForm } from '../../models/education-direction-bas
 import { FacadeService } from '../../services/facade.service';
 import { FilterFetchPolicy } from '../../models/fetch-policies/filter-fetch-policy';
 import { DefaultFetchPolicy } from '../../models/fetch-policies/default-fetch-policy';
+import { AuthService } from '../../../../../users/services/auth.service';
 
 @Component({
   selector: 'app-education-directions-filter-modal',
@@ -14,7 +15,11 @@ export class EducationDirectionsFilterModalComponent
   implements OnInit
 {
   @Output() visibility: EventEmitter<boolean> = new EventEmitter<boolean>();
-  public constructor(private readonly _facadeService: FacadeService) {
+
+  public constructor(
+    private readonly _facadeService: FacadeService,
+    private readonly _authService: AuthService
+  ) {
     super();
   }
 
@@ -24,14 +29,14 @@ export class EducationDirectionsFilterModalComponent
 
   protected override submit(): void {
     const direction = this.createEducationDirectionFromForm();
-    const policy = new FilterFetchPolicy(direction);
+    const policy = new FilterFetchPolicy(direction, this._authService);
     this._facadeService.setFetchPolicy(policy);
     this._facadeService.fetch();
     this.close();
   }
 
   protected cancel(): void {
-    const policy = new DefaultFetchPolicy();
+    const policy = new DefaultFetchPolicy(this._authService);
     this._facadeService.setFetchPolicy(policy);
     this._facadeService.fetch();
     this.close();

@@ -5,11 +5,4 @@ using SPerfomance.Application.Shared.Module.DTOs.Semesters;
 
 namespace SPerfomance.Application.SemesterPlans.Module.Api.Requests;
 
-public class RemoveSemesterDiscipline
-{
-	[JsonPropertyName("semester")]
-	public SemesterDTO? Semester { get; set; }
-
-	[JsonPropertyName("semesterPlan")]
-	public SemesterPlanDTO? SemesterPlan { get; set; }
-}
+public record RemoveSemesterDiscipline(SemesterDTO Semester, SemesterPlanDTO SemesterPlan, string Token);

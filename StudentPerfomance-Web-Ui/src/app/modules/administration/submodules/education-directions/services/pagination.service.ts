@@ -1,5 +1,8 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { BaseService } from './base.service';
+import { User } from '../../../../users/services/user-interface';
+import { AuthService } from '../../../../users/services/auth.service';
+import { HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'any',
@@ -10,8 +13,12 @@ export class PaginationService extends BaseService {
   private _pagesCount: number = 0;
   private _currentPage: number = 1;
   private _displayPages: number[] = [];
+  private readonly _user: User;
+
   public constructor() {
     super();
+    const authService = inject(AuthService);
+    this._user = { ...authService.userData };
     this.pushFirstPage();
   }
 
@@ -58,8 +65,9 @@ export class PaginationService extends BaseService {
   }
 
   public refreshPagination(): void {
+    const params = this.buildRequestParams();
     this.httpClient
-      .get<number>(`${this.readApiUri}count`)
+      .get<number>(`${this.readApiUri}count`, { params })
       .subscribe((response) => {
         this._totalCount = response;
         this._pagesCount = Math.ceil(this._totalCount / this._pageSize);
@@ -85,5 +93,10 @@ export class PaginationService extends BaseService {
     if (this.displayPages.length == 0) {
       this.displayPages.push(1);
     }
+  }
+
+  private buildRequestParams(): HttpParams {
+    const params: HttpParams = new HttpParams().set('Token', this._user.token);
+    return params;
   }
 }

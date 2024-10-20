@@ -1,19 +1,24 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { BaseService } from './base.service';
-import { IRequestBodyFactory } from '../../../../../models/RequestParamsFactory/irequest-body-factory.interface';
 import { EducationDirection } from '../models/education-direction-interface';
 import { Observable } from 'rxjs';
+import { User } from '../../../../users/services/user-interface';
+import { AuthService } from '../../../../users/services/auth.service';
 
 @Injectable({
   providedIn: 'any',
 })
 export class DeleteService extends BaseService {
+  private readonly _user: User;
+
   constructor() {
     super();
+    const authService = inject(AuthService);
+    this._user = { ...authService.userData };
   }
 
-  public delete(factory: IRequestBodyFactory): Observable<EducationDirection> {
-    const body = factory.Body;
+  public delete(direction: EducationDirection): Observable<EducationDirection> {
+    const body = this.buildPayload(direction);
     return this.httpClient.delete<EducationDirection>(
       `${this.managementApiUri}remove`,
       {
@@ -22,23 +27,10 @@ export class DeleteService extends BaseService {
     );
   }
 
-  public createRequestBodyFactory(
-    direction: EducationDirection
-  ): IRequestBodyFactory {
-    return new RequestBodyFactory(direction);
-  }
-}
-
-class RequestBodyFactory implements IRequestBodyFactory {
-  private readonly _body: object;
-  public constructor(direction: EducationDirection) {
-    this._body = {
-      code: direction.code,
-      name: direction.name,
-      type: direction.type,
+  private buildPayload(direction: EducationDirection): object {
+    return {
+      direction: direction,
+      token: this._user.token,
     };
-  }
-  get Body(): object {
-    return this._body;
   }
 }

@@ -6,11 +6,13 @@ using SPerfomance.Application.Shared.Module.CQRS.Commands;
 using SPerfomance.Application.Shared.Module.Operations;
 using SPerfomance.Application.Shared.Module.Schemas.SemesterPlans;
 using SPerfomance.Application.Shared.Module.Schemas.Semesters;
+using SPerfomance.Application.Shared.Users.Module.Commands.Common;
 using SPerfomance.Domain.Module.Shared.Common.Abstractions.Repositories;
 using SPerfomance.Domain.Module.Shared.Entities.SemesterPlans;
 using SPerfomance.Domain.Module.Shared.Entities.SemesterPlans.Errors;
 using SPerfomance.Domain.Module.Shared.Entities.Semesters;
 using SPerfomance.Domain.Module.Shared.Entities.Semesters.Errors;
+using SPerfomance.Domain.Module.Shared.Entities.Users;
 
 namespace SPerfomance.Application.SemesterPlans.Module.Commands.DeattachTeacher;
 
@@ -22,20 +24,33 @@ internal sealed class DeattachTeacherCommand : ICommand
 
 	public ICommandHandler<DeattachTeacherCommand, SemesterPlan> Handler;
 
-	public DeattachTeacherCommand(SemesterPlanSchema plan)
+	public DeattachTeacherCommand(SemesterPlanSchema plan, string token)
 	{
 		_plan = plan;
 		_getSemester = ExpressionsFactory.GetSemester(plan.Semester.ToRepositoryObject());
 		_repository = new SemesterPlansQueryRepository();
-		Handler = new CommandHandler(_repository);
+		Handler = new VerificationHandler<DeattachTeacherCommand, SemesterPlan>(token, User.Admin);
+		Handler = new CommandHandler(Handler, _repository);
 	}
 
-	internal sealed class CommandHandler(SemesterPlansQueryRepository repository) : ICommandHandler<DeattachTeacherCommand, SemesterPlan>
+	internal sealed class CommandHandler : DecoratedCommandHandler<DeattachTeacherCommand, SemesterPlan>
 	{
-		private readonly SemesterPlansQueryRepository _repository = repository;
+		private readonly SemesterPlansQueryRepository _repository;
 
-		public async Task<OperationResult<SemesterPlan>> Handle(DeattachTeacherCommand command)
+		public CommandHandler(
+			ICommandHandler<DeattachTeacherCommand, SemesterPlan> handler,
+			SemesterPlansQueryRepository repository
+			) : base(handler)
 		{
+			_repository = repository;
+		}
+
+		public override async Task<OperationResult<SemesterPlan>> Handle(DeattachTeacherCommand command)
+		{
+			OperationResult<SemesterPlan> result = await base.Handle(command);
+			if (result.IsFailed)
+				return result;
+
 			Semester? semester = await _repository.GetByParameter(command._getSemester);
 			if (semester == null)
 				return new OperationResult<SemesterPlan>(new SemesterNotFoundError().ToString());

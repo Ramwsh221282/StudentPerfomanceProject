@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using SPerfomance.Application.Shared.Module.Operations;
 using SPerfomance.Application.Shared.Users.Module.API.Requests;
 using SPerfomance.Application.Shared.Users.Module.API.Responses;
+using SPerfomance.Application.Shared.Users.Module.Queries.GetCount;
 using SPerfomance.Application.Shared.Users.Module.Queries.GetFiltered;
 using SPerfomance.Application.Shared.Users.Module.Queries.GetPaged;
 
@@ -37,6 +38,17 @@ public class UserReadApi : Controller
 
 		OperationResult<IReadOnlyCollection<UserResponse>> result = await query.Handler.Handle(query);
 		return result.Result == null || result.IsFailed ?
+			new BadRequestObjectResult(result.Error) :
+			new OkObjectResult(result.Result);
+	}
+
+	[HttpGet(CrudOperationNames.GetCount)]
+	public async Task<ActionResult<int>> GetCount([FromQuery] UserQueryRequest request)
+	{
+		string token = request.Token;
+		GetCountQuery query = new GetCountQuery(token);
+		OperationResult<int> result = await query.Handler.Handle(query);
+		return result.IsFailed ?
 			new BadRequestObjectResult(result.Error) :
 			new OkObjectResult(result.Result);
 	}

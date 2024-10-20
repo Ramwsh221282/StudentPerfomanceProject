@@ -14,7 +14,11 @@
     <button class="accept-button-modal" type="button" (click)="confirm()">
       Подтвердить
     </button>
-    ><button class="danger-button-modal" type="button" (click)="decline()">
+    ><button
+      class="danger-button-modal"
+      type="button"
+      (click)="visibility.emit(false)"
+    >
       Отмена
     </button>
   </div>

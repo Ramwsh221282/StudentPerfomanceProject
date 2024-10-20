@@ -1,43 +1,37 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { BaseService } from './base.service';
 import { EducationDirection } from '../models/education-direction-interface';
-import { IFetchable } from '../../../../../shared/models/fetch-policices/ifetchable-interface';
 import { IFetchPolicy } from '../../../../../shared/models/fetch-policices/fetch-policy-interface';
 import { DefaultFetchPolicy } from '../models/fetch-policies/default-fetch-policy';
+import { IObservableFetchable } from '../../../../../shared/models/fetch-policices/iobservable-fetchable.interface';
+import { Observable } from 'rxjs';
+import { AuthService } from '../../../../users/services/auth.service';
 
 @Injectable({
   providedIn: 'any',
 })
 export class FetchService
   extends BaseService
-  implements IFetchable<EducationDirection[]>
+  implements IObservableFetchable<EducationDirection[]>
 {
   private _currentPolicy: IFetchPolicy<EducationDirection[]>;
-  private _directions: EducationDirection[];
+  private readonly _authService: AuthService;
 
   public constructor() {
     super();
-    this._directions = [];
-    this._currentPolicy = new DefaultFetchPolicy();
+    this._authService = inject(AuthService);
+    this._currentPolicy = new DefaultFetchPolicy(this._authService);
   }
 
   public addPages(page: number, pageSize: number): void {
     this._currentPolicy.addPages(page, pageSize);
   }
 
-  public fetch(): void {
-    this._currentPolicy
-      .executeFetchPolicy(this.httpClient)
-      .subscribe((response) => {
-        this._directions = response;
-      });
+  public fetch(): Observable<EducationDirection[]> {
+    return this._currentPolicy.executeFetchPolicy(this.httpClient);
   }
 
   public setPolicy(policy: IFetchPolicy<EducationDirection[]>): void {
     this._currentPolicy = policy;
-  }
-
-  public get directions(): EducationDirection[] {
-    return this._directions;
   }
 }

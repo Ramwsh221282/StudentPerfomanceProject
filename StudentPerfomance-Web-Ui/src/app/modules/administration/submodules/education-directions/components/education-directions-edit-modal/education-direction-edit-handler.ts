@@ -5,33 +5,36 @@ import { FacadeService } from '../../services/facade.service';
 import { EducationDirectionEditNotificationBulder } from './education-direction-edit-notification';
 import { Observable } from 'rxjs';
 import { IOperationHandler } from '../../../../../../shared/models/ihandable-component-interface/Ioperation-handler-interface';
-import { ISuccessNotificatable } from '../../../../../../shared/models/interfaces/isuccess-notificatable';
-import { IFailureNotificatable } from '../../../../../../shared/models/interfaces/ifailure-notificatable';
+import { EventEmitter } from '@angular/core';
 
 type HandlerDependencies = {
   oldDirection: EducationDirection;
   facadeService: FacadeService;
   notificationService: UserOperationNotificationService;
-  success: ISuccessNotificatable;
-  failure: IFailureNotificatable;
+  success: EventEmitter<void>;
+  failure: EventEmitter<void>;
+  refresh: EventEmitter<void>;
+  visibility: EventEmitter<boolean>;
 };
 
 const createHandler =
-  (dependecies: HandlerDependencies) =>
+  (dependencies: HandlerDependencies) =>
   (parameter: EducationDirection): void => {
     const message = new EducationDirectionEditNotificationBulder(
-      dependecies.oldDirection
+      dependencies.oldDirection
     ).buildMessage(parameter);
-    dependecies.notificationService.SetMessage = message;
-    dependecies.facadeService.fetch();
-    dependecies.success.notifySuccess();
+    dependencies.notificationService.SetMessage = message;
+    dependencies.success.emit();
+    dependencies.refresh.emit();
+    dependencies.visibility.emit(false);
   };
 
 const createErrorHandler =
   (dependencies: HandlerDependencies) =>
   (error: HttpErrorResponse): Observable<never> => {
     dependencies.notificationService.SetMessage = error.error;
-    dependencies.failure.notifyFailure();
+    dependencies.failure.emit();
+    dependencies.visibility.emit(false);
     return new Observable();
   };
 
@@ -39,8 +42,10 @@ export const CreateEducationDirectionEditHandler = (
   oldDirection: EducationDirection,
   facadeService: FacadeService,
   notificationService: UserOperationNotificationService,
-  success: ISuccessNotificatable,
-  failure: IFailureNotificatable
+  success: EventEmitter<void>,
+  failure: EventEmitter<void>,
+  refresh: EventEmitter<void>,
+  visibility: EventEmitter<boolean>
 ): IOperationHandler<EducationDirection> => {
   const dependecies: HandlerDependencies = {
     oldDirection: oldDirection,
@@ -48,6 +53,8 @@ export const CreateEducationDirectionEditHandler = (
     notificationService: notificationService,
     success: success,
     failure: failure,
+    refresh: refresh,
+    visibility: visibility,
   };
   const handle = createHandler(dependecies);
   const handleError = createErrorHandler(dependecies);
