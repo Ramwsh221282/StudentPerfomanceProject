@@ -26,9 +26,10 @@ export class FacadeService {
     return this._deleteService.delete(plan);
   }
 
-  public fetch(): void {
+  public fetch(): Observable<EducationPlan[]> {
+    this.refreshPagination();
     this._fetchService.addPages(this.currentPage, this.pageSize);
-    this._fetchService.fetch();
+    return this._fetchService.fetch();
   }
 
   public setFetchPolicy(policy: IFetchPolicy<EducationPlan[]>): void {
@@ -57,10 +58,6 @@ export class FacadeService {
   public moveLastPage(): void {
     this._paginationService.moveLastPage();
     this.fetch();
-  }
-
-  public get plans(): EducationPlan[] {
-    return this._fetchService.Plans;
   }
 
   public get pages(): number[] {

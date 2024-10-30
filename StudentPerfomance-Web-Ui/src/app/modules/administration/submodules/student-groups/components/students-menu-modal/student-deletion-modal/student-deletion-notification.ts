@@ -5,6 +5,6 @@ export class StudentDeletionNotification
   implements INotificationMessageBuilder<Student>
 {
   public buildMessage(parameter: Student): string {
-    return `Удалён студент ${parameter.surname} ${parameter.name} ${parameter.thirdname} ${parameter.recordbook} из группы ${parameter.group.name}`;
+    return `Удалён студент ${parameter.surname} ${parameter.name} ${parameter.patronymic} ${parameter.recordbook} из группы ${parameter.group.name}`;
   }
 }

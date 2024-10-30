@@ -15,6 +15,8 @@ type HandlerDependencies = {
 const createHandler =
   (dependencies: HandlerDependencies) =>
   (parameter: StudentGroup): void => {
+    const message = `Удалена группа ${parameter.name}`;
+    dependencies.notificationService.SetMessage = message;
     dependencies.facadeService.refreshPagination();
     dependencies.facadeService.fetchData();
   };

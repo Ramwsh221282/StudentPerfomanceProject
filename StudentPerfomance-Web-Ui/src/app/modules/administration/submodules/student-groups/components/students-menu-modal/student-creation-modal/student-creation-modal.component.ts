@@ -25,6 +25,7 @@ export class StudentCreationModalComponent
     OnInit
 {
   @Input({ required: true }) group: StudentGroup;
+  @Output() refresh: EventEmitter<void> = new EventEmitter();
   @Output() visibility: EventEmitter<boolean> = new EventEmitter();
 
   protected selectedState: string;
@@ -76,7 +77,10 @@ export class StudentCreationModalComponent
     this._creationService
       .create(student)
       .pipe(
-        tap((response) => handler.handle(response)),
+        tap((response) => {
+          handler.handle(response);
+          this.refresh.emit();
+        }),
         catchError((error: HttpErrorResponse) => handler.handleError(error))
       )
       .subscribe();

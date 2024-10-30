@@ -12,12 +12,10 @@ export class TeacherBuilder {
     const builder: StringValueBuilder = new StringValueBuilder();
     this._teacher.name = builder.extractStringOrEmpty(this._teacher.name);
     this._teacher.surname = builder.extractStringOrEmpty(this._teacher.surname);
-    this._teacher.thirdname = builder.extractStringOrEmpty(
-      this._teacher.thirdname
+    this._teacher.patronymic = builder.extractStringOrEmpty(
+      this._teacher.patronymic
     );
-    this._teacher.workingCondition = builder.extractStringOrEmpty(
-      this._teacher.workingCondition
-    );
+    this._teacher.state = builder.extractStringOrEmpty(this._teacher.state);
     this._teacher.jobTitle = builder.extractStringOrEmpty(
       this._teacher.jobTitle
     );

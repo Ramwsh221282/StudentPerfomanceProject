@@ -4,6 +4,7 @@ import { FacadeService } from '../../services/facade.service';
 import { FilterFetchPolicy } from '../../models/fetch-policies/filter-fetch-policy';
 import { DefaultFetchPolicy } from '../../models/fetch-policies/default-fetch-policy';
 import { AuthService } from '../../../../../users/services/auth.service';
+import { EducationDirection } from '../../models/education-direction-interface';
 
 @Component({
   selector: 'app-education-directions-filter-modal',
@@ -15,6 +16,8 @@ export class EducationDirectionsFilterModalComponent
   implements OnInit
 {
   @Output() visibility: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() filteredData: EventEmitter<EducationDirection[]> =
+    new EventEmitter();
 
   public constructor(
     private readonly _facadeService: FacadeService,
@@ -31,15 +34,19 @@ export class EducationDirectionsFilterModalComponent
     const direction = this.createEducationDirectionFromForm();
     const policy = new FilterFetchPolicy(direction, this._authService);
     this._facadeService.setFetchPolicy(policy);
-    this._facadeService.fetch();
-    this.close();
+    this._facadeService.fetch().subscribe((response) => {
+      this.filteredData.emit(response);
+      this.close();
+    });
   }
 
   protected cancel(): void {
     const policy = new DefaultFetchPolicy(this._authService);
     this._facadeService.setFetchPolicy(policy);
-    this._facadeService.fetch();
-    this.close();
+    this._facadeService.fetch().subscribe((response) => {
+      this.filteredData.emit(response);
+      this.close();
+    });
   }
 
   protected close(): void {

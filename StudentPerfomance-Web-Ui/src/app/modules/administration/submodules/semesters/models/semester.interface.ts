@@ -2,6 +2,6 @@ import { EducationPlan } from '../../education-plans/models/education-plan-inter
 
 export interface Semester {
   number: number;
-  plan: EducationPlan;
+  educationPlan: EducationPlan;
   contractsCount: number;
 }

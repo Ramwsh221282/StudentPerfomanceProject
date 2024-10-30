@@ -1,6 +1,4 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { ISuccessNotificatable } from '../../../../../../shared/models/interfaces/isuccess-notificatable';
-import { IFailureNotificatable } from '../../../../../../shared/models/interfaces/ifailure-notificatable';
 import { StudentGroup } from '../../services/studentsGroup.interface';
 import { StudentGroupsFacadeService } from '../../services/student-groups-facade.service';
 import { UserOperationNotificationService } from '../../../../../../shared/services/user-notifications/user-operation-notification-service.service';

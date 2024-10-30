@@ -6,6 +6,7 @@ import { DefaultFetchPolicy } from '../models/fetch-policies/default-fetch-polic
 import { IObservableFetchable } from '../../../../../shared/models/fetch-policices/iobservable-fetchable.interface';
 import { Observable } from 'rxjs';
 import { AuthService } from '../../../../users/services/auth.service';
+import { TokenPayloadBuilder } from '../../../../../shared/models/common/token-contract/token-payload-builder';
 
 @Injectable({
   providedIn: 'any',

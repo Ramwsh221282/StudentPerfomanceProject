@@ -4,6 +4,11 @@ import { BASE_API_URI } from '../../../../../../../shared/models/api/api-constan
 import { StudentGroup } from '../../../services/studentsGroup.interface';
 import { EducationPlan } from '../../../../education-plans/models/education-plan-interface';
 import { Observable } from 'rxjs';
+import { StudentGroupPayloadBuilder } from '../../../models/contracts/student-group-contract/student-group-payload-builder';
+import { DirectionPayloadBuilder } from '../../../../education-directions/models/contracts/direction-payload-builder';
+import { EducationPlanPayloadBuilder } from '../../../../education-plans/models/contracts/education-plan-contract/education-plan-payload-builder';
+import { AuthService } from '../../../../../../users/services/auth.service';
+import { TokenPayloadBuilder } from '../../../../../../../shared/models/common/token-contract/token-payload-builder';
 
 @Injectable({
   providedIn: 'any',
@@ -13,17 +18,17 @@ export class EducationPlanAttachmentService {
   private readonly _deattachmentApiUri: string;
   private readonly _httpClient: HttpClient;
 
-  public constructor() {
+  public constructor(private readonly _authService: AuthService) {
     this._httpClient = inject(HttpClient);
-    this._attachmentApiUri = `${BASE_API_URI}/student-groups/api/management/plan-attachment`;
-    this._deattachmentApiUri = `${BASE_API_URI}/student-groups/api/management/plan-deattachment`;
+    this._attachmentApiUri = `${BASE_API_URI}/api/student-groups/attach-education-plan`;
+    this._deattachmentApiUri = `${BASE_API_URI}/api/student-groups/deattach-education-plan`;
   }
 
   public attachPlan(
     group: StudentGroup,
     plan: EducationPlan
   ): Observable<StudentGroup> {
-    const body = this.buildRequestBody(group, plan);
+    const body = this.buildAttachmentRequestBody(group, plan);
     return this._httpClient.put<StudentGroup>(this._attachmentApiUri, body);
   }
 
@@ -32,27 +37,22 @@ export class EducationPlanAttachmentService {
     return this._httpClient.put<StudentGroup>(this._deattachmentApiUri, body);
   }
 
-  private buildRequestBody(group: StudentGroup, plan: EducationPlan): object {
+  private buildAttachmentRequestBody(
+    group: StudentGroup,
+    plan: EducationPlan
+  ): object {
     return {
-      group: {
-        name: group.name,
-      },
-      plan: {
-        year: plan.year,
-        direction: {
-          code: plan.direction.code,
-          name: plan.direction.name,
-          type: plan.direction.type,
-        },
-      },
+      direction: DirectionPayloadBuilder(plan.direction),
+      plan: EducationPlanPayloadBuilder(plan),
+      group: StudentGroupPayloadBuilder(group),
+      token: TokenPayloadBuilder(this._authService.userData),
     };
   }
 
   private buildDeattachmentRequestBody(group: StudentGroup): object {
     return {
-      group: {
-        name: group.name,
-      },
+      group: StudentGroupPayloadBuilder(group),
+      token: TokenPayloadBuilder(this._authService.userData),
     };
   }
 }

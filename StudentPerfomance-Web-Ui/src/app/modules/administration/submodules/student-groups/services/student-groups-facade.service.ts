@@ -23,13 +23,11 @@ export class StudentGroupsFacadeService {
   ) {}
 
   public create(group: StudentGroup): Observable<StudentGroup> {
-    const factory = this._createService.createRequestBodyFactory(group);
-    return this._createService.create(factory);
+    return this._createService.create(group);
   }
 
   public delete(group: StudentGroup): Observable<StudentGroup> {
-    const factory = this._createService.createRequestBodyFactory(group);
-    return this._deleteService.delete(factory);
+    return this._deleteService.delete(group);
   }
 
   public fetchData(): void {
@@ -49,16 +47,14 @@ export class StudentGroupsFacadeService {
     groupA: StudentGroup,
     groupB: StudentGroup
   ): Observable<StudentGroup> {
-    const factory = this._mergeService.createRequestBodyFactory(groupA, groupB);
-    return this._mergeService.merge(factory);
+    return this._mergeService.merge(groupA, groupB);
   }
 
   public update(
     initial: StudentGroup,
     newGroup: StudentGroup
   ): Observable<StudentGroup> {
-    const factory = this._updateService.requestBodyFactory(initial, newGroup);
-    return this._updateService.update(factory);
+    return this._updateService.update(initial, newGroup);
   }
 
   public moveNextPage(): void {

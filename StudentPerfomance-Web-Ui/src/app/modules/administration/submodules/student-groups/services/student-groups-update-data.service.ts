@@ -1,80 +1,30 @@
 import { Injectable } from '@angular/core';
 import { StudentGroupsService } from './student-groups-base-service';
 import { StudentGroup } from './studentsGroup.interface';
-import { IRequestBodyFactory } from '../../../../../models/RequestParamsFactory/irequest-body-factory.interface';
+import { BASE_API_URI } from '../../../../../shared/models/api/api-constants';
+import { StudentGroupPayloadBuilder } from '../models/contracts/student-group-contract/student-group-payload-builder';
+import { TokenPayloadBuilder } from '../../../../../shared/models/common/token-contract/token-payload-builder';
+import { AuthService } from '../../../../users/services/auth.service';
 
 @Injectable({
   providedIn: 'any',
 })
 export class StudentGroupsUpdateDataService extends StudentGroupsService {
-  public constructor() {
+  private readonly _apiUri: string = `${BASE_API_URI}/api/student-groups`;
+  public constructor(private readonly _authService: AuthService) {
     super();
   }
 
-  public update(body: IRequestBodyFactory) {
-    return this.httpClient.put<StudentGroup>(
-      `${this.managementApiUri}update`,
-      body.Body
-    );
+  public update(initial: StudentGroup, updated: StudentGroup) {
+    const payload = this.buildPayload(initial, updated);
+    return this.httpClient.put<StudentGroup>(this._apiUri, payload);
   }
 
-  public requestBodyFactory(
-    oldGroup: StudentGroup,
-    newGroup: StudentGroup
-  ): IRequestBodyFactory {
-    return new HttpRequestBody(oldGroup, newGroup);
-  }
-}
-
-class HttpRequestBody implements IRequestBodyFactory {
-  private readonly _body: object;
-
-  public constructor(oldGroup: StudentGroup, newGroup: StudentGroup) {
-    this._body = {
-      initial: {
-        name: oldGroup.name,
-        educationPlan: {
-          year: oldGroup.plan.year == undefined ? 0 : oldGroup.plan.year,
-          direction: {
-            code:
-              oldGroup.plan.direction.code == undefined
-                ? ' '
-                : oldGroup.plan.direction.code,
-            name:
-              oldGroup.plan.direction.name == undefined
-                ? ' '
-                : oldGroup.plan.direction.name,
-            type:
-              oldGroup.plan.direction.type == undefined
-                ? ' '
-                : oldGroup.plan.direction.type,
-          },
-        },
-      },
-      updated: {
-        name: newGroup.name,
-        educationPlan: {
-          year: newGroup.plan.year == undefined ? 0 : newGroup.plan.year,
-          direction: {
-            code:
-              newGroup.plan.direction.code == undefined
-                ? ' '
-                : newGroup.plan.direction.code,
-            name:
-              newGroup.plan.direction.name == undefined
-                ? ' '
-                : newGroup.plan.direction.name,
-            type:
-              newGroup.plan.direction.type == undefined
-                ? ' '
-                : newGroup.plan.direction.type,
-          },
-        },
-      },
+  private buildPayload(initial: StudentGroup, updated: StudentGroup): object {
+    return {
+      initial: StudentGroupPayloadBuilder(initial),
+      updated: StudentGroupPayloadBuilder(updated),
+      token: TokenPayloadBuilder(this._authService.userData),
     };
-  }
-
-  public get Body(): object {
-    return this._body;
   }
 }

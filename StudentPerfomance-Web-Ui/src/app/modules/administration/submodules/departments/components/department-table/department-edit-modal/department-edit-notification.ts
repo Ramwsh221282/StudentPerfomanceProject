@@ -14,9 +14,9 @@ export class DepartmentEditNotification
     return `Изменены данные кафедры:
 	Предыдущая информация:
 	Полное название: ${this._department.name}
-	Аббревиатура: ${this._department.shortName}
+	Аббревиатура: ${this._department.acronymus}
 	Новая информация:
 	Полное название: ${parameter.name}
-	Аббревиатура: ${parameter.shortName}`;
+	Аббревиатура: ${parameter.acronymus}`;
   }
 }

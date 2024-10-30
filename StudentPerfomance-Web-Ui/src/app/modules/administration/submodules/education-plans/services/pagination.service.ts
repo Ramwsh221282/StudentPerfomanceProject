@@ -1,8 +1,9 @@
 import { inject, Injectable } from '@angular/core';
 import { BaseService } from './base.service';
-import { HttpParams } from '@angular/common/http';
 import { User } from '../../../../users/services/user-interface';
 import { AuthService } from '../../../../users/services/auth.service';
+import { BASE_API_URI } from '../../../../../shared/models/api/api-constants';
+import { TokenPayloadBuilder } from '../../../../../shared/models/common/token-contract/token-payload-builder';
 
 @Injectable({
   providedIn: 'any',
@@ -64,9 +65,10 @@ export class PaginationService extends BaseService {
   }
 
   public refreshPagination(): void {
-    const params = this.buildRequestParams();
     this.httpClient
-      .get<number>(`${this.readApiUri}count`, { params })
+      .post<number>(`${BASE_API_URI}/api/education-plans/count`, {
+        token: TokenPayloadBuilder(this._user),
+      })
       .subscribe((response) => {
         this._totalCount = response;
         this._pagesCount = Math.ceil(this._totalCount / this._pageSize);
@@ -92,10 +94,5 @@ export class PaginationService extends BaseService {
     if (this.displayPages.length == 0) {
       this.displayPages.push(1);
     }
-  }
-
-  private buildRequestParams(): HttpParams {
-    const params: HttpParams = new HttpParams().set('token', this._user.token);
-    return params;
   }
 }

@@ -6,18 +6,28 @@
     <strong class="font-white">Название дисциплины: </strong>
     <section class="creation-form">
       <input
-        [(ngModel)]="plan.discipline"
+        [(ngModel)]="activePlan.discipline"
         class="default-input"
         placeholder="Название дисциплины"
       />
     </section>
     <strong class="font-white">Информация о преподавателе</strong>
-    <section class="creation-form" *ngIf="plan.teacher.name != ''">
-      <strong class="font-white">{{ plan.teacher.surname }}</strong>
-      <strong class="font-white">{{ plan.teacher.name }}</strong>
-      <strong class="font-white">{{ plan.teacher.thirdname }}</strong>
+    <section class="creation-form" *ngIf="activePlan.teacher != null">
       <strong class="font-white">{{
-        plan.teacher.department.shortName
+        activePlan.teacher.surname == null ? "" : activePlan.teacher.surname
+      }}</strong>
+      <strong class="font-white">{{
+        activePlan.teacher.name == null ? "" : activePlan.teacher.name
+      }}</strong>
+      <strong class="font-white">{{
+        activePlan.teacher.patronymic == null
+          ? ""
+          : activePlan.teacher.patronymic
+      }}</strong>
+      <strong class="font-white">{{
+        activePlan.teacher == null
+          ? ""
+          : activePlan.teacher.department.acronymus
       }}</strong>
       <div>
         <button class="danger-button-modal" (click)="deattachTeacher()">
@@ -25,7 +35,13 @@
         </button>
       </div>
     </section>
-    <section class="creation-form" *ngIf="plan.teacher.name == ''">
+    <strong class="font-white" *ngIf="departments.length == 0"
+      >Нельзя назначить преподавателя. Ни одной кафедры не существует.</strong
+    >
+    <section
+      class="creation-form"
+      *ngIf="activePlan.teacher == null && departments.length > 0"
+    >
       <strong class="font-white">Назначение преподавателя</strong>
       <strong class="font-white">Выбрать кафедру</strong>
       <select class="default-select" (change)="selectDepartment($event)">
@@ -50,8 +66,8 @@
           <tr>
             <td>{{ teacher.surname }}</td>
             <td>{{ teacher.name }}</td>
-            <td>{{ teacher.thirdname }}</td>
-            <td>{{ teacher.department.shortName }}</td>
+            <td>{{ teacher.patronymic }}</td>
+            <td>{{ teacher.department.acronymus }}</td>
             <td>
               <button
                 class="accept-button"

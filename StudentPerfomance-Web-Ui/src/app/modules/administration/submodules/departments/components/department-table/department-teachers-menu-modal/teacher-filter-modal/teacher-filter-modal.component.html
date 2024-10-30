@@ -15,14 +15,14 @@
         placeholder="Имя"
       />
       <input
-        [(ngModel)]="teacher.thirdname"
+        [(ngModel)]="teacher.patronymic"
         class="default-input"
         placeholder="Отчество"
       />
       <div class="teacher-attributes-selection-container">
         <strong class="font-white">Выбрать условия работы: </strong>
         <strong class="font-white">Выбрать должность: </strong>
-        <select [(ngModel)]="teacher.workingCondition" class="default-select">
+        <select [(ngModel)]="teacher.state" class="default-select">
           <option>{{ "" }}</option>
           <option>Штатный</option>
           <option>Совместитель</option>

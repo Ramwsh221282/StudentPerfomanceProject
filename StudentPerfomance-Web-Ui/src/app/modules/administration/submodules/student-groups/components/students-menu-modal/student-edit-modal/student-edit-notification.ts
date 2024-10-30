@@ -14,14 +14,14 @@ export class StudentEditNotification
     return `Предыдущая информация студента:
 	Фамилия: ${this._initial.surname}
 	Имя: ${this._initial.name}
-	Отчество: ${this._initial.thirdname}
+	Отчество: ${this._initial.patronymic}
 	Зачетная книжка: ${this._initial.recordbook}
 	Состояние: ${this._initial.state}
 	Группа: ${this._initial.group.name}
 	Новая информация:
 	Фамилия: ${parameter.surname}
 	Имя: ${parameter.name}
-	Отчество: ${parameter.thirdname}
+	Отчество: ${parameter.patronymic}
 	Зачетная книжка: ${parameter.recordbook}
 	Состояние: ${parameter.state}
 	Группа: ${parameter.group.name}`;

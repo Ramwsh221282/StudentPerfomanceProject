@@ -3,6 +3,9 @@ import { inject, Injectable } from '@angular/core';
 import { BASE_API_URI } from '../../../../../../../shared/models/api/api-constants';
 import { Department } from '../../../models/departments.interface';
 import { Observable } from 'rxjs';
+import { DepartmentPayloadBuilder } from '../../../models/contracts/department-contract/department-payload-builder';
+import { TokenPayloadBuilder } from '../../../../../../../shared/models/common/token-contract/token-payload-builder';
+import { AuthService } from '../../../../../../users/services/auth.service';
 
 @Injectable({
   providedIn: 'any',
@@ -11,8 +14,8 @@ export class DepartmentEditService {
   private readonly _apiUri: string;
   private readonly _httpClient: HttpClient;
 
-  public constructor() {
-    this._apiUri = `${BASE_API_URI}/teacher-departments/api/management/update`;
+  public constructor(private readonly _authService: AuthService) {
+    this._apiUri = `${BASE_API_URI}/api/teacher-departments`;
     this._httpClient = inject(HttpClient);
   }
 
@@ -26,8 +29,9 @@ export class DepartmentEditService {
 
   private buildRequestBody(initial: Department, updated: Department): object {
     return {
-      initial: { ...initial },
-      updated: { ...updated },
+      initial: DepartmentPayloadBuilder(initial),
+      updated: DepartmentPayloadBuilder(updated),
+      token: TokenPayloadBuilder(this._authService.userData),
     };
   }
 }

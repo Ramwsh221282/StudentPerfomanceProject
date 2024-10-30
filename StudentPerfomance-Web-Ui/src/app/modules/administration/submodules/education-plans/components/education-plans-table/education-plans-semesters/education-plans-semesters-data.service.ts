@@ -6,6 +6,9 @@ import { Observable } from 'rxjs';
 import { Semester } from '../../../../semesters/models/semester.interface';
 import { User } from '../../../../../../users/services/user-interface';
 import { AuthService } from '../../../../../../users/services/auth.service';
+import { DirectionPayloadBuilder } from '../../../../education-directions/models/contracts/direction-payload-builder';
+import { EducationPlanPayloadBuilder } from '../../../models/contracts/education-plan-contract/education-plan-payload-builder';
+import { TokenPayloadBuilder } from '../../../../../../../shared/models/common/token-contract/token-payload-builder';
 
 @Injectable({
   providedIn: 'any',
@@ -13,7 +16,7 @@ import { AuthService } from '../../../../../../users/services/auth.service';
 export class EducationPlanSemestersService {
   private readonly _user: User;
   private readonly _httpClient: HttpClient;
-  private readonly _apiUri: string = `${BASE_API_URI}/semesters/api/read/education-plan-semesters`;
+  private readonly _apiUri: string = `${BASE_API_URI}/api/semester-plans/get-by-semester`;
 
   public constructor() {
     this._httpClient = inject(HttpClient);
@@ -22,18 +25,15 @@ export class EducationPlanSemestersService {
   }
 
   public getPlanSemesters(plan: EducationPlan): Observable<Semester[]> {
-    const params = this.buildParameters(plan);
-    return this._httpClient.get<Semester[]>(this._apiUri, { params });
+    const payload = this.buildPayload(plan);
+    return this._httpClient.post<Semester[]>(this._apiUri, payload);
   }
 
-  private buildParameters(plan: EducationPlan): HttpParams {
-    const params = new HttpParams()
-      .set('Plan.Year', plan.year)
-      .set('Plan.Direction.Code', plan.direction.code)
-      .set('Plan.Direction.Name', plan.direction.name)
-      .set('Plan.Direction.Type', plan.direction.type)
-      .set('Token', this._user.token);
-
-    return params;
+  private buildPayload(plan: EducationPlan): object {
+    return {
+      direction: DirectionPayloadBuilder(plan.direction),
+      plan: EducationPlanPayloadBuilder(plan),
+      token: TokenPayloadBuilder(this._user),
+    };
   }
 }

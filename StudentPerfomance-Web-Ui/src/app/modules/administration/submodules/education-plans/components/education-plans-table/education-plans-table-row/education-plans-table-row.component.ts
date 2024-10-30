@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { EducationPlan } from '../../../models/education-plan-interface';
 
 @Component({
@@ -8,26 +8,13 @@ import { EducationPlan } from '../../../models/education-plan-interface';
 })
 export class EducationPlansTableRowComponent {
   @Input({ required: true }) plan: EducationPlan;
+  @Output() refreshEmitter: EventEmitter<void> = new EventEmitter();
+  @Output() successEmitter: EventEmitter<void> = new EventEmitter();
+  @Output() failureEmitter: EventEmitter<void> = new EventEmitter();
   protected deletionModalVisibility: boolean;
   protected semestersInfoVisibility: boolean;
 
   public constructor() {
     this.deletionModalVisibility = false;
-  }
-
-  protected startDeletion(): void {
-    this.deletionModalVisibility = true;
-  }
-
-  protected manageDeletion(value: boolean): void {
-    this.deletionModalVisibility = value;
-  }
-
-  protected openSemestersInfo(): void {
-    this.semestersInfoVisibility = true;
-  }
-
-  protected closeSemestersInfo(value: boolean): void {
-    this.semestersInfoVisibility = value;
   }
 }

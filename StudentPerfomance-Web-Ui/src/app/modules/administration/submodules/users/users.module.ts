@@ -12,7 +12,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SuccessResultNotificationComponent } from '../../../../shared/components/success-result-notification/success-result-notification.component';
 import { FailureResultNotificationComponent } from '../../../../shared/components/failure-result-notification/failure-result-notification.component';
 import { UsersTablePaginationComponent } from './components/users-table/users-table-pagination/users-table-pagination.component';
-import { FailureNotificationFormComponent } from '../../../../shared/components/notification-modal-forms/failure-notification-form/failure-notification-form.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +31,6 @@ import { FailureNotificationFormComponent } from '../../../../shared/components/
     ReactiveFormsModule,
     SuccessResultNotificationComponent,
     FailureResultNotificationComponent,
-    FailureNotificationFormComponent,
   ],
   exports: [UsersPageComponent],
 })

@@ -3,43 +3,35 @@ import { Observable } from 'rxjs';
 import { IFetchPolicy } from '../../../../../../shared/models/fetch-policices/fetch-policy-interface';
 import { EducationDirection } from '../education-direction-interface';
 import { BASE_API_URI } from '../../../../../../shared/models/api/api-constants';
-import { User } from '../../../../../users/services/user-interface';
 import { AuthService } from '../../../../../users/services/auth.service';
+import { PaginationPayloadBuilder } from '../../../../../../shared/models/common/pagination-contract/pagination-payload-builder';
+import { TokenPayloadBuilder } from '../../../../../../shared/models/common/token-contract/token-payload-builder';
+import { DirectionPayloadBuilder } from '../contracts/direction-payload-builder';
 
 export class FilterFetchPolicy implements IFetchPolicy<EducationDirection[]> {
-  private readonly _baseApiUri = `${BASE_API_URI}/education-directions/api/read/filter`;
+  private readonly _baseApiUri = `${BASE_API_URI}/api/education-direction/filter`;
   private readonly _direction: EducationDirection;
-  private readonly _user: User;
-  private _httpParams: HttpParams;
+  private payload: object;
 
   public constructor(
     direction: EducationDirection,
     private readonly authService: AuthService
   ) {
     this._direction = direction;
-    this._httpParams = new HttpParams()
-      .set('Code', direction.code)
-      .set('Name', direction.name)
-      .set('Type', direction.type);
-    this._user = { ...authService.userData };
   }
 
   public executeFetchPolicy(
     httpClient: HttpClient
   ): Observable<EducationDirection[]> {
-    const params = this._httpParams;
-    return httpClient.get<EducationDirection[]>(this._baseApiUri, {
-      params,
-    });
+    const payload = this.payload;
+    return httpClient.post<EducationDirection[]>(this._baseApiUri, payload);
   }
 
   public addPages(page: number, pageSize: number): void {
-    this._httpParams = new HttpParams()
-      .set('Direction.Code', this._direction.code)
-      .set('Direction.Name', this._direction.name)
-      .set('Direction.Type', this._direction.type)
-      .set('page', page)
-      .set('pageSize', pageSize)
-      .set('token', this._user.token);
+    this.payload = {
+      direction: DirectionPayloadBuilder(this._direction),
+      pagination: PaginationPayloadBuilder(page, pageSize),
+      token: TokenPayloadBuilder(this.authService.userData),
+    };
   }
 }

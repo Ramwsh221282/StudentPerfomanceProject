@@ -73,20 +73,12 @@
     <button class="accept-button-modal" type="button" (click)="submit()">
       Добавить
     </button>
-    <button class="danger-button-modal" type="button" (click)="close()">
+    <button
+      class="danger-button-modal"
+      type="button"
+      (click)="visibility.emit(false)"
+    >
       Закрыть окно
     </button>
   </div>
-</div>
-<div id="success-modal-renderer" *ngIf="isSuccess">
-  <app-success-result-notification
-    [message]="notificationService.Message"
-    (visibilityEmitter)="manageSuccess($event)"
-  ></app-success-result-notification>
-</div>
-<div id="failure-modal-renderer" *ngIf="isFailure">
-  <app-failure-result-notification
-    [message]="notificationService.Message"
-    (visibilityEmitter)="manageFailure($event)"
-  ></app-failure-result-notification>
 </div>

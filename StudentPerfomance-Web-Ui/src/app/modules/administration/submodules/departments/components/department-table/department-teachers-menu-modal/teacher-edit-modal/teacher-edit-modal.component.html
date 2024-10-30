@@ -17,7 +17,7 @@
         placeholder="Имя"
       />
       <input
-        [(ngModel)]="activeTeacher.thirdname"
+        [(ngModel)]="activeTeacher.patronymic"
         formControlName="thirdname"
         class="default-input"
         placeholder="Отчество"
@@ -26,7 +26,7 @@
         <strong class="font-white">Выбрать условия работы: </strong>
         <strong class="font-white">Выбрать должность: </strong>
         <select
-          [(ngModel)]="activeTeacher.workingCondition"
+          [(ngModel)]="activeTeacher.state"
           class="default-select"
           formControlName="workingCondition"
         >

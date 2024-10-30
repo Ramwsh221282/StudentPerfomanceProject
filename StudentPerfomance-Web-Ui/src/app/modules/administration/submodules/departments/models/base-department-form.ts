@@ -18,7 +18,7 @@ export abstract class DepartmentFormBase {
       name: builder.extractStringOrDefault('name'),
     } as Department;
     const shortNameBuilder = new DepartmentShortNameBuilder(department);
-    department.shortName = shortNameBuilder.buildShortName();
+    department.acronymus = shortNameBuilder.buildShortName();
     return department;
   }
 }

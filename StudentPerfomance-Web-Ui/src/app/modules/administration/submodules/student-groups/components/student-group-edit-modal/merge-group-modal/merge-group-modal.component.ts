@@ -57,14 +57,8 @@ export class MergeGroupModalComponent
       this,
       this.activeGroup
     );
-
-    const factory = this._mergeService.createRequestBodyFactory(
-      this.initial,
-      this.activeGroup
-    );
-
     this._mergeService
-      .merge(factory)
+      .merge(this.initial, this.activeGroup)
       .pipe(
         tap((response) => handler.handle(response)),
         catchError((error: HttpErrorResponse) => handler.handleError(error))

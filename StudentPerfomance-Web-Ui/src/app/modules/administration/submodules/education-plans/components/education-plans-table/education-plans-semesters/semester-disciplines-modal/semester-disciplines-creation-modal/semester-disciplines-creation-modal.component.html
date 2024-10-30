@@ -2,8 +2,8 @@
   <div id="header">
     <p>Добавление дисциплины для</p>
     <p>{{ semester.number }} семестра</p>
-    <p>Направления {{ semester.plan.direction.name }}</p>
-    <p>Учебного плана года {{ semester.plan.year }}</p>
+    <p>Направления {{ semester.educationPlan.direction.name }}</p>
+    <p>Учебного плана года {{ semester.educationPlan.year }}</p>
   </div>
   <div id="content">
     <form class="creation-form" [formGroup]="form">
@@ -22,12 +22,12 @@
 <div id="success-modal-renderer" *ngIf="isSuccess">
   <app-success-result-notification
     [message]="notificationService.Message"
-    (visibilityEmitter)="manageSuccess($event)"
+    (visibilityEmitter)="isSuccess = $event"
   ></app-success-result-notification>
 </div>
 <div id="failure-modal-renderer" *ngIf="isFailure">
   <app-failure-result-notification
     [message]="notificationService.Message"
-    (visibilityEmitter)="manageFailure($event)"
+    (visibilityEmitter)="isFailure = $event"
   ></app-failure-result-notification>
 </div>

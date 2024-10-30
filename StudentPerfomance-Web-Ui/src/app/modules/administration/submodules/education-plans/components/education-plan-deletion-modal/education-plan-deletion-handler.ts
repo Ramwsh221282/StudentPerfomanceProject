@@ -1,33 +1,55 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { EducationPlan } from '../../models/education-plan-interface';
-import { FacadeService } from '../../services/facade.service';
 import { Observable } from 'rxjs';
 import { IOperationHandler } from '../../../../../../shared/models/ihandable-component-interface/Ioperation-handler-interface';
+import { UserOperationNotificationService } from '../../../../../../shared/services/user-notifications/user-operation-notification-service.service';
+import { EventEmitter } from '@angular/core';
+import { EducationPlanDeletionNotification } from './educaiton-plan-deletion-notification';
 
 type HandlerDependencies = {
-  facadeService: FacadeService;
+  service: UserOperationNotificationService;
+  success: EventEmitter<void>;
+  failure: EventEmitter<void>;
+  refresh: EventEmitter<void>;
+  visibility: EventEmitter<boolean>;
 };
 
 const createHandler =
   (dependencies: HandlerDependencies) =>
   (parameter: EducationPlan): void => {
-    dependencies.facadeService.refreshPagination();
-    dependencies.facadeService.fetch();
+    const message = new EducationPlanDeletionNotification().buildMessage(
+      parameter
+    );
+    dependencies.service.SetMessage = message;
+    dependencies.success.emit();
+    dependencies.refresh.emit();
+    dependencies.visibility.emit(false);
   };
 
 const createErrorHandler =
-  () =>
+  (dependencies: HandlerDependencies) =>
   (error: HttpErrorResponse): Observable<never> => {
+    dependencies.service.SetMessage = error.error;
+    dependencies.failure.emit();
+    dependencies.visibility.emit(false);
     return new Observable();
   };
 
 export const EducationPlanDeletionHandler = (
-  facadeService: FacadeService
+  service: UserOperationNotificationService,
+  success: EventEmitter<void>,
+  failure: EventEmitter<void>,
+  refresh: EventEmitter<void>,
+  visibility: EventEmitter<boolean>
 ): IOperationHandler<EducationPlan> => {
   const dependencies: HandlerDependencies = {
-    facadeService: facadeService,
+    service: service,
+    success: success,
+    failure: failure,
+    refresh: refresh,
+    visibility: visibility,
   };
   const handle = createHandler(dependencies);
-  const handleError = createErrorHandler();
+  const handleError = createErrorHandler(dependencies);
   return { handle, handleError };
 };

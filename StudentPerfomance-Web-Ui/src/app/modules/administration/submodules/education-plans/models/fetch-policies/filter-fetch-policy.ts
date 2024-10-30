@@ -4,42 +4,36 @@ import { IFetchPolicy } from '../../../../../../shared/models/fetch-policices/fe
 import { EducationPlan } from '../education-plan-interface';
 import { Observable } from 'rxjs';
 import { User } from '../../../../../users/services/user-interface';
-import { inject } from '@angular/core';
 import { AuthService } from '../../../../../users/services/auth.service';
+import { DirectionPayloadBuilder } from '../../../education-directions/models/contracts/direction-payload-builder';
+import { EducationPlanPayloadBuilder } from '../contracts/education-plan-contract/education-plan-payload-builder';
+import { PaginationPayloadBuilder } from '../../../../../../shared/models/common/pagination-contract/pagination-payload-builder';
+import { TokenPayloadBuilder } from '../../../../../../shared/models/common/token-contract/token-payload-builder';
 
 export class FilterFetchPolicy implements IFetchPolicy<EducationPlan[]> {
-  private readonly _baseApiUri = `${BASE_API_URI}/education-plans/api/read/filter`;
+  private readonly _baseApiUri = `${BASE_API_URI}/api/education-plans/filter`;
   private readonly _plan: EducationPlan;
   private readonly _user: User;
-  private _params: HttpParams;
+  private _payload: object;
 
-  public constructor(plan: EducationPlan) {
-    const authService = inject(AuthService);
+  public constructor(plan: EducationPlan, authService: AuthService) {
     this._user = { ...authService.userData };
     this._plan = plan;
-    this._params = new HttpParams()
-      .set('Plan.Year', this._plan.year)
-      .set('Plan.Direction.Code', this._plan.direction.code)
-      .set('Plan.Direction.Name', this._plan.direction.name)
-      .set('Plan.Direction.Type', this._plan.direction.type)
-      .set('token', this._user.token);
   }
 
   public executeFetchPolicy(
     httpClient: HttpClient
   ): Observable<EducationPlan[]> {
-    const params = this._params;
-    return httpClient.get<EducationPlan[]>(this._baseApiUri, { params });
+    const payload = this._payload;
+    return httpClient.post<EducationPlan[]>(this._baseApiUri, payload);
   }
 
   public addPages(page: number, pageSize: number): void {
-    this._params = new HttpParams()
-      .set('Plan.Year', this._plan.year)
-      .set('Plan.Direction.Code', this._plan.direction.code)
-      .set('Plan.Direction.Name', this._plan.direction.name)
-      .set('Plan.Direction.Type', this._plan.direction.type)
-      .set('Page', page)
-      .set('PageSize', pageSize)
-      .set('token', this._user.token);
+    this._payload = {
+      direction: DirectionPayloadBuilder(this._plan.direction),
+      plan: EducationPlanPayloadBuilder(this._plan),
+      pagination: PaginationPayloadBuilder(page, pageSize),
+      token: TokenPayloadBuilder(this._user),
+    };
   }
 }

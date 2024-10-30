@@ -38,7 +38,6 @@ export class StudentGroupCreateModalComponent
 
   public submit(): void {
     const group = this.createGroupFromForm();
-    console.log(group);
     const handler = StudentGroupCreationHandler(
       this._facadeService,
       this.notificationService,

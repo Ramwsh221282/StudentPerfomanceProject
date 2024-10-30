@@ -20,7 +20,7 @@ export class StudentBaseForm {
     const student: Student = {} as Student;
     student.surname = builder.extractStringOrDefault('surname');
     student.name = builder.extractStringOrDefault('name');
-    student.thirdname = builder.extractStringOrDefault('thirdname');
+    student.patronymic = builder.extractStringOrDefault('thirdname');
     student.recordbook = builder.extractNumberOrDefault('recordbook');
     student.group = { ...group };
     return student;

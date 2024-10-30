@@ -6,11 +6,12 @@ import { UserOperationNotificationService } from '../../../../../../../shared/se
   selector: 'app-table-row',
   templateUrl: './table-row.component.html',
   styleUrl: './table-row.component.scss',
-  providers: [UserOperationNotificationService],
 })
 export class TableRowComponent {
   @Input({ required: true }) group: StudentGroup;
   @Output() visibility: EventEmitter<boolean> = new EventEmitter();
+  @Output() success: EventEmitter<void> = new EventEmitter();
+  @Output() failure: EventEmitter<void> = new EventEmitter();
 
   protected deletionModalState: boolean;
   protected editModalState: boolean;

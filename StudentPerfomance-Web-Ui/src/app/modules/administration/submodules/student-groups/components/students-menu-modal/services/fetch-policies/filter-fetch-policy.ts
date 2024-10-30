@@ -1,45 +1,32 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IFetchPolicy } from '../../../../../../../../shared/models/fetch-policices/fetch-policy-interface';
 import { Student } from '../../../../../students/models/student.interface';
 import { BASE_API_URI } from '../../../../../../../../shared/models/api/api-constants';
+import { StudentGroupPayloadBuilder } from '../../../../models/contracts/student-group-contract/student-group-payload-builder';
+import { StudentPayloadBuilder } from '../../../../../students/models/contracts/student-contracts/student-payload-builder';
+import { AuthService } from '../../../../../../../users/services/auth.service';
+import { TokenPayloadBuilder } from '../../../../../../../../shared/models/common/token-contract/token-payload-builder';
 
 export class FilterFetchPolicy implements IFetchPolicy<Student[]> {
   private readonly _apiUri: string;
-  private readonly _httpParams: HttpParams;
+  private readonly _payload: object;
 
-  public constructor(student: Student) {
-    this._apiUri = `${BASE_API_URI}/student/api/read/search`;
-    this._httpParams = new HttpParams();
-    this._httpParams = new HttpParams()
-      .set('Student.Name', student.name)
-      .set('Student.Surname', student.surname)
-      .set('Student.Thirdname', student.thirdname)
-      .set('Student.State', student.state)
-      .set('Student.Recordbook', student.recordbook)
-      .set('Student.Group.Name', student.group.name)
-      .set('Student.Group.EducationPlan.Year', student.group.plan.year)
-      .set(
-        'Student.Group.EducationPlan.Direction.EntityNumber',
-        student.group.plan.direction.entityNumber
-      )
-      .set(
-        'Student.Group.EducationPlan.Direction.Code',
-        student.group.plan.direction.code
-      )
-      .set(
-        'Student.Group.EducationPlan.Direction.Name',
-        student.group.plan.direction.name
-      )
-      .set(
-        'Student.Group.EducationPlan.Direction.Type',
-        student.group.plan.direction.type
-      );
+  public constructor(
+    student: Student,
+    private readonly _authService: AuthService
+  ) {
+    this._apiUri = `${BASE_API_URI}/api/students/filter`;
+    this._payload = {
+      group: StudentGroupPayloadBuilder(student.group),
+      student: StudentPayloadBuilder(student),
+      token: TokenPayloadBuilder(this._authService.userData),
+    };
   }
 
   public executeFetchPolicy(httpClient: HttpClient): Observable<Student[]> {
-    const params = this._httpParams;
-    return httpClient.get<Student[]>(this._apiUri, { params });
+    const payload = this._payload;
+    return httpClient.post<Student[]>(this._apiUri, payload);
   }
 
   public addPages(page: number, pageSize: number): void {}

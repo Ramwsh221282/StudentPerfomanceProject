@@ -14,7 +14,6 @@ import { SuccessResultNotificationComponent } from '../../../../shared/component
 import { StudentGroupEditModalComponent } from './components/student-group-edit-modal/student-group-edit-modal.component';
 import { NameChangeModalComponent } from './components/student-group-edit-modal/name-change-modal/name-change-modal.component';
 import { PlanAttachmentModalComponent } from './components/student-group-edit-modal/plan-attachment-modal/plan-attachment-modal.component';
-import { FailureNotificationFormComponent } from '../../../../shared/components/notification-modal-forms/failure-notification-form/failure-notification-form.component';
 import { MergeGroupModalComponent } from './components/student-group-edit-modal/merge-group-modal/merge-group-modal.component';
 import { StudentsMenuModalComponent } from './components/students-menu-modal/students-menu-modal.component';
 import { StudentEditModalComponent } from './components/students-menu-modal/student-edit-modal/student-edit-modal.component';
@@ -50,7 +49,6 @@ import { StudentSwitchGroupModalComponent } from './components/students-menu-mod
     FormsModule,
     FailureResultNotificationComponent,
     SuccessResultNotificationComponent,
-    FailureNotificationFormComponent,
   ],
   exports: [StudentGroupsPageComponent],
 })

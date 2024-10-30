@@ -22,7 +22,6 @@ export class SemesterDisciplinesDeletionModalComponent
   implements IFailureNotificatable, ISuccessNotificatable
 {
   @Input({ required: true }) semesterPlan: SemesterPlan;
-  @Input({ required: true }) semester: Semester;
   @Output() visibility: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() refreshTable: EventEmitter<any> = new EventEmitter<any>();
 
@@ -63,7 +62,7 @@ export class SemesterDisciplinesDeletionModalComponent
       this
     );
     this._removeService
-      .remove(this.semester, this.semesterPlan)
+      .remove(this.semesterPlan)
       .pipe(
         tap((response) => handler.handle(response)),
         catchError((error: HttpErrorResponse) => handler.handleError(error))

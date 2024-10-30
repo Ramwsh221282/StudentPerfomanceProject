@@ -4,32 +4,36 @@ import { BASE_API_URI } from '../../../../../../../../shared/models/api/api-cons
 import { SemesterPlan } from '../../../../../semester-plans/models/semester-plan.interface';
 import { Semester } from '../../../../../semesters/models/semester.interface';
 import { Observable } from 'rxjs';
+import { AuthService } from '../../../../../../../users/services/auth.service';
+import { DirectionPayloadBuilder } from '../../../../../education-directions/models/contracts/direction-payload-builder';
+import { EducationPlanPayloadBuilder } from '../../../../models/contracts/education-plan-contract/education-plan-payload-builder';
+import { SemesterPayloadBuilder } from '../../../../models/contracts/semester-contract/semester-payload-builder';
+import { TokenPayloadBuilder } from '../../../../../../../../shared/models/common/token-contract/token-payload-builder';
 
 @Injectable({
   providedIn: 'any',
 })
 export class SemesterDisciplinesDataService {
   private readonly _httpClient: HttpClient;
-  private readonly _apiUri: string = `${BASE_API_URI}/semester-plans/api/read/by-semester`;
+  private readonly _apiUri: string = `${BASE_API_URI}/api/semester-plans/get-by-semester`;
 
-  public constructor() {
+  public constructor(private readonly _authService: AuthService) {
     this._httpClient = inject(HttpClient);
   }
 
   public getSemesterDisciplines(
     semester: Semester
   ): Observable<SemesterPlan[]> {
-    const params = this.buildHttpParams(semester);
-    return this._httpClient.get<SemesterPlan[]>(this._apiUri, { params });
+    const payload = this.buildPayload(semester);
+    return this._httpClient.post<SemesterPlan[]>(this._apiUri, payload);
   }
 
-  private buildHttpParams(semester: Semester): HttpParams {
-    const params: HttpParams = new HttpParams()
-      .set('Semester.Number', semester.number)
-      .set('Semester.Plan.Year', semester.plan.year)
-      .set('Semester.Plan.Direction.Code', semester.plan.direction.code)
-      .set('Semester.Plan.Direction.Name', semester.plan.direction.name)
-      .set('Semester.Plan.Direction.Type', semester.plan.direction.type);
-    return params;
+  private buildPayload(semester: Semester): object {
+    return {
+      direction: DirectionPayloadBuilder(semester.educationPlan.direction),
+      plan: EducationPlanPayloadBuilder(semester.educationPlan),
+      semester: SemesterPayloadBuilder(semester),
+      token: TokenPayloadBuilder(this._authService.userData),
+    };
   }
 }

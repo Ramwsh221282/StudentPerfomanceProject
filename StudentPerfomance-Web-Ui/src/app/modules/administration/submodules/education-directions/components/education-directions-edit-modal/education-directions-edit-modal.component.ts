@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { BsModalService } from 'ngx-bootstrap/modal';
 import { FacadeService } from '../../services/facade.service';
 import { UserOperationNotificationService } from '../../../../../../shared/services/user-notifications/user-operation-notification-service.service';
 import { EducationDirectionBaseForm } from '../../models/education-direction-base-form';
@@ -13,7 +12,6 @@ import { ISubbmittable } from '../../../../../../shared/models/interfaces/isubbm
   selector: 'app-education-directions-edit-modal',
   templateUrl: './education-directions-edit-modal.component.html',
   styleUrl: './education-directions-edit-modal.component.scss',
-  providers: [BsModalService],
 })
 export class EducationDirectionsEditModalComponent
   extends EducationDirectionBaseForm

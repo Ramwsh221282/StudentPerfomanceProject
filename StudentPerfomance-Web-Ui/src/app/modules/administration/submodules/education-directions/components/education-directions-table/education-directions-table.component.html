@@ -42,6 +42,7 @@
 <div id="filter-modal-renderer" *ngIf="filterModalVisibility">
   <app-education-directions-filter-modal
     (visibility)="stopFilter($event)"
+    (filteredData)="directions = $event"
   ></app-education-directions-filter-modal>
 </div>
 <div id="failure-modal-renderer" *ngIf="isFailure">

@@ -3,6 +3,9 @@ import { BASE_API_URI } from '../../../../../../../shared/models/api/api-constan
 import { inject, Injectable } from '@angular/core';
 import { Student } from '../../../../students/models/student.interface';
 import { Observable } from 'rxjs';
+import { AuthService } from '../../../../../../users/services/auth.service';
+import { StudentPayloadBuilder } from '../../../../students/models/contracts/student-contracts/student-payload-builder';
+import { TokenPayloadBuilder } from '../../../../../../../shared/models/common/token-contract/token-payload-builder';
 
 @Injectable({
   providedIn: 'any',
@@ -11,8 +14,8 @@ export class StudentDeletionService {
   private readonly _apiUri: string;
   private readonly _httpClient: HttpClient;
 
-  public constructor() {
-    this._apiUri = `${BASE_API_URI}/student/api/management/remove`;
+  public constructor(private readonly _authService: AuthService) {
+    this._apiUri = `${BASE_API_URI}/api/students`;
     this._httpClient = inject(HttpClient);
   }
 
@@ -26,21 +29,12 @@ export class StudentDeletionService {
       student: {
         name: student.name,
         surname: student.surname,
-        thirdname: student.thirdname,
+        patronymic: student.patronymic,
         state: student.state,
         recordbook: student.recordbook,
-        group: {
-          name: student.group.name,
-          educationPlan: {
-            year: student.group.plan.year,
-            direction: {
-              code: student.group.plan.direction.code,
-              name: student.group.plan.direction.name,
-              type: student.group.plan.direction.type,
-            },
-          },
-        },
+        groupName: student.group.name,
       },
+      token: TokenPayloadBuilder(this._authService.userData),
     };
   }
 }

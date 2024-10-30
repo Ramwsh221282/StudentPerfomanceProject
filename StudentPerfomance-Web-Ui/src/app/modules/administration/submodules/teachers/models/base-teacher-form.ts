@@ -21,9 +21,8 @@ export abstract class BaseTeacherForm {
     const teacher: Teacher = {} as Teacher;
     teacher.name = builder.extractStringOrDefault('name');
     teacher.surname = builder.extractStringOrDefault('surname');
-    teacher.thirdname = builder.extractStringOrDefault('thirdname');
-    teacher.workingCondition =
-      builder.extractStringOrDefault('workingCondition');
+    teacher.patronymic = builder.extractStringOrDefault('thirdname');
+    teacher.state = builder.extractStringOrDefault('workingCondition');
     teacher.jobTitle = builder.extractStringOrDefault('jobTitle');
     teacher.department = { ...department };
     return teacher;

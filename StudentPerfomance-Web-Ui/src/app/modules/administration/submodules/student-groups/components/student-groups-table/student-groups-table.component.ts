@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StudentGroupsFacadeService } from '../../services/student-groups-facade.service';
+import { UserOperationNotificationService } from '../../../../../../shared/services/user-notifications/user-operation-notification-service.service';
 
 @Component({
   selector: 'app-student-groups-table',
@@ -10,8 +11,12 @@ export class StudentGroupsTableComponent implements OnInit {
   protected creationModalVisibility: boolean;
   protected filterModalVisibility: boolean;
 
+  protected isSuccess: boolean;
+  protected isFailure: boolean;
+
   public constructor(
-    protected readonly facadeService: StudentGroupsFacadeService
+    protected readonly facadeService: StudentGroupsFacadeService,
+    protected readonly notificationService: UserOperationNotificationService
   ) {}
 
   public ngOnInit(): void {

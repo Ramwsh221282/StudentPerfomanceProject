@@ -1,8 +1,8 @@
 <div id="container">
   <div id="header">
     <p>Дисциплины {{ semester.number }} семестра</p>
-    <p>Направления {{ semester.plan.direction.name }}</p>
-    <p>Учебного план года {{ semester.plan.year }}</p>
+    <p>Направления {{ semester.educationPlan.direction.name }}</p>
+    <p>Учебного план года {{ semester.educationPlan.year }}</p>
   </div>
   <div id="content">
     <div class="controls-container">
@@ -23,8 +23,14 @@
         <tr>
           <td>{{ plan.discipline }}</td>
           <td>
-            {{ plan.teacher.surname }} {{ plan.teacher.name[0] }}
-            {{ plan.teacher.thirdname[0] }}
+            {{
+              plan.teacher
+                ? plan.teacher.surname +
+                  " " +
+                  plan.teacher.name[0] +
+                  plan.teacher.patronymic[0]
+                : "нет"
+            }}
           </td>
           <td>
             <div class="controls-container">
@@ -62,7 +68,6 @@
 </div>
 <div id="deletion-modal-renderer" *ngIf="deletionModalState">
   <app-semester-disciplines-deletion-modal
-    [semester]="semester"
     [semesterPlan]="activeSemesterPlan"
     (visibility)="stopDeletion($event)"
     (refreshTable)="updateTable($event)"

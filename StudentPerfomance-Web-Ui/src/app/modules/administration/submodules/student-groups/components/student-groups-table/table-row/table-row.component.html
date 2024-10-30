@@ -2,15 +2,15 @@
   <strong>{{ group.entityNumber }}</strong>
   <strong>{{ group.name }}</strong>
   <strong>{{
-    group.plan.direction.name == "" ? "Не задан" : group.plan.direction.name
+    group.plan == null ? "Не задан" : group.plan.direction.name
   }}</strong>
   <strong>{{
-    group.plan.direction.code == "" ? "Не задан" : group.plan.direction.code
+    group.plan == null ? "Не задан" : group.plan.direction.code
   }}</strong>
   <strong>{{
-    group.plan.direction.type == "" ? "Не задан" : group.plan.direction.type
+    group.plan == null ? "Не задан" : group.plan.direction.type
   }}</strong>
-  <strong>{{ group.plan.year == 0 ? "Не задан" : group.plan.year }}</strong>
+  <strong>{{ group.plan == null ? "Не задан" : group.plan.year }}</strong>
   <div class="button-items">
     <button class="accept-button-outline" (click)="openStudentsModal()">
       Студенты
@@ -27,6 +27,8 @@
   <app-student-group-remove-modal
     [group]="group"
     (visibility)="closeDeletionModal($event)"
+    (success)="success.emit()"
+    (failure)="failure.emit()"
   ></app-student-group-remove-modal>
 </div>
 <div id="edit-modal-renderer" *ngIf="editModalState">

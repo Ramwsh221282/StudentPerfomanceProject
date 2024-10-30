@@ -76,7 +76,7 @@ export class LoginFormComponent
     const password: string = this.form.value['password'];
     const handler = LoginHandler(this.notificationService, this, this);
     this._authService
-      .login({ user: { email: email, password: password } })
+      .login({ email: email, password: password })
       .pipe(
         tap((response) => {
           handler.handle(response);

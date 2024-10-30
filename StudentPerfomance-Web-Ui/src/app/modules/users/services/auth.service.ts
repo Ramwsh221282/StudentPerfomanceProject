@@ -39,7 +39,7 @@ export class AuthService {
 
   private tryAuthorizeUsingCookie(): void {
     const token = this._cookieService.get('token');
-    if (token == '') {
+    if (token == '' || token == undefined || token == null) {
       this._user = {
         name: ' ',
         surname: ' ',
@@ -75,17 +75,15 @@ export class AuthService {
     return this._isAuthorized;
   }
 
-  public login(payload: {
-    user: { email: string; password: string };
-  }): Observable<User> {
-    const apiUri: string = `${BASE_API_URI}/api/auth/login`;
+  public login(payload: { email: string; password: string }): Observable<User> {
+    const apiUri: string = `${BASE_API_URI}/app/users/login`;
     return this._httpClient.post<User>(apiUri, payload);
   }
 
   private verify(): void {
     const token = this._cookieService.get('token');
     this._httpClient
-      .post(`${BASE_API_URI}/api/auth/verify?Token=${token}`, {})
+      .post(`${BASE_API_URI}/api/users/verify`, { token: token })
       .pipe(
         tap(() => {
           this._isAuthorized = true;

@@ -82,9 +82,7 @@ export class NameChangeModalComponent
       .pipe(
         tap((response) => {
           handler.handle(response);
-          this.group = response;
-          this.group.plan = response.plan;
-          this.group.plan.direction = response.plan.direction;
+          this.group = { ...response };
         }),
         catchError((error: HttpErrorResponse) => handler.handleError(error))
       )

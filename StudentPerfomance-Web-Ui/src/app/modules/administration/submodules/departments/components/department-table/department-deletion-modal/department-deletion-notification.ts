@@ -5,6 +5,6 @@ export class DepartmentDeletionNotification
   implements INotificationMessageBuilder<Department>
 {
   public buildMessage(parameter: Department): string {
-    return `Удалена кафедра ${parameter.name} ${parameter.shortName}`;
+    return `Удалена кафедра ${parameter.name} ${parameter.acronymus}`;
   }
 }

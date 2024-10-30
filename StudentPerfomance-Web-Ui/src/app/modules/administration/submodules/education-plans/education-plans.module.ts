@@ -8,7 +8,6 @@ import { EducationPlansTableRowComponent } from './components/education-plans-ta
 import { EducationPlansPaginationComponent } from './components/education-plans-table/education-plans-pagination/education-plans-pagination.component';
 import { EducationPlanCreationModalComponent } from './components/education-plan-creation-modal/education-plan-creation-modal.component';
 import { EducationPlanDeletionModalComponent } from './components/education-plan-deletion-modal/education-plan-deletion-modal.component';
-import { EducationPlanDisciplinesModalComponent } from './components/education-plan-disciplines-modal/education-plan-disciplines-modal.component';
 import { SuccessResultNotificationComponent } from '../../../../shared/components/success-result-notification/success-result-notification.component';
 import { FailureResultNotificationComponent } from '../../../../shared/components/failure-result-notification/failure-result-notification.component';
 import { EducationPlanFilterModalComponent } from './components/education-plan-filter-modal/education-plan-filter-modal.component';
@@ -27,7 +26,6 @@ import { SemesterDisciplinesEditModalComponent } from './components/education-pl
     EducationPlansPaginationComponent,
     EducationPlanCreationModalComponent,
     EducationPlanDeletionModalComponent,
-    EducationPlanDisciplinesModalComponent,
     EducationPlanFilterModalComponent,
     EducationPlansSemestersComponent,
     SemesterDisciplinesModalComponent,

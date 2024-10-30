@@ -4,6 +4,7 @@ import { DeleteService } from '../../services/delete.service';
 import { PaginationService } from '../../services/pagination.service';
 import { FetchService } from '../../services/fetch.service';
 import { FacadeService } from '../../services/facade.service';
+import { UserOperationNotificationService } from '../../../../../../shared/services/user-notifications/user-operation-notification-service.service';
 
 @Component({
   selector: 'app-education-plans-page',
@@ -15,6 +16,7 @@ import { FacadeService } from '../../services/facade.service';
     PaginationService,
     FetchService,
     FacadeService,
+    UserOperationNotificationService,
   ],
 })
 export class EducationPlansPageComponent {}

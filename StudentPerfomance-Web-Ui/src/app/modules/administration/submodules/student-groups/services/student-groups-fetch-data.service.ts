@@ -4,6 +4,7 @@ import { StudentGroup } from './studentsGroup.interface';
 import { IFetchable } from '../../../../../shared/models/fetch-policices/ifetchable-interface';
 import { IFetchPolicy } from '../../../../../shared/models/fetch-policices/fetch-policy-interface';
 import { DefaultFetchPolicy } from '../models/fetch-policies/default-fetch-policy';
+import { AuthService } from '../../../../users/services/auth.service';
 
 @Injectable({
   providedIn: 'any',
@@ -15,10 +16,10 @@ export class StudentGroupsFetchDataService
   private _currentPolicy: IFetchPolicy<StudentGroup[]>;
   private _groups: StudentGroup[];
 
-  public constructor() {
+  public constructor(private readonly _authService: AuthService) {
     super();
     this._groups = [];
-    this._currentPolicy = new DefaultFetchPolicy();
+    this._currentPolicy = new DefaultFetchPolicy(this._authService);
   }
 
   public setPolicy(policy: IFetchPolicy<StudentGroup[]>): void {

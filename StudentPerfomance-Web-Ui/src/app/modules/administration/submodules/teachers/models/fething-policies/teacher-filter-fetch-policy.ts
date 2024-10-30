@@ -12,17 +12,17 @@ export class TeacherFilterFetchPolicy implements IFetchPolicy<Teacher[]> {
     this._apiUri = `${BASE_API_URI}/teacher/api/read/search`;
     this._httpparams = new HttpParams()
       .set('Teacher.Department.Name', teacher.department.name)
-      .set('Teacher.Department.Shortname', teacher.department.shortName)
+      .set('Teacher.Department.Shortname', teacher.department.acronymus)
       .set('Teacher.Name', teacher.name)
       .set('Teacher.Surname', teacher.surname)
-      .set('Teacher.Thirdname', teacher.thirdname)
-      .set('Teacher.workingCondition', teacher.workingCondition)
+      .set('Teacher.Thirdname', teacher.patronymic)
+      .set('Teacher.workingCondition', teacher.state)
       .set('Teacher.jobTitle', teacher.jobTitle);
   }
 
   public executeFetchPolicy(httpClient: HttpClient): Observable<Teacher[]> {
     const params = this._httpparams;
-    return httpClient.get<Teacher[]>(this._apiUri, { params });
+    return httpClient.post<Teacher[]>(this._apiUri, { params });
   }
 
   public addPages(page: number, pageSize: number): void {}

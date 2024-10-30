@@ -13,12 +13,12 @@
       >
         Добавить преподавателя
       </button>
-      <button
+      <!-- <button
         class="accept-button-modal"
         (click)="filterModalVisibility = true"
       >
         Фильтр списка
-      </button>
+      </button> -->
     </div>
     <div class="search-container">
       <table class="search-table">
@@ -38,10 +38,10 @@
           <tr>
             <td>{{ teacher.surname }}</td>
             <td>{{ teacher.name }}</td>
-            <td>{{ teacher.thirdname }}</td>
+            <td>{{ teacher.patronymic }}</td>
             <td>{{ teacher.jobTitle }}</td>
-            <td>{{ teacher.workingCondition }}</td>
-            <td>{{ teacher.department.shortName }}</td>
+            <td>{{ teacher.state }}</td>
+            <td>{{ teacher.department.acronymus }}</td>
             <td>
               <div class="controls-container">
                 <button
@@ -117,10 +117,10 @@
     (refreshEmitter)="fetchData()"
   ></app-teacher-edit-modal>
 </div>
-<div id="filter-modal-renderer" *ngIf="filterModalVisibility">
+<!-- <div id="filter-modal-renderer" *ngIf="filterModalVisibility">
   <app-teacher-filter-modal
     [department]="department"
     (visibilityEmitter)="filterModalVisibility = $event"
     (refreshEmitter)="fetchData()"
   ></app-teacher-filter-modal>
-</div>
+</div> -->

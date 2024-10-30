@@ -32,10 +32,6 @@
         <thead>
           <tr>
             <th>Название группы</th>
-            <th>Название направления</th>
-            <th>Код</th>
-            <th>Тип</th>
-            <th>Год</th>
             <th>Действия</th>
           </tr>
         </thead>
@@ -43,10 +39,6 @@
           @for (group of groups; track group.name) {
           <tr>
             <td>{{ group.name }}</td>
-            <td>{{ group.plan.direction.name }}</td>
-            <td>{{ group.plan.direction.code }}</td>
-            <td>{{ group.plan.direction.type }}</td>
-            <td>{{ group.plan.year }}</td>
             <td>
               <button class="accept-button" (click)="selectGroup(group)">
                 Выбрать

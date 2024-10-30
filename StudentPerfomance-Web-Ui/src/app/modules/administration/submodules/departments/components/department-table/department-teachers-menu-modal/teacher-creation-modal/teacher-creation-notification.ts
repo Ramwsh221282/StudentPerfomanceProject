@@ -5,6 +5,6 @@ export class TeacherCreationNotification
   implements INotificationMessageBuilder<Teacher>
 {
   public buildMessage(parameter: Teacher): string {
-    return `Добавлен преподаватель ${parameter.surname} ${parameter.name} ${parameter.thirdname} в кафедру ${parameter.department.name}`;
+    return `Добавлен преподаватель ${parameter.surname} ${parameter.name} ${parameter.patronymic} в кафедру ${parameter.department.name}`;
   }
 }

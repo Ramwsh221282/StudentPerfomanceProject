@@ -5,6 +5,7 @@ import { Department } from '../../../models/departments.interface';
 import { DepartmentBuilder } from '../../../models/builders/department-builder';
 import { DepartmentFilterFetchPolicy } from '../../../models/fetch-policies/filter-fetch-policy';
 import { DepartmentDefaultFetchPolicy } from '../../../models/fetch-policies/default-fetch-policy';
+import { AuthService } from '../../../../../../users/services/auth.service';
 
 @Component({
   selector: 'app-department-filter-modal',
@@ -18,20 +19,27 @@ export class DepartmentFilterModalComponent implements ISubbmittable {
   private readonly _builder: DepartmentBuilder;
   protected department: Department;
 
-  public constructor(private readonly _service: DepartmentDataService) {
+  public constructor(
+    private readonly _service: DepartmentDataService,
+    private readonly _authService: AuthService
+  ) {
     this._builder = new DepartmentBuilder();
     this.department = this._builder.buildDefault();
   }
 
   public submit(): void {
     this.department = { ...this._builder.buildInitialized(this.department) };
-    this._service.setPolicy(new DepartmentFilterFetchPolicy(this.department));
+    this._service.setPolicy(
+      new DepartmentFilterFetchPolicy(this.department, this._authService)
+    );
     this.filterAccepted.emit();
     this.visibility.emit(false);
   }
 
   public cancelFilter(): void {
-    this._service.setPolicy(new DepartmentDefaultFetchPolicy());
+    this._service.setPolicy(
+      new DepartmentDefaultFetchPolicy(this._authService)
+    );
     this.filterAccepted.emit();
     this.visibility.emit(false);
   }

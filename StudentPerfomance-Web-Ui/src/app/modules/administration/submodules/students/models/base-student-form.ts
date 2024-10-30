@@ -28,7 +28,7 @@ export abstract class BaseStudentForm {
     return {
       name: builder.extractStringOrDefault('name'),
       surname: builder.extractStringOrDefault('surname'),
-      thirdname: builder.extractStringOrDefault('thirdname'),
+      patronymic: builder.extractStringOrDefault('thirdname'),
       recordbook: builder.extractNumberOrDefault('recordBook'),
       state: builder.extractStringOrDefault('state'),
       groupName: group.groupName,

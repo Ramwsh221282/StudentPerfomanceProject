@@ -15,26 +15,26 @@
         <strong>Сокращенное название</strong>
         <strong>Действия</strong>
       </div>
-      @for (department of dataService.departments; track department.name) {
+      @for (department of departments; track department.name) {
       <app-department-table-row
         [department]="department"
         (emitFailure)="this.isFailure = true"
         (emitSuccess)="this.isSuccess = true"
-        (emitRefresh)="this.refreshData()"
+        (emitRefresh)="this.ngOnInit()"
       ></app-department-table-row>
       }
     </div>
   </div>
-  <div class="pagination-wrapper">
+  <!-- <div class="pagination-wrapper">
     <app-department-pagination
       (pageEmitter)="appendPages(); fetchData()"
     ></app-department-pagination>
-  </div>
+  </div> -->
 </div>
 <div id="creation-modal-renderer" *ngIf="creationModalVisibility">
   <app-department-creation-modal
     (visibility)="creationModalVisibility = $event"
-    (successEmitter)="isSuccess = true; refreshData()"
+    (successEmitter)="isSuccess = true; this.ngOnInit()"
     (failureEmitter)="isFailure = true"
   ></app-department-creation-modal>
 </div>
@@ -53,6 +53,6 @@
 <div id="filter-modal-renderer" *ngIf="filterModalVisibility">
   <app-department-filter-modal
     (visibility)="this.filterModalVisibility = false"
-    (filterAccepted)="appendPages(); fetchData()"
+    (filterAccepted)="this.ngOnInit()"
   ></app-department-filter-modal>
 </div>

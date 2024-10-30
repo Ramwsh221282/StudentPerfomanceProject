@@ -4,27 +4,27 @@ import { SearchDirectionsService } from '../../../education-directions/services/
 import { FacadeService } from '../../services/facade.service';
 import { EducationDirection } from '../../../education-directions/models/education-direction-interface';
 import { EducationDirectionBuilder } from '../../../education-directions/models/builders/education-direction-builder';
-import { ISuccessNotificatable } from '../../../../../../shared/models/interfaces/isuccess-notificatable';
-import { IFailureNotificatable } from '../../../../../../shared/models/interfaces/ifailure-notificatable';
 import { EducationPlanCreationHandler } from './education-plan-creation-handler';
 import { UserOperationNotificationService } from '../../../../../../shared/services/user-notifications/user-operation-notification-service.service';
 import { catchError, tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
+import { ISubbmittable } from '../../../../../../shared/models/interfaces/isubbmitable';
 
 @Component({
   selector: 'app-education-plan-creation-modal',
   templateUrl: './education-plan-creation-modal.component.html',
   styleUrl: './education-plan-creation-modal.component.scss',
-  providers: [SearchDirectionsService, UserOperationNotificationService],
+  providers: [SearchDirectionsService],
 })
 export class EducationPlanCreationModalComponent
   extends EducationPlanBaseForm
-  implements OnInit, ISuccessNotificatable, IFailureNotificatable
+  implements OnInit, ISubbmittable
 {
   @Output() visibility: EventEmitter<boolean> = new EventEmitter();
+  @Output() refreshEmitter: EventEmitter<void> = new EventEmitter();
+  @Output() successEmitter: EventEmitter<void> = new EventEmitter();
+  @Output() failureEmitter: EventEmitter<void> = new EventEmitter();
 
-  protected isSuccess: boolean;
-  protected isFailure: boolean;
   protected directions: EducationDirection[];
   protected direction: EducationDirection;
 
@@ -34,34 +34,17 @@ export class EducationPlanCreationModalComponent
     protected readonly notificationService: UserOperationNotificationService
   ) {
     super();
-    this.isSuccess = false;
-    this.isFailure = false;
-  }
-
-  public notifyFailure(): void {
-    this.isFailure = true;
-  }
-
-  protected manageFailure(value: boolean): void {
-    this.isFailure = value;
-  }
-
-  public notifySuccess(): void {
-    this.isSuccess = true;
-  }
-
-  protected manageSuccess(value: boolean): void {
-    this.isSuccess = value;
   }
 
   public override submit(): void {
     const plan = this.createEducationPlanFromForm();
     plan.direction = { ...this.direction };
     const handler = EducationPlanCreationHandler(
-      this._facadeService,
       this.notificationService,
-      this,
-      this
+      this.successEmitter,
+      this.failureEmitter,
+      this.refreshEmitter,
+      this.visibility
     );
     this._facadeService
       .create(plan)
@@ -89,11 +72,6 @@ export class EducationPlanCreationModalComponent
     this._searchService.getAll().subscribe((response) => {
       this.directions = response;
     });
-  }
-
-  public close(): void {
-    this.ngOnInit();
-    this.visibility.emit(false);
   }
 
   public selectDirection(direction: EducationDirection): void {

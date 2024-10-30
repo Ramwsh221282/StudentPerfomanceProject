@@ -1,27 +1,31 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IFetchPolicy } from '../../../../../../../../shared/models/fetch-policices/fetch-policy-interface';
 import { Student } from '../../../../../students/models/student.interface';
 import { StudentGroup } from '../../../../services/studentsGroup.interface';
 import { BASE_API_URI } from '../../../../../../../../shared/models/api/api-constants';
+import { AuthService } from '../../../../../../../users/services/auth.service';
+import { StudentGroupPayloadBuilder } from '../../../../models/contracts/student-group-contract/student-group-payload-builder';
+import { TokenPayloadBuilder } from '../../../../../../../../shared/models/common/token-contract/token-payload-builder';
 
 export class DefaultFetchPolicy implements IFetchPolicy<Student[]> {
-  private readonly _params: HttpParams;
   private readonly _apiUri: string;
+  private readonly _payload: object;
 
-  public constructor(group: StudentGroup) {
-    this._apiUri = `${BASE_API_URI}/student/api/read/by-group`;
-    this._params = new HttpParams()
-      .set('Group.Name', group.name)
-      .set('Group.EducationPlan.Year', group.plan.year)
-      .set('Group.EducationPlan.Direction.Code', group.plan.direction.code)
-      .set('Group.EducationPlan.Direction.Name', group.plan.direction.name)
-      .set('Group.EducationPlan.Direction.Type', group.plan.direction.type);
+  public constructor(
+    group: StudentGroup,
+    private readonly _authService: AuthService
+  ) {
+    this._apiUri = `${BASE_API_URI}/api/students/by-group`;
+    this._payload = {
+      group: StudentGroupPayloadBuilder(group),
+      token: TokenPayloadBuilder(this._authService.userData),
+    };
   }
 
   executeFetchPolicy(httpClient: HttpClient): Observable<Student[]> {
-    const params = this._params;
-    return httpClient.get<Student[]>(this._apiUri, { params });
+    const payload = this._payload;
+    return httpClient.post<Student[]>(this._apiUri, payload);
   }
 
   addPages(page: number, pageSize: number): void {}

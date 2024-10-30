@@ -5,10 +5,16 @@
   <strong>{{ plan.direction.code }}</strong>
   <strong>{{ plan.direction.type }}</strong>
   <div class="button-items">
-    <button class="danger-button-outline" (click)="startDeletion()">
+    <button
+      class="danger-button-outline"
+      (click)="deletionModalVisibility = true"
+    >
       Удалить
     </button>
-    <button class="accept-button-outline" (click)="openSemestersInfo()">
+    <button
+      class="accept-button-outline"
+      (click)="semestersInfoVisibility = true"
+    >
       Семестры
     </button>
   </div>
@@ -16,12 +22,15 @@
 <div id="deletion-modal-renderer" *ngIf="deletionModalVisibility">
   <app-education-plan-deletion-modal
     [plan]="plan"
-    (visibility)="manageDeletion($event)"
+    (visibility)="deletionModalVisibility = $event"
+    (failureEmitter)="failureEmitter.emit()"
+    (successEmitter)="successEmitter.emit()"
+    (refreshEmiiter)="refreshEmitter.emit()"
   ></app-education-plan-deletion-modal>
 </div>
 <div id="semester-menu-modal-renderer" *ngIf="semestersInfoVisibility">
   <app-education-plans-semesters
     [plan]="plan"
-    (visibility)="closeSemestersInfo($event)"
+    (visibility)="semestersInfoVisibility = $event"
   ></app-education-plans-semesters>
 </div>

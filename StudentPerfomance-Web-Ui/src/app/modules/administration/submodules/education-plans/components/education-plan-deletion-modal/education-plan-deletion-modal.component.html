@@ -10,10 +10,14 @@
     <a>Оценки</a>
   </div>
   <div id="controls">
-    <button class="accept-button-modal" type="button" (click)="confirm()">
+    <button class="accept-button-modal" type="button" (click)="submit()">
       Подтвердить
     </button>
-    ><button class="danger-button-modal" type="button" (click)="decline()">
+    ><button
+      class="danger-button-modal"
+      type="button"
+      (click)="this.visibility.emit(false)"
+    >
       Отмена
     </button>
   </div>

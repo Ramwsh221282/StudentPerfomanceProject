@@ -5,6 +5,6 @@ export class TeacherRemoveNotification
   implements INotificationMessageBuilder<Teacher>
 {
   public buildMessage(parameter: Teacher): string {
-    return `Удалён преподаватель ${parameter.surname} ${parameter.name} ${parameter.thirdname} из ${parameter.department.shortName}`;
+    return `Удалён преподаватель ${parameter.surname} ${parameter.name} ${parameter.patronymic} из ${parameter.department.acronymus}`;
   }
 }

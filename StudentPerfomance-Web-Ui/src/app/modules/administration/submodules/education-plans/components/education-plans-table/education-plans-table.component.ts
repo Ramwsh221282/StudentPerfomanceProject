@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FacadeService } from '../../services/facade.service';
+import { EducationPlan } from '../../models/education-plan-interface';
+import { catchError, Observable, tap } from 'rxjs';
+import { UserOperationNotificationService } from '../../../../../../shared/services/user-notifications/user-operation-notification-service.service';
 
 @Component({
   selector: 'app-education-plans-table',
@@ -9,26 +12,33 @@ import { FacadeService } from '../../services/facade.service';
 export class EducationPlansTableComponent implements OnInit {
   protected creationModalVisibility = false;
   protected filterModalVisibility = false;
+  protected isSuccess: boolean;
+  protected isFailure: boolean;
 
-  public constructor(protected readonly facadeService: FacadeService) {}
+  protected plans: EducationPlan[];
+
+  public constructor(
+    protected readonly facadeService: FacadeService,
+    protected readonly notificationService: UserOperationNotificationService
+  ) {
+    this.plans = [];
+    this.isSuccess = false;
+    this.isFailure = false;
+  }
 
   public ngOnInit(): void {
-    this.facadeService.fetch();
-  }
-
-  protected startCreation(): void {
-    this.creationModalVisibility = true;
-  }
-
-  protected stopCreation(value: boolean): void {
-    this.creationModalVisibility = value;
-  }
-
-  protected startFilter(): void {
-    this.filterModalVisibility = true;
-  }
-
-  protected stopFilter(value: boolean): void {
-    this.filterModalVisibility = value;
+    this.facadeService
+      .fetch()
+      .pipe(
+        tap((response) => {
+          this.plans = response;
+        }),
+        catchError((error) => {
+          this.notificationService.SetMessage = error;
+          this.isFailure = true;
+          return new Observable();
+        })
+      )
+      .subscribe();
   }
 }

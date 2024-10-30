@@ -4,31 +4,30 @@ import { IFetchPolicy } from '../../../../../../shared/models/fetch-policices/fe
 import { EducationPlan } from '../education-plan-interface';
 import { BASE_API_URI } from '../../../../../../shared/models/api/api-constants';
 import { User } from '../../../../../users/services/user-interface';
-import { inject } from '@angular/core';
 import { AuthService } from '../../../../../users/services/auth.service';
+import { PaginationPayloadBuilder } from '../../../../../../shared/models/common/pagination-contract/pagination-payload-builder';
+import { TokenPayloadBuilder } from '../../../../../../shared/models/common/token-contract/token-payload-builder';
 
 export class DefaultFetchPolicy implements IFetchPolicy<EducationPlan[]> {
-  private readonly _baseApiUri = `${BASE_API_URI}/education-plans/api/read/byPage`;
+  private readonly _baseApiUri = `${BASE_API_URI}/api/education-plans/byPage`;
   private readonly _user: User;
-  private _params: HttpParams;
+  private payload: object;
 
-  public constructor() {
-    this._params = new HttpParams().set('page', 1).set('pageSize', 10);
-    const authService = inject(AuthService);
+  public constructor(private readonly authService: AuthService) {
     this._user = { ...authService.userData };
   }
 
   public executeFetchPolicy(
     httpClient: HttpClient
   ): Observable<EducationPlan[]> {
-    const params = this._params;
-    return httpClient.get<EducationPlan[]>(this._baseApiUri, { params });
+    const payload = this.payload;
+    return httpClient.post<EducationPlan[]>(this._baseApiUri, payload);
   }
 
   public addPages(page: number, pageSize: number): void {
-    this._params = new HttpParams()
-      .set('page', page)
-      .set('pageSize', pageSize)
-      .set('Token', this._user.token);
+    this.payload = {
+      pagination: PaginationPayloadBuilder(page, pageSize),
+      token: TokenPayloadBuilder(this._user),
+    };
   }
 }

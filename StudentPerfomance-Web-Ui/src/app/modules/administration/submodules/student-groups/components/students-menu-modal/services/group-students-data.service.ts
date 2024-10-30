@@ -6,6 +6,7 @@ import { IObservableFetchable } from '../../../../../../../shared/models/fetch-p
 import { Observable } from 'rxjs';
 import { Student } from '../../../../students/models/student.interface';
 import { DefaultFetchPolicy } from './fetch-policies/default-fetch-policy';
+import { AuthService } from '../../../../../../users/services/auth.service';
 
 @Injectable({
   providedIn: 'any',
@@ -16,7 +17,7 @@ export class groupStudentsDataService
   private readonly _httpClient: HttpClient;
   private _policy: IFetchPolicy<Student[]>;
 
-  public constructor() {
+  public constructor(private readonly _authService: AuthService) {
     this._httpClient = inject(HttpClient);
   }
 
@@ -25,7 +26,7 @@ export class groupStudentsDataService
   }
 
   public initialize(group: StudentGroup): void {
-    this._policy = new DefaultFetchPolicy(group);
+    this._policy = new DefaultFetchPolicy(group, this._authService);
   }
 
   public setPolicy(policy: IFetchPolicy<Student[]>): void {

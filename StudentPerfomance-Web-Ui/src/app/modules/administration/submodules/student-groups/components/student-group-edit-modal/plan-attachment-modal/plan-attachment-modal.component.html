@@ -4,36 +4,36 @@
   </div>
   <div id="content">
     <section class="creation-form">
-      <strong class="font-white">Состояние учебного плана: </strong>
-      <strong class="font-white"
-        >Год: {{ activePlan.year == 0 ? "Не выбран" : activePlan.year }}</strong
+      <div id="education-plan-info-renderer" *ngIf="group.plan != null">
+        <strong class="font-white">Состояние учебного плана: </strong>
+        <strong class="font-white">Год: {{ group.plan.year }}</strong>
+        <strong class="font-white"
+          >Направление: {{ group.plan.direction.name }}</strong
+        >
+        <strong class="font-white"
+          >Код направления: {{ group.plan.direction.code }}</strong
+        >
+        <strong class="font-white"
+          >Тип направления: {{ group.plan.direction.type }}</strong
+        >
+      </div>
+      <div id="education-plan-empty-renderer" *ngIf="group.plan == null">
+        <strong class="font-white">Учебный план не закреплен</strong>
+      </div>
+      <div
+        id="education-plan-selection-renderer"
+        *ngIf="selectedPlan.year != undefined"
       >
-      <strong class="font-white"
-        >Наименование:
-        {{
-          activePlan.direction.name == ""
-            ? "Не выбран"
-            : activePlan.direction.name
-        }}</strong
-      >
-      <strong class="font-white"
-        >Код:
-        {{
-          activePlan.direction.code == ""
-            ? "Не выбран"
-            : activePlan.direction.code
-        }}</strong
-      >
-      <strong class="font-white"
-        >Тип:
-        {{
-          activePlan.direction.type == ""
-            ? "Не выбран"
-            : activePlan.direction.type
-        }}</strong
-      >
+        <div class="creation-form">
+          <span class="font-white">Выбранный учебный план:</span>
+          <span class="font-white">{{ selectedPlan.year }}</span>
+          <span class="font-white">{{ selectedPlan.direction.name }}</span>
+          <span class="font-white">{{ selectedPlan.direction.type }}</span>
+          <span class="font-white">Нажмите "Закрепить" для подтверждения</span>
+        </div>
+      </div>
       <button
-        *ngIf="activePlan.year != 0"
+        *ngIf="group.plan != null"
         class="danger-button-modal"
         type="button"
         (click)="submitDeattachment()"
@@ -41,75 +41,41 @@
         Открепить учебный план
       </button>
     </section>
-    <strong class="font-white">Параметры фильтра</strong>
-    <div class="search-container">
-      <div class="search-inputs">
-        <label class="font-white">Год: </label>
-        <input
-          class="default-input w-400"
-          [(ngModel)]="filterPlan.year"
-          placeholder="Год"
-        />
-        <label class="font-white">Тип: </label>
-        <select class="default-select w-400" [(ngModel)]="filterPlan.direction">
-          <option disabled selected>Направление</option>
-          <option [defaultSelected]="true" [value]="'Тип направления'">
-            Тип направления
-          </option>
-          <option value="Бакалавриат">Бакалавриат</option>
-          <option value="Бакалавриат">Магистратура</option>
-        </select>
-      </div>
-      <div class="search-inputs"></div>
-      <div class="search-inputs">
-        <label class="font-white">Наименование:</label>
-        <input
-          class="default-input w-400"
-          [(ngModel)]="filterPlan.direction.name"
-          placeholder="Наименование направления"
-        />
-        <label class="font-white">Код: </label>
-        <input
-          class="default-input w-400"
-          [(ngModel)]="filterPlan.direction.code"
-          placeholder="Код направления"
-        />
-      </div>
-      <div class="search-controls">
-        <button class="accept-button-modal" (click)="searchPlans()">
-          Отфильтровать
-        </button>
-        <button class="danger-button-modal" (click)="fetchPlans()">
-          Отменить фильтр
-        </button>
-      </div>
-      <table class="search-table">
-        <thead>
-          <tr>
-            <th>Название</th>
-            <th>Код</th>
-            <th>Тип</th>
-            <th>Год</th>
-            <th>Действия</th>
-          </tr>
-        </thead>
-        <tbody>
-          @for (plan of plans; track plan.direction.code) {
-          <tr>
-            <td>{{ plan.direction.name }}</td>
-            <td>{{ plan.direction.code }}</td>
-            <td>{{ plan.direction.type }}</td>
-            <td>{{ plan.year }}</td>
-            <td>
-              <button class="accept-button" (click)="selectPlan(plan)">
-                Выбрать
-              </button>
-            </td>
-          </tr>
-          }
-        </tbody>
-      </table>
-    </div>
+    <strong class="font-white">Направления подготовки: </strong>
+    <select class="default-select w-400" (change)="selectDirection($event)">
+      @for (direction of directions; track direction.code) {
+      <option [value]="direction.code">
+        {{ direction.name }} {{ direction.type }}
+      </option>
+      }
+    </select>
+    <strong class="font-white">Учебные планы направления: </strong>
+    <table class="search-table">
+      <thead>
+        <tr>
+          <th>Название</th>
+          <th>Код</th>
+          <th>Тип</th>
+          <th>Год</th>
+          <th>Действия</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (plan of plans; track plan.direction.code) {
+        <tr>
+          <td>{{ plan.direction.name }}</td>
+          <td>{{ plan.direction.code }}</td>
+          <td>{{ plan.direction.type }}</td>
+          <td>{{ plan.year }}</td>
+          <td>
+            <button class="accept-button" (click)="selectPlan(plan)">
+              Выбрать
+            </button>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
   </div>
   <div id="controls">
     <button class="accept-button-modal" type="button" (click)="submit()">

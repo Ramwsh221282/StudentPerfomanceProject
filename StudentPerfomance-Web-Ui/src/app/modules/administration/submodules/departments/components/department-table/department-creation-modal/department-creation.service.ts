@@ -3,6 +3,9 @@ import { BASE_API_URI } from '../../../../../../../shared/models/api/api-constan
 import { inject, Injectable } from '@angular/core';
 import { Department } from '../../../models/departments.interface';
 import { Observable } from 'rxjs';
+import { AuthService } from '../../../../../../users/services/auth.service';
+import { DepartmentPayloadBuilder } from '../../../models/contracts/department-contract/department-payload-builder';
+import { TokenPayloadBuilder } from '../../../../../../../shared/models/common/token-contract/token-payload-builder';
 
 @Injectable({
   providedIn: 'any',
@@ -11,8 +14,8 @@ export class DepartmentCreationService {
   private readonly _apiUri: string;
   private readonly _httpClient: HttpClient;
 
-  public constructor() {
-    this._apiUri = `${BASE_API_URI}/teacher-departments/api/management/create`;
+  public constructor(private readonly _authService: AuthService) {
+    this._apiUri = `${BASE_API_URI}/api/teacher-departments`;
     this._httpClient = inject(HttpClient);
   }
 
@@ -23,7 +26,8 @@ export class DepartmentCreationService {
 
   private buildRequestBody(department: Department): object {
     return {
-      department: { ...department },
+      department: DepartmentPayloadBuilder(department),
+      token: TokenPayloadBuilder(this._authService.userData),
     };
   }
 }

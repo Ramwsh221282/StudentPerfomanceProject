@@ -1,10 +1,12 @@
 import { inject, Injectable } from '@angular/core';
 import { BaseService } from './base.service';
-import { IRequestBodyFactory } from '../../../../../models/RequestParamsFactory/irequest-body-factory.interface';
 import { EducationDirection } from '../models/education-direction-interface';
 import { Observable } from 'rxjs';
 import { User } from '../../../../users/services/user-interface';
 import { AuthService } from '../../../../users/services/auth.service';
+import { BASE_API_URI } from '../../../../../shared/models/api/api-constants';
+import { DirectionPayloadBuilder } from '../models/contracts/direction-payload-builder';
+import { TokenPayloadBuilder } from '../../../../../shared/models/common/token-contract/token-payload-builder';
 
 @Injectable({
   providedIn: 'any',
@@ -24,7 +26,7 @@ export class UpdateService extends BaseService {
   ): Observable<EducationDirection> {
     const body = this.buildPayload(initial, updated);
     return this.httpClient.put<EducationDirection>(
-      `${this.managementApiUri}update`,
+      `${BASE_API_URI}/api/education-direction`,
       body
     );
   }
@@ -34,9 +36,9 @@ export class UpdateService extends BaseService {
     updated: EducationDirection
   ): object {
     return {
-      initial: initial,
-      updated: updated,
-      token: this._user.token,
+      initial: DirectionPayloadBuilder(initial),
+      updated: DirectionPayloadBuilder(updated),
+      token: TokenPayloadBuilder(this._user),
     };
   }
 }

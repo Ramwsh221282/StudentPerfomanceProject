@@ -1,17 +1,21 @@
 import { Injectable } from '@angular/core';
 import { StudentGroupsService } from './student-groups-base-service';
+import { BASE_API_URI } from '../../../../../shared/models/api/api-constants';
+import { AuthService } from '../../../../users/services/auth.service';
+import { TokenPayloadBuilder } from '../../../../../shared/models/common/token-contract/token-payload-builder';
 
 @Injectable({
   providedIn: 'any',
 })
 export class StudentGroupsPaginationService extends StudentGroupsService {
+  private readonly _apiUri: string = `${BASE_API_URI}/api/student-groups/count`;
   private _totalCount: number = 0;
   private _pageSize: number = 14;
   private _pagesCount: number = 0;
   private _currentPage: number = 1;
   private _displayPages: number[] = [];
 
-  constructor() {
+  constructor(private readonly _authService: AuthService) {
     super();
   }
 
@@ -63,8 +67,11 @@ export class StudentGroupsPaginationService extends StudentGroupsService {
   }
 
   public refreshPagination() {
+    const payload = {
+      token: TokenPayloadBuilder(this._authService.userData),
+    };
     this.httpClient
-      .get<number>(`${this.readApiUri}count`)
+      .post<number>(this._apiUri, payload)
       .subscribe((response) => {
         this._totalCount = response;
         this._pagesCount = Math.ceil(this._totalCount / this._pageSize);

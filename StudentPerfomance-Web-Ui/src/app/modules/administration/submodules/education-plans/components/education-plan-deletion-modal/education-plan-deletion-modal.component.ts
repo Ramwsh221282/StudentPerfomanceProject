@@ -4,20 +4,34 @@ import { EducationPlan } from '../../models/education-plan-interface';
 import { EducationPlanDeletionHandler } from './education-plan-deletion-handler';
 import { catchError, tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
+import { ISubbmittable } from '../../../../../../shared/models/interfaces/isubbmitable';
+import { UserOperationNotificationService } from '../../../../../../shared/services/user-notifications/user-operation-notification-service.service';
 
 @Component({
   selector: 'app-education-plan-deletion-modal',
   templateUrl: './education-plan-deletion-modal.component.html',
   styleUrl: './education-plan-deletion-modal.component.scss',
 })
-export class EducationPlanDeletionModalComponent {
+export class EducationPlanDeletionModalComponent implements ISubbmittable {
   @Input({ required: true }) plan: EducationPlan;
+  @Output() successEmitter: EventEmitter<void> = new EventEmitter();
+  @Output() failureEmitter: EventEmitter<void> = new EventEmitter();
+  @Output() refreshEmiiter: EventEmitter<void> = new EventEmitter();
   @Output() visibility: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  public constructor(private readonly _facadeService: FacadeService) {}
+  public constructor(
+    private readonly _facadeService: FacadeService,
+    private readonly _notificationService: UserOperationNotificationService
+  ) {}
 
-  protected confirm(): void {
-    const handler = EducationPlanDeletionHandler(this._facadeService);
+  public submit(): void {
+    const handler = EducationPlanDeletionHandler(
+      this._notificationService,
+      this.successEmitter,
+      this.failureEmitter,
+      this.refreshEmiiter,
+      this.visibility
+    );
     this._facadeService
       .delete(this.plan)
       .pipe(
@@ -25,10 +39,5 @@ export class EducationPlanDeletionModalComponent {
         catchError((error: HttpErrorResponse) => handler.handleError(error))
       )
       .subscribe();
-    this.visibility.emit(false);
-  }
-
-  protected decline(): void {
-    this.visibility.emit(false);
   }
 }

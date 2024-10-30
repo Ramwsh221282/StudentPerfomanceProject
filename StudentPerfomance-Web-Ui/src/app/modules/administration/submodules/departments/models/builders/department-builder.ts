@@ -9,8 +9,8 @@ export class DepartmentBuilder {
     this._department = {} as Department;
     const builder: StringValueBuilder = new StringValueBuilder();
     this._department.name = builder.extractStringOrEmpty(this._department.name);
-    this._department.shortName = builder.extractStringOrEmpty(
-      this._department.shortName
+    this._department.acronymus = builder.extractStringOrEmpty(
+      this._department.acronymus
     );
   }
 
@@ -21,12 +21,12 @@ export class DepartmentBuilder {
   public buildInitialized(department: Department): Department {
     const builder: StringValueBuilder = new StringValueBuilder();
     department.name = builder.extractStringOrEmpty(this._department.name);
-    department.shortName = builder.extractStringOrEmpty(
-      this._department.shortName
+    department.acronymus = builder.extractStringOrEmpty(
+      this._department.acronymus
     );
     const shortNameBuilder: DepartmentShortNameBuilder =
       new DepartmentShortNameBuilder(department);
-    department.shortName = shortNameBuilder.buildShortName();
+    department.acronymus = shortNameBuilder.buildShortName();
     return department;
   }
 }

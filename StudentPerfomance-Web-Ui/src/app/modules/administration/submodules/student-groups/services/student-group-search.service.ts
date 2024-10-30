@@ -1,35 +1,38 @@
 import { Injectable } from '@angular/core';
 import { StudentGroupsService } from './student-groups-base-service';
 import { StudentGroup } from './studentsGroup.interface';
-import { HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { AuthService } from '../../../../users/services/auth.service';
+import { TokenPayloadBuilder } from '../../../../../shared/models/common/token-contract/token-payload-builder';
+import { BASE_API_URI } from '../../../../../shared/models/api/api-constants';
+import { StudentGroupPayloadBuilder } from '../models/contracts/student-group-contract/student-group-payload-builder';
 
 @Injectable({
   providedIn: 'any',
 })
 export class StudentGroupSearchService extends StudentGroupsService {
-  public constructor() {
+  public constructor(private readonly _authService: AuthService) {
     super();
   }
 
   public getAllGroups(): Observable<StudentGroup[]> {
-    return this.httpClient.get<StudentGroup[]>(`${this.readApiUri}all`);
+    const payload = {
+      token: TokenPayloadBuilder(this._authService.userData),
+    };
+    return this.httpClient.post<StudentGroup[]>(
+      `${BASE_API_URI}/api/student-groups/all`,
+      payload
+    );
   }
 
   public searchGroups(group: StudentGroup): Observable<StudentGroup[]> {
-    const params = this.buildRequestParams(group);
-    return this.httpClient.get<StudentGroup[]>(`${this.readApiUri}search`, {
-      params,
-    });
-  }
-
-  private buildRequestParams(group: StudentGroup): HttpParams {
-    const params: HttpParams = new HttpParams()
-      .set('Group.Name', group.name)
-      .set('Group.EducationPlan.Year', group.plan.year)
-      .set('Group.EducationPlan.Direction.Code', group.plan.direction.code)
-      .set('Group.EducationPlan.Direction.Name', group.plan.direction.name)
-      .set('Group.EducationPlan.Direction.Type', group.plan.direction.type);
-    return params;
+    const payload = {
+      group: StudentGroupPayloadBuilder(group),
+      token: TokenPayloadBuilder(this._authService.userData),
+    };
+    return this.httpClient.post<StudentGroup[]>(
+      `${BASE_API_URI}/api/student-groups/search`,
+      payload
+    );
   }
 }

@@ -1,11 +1,12 @@
 import { inject, Injectable } from '@angular/core';
 import { BaseService } from './base.service';
-import { IRequestParamsFactory } from '../../../../../models/RequestParamsFactory/irequest-params-factory.interface';
-import { HttpParams } from '@angular/common/http';
 import { EducationDirection } from '../models/education-direction-interface';
 import { Observable } from 'rxjs';
 import { User } from '../../../../users/services/user-interface';
 import { AuthService } from '../../../../users/services/auth.service';
+import { BASE_API_URI } from '../../../../../shared/models/api/api-constants';
+import { DirectionPayloadBuilder } from '../models/contracts/direction-payload-builder';
+import { TokenPayloadBuilder } from '../../../../../shared/models/common/token-contract/token-payload-builder';
 
 @Injectable({
   providedIn: 'any',
@@ -20,28 +21,28 @@ export class SearchDirectionsService extends BaseService {
   }
 
   public getAll(): Observable<EducationDirection[]> {
-    const params: HttpParams = new HttpParams().set('token', this._user.token);
-    return this.httpClient.get<EducationDirection[]>(`${this.readApiUri}all`, {
-      params,
-    });
+    return this.httpClient.post<EducationDirection[]>(
+      `${BASE_API_URI}/api/education-direction/all`,
+      {
+        token: TokenPayloadBuilder(this._user),
+      }
+    );
   }
 
   public search(
     direction: EducationDirection
   ): Observable<EducationDirection[]> {
-    const params = this.buildRequestParams(direction);
-    return this.httpClient.get<EducationDirection[]>(
-      `${this.readApiUri}search`,
-      { params }
+    const payload = this.buildPayload(direction);
+    return this.httpClient.post<EducationDirection[]>(
+      `${BASE_API_URI}/api/education-direction/search`,
+      payload
     );
   }
 
-  private buildRequestParams(direction: EducationDirection): HttpParams {
-    const params: HttpParams = new HttpParams()
-      .set('Direction.Code', direction.code)
-      .set('Direction.Name', direction.name)
-      .set('Direction.Type', direction.type)
-      .set('Token', this._user.token);
-    return params;
+  private buildPayload(direction: EducationDirection): object {
+    return {
+      direction: DirectionPayloadBuilder(direction),
+      token: TokenPayloadBuilder(this._user),
+    };
   }
 }

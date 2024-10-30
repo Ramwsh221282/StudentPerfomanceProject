@@ -1,37 +1,29 @@
 import { Injectable } from '@angular/core';
 import { StudentGroupsService } from './student-groups-base-service';
 import { StudentGroup } from './studentsGroup.interface';
-import { IRequestBodyFactory } from '../../../../../models/RequestParamsFactory/irequest-body-factory.interface';
+import { BASE_API_URI } from '../../../../../shared/models/api/api-constants';
+import { AuthService } from '../../../../users/services/auth.service';
+import { StudentGroupPayloadBuilder } from '../models/contracts/student-group-contract/student-group-payload-builder';
+import { TokenPayloadBuilder } from '../../../../../shared/models/common/token-contract/token-payload-builder';
 
 @Injectable({
   providedIn: 'any',
 })
 export class StudentGroupsDeleteDataService extends StudentGroupsService {
-  public constructor() {
+  private readonly _apiUri: string = `${BASE_API_URI}/api/student-groups`;
+  public constructor(private readonly _authService: AuthService) {
     super();
   }
 
-  public delete(factory: IRequestBodyFactory) {
-    const body = factory.Body;
-    return this.httpClient.delete<StudentGroup>(
-      `${this.managementApiUri}remove`,
-      { body }
-    );
+  public delete(group: StudentGroup) {
+    const body = this.buildPayload(group);
+    return this.httpClient.delete<StudentGroup>(this._apiUri, { body });
   }
 
-  public createRequestBodyFactory(group: StudentGroup): IRequestBodyFactory {
-    return new HttpRequestBody(group);
-  }
-}
-
-class HttpRequestBody implements IRequestBodyFactory {
-  private readonly _body: object;
-
-  public constructor(group: StudentGroup) {
-    this._body = { group: { name: group.name } };
-  }
-
-  public get Body(): object {
-    return this._body;
+  private buildPayload(group: StudentGroup): object {
+    return {
+      group: StudentGroupPayloadBuilder(group),
+      token: TokenPayloadBuilder(this._authService.userData),
+    };
   }
 }

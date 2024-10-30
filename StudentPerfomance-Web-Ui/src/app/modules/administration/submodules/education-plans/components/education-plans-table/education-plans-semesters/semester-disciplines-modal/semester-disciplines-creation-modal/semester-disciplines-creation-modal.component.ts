@@ -47,20 +47,12 @@ export class SemesterDisciplinesCreationModalComponent
     this.isFailure = true;
   }
 
-  public manageFailure(value: boolean): void {
-    this.isFailure = value;
-  }
-
   public notifySuccess(): void {
     this.isSuccess = true;
   }
 
-  public manageSuccess(value: boolean): void {
-    this.isSuccess = value;
-  }
-
   public submit(): void {
-    const plan = this.createSemesterPlanFromForm();
+    const plan = this.createSemesterPlanFromForm(this.semester);
     const handler = SemesterPlanCreationHandler(
       this._creationService,
       this.notificationService,
@@ -68,7 +60,7 @@ export class SemesterDisciplinesCreationModalComponent
       this
     );
     this._creationService
-      .create(this.semester, plan)
+      .create(plan)
       .pipe(
         tap((response) => {
           handler.handle(response);

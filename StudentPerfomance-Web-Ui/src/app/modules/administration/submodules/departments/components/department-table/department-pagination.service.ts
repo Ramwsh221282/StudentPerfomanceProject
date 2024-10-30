@@ -1,6 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { BASE_API_URI } from '../../../../../../shared/models/api/api-constants';
+import { AuthService } from '../../../../../users/services/auth.service';
+import { TokenPayloadBuilder } from '../../../../../../shared/models/common/token-contract/token-payload-builder';
 
 @Injectable({
   providedIn: 'any',
@@ -8,6 +10,7 @@ import { BASE_API_URI } from '../../../../../../shared/models/api/api-constants'
 export class DepartmentPaginationService {
   private readonly _httpClient: HttpClient;
   private readonly _apiUri: string;
+  private readonly _authService: AuthService;
   private _totalCount: number = 0;
   private _pageSize: number = 14;
   private _pagesCount: number = 0;
@@ -15,8 +18,9 @@ export class DepartmentPaginationService {
   private _displayPages: number[] = [];
 
   constructor() {
+    this._authService = inject(AuthService);
     this._httpClient = inject(HttpClient);
-    this._apiUri = `${BASE_API_URI}/teacher-departments/api/read/count`;
+    this._apiUri = `${BASE_API_URI}/api/teacher-departments/count`;
   }
 
   public get currentPage(): number {
@@ -67,26 +71,32 @@ export class DepartmentPaginationService {
   }
 
   public refreshPagination() {
-    this._httpClient.get<number>(this._apiUri).subscribe((response) => {
-      this._totalCount = response;
-      this._pagesCount = Math.ceil(this._totalCount / this._pageSize);
-      this._displayPages = [];
-      let startPage = this._currentPage - 2;
-      let endPage = this._currentPage + 2;
-      if (startPage < 1) {
-        startPage = 1;
-        endPage = Math.min(this._totalCount, 5);
-      }
-      if (endPage > this._pagesCount) {
-        endPage = this._pagesCount;
-        startPage = Math.max(1, this._pagesCount - 4);
-      }
-      for (let i = startPage; i <= endPage; i++) {
-        this._displayPages.push(i);
-      }
-
-      this.pushFirstPage();
-    });
+    const payload: object = {
+      contract: {
+        token: this._authService.userData.token,
+      },
+    };
+    this._httpClient
+      .post<number>(this._apiUri, payload)
+      .subscribe((response) => {
+        this._totalCount = response;
+        this._pagesCount = Math.ceil(this._totalCount / this._pageSize);
+        this._displayPages = [];
+        let startPage = this._currentPage - 2;
+        let endPage = this._currentPage + 2;
+        if (startPage < 1) {
+          startPage = 1;
+          endPage = Math.min(this._totalCount, 5);
+        }
+        if (endPage > this._pagesCount) {
+          endPage = this._pagesCount;
+          startPage = Math.max(1, this._pagesCount - 4);
+        }
+        for (let i = startPage; i <= endPage; i++) {
+          this._displayPages.push(i);
+        }
+        this.pushFirstPage();
+      });
   }
 
   private pushFirstPage() {

@@ -46,7 +46,6 @@ export class TeacherCreationModalComponent
       this.successEmitter,
       this.failureEmitter
     );
-    console.log(teacher);
     this._creationService
       .create(teacher)
       .pipe(

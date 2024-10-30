@@ -1,25 +1,29 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IFetchPolicy } from '../../../../../../shared/models/fetch-policices/fetch-policy-interface';
 import { StudentGroup } from '../../services/studentsGroup.interface';
 import { BASE_API_URI } from '../../../../../../shared/models/api/api-constants';
+import { AuthService } from '../../../../../users/services/auth.service';
+import { PaginationPayloadBuilder } from '../../../../../../shared/models/common/pagination-contract/pagination-payload-builder';
+import { TokenPayloadBuilder } from '../../../../../../shared/models/common/token-contract/token-payload-builder';
 
 export class DefaultFetchPolicy implements IFetchPolicy<StudentGroup[]> {
-  private readonly _apiUri: string = `${BASE_API_URI}/student-groups/api/read/byPage`;
-  private _params: HttpParams;
+  private readonly _apiUri: string = `${BASE_API_URI}/api/student-groups/byPage`;
+  private _payload: object;
 
-  public constructor() {
-    this._params = new HttpParams();
-  }
+  public constructor(private readonly _authService: AuthService) {}
 
   public executeFetchPolicy(
     httpClient: HttpClient
   ): Observable<StudentGroup[]> {
-    const params = this._params;
-    return httpClient.get<StudentGroup[]>(this._apiUri, { params });
+    const payload = this._payload;
+    return httpClient.post<StudentGroup[]>(this._apiUri, payload);
   }
 
-  addPages(page: number, pageSize: number): void {
-    this._params = new HttpParams().set('page', page).set('pageSize', pageSize);
+  public addPages(page: number, pageSize: number): void {
+    this._payload = {
+      pagination: PaginationPayloadBuilder(page, pageSize),
+      token: TokenPayloadBuilder(this._authService.userData),
+    };
   }
 }

@@ -5,13 +5,14 @@ import { ISuccessNotificatable } from '../../../../../../../shared/models/interf
 import { StudentGroup } from '../../../services/studentsGroup.interface';
 import { EducationPlan } from '../../../../education-plans/models/education-plan-interface';
 import { EducationPlanSearchService } from './education-plan-search.service';
-import { EducationPlanBuilder } from '../../../../education-plans/models/builders/education-plan-builder';
 import { EducationPlanAttachmentHandler } from './education-plan-attachment-handler';
 import { EducationPlanAttachmentService } from './education-plan-attachment.service';
 import { UserOperationNotificationService } from '../../../../../../../shared/services/user-notifications/user-operation-notification-service.service';
 import { catchError, tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { EducationPlanDeattachmentHandler } from './edicaton-plan-deattachment-handler';
+import { EducationDirection } from '../../../../education-directions/models/education-direction-interface';
+import { SearchDirectionsService } from '../../../../education-directions/services/search-directions.service';
 
 @Component({
   selector: 'app-plan-attachment-modal',
@@ -32,17 +33,22 @@ export class PlanAttachmentModalComponent
     new EventEmitter<StudentGroup>();
 
   protected plans: EducationPlan[];
-  protected activePlan: EducationPlan;
-  protected filterPlan: EducationPlan;
+  protected directions: EducationDirection[];
+
   protected isSuccess: boolean;
   protected isFailure: boolean;
 
+  protected selectedPlan: EducationPlan;
+
   public constructor(
-    private readonly _searchService: EducationPlanSearchService,
+    private readonly _directionsFetchService: SearchDirectionsService,
+    private readonly _plansFetchService: EducationPlanSearchService,
     private readonly _attachmentService: EducationPlanAttachmentService,
     protected readonly notificationService: UserOperationNotificationService
   ) {
+    this.directions = [];
     this.plans = [];
+    this.selectedPlan = {} as EducationPlan;
   }
 
   public notifySuccess(): void {
@@ -69,13 +75,12 @@ export class PlanAttachmentModalComponent
     );
 
     this._attachmentService
-      .attachPlan(this.group, this.activePlan)
+      .attachPlan(this.group, this.selectedPlan)
       .pipe(
         tap((response) => {
           handler.handle(response);
-          this.activePlan = response.plan;
-          this.activePlan.direction = response.plan.direction;
           this.group = response;
+          this.selectedPlan = {} as EducationPlan;
         }),
         catchError((error: HttpErrorResponse) => handler.handleError(error))
       )
@@ -94,8 +99,6 @@ export class PlanAttachmentModalComponent
       .pipe(
         tap((response) => {
           handler.handle(response);
-          this.activePlan = response.plan;
-          this.activePlan.direction = response.plan.direction;
           this.group = response;
         }),
         catchError((error: HttpErrorResponse) => handler.handleError(error))
@@ -104,11 +107,9 @@ export class PlanAttachmentModalComponent
   }
 
   public ngOnInit(): void {
-    const builder: EducationPlanBuilder = new EducationPlanBuilder();
-    if (this.group.plan.year == 0) this.activePlan = builder.buildDefault();
-    else this.activePlan = this.group.plan;
-    this.filterPlan = builder.buildDefault();
-    this.fetchPlans();
+    if (this.group.plan == null) {
+      this.fetchDirections();
+    }
   }
 
   protected close(): void {
@@ -117,18 +118,30 @@ export class PlanAttachmentModalComponent
   }
 
   protected selectPlan(plan: EducationPlan): void {
-    this.activePlan = plan;
+    this.selectedPlan = { ...plan };
+    this.selectedPlan.direction = { ...plan.direction };
   }
 
-  protected fetchPlans(): void {
-    this._searchService.getAll().subscribe((response) => {
+  protected fetchPlans(direction: EducationDirection): void {
+    this._plansFetchService.getByDirection(direction).subscribe((response) => {
       this.plans = response;
     });
   }
 
-  protected searchPlans(): void {
-    this._searchService.search(this.filterPlan).subscribe((response) => {
-      this.plans = response;
+  protected fetchDirections(): void {
+    this._directionsFetchService.getAll().subscribe((response) => {
+      this.directions = response;
+      if (this.directions.length > 0) {
+        this.fetchPlans(this.directions[0]);
+      }
     });
+  }
+
+  protected selectDirection(direction: any): void {
+    const selectedCode: string = direction.target.value;
+    const requestedDirection: EducationDirection | undefined =
+      this.directions.find((d) => d.code == selectedCode);
+    const selectedDirection: EducationDirection = requestedDirection!;
+    this.fetchPlans(selectedDirection);
   }
 }

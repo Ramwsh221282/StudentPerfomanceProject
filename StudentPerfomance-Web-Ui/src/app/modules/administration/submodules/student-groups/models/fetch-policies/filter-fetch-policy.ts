@@ -3,46 +3,35 @@ import { Observable } from 'rxjs';
 import { IFetchPolicy } from '../../../../../../shared/models/fetch-policices/fetch-policy-interface';
 import { StudentGroup } from '../../services/studentsGroup.interface';
 import { BASE_API_URI } from '../../../../../../shared/models/api/api-constants';
+import { AuthService } from '../../../../../users/services/auth.service';
+import { StudentGroupPayloadBuilder } from '../contracts/student-group-contract/student-group-payload-builder';
+import { PaginationPayloadBuilder } from '../../../../../../shared/models/common/pagination-contract/pagination-payload-builder';
+import { TokenPayloadBuilder } from '../../../../../../shared/models/common/token-contract/token-payload-builder';
 
 export class FilterFetchPolicy implements IFetchPolicy<StudentGroup[]> {
-  private readonly _apiUri: string = `${BASE_API_URI}/student-groups/api/read/filter`;
+  private readonly _apiUri: string = `${BASE_API_URI}/api/student-groups/filter`;
   private readonly _group: StudentGroup;
-  private _httpParams: HttpParams;
+  private _payload: object;
 
-  public constructor(group: StudentGroup) {
+  public constructor(
+    group: StudentGroup,
+    private readonly authService: AuthService
+  ) {
     this._group = group;
-    this._httpParams = new HttpParams()
-      .set('Group.Name', group.groupName)
-      .set('Group.EducationPlan.Year', group.plan.year)
-      .set('Group.EducationPlan.Direction.Code', group.plan.direction.code)
-      .set('Group.EducationPlan.Direction.Name', group.plan.direction.name)
-      .set('Group.EducationPlan.Direction.Type', group.plan.direction.type);
   }
 
   public executeFetchPolicy(
     httpClient: HttpClient
   ): Observable<StudentGroup[]> {
-    const params = this._httpParams;
-    return httpClient.get<StudentGroup[]>(this._apiUri, { params });
+    const payload = this._payload;
+    return httpClient.post<StudentGroup[]>(this._apiUri, payload);
   }
 
   public addPages(page: number, pageSize: number): void {
-    this._httpParams = new HttpParams()
-      .set('Group.Name', this._group.groupName)
-      .set('Group.EducationPlan.Year', this._group.plan.year)
-      .set(
-        'Group.EducationPlan.Direction.Code',
-        this._group.plan.direction.code
-      )
-      .set(
-        'Group.EducationPlan.Direction.Name',
-        this._group.plan.direction.name
-      )
-      .set(
-        'Group.EducationPlan.Direction.Type',
-        this._group.plan.direction.type
-      )
-      .set('Page', page)
-      .set('PageSize', pageSize);
+    this._payload = {
+      group: StudentGroupPayloadBuilder(this._group),
+      pagination: PaginationPayloadBuilder(page, pageSize),
+      token: TokenPayloadBuilder(this.authService.userData),
+    };
   }
 }

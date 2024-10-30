@@ -1,9 +1,9 @@
 <div class="education-plans-table-wrapper">
   <div class="education-plans-controls-container">
-    <button class="accept-button" (click)="startCreation()">
+    <button class="accept-button" (click)="creationModalVisibility = true">
       Добавить учебный план
     </button>
-    <button class="accept-button" (click)="startFilter()">
+    <button class="accept-button" (click)="filterModalVisibility = true">
       Отфильтровать список
     </button>
   </div>
@@ -17,9 +17,13 @@
         <strong>Тип направления</strong>
         <strong>Действия</strong>
       </div>
-      @for (plan of facadeService.plans; track plan.entityNumber) {
+
+      @for (plan of plans; track plan.entityNumber) {
       <app-education-plans-table-row
         [plan]="plan"
+        (failureEmitter)="isFailure = true"
+        (successEmitter)="isSuccess = true"
+        (refreshEmitter)="ngOnInit()"
       ></app-education-plans-table-row>
       }
     </div>
@@ -30,11 +34,28 @@
 </div>
 <div id="creation-modal-renderer" *ngIf="creationModalVisibility">
   <app-education-plan-creation-modal
-    (visibility)="stopCreation($event)"
+    (visibility)="creationModalVisibility = $event"
+    (failureEmitter)="isFailure = true"
+    (successEmitter)="isSuccess = true"
+    (refreshEmitter)="ngOnInit()"
   ></app-education-plan-creation-modal>
 </div>
 <div id="filter-modal-renderer" *ngIf="filterModalVisibility">
   <app-education-plan-filter-modal
-    (visibility)="stopFilter($event)"
+    (visibility)="filterModalVisibility = $event"
+    (failure)="isFailure = true"
+    (filteredData)="plans = $event"
   ></app-education-plan-filter-modal>
+</div>
+<div id="success-modal-renderer" *ngIf="isSuccess">
+  <app-success-result-notification
+    [message]="notificationService.Message"
+    (visibilityEmitter)="isSuccess = $event"
+  ></app-success-result-notification>
+</div>
+<div id="failure-modal-renderer" *ngIf="isFailure">
+  <app-failure-result-notification
+    [message]="notificationService.Message"
+    (visibilityEmitter)="isFailure = $event"
+  ></app-failure-result-notification>
 </div>

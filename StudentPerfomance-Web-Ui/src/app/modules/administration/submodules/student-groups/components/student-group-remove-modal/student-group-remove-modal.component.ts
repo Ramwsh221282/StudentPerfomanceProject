@@ -11,11 +11,12 @@ import { HttpErrorResponse } from '@angular/common/http';
   selector: 'app-student-group-remove-modal',
   templateUrl: './student-group-remove-modal.component.html',
   styleUrl: './student-group-remove-modal.component.scss',
-  providers: [UserOperationNotificationService],
 })
 export class StudentGroupRemoveModalComponent implements IFailureNotificatable {
   @Input({ required: true }) group: StudentGroup;
   @Output() visibility: EventEmitter<boolean> = new EventEmitter();
+  @Output() success: EventEmitter<void> = new EventEmitter();
+  @Output() failure: EventEmitter<void> = new EventEmitter();
 
   protected isFailure: boolean;
 
@@ -44,8 +45,14 @@ export class StudentGroupRemoveModalComponent implements IFailureNotificatable {
     this._facadeService
       .delete(this.group)
       .pipe(
-        tap((response) => handler.handle(response)),
-        catchError((error: HttpErrorResponse) => handler.handleError(error))
+        tap((response) => {
+          handler.handle(response);
+          this.success.emit();
+        }),
+        catchError((error: HttpErrorResponse) => {
+          this.failure.emit();
+          return handler.handleError(error);
+        })
       )
       .subscribe();
   }

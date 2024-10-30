@@ -14,14 +14,14 @@ export class TeacherEditNotification
     return `Предыдущая информация:
 	Имя: ${this._teacher.name}
 	Фамилия: ${this._teacher.surname}
-	Отчество: ${this._teacher.thirdname}
-	Условие работы: ${this._teacher.workingCondition}
+	Отчество: ${this._teacher.patronymic}
+	Условие работы: ${this._teacher.state}
 	Должность: ${this._teacher.jobTitle}
 	Новая информация:
 	Имя: ${parameter.name}
 	Фамилия: ${parameter.surname}
-	Отчество: ${parameter.thirdname}
-	Условие работы: ${parameter.workingCondition}
+	Отчество: ${parameter.patronymic}
+	Условие работы: ${parameter.state}
 	Должность: ${parameter.jobTitle}`;
   }
 }

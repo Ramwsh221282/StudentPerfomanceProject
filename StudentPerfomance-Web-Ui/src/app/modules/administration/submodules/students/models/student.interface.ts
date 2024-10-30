@@ -3,7 +3,7 @@ import { StudentGroup } from '../../student-groups/services/studentsGroup.interf
 export interface Student {
   name: string;
   surname: string;
-  thirdname: string;
+  patronymic: string;
   recordbook: number;
   state: string;
   group: StudentGroup;

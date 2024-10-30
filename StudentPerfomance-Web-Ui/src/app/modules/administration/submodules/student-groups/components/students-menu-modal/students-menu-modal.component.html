@@ -2,10 +2,6 @@
   <div id="header">
     <div class="header-container">
       <strong>{{ group.name }}</strong>
-      <strong>{{ group.plan.direction.code }}</strong>
-      <strong>{{ group.plan.direction.type }}</strong>
-      <strong>{{ group.plan.direction.name }}</strong>
-      <strong>{{ group.plan.year }}</strong>
     </div>
   </div>
   <div id="content">
@@ -47,7 +43,7 @@
           <tr>
             <td>{{ student.surname }}</td>
             <td>{{ student.name }}</td>
-            <td>{{ student.thirdname }}</td>
+            <td>{{ student.patronymic }}</td>
             <td>{{ student.recordbook }}</td>
             <td>{{ student.state }}</td>
             <td>
@@ -79,6 +75,7 @@
   <app-student-creation-modal
     [group]="group"
     (visibility)="closeCreationModal($event)"
+    (refresh)="fetchData()"
   ></app-student-creation-modal>
 </div>
 <div id="deletion-modal-renderer" *ngIf="deletionModalVisibility">

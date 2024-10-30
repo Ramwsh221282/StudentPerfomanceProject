@@ -6,6 +6,7 @@ import { StudentGroupsMergeDataService } from '../../services/student-groups-mer
 import { StudentGroupsPaginationService } from '../../services/student-groups-pagination.service';
 import { StudentGroupsUpdateDataService } from '../../services/student-groups-update-data.service';
 import { StudentGroupsFacadeService } from '../../services/student-groups-facade.service';
+import { UserOperationNotificationService } from '../../../../../../shared/services/user-notifications/user-operation-notification-service.service';
 
 @Component({
   selector: 'app-student-groups-page',
@@ -19,6 +20,7 @@ import { StudentGroupsFacadeService } from '../../services/student-groups-facade
     StudentGroupsPaginationService,
     StudentGroupsUpdateDataService,
     StudentGroupsFacadeService,
+    UserOperationNotificationService,
   ],
 })
 export class StudentGroupsPageComponent {}
