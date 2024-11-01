@@ -12,24 +12,27 @@ public class TeachersRepository : ITeachersRepository
 
 	public async Task Insert(Teacher entity)
 	{
-		_context.Departments.Attach(entity.Department);
 		entity.SetNumber(await GenerateEntityNumber());
-		await _context.Teachers.AddAsync(entity);
-		await _context.SaveChangesAsync();
-		// string sql =
-		// "INSERT INTO Teachers (Id, JobTitle, WorkingCondition, DepartmentId, Name, Thirdname, Surname, EntityNumber) VALUES (@Id, @JobTitle, @WorkingCondition, @DepartmentId, @Name, @Thirdname, @Surname, @EntityNumber)";
-		// SqliteParameter[] parameters = new[]
-		// {
-		// 	new SqliteParameter("@Id", entity.Id),
-		// 	new SqliteParameter("@JobTitle", entity.JobTitle.JobTitle),
-		// 	new SqliteParameter("@WorkingCondition", entity.State.State),
-		// 	new SqliteParameter("@DepartmentId", entity.Department.Id),
-		// 	new SqliteParameter("@Name", entity.Name.Name),
-		// 	new SqliteParameter("@Thirdname", entity.Name.Patronymic),
-		// 	new SqliteParameter("@Surname", entity.Name.Surname),
-		// 	new SqliteParameter("@EntityNumber", entity.EntityNumber)
-		// };
-		// await _context.Database.ExecuteSqlRawAsync(sql, parameters);
+
+		string sql =
+		"""
+		INSERT INTO Teachers
+		(Id, JobTitle_JobTitle, State_State, DepartmentId, Name_Name, Name_Patronymic, Name_Surname, EntityNumber)
+		VALUES (@Id, @JobTitle, @State, @DepartmentId, @Name, @Patronymic, @Surname, @EntityNumber)
+		""";
+
+		SqliteParameter[] parameters = new[]
+		{
+			new SqliteParameter("@Id", entity.Id),
+			new SqliteParameter("@JobTitle", entity.JobTitle.JobTitle),
+			new SqliteParameter("@State", entity.State.State),
+			new SqliteParameter("@DepartmentId", entity.Department.Id),
+			new SqliteParameter("@Name", entity.Name.Name),
+			new SqliteParameter("@Patronymic", entity.Name.Patronymic),
+			new SqliteParameter("@Surname", entity.Name.Surname),
+			new SqliteParameter("@EntityNumber", entity.EntityNumber)
+		};
+		await _context.Database.ExecuteSqlRawAsync(sql, parameters);
 	}
 
 	public async Task<int> GenerateEntityNumber()
@@ -55,9 +58,6 @@ public class TeachersRepository : ITeachersRepository
 
 	public async Task Remove(Teacher entity) =>
 		await _context.Teachers
-		.Include(t => t.Disciplines)
-		.ThenInclude(d => d.Semester)
-		.ThenInclude(s => s.Plan)
 		.Where(t => t.Id == entity.Id)
 		.ExecuteDeleteAsync();
 

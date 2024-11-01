@@ -98,3 +98,12 @@
     (visibilityEmitter)="manageFailure($event)"
   ></app-failure-result-notification>
 </div>
+<div id="semester-number-selection-modal" *ngIf="isSemesterSelectionVisible">
+  <app-semester-number-selection-modal
+    [educationPlan]="selectedPlan"
+    [group]="group"
+    (failure)="isFailure = true"
+    (success)="isSuccess = true"
+    (visibility)="isSemesterSelectionVisible = false"
+  ></app-semester-number-selection-modal>
+</div>

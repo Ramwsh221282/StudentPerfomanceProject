@@ -3,6 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using SPerfomance.DataAccess.Configurations;
 using SPerfomance.Domain.Models.EducationDirections;
 using SPerfomance.Domain.Models.EducationPlans;
+using SPerfomance.Domain.Models.PerfomanceContext.Models.Assignments;
+using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions;
+using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentsWeeks;
 using SPerfomance.Domain.Models.SemesterPlans;
 using SPerfomance.Domain.Models.Semesters;
 using SPerfomance.Domain.Models.StudentGroups;
@@ -24,6 +27,9 @@ internal sealed class DatabaseContext : DbContext
 	public DbSet<EducationDirection> EducationDirections { get; set; } = null!;
 	public DbSet<EducationPlan> EducationPlans { get; set; } = null!;
 	public DbSet<User> Users { get; set; } = null!;
+	public DbSet<AssignmentSession> Sessions { get; set; } = null!;
+	public DbSet<AssignmentWeek> Weeks { get; set; } = null!;
+	public DbSet<Assignment> Assignments { get; set; } = null!;
 
 	protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 	{
@@ -41,5 +47,8 @@ internal sealed class DatabaseContext : DbContext
 		modelBuilder.ApplyConfiguration(new EducationDirectionsConfiguration());
 		modelBuilder.ApplyConfiguration(new EducationPlanConfiguration());
 		modelBuilder.ApplyConfiguration(new UsersConfiguration());
+		modelBuilder.ApplyConfiguration(new AssignmentSessionConfiguration());
+		modelBuilder.ApplyConfiguration(new AssignmentWeekConfiguration());
+		modelBuilder.ApplyConfiguration(new AssignmentsConfiguration());
 	}
 }

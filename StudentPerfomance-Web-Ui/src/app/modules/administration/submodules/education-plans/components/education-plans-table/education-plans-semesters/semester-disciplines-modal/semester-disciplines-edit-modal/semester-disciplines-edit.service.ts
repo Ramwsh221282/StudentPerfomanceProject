@@ -9,6 +9,8 @@ import { EducationPlanPayloadBuilder } from '../../../../../models/contracts/edu
 import { SemesterPayloadBuilder } from '../../../../../models/contracts/semester-contract/semester-payload-builder';
 import { SemesterPlanPayloadBuilder } from '../models/contracts/semester-plan-contract/semester-plan-payload.builder';
 import { TokenPayloadBuilder } from '../../../../../../../../../shared/models/common/token-contract/token-payload-builder';
+import { DepartmentPayloadBuilder } from '../../../../../../departments/models/contracts/department-contract/department-payload-builder';
+import { TeacherPayloadBuilder } from '../../../../../../teachers/contracts/teacher-contract/teacher-payload-builder';
 
 @Injectable({
   providedIn: 'any',
@@ -21,22 +23,34 @@ export class SemesterDisciplinesEditService {
   }
 
   public attachTeacher(semesterPlan: SemesterPlan): Observable<SemesterPlan> {
-    const apiUri: string = `${BASE_API_URI}/semester-plans/api/management/attach-teacher`;
+    console.log(semesterPlan);
+    const apiUri: string = `${BASE_API_URI}/api/semester-plans/attach-teacher`;
     const body = {
-      plan: { ...semesterPlan },
-      teacher: { ...semesterPlan.teacher },
-      token: this._authService.userData.token,
+      direction: DirectionPayloadBuilder(
+        semesterPlan.semester.educationPlan.direction
+      ),
+      plan: EducationPlanPayloadBuilder(semesterPlan.semester.educationPlan),
+      semester: SemesterPayloadBuilder(semesterPlan.semester),
+      discipline: SemesterPlanPayloadBuilder(semesterPlan),
+      department: DepartmentPayloadBuilder(semesterPlan.teacher.department),
+      teacher: TeacherPayloadBuilder(semesterPlan.teacher),
+      token: TokenPayloadBuilder(this._authService.userData),
     };
-    return this._httpClient.put<SemesterPlan>(apiUri, body);
+    return this._httpClient.post<SemesterPlan>(apiUri, body);
   }
 
   public deattachTeacher(semesterPlan: SemesterPlan): Observable<SemesterPlan> {
-    const apiUri: string = `${BASE_API_URI}/semester-plans/api/management/deattach-teacher`;
+    const apiUri: string = `${BASE_API_URI}/api/semester-plans/deattach-teacher`;
     const body = {
-      plan: { ...semesterPlan },
-      token: this._authService.userData.token,
+      direction: DirectionPayloadBuilder(
+        semesterPlan.semester.educationPlan.direction
+      ),
+      plan: EducationPlanPayloadBuilder(semesterPlan.semester.educationPlan),
+      semester: SemesterPayloadBuilder(semesterPlan.semester),
+      discipline: SemesterPlanPayloadBuilder(semesterPlan),
+      token: TokenPayloadBuilder(this._authService.userData),
     };
-    return this._httpClient.put<SemesterPlan>(apiUri, body);
+    return this._httpClient.post<SemesterPlan>(apiUri, body);
   }
 
   public changeName(

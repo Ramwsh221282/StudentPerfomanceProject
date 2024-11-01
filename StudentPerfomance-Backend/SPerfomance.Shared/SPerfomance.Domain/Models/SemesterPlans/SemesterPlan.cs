@@ -31,7 +31,7 @@ public class SemesterPlan : DomainEntity
 
 	internal Result<SemesterPlan> AttachTeacher(Teacher teacher)
 	{
-		if (teacher != null)
+		if (Teacher != null)
 			return Result<SemesterPlan>.Failure(SemesterPlanErrors.TeacherAlreadyAttacher());
 
 		Teacher = teacher;
@@ -56,6 +56,7 @@ public class SemesterPlan : DomainEntity
 		if (Teacher == null)
 			return Result<SemesterPlan>.Success(this);
 
+		Teacher = null;
 		return Result<SemesterPlan>.Success(this);
 	}
 

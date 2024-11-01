@@ -22,7 +22,7 @@ public class AttachEducationPlanCommandHandler
 		if (command.Plan == null)
 			return Result<StudentGroup>.Failure(EducationPlanErrors.NotFoundError());
 
-		Result<StudentGroup> group = command.Plan.AddStudentGroup(command.Group);
+		Result<StudentGroup> group = command.Plan.AddStudentGroup(command.Group, command.SemesterNumber);
 		if (!group.IsFailure)
 			await _repository.AttachEducationPlanId(group.Value);
 

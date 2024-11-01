@@ -60,4 +60,7 @@ public class TeacherName : DomainValueObject
 		yield return Surname;
 		yield return Patronymic;
 	}
+
+	public override string ToString() =>
+		$"{Surname} {Name[0]} {Patronymic[0]}";
 }

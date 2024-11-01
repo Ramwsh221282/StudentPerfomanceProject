@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+RYeXH3QO+u7MefYXbVCLHVgss1OnTSvoKYaKMTJp5zNR3z0TeuU/haeBSn/+Wd9by0qZnQ5q+Yha5jwkamAHQ==",
+  "dgSpecHash": "eG8vkvvnezwDY/XNvldIQ7B/xL0A9eObFTeK1VYLdrnXE9/8pkyN9V0WcQe36vasEz3G8LMdLGyME6Rg1maoAQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Ramwsh\\Desktop\\SPerfomanceVerticalSlises\\SPerfomance.Shared\\SPerfomance.Domain\\SPerfomance.Domain.csproj",
+  "projectFilePath": "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomance-Backend\\SPerfomance.Shared\\SPerfomance.Domain\\SPerfomance.Domain.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

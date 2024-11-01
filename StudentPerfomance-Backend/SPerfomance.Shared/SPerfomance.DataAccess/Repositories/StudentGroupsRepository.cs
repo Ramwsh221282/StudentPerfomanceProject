@@ -12,17 +12,19 @@ public class StudentGroupsRepository : IStudentGroupsRepository
 
 	public async Task AttachEducationPlanId(StudentGroup group)
 	{
-		string sql = "UPDATE GROUPS SET EducationPlanId = @EducationPlanId WHERE Id = @Id";
+		string sql = "UPDATE GROUPS SET EducationPlanId = @EducationPlanId, ActiveGroupSemesterId = @SemesterId WHERE Id = @Id";
 		SqliteParameter[] parameters =
 		[
 			new("@EducationPlanId", group.EducationPlan!.Id),
-			new("@Id", group.Id)];
+			new("@Id", group.Id),
+			new("@SemesterId", group.ActiveGroupSemester!.Id)
+			];
 		await _context.Database.ExecuteSqlRawAsync(sql, parameters);
 	}
 
 	public async Task DeattachEducationPlanId(StudentGroup group)
 	{
-		string sql = "UPDATE GROUPS SET EducationPlanId = NULL WHERE Id = @Id";
+		string sql = "UPDATE GROUPS SET EducationPlanId = NULL, ActiveGroupSemesterId = NULL WHERE Id = @Id";
 		SqliteParameter parameter = new SqliteParameter("@Id", group.Id);
 		await _context.Database.ExecuteSqlRawAsync(sql, parameter);
 	}

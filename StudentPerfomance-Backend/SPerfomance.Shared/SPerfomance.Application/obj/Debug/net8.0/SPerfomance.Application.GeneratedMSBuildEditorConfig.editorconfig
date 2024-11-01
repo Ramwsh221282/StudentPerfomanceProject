@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = SPerfomance.Application
-build_property.ProjectDir = C:\Users\Ramwsh\Desktop\SPerfomanceVerticalSlises\SPerfomance.Shared\SPerfomance.Application\
+build_property.ProjectDir = C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Shared\SPerfomance.Application\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

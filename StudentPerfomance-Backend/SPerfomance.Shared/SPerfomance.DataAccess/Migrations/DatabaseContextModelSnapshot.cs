@@ -67,6 +67,142 @@ namespace SPerfomance.DataAccess.Migrations
                     b.ToTable("EducationPlans");
                 });
 
+            modelBuilder.Entity("SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions.AssignmentSession", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("EntityNumber")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("SessionCloseDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("SessionStartDate")
+                        .HasColumnType("TEXT");
+
+                    b.ComplexProperty<Dictionary<string, object>>("State", "SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions.AssignmentSession.State#AssignmentSessionState", b1 =>
+                        {
+                            b1.IsRequired();
+
+                            b1.Property<bool>("State")
+                                .HasColumnType("INTEGER");
+                        });
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EntityNumber")
+                        .IsUnique();
+
+                    b.ToTable("Sessions");
+                });
+
+            modelBuilder.Entity("SPerfomance.Domain.Models.PerfomanceContext.Models.Assignments.Assignment", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime?>("AssignmentCloseDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("AssignmentOpenDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("EntityNumber")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<Guid>("WeekId")
+                        .HasColumnType("TEXT");
+
+                    b.ComplexProperty<Dictionary<string, object>>("AssignedTo", "SPerfomance.Domain.Models.PerfomanceContext.Models.Assignments.Assignment.AssignedTo#StudentName", b1 =>
+                        {
+                            b1.IsRequired();
+
+                            b1.Property<string>("Name")
+                                .IsRequired()
+                                .HasColumnType("TEXT");
+
+                            b1.Property<string>("Patronymic")
+                                .HasColumnType("TEXT");
+
+                            b1.Property<string>("Surname")
+                                .IsRequired()
+                                .HasColumnType("TEXT");
+                        });
+
+                    b.ComplexProperty<Dictionary<string, object>>("AssignedToRecordBook", "SPerfomance.Domain.Models.PerfomanceContext.Models.Assignments.Assignment.AssignedToRecordBook#StudentRecordbook", b1 =>
+                        {
+                            b1.IsRequired();
+
+                            b1.Property<ulong>("Recordbook")
+                                .HasColumnType("INTEGER");
+                        });
+
+                    b.ComplexProperty<Dictionary<string, object>>("AssignetToGroup", "SPerfomance.Domain.Models.PerfomanceContext.Models.Assignments.Assignment.AssignetToGroup#StudentGroupName", b1 =>
+                        {
+                            b1.IsRequired();
+
+                            b1.Property<string>("Name")
+                                .IsRequired()
+                                .HasColumnType("TEXT");
+                        });
+
+                    b.ComplexProperty<Dictionary<string, object>>("Discipline", "SPerfomance.Domain.Models.PerfomanceContext.Models.Assignments.Assignment.Discipline#DisciplineName", b1 =>
+                        {
+                            b1.IsRequired();
+
+                            b1.Property<string>("Name")
+                                .IsRequired()
+                                .HasColumnType("TEXT");
+                        });
+
+                    b.ComplexProperty<Dictionary<string, object>>("State", "SPerfomance.Domain.Models.PerfomanceContext.Models.Assignments.Assignment.State#AssignmentState", b1 =>
+                        {
+                            b1.IsRequired();
+
+                            b1.Property<bool>("State")
+                                .HasColumnType("INTEGER");
+                        });
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EntityNumber")
+                        .IsUnique();
+
+                    b.HasIndex("WeekId");
+
+                    b.ToTable("Assignments");
+                });
+
+            modelBuilder.Entity("SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentsWeeks.AssignmentWeek", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("EntityNumber")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<Guid?>("GroupId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("SessionId")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EntityNumber")
+                        .IsUnique();
+
+                    b.HasIndex("GroupId");
+
+                    b.HasIndex("SessionId");
+
+                    b.ToTable("Weeks");
+                });
+
             modelBuilder.Entity("SPerfomance.Domain.Models.SemesterPlans.SemesterPlan", b =>
                 {
                     b.Property<Guid>("Id")
@@ -132,6 +268,9 @@ namespace SPerfomance.DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
+                    b.Property<Guid?>("ActiveGroupSemesterId")
+                        .HasColumnType("TEXT");
+
                     b.Property<Guid?>("EducationPlanId")
                         .HasColumnType("TEXT");
 
@@ -140,6 +279,8 @@ namespace SPerfomance.DataAccess.Migrations
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ActiveGroupSemesterId");
 
                     b.HasIndex("EducationPlanId");
 
@@ -340,6 +481,95 @@ namespace SPerfomance.DataAccess.Migrations
                     b.Navigation("Direction");
                 });
 
+            modelBuilder.Entity("SPerfomance.Domain.Models.PerfomanceContext.Models.Assignments.Assignment", b =>
+                {
+                    b.HasOne("SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentsWeeks.AssignmentWeek", "Week")
+                        .WithMany("Assignments")
+                        .HasForeignKey("WeekId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.OwnsOne("SPerfomance.Domain.Models.TeacherDepartments.ValueObjects.DepartmentName", "AssignerDepartment", b1 =>
+                        {
+                            b1.Property<Guid>("AssignmentId")
+                                .HasColumnType("TEXT");
+
+                            b1.Property<string>("Name")
+                                .HasColumnType("TEXT");
+
+                            b1.HasKey("AssignmentId");
+
+                            b1.ToTable("Assignments");
+
+                            b1.WithOwner()
+                                .HasForeignKey("AssignmentId");
+                        });
+
+                    b.OwnsOne("SPerfomance.Domain.Models.PerfomanceContext.Models.Assignments.ValueObjects.AssignmentValue", "Value", b1 =>
+                        {
+                            b1.Property<Guid>("AssignmentId")
+                                .HasColumnType("TEXT");
+
+                            b1.Property<byte>("Value")
+                                .HasColumnType("INTEGER");
+
+                            b1.HasKey("AssignmentId");
+
+                            b1.ToTable("Assignments");
+
+                            b1.WithOwner()
+                                .HasForeignKey("AssignmentId");
+                        });
+
+                    b.OwnsOne("SPerfomance.Domain.Models.Teachers.ValueObjects.TeacherName", "Assigner", b1 =>
+                        {
+                            b1.Property<Guid>("AssignmentId")
+                                .HasColumnType("TEXT");
+
+                            b1.Property<string>("Name")
+                                .HasColumnType("TEXT");
+
+                            b1.Property<string>("Patronymic")
+                                .HasColumnType("TEXT");
+
+                            b1.Property<string>("Surname")
+                                .HasColumnType("TEXT");
+
+                            b1.HasKey("AssignmentId");
+
+                            b1.ToTable("Assignments");
+
+                            b1.WithOwner()
+                                .HasForeignKey("AssignmentId");
+                        });
+
+                    b.Navigation("Assigner");
+
+                    b.Navigation("AssignerDepartment");
+
+                    b.Navigation("Value");
+
+                    b.Navigation("Week");
+                });
+
+            modelBuilder.Entity("SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentsWeeks.AssignmentWeek", b =>
+                {
+                    b.HasOne("SPerfomance.Domain.Models.StudentGroups.StudentGroup", "Group")
+                        .WithMany("Weeks")
+                        .HasForeignKey("GroupId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.HasOne("SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions.AssignmentSession", "Session")
+                        .WithMany("Weeks")
+                        .HasForeignKey("SessionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Group");
+
+                    b.Navigation("Session");
+                });
+
             modelBuilder.Entity("SPerfomance.Domain.Models.SemesterPlans.SemesterPlan", b =>
                 {
                     b.HasOne("SPerfomance.Domain.Models.Semesters.Semester", "Semester")
@@ -350,7 +580,8 @@ namespace SPerfomance.DataAccess.Migrations
 
                     b.HasOne("SPerfomance.Domain.Models.Teachers.Teacher", "Teacher")
                         .WithMany("Disciplines")
-                        .HasForeignKey("TeacherId");
+                        .HasForeignKey("TeacherId")
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.OwnsOne("SPerfomance.Domain.Models.SemesterPlans.ValueObjects.DisciplineName", "Discipline", b1 =>
                         {
@@ -390,6 +621,11 @@ namespace SPerfomance.DataAccess.Migrations
 
             modelBuilder.Entity("SPerfomance.Domain.Models.StudentGroups.StudentGroup", b =>
                 {
+                    b.HasOne("SPerfomance.Domain.Models.Semesters.Semester", "ActiveGroupSemester")
+                        .WithMany()
+                        .HasForeignKey("ActiveGroupSemesterId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
                     b.HasOne("SPerfomance.Domain.Models.EducationPlans.EducationPlan", "EducationPlan")
                         .WithMany("Groups")
                         .HasForeignKey("EducationPlanId")
@@ -414,6 +650,8 @@ namespace SPerfomance.DataAccess.Migrations
                             b1.WithOwner()
                                 .HasForeignKey("StudentGroupId");
                         });
+
+                    b.Navigation("ActiveGroupSemester");
 
                     b.Navigation("EducationPlan");
 
@@ -458,7 +696,7 @@ namespace SPerfomance.DataAccess.Migrations
                             b1.Property<Guid>("StudentId")
                                 .HasColumnType("TEXT");
 
-                            b1.Property<int>("Recordbook")
+                            b1.Property<ulong>("Recordbook")
                                 .HasColumnType("INTEGER");
 
                             b1.HasKey("StudentId");
@@ -657,6 +895,16 @@ namespace SPerfomance.DataAccess.Migrations
                     b.Navigation("Semesters");
                 });
 
+            modelBuilder.Entity("SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions.AssignmentSession", b =>
+                {
+                    b.Navigation("Weeks");
+                });
+
+            modelBuilder.Entity("SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentsWeeks.AssignmentWeek", b =>
+                {
+                    b.Navigation("Assignments");
+                });
+
             modelBuilder.Entity("SPerfomance.Domain.Models.Semesters.Semester", b =>
                 {
                     b.Navigation("Disciplines");
@@ -665,6 +913,8 @@ namespace SPerfomance.DataAccess.Migrations
             modelBuilder.Entity("SPerfomance.Domain.Models.StudentGroups.StudentGroup", b =>
                 {
                     b.Navigation("Students");
+
+                    b.Navigation("Weeks");
                 });
 
             modelBuilder.Entity("SPerfomance.Domain.Models.TeacherDepartments.TeachersDepartments", b =>

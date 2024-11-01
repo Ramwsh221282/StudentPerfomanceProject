@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using SPerfomance.Domain.Models.EducationPlans;
 using SPerfomance.Domain.Models.StudentGroups;
 
 namespace SPerfomance.DataAccess.Configurations;
@@ -20,6 +19,11 @@ internal sealed class StudentGroupConfiguration : IEntityTypeConfiguration<Stude
 
 		builder.HasOne(g => g.EducationPlan)
 		.WithMany(p => p.Groups)
+		.IsRequired(false)
+		.OnDelete(DeleteBehavior.SetNull);
+
+		builder.HasOne(s => s.ActiveGroupSemester)
+		.WithMany()
 		.IsRequired(false)
 		.OnDelete(DeleteBehavior.SetNull);
 

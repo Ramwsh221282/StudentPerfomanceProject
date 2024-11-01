@@ -1,5 +1,8 @@
 using SPerfomance.Domain.Abstractions;
 using SPerfomance.Domain.Models.EducationPlans;
+using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentsWeeks;
+using SPerfomance.Domain.Models.Semesters;
+using SPerfomance.Domain.Models.Semesters.Errors;
 using SPerfomance.Domain.Models.StudentGroups.Errors;
 using SPerfomance.Domain.Models.StudentGroups.ValueObjects;
 using SPerfomance.Domain.Models.Students;
@@ -13,11 +16,17 @@ public class StudentGroup : DomainEntity
 {
 	private readonly List<Student> _students = [];
 
+	private List<AssignmentWeek> _weeks = [];
+
 	public StudentGroupName Name { get; private set; }
 
 	public EducationPlan? EducationPlan { get; private set; }
 
+	public Semester? ActiveGroupSemester { get; private set; }
+
 	public IReadOnlyCollection<Student> Students => _students;
+
+	public IReadOnlyCollection<AssignmentWeek> Weeks => _weeks;
 
 	private StudentGroup() : base(Guid.Empty)
 	{
@@ -40,7 +49,15 @@ public class StudentGroup : DomainEntity
 		return Result<StudentGroup>.Success(new StudentGroup(nameCreation.Value));
 	}
 
-	internal void SetEducationPlan(EducationPlan plan) => EducationPlan = plan;
+	internal Result<StudentGroup> SetEducationPlan(EducationPlan plan, byte activeNumber)
+	{
+		Semester? active = plan.Semesters.FirstOrDefault(s => s.Number.Number == activeNumber);
+		if (active == null)
+			return SemesterErrors.NotFound();
+		ActiveGroupSemester = active;
+		EducationPlan = plan;
+		return this;
+	}
 
 	internal void DeattachEducationPlan()
 	{

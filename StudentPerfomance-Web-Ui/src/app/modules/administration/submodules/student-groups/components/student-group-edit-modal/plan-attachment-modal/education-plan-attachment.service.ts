@@ -26,9 +26,10 @@ export class EducationPlanAttachmentService {
 
   public attachPlan(
     group: StudentGroup,
-    plan: EducationPlan
+    plan: EducationPlan,
+    semesterNumber: number
   ): Observable<StudentGroup> {
-    const body = this.buildAttachmentRequestBody(group, plan);
+    const body = this.buildAttachmentRequestBody(group, plan, semesterNumber);
     return this._httpClient.put<StudentGroup>(this._attachmentApiUri, body);
   }
 
@@ -39,12 +40,16 @@ export class EducationPlanAttachmentService {
 
   private buildAttachmentRequestBody(
     group: StudentGroup,
-    plan: EducationPlan
+    plan: EducationPlan,
+    semesterNumber: number
   ): object {
     return {
       direction: DirectionPayloadBuilder(plan.direction),
       plan: EducationPlanPayloadBuilder(plan),
       group: StudentGroupPayloadBuilder(group),
+      semester: {
+        number: semesterNumber,
+      },
       token: TokenPayloadBuilder(this._authService.userData),
     };
   }

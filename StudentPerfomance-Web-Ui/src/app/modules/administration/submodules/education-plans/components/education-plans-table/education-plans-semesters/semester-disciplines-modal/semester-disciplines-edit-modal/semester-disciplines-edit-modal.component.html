@@ -35,7 +35,9 @@
         </button>
       </div>
     </section>
-    <strong class="font-white" *ngIf="departments.length == 0"
+    <strong
+      class="font-white"
+      *ngIf="departments.length == 0 && plan.teacher == null"
       >Нельзя назначить преподавателя. Ни одной кафедры не существует.</strong
     >
     <section

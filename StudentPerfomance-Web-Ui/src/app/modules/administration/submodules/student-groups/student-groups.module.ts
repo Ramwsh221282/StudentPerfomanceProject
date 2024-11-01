@@ -21,6 +21,7 @@ import { StudentDeletionModalComponent } from './components/students-menu-modal/
 import { StudentCreationModalComponent } from './components/students-menu-modal/student-creation-modal/student-creation-modal.component';
 import { StudentFilterModalComponent } from './components/students-menu-modal/student-filter-modal/student-filter-modal.component';
 import { StudentSwitchGroupModalComponent } from './components/students-menu-modal/student-edit-modal/student-switch-group-modal/student-switch-group-modal.component';
+import { SemesterNumberSelectionModalComponent } from './components/student-group-edit-modal/plan-attachment-modal/semester-number-selection-modal/semester-number-selection-modal.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { StudentSwitchGroupModalComponent } from './components/students-menu-mod
     StudentCreationModalComponent,
     StudentFilterModalComponent,
     StudentSwitchGroupModalComponent,
+    SemesterNumberSelectionModalComponent,
   ],
   imports: [
     CommonModule,

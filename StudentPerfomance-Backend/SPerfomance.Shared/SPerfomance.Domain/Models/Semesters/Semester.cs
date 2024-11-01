@@ -76,8 +76,7 @@ public class Semester : AggregateRoot
 		if (_disciplines.Any(d => d.Id == plan.Id) == false)
 			return Result<SemesterPlan>.Failure(SemesterPlanErrors.DoesntBelongSemester());
 
-		plan.AttachTeacher(teacher);
-		return teacher.AttachDiscipline(plan);
+		return plan.AttachTeacher(teacher);
 	}
 
 	public Result<SemesterPlan> DeattachTeacherFromDiscipline(SemesterPlan plan)

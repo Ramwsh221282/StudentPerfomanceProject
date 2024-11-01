@@ -53,4 +53,6 @@ public class StudentName : DomainValueObject
 		yield return Surname;
 		yield return string.IsNullOrWhiteSpace(Patronymic) ? string.Empty : Patronymic;
 	}
+
+	public override string ToString() => $"{Surname} {Name[0]} {Patronymic[0]}";
 }

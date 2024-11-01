@@ -37,6 +37,7 @@ export class PlanAttachmentModalComponent
 
   protected isSuccess: boolean;
   protected isFailure: boolean;
+  protected isSemesterSelectionVisible: boolean;
 
   protected selectedPlan: EducationPlan;
 
@@ -46,6 +47,7 @@ export class PlanAttachmentModalComponent
     private readonly _attachmentService: EducationPlanAttachmentService,
     protected readonly notificationService: UserOperationNotificationService
   ) {
+    this.isSemesterSelectionVisible = false;
     this.directions = [];
     this.plans = [];
     this.selectedPlan = {} as EducationPlan;
@@ -68,23 +70,12 @@ export class PlanAttachmentModalComponent
   }
 
   public submit(): void {
-    const handler = EducationPlanAttachmentHandler(
-      this.notificationService,
-      this,
-      this
-    );
-
-    this._attachmentService
-      .attachPlan(this.group, this.selectedPlan)
-      .pipe(
-        tap((response) => {
-          handler.handle(response);
-          this.group = response;
-          this.selectedPlan = {} as EducationPlan;
-        }),
-        catchError((error: HttpErrorResponse) => handler.handleError(error))
-      )
-      .subscribe();
+    if (this.selectedPlan.year == undefined) {
+      this.notificationService.SetMessage = 'Необходимо выбрать учебный план';
+      this.notifyFailure();
+      return;
+    }
+    this.isSemesterSelectionVisible = true;
   }
 
   public submitDeattachment(): void {

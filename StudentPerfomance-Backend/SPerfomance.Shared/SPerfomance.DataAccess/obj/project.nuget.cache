@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Fn82q0rwAKs4/d0qLIPCuJaURAliXKKv6mesOqztIMC7KSJmrP2rEe5wMaFExMOl/9D+BXgkhaDi56UhLL0ijg==",
+  "dgSpecHash": "9JnbOZVmtDux4M+6OkJdxB69fOMPdCDaZ1IMmco/wXdYisZ//IVWebnCTu/+LaYp6D7+VTbVyHfiHtwKebNKzg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Ramwsh\\Desktop\\SPerfomanceVerticalSlises\\SPerfomance.Shared\\SPerfomance.DataAccess\\SPerfomance.DataAccess.csproj",
+  "projectFilePath": "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomance-Backend\\SPerfomance.Shared\\SPerfomance.DataAccess\\SPerfomance.DataAccess.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Ramwsh\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Ramwsh\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",

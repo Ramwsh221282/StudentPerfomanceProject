@@ -8,8 +8,6 @@ public class DisciplineName : DomainValueObject
 {
 	private const int maxNameLength = 80;
 
-	private const int minNameLength = 10;
-
 	public string Name { get; private set; }
 
 	internal DisciplineName() => Name = string.Empty;
@@ -31,9 +29,8 @@ public class DisciplineName : DomainValueObject
 		if (name.Length > maxNameLength)
 			return Result<DisciplineName>.Failure(SemesterPlanErrors.DisciplineLengthExceess(maxNameLength));
 
-		if (name.Length < minNameLength)
-			return Result<DisciplineName>.Failure(SemesterPlanErrors.DisciplineLengthLess(minNameLength));
-
 		return Result<DisciplineName>.Success(new DisciplineName(name));
 	}
+
+	public override string ToString() => $"{Name}";
 }

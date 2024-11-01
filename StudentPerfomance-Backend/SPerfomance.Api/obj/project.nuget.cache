@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "WG2+H6srpCXTCf0Xh6hdMbdutA823JHVNWzQYxVszWNdtx8UhwQx5I4scUddjHjltriovo1SkPnfUZ9pGZFkiw==",
+  "dgSpecHash": "O5JC+5Lq9QEqwUdIEItwux8IorhjYildpUi/v65Z1SAlcbKHwa+4JIh8Zq3DpRDxv6/hCT/sMhhRf0Vh98R/YA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Ramwsh\\Desktop\\SPerfomanceVerticalSlises\\SPerfomance.Api\\SPerfomance.Api.csproj",
+  "projectFilePath": "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomance-Backend\\SPerfomance.Api\\SPerfomance.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Ramwsh\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\Ramwsh\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\8.0.10\\microsoft.aspnetcore.authentication.jwtbearer.8.0.10.nupkg.sha512",

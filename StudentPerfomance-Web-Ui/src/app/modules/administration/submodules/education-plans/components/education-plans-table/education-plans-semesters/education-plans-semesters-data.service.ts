@@ -16,7 +16,7 @@ import { TokenPayloadBuilder } from '../../../../../../../shared/models/common/t
 export class EducationPlanSemestersService {
   private readonly _user: User;
   private readonly _httpClient: HttpClient;
-  private readonly _apiUri: string = `${BASE_API_URI}/api/semester-plans/get-by-semester`;
+  private readonly _apiUri: string = `${BASE_API_URI}/api/semesters/by-education-plan`;
 
   public constructor() {
     this._httpClient = inject(HttpClient);

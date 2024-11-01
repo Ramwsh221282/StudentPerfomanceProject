@@ -43,4 +43,6 @@ public class StudentGroupName : DomainValueObject
 	{
 		yield return Name;
 	}
+
+	public override string ToString() => $"{Name}";
 }

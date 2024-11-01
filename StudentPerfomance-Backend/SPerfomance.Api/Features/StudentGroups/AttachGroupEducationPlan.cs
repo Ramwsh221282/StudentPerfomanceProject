@@ -3,6 +3,7 @@ using SPerfomance.Api.Endpoints;
 using SPerfomance.Api.Features.Common;
 using SPerfomance.Api.Features.EducationDirections.Contracts;
 using SPerfomance.Api.Features.EducationPlans.Contracts;
+using SPerfomance.Api.Features.Semesters.Contracts;
 using SPerfomance.Api.Features.StudentGroups.Contracts;
 using SPerfomance.Application.EducationDirections.Queries.GetEducationDirection;
 using SPerfomance.Application.EducationPlans.Queries.GetEducationPlan;
@@ -23,6 +24,7 @@ public static class AttachGroupEducationPlan
 	public record Request(
 		EducationDirectionContract Direction,
 		EducationPlanContract Plan,
+		SemesterContract Semester,
 		StudentGroupContract Group,
 		TokenContract Token
 		);
@@ -44,9 +46,16 @@ public static class AttachGroupEducationPlan
 			return Results.BadRequest(UserTags.UnauthorizedError);
 
 		Result<EducationDirection> direction = await new GetEducationDirectionQueryHandler(directions).Handle(request.Direction);
-		Result<EducationPlan> plan = await new GetEducationPlanQueryHandler().Handle(new(direction.Value, request.Plan.PlanYear));
+		Result<EducationPlan> plan = await new GetEducationPlanQueryHandler()
+		.Handle(new(direction.Value, request.Plan.PlanYear));
 		Result<StudentGroup> group = await new GetStudentGroupQueryHandler(groups).Handle(request.Group);
-		group = await new AttachEducationPlanCommandHandler(groups).Handle(new(plan.Value, group.Value));
+		group = await new AttachEducationPlanCommandHandler(groups).Handle(
+			new(
+				plan.Value,
+				group.Value,
+				request.Semester.Number
+				));
+
 		return group.IsFailure ?
 			Results.BadRequest(group.Error.Description) :
 			Results.Ok(group.Value.MapFromDomain());

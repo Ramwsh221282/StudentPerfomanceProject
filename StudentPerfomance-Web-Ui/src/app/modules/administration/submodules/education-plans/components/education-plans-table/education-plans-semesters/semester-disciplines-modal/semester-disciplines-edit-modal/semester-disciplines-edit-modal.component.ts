@@ -101,7 +101,7 @@ export class SemesterDisciplinesEditModalComponent
   }
 
   protected selectTeacher(teacher: Teacher): void {
-    if (this.plan.teacher.name == '') {
+    if (this.plan.teacher == null) {
       this.plan.teacher = { ...teacher };
       this._editService
         .attachTeacher(this.plan)
@@ -124,7 +124,7 @@ export class SemesterDisciplinesEditModalComponent
   }
 
   protected deattachTeacher(): void {
-    if (this.plan.teacher.name != '') {
+    if (this.plan.teacher != null) {
       const builder: TeacherBuilder = new TeacherBuilder();
       this.plan.teacher = { ...builder.buildDefault() };
       this._editService
@@ -149,7 +149,7 @@ export class SemesterDisciplinesEditModalComponent
   }
 
   protected fetchDepartmentTeacher(): void {
-    if (this.plan.teacher.name == '') {
+    if (this.plan.teacher == null) {
       this._teacherDataService.setPolicy(
         new DefaultTeacherFetchPolicy(
           this.selectedDepartment,

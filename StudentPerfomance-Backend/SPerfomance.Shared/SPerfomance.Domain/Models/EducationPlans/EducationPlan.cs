@@ -48,12 +48,15 @@ public class EducationPlan : AggregateRoot
 		return Result<EducationPlan>.Success(new EducationPlan(yearCreation.Value, direction));
 	}
 
-	public Result<StudentGroup> AddStudentGroup(StudentGroup group)
+	public Result<StudentGroup> AddStudentGroup(StudentGroup group, byte activeSemesterNumber)
 	{
 		if (_groups.Any(g => g.Name == group.Name) == true)
 			return Result<StudentGroup>.Failure(StudentGroupErrors.EducationPlanHasGroupAlreadyError(this, group));
 
-		group.SetEducationPlan(this);
+		Result<StudentGroup> attachment = group.SetEducationPlan(this, activeSemesterNumber);
+		if (attachment.IsFailure)
+			return attachment;
+
 		_groups.Add(group);
 		return Result<StudentGroup>.Success(group);
 	}

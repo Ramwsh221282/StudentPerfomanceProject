@@ -28,4 +28,8 @@ public sealed class Result<TValue> where TValue : class
 	public static Result<TValue> Success(TValue value) => new Result<TValue>(value);
 
 	public static Result<TValue> Failure(Error error) => new Result<TValue>(error);
+
+	public static implicit operator Result<TValue>(TValue value) => new Result<TValue>(value);
+
+	public static implicit operator Result<TValue>(Error error) => new Result<TValue>(error);
 }
