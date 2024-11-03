@@ -34,6 +34,10 @@ public class StudentGroupsRepository : IStudentGroupsRepository
 	public async Task<IReadOnlyCollection<StudentGroup>> Filter(string? name) =>
 		await _context.Groups
 		.Where(g => !string.IsNullOrWhiteSpace(name) && g.Name.Name.Contains(name))
+		.Include(g => g.ActiveGroupSemester)
+		.ThenInclude(a => a!.Disciplines)
+		.ThenInclude(d => d.Teacher)
+		.ThenInclude(t => t!.Department)
 		.Include(g => g.Students)
 		.Include(g => g.EducationPlan)
 		.ThenInclude(p => p!.Direction)
@@ -46,6 +50,10 @@ public class StudentGroupsRepository : IStudentGroupsRepository
 		.Where(g => !string.IsNullOrWhiteSpace(name) && g.Name.Name.Contains(name))
 		.Skip((page - 1) * pageSize)
 		.Take(pageSize)
+		.Include(g => g.ActiveGroupSemester)
+		.ThenInclude(a => a!.Disciplines)
+		.ThenInclude(d => d.Teacher)
+		.ThenInclude(t => t!.Department)
 		.Include(g => g.Students)
 		.Include(g => g.EducationPlan)
 		.ThenInclude(p => p!.Direction)
@@ -61,6 +69,10 @@ public class StudentGroupsRepository : IStudentGroupsRepository
 
 	public async Task<StudentGroup?> Get(string name) =>
 		await _context.Groups
+		.Include(g => g.ActiveGroupSemester)
+		.ThenInclude(a => a!.Disciplines)
+		.ThenInclude(d => d.Teacher)
+		.ThenInclude(t => t!.Department)
 		.Include(g => g.Students)
 		.Include(g => g.EducationPlan)
 		.ThenInclude(p => p!.Semesters)
@@ -73,6 +85,10 @@ public class StudentGroupsRepository : IStudentGroupsRepository
 
 	public async Task<IReadOnlyCollection<StudentGroup>> GetAll() =>
 		await _context.Groups
+		.Include(g => g.ActiveGroupSemester)
+		.ThenInclude(a => a!.Disciplines)
+		.ThenInclude(d => d.Teacher)
+		.ThenInclude(t => t!.Department)
 		.Include(g => g.Students)
 		.Include(g => g.EducationPlan)
 		.ThenInclude(p => p!.Direction)
@@ -84,6 +100,10 @@ public class StudentGroupsRepository : IStudentGroupsRepository
 		await _context.Groups
 		.Skip((page - 1) * pageSize)
 		.Take(pageSize)
+		.Include(g => g.ActiveGroupSemester)
+		.ThenInclude(a => a!.Disciplines)
+		.ThenInclude(d => d.Teacher)
+		.ThenInclude(t => t!.Department)
 		.Include(g => g.Students)
 		.Include(g => g.EducationPlan)
 		.ThenInclude(p => p!.Direction)

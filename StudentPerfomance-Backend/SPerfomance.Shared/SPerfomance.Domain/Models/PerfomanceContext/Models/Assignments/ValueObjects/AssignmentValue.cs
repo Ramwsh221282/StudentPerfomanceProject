@@ -16,6 +16,8 @@ public class AssignmentValue : DomainValueObject
 
 	public static AssignmentValue NotAttestated = new AssignmentValue(0);
 
+	internal static AssignmentValue Empty => new AssignmentValue(1);
+
 	private static byte[] _values = [0, 2, 3, 4, 5];
 
 	public byte Value { get; init; }
@@ -26,8 +28,6 @@ public class AssignmentValue : DomainValueObject
 	{
 		Value = value;
 	}
-
-	internal static AssignmentValue Empty => new AssignmentValue(0);
 
 	public static Result<AssignmentValue> Create(byte value)
 	{

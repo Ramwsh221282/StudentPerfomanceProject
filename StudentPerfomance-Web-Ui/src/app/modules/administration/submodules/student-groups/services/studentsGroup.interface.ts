@@ -4,4 +4,5 @@ export interface StudentGroup {
   entityNumber: number;
   name: string;
   plan: EducationPlan;
+  activeSemesterNumber: number;
 }

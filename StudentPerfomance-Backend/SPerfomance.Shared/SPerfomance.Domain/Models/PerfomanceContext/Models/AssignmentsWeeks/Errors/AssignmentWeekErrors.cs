@@ -26,4 +26,13 @@ public static class AssignmentWeekErrors
 		new Error($"У {group.Name} группы активный семестр не назначен");
 
 	public static Error NotFound() => new Error("Контрольная неделя по указанным датам не найдена");
+
+	public static Error InvalidStartDate() => new Error("Дата начала некорректна. Дата начала не должна быть меньше текущей даты");
+
+	public static Error InvalidEndDate() => new Error("Дата закрытия некорректна. Дата закрытия должна быть от 10 дней даты начала");
+
+	public static Error InvalidDateFormat() => new Error("Некорректный формат даты. Дата принимается как День Месяц Год");
+
+	public static Error EmptyTeacherError(Semester activeSemester, StudentGroup group, SemesterPlan plan) =>
+		new Error($"У группы {group.Name} дисциплина {plan.Discipline.Name} семестра {activeSemester.Number.Number} не имеет преподавателя");
 }

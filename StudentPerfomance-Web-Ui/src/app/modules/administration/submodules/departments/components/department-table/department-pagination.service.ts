@@ -1,8 +1,7 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { BASE_API_URI } from '../../../../../../shared/models/api/api-constants';
 import { AuthService } from '../../../../../users/services/auth.service';
-import { TokenPayloadBuilder } from '../../../../../../shared/models/common/token-contract/token-payload-builder';
 
 @Injectable({
   providedIn: 'any',

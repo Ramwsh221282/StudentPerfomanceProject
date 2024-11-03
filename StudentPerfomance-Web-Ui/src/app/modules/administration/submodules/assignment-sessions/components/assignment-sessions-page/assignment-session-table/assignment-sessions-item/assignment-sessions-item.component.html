@@ -1,0 +1,17 @@
+<div class="grid-item">
+  <strong>{{ session.number }}</strong>
+  <strong>{{ session.startDate }}</strong>
+  <strong>{{ session.endDate }}</strong>
+  <strong>{{ session.state }}</strong>
+  <div class="button-items">
+    <button class="accept-button-outline" (click)="isInfoVisible = true">
+      Сведения
+    </button>
+  </div>
+</div>
+<div id="assignment-sessions-info-renderer" *ngIf="isInfoVisible">
+  <app-assignment-session-item-info
+    [session]="session"
+    (visibility)="isInfoVisible = false"
+  ></app-assignment-session-item-info>
+</div>

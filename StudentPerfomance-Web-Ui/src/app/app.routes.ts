@@ -41,6 +41,14 @@ export const routes: Routes = [
     canActivate: [canActivateAuthAdmin],
   },
   {
+    path: 'assignment-sessions',
+    loadChildren: () =>
+      import(
+        './modules/administration/submodules/assignment-sessions/assignment-sessions.module'
+      ).then((mod) => mod.AssignmentSessionsModule),
+    canActivate: [canActivateAuthAdmin],
+  },
+  {
     path: 'groups',
     loadChildren: () =>
       import(

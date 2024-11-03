@@ -5,25 +5,27 @@ namespace SPerfomance.Application.StudentGroups.DTO;
 
 public class StudentGroupDTO
 {
-	public int? EntityNumber { get; set; }
+	public int EntityNumber { get; init; }
 
-	public string? Name { get; set; }
+	public string Name { get; init; }
 
-	public EducationPlanDTO? Plan { get; set; }
+	public EducationPlanDTO? Plan { get; init; }
+
+	public byte? ActiveSemesterNumber { get; init; }
+
+	public StudentGroupDTO(StudentGroup group)
+	{
+		EntityNumber = group.EntityNumber;
+		Name = group.Name.Name;
+		Plan = group.EducationPlan == null ? null : group.EducationPlan.MapFromDomain();
+		ActiveSemesterNumber = group.ActiveGroupSemester == null ? null : group.ActiveGroupSemester.Number.Number;
+	}
 }
 
 public static class StudentGroupDTOExtensions
 {
 	public static StudentGroupDTO MapFromDomain(this StudentGroup group)
 	{
-		EducationPlanDTO? planDTO = group.EducationPlan == null ?
-			null :
-			group.EducationPlan.MapFromDomain();
-		return new StudentGroupDTO()
-		{
-			EntityNumber = group.EntityNumber,
-			Name = group.Name.Name,
-			Plan = planDTO
-		};
+		return new StudentGroupDTO(group);
 	}
 }

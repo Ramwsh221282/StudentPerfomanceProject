@@ -25,11 +25,9 @@
       }
     </div>
   </div>
-  <!-- <div class="pagination-wrapper">
-    <app-department-pagination
-      (pageEmitter)="appendPages(); fetchData()"
-    ></app-department-pagination>
-  </div> -->
+  <div class="pagination-wrapper">
+    <app-department-pagination></app-department-pagination>
+  </div>
 </div>
 <div id="creation-modal-renderer" *ngIf="creationModalVisibility">
   <app-department-creation-modal

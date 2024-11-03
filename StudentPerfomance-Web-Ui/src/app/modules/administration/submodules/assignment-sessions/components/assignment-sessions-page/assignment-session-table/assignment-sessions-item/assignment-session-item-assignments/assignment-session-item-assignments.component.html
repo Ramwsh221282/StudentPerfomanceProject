@@ -1,0 +1,46 @@
+<div id="container">
+  <div id="header">
+    <div class="header-container">
+      <strong>Ведомость группы {{ week.group.name }}</strong>
+    </div>
+  </div>
+  <div id="content">
+    <strong class="font-white">Процент успеваемости:</strong>
+    <strong class="font-white">Средний балл:</strong>
+    <table class="search-table">
+      <thead>
+        <tr>
+          <th>{{ week.group.name }}</th>
+          @for (discipline of disciplines; track $index) {
+          <th>{{ discipline }}</th>
+          }
+          <th>% индивидуальной успеваемости</th>
+          <th>средний балл</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (grade of studentGrades; track $index) {
+        <tr>
+          <td>
+            {{ grade.studentName }}
+          </td>
+          <td *ngFor="let discipline of disciplines">
+            {{ grade[discipline] }}
+          </td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+  <div id="controls">
+    <button
+      class="danger-button-modal"
+      type="button"
+      (click)="visibility.emit()"
+    >
+      Закрыть окно
+    </button>
+  </div>
+</div>

@@ -15,6 +15,8 @@ using SPerfomance.Domain.Models.StudentGroups.Abstractions;
 using SPerfomance.Domain.Models.Students.Abstractions;
 using SPerfomance.Domain.Models.TeacherDepartments.Abstractions;
 using SPerfomance.Domain.Models.Teachers.Abstractions;
+using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions.Abstractions;
+using SPerfomance.Api.HostedServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,6 +34,9 @@ builder.Services.AddSingleton<IPasswordGenerator, PasswordGenerator>();
 builder.Services.AddSingleton<IMailingService, MailingService>();
 builder.Services.AddSingleton<IJwtTokenService, JwtTokenService>();
 builder.Services.AddScoped<IUsersRepository, UsersRepository>();
+builder.Services.AddScoped<IAssignmentSessionsRepository, AssignmentSessionsRepository>();
+
+//builder.Services.AddHostedService<SessionChecker>();
 
 builder.Services.AddEndpoints();
 
@@ -50,6 +55,5 @@ var app = builder.Build();
 app.UseSwagger();
 app.UseSwaggerUI();
 app.UseCors();
-//app.UseHttpsRedirection();
 app.MapEndpoints();
 app.Run();

@@ -1,0 +1,44 @@
+.assignment-sessions-table-wrapper {
+  gap: 5px;
+  background-color: #ffffff;
+  border: solid 1px #d9d9d9;
+  border-radius: 10px;
+}
+
+.assignment-sessions-controls-container {
+  padding: 15px;
+  color: #ffffff;
+  border-radius: 10px 10px 0px 0px;
+  height: 45px;
+  font-size: 24px;
+  display: flex;
+  gap: 10px;
+}
+
+.assignment-sessions-table-container {
+  padding: 50px;
+}
+
+.assignment-sessions-table-grid {
+  align-items: center;
+  justify-content: center;
+  display: grid;
+  grid-template-columns: auto;
+  grid-gap: 10px 10px;
+  font-size: 14px;
+  font-weight: 600px;
+  width: 100%;
+}
+
+.assignment-sessions-table-header {
+  display: grid;
+  grid-template-columns: 100px 315px 315px 315px auto;
+  grid-gap: 20px;
+  text-align: center;
+}
+
+.pagination-wrapper {
+  position: inherit;
+  bottom: 0;
+  align-self: center;
+}

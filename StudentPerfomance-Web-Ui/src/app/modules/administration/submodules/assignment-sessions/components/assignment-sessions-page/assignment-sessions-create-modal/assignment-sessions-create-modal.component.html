@@ -1,0 +1,23 @@
+<div id="container">
+  <div id="header">
+    <strong>Создание новой контрольной недели</strong>
+  </div>
+  <div id="content">
+    <strong class="font-white">Укажите дату начала</strong>
+    <input [(ngModel)]="startDateValue" type="date" />
+    <strong class="font-white">Укажите дату закрытия</strong>
+    <input [(ngModel)]="endDateValue" type="date" />
+  </div>
+  <div id="controls">
+    <button type="button" class="accept-button-modal" (click)="submit()">
+      Добавить
+    </button>
+    <button
+      type="button"
+      class="danger-button-modal"
+      (click)="emitClose.emit()"
+    >
+      Закрыть окно
+    </button>
+  </div>
+</div>

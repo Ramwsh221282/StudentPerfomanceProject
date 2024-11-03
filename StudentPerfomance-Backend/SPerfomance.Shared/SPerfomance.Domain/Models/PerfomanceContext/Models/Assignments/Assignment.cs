@@ -31,9 +31,9 @@ public class Assignment : DomainEntity
 
 	public AssignmentState State { get; private set; }
 
-	public TeacherName? Assigner { get; private set; }
+	public TeacherName Assigner { get; private set; }
 
-	public DepartmentName? AssignerDepartment { get; private set; }
+	public DepartmentName AssignerDepartment { get; private set; }
 
 	public AssignmentValue? Value { get; private set; }
 
@@ -58,13 +58,13 @@ public class Assignment : DomainEntity
 	) : base(Guid.NewGuid())
 	{
 		Week = week;
-		Assigner = TeacherName.Empty;
-		AssignerDepartment = DepartmentName.Empty;
+		Assigner = discipline.Teacher!.Name;
+		AssignerDepartment = discipline.Teacher.Department.Name;
 		Discipline = discipline.Discipline;
 		AssignedTo = assignedTo.Name;
 		AssignedToRecordBook = assignedTo.Recordbook;
 		AssignetToGroup = assignedTo.AttachedGroup.Name;
-		Value = AssignmentValue.NotAttestated;
+		Value = AssignmentValue.Empty;
 		AssignmentOpenDate = DateTime.Now;
 		State = AssignmentState.Opened;
 	}

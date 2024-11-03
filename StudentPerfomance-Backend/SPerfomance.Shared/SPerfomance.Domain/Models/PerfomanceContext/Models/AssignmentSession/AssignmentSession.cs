@@ -2,6 +2,7 @@ using SPerfomance.Domain.Abstractions;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions.ValueObject;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentsWeeks;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentsWeeks.Errors;
+using SPerfomance.Domain.Models.SemesterPlans;
 using SPerfomance.Domain.Models.StudentGroups;
 using SPerfomance.Domain.Tools;
 
@@ -38,6 +39,12 @@ public class AssignmentSession : AggregateRoot
 
 	public static Result<AssignmentSession> Create(IReadOnlyCollection<StudentGroup> groups, DateTime startDate, DateTime endDate)
 	{
+		if (startDate.Day < DateTime.Now.Day)
+			return AssignmentWeekErrors.InvalidStartDate();
+
+		if (endDate <= startDate)
+			return AssignmentWeekErrors.InvalidEndDate();
+
 		foreach (StudentGroup group in groups)
 		{
 			if (group.EducationPlan == null)
@@ -45,6 +52,12 @@ public class AssignmentSession : AggregateRoot
 
 			if (group.ActiveGroupSemester == null)
 				return AssignmentWeekErrors.NotValidGroupActiveSemester(group);
+
+			foreach (SemesterPlan discipline in group.ActiveGroupSemester.Disciplines)
+			{
+				if (discipline.Teacher == null)
+					return AssignmentWeekErrors.EmptyTeacherError(group.ActiveGroupSemester, group, discipline);
+			}
 		}
 
 		return new AssignmentSession(groups.ToList(), startDate, endDate);

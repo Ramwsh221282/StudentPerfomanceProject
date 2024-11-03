@@ -38,23 +38,17 @@ public class EducationDirection : DomainEntity
 	{
 		Result<DirectionCode> requestedCode = DirectionCode.Create(code);
 		if (requestedCode.IsFailure)
-			return Result<EducationDirection>.Failure(requestedCode.Error);
+			return requestedCode.Error;
 
 		Result<DirectionName> requestedName = DirectionName.Create(name);
 		if (requestedName.IsFailure)
-			return Result<EducationDirection>.Failure(requestedName.Error);
+			return requestedName.Error;
 
 		Result<DirectionType> requestedType = DirectionType.Create(type);
 		if (requestedType.IsFailure)
-			return Result<EducationDirection>.Failure(requestedType.Error);
+			return requestedType.Error;
 
-		EducationDirection direction = new EducationDirection(
-			requestedCode.Value,
-			requestedName.Value,
-			requestedType.Value
-		);
-
-		return Result<EducationDirection>.Success(direction);
+		return new EducationDirection(requestedCode.Value, requestedName.Value, requestedType.Value);
 	}
 
 	public Result<EducationDirection> ChangeCode(string code)
