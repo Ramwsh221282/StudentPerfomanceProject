@@ -16,8 +16,4 @@
     <ProjectReference Include="..\SPerfomance.Shared\SPerfomance.DataAccess\SPerfomance.DataAccess.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\PerfomanceContext\Contracts\" />
-  </ItemGroup>
-
 </Project>

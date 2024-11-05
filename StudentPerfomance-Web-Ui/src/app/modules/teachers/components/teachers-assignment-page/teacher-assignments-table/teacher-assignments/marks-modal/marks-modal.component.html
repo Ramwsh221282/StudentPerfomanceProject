@@ -1,1 +1,29 @@
-<p>marks-modal works!</p>
+<div id="container">
+  <div id="header">
+    <strong
+      >Проставление оценки {{ student.surname }} {{ student.name[0] }}
+      {{ student.patronymic == null ? "" : student.patronymic[0] }}</strong
+    >
+    <strong>{{ discipline.name.name }}</strong>
+  </div>
+  <div id="content">
+    <strong class="font-white">Выберите оценку</strong>
+    <select (change)="selectMark($event)" class="default-select">
+      @for (mark of marks; track mark.value) {
+      <option [value]="mark.value">{{ mark.name }}</option>
+      }
+    </select>
+  </div>
+  <div id="controls">
+    <button type="button" class="accept-button-modal" (click)="submit()">
+      Проставить
+    </button>
+    <button
+      type="button"
+      class="danger-button-modal"
+      (click)="visibility.emit()"
+    >
+      Закрыть окно
+    </button>
+  </div>
+</div>

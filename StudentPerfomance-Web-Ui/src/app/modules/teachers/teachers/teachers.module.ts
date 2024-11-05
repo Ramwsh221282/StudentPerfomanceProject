@@ -8,6 +8,7 @@ import { FailureResultNotificationComponent } from '../../../shared/components/f
 import { TeacherAssignmentSessionInfoComponent } from '../components/teachers-assignment-page/teacher-assignment-session-info/teacher-assignment-session-info.component';
 import { TeacherAssignmentsTableComponent } from '../components/teachers-assignment-page/teacher-assignments-table/teacher-assignments-table.component';
 import { TeacherAssignmentsComponent } from '../components/teachers-assignment-page/teacher-assignments-table/teacher-assignments/teacher-assignments.component';
+import { MarksModalComponent } from '../components/teachers-assignment-page/teacher-assignments-table/teacher-assignments/marks-modal/marks-modal.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { TeacherAssignmentsComponent } from '../components/teachers-assignment-p
     TeacherAssignmentSessionInfoComponent,
     TeacherAssignmentsTableComponent,
     TeacherAssignmentsComponent,
+    MarksModalComponent,
   ],
   imports: [
     CommonModule,

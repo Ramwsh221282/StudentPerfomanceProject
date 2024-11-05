@@ -14,7 +14,6 @@ internal class AssignmentWeekConfiguration : IEntityTypeConfiguration<Assignment
 
 		builder.HasOne(w => w.Group)
 		.WithMany(g => g.Weeks)
-		.IsRequired(false)
 		.OnDelete(DeleteBehavior.SetNull);
 
 		builder.HasMany(w => w.Assignments)

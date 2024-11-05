@@ -18,7 +18,7 @@ public class AssignmentValue : DomainValueObject
 
 	internal static AssignmentValue Empty => new AssignmentValue(1);
 
-	private static byte[] _values = [0, 2, 3, 4, 5];
+	private static byte[] _values = [0, 1, 2, 3, 4, 5];
 
 	public byte Value { get; init; }
 

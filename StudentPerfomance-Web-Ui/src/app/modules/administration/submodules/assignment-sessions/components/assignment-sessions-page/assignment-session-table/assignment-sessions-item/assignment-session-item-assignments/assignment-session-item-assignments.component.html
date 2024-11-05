@@ -5,32 +5,57 @@
     </div>
   </div>
   <div id="content">
-    <strong class="font-white">Процент успеваемости:</strong>
-    <strong class="font-white">Средний балл:</strong>
+    <strong class="font-white"
+      >Процент успеваемости: {{ getGroupTotalPerfomance() }}</strong
+    >
+    <strong class="font-white"
+      >Средний балл: {{ getGroupTotalAverage() }}</strong
+    >
     <table class="search-table">
       <thead>
         <tr>
           <th>{{ week.group.name }}</th>
-          @for (discipline of disciplines; track $index) {
-          <th>{{ discipline }}</th>
+          @for (discipline of week.assignments; track discipline.discipline) {
+          <th>{{ discipline.discipline }}</th>
           }
           <th>% индивидуальной успеваемости</th>
           <th>средний балл</th>
         </tr>
       </thead>
       <tbody>
-        @for (grade of studentGrades; track $index) {
+        @for (student of getStudents(); track student.id) {
         <tr>
           <td>
-            {{ grade.studentName }}
+            {{ student.studentSurname }} {{ student.studentName[0] }}
+            {{
+              student.studentPatronymic == null
+                ? ""
+                : student.studentPatronymic[0]
+            }}
           </td>
-          <td *ngFor="let discipline of disciplines">
-            {{ grade[discipline] }}
-          </td>
-          <td>0</td>
-          <td>0</td>
+          @for (discipline of week.assignments; track discipline.discipline) {
+          <td>{{ getStudentGrade(discipline.discipline, student) }}</td>
+          }
+          <td>{{ getStudentInvividualPerfomance(student) }}</td>
+          <td>{{ getStudentAverage(student) }}</td>
         </tr>
         }
+        <tr>
+          средний балл @for (discipline of week.assignments; track
+          discipline.discipline) {
+          <td>{{ getAverageByDiscipline(discipline) }}</td>
+          }
+          <td>-</td>
+          <td>-</td>
+        </tr>
+        <tr>
+          % успеваемости @for (discipline of week.assignments; track
+          discipline.discipline) {
+          <td>{{ getPerfomanceByDiscipline(discipline) }}</td>
+          }
+          <td>-</td>
+          <td>-</td>
+        </tr>
       </tbody>
     </table>
   </div>

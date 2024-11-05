@@ -25,7 +25,10 @@
     *ngIf="_teacherDiscipline != undefined"
   >
     @for (student of _teacherDiscipline.students; track $index) {
-    <app-teacher-assignments [student]="student"></app-teacher-assignments>
+    <app-teacher-assignments
+      [discipline]="_teacherDiscipline"
+      [student]="student"
+    ></app-teacher-assignments>
     }
   </div>
 </div>

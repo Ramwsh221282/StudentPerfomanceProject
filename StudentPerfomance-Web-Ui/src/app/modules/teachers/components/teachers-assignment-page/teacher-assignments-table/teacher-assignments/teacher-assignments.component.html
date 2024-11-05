@@ -3,7 +3,19 @@
     >{{ student.surname }} {{ student.name[0] }}
     {{ student.patronymic == null ? "" : student.patronymic[0] }}</strong
   >
-  <strong class="assignment-mark">{{
-    student.assignment.value == 1 ? "Не проставлена" : student.assignment.value
+  <strong class="assignment-mark" (click)="_isMarksModalVisible = true">{{
+    student.assignment.value == 1
+      ? "Не проставлена"
+      : student.assignment.value == 0
+      ? "Неаттестация"
+      : student.assignment.value
   }}</strong>
+</div>
+<div id="mark-modal-visibility" *ngIf="_isMarksModalVisible">
+  <app-marks-modal
+    [student]="student"
+    [discipline]="discipline"
+    (visibility)="_isMarksModalVisible = false"
+    (markSelected)="teacherMarkSelectionUpdate($event)"
+  ></app-marks-modal>
 </div>

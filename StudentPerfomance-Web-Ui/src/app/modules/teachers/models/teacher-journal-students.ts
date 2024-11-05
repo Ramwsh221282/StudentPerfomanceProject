@@ -5,4 +5,7 @@ export interface TeacherJournalStudent {
   name: string;
   surname: string;
   patronymic: string | null;
+  belongsToGroup: string;
+  recordbook: number;
+  id: string;
 }

@@ -6,6 +6,7 @@ using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions.Abstractions;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions.ValueObject;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentsWeeks;
+using SPerfomance.Domain.Models.PerfomanceContext.Models.StudentAssignments;
 using SPerfomance.Domain.Models.Teachers;
 using SPerfomance.Domain.Tools;
 
@@ -23,6 +24,7 @@ public class AssignmentSessionsRepository : IAssignmentSessionsRepository
 			{
 				int currentWeekNumbers = await GenerateWeekEntityNumber();
 				int currentMarkNumber = await GenerateAssignmentEntityNumber();
+				int currentStudentAssignmentNumber = await GenerateStudentAssignmentEntityNumber();
 
 				session.SetNumber(await GenerateEntityNumber());
 				string sessionSQL =
@@ -49,9 +51,16 @@ public class AssignmentSessionsRepository : IAssignmentSessionsRepository
 
 				string assignmentSQL =
 				"""
-		INSERT INTO Assignments (Id, WeekId, AssignmentOpenDate, Assigner_Name, Assigner_Surname, Assigner_Patronymic, AssignerDepartment_Name, AssignedTo_Name, AssignedTo_Patronymic, AssignedTo_Surname, AssignedToRecordBook_Recordbook, AssignetToGroup_Name, Discipline_Name, State_State, EntityNumber)
-		VALUES (@Id, @WeekId, @OpenDate, @AssignerName, @AssignerSurname, @AssignerPatronymic, @AssignerDepartmentName, @Name, @Patronymic, @Surname, @Recordbook, @Group, @Discipline, @State, @EntityNumber)
+		INSERT INTO Assignments (Id, DisciplineId, WeekId, EntityNumber)
+		VALUES (@Id, @DisciplineId, @WeekId, @EntityNumber)
 		""";
+
+				string studentAssignmentSQL =
+				"""
+				INSERT INTO StudentAssignments (Id, AssignmentId, StudentId, Value_Value, EntityNumber)
+				VALUES (@Id, @AssignmentId, @StudentId, @Value_Value, @EntityNumber)
+				""";
+
 				foreach (AssignmentWeek week in session.Weeks)
 				{
 					week.SetNumber(currentWeekNumbers);
@@ -69,23 +78,24 @@ public class AssignmentSessionsRepository : IAssignmentSessionsRepository
 						mark.SetNumber(currentMarkNumber);
 						SqliteParameter[] markParameters = [
 							new SqliteParameter("@Id", mark.Id),
+							new SqliteParameter("@DisciplineId", mark.Discipline.Id),
 							new SqliteParameter("@WeekId", week.Id),
-							new SqliteParameter("@OpenDate", week.Session.SessionStartDate),
-							new SqliteParameter("@AssignerName", mark.Assigner.Name),
-							new SqliteParameter("@AssignerSurname", mark.Assigner.Surname),
-							new SqliteParameter("@AssignerPatronymic", mark.Assigner.Patronymic),
-							new SqliteParameter("@AssignerDepartmentName", mark.AssignerDepartment.Name),
-							new SqliteParameter("@Name", mark.AssignedTo.Name),
-							new SqliteParameter("@Surname", mark.AssignedTo.Surname),
-							new SqliteParameter("@Patronymic", mark.AssignedTo.Patronymic),
-							new SqliteParameter("@Recordbook", mark.AssignedToRecordBook.Recordbook),
-							new SqliteParameter("@Group", mark.AssignetToGroup.Name),
-							new SqliteParameter("@Discipline", mark.Discipline.Name),
-							new SqliteParameter("@State", mark.State.State),
 							new SqliteParameter("@EntityNumber", mark.EntityNumber)
 						];
 						await _context.Database.ExecuteSqlRawAsync(assignmentSQL, markParameters);
 						currentMarkNumber++;
+						foreach (StudentAssignment studentAssignment in mark.StudentAssignments)
+						{
+							studentAssignment.SetNumber(currentStudentAssignmentNumber);
+							SqliteParameter[] studentAssignmentParameters = [
+								new SqliteParameter("@Id", studentAssignment.Id),
+								new SqliteParameter("@AssignmentId", studentAssignment.Assignment.Id),
+								new SqliteParameter("@StudentId", studentAssignment.Student.Id),
+								new SqliteParameter("@Value_Value", studentAssignment.Value.Value),
+								new SqliteParameter("@EntityNumber", studentAssignment.EntityNumber),
+							];
+							await _context.Database.ExecuteSqlRawAsync(studentAssignmentSQL, studentAssignmentParameters);
+						}
 					}
 				}
 
@@ -118,6 +128,11 @@ public class AssignmentSessionsRepository : IAssignmentSessionsRepository
 		.OrderBy(s => s.EntityNumber)
 		.Include(s => s.Weeks)
 		.ThenInclude(w => w.Assignments)
+		.ThenInclude(a => a.StudentAssignments)
+		.ThenInclude(sa => sa.Student)
+		.Include(s => s.Weeks)
+		.ThenInclude(w => w.Assignments)
+		.ThenInclude(a => a.Discipline)
 		.Include(s => s.Weeks)
 		.ThenInclude(w => w.Group)
 		.AsNoTracking()
@@ -143,6 +158,11 @@ public class AssignmentSessionsRepository : IAssignmentSessionsRepository
 		.OrderBy(s => s.EntityNumber)
 		.Include(s => s.Weeks)
 		.ThenInclude(w => w.Assignments)
+		.ThenInclude(a => a.StudentAssignments)
+		.ThenInclude(sa => sa.Student)
+		.Include(s => s.Weeks)
+		.ThenInclude(w => w.Assignments)
+		.ThenInclude(a => a.Discipline)
 		.Include(s => s.Weeks)
 		.ThenInclude(w => w.Group)
 		.AsNoTracking()
@@ -162,6 +182,11 @@ public class AssignmentSessionsRepository : IAssignmentSessionsRepository
 		)
 		.Include(s => s.Weeks)
 		.ThenInclude(w => w.Assignments)
+		.ThenInclude(a => a.StudentAssignments)
+		.ThenInclude(sa => sa.Student)
+		.Include(s => s.Weeks)
+		.ThenInclude(w => w.Assignments)
+		.ThenInclude(a => a.Discipline)
 		.Include(s => s.Weeks)
 		.ThenInclude(w => w.Group)
 		.AsNoTracking()
@@ -179,6 +204,12 @@ public class AssignmentSessionsRepository : IAssignmentSessionsRepository
 		AssignmentSession? session = await _context.Sessions
 		.Include(s => s.Weeks)
 		.ThenInclude(w => w.Assignments)
+		.ThenInclude(a => a.StudentAssignments)
+		.ThenInclude(sa => sa.Student)
+		.Include(s => s.Weeks)
+		.ThenInclude(w => w.Assignments)
+		.ThenInclude(a => a.Discipline)
+		.ThenInclude(d => d.Teacher)
 		.Include(s => s.Weeks)
 		.ThenInclude(w => w.Group)
 		.AsNoTracking()
@@ -205,6 +236,12 @@ public class AssignmentSessionsRepository : IAssignmentSessionsRepository
 	private async Task<int> GenerateAssignmentEntityNumber()
 	{
 		int[] numbers = await _context.Assignments.Select(a => a.EntityNumber).ToArrayAsync();
+		return numbers.GetOrderedValue();
+	}
+
+	private async Task<int> GenerateStudentAssignmentEntityNumber()
+	{
+		int[] numbers = await _context.StudentAssignments.Select(a => a.EntityNumber).ToArrayAsync();
 		return numbers.GetOrderedValue();
 	}
 

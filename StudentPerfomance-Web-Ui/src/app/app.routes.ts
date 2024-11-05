@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { canActivateAuthAdmin } from './modules/users/services/admin-access-guard';
 import { CanActivateAuthTeacher } from './modules/teachers/teachers/teachers-access-guard';
+import { CanActivateUserPage } from './shared/components/user-page/user-page-guard-access';
 
 export const routes: Routes = [
   {
@@ -16,7 +17,7 @@ export const routes: Routes = [
       import('./shared/components/user-page/user-page.component').then(
         (mod) => mod.UserPageComponent
       ),
-    canActivate: [canActivateAuthAdmin, CanActivateAuthTeacher],
+    canActivate: [CanActivateUserPage],
   },
   {
     path: 'teacher-assignments',

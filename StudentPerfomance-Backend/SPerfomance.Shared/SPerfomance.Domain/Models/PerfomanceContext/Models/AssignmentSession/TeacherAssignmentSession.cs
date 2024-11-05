@@ -1,5 +1,6 @@
 using SPerfomance.Domain.Models.PerfomanceContext.Models.Assignments;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentsWeeks;
+using SPerfomance.Domain.Models.PerfomanceContext.Models.StudentAssignments;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.TeacherJournals;
 using SPerfomance.Domain.Models.Teachers;
 using SPerfomance.Domain.Models.Teachers.ValueObjects;
@@ -19,14 +20,13 @@ public class TeacherAssignmentSession
 		{
 			TeacherJournal journal = new TeacherJournal();
 			journal = journal.SetGroupName(week.Group!);
-			Assignment[] assignments = week.Assignments.Where(a => a.Assigner == teacher.Name).ToArray();
-			var groupedByDiscipline = assignments.GroupBy(a => a.Discipline);
-			foreach (var disciplines in groupedByDiscipline)
+			Assignment[] assignments = week.Assignments.Where(a => a.Discipline.Teacher!.Name == teacher.Name).ToArray();
+			foreach (Assignment assignment in assignments)
 			{
-				TeacherJournalDiscipline discipline = new TeacherJournalDiscipline(disciplines.Key);
-				foreach (var student in disciplines)
+				TeacherJournalDiscipline discipline = new TeacherJournalDiscipline(assignment.Discipline.Discipline);
+				foreach (StudentAssignment student in assignment.StudentAssignments)
 				{
-					discipline.AppendStudent(student);
+					discipline.AppendStudent(student, week.Group.Name.Name);
 				}
 				journal.SetDiscipline(discipline);
 			}

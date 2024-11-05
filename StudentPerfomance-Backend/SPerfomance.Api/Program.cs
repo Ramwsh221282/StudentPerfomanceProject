@@ -17,6 +17,7 @@ using SPerfomance.Domain.Models.TeacherDepartments.Abstractions;
 using SPerfomance.Domain.Models.Teachers.Abstractions;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions.Abstractions;
 using SPerfomance.Api.HostedServices;
+using SPerfomance.Domain.Models.PerfomanceContext.Models.StudentAssignments;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -35,6 +36,7 @@ builder.Services.AddSingleton<IMailingService, MailingService>();
 builder.Services.AddSingleton<IJwtTokenService, JwtTokenService>();
 builder.Services.AddScoped<IUsersRepository, UsersRepository>();
 builder.Services.AddScoped<IAssignmentSessionsRepository, AssignmentSessionsRepository>();
+builder.Services.AddScoped<IStudentAssignmentsRepository, StudentAssignmentsRepository>();
 
 //builder.Services.AddHostedService<SessionChecker>();
 

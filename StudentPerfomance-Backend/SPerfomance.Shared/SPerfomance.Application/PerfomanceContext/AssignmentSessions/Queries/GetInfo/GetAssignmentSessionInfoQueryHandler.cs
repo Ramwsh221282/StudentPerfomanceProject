@@ -38,18 +38,6 @@ public sealed class GetAssignmentSessionInfoQueryHandler
 
 	private int CalculateAssignmentsCompletionPercent(AssignmentSession session)
 	{
-		int totalAmount = 0;
-		int completedCount = 0;
-		foreach (var week in session.Weeks)
-		{
-			totalAmount += week.Assignments.Count;
-			completedCount += week.Assignments.Count(a => a.State == AssignmentState.Locked);
-		}
-
-		if (completedCount == 0)
-			return 0;
-
-		double percentage = (double)completedCount / totalAmount * 100;
-		return (int)Math.Round(percentage, 2);
+		return 1;
 	}
 }
