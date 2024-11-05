@@ -18,7 +18,7 @@ export class UserRemoveService {
     this._httpClient = inject(HttpClient);
     const authService = inject(AuthService);
     this._user = { ...authService.userData };
-    this._apiUri = `${BASE_API_URI}/api/users/management/remove`;
+    this._apiUri = `${BASE_API_URI}/api/users`;
   }
 
   public remove(user: UserRecord): Observable<UserRecord> {
@@ -31,11 +31,13 @@ export class UserRemoveService {
       user: {
         name: user.name,
         surname: user.surname,
-        thirdname: user.thirdname,
+        thirdname: user.patronymic,
         role: user.role,
         email: user.email,
       },
-      token: this._user.token,
+      token: {
+        token: this._user.token,
+      },
     };
   }
 }

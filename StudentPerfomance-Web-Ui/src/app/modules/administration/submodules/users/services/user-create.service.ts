@@ -13,7 +13,7 @@ export class UserCreationService {
 
   public constructor() {
     this._httpClient = inject(HttpClient);
-    this._apiUri = `${BASE_API_URI}/api/users/management/create`;
+    this._apiUri = `${BASE_API_URI}/api/users`;
     const authService = inject(AuthService);
     this._user = { ...authService.userData };
   }
@@ -29,10 +29,12 @@ export class UserCreationService {
         email: user.email,
         name: user.name,
         surname: user.surname,
-        thirdname: user.thirdname,
+        patronymic: user.patronymic,
         role: user.role,
       },
-      token: this._user.token,
+      token: {
+        token: this._user.token,
+      },
     };
   }
 }

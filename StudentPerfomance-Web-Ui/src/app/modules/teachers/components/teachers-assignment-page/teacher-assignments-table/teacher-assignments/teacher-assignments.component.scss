@@ -1,0 +1,19 @@
+.assignment-layout {
+  background-color: #ffffff;
+  border: solid 1px #d9d9d9;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 150px 150px;
+}
+
+.assignment-student {
+  border: solid 1px #d9d9d9;
+}
+
+.assignment-mark {
+  border: solid 1px #d9d9d9;
+  &:hover {
+    background-color: #ecf4ff;
+    cursor: pointer;
+  }
+}

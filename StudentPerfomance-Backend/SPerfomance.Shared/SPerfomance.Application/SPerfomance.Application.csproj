@@ -15,8 +15,4 @@
     <ProjectReference Include="..\SPerfomance.Domain\SPerfomance.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="PerfomanceContext\AssignmentSessions\Queries\" />
-  </ItemGroup>
-
 </Project>

@@ -31,7 +31,7 @@ export class AuthService {
     this._cookieService.set('token', user.token);
     this._cookieService.set('name', user.name);
     this._cookieService.set('surname', user.surname);
-    this._cookieService.set('thirdname', user.thirdname);
+    this._cookieService.set('thirdname', user.patronymic);
     this._cookieService.set('email', user.email);
     this._cookieService.set('role', user.role);
     this._user = { ...user };
@@ -43,7 +43,7 @@ export class AuthService {
       this._user = {
         name: ' ',
         surname: ' ',
-        thirdname: ' ',
+        patronymic: ' ',
         email: ' ',
         token: ' ',
         role: ' ',
@@ -54,7 +54,7 @@ export class AuthService {
       this._user = {
         name: this._cookieService.get('name'),
         surname: this._cookieService.get('surname'),
-        thirdname: this._cookieService.get('thirdname'),
+        patronymic: this._cookieService.get('thirdname'),
         email: this._cookieService.get('email'),
         token: this._cookieService.get('token'),
         role: this._cookieService.get('role'),

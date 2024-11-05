@@ -13,6 +13,7 @@
       • Авторизация
     </button>
     <button
+      *ngIf="authService.isAuthorized"
       #menuButton
       class="side-bar-menu-button"
       (click)="selectMenu($event, this.menuButton)"
@@ -32,9 +33,13 @@
       • Администрирование
     </button>
     <button
+      *ngIf="
+        authService.isAuthorized && authService.userData.role == 'Преподаватель'
+      "
       #menuButton
       class="side-bar-menu-button"
       (click)="selectMenu($event, this.menuButton)"
+      [routerLink]="['/teacher-assignments']"
     >
       • Преподавателям
     </button>

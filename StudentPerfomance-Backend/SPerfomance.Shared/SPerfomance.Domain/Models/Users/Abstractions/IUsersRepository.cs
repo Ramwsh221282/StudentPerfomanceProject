@@ -1,3 +1,5 @@
+using SPerfomance.Domain.Models.Teachers;
+
 namespace SPerfomance.Domain.Models.Users.Abstractions;
 
 public interface IUsersRepository
@@ -28,4 +30,8 @@ public interface IUsersRepository
 	public Task<int> GenerateEntityNumber();
 
 	public Task UpdateLoginDate(User entity);
+
+	Task<Teacher?> GetTeacherByUser(User user);
+
+	public Task<int> Count();
 }

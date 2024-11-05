@@ -1,0 +1,52 @@
+<div id="container">
+  <div id="header">
+    <strong>Добавление нового преподавателя</strong>
+  </div>
+  <div id="content">
+    <strong class="font-white" *ngIf="departments.length > 0"
+      >Выберите кафедру</strong
+    >
+    <strong class="font-white" *ngIf="departments.length == 0"
+      >Кафедры не найдены</strong
+    >
+    <select
+      *ngIf="departments.length > 0"
+      (change)="selectDepartment($event)"
+      class="default-select"
+    >
+      @for (department of departments; track department.name) {
+      <option [value]="department">{{ department.name }}</option>
+      }
+    </select>
+    <select (change)="selectTeacher($event)" class="default-select">
+      @for (teacher of teachers; track $index) {
+      <option [ngValue]="teacher">
+        {{ teacher.surname }} {{ teacher.name }} {{ teacher.patronymic }}
+      </option>
+      }
+    </select>
+    <strong
+      class="font-white"
+      *ngIf="user.name != undefined && user.surname != undefined"
+      >Укажите почту, чтобы выслать сгенерированный пароль</strong
+    >
+    <input
+      class="default-input"
+      placeholder="email"
+      *ngIf="user.name != undefined && user.surname != undefined"
+      [(ngModel)]="user.email"
+    />
+  </div>
+  <div id="controls">
+    <button class="accept-button-modal" type="button" (click)="submit()">
+      Добавить
+    </button>
+    ><button
+      class="danger-button-modal"
+      type="button"
+      (click)="visibility.emit(false)"
+    >
+      Закрыть окно
+    </button>
+  </div>
+</div>

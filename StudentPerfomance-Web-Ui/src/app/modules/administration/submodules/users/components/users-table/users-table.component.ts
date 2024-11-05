@@ -4,12 +4,20 @@ import { UserOperationNotificationService } from '../../../../../../shared/servi
 import { UserRecord } from '../../services/user-table-element-interface';
 import { catchError, Observable, tap } from 'rxjs';
 import { DatePipe } from '@angular/common';
+import { UsersPaginationService } from './users-table-pagination/users-pagination.servce';
+import { DefaultFetchPolicy } from '../../models/users-fetch-policies/users-default-fetch-policy';
+import { AuthService } from '../../../../../users/services/auth.service';
 
 @Component({
   selector: 'app-users-table',
   templateUrl: './users-table.component.html',
   styleUrl: './users-table.component.scss',
-  providers: [UsersDataService, UserOperationNotificationService, DatePipe],
+  providers: [
+    UsersPaginationService,
+    UsersDataService,
+    UserOperationNotificationService,
+    DatePipe,
+  ],
 })
 export class UsersTableComponent implements OnInit {
   protected userRecords: UserRecord[];
@@ -24,7 +32,9 @@ export class UsersTableComponent implements OnInit {
   public constructor(
     private readonly _datePipe: DatePipe,
     protected readonly _dataService: UsersDataService,
-    protected readonly _notificationService: UserOperationNotificationService
+    protected readonly _notificationService: UserOperationNotificationService,
+    private readonly _authService: AuthService,
+    private readonly _paginationService: UsersPaginationService
   ) {
     this.userRecords = [];
     this.isSuccess = false;
@@ -35,6 +45,11 @@ export class UsersTableComponent implements OnInit {
   }
 
   public ngOnInit(): void {
+    const policy = new DefaultFetchPolicy(this._authService.userData);
+    policy.addPages(
+      this._paginationService.currentPage,
+      this._paginationService.pageSize
+    );
     this.fetchUsers();
   }
 

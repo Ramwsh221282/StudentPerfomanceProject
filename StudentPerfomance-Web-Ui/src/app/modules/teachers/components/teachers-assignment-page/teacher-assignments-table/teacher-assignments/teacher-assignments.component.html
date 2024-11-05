@@ -1,0 +1,9 @@
+<div class="assignment-layout">
+  <strong class="assignment-student"
+    >{{ student.surname }} {{ student.name[0] }}
+    {{ student.patronymic == null ? "" : student.patronymic[0] }}</strong
+  >
+  <strong class="assignment-mark">{{
+    student.assignment.value == 1 ? "Не проставлена" : student.assignment.value
+  }}</strong>
+</div>

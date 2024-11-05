@@ -2,7 +2,7 @@ export interface UserRecord {
   number: number;
   name: string;
   surname: string;
-  thirdname: string;
+  patronymic: string;
   role: string;
   email: string;
   lastTimeOnline: string | null;

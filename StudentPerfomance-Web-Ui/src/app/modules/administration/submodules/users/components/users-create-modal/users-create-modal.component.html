@@ -3,35 +3,22 @@
     <strong>Добавление пользователя</strong>
   </div>
   <div id="content">
-    <section class="creation-form">
-      <input
-        [(ngModel)]="user.surname"
-        class="default-input"
-        placeholder="Фамилия"
-      />
-      <input [(ngModel)]="user.name" class="default-input" placeholder="Имя" />
-      <input
-        [(ngModel)]="user.thirdname"
-        class="default-input"
-        placeholder="Отчество"
-      />
-      <input
-        [(ngModel)]="user.email"
-        class="default-input"
-        placeholder="Почта"
-      />
-      <select [(ngModel)]="user.role" class="default-select">
-        <option disabled selected>Выберите права пользователя</option>
-        <option>Администратор</option>
-        <option>Преподаватель</option>
-        <option>Преподаватель с правами администратора</option>
-      </select>
-    </section>
+    <button
+      class="accept-button-modal"
+      type="button"
+      (click)="_isCreatingAdmin = true"
+    >
+      Зарегистрировать как администратора
+    </button>
+    <button
+      class="accept-button-modal"
+      type="button"
+      (click)="_isCreatingTeacher = true"
+    >
+      Зарегистрировать как преподавателя
+    </button>
   </div>
   <div id="controls">
-    <button class="accept-button-modal" type="button" (click)="submit()">
-      Добавить
-    </button>
     ><button
       class="danger-button-modal"
       type="button"
@@ -40,4 +27,20 @@
       Закрыть окно
     </button>
   </div>
+</div>
+<div id="admin-modal-renderer" *ngIf="_isCreatingAdmin">
+  <app-users-create-admin-modal
+    (failure)="failureEmitter.emit()"
+    (success)="successEmitter.emit()"
+    (refreshEmitter)="refreshEmitter.emit()"
+    (visibility)="_isCreatingAdmin = $event"
+  ></app-users-create-admin-modal>
+</div>
+<div id="teacher-modal-renderer" *ngIf="_isCreatingTeacher">
+  <app-users-create-teacher-modal
+    (failure)="failureEmitter.emit()"
+    (success)="successEmitter.emit()"
+    (refreshEmitter)="refreshEmitter.emit()"
+    (visibility)="_isCreatingTeacher = $event"
+  ></app-users-create-teacher-modal>
 </div>

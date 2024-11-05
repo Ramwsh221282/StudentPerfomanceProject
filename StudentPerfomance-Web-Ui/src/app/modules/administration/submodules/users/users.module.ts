@@ -12,6 +12,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SuccessResultNotificationComponent } from '../../../../shared/components/success-result-notification/success-result-notification.component';
 import { FailureResultNotificationComponent } from '../../../../shared/components/failure-result-notification/failure-result-notification.component';
 import { UsersTablePaginationComponent } from './components/users-table/users-table-pagination/users-table-pagination.component';
+import { UsersCreateAdminModalComponent } from './components/users-create-modal/users-create-admin-modal/users-create-admin-modal.component';
+import { UsersCreateTeacherModalComponent } from './components/users-create-modal/users-create-teacher-modal/users-create-teacher-modal.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import { UsersTablePaginationComponent } from './components/users-table/users-ta
     UsersTableComponent,
     UsersTableRowComponent,
     UsersTablePaginationComponent,
+    UsersCreateAdminModalComponent,
+    UsersCreateTeacherModalComponent,
   ],
   imports: [
     UsersRoutingModule,

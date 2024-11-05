@@ -9,9 +9,9 @@ export class UserCreationNotification
 	${parameter.surname}
 	${parameter.name[0]}
 	${
-    parameter.thirdname == null || parameter.thirdname == undefined
+    parameter.patronymic == null || parameter.patronymic == undefined
       ? ''
-      : parameter.thirdname[0]
+      : parameter.patronymic[0]
   }
   ${parameter.role}`;
   }

@@ -8,7 +8,7 @@ public static class UsersAuth
 {
 	public record Request(string Email, string Password);
 
-	public record Response(string Name, string Surname, string Email, string Role, string Token);
+	public record Response(string Name, string Surname, string? Patronymic, string Email, string Role, string Token);
 
 	public sealed class Endpoint : IEndpoint
 	{
@@ -39,6 +39,7 @@ public static class UsersAuth
 			user.Name.Name,
 			user.Name.Surname,
 			user.Name.Patronymic,
+			user.Email.Email,
 			user.Role.Role,
 			token
 		));

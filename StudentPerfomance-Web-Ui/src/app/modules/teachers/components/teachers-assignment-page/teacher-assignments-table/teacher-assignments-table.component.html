@@ -1,0 +1,31 @@
+<div class="teacher-assignment-session-table-wrapper">
+  <div class="teacher-assignment-session-groups">
+    @for (journal of _teacherAssignments.journals; track journal.groupName) {
+    <button class="accept-button-modal" (click)="selectGroup(journal)">
+      {{ journal.groupName.name }}
+    </button>
+    }
+  </div>
+  <div
+    class="teacher-assignment-session-disciplines"
+    *ngIf="_teacherJournal != undefined"
+  >
+    @for (discipline of _teacherJournal.disciplines; track discipline.name.name)
+    {
+    <button
+      (click)="selectDiscipline(discipline)"
+      class="warning-button-outline"
+    >
+      {{ discipline.name.name }}
+    </button>
+    }
+  </div>
+  <div
+    class="teacher-assignment-session-assignments"
+    *ngIf="_teacherDiscipline != undefined"
+  >
+    @for (student of _teacherDiscipline.students; track $index) {
+    <app-teacher-assignments [student]="student"></app-teacher-assignments>
+    }
+  </div>
+</div>

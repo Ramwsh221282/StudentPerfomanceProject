@@ -4,7 +4,9 @@ using Microsoft.EntityFrameworkCore.Storage;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.Assignments;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions.Abstractions;
+using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions.ValueObject;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentsWeeks;
+using SPerfomance.Domain.Models.Teachers;
 using SPerfomance.Domain.Tools;
 
 namespace SPerfomance.DataAccess.Repositories;
@@ -171,6 +173,28 @@ public class AssignmentSessionsRepository : IAssignmentSessionsRepository
 		int[] numbers = await _context.Sessions.Select(s => s.EntityNumber).ToArrayAsync();
 		return numbers.GetOrderedValue();
 	}
+
+	public async Task<TeacherAssignmentSession?> GetAssignmentSessionForTeacher(Teacher teacher)
+	{
+		AssignmentSession? session = await _context.Sessions
+		.Include(s => s.Weeks)
+		.ThenInclude(w => w.Assignments)
+		.Include(s => s.Weeks)
+		.ThenInclude(w => w.Group)
+		.AsNoTracking()
+		.AsSplitQuery()
+		.FirstOrDefaultAsync(a => a.State.State == AssignmentSessionState.Opened.State);
+		return session == null ?
+			null :
+			new TeacherAssignmentSession(teacher, session);
+	}
+
+	public async Task<AssignmentSession?> GetActiveSession() =>
+		await _context.Sessions
+		.Include(s => s.Weeks)
+		.ThenInclude(w => w.Assignments)
+		.AsNoTracking()
+		.FirstOrDefaultAsync(s => s.State.State == AssignmentSessionState.Opened.State);
 
 	private async Task<int> GenerateWeekEntityNumber()
 	{

@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { canActivateAuthAdmin } from './modules/users/services/admin-access-guard';
+import { CanActivateAuthTeacher } from './modules/teachers/teachers/teachers-access-guard';
 
 export const routes: Routes = [
   {
@@ -15,6 +16,15 @@ export const routes: Routes = [
       import('./shared/components/user-page/user-page.component').then(
         (mod) => mod.UserPageComponent
       ),
+    canActivate: [canActivateAuthAdmin, CanActivateAuthTeacher],
+  },
+  {
+    path: 'teacher-assignments',
+    loadChildren: () =>
+      import('./modules/teachers/teachers/teachers.module').then(
+        (mod) => mod.TeachersModule
+      ),
+    canActivate: [CanActivateAuthTeacher],
   },
   {
     path: 'administration',

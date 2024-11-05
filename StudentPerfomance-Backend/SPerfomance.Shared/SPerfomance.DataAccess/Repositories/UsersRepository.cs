@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
+using SPerfomance.Domain.Models.Teachers;
 using SPerfomance.Domain.Models.Users;
 using SPerfomance.Domain.Models.Users.Abstractions;
 using SPerfomance.Domain.Tools;
@@ -14,6 +15,7 @@ public class UsersRepository : IUsersRepository
 	{
 		entity.SetNumber(await GenerateEntityNumber());
 		await _context.AddAsync(entity);
+		await _context.SaveChangesAsync();
 	}
 
 	public async Task<int> Count() => await _context.Users.CountAsync();
@@ -25,7 +27,14 @@ public class UsersRepository : IUsersRepository
 	}
 
 	public async Task<User?> GetById(string Id) =>
-		await _context.Users.FirstOrDefaultAsync(u => u.Id.ToString() == Id.ToUpper());
+		await _context.Users.AsNoTracking().FirstOrDefaultAsync(u => u.Id.ToString() == Id.ToUpper());
+
+	public async Task<Teacher?> GetTeacherByUser(User user) =>
+		await _context.Teachers.FirstOrDefaultAsync(t =>
+		t.Name.Name == user.Name.Name &&
+		t.Name.Surname == user.Name.Surname &&
+		t.Name.Patronymic == user.Name.Patronymic
+		);
 
 	public async Task<IReadOnlyCollection<User>> GetFiltered(
 		string? name,
@@ -43,7 +52,8 @@ public class UsersRepository : IUsersRepository
 				!string.IsNullOrWhiteSpace(email) && u.Email.Email.Contains(email) ||
 				!string.IsNullOrWhiteSpace(role) && u.Role.Role.Contains(role))
 			.Skip((page - 1) * pageSize)
-			.Take(pageSize).AsNoTracking()
+			.Take(pageSize)
+			.AsNoTracking()
 			.ToListAsync();
 
 	public async Task<IReadOnlyCollection<User>> GetPaged(int page, int pageSize) =>

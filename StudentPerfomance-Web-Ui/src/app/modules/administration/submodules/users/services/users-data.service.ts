@@ -1,5 +1,4 @@
 import { inject, Injectable } from '@angular/core';
-import { IFetchable } from '../../../../../shared/models/fetch-policices/ifetchable-interface';
 import { UserRecord } from './user-table-element-interface';
 import { IFetchPolicy } from '../../../../../shared/models/fetch-policices/fetch-policy-interface';
 import { HttpClient } from '@angular/common/http';
@@ -17,13 +16,11 @@ export class UsersDataService implements IObservableFetchable<UserRecord[]> {
   private readonly _user: User;
 
   private _policy: IFetchPolicy<UserRecord[]>;
-  private _userRecords: UserRecord[];
 
   public constructor() {
     const authService: AuthService = inject(AuthService);
     this._user = authService.userData;
     this._httpClient = inject(HttpClient);
-    this._userRecords = [];
     this._policy = new DefaultFetchPolicy(this._user);
     this._policy.addPages(1, 10);
   }

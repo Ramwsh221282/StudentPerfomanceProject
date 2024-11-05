@@ -1,7 +1,7 @@
 export interface User {
   name: string;
   surname: string;
-  thirdname: string;
+  patronymic: string;
   email: string;
   token: string;
   role: string;

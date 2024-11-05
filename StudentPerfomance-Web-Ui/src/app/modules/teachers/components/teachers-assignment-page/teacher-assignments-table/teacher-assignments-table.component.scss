@@ -1,0 +1,35 @@
+.teacher-assignment-session-table-wrapper {
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  border: solid 1px #d9d9d9;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.teacher-assignment-session-groups {
+  padding: 5px;
+  display: inline-flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 5px;
+  border-bottom: solid 1px #d9d9d9;
+}
+
+.teacher-assignment-session-disciplines {
+  padding: 5px;
+  display: inline-flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 5px;
+  border-bottom: solid 1px #d9d9d9;
+}
+
+.teacher-assignment-session-assignments {
+  display: grid;
+  grid-template-columns: 300px 300px;
+  grid-template-rows: auto;
+  gap: 5px;
+}
