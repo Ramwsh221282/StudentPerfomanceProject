@@ -17,31 +17,47 @@ namespace SPerfomance.Api.Features.SemesterPlans;
 
 public static class GetSemesterPlansBySemester
 {
-	public record Request(
-		EducationDirectionContract Direction,
-		EducationPlanContract Plan,
-		SemesterContract Semester,
-		TokenContract Token
-		);
+    public record Request(
+        EducationDirectionContract Direction,
+        EducationPlanContract Plan,
+        SemesterContract Semester,
+        TokenContract Token
+    );
 
-	public sealed class Endpoint : IEndpoint
-	{
-		public void MapEndpoint(IEndpointRouteBuilder app) =>
-			app.MapPost($"{SemesterPlanTags.Api}/get-by-semester", Handler).WithTags(SemesterPlanTags.Tag);
-	}
+    public sealed class Endpoint : IEndpoint
+    {
+        public void MapEndpoint(IEndpointRouteBuilder app) =>
+            app.MapPost($"{SemesterPlanTags.Api}/get-by-semester", Handler)
+                .WithTags(SemesterPlanTags.Tag);
+    }
 
-	public static async Task<IResult> Handler(Request request, IUsersRepository users, IEducationDirectionRepository repository)
-	{
-		if (!await new UserVerificationService(users).IsVerified(request.Token, UserRole.Administrator))
-			return Results.BadRequest(UserTags.UnauthorizedError);
+    public static async Task<IResult> Handler(
+        Request request,
+        IUsersRepository users,
+        IEducationDirectionRepository repository
+    )
+    {
+        if (
+            !await new UserVerificationService(users).IsVerified(
+                request.Token,
+                UserRole.Administrator
+            )
+        )
+            return Results.BadRequest(UserTags.UnauthorizedError);
 
-		Result<EducationDirection> direction = await new GetEducationDirectionQueryHandler(repository).Handle(request.Direction);
-		Result<EducationPlan> educationPlan = await new GetEducationPlanQueryHandler().Handle(new(direction.Value, request.Plan.PlanYear));
-		Result<Semester> semester = await new GetSemesterQueryHandler().Handle(new(educationPlan.Value, request.Semester.Number));
+        Result<EducationDirection> direction = await new GetEducationDirectionQueryHandler(
+            repository
+        ).Handle(request.Direction);
+        Result<EducationPlan> educationPlan = await new GetEducationPlanQueryHandler().Handle(
+            new(direction.Value, request.Plan.PlanYear)
+        );
+        Result<Semester> semester = await new GetSemesterQueryHandler().Handle(
+            new(educationPlan.Value, request.Semester.Number)
+        );
 
-		if (semester.IsFailure)
-			return Results.BadRequest(semester.Error.Description);
+        if (semester.IsFailure)
+            return Results.BadRequest(semester.Error.Description);
 
-		return Results.Ok(semester.Value.Disciplines.Select(d => d.MapFromDomain()));
-	}
+        return Results.Ok(semester.Value.Disciplines.Select(d => d.MapFromDomain()));
+    }
 }

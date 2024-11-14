@@ -6,23 +6,24 @@ using SPerfomance.Domain.Tools;
 
 namespace SPerfomance.Application.Semesters.Commands.ChangeDisciplineName;
 
-public class ChangeDisciplineNameCommandHandler
-(
-	ISemesterPlansRepository repository
-) : ICommandHandler<ChangeDisciplineNameCommand, SemesterPlan>
+public class ChangeDisciplineNameCommandHandler(ISemesterPlansRepository repository)
+    : ICommandHandler<ChangeDisciplineNameCommand, SemesterPlan>
 {
-	private readonly ISemesterPlansRepository _repository = repository;
+    private readonly ISemesterPlansRepository _repository = repository;
 
-	public async Task<Result<SemesterPlan>> Handle(ChangeDisciplineNameCommand command)
-	{
-		if (command.Discipline == null)
-			return Result<SemesterPlan>.Failure(SemesterPlanErrors.NotFound());
+    public async Task<Result<SemesterPlan>> Handle(ChangeDisciplineNameCommand command)
+    {
+        if (command.Discipline == null)
+            return Result<SemesterPlan>.Failure(SemesterPlanErrors.NotFound());
 
-		Result<SemesterPlan> updated = command.Discipline.Semester.ChangeDisciplineName(command.Discipline, command.NewName);
-		if (updated.IsFailure)
-			return updated;
+        Result<SemesterPlan> updated = command.Discipline.Semester.ChangeDisciplineName(
+            command.Discipline,
+            command.NewName
+        );
+        if (updated.IsFailure)
+            return updated;
 
-		await _repository.Update(updated.Value);
-		return updated;
-	}
+        await _repository.Update(updated.Value);
+        return updated;
+    }
 }

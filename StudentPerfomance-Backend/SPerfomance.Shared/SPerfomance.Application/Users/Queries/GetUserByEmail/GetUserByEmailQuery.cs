@@ -4,11 +4,7 @@ using SPerfomance.Domain.Tools;
 
 namespace SPerfomance.Application.Users.Queries.GetUserByEmail;
 
-public class GetUserByEmailQuery
-(
-	string? email
-)
-: IQuery<User>
+public class GetUserByEmailQuery(string? email) : IQuery<User>
 {
-	public string Email { get; init; } = email.ValueOrEmpty();
+    public string Email { get; init; } = email.ValueOrEmpty();
 }

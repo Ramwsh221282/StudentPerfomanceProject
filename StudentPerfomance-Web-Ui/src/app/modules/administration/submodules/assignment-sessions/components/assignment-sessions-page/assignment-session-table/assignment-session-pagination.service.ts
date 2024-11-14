@@ -14,7 +14,7 @@ export class AssignmentSessionPaginationService {
 
   constructor(
     private readonly _httpClient: HttpClient,
-    private readonly _authService: AuthService
+    private readonly _authService: AuthService,
   ) {
     this._apiUri = `${BASE_API_URI}/api/assignment-sessions/count`;
   }

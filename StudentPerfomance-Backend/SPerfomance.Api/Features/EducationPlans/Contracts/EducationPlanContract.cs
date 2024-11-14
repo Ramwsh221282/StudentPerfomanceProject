@@ -2,5 +2,5 @@ namespace SPerfomance.Api.Features.EducationPlans.Contracts;
 
 public class EducationPlanContract
 {
-	public int? PlanYear { get; set; }
+    public int? PlanYear { get; set; }
 }

@@ -5,4 +5,6 @@ export interface StudentAssignments {
   studentSurname: string;
   studentPatronymic: string | null;
   studentRecordbook: number;
+  studentAverage: number;
+  studentPerfomance: number;
 }

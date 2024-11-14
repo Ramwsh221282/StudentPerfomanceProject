@@ -4,25 +4,24 @@ using SPerfomance.Domain.Models.Students;
 
 namespace SPerfomance.Application.StudentGroups.Commands.AddStudentCommand;
 
-public class AddStudentCommand
-(
-	string? name,
-	string? surname,
-	string? patronymic,
-	string? state,
-	ulong? recordbook,
-	StudentGroup? group
+public class AddStudentCommand(
+    string? name,
+    string? surname,
+    string? patronymic,
+    string? state,
+    ulong? recordbook,
+    StudentGroup? group
 ) : ICommand<Student>
 {
-	public string? Name { get; init; } = name;
+    public string? Name { get; init; } = name;
 
-	public string? Surname { get; init; } = surname;
+    public string? Surname { get; init; } = surname;
 
-	public string? Patronymic { get; init; } = patronymic;
+    public string? Patronymic { get; init; } = patronymic;
 
-	public string? State { get; init; } = state;
+    public string? State { get; init; } = state;
 
-	public ulong? Recordbook { get; init; } = recordbook;
+    public ulong? Recordbook { get; init; } = recordbook;
 
-	public StudentGroup? Group { get; init; } = group;
+    public StudentGroup? Group { get; init; } = group;
 }

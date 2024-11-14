@@ -5,9 +5,10 @@ using SPerfomance.Domain.Tools;
 
 namespace SPerfomance.Application.EducationPlans.Queries.GetEducationPlan;
 
-public class GetEducationPlanQuery(EducationDirection? direction, int? planYear) : IQuery<EducationPlan>
+public class GetEducationPlanQuery(EducationDirection? direction, int? planYear)
+    : IQuery<EducationPlan>
 {
-	public EducationDirection? Direction { get; init; } = direction;
+    public EducationDirection? Direction { get; init; } = direction;
 
-	public int PlanYear { get; init; } = planYear.ValueOrEmpty();
+    public int PlanYear { get; init; } = planYear.ValueOrEmpty();
 }

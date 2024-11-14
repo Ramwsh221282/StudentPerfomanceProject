@@ -28,6 +28,8 @@
   }
 
   #content {
+    align-items: center;
+    justify-content: center;
     flex-grow: 1;
     padding: 30px;
     font-size: 20px;
@@ -55,6 +57,14 @@
   gap: 10px;
 }
 
+.row-container {
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  border-top: solid 1px #ffffff;
+}
+
 .search-container {
   display: flex;
   flex-direction: column;
@@ -75,7 +85,7 @@
 
 .search-table {
   border-collapse: collapse;
-  font-size: 0.9 em;
+  font-size: 0.9em;
   min-width: 100px;
 
   & thead tr {

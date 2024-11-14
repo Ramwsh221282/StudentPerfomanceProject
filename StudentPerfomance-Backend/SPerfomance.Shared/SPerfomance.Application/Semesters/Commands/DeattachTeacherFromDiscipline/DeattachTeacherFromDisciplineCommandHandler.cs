@@ -6,24 +6,23 @@ using SPerfomance.Domain.Tools;
 
 namespace SPerfomance.Application.Semesters.Commands.DeattachTeacherFromDiscipline;
 
-public class DeattachTeacherFromDisciplineCommandHandler
-(
-	ISemesterPlansRepository repository
-)
-: ICommandHandler<DeattachTeacherFromDisciplineCommand, SemesterPlan>
+public class DeattachTeacherFromDisciplineCommandHandler(ISemesterPlansRepository repository)
+    : ICommandHandler<DeattachTeacherFromDisciplineCommand, SemesterPlan>
 {
-	private readonly ISemesterPlansRepository _repository = repository;
+    private readonly ISemesterPlansRepository _repository = repository;
 
-	public async Task<Result<SemesterPlan>> Handle(DeattachTeacherFromDisciplineCommand command)
-	{
-		if (command.Discipline == null)
-			return Result<SemesterPlan>.Failure(SemesterPlanErrors.NotFound());
+    public async Task<Result<SemesterPlan>> Handle(DeattachTeacherFromDisciplineCommand command)
+    {
+        if (command.Discipline == null)
+            return Result<SemesterPlan>.Failure(SemesterPlanErrors.NotFound());
 
-		Result<SemesterPlan> discipline = command.Discipline.Semester.DeattachTeacherFromDiscipline(command.Discipline);
-		if (discipline.IsFailure)
-			return discipline;
+        Result<SemesterPlan> discipline = command.Discipline.Semester.DeattachTeacherFromDiscipline(
+            command.Discipline
+        );
+        if (discipline.IsFailure)
+            return discipline;
 
-		await _repository.DeattachTeacherId(discipline.Value);
-		return Result<SemesterPlan>.Success(discipline.Value);
-	}
+        await _repository.DeattachTeacherId(discipline.Value);
+        return Result<SemesterPlan>.Success(discipline.Value);
+    }
 }

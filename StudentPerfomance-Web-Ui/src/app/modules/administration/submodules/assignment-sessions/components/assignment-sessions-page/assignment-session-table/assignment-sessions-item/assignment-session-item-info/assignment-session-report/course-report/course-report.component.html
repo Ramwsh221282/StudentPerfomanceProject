@@ -1,0 +1,42 @@
+<div id="container">
+  <div id="header">
+    <div class="header-container">
+      <strong>Статистика по курсам</strong>
+    </div>
+  </div>
+  <div id="content">
+    <div class="row-container">
+      <strong>Средний балл: {{ courseReport.average }}</strong>
+      <strong>Успеваемость: {{ courseReport.perfomance }}</strong>
+    </div>
+    <div class="search-container">
+      <table class="search-table">
+        <thead>
+        <tr>
+          <th>Курс</th>
+          <th>% успеваемости</th>
+          <th>Средний балл</th>
+        </tr>
+        </thead>
+        <tbody>
+          @for (part of courseReport.parts; track part.course) {
+            <tr>
+              <td>{{ part.course }}</td>
+              <td>{{ part.perfomance }}</td>
+              <td>{{ part.average }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div id="controls">
+    <button
+      class="danger-button-modal"
+      type="button"
+      (click)="visibility.emit()"
+    >
+      Закрыть окно
+    </button>
+  </div>
+</div>

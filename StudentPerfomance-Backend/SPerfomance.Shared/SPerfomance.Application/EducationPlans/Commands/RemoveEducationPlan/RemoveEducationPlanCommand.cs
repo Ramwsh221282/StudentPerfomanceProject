@@ -5,5 +5,5 @@ namespace SPerfomance.Application.EducationPlans.Commands.RemoveEducationPlan;
 
 public class RemoveEducationPlanCommand(EducationPlan? plan) : ICommand<EducationPlan>
 {
-	public EducationPlan? Plan { get; init; } = plan;
+    public EducationPlan? Plan { get; init; } = plan;
 }

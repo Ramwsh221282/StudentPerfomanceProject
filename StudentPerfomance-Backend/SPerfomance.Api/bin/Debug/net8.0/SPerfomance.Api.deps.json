@@ -11,6 +11,7 @@
           "Microsoft.AspNetCore.OpenApi": "8.0.2",
           "SPerfomance.Application": "1.0.0",
           "SPerfomance.DataAccess": "1.0.0",
+          "SPerfomance.Statistics.DataAccess": "1.0.0",
           "Swashbuckle.AspNetCore": "6.4.0"
         },
         "runtime": {
@@ -488,6 +489,14 @@
         "runtime": {
           "SPerfomance.Domain.dll": {}
         }
+      },
+      "SPerfomance.Statistics.DataAccess/1.0.0": {
+        "dependencies": {
+          "SPerfomance.DataAccess": "1.0.0"
+        },
+        "runtime": {
+          "SPerfomance.Statistics.DataAccess.dll": {}
+        }
       }
     }
   },
@@ -774,6 +783,11 @@
       "sha512": ""
     },
     "SPerfomance.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SPerfomance.Statistics.DataAccess/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

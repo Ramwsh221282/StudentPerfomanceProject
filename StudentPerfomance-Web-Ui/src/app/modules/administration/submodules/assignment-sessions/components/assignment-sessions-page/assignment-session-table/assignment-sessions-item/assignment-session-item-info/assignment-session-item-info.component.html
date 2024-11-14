@@ -2,38 +2,64 @@
   <div id="header">
     <div class="header-container">
       <strong
-        >Контрольная неделя {{ session.startDate }}
+      >Контрольная неделя {{ session.startDate }}
         {{ session.endDate }}</strong
       >
     </div>
   </div>
   <div id="content">
-    <strong class="font-white">Группы:</strong>
+    <button class="accept-button-modal" (click)="isByUniversityVisible = true">
+      Сведения по вузу
+    </button>
+    <button class="accept-button-modal" (click)="isByDepartmentVisible = true">
+      Сведения по кафедрам
+    </button>
+    <button class="accept-button-modal" (click)="isByCourseVisible = true">
+      Открыть сведения по курсам
+    </button>
+    <button
+      class="accept-button-modal"
+      (click)="isByDirectionsCodeVisible = true"
+    >
+      Открыть сведения по направлениям подготовки
+    </button>
+    <button class="accept-button-modal" (click)="isByDirectionsVisible = true">
+      Открыть сведения по направлениям подготовки (бакалавриат/магистратура)
+    </button>
+    <div class="row-container">
+      <strong class="font-white">Отчёт: {{ report == null ? 'Нет' : 'Создан' }}</strong>
+      <button class="accept-button-modal" *ngIf="report != null" (click)="isReportModalVisible = true">Просмотреть
+      </button>
+    </div>
     <div class="search-container">
       <table class="search-table">
         <thead>
-          <tr>
-            <th>Студенческая группа</th>
-            <th>Действия</th>
-          </tr>
+        <tr>
+          <th>Студенческая группа</th>
+          <th>% успеваемости</th>
+          <th>Средний балл</th>
+          <th>Действия</th>
+        </tr>
         </thead>
         <tbody>
           @for (week of session.weeks; track week.group.name) {
-          <tr>
-            <td>{{ week.group.name }}</td>
-            <td>
-              <div class="controls-container">
-                <button
-                  class="accept-button"
-                  (click)="
+            <tr>
+              <td>{{ week.group.name }}</td>
+              <td>{{ week.averagePerfomancePercent }}</td>
+              <td>{{ week.averageMarks }}</td>
+              <td>
+                <div class="controls-container">
+                  <button
+                    class="accept-button"
+                    (click)="
                     selectedAssignmentWeek = week; isAssignmentsVisible = true
                   "
-                >
-                  Просмотреть ведомость
-                </button>
-              </div>
-            </td>
-          </tr>
+                  >
+                    Просмотреть ведомость
+                  </button>
+                </div>
+              </td>
+            </tr>
           }
         </tbody>
       </table>
@@ -54,4 +80,38 @@
     [week]="selectedAssignmentWeek"
     (visibility)="isAssignmentsVisible = false"
   ></app-assignment-session-item-assignments>
+</div>
+<div id="course-info-renderer" *ngIf="isByCourseVisible">
+  <app-assignment-session-course-info
+    [coursePerfomances]="session.coursePerfomances"
+    (visibility)="isByCourseVisible = false"
+  ></app-assignment-session-course-info>
+</div>
+<div id="department-info-renderer" *ngIf="isByDepartmentVisible">
+  <app-assignment-session-department-info
+    [departmentPerfomances]="session.departmentPerfomances"
+    (visibility)="isByDepartmentVisible = false"
+  ></app-assignment-session-department-info>
+</div>
+<div id="direction-type-info-renderer" *ngIf="isByDirectionsVisible">
+  <app-assignment-session-direction-info
+    [directionPerfomances]="session.directionTypePerfomances"
+    (visibility)="isByDirectionsVisible = false"
+  ></app-assignment-session-direction-info>
+</div>
+<div id="university-info-renderer" *ngIf="isByUniversityVisible">
+  <app-assignment-session-university-info
+    [perfomance]="session.universityPerfomance"
+    (visibility)="isByUniversityVisible = false"
+  ></app-assignment-session-university-info>
+</div>
+<div id="direction-code-info-renderer" *ngIf="isByDirectionsCodeVisible">
+  <app-assignment-session-direction-code-info
+    [perfomances]="session.directionCodePerfomances"
+    (visibility)="isByDirectionsCodeVisible = false"
+  ></app-assignment-session-direction-code-info>
+</div>
+<div id="report-modal-renderer" *ngIf="isReportModalVisible">
+  <app-assignment-session-report [report]="report!"
+                                 (visibility)="isReportModalVisible = false"></app-assignment-session-report>
 </div>

@@ -6,31 +6,28 @@ using SPerfomance.Domain.Tools;
 
 namespace SPerfomance.Application.StudentGroups.Commands.AddStudentCommand;
 
-public class AddStudentCommandHandler
-(
-	IStudentsRepository students
-)
-: ICommandHandler<AddStudentCommand, Student>
+public class AddStudentCommandHandler(IStudentsRepository students)
+    : ICommandHandler<AddStudentCommand, Student>
 {
-	private readonly IStudentsRepository _students = students;
+    private readonly IStudentsRepository _students = students;
 
-	public async Task<Result<Student>> Handle(AddStudentCommand command)
-	{
-		if (command.Group == null)
-			return Result<Student>.Failure(StudentGroupErrors.NotFound());
+    public async Task<Result<Student>> Handle(AddStudentCommand command)
+    {
+        if (command.Group == null)
+            return Result<Student>.Failure(StudentGroupErrors.NotFound());
 
-		Result<Student> student = command.Group.AddStudent(
-			command.Name.ValueOrEmpty(),
-			command.Surname.ValueOrEmpty(),
-			command.Patronymic.ValueOrEmpty(),
-			command.Recordbook.ValueOrEmpty(),
-			command.State.ValueOrEmpty()
-		);
+        Result<Student> student = command.Group.AddStudent(
+            command.Name.ValueOrEmpty(),
+            command.Surname.ValueOrEmpty(),
+            command.Patronymic.ValueOrEmpty(),
+            command.Recordbook.ValueOrEmpty(),
+            command.State.ValueOrEmpty()
+        );
 
-		if (student.IsFailure)
-			return student;
+        if (student.IsFailure)
+            return student;
 
-		await _students.Insert(student.Value);
-		return Result<Student>.Success(student.Value);
-	}
+        await _students.Insert(student.Value);
+        return Result<Student>.Success(student.Value);
+    }
 }

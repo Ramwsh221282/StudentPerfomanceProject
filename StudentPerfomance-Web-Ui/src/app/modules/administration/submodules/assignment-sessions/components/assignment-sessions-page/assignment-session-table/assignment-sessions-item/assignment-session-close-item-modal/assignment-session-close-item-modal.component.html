@@ -1,0 +1,24 @@
+<div id="container">
+  <div id="header">
+    <div class="header-container">
+      <strong>Подтверждение</strong>
+    </div>
+  </div>
+  <div id="content">
+    <strong class="font-white">Завершить контрольную неделю?</strong>
+  </div>
+  <div id="controls">
+    <button
+      class="accept-button-modal"
+      type="button"
+      (click)="submit()">
+      Завершить
+    </button>
+    <button
+      class="danger-button-modal"
+      type="button"
+      (click)="visibility.emit()">
+      Закрыть окно
+    </button>
+  </div>
+</div>

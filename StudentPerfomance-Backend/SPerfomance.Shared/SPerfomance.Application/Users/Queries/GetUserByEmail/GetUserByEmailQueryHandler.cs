@@ -6,19 +6,17 @@ using SPerfomance.Domain.Tools;
 
 namespace SPerfomance.Application.Users.Queries.GetUserByEmail;
 
-public class GetUserByEmailQueryHandler
-(
-	IUsersRepository repository
-) : IQueryHandler<GetUserByEmailQuery, User>
+public class GetUserByEmailQueryHandler(IUsersRepository repository)
+    : IQueryHandler<GetUserByEmailQuery, User>
 {
-	private readonly IUsersRepository _repository = repository;
+    private readonly IUsersRepository _repository = repository;
 
-	public async Task<Result<User>> Handle(GetUserByEmailQuery command)
-	{
-		User? user = await _repository.GetByEmail(command.Email);
-		if (user == null)
-			return Result<User>.Failure(UserErrors.NotFound());
+    public async Task<Result<User>> Handle(GetUserByEmailQuery command)
+    {
+        User? user = await _repository.GetByEmail(command.Email);
+        if (user == null)
+            return Result<User>.Failure(UserErrors.NotFound());
 
-		return Result<User>.Success(user);
-	}
+        return Result<User>.Success(user);
+    }
 }

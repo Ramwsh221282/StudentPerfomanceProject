@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-
 using SPerfomance.Api.Endpoints;
 using SPerfomance.Api.Features.Common;
 using SPerfomance.Api.Features.Students.Contracts;
@@ -17,40 +16,47 @@ namespace SPerfomance.Api.Features.Students;
 
 public class FireStudent
 {
-	public record Request(StudentContract Student, TokenContract Token);
+    public record Request(StudentContract Student, TokenContract Token);
 
-	public sealed class Endpoint : IEndpoint
-	{
-		public void MapEndpoint(IEndpointRouteBuilder app) =>
-			app.MapDelete($"{StudentTags.Api}", Handler).WithTags(StudentTags.Tag);
-	}
+    public sealed class Endpoint : IEndpoint
+    {
+        public void MapEndpoint(IEndpointRouteBuilder app) =>
+            app.MapDelete($"{StudentTags.Api}", Handler).WithTags(StudentTags.Tag);
+    }
 
-	public static async Task<IResult> Handler(
-		[FromBody] Request request,
-		IUsersRepository users,
-		IStudentGroupsRepository groups,
-		IStudentsRepository students
-	)
-	{
-		if (!await new UserVerificationService(users).IsVerified(request.Token, UserRole.Administrator))
-			return Results.BadRequest(UserTags.UnauthorizedError);
+    public static async Task<IResult> Handler(
+        [FromBody] Request request,
+        IUsersRepository users,
+        IStudentGroupsRepository groups,
+        IStudentsRepository students
+    )
+    {
+        if (
+            !await new UserVerificationService(users).IsVerified(
+                request.Token,
+                UserRole.Administrator
+            )
+        )
+            return Results.BadRequest(UserTags.UnauthorizedError);
 
-		Result<StudentGroup> group = await new GetStudentGroupQueryHandler(groups)
-		.Handle(new(request.Student.GroupName));
+        Result<StudentGroup> group = await new GetStudentGroupQueryHandler(groups).Handle(
+            new(request.Student.GroupName)
+        );
 
-		Result<Student> student = await new GetStudentFromGroupQueryHandler()
-		.Handle(new(
-			group.Value,
-			request.Student.Name,
-			request.Student.Surname,
-			request.Student.Patronymic,
-			request.Student.State,
-			request.Student.Recordbook
-			));
+        Result<Student> student = await new GetStudentFromGroupQueryHandler().Handle(
+            new(
+                group.Value,
+                request.Student.Name,
+                request.Student.Surname,
+                request.Student.Patronymic,
+                request.Student.State,
+                request.Student.Recordbook
+            )
+        );
 
-		student = await new RemoveStudentCommandHandler(students).Handle(new(student.Value));
-		return student.IsFailure ?
-			Results.BadRequest(student.Error.Description) :
-			Results.Ok(student.Value.MapFromDomain());
-	}
+        student = await new RemoveStudentCommandHandler(students).Handle(new(student.Value));
+        return student.IsFailure
+            ? Results.BadRequest(student.Error.Description)
+            : Results.Ok(student.Value.MapFromDomain());
+    }
 }

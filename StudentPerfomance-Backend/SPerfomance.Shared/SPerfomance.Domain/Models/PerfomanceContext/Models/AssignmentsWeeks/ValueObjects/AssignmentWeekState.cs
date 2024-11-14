@@ -4,20 +4,21 @@ namespace SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentsWeeks.Va
 
 public class AssignmentWeekState : DomainValueObject
 {
-	public static AssignmentWeekState Closed = new AssignmentWeekState() { State = false };
+    public static AssignmentWeekState Closed = new AssignmentWeekState() { State = false };
 
-	public static AssignmentWeekState Opened = new AssignmentWeekState() { State = true };
+    public static AssignmentWeekState Opened = new AssignmentWeekState() { State = true };
 
-	public bool State { get; private set; }
+    public bool State { get; private set; }
 
-	private AssignmentWeekState() { }
+    private AssignmentWeekState() { }
 
-	private AssignmentWeekState(AssignmentWeekState state) => State = state.State;
+    private AssignmentWeekState(AssignmentWeekState state) => State = state.State;
 
-	public static AssignmentWeekState Create(AssignmentWeekState state) => new AssignmentWeekState(state);
+    public static AssignmentWeekState Create(AssignmentWeekState state) =>
+        new AssignmentWeekState(state);
 
-	public override IEnumerable<object> GetEqualityComponents()
-	{
-		yield return State;
-	}
+    public override IEnumerable<object> GetEqualityComponents()
+    {
+        yield return State;
+    }
 }

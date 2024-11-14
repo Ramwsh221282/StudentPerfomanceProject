@@ -9,63 +9,65 @@ namespace SPerfomance.Domain.Models.SemesterPlans;
 
 public class SemesterPlan : DomainEntity
 {
-	public DisciplineName Discipline { get; private set; }
+    public DisciplineName Discipline { get; private set; }
 
-	public Semester Semester { get; private set; }
+    public Semester Semester { get; private set; }
 
-	public Teacher? Teacher { get; private set; }
+    public Teacher? Teacher { get; private set; }
 
-	internal SemesterPlan() : base(Guid.Empty)
-	{
-		Discipline = DisciplineName.Empty;
-		Semester = Semester.Empty;
-	}
+    internal SemesterPlan()
+        : base(Guid.Empty)
+    {
+        Discipline = DisciplineName.Empty;
+        Semester = Semester.Empty;
+    }
 
-	internal SemesterPlan(DisciplineName name, Semester semester) : base(Guid.NewGuid())
-	{
-		Discipline = name;
-		Semester = semester;
-	}
+    internal SemesterPlan(DisciplineName name, Semester semester)
+        : base(Guid.NewGuid())
+    {
+        Discipline = name;
+        Semester = semester;
+    }
 
-	internal static SemesterPlan Empty => new SemesterPlan();
+    internal static SemesterPlan Empty => new SemesterPlan();
 
-	internal Result<SemesterPlan> AttachTeacher(Teacher teacher)
-	{
-		if (Teacher != null)
-			return Result<SemesterPlan>.Failure(SemesterPlanErrors.TeacherAlreadyAttacher());
+    internal Result<SemesterPlan> AttachTeacher(Teacher teacher)
+    {
+        if (Teacher != null)
+            return Result<SemesterPlan>.Failure(SemesterPlanErrors.TeacherAlreadyAttacher());
 
-		Teacher = teacher;
-		return Result<SemesterPlan>.Success(this);
-	}
+        Teacher = teacher;
+        return Result<SemesterPlan>.Success(this);
+    }
 
-	internal Result<SemesterPlan> ChangeName(string name)
-	{
-		Result<DisciplineName> newName = DisciplineName.Create(name);
-		if (newName.IsFailure)
-			return Result<SemesterPlan>.Failure(newName.Error);
+    internal Result<SemesterPlan> ChangeName(string name)
+    {
+        Result<DisciplineName> newName = DisciplineName.Create(name);
+        if (newName.IsFailure)
+            return Result<SemesterPlan>.Failure(newName.Error);
 
-		if (Discipline == newName.Value)
-			return Result<SemesterPlan>.Success(this);
+        if (Discipline == newName.Value)
+            return Result<SemesterPlan>.Success(this);
 
-		Discipline = newName.Value;
-		return Result<SemesterPlan>.Success(this);
-	}
+        Discipline = newName.Value;
+        return Result<SemesterPlan>.Success(this);
+    }
 
-	internal Result<SemesterPlan> DeattachTeacher()
-	{
-		if (Teacher == null)
-			return Result<SemesterPlan>.Success(this);
+    internal Result<SemesterPlan> DeattachTeacher()
+    {
+        if (Teacher == null)
+            return Result<SemesterPlan>.Success(this);
 
-		Teacher = null;
-		return Result<SemesterPlan>.Success(this);
-	}
+        Teacher = null;
+        return Result<SemesterPlan>.Success(this);
+    }
 
-	internal static Result<SemesterPlan> Create(string disciplineName, Semester semester)
-	{
-		Result<DisciplineName> name = DisciplineName.Create(disciplineName);
-		if (name.IsFailure)
-			return Result<SemesterPlan>.Failure(name.Error);
+    internal static Result<SemesterPlan> Create(string disciplineName, Semester semester)
+    {
+        Result<DisciplineName> name = DisciplineName.Create(disciplineName);
+        if (name.IsFailure)
+            return Result<SemesterPlan>.Failure(name.Error);
 
-		return Result<SemesterPlan>.Success(new SemesterPlan(name.Value, semester));
-	}
+        return Result<SemesterPlan>.Success(new SemesterPlan(name.Value, semester));
+    }
 }

@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPerfomance.Application", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPerfomance.Tests", "SPerfomance.Tests\SPerfomance.Tests.csproj", "{65150FA8-864B-4BC8-A1BD-8E9D7DF5E7A0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPerfomance.Statistics.DataAccess", "SPerfomance.Shared\SPerfomance.Statistics.DataAccess\SPerfomance.Statistics.DataAccess.csproj", "{FBA9DC68-BAAA-4C52-A5CC-13FF35A7395F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,10 @@ Global
 		{65150FA8-864B-4BC8-A1BD-8E9D7DF5E7A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{65150FA8-864B-4BC8-A1BD-8E9D7DF5E7A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{65150FA8-864B-4BC8-A1BD-8E9D7DF5E7A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBA9DC68-BAAA-4C52-A5CC-13FF35A7395F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBA9DC68-BAAA-4C52-A5CC-13FF35A7395F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBA9DC68-BAAA-4C52-A5CC-13FF35A7395F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBA9DC68-BAAA-4C52-A5CC-13FF35A7395F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -49,5 +55,6 @@ Global
 		{C04BD3A8-40C3-4690-AB30-7BD4F3E48799} = {3D01BD29-2F3B-4C95-8935-62CB2107C629}
 		{A3ED0078-2F32-4C2C-B15B-EBD5598C2DB9} = {3D01BD29-2F3B-4C95-8935-62CB2107C629}
 		{E8CE6DB0-7528-4D89-BFB7-1FD07CF7C4AC} = {3D01BD29-2F3B-4C95-8935-62CB2107C629}
+		{FBA9DC68-BAAA-4C52-A5CC-13FF35A7395F} = {3D01BD29-2F3B-4C95-8935-62CB2107C629}
 	EndGlobalSection
 EndGlobal

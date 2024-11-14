@@ -7,25 +7,27 @@ using SPerfomance.Domain.Tools;
 
 namespace SPerfomance.Application.PerfomanceContext.AssignmentSessions.Commands.Create;
 
-public class CreateAssignmentSessionCommandHandler
-(
-	IAssignmentSessionsRepository sessions,
-	IStudentGroupsRepository groups
-)
-: ICommandHandler<CreateAssignmentSessionCommand, AssignmentSession>
+public class CreateAssignmentSessionCommandHandler(
+    IAssignmentSessionsRepository sessions,
+    IStudentGroupsRepository groups
+) : ICommandHandler<CreateAssignmentSessionCommand, AssignmentSession>
 {
-	private readonly IAssignmentSessionsRepository _sessions = sessions;
+    private readonly IAssignmentSessionsRepository _sessions = sessions;
 
-	private readonly IStudentGroupsRepository _groups = groups;
+    private readonly IStudentGroupsRepository _groups = groups;
 
-	public async Task<Result<AssignmentSession>> Handle(CreateAssignmentSessionCommand command)
-	{
-		IReadOnlyCollection<StudentGroup> groups = await _groups.GetAll();
-		Result<AssignmentSession> session = AssignmentSession.Create(groups, command.StartDate, command.EndDate);
-		if (session.IsFailure)
-			return session;
+    public async Task<Result<AssignmentSession>> Handle(CreateAssignmentSessionCommand command)
+    {
+        IReadOnlyCollection<StudentGroup> groups = await _groups.GetAll();
+        Result<AssignmentSession> session = AssignmentSession.Create(
+            groups,
+            command.StartDate,
+            command.EndDate
+        );
+        if (session.IsFailure)
+            return session;
 
-		await _sessions.Insert(session.Value);
-		return session;
-	}
+        await _sessions.Insert(session.Value);
+        return session;
+    }
 }

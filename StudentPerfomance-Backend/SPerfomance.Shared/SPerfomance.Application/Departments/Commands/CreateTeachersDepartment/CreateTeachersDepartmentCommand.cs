@@ -6,5 +6,5 @@ namespace SPerfomance.Application.Departments.Commands.CreateTeachersDepartment;
 
 public class CreateTeachersDepartmentCommand(string? name) : ICommand<TeachersDepartments>
 {
-	public string Name { get; init; } = name.ValueOrEmpty();
+    public string Name { get; init; } = name.ValueOrEmpty();
 }

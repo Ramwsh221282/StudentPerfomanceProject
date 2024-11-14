@@ -9,25 +9,39 @@ namespace SPerfomance.Api.Features.TeacherDepartments;
 
 public static class FilterTeacherDepartments
 {
-	public record Request(TeacherDepartmentContract Department, PaginationContract Pagination, TokenContract Token);
+    public record Request(
+        TeacherDepartmentContract Department,
+        PaginationContract Pagination,
+        TokenContract Token
+    );
 
-	public sealed class Endpoint : IEndpoint
-	{
-		public void MapEndpoint(IEndpointRouteBuilder app) =>
-			app.MapPost($"{TeacherDepartmentsTags.Api}/filter", Handler).WithTags(TeacherDepartmentsTags.Tag);
-	}
+    public sealed class Endpoint : IEndpoint
+    {
+        public void MapEndpoint(IEndpointRouteBuilder app) =>
+            app.MapPost($"{TeacherDepartmentsTags.Api}/filter", Handler)
+                .WithTags(TeacherDepartmentsTags.Tag);
+    }
 
-	public static async Task<IResult> Handler(Request request, IUsersRepository users, ITeacherDepartmentsRepository repository)
-	{
-		if (!await new UserVerificationService(users).IsVerified(request.Token, UserRole.Administrator))
-			return Results.BadRequest(UserTags.UnauthorizedError);
+    public static async Task<IResult> Handler(
+        Request request,
+        IUsersRepository users,
+        ITeacherDepartmentsRepository repository
+    )
+    {
+        if (
+            !await new UserVerificationService(users).IsVerified(
+                request.Token,
+                UserRole.Administrator
+            )
+        )
+            return Results.BadRequest(UserTags.UnauthorizedError);
 
-		IReadOnlyCollection<TeachersDepartments> departments = await repository.GetPagedFiltered(
-			request.Department.Name,
-			request.Pagination.Page,
-			request.Pagination.PageSize
-		);
+        IReadOnlyCollection<TeachersDepartments> departments = await repository.GetPagedFiltered(
+            request.Department.Name,
+            request.Pagination.Page,
+            request.Pagination.PageSize
+        );
 
-		return Results.Ok(departments.Select(d => d.MapFromDomain()));
-	}
+        return Results.Ok(departments.Select(d => d.MapFromDomain()));
+    }
 }

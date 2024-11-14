@@ -22,37 +22,50 @@ namespace SPerfomance.Api.Features.SemesterPlans;
 
 public static class RegisterSemesterPlan
 {
-	public record Request(
-		EducationDirectionContract Direction,
-		EducationPlanContract Plan,
-		SemesterContract Semester,
-		SemesterPlanContract Discipline,
-		TokenContract Token
-		);
+    public record Request(
+        EducationDirectionContract Direction,
+        EducationPlanContract Plan,
+        SemesterContract Semester,
+        SemesterPlanContract Discipline,
+        TokenContract Token
+    );
 
-	public sealed class Endpoint : IEndpoint
-	{
-		public void MapEndpoint(IEndpointRouteBuilder app) =>
-			app.MapPost($"{SemesterPlanTags.Api}", Handler).WithTags(SemesterPlanTags.Tag);
-	}
+    public sealed class Endpoint : IEndpoint
+    {
+        public void MapEndpoint(IEndpointRouteBuilder app) =>
+            app.MapPost($"{SemesterPlanTags.Api}", Handler).WithTags(SemesterPlanTags.Tag);
+    }
 
-	public static async Task<IResult> Handler(
-		Request request,
-		IUsersRepository users,
-		IEducationDirectionRepository directions,
-		ISemesterPlansRepository semesterPlans
-	)
-	{
-		if (!await new UserVerificationService(users).IsVerified(request.Token, UserRole.Administrator))
-			return Results.BadRequest(UserTags.UnauthorizedError);
+    public static async Task<IResult> Handler(
+        Request request,
+        IUsersRepository users,
+        IEducationDirectionRepository directions,
+        ISemesterPlansRepository semesterPlans
+    )
+    {
+        if (
+            !await new UserVerificationService(users).IsVerified(
+                request.Token,
+                UserRole.Administrator
+            )
+        )
+            return Results.BadRequest(UserTags.UnauthorizedError);
 
-		Result<EducationDirection> direction = await new GetEducationDirectionQueryHandler(directions).Handle(request.Direction);
-		Result<EducationPlan> educationPlan = await new GetEducationPlanQueryHandler().Handle(new(direction.Value, request.Plan.PlanYear));
-		Result<Semester> semester = await new GetSemesterQueryHandler().Handle(new(educationPlan.Value, request.Semester.Number));
-		Result<SemesterPlan> plan = await new CreateDisciplineCommandHandler(semesterPlans).Handle(new(semester.Value, request.Discipline.Discipline));
+        Result<EducationDirection> direction = await new GetEducationDirectionQueryHandler(
+            directions
+        ).Handle(request.Direction);
+        Result<EducationPlan> educationPlan = await new GetEducationPlanQueryHandler().Handle(
+            new(direction.Value, request.Plan.PlanYear)
+        );
+        Result<Semester> semester = await new GetSemesterQueryHandler().Handle(
+            new(educationPlan.Value, request.Semester.Number)
+        );
+        Result<SemesterPlan> plan = await new CreateDisciplineCommandHandler(semesterPlans).Handle(
+            new(semester.Value, request.Discipline.Discipline)
+        );
 
-		return plan.IsFailure ?
-			Results.BadRequest(plan.Error.Description) :
-			Results.Ok(plan.Value.MapFromDomain());
-	}
+        return plan.IsFailure
+            ? Results.BadRequest(plan.Error.Description)
+            : Results.Ok(plan.Value.MapFromDomain());
+    }
 }

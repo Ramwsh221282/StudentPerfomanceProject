@@ -6,54 +6,54 @@ namespace SPerfomance.Domain.Models.Users.ValueObjects;
 
 public class Username : DomainValueObject
 {
-	private const int _maxNameLength = 40;
+    private const int _maxNameLength = 40;
 
-	public string Name { get; private set; }
+    public string Name { get; private set; }
 
-	public string Surname { get; private set; }
+    public string Surname { get; private set; }
 
-	public string Patronymic { get; private set; }
+    public string Patronymic { get; private set; }
 
-	private Username()
-	{
-		Name = string.Empty;
-		Surname = string.Empty;
-		Patronymic = string.Empty;
-	}
+    private Username()
+    {
+        Name = string.Empty;
+        Surname = string.Empty;
+        Patronymic = string.Empty;
+    }
 
-	private Username(string name, string surname, string patronymic)
-	{
-		Name = name;
-		Surname = surname;
-		Patronymic = patronymic;
-	}
+    private Username(string name, string surname, string patronymic)
+    {
+        Name = name;
+        Surname = surname;
+        Patronymic = patronymic;
+    }
 
-	internal static Username Empty => new Username();
+    internal static Username Empty => new Username();
 
-	internal static Result<Username> Create(string name, string surname, string? patronymic)
-	{
-		if (string.IsNullOrWhiteSpace(name))
-			return Result<Username>.Failure(UserErrors.NameEmpty());
+    internal static Result<Username> Create(string name, string surname, string? patronymic)
+    {
+        if (string.IsNullOrWhiteSpace(name))
+            return Result<Username>.Failure(UserErrors.NameEmpty());
 
-		if (string.IsNullOrWhiteSpace(surname))
-			return Result<Username>.Failure(UserErrors.SurnameEmpty());
+        if (string.IsNullOrWhiteSpace(surname))
+            return Result<Username>.Failure(UserErrors.SurnameEmpty());
 
-		if (name.Length > _maxNameLength)
-			return Result<Username>.Failure(UserErrors.NameExceess(_maxNameLength));
+        if (name.Length > _maxNameLength)
+            return Result<Username>.Failure(UserErrors.NameExceess(_maxNameLength));
 
-		if (surname.Length > _maxNameLength)
-			return Result<Username>.Failure(UserErrors.SurnameExcees(_maxNameLength));
+        if (surname.Length > _maxNameLength)
+            return Result<Username>.Failure(UserErrors.SurnameExcees(_maxNameLength));
 
-		if (!string.IsNullOrWhiteSpace(patronymic) && patronymic.Length > _maxNameLength)
-			return Result<Username>.Failure(UserErrors.ThirdnameExcess(_maxNameLength));
+        if (!string.IsNullOrWhiteSpace(patronymic) && patronymic.Length > _maxNameLength)
+            return Result<Username>.Failure(UserErrors.ThirdnameExcess(_maxNameLength));
 
-		return Result<Username>.Success(new(name, surname, patronymic.ValueOrEmpty()));
-	}
+        return Result<Username>.Success(new(name, surname, patronymic.ValueOrEmpty()));
+    }
 
-	public override IEnumerable<object> GetEqualityComponents()
-	{
-		yield return Name;
-		yield return Surname;
-		yield return Patronymic;
-	}
+    public override IEnumerable<object> GetEqualityComponents()
+    {
+        yield return Name;
+        yield return Surname;
+        yield return Patronymic;
+    }
 }

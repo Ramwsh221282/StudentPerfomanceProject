@@ -727,6 +727,19 @@
         "runtime": {
           "bin/placeholder/SPerfomance.Domain.dll": {}
         }
+      },
+      "SPerfomance.Statistics.DataAccess/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "SPerfomance.DataAccess": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/SPerfomance.Statistics.DataAccess.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SPerfomance.Statistics.DataAccess.dll": {}
+        }
       }
     }
   },
@@ -1878,6 +1891,11 @@
       "type": "project",
       "path": "../SPerfomance.Shared/SPerfomance.Domain/SPerfomance.Domain.csproj",
       "msbuildProject": "../SPerfomance.Shared/SPerfomance.Domain/SPerfomance.Domain.csproj"
+    },
+    "SPerfomance.Statistics.DataAccess/1.0.0": {
+      "type": "project",
+      "path": "../SPerfomance.Shared/SPerfomance.Statistics.DataAccess/SPerfomance.Statistics.DataAccess.csproj",
+      "msbuildProject": "../SPerfomance.Shared/SPerfomance.Statistics.DataAccess/SPerfomance.Statistics.DataAccess.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -1885,6 +1903,7 @@
       "Microsoft.AspNetCore.OpenApi >= 8.0.2",
       "SPerfomance.Application >= 1.0.0",
       "SPerfomance.DataAccess >= 1.0.0",
+      "SPerfomance.Statistics.DataAccess >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.4.0"
     ]
   },
@@ -1926,6 +1945,9 @@
             },
             "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomance-Backend\\SPerfomance.Shared\\SPerfomance.DataAccess\\SPerfomance.DataAccess.csproj": {
               "projectPath": "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomance-Backend\\SPerfomance.Shared\\SPerfomance.DataAccess\\SPerfomance.DataAccess.csproj"
+            },
+            "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomance-Backend\\SPerfomance.Shared\\SPerfomance.Statistics.DataAccess\\SPerfomance.Statistics.DataAccess.csproj": {
+              "projectPath": "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomance-Backend\\SPerfomance.Shared\\SPerfomance.Statistics.DataAccess\\SPerfomance.Statistics.DataAccess.csproj"
             }
           }
         }

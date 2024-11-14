@@ -1,0 +1,48 @@
+<div id="container">
+  <div id="header">
+    <div class="header-container">
+      <strong>Статистика по группам</strong>
+    </div>
+  </div>
+  <div id="content">
+    <div class="search-container">
+      <table class="search-table">
+        <thead>
+        <tr>
+          <th>Группа</th>
+          <th>% успеваемости</th>
+          <th>Средний балл</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+          @for (part of report; track part.groupName) {
+            <tr>
+              <td>{{ part.groupName }}</td>
+              <td>{{ part.perfomance }}</td>
+              <td>{{ part.average }}</td>
+              <td>
+                <button class="accept-button-modal" (click)="selectedGroup = part; isGroupStatisticsVisible = true">
+                  Студенты
+                </button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div id="controls">
+    <button
+      class="danger-button-modal"
+      type="button"
+      (click)="visibility.emit()"
+    >
+      Закрыть окно
+    </button>
+  </div>
+</div>
+<div id="students-report-renderer" *ngIf="isGroupStatisticsVisible">
+  <app-students-report [report]="selectedGroup.parts"
+                       (visibility)="isGroupStatisticsVisible = false"></app-students-report>
+</div>

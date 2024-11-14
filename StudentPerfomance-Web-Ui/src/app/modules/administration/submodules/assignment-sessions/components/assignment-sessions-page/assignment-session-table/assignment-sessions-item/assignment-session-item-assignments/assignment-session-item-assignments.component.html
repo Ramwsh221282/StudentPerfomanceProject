@@ -6,11 +6,9 @@
   </div>
   <div id="content">
     <strong class="font-white"
-      >Процент успеваемости: {{ getGroupTotalPerfomance() }}</strong
+      >Процент успеваемости: {{ week.averagePerfomancePercent }}</strong
     >
-    <strong class="font-white"
-      >Средний балл: {{ getGroupTotalAverage() }}</strong
-    >
+    <strong class="font-white">Средний балл: {{ week.averageMarks }}</strong>
     <table class="search-table">
       <thead>
         <tr>
@@ -36,14 +34,14 @@
           @for (discipline of week.assignments; track discipline.discipline) {
           <td>{{ getStudentGrade(discipline.discipline, student) }}</td>
           }
-          <td>{{ getStudentInvividualPerfomance(student) }}</td>
-          <td>{{ getStudentAverage(student) }}</td>
+          <td>{{ student.studentPerfomance }}</td>
+          <td>{{ student.studentAverage }}</td>
         </tr>
         }
         <tr>
           средний балл @for (discipline of week.assignments; track
           discipline.discipline) {
-          <td>{{ getAverageByDiscipline(discipline) }}</td>
+          <td>{{ discipline.assignmentAverage }}</td>
           }
           <td>-</td>
           <td>-</td>
@@ -51,7 +49,7 @@
         <tr>
           % успеваемости @for (discipline of week.assignments; track
           discipline.discipline) {
-          <td>{{ getPerfomanceByDiscipline(discipline) }}</td>
+          <td>{{ discipline.assignmentPerfomance }}</td>
           }
           <td>-</td>
           <td>-</td>

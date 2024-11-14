@@ -4,16 +4,15 @@ using SPerfomance.Domain.Models.StudentGroups;
 
 namespace SPerfomance.Application.StudentGroups.Commands.AttachEducationPlan;
 
-public class AttachEducationPlanCommand
-(
-	EducationPlan? plan,
-	StudentGroup? group,
-	byte? semesterNumber
+public class AttachEducationPlanCommand(
+    EducationPlan? plan,
+    StudentGroup? group,
+    byte? semesterNumber
 ) : ICommand<StudentGroup>
 {
-	public EducationPlan? Plan { get; init; } = plan;
+    public EducationPlan? Plan { get; init; } = plan;
 
-	public StudentGroup? Group { get; init; } = group;
+    public StudentGroup? Group { get; init; } = group;
 
-	public byte SemesterNumber = semesterNumber.GetValueOrDefault();
+    public byte SemesterNumber = semesterNumber.GetValueOrDefault();
 }

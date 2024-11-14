@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-
 using SPerfomance.Api.Endpoints;
 using SPerfomance.Api.Features.Common;
 using SPerfomance.Api.Features.EducationDirections.Contracts;
@@ -24,39 +23,54 @@ namespace SPerfomance.Api.Features.SemesterPlans;
 
 public static class ChangeSemesterPlanName
 {
-	public record Request(
-		EducationDirectionContract Direction,
-		EducationPlanContract Plan,
-		SemesterContract Semester,
-		SemesterPlanContract Initial,
-		SemesterPlanContract Updated,
-		TokenContract Token
-		);
+    public record Request(
+        EducationDirectionContract Direction,
+        EducationPlanContract Plan,
+        SemesterContract Semester,
+        SemesterPlanContract Initial,
+        SemesterPlanContract Updated,
+        TokenContract Token
+    );
 
-	public sealed class Endpoint : IEndpoint
-	{
-		public void MapEndpoint(IEndpointRouteBuilder app) =>
-			app.MapPut($"{SemesterPlanTags.Api}", Handler).WithTags(SemesterPlanTags.Tag);
-	}
+    public sealed class Endpoint : IEndpoint
+    {
+        public void MapEndpoint(IEndpointRouteBuilder app) =>
+            app.MapPut($"{SemesterPlanTags.Api}", Handler).WithTags(SemesterPlanTags.Tag);
+    }
 
-	public static async Task<IResult> Handler(
-		[FromBody] Request request,
-		IUsersRepository users,
-		IEducationDirectionRepository directions,
-		ISemesterPlansRepository semesterPlans
-	)
-	{
-		if (!await new UserVerificationService(users).IsVerified(request.Token, UserRole.Administrator))
-			return Results.BadRequest(UserTags.UnauthorizedError);
+    public static async Task<IResult> Handler(
+        [FromBody] Request request,
+        IUsersRepository users,
+        IEducationDirectionRepository directions,
+        ISemesterPlansRepository semesterPlans
+    )
+    {
+        if (
+            !await new UserVerificationService(users).IsVerified(
+                request.Token,
+                UserRole.Administrator
+            )
+        )
+            return Results.BadRequest(UserTags.UnauthorizedError);
 
-		Result<EducationDirection> direction = await new GetEducationDirectionQueryHandler(directions).Handle(request.Direction);
-		Result<EducationPlan> plan = await new GetEducationPlanQueryHandler().Handle(new(direction.Value, request.Plan.PlanYear));
-		Result<Semester> semester = await new GetSemesterQueryHandler().Handle(new(plan.Value, request.Semester.Number));
-		Result<SemesterPlan> discipline = await new GetDisciplineFromSemesterQueryHandler().Handle(new(semester.Value, request.Initial.Discipline));
-		discipline = await new ChangeDisciplineNameCommandHandler(semesterPlans).Handle(new(discipline.Value, request.Updated.Discipline));
+        Result<EducationDirection> direction = await new GetEducationDirectionQueryHandler(
+            directions
+        ).Handle(request.Direction);
+        Result<EducationPlan> plan = await new GetEducationPlanQueryHandler().Handle(
+            new(direction.Value, request.Plan.PlanYear)
+        );
+        Result<Semester> semester = await new GetSemesterQueryHandler().Handle(
+            new(plan.Value, request.Semester.Number)
+        );
+        Result<SemesterPlan> discipline = await new GetDisciplineFromSemesterQueryHandler().Handle(
+            new(semester.Value, request.Initial.Discipline)
+        );
+        discipline = await new ChangeDisciplineNameCommandHandler(semesterPlans).Handle(
+            new(discipline.Value, request.Updated.Discipline)
+        );
 
-		return discipline.IsFailure ?
-			Results.BadRequest(discipline.Error.Description) :
-			Results.Ok(discipline.Value.MapFromDomain());
-	}
+        return discipline.IsFailure
+            ? Results.BadRequest(discipline.Error.Description)
+            : Results.Ok(discipline.Value.MapFromDomain());
+    }
 }

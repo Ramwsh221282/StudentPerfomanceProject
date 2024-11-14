@@ -6,34 +6,35 @@ namespace SPerfomance.Domain.Models.Teachers.ValueObjects;
 
 public class TeacherJobTitle : DomainValueObject
 {
-	public string JobTitle { get; private set; }
+    public string JobTitle { get; private set; }
 
-	private static TeacherJobTitle[] _jobTitles =
-	[
-		new("Профессор"),
-		new("Ассистент"),
-		new("Старший преподаватель"),
-		new("Доцент")];
+    private static TeacherJobTitle[] _jobTitles =
+    [
+        new("Профессор"),
+        new("Ассистент"),
+        new("Старший преподаватель"),
+        new("Доцент"),
+    ];
 
-	private TeacherJobTitle() => JobTitle = string.Empty;
+    private TeacherJobTitle() => JobTitle = string.Empty;
 
-	private TeacherJobTitle(string jobTitle) => JobTitle = jobTitle;
+    private TeacherJobTitle(string jobTitle) => JobTitle = jobTitle;
 
-	internal static TeacherJobTitle Empty => new TeacherJobTitle();
+    internal static TeacherJobTitle Empty => new TeacherJobTitle();
 
-	internal static Result<TeacherJobTitle> Create(string jobTitle)
-	{
-		if (string.IsNullOrWhiteSpace(jobTitle))
-			return Result<TeacherJobTitle>.Failure(TeacherErrors.JobTitleEmpty());
+    internal static Result<TeacherJobTitle> Create(string jobTitle)
+    {
+        if (string.IsNullOrWhiteSpace(jobTitle))
+            return Result<TeacherJobTitle>.Failure(TeacherErrors.JobTitleEmpty());
 
-		if (_jobTitles.Any(t => t.JobTitle == jobTitle) == false)
-			return Result<TeacherJobTitle>.Failure(TeacherErrors.JobTitleInvalid(jobTitle));
+        if (_jobTitles.Any(t => t.JobTitle == jobTitle) == false)
+            return Result<TeacherJobTitle>.Failure(TeacherErrors.JobTitleInvalid(jobTitle));
 
-		return Result<TeacherJobTitle>.Success(new TeacherJobTitle(jobTitle));
-	}
+        return Result<TeacherJobTitle>.Success(new TeacherJobTitle(jobTitle));
+    }
 
-	public override IEnumerable<object> GetEqualityComponents()
-	{
-		yield return JobTitle;
-	}
+    public override IEnumerable<object> GetEqualityComponents()
+    {
+        yield return JobTitle;
+    }
 }

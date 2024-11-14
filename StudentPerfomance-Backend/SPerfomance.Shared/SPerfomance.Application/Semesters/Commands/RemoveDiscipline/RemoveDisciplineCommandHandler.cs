@@ -6,24 +6,23 @@ using SPerfomance.Domain.Tools;
 
 namespace SPerfomance.Application.Semesters.Commands.RemoveDiscipline;
 
-public class RemoveDisciplineCommandHandler
-(
-	ISemesterPlansRepository repository
-)
- : ICommandHandler<RemoveDisciplineCommand, SemesterPlan>
+public class RemoveDisciplineCommandHandler(ISemesterPlansRepository repository)
+    : ICommandHandler<RemoveDisciplineCommand, SemesterPlan>
 {
-	private readonly ISemesterPlansRepository _repository = repository;
+    private readonly ISemesterPlansRepository _repository = repository;
 
-	public async Task<Result<SemesterPlan>> Handle(RemoveDisciplineCommand command)
-	{
-		if (command.Discipline == null)
-			return Result<SemesterPlan>.Failure(SemesterPlanErrors.NotFound());
+    public async Task<Result<SemesterPlan>> Handle(RemoveDisciplineCommand command)
+    {
+        if (command.Discipline == null)
+            return Result<SemesterPlan>.Failure(SemesterPlanErrors.NotFound());
 
-		Result<SemesterPlan> result = command.Discipline.Semester.RemoveDiscipline(command.Discipline);
+        Result<SemesterPlan> result = command.Discipline.Semester.RemoveDiscipline(
+            command.Discipline
+        );
 
-		if (!result.IsFailure)
-			await _repository.Remove(command.Discipline);
+        if (!result.IsFailure)
+            await _repository.Remove(command.Discipline);
 
-		return result;
-	}
+        return result;
+    }
 }

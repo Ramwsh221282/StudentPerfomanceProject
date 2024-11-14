@@ -6,5 +6,5 @@ namespace SPerfomance.Application.StudentGroups.Commands.CreateStudentGroup;
 
 public class CreateStudentGroupCommand(string? name) : ICommand<StudentGroup>
 {
-	public string Name { get; init; } = name.ValueOrEmpty();
+    public string Name { get; init; } = name.ValueOrEmpty();
 }

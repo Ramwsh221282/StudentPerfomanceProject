@@ -5,5 +5,5 @@ namespace SPerfomance.Application.StudentGroups.Queries.GetStudentGroupByName;
 
 public class GetStudentGroupQuery(string? name) : IQuery<StudentGroup>
 {
-	public string? Name { get; init; } = name;
+    public string? Name { get; init; } = name;
 }

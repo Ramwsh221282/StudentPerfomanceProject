@@ -4,25 +4,32 @@ namespace SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions.
 
 public interface IAssignmentSessionsRepository
 {
-	Task Insert(AssignmentSession session);
+    Task Insert(AssignmentSession session);
 
-	Task Remove(AssignmentSession session);
+    Task Remove(AssignmentSession session);
 
-	Task Update(AssignmentSession session);
+    Task Update(AssignmentSession session);
 
-	Task<IReadOnlyCollection<AssignmentSession>> GetPaged(int page, int pageSize);
+    Task<IReadOnlyCollection<AssignmentSession>> GetPaged(int page, int pageSize);
 
-	Task<IReadOnlyCollection<AssignmentSession>> GetInPeriodPaged(DateTime startDate, DateTime endDate, int page, int pageSize);
+    Task<IReadOnlyCollection<AssignmentSession>> GetInPeriodPaged(
+        DateTime startDate,
+        DateTime endDate,
+        int page,
+        int pageSize
+    );
 
-	Task GetByPeriod(DateTime startDate, DateTime endDate);
+    Task GetByPeriod(DateTime startDate, DateTime endDate);
 
-	Task<int> GenerateEntityNumber();
+    Task<int> GenerateEntityNumber();
 
-	void DoBackgroundWork();
+    void DoBackgroundWork();
 
-	Task<int> Count();
+    Task<int> Count();
 
-	Task<AssignmentSession?> GetActiveSession();
+    Task<AssignmentSession?> GetActiveSession();
 
-	Task<TeacherAssignmentSession?> GetAssignmentSessionForTeacher(Teacher teacher);
+    Task<TeacherAssignmentSession?> GetAssignmentSessionForTeacher(Teacher teacher);
+
+    Task<AssignmentSession?> GetById(Guid id);
 }

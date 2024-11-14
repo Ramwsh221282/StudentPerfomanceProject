@@ -6,24 +6,21 @@ using SPerfomance.Domain.Tools;
 
 namespace SPerfomance.Application.StudentGroups.Commands.RemoveStudent;
 
-public class RemoveStudentCommandHandler
-(
-	IStudentsRepository students
-)
-: ICommandHandler<RemoveStudentCommand, Student>
+public class RemoveStudentCommandHandler(IStudentsRepository students)
+    : ICommandHandler<RemoveStudentCommand, Student>
 {
-	private readonly IStudentsRepository _students = students;
+    private readonly IStudentsRepository _students = students;
 
-	public async Task<Result<Student>> Handle(RemoveStudentCommand command)
-	{
-		if (command.Student == null)
-			return Result<Student>.Failure(StudentErrors.NotFound());
+    public async Task<Result<Student>> Handle(RemoveStudentCommand command)
+    {
+        if (command.Student == null)
+            return Result<Student>.Failure(StudentErrors.NotFound());
 
-		Result<Student> deletion = command.Student.AttachedGroup.RemoveStudent(command.Student);
-		if (deletion.IsFailure)
-			return deletion;
+        Result<Student> deletion = command.Student.AttachedGroup.RemoveStudent(command.Student);
+        if (deletion.IsFailure)
+            return deletion;
 
-		await _students.Remove(deletion.Value);
-		return deletion;
-	}
+        await _students.Remove(deletion.Value);
+        return deletion;
+    }
 }

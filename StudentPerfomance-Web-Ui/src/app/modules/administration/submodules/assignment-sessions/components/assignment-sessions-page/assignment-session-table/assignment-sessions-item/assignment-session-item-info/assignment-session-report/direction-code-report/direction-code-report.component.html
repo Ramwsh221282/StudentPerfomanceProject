@@ -1,0 +1,42 @@
+<div id="container">
+  <div id="header">
+    <div class="header-container">
+      <strong>Статистика по направлениям (код)</strong>
+    </div>
+  </div>
+  <div id="content">
+    <div class="row-container">
+      <strong>Средний балл: {{ report.average }}</strong>
+      <strong>Успеваемость: {{ report.perfomance }}</strong>
+    </div>
+    <div class="search-container">
+      <table class="search-table">
+        <thead>
+        <tr>
+          <th>Код направления</th>
+          <th>% успеваемости</th>
+          <th>Средний балл</th>
+        </tr>
+        </thead>
+        <tbody>
+          @for (part of report.parts; track part.code) {
+            <tr>
+              <td>{{ part.code }}</td>
+              <td>{{ part.perfomance }}</td>
+              <td>{{ part.average }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div id="controls">
+    <button
+      class="danger-button-modal"
+      type="button"
+      (click)="visibility.emit()"
+    >
+      Закрыть окно
+    </button>
+  </div>
+</div>

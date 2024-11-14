@@ -30,50 +30,70 @@ namespace SPerfomance.Api.Features.SemesterPlans;
 
 public static class AttachTeacher
 {
-	public record Request(
-		EducationDirectionContract Direction,
-		EducationPlanContract Plan,
-		SemesterContract Semester,
-		SemesterPlanContract Discipline,
-		TeacherDepartmentContract Department,
-		TeacherContract Teacher,
-		TokenContract Token
-	);
+    public record Request(
+        EducationDirectionContract Direction,
+        EducationPlanContract Plan,
+        SemesterContract Semester,
+        SemesterPlanContract Discipline,
+        TeacherDepartmentContract Department,
+        TeacherContract Teacher,
+        TokenContract Token
+    );
 
-	public sealed class Endpoint : IEndpoint
-	{
-		public void MapEndpoint(IEndpointRouteBuilder app) =>
-			app.MapPost($"{SemesterPlanTags.Api}/attach-teacher", Handler).WithTags(SemesterPlanTags.Tag);
-	}
+    public sealed class Endpoint : IEndpoint
+    {
+        public void MapEndpoint(IEndpointRouteBuilder app) =>
+            app.MapPost($"{SemesterPlanTags.Api}/attach-teacher", Handler)
+                .WithTags(SemesterPlanTags.Tag);
+    }
 
-	public async static Task<IResult> Handler(
-		Request request,
-		IUsersRepository users,
-		ITeacherDepartmentsRepository departments,
-		IEducationDirectionRepository directions,
-		ISemesterPlansRepository disciplines
-	)
-	{
-		if (!await new UserVerificationService(users).IsVerified(request.Token, UserRole.Administrator))
-			return Results.BadRequest(UserTags.UnauthorizedError);
+    public static async Task<IResult> Handler(
+        Request request,
+        IUsersRepository users,
+        ITeacherDepartmentsRepository departments,
+        IEducationDirectionRepository directions,
+        ISemesterPlansRepository disciplines
+    )
+    {
+        if (
+            !await new UserVerificationService(users).IsVerified(
+                request.Token,
+                UserRole.Administrator
+            )
+        )
+            return Results.BadRequest(UserTags.UnauthorizedError);
 
-		Result<TeachersDepartments> department = await new GetDepartmentByNameQueryHandler(departments).Handle(request.Department);
-		Result<Teacher> teacher = await new GetTeacherFromDepartmentQueryHandler().Handle(new(
-			department.Value,
-			request.Teacher.Name,
-			request.Teacher.Surname,
-			request.Teacher.Patronymic,
-			request.Teacher.Job,
-			request.Teacher.State
-		));
-		Result<EducationDirection> direction = await new GetEducationDirectionQueryHandler(directions).Handle(request.Direction);
-		Result<EducationPlan> educationPlan = await new GetEducationPlanQueryHandler().Handle(new(direction.Value, request.Plan.PlanYear));
-		Result<Semester> semester = await new GetSemesterQueryHandler().Handle(new(educationPlan.Value, request.Semester.Number));
-		Result<SemesterPlan> discipline = await new GetDisciplineFromSemesterQueryHandler().Handle(new(semester.Value, request.Discipline.Discipline));
-		discipline = await new AttachTeacherToDisciplineCommandHandler(disciplines).Handle(new(teacher.Value, discipline.Value));
+        Result<TeachersDepartments> department = await new GetDepartmentByNameQueryHandler(
+            departments
+        ).Handle(request.Department);
+        Result<Teacher> teacher = await new GetTeacherFromDepartmentQueryHandler().Handle(
+            new(
+                department.Value,
+                request.Teacher.Name,
+                request.Teacher.Surname,
+                request.Teacher.Patronymic,
+                request.Teacher.Job,
+                request.Teacher.State
+            )
+        );
+        Result<EducationDirection> direction = await new GetEducationDirectionQueryHandler(
+            directions
+        ).Handle(request.Direction);
+        Result<EducationPlan> educationPlan = await new GetEducationPlanQueryHandler().Handle(
+            new(direction.Value, request.Plan.PlanYear)
+        );
+        Result<Semester> semester = await new GetSemesterQueryHandler().Handle(
+            new(educationPlan.Value, request.Semester.Number)
+        );
+        Result<SemesterPlan> discipline = await new GetDisciplineFromSemesterQueryHandler().Handle(
+            new(semester.Value, request.Discipline.Discipline)
+        );
+        discipline = await new AttachTeacherToDisciplineCommandHandler(disciplines).Handle(
+            new(teacher.Value, discipline.Value)
+        );
 
-		return discipline.IsFailure ?
-			Results.BadRequest(discipline.Error.Description) :
-			Results.Ok(discipline.Value.MapFromDomain());
-	}
+        return discipline.IsFailure
+            ? Results.BadRequest(discipline.Error.Description)
+            : Results.Ok(discipline.Value.MapFromDomain());
+    }
 }

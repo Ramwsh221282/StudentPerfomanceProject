@@ -5,10 +5,11 @@ namespace SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentStats;
 
 public class StudentAssignmentStats : DomainEntity
 {
-	internal AssignmentWeek Week { get; init; }
+    internal AssignmentWeek Week { get; init; }
 
-	internal StudentAssignmentStats(Guid id, AssignmentWeek week) : base(id)
-	{
-		Week = week;
-	}
+    internal StudentAssignmentStats(Guid id, AssignmentWeek week)
+        : base(id)
+    {
+        Week = week;
+    }
 }

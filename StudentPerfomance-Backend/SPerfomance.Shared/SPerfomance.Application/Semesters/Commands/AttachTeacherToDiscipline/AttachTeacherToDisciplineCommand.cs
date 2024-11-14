@@ -4,14 +4,10 @@ using SPerfomance.Domain.Models.Teachers;
 
 namespace SPerfomance.Application.Semesters.Commands.AttachTeacherToDiscipline;
 
-public class AttachTeacherToDisciplineCommand
-(
-	Teacher? teacher,
-	SemesterPlan? discipline
-)
-: ICommand<SemesterPlan>
+public class AttachTeacherToDisciplineCommand(Teacher? teacher, SemesterPlan? discipline)
+    : ICommand<SemesterPlan>
 {
-	public Teacher? Teacher { get; init; } = teacher;
+    public Teacher? Teacher { get; init; } = teacher;
 
-	public SemesterPlan? Discipline { get; init; } = discipline;
+    public SemesterPlan? Discipline { get; init; } = discipline;
 }

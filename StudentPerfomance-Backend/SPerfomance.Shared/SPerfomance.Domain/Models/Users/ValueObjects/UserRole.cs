@@ -6,36 +6,33 @@ namespace SPerfomance.Domain.Models.Users.ValueObjects;
 
 public class UserRole : DomainValueObject
 {
-	private static UserRole[] _roles = [
-		new("Администратор"),
-		new("Преподаватель")
-	];
+    private static UserRole[] _roles = [new("Администратор"), new("Преподаватель")];
 
-	public static UserRole Administrator = new("Администратор");
+    public static UserRole Administrator = new("Администратор");
 
-	public static UserRole Teacher = new("Преподаватель");
+    public static UserRole Teacher = new("Преподаватель");
 
-	public string Role { get; private set; }
+    public string Role { get; private set; }
 
-	private UserRole() => Role = string.Empty;
+    private UserRole() => Role = string.Empty;
 
-	private UserRole(string role) => Role = role;
+    private UserRole(string role) => Role = role;
 
-	internal static UserRole Empty => new UserRole();
+    internal static UserRole Empty => new UserRole();
 
-	internal static Result<UserRole> Create(string role)
-	{
-		if (string.IsNullOrWhiteSpace(role))
-			return Result<UserRole>.Failure(UserErrors.RoleEmpty());
+    internal static Result<UserRole> Create(string role)
+    {
+        if (string.IsNullOrWhiteSpace(role))
+            return Result<UserRole>.Failure(UserErrors.RoleEmpty());
 
-		if (_roles.Any(r => r.Role == role) == false)
-			return Result<UserRole>.Failure(UserErrors.RoleInvalid(role));
+        if (_roles.Any(r => r.Role == role) == false)
+            return Result<UserRole>.Failure(UserErrors.RoleInvalid(role));
 
-		return Result<UserRole>.Success(new(role));
-	}
+        return Result<UserRole>.Success(new(role));
+    }
 
-	public override IEnumerable<object> GetEqualityComponents()
-	{
-		yield return Role;
-	}
+    public override IEnumerable<object> GetEqualityComponents()
+    {
+        yield return Role;
+    }
 }

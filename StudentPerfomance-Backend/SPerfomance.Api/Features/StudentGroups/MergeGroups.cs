@@ -13,30 +13,44 @@ namespace SPerfomance.Api.Features.StudentGroups;
 
 public static class MergeGroups
 {
-	public record Request(
-		StudentGroupContract Initial,
-		StudentGroupContract Target,
-		TokenContract Token
-	);
+    public record Request(
+        StudentGroupContract Initial,
+        StudentGroupContract Target,
+        TokenContract Token
+    );
 
-	public sealed class Endpoint : IEndpoint
-	{
-		public void MapEndpoint(IEndpointRouteBuilder app) =>
-			app.MapPut($"{StudentGroupTags.Api}/merge", Handler).WithTags(StudentGroupTags.Tag);
-	}
+    public sealed class Endpoint : IEndpoint
+    {
+        public void MapEndpoint(IEndpointRouteBuilder app) =>
+            app.MapPut($"{StudentGroupTags.Api}/merge", Handler).WithTags(StudentGroupTags.Tag);
+    }
 
-	public static async Task<IResult> Handler([FromBody] Request request, IUsersRepository users, IStudentGroupsRepository repository)
-	{
-		if (!await new UserVerificationService(users).IsVerified(request.Token, UserRole.Administrator))
-			return Results.BadRequest(UserTags.UnauthorizedError);
+    public static async Task<IResult> Handler(
+        [FromBody] Request request,
+        IUsersRepository users,
+        IStudentGroupsRepository repository
+    )
+    {
+        if (
+            !await new UserVerificationService(users).IsVerified(
+                request.Token,
+                UserRole.Administrator
+            )
+        )
+            return Results.BadRequest(UserTags.UnauthorizedError);
 
-		Result<StudentGroup> initial = await new GetStudentGroupQueryHandler(repository).Handle(request.Initial);
-		Result<StudentGroup> target = await new GetStudentGroupQueryHandler(repository).Handle(request.Target);
+        Result<StudentGroup> initial = await new GetStudentGroupQueryHandler(repository).Handle(
+            request.Initial
+        );
+        Result<StudentGroup> target = await new GetStudentGroupQueryHandler(repository).Handle(
+            request.Target
+        );
 
-		Result<StudentGroup> result = await new MergeWithGroupCommandHandler(repository)
-		.Handle(new(initial.Value, target.Value));
-		return result.IsFailure ?
-			Results.BadRequest(result.Error.Description) :
-			Results.Ok(result.Value.MapFromDomain());
-	}
+        Result<StudentGroup> result = await new MergeWithGroupCommandHandler(repository).Handle(
+            new(initial.Value, target.Value)
+        );
+        return result.IsFailure
+            ? Results.BadRequest(result.Error.Description)
+            : Results.Ok(result.Value.MapFromDomain());
+    }
 }

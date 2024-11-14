@@ -3,11 +3,12 @@ using SPerfomance.Domain.Models.EducationDirections;
 
 namespace SPerfomance.Application.EducationDirections.Commands.CreateEducationDirection;
 
-public class CreateEducationDirectionCommand(string name, string code, string type) : ICommand<EducationDirection>
+public class CreateEducationDirectionCommand(string name, string code, string type)
+    : ICommand<EducationDirection>
 {
-	public string Name { get; init; } = name;
+    public string Name { get; init; } = name;
 
-	public string Type { get; init; } = type;
+    public string Type { get; init; } = type;
 
-	public string Code { get; init; } = code;
+    public string Code { get; init; } = code;
 }

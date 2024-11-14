@@ -15,24 +15,44 @@ namespace SPerfomance.Api.Features.Semesters;
 
 public static class GetSemestersByEducationPlan
 {
-	public record Request(EducationDirectionContract Direction, EducationPlanContract Plan, TokenContract Token);
+    public record Request(
+        EducationDirectionContract Direction,
+        EducationPlanContract Plan,
+        TokenContract Token
+    );
 
-	public class Endpoint : IEndpoint
-	{
-		public void MapEndpoint(IEndpointRouteBuilder app) =>
-			app.MapPost($"{SemestersTags.Api}/by-education-plan", Handler).WithTags(SemestersTags.Tag);
-	}
+    public class Endpoint : IEndpoint
+    {
+        public void MapEndpoint(IEndpointRouteBuilder app) =>
+            app.MapPost($"{SemestersTags.Api}/by-education-plan", Handler)
+                .WithTags(SemestersTags.Tag);
+    }
 
-	public static async Task<IResult> Handler(Request request, IUsersRepository users, IEducationDirectionRepository repository)
-	{
-		if (!await new UserVerificationService(users).IsVerified(request.Token, UserRole.Administrator))
-			return Results.BadRequest(UserTags.UnauthorizedError);
+    public static async Task<IResult> Handler(
+        Request request,
+        IUsersRepository users,
+        IEducationDirectionRepository repository
+    )
+    {
+        if (
+            !await new UserVerificationService(users).IsVerified(
+                request.Token,
+                UserRole.Administrator
+            )
+        )
+            return Results.BadRequest(UserTags.UnauthorizedError);
 
-		Result<EducationDirection> direction = await new GetEducationDirectionQueryHandler(repository).Handle(request.Direction);
-		Result<EducationPlan> plan = await new GetEducationPlanQueryHandler().Handle(new(direction.Value, request.Plan.PlanYear));
-		if (plan.IsFailure)
-			return Results.NotFound(plan.Error.Description);
+        Result<EducationDirection> direction = await new GetEducationDirectionQueryHandler(
+            repository
+        ).Handle(request.Direction);
+        Result<EducationPlan> plan = await new GetEducationPlanQueryHandler().Handle(
+            new(direction.Value, request.Plan.PlanYear)
+        );
+        if (plan.IsFailure)
+            return Results.NotFound(plan.Error.Description);
 
-		return Results.Ok(plan.Value.Semesters.Select(s => s.MapFromDomain()).OrderBy(s => s.Number));
-	}
+        return Results.Ok(
+            plan.Value.Semesters.Select(s => s.MapFromDomain()).OrderBy(s => s.Number)
+        );
+    }
 }

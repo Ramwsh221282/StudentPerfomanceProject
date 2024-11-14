@@ -15,9 +15,10 @@
         <strong>Действия</strong>
       </div>
       @for (session of sessions; track session.number) {
-      <app-assignment-sessions-item
-        [session]="session"
-      ></app-assignment-sessions-item>
+        <app-assignment-sessions-item
+          [session]="session"
+          (refresh)="fetchData()"
+        ></app-assignment-sessions-item>
       }
     </div>
   </div>

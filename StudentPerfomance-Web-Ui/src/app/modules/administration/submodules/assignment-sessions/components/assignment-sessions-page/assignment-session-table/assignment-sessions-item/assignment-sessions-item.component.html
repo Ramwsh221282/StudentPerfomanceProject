@@ -7,6 +7,9 @@
     <button class="accept-button-outline" (click)="isInfoVisible = true">
       Сведения
     </button>
+    <button class="warning-button-outline" (click)="isClosingModalVisible = true">
+      Завершить
+    </button>
   </div>
 </div>
 <div id="assignment-sessions-info-renderer" *ngIf="isInfoVisible">
@@ -14,4 +17,21 @@
     [session]="session"
     (visibility)="isInfoVisible = false"
   ></app-assignment-session-item-info>
+</div>
+<div id="assignment-session-closing-modal-renderer" *ngIf="isClosingModalVisible">
+  <app-assignment-session-close-item-modal
+    [session]="session"
+    (visibility)="isClosingModalVisible = false"
+    (success)="isSuccess = true"
+    (failure)="isFailure = true"
+    (refresh)="refresh.emit()"
+  ></app-assignment-session-close-item-modal>
+</div>
+<div id="success-modal-renderer" *ngIf="isSuccess">
+  <app-success-result-notification [message]="notificationService.Message"
+                                   (visibilityEmitter)="isSuccess = $event"></app-success-result-notification>
+</div>
+<div id="failure-modal-renderer" *ngIf="isFailure">
+  <app-failure-result-notification [message]="notificationService.Message"
+                                   (visibilityEmitter)="isFailure = $event"></app-failure-result-notification>
 </div>

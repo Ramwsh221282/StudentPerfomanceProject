@@ -9,33 +9,33 @@ using SPerfomance.Domain.Tools;
 
 namespace SPerfomance.Api.Features.PerfomanceContext.Contracts;
 
-public class MakeAssignmentCommandHandler
-(
-	IAssignmentSessionsRepository sessions,
-	IStudentAssignmentsRepository assignments
-)
-: ICommandHandler<MakeAssignmentCommand, StudentAssignment>
+public class MakeAssignmentCommandHandler(
+    IAssignmentSessionsRepository sessions,
+    IStudentAssignmentsRepository assignments
+) : ICommandHandler<MakeAssignmentCommand, StudentAssignment>
 {
-	private readonly IAssignmentSessionsRepository _sessions = sessions;
+    private readonly IAssignmentSessionsRepository _sessions = sessions;
 
-	private readonly IStudentAssignmentsRepository _assignments = assignments;
+    private readonly IStudentAssignmentsRepository _assignments = assignments;
 
-	public async Task<Result<StudentAssignment>> Handle(MakeAssignmentCommand command)
-	{
-		AssignmentSession? session = await _sessions.GetActiveSession();
-		if (session == null)
-			return AssignmentSessionErrors.NoActiveFound();
+    public async Task<Result<StudentAssignment>> Handle(MakeAssignmentCommand command)
+    {
+        AssignmentSession? session = await _sessions.GetActiveSession();
+        if (session == null)
+            return AssignmentSessionErrors.NoActiveFound();
 
-		StudentAssignment? assignment = await _assignments.ReceiveAssignment(Guid.Parse(command.Id));
+        StudentAssignment? assignment = await _assignments.ReceiveAssignment(
+            Guid.Parse(command.Id)
+        );
 
-		if (assignment == null)
-			return AssignmentErrors.NotFound();
+        if (assignment == null)
+            return AssignmentErrors.NotFound();
 
-		Result<StudentAssignment> result = assignment.Assign(command.Mark);
-		if (result.IsFailure)
-			return result;
+        Result<StudentAssignment> result = assignment.Assign(command.Mark);
+        if (result.IsFailure)
+            return result;
 
-		await _assignments.UpdateAssignmentValue(result.Value);
-		return result;
-	}
+        await _assignments.UpdateAssignmentValue(result.Value);
+        return result;
+    }
 }

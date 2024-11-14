@@ -5,5 +5,5 @@ namespace SPerfomance.Application.StudentGroups.Commands.RemoveStudent;
 
 public class RemoveStudentCommand(Student? student) : ICommand<Student>
 {
-	public Student? Student { get; init; } = student;
+    public Student? Student { get; init; } = student;
 }

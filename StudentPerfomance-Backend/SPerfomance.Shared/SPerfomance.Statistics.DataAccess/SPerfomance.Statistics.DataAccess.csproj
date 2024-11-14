@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Compile Remove="Class1.cs" />
+      <None Include="Migrations\20241113175308_Initial.cs" />
+      <Compile Remove="Migrations\StatisticsDatabaseContextModelSnapshot.cs" />
+      <None Include="Migrations\StatisticsDatabaseContextModelSnapshot.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\SPerfomance.DataAccess\SPerfomance.DataAccess.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.10">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+    </ItemGroup>
+
+</Project>

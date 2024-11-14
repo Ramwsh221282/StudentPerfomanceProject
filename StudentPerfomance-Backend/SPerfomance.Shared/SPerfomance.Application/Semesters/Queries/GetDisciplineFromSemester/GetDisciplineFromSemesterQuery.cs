@@ -7,7 +7,7 @@ namespace SPerfomance.Application.Semesters.Queries.GetDisciplineFromSemester;
 
 public class GetDisciplineFromSemesterQuery(Semester? semester, string? name) : IQuery<SemesterPlan>
 {
-	public Semester? Semester { get; init; } = semester;
+    public Semester? Semester { get; init; } = semester;
 
-	public string Name { get; init; } = name.ValueOrEmpty();
+    public string Name { get; init; } = name.ValueOrEmpty();
 }

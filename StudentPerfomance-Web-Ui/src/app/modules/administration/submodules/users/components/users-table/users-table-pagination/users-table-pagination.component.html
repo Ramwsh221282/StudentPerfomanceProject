@@ -1,1 +1,27 @@
-<p>users-table-pagination works!</p>
+<div class="pagination-wrapper">
+  <div class="pages-list">
+    <strong>Страницы: </strong>
+    <div class="accept-button" (click)="paginationService.moveInitialPage()">
+      Начальная
+    </div>
+    <div class="accept-button" (click)="paginationService.movePreviousPage()">
+      <
+    </div>
+    @for (page of paginationService.displayPages; track page) {
+      <button
+        (click)="paginationService.selectPage(page)"
+        [ngClass]="[
+        page == paginationService.currentPage
+          ? 'accept-button-outline'
+          : 'accept-button-outline'
+      ]"
+      >
+        {{ page }}
+      </button>
+    }
+    <div class="accept-button" (click)="paginationService.moveNextPage()">></div>
+    <div class="accept-button" (click)="paginationService.moveLastPage()">
+      Конечная
+    </div>
+  </div>
+</div>

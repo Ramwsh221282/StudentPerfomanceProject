@@ -4,5 +4,5 @@ namespace SPerfomance.Application.Services.Mailing;
 
 public interface IMailingService
 {
-	Task SendMessage(MailingMessage message);
+    Task SendMessage(MailingMessage message);
 }

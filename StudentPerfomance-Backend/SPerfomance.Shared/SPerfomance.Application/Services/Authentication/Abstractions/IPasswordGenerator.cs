@@ -2,5 +2,5 @@ namespace SPerfomance.Application.Services.Authentication.Abstractions;
 
 public interface IPasswordGenerator
 {
-	public string Generate();
+    public string Generate();
 }

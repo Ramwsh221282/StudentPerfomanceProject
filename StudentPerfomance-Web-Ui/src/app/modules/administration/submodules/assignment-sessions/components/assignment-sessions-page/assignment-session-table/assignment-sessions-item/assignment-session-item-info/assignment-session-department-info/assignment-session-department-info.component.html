@@ -1,0 +1,38 @@
+<div id="container">
+  <div id="header">
+    <div class="header-container">
+      <strong>Статистика по кафедрам: </strong>
+    </div>
+  </div>
+  <div id="content">
+    <div class="search-container">
+      <table class="search-table">
+        <thead>
+          <tr>
+            <th>Кафедра</th>
+            <th>Средний балл</th>
+            <th>% успеваемости</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (perfomance of departmentPerfomances; track $index) {
+          <tr>
+            <td>{{ perfomance.departmentName }}</td>
+            <td>{{ perfomance.average }}</td>
+            <td>{{ perfomance.perfomance }}</td>
+          </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div id="controls">
+    <button
+      class="danger-button-modal"
+      type="button"
+      (click)="visibility.emit()"
+    >
+      Закрыть окно
+    </button>
+  </div>
+</div>

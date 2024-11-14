@@ -1,23 +1,23 @@
+global using SPerfomance.Api.Features.Users;
 global using SPerfomance.Application.Services.Authentication;
 global using SPerfomance.Application.Services.Authentication.Models;
 global using SPerfomance.Domain.Models.Users;
 global using SPerfomance.Domain.Models.Users.Abstractions;
 global using SPerfomance.Domain.Models.Users.ValueObjects;
-global using SPerfomance.Api.Features.Users;
 using SPerfomance.Api.Endpoints;
 using SPerfomance.Application.Services.Authentication.Abstractions;
 using SPerfomance.Application.Services.Mailing;
 using SPerfomance.DataAccess.Repositories;
 using SPerfomance.Domain.Models.EducationDirections.Abstractions;
 using SPerfomance.Domain.Models.EducationPlans.Abstractions;
+using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions.Abstractions;
+using SPerfomance.Domain.Models.PerfomanceContext.Models.StudentAssignments;
 using SPerfomance.Domain.Models.SemesterPlans.Abstractions;
 using SPerfomance.Domain.Models.StudentGroups.Abstractions;
 using SPerfomance.Domain.Models.Students.Abstractions;
 using SPerfomance.Domain.Models.TeacherDepartments.Abstractions;
 using SPerfomance.Domain.Models.Teachers.Abstractions;
-using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions.Abstractions;
-using SPerfomance.Api.HostedServices;
-using SPerfomance.Domain.Models.PerfomanceContext.Models.StudentAssignments;
+using SPerfomance.Statistics.DataAccess.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -37,20 +37,23 @@ builder.Services.AddSingleton<IJwtTokenService, JwtTokenService>();
 builder.Services.AddScoped<IUsersRepository, UsersRepository>();
 builder.Services.AddScoped<IAssignmentSessionsRepository, AssignmentSessionsRepository>();
 builder.Services.AddScoped<IStudentAssignmentsRepository, StudentAssignmentsRepository>();
+builder.Services.AddScoped<ControlWeekRepository>();
 
 //builder.Services.AddHostedService<SessionChecker>();
 
 builder.Services.AddEndpoints();
 
-builder.Services.AddSwaggerGen(options => options.CustomSchemaIds(t => t.FullName?.Replace('+', '.')));
+builder.Services.AddSwaggerGen(options =>
+    options.CustomSchemaIds(t => t.FullName?.Replace('+', '.'))
+);
 builder.Services.AddCors(options =>
 {
-	options.AddDefaultPolicy(policy =>
-	{
-		policy.WithOrigins("http://localhost:4200");
-		policy.AllowAnyHeader();
-		policy.AllowAnyMethod();
-	});
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.WithOrigins("http://localhost:4200");
+        policy.AllowAnyHeader();
+        policy.AllowAnyMethod();
+    });
 });
 
 var app = builder.Build();

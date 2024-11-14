@@ -5,5 +5,5 @@ namespace SPerfomance.Application.Semesters.Commands.DeattachTeacherFromDiscipli
 
 public class DeattachTeacherFromDisciplineCommand(SemesterPlan? discipline) : ICommand<SemesterPlan>
 {
-	public SemesterPlan? Discipline { get; init; } = discipline;
+    public SemesterPlan? Discipline { get; init; } = discipline;
 }

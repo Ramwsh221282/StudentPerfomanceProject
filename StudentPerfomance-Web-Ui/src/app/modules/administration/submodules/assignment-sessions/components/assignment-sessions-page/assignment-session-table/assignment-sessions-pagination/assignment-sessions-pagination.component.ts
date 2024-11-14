@@ -8,8 +8,10 @@ import { AssignmentSessionPaginationService } from '../assignment-session-pagina
 })
 export class AssignmentSessionsPaginationComponent implements OnInit {
   public constructor(
-    private readonly service: AssignmentSessionPaginationService
+    protected readonly service: AssignmentSessionPaginationService,
   ) {}
 
-  public ngOnInit(): void {}
+  public ngOnInit(): void {
+    this.service.refreshPagination();
+  }
 }

@@ -28,17 +28,16 @@ export class AssignmentSessionTableComponent implements OnInit {
     protected readonly notificationService: UserOperationNotificationService,
     private readonly _paginationService: PaginationService,
     private readonly _dataService: AssignmentSessionDataService,
-    private readonly _authService: AuthService
+    private readonly _authService: AuthService,
   ) {
     this.sessions = [];
   }
 
   public ngOnInit(): void {
-    this.refreshPagination();
     const policy = new AssignmentSessionDefaultFetchPolicy(this._authService);
     policy.addPages(
       this._paginationService.currentPage,
-      this._paginationService.pageSize
+      this._paginationService.pageSize,
     );
     this._dataService.setPolicy(policy);
     this.fetchData();

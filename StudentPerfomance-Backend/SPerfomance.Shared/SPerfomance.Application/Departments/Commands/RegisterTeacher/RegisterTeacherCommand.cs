@@ -5,25 +5,24 @@ using SPerfomance.Domain.Tools;
 
 namespace SPerfomance.Application.Departments.Commands.RegisterTeacher;
 
-public class RegisterTeacherCommand
-(
-	TeachersDepartments? department,
-	string? name,
-	string? surname,
-	string? patronymic,
-	string? jobTitle,
-	string? workingState
+public class RegisterTeacherCommand(
+    TeachersDepartments? department,
+    string? name,
+    string? surname,
+    string? patronymic,
+    string? jobTitle,
+    string? workingState
 ) : ICommand<Teacher>
 {
-	public TeachersDepartments? Department { get; init; } = department;
+    public TeachersDepartments? Department { get; init; } = department;
 
-	public string Name { get; init; } = name.ValueOrEmpty();
+    public string Name { get; init; } = name.ValueOrEmpty();
 
-	public string Surname { get; init; } = surname.ValueOrEmpty();
+    public string Surname { get; init; } = surname.ValueOrEmpty();
 
-	public string? Patronymic { get; init; } = patronymic.ValueOrEmpty();
+    public string? Patronymic { get; init; } = patronymic.ValueOrEmpty();
 
-	public string JobTitle { get; init; } = jobTitle.ValueOrEmpty();
+    public string JobTitle { get; init; } = jobTitle.ValueOrEmpty();
 
-	public string WorkingState { get; init; } = workingState.ValueOrEmpty();
+    public string WorkingState { get; init; } = workingState.ValueOrEmpty();
 }
