@@ -4,10 +4,10 @@
   </div>
   <div id="content">
     <strong class="font-white" *ngIf="departments.length > 0"
-      >Выберите кафедру</strong
+    >Выберите кафедру</strong
     >
     <strong class="font-white" *ngIf="departments.length == 0"
-      >Кафедры не найдены</strong
+    >Кафедры не найдены</strong
     >
     <select
       *ngIf="departments.length > 0"
@@ -15,20 +15,20 @@
       class="default-select"
     >
       @for (department of departments; track department.name) {
-      <option [value]="department">{{ department.name }}</option>
+        <option [ngValue]="department">{{ department.name }}</option>
       }
     </select>
     <select (change)="selectTeacher($event)" class="default-select">
       @for (teacher of teachers; track $index) {
-      <option [ngValue]="teacher">
-        {{ teacher.surname }} {{ teacher.name }} {{ teacher.patronymic }}
-      </option>
+        <option [ngValue]="teacher">
+          {{ teacher.surname }} {{ teacher.name }} {{ teacher.patronymic }}
+        </option>
       }
     </select>
     <strong
       class="font-white"
       *ngIf="user.name != undefined && user.surname != undefined"
-      >Укажите почту, чтобы выслать сгенерированный пароль</strong
+    >Укажите почту, чтобы выслать сгенерированный пароль</strong
     >
     <input
       class="default-input"
@@ -41,7 +41,8 @@
     <button class="accept-button-modal" type="button" (click)="submit()">
       Добавить
     </button>
-    ><button
+    >
+    <button
       class="danger-button-modal"
       type="button"
       (click)="visibility.emit(false)"

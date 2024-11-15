@@ -8,14 +8,14 @@ export const routes: Routes = [
     path: 'login',
     loadComponent: () =>
       import('./shared/components/login-page/login-page.component').then(
-        (mod) => mod.LoginPageComponent
+        (mod) => mod.LoginPageComponent,
       ),
   },
   {
     path: 'user',
     loadComponent: () =>
       import('./shared/components/user-page/user-page.component').then(
-        (mod) => mod.UserPageComponent
+        (mod) => mod.UserPageComponent,
       ),
     canActivate: [CanActivateUserPage],
   },
@@ -23,7 +23,7 @@ export const routes: Routes = [
     path: 'teacher-assignments',
     loadChildren: () =>
       import('./modules/teachers/teachers/teachers.module').then(
-        (mod) => mod.TeachersModule
+        (mod) => mod.TeachersModule,
       ),
     canActivate: [CanActivateAuthTeacher],
   },
@@ -31,7 +31,7 @@ export const routes: Routes = [
     path: 'administration',
     loadChildren: () =>
       import('./modules/administration/administration.module').then(
-        (mod) => mod.AdministrationModule
+        (mod) => mod.AdministrationModule,
       ),
     canActivate: [canActivateAuthAdmin],
   },
@@ -79,7 +79,7 @@ export const routes: Routes = [
     path: 'users',
     loadChildren: () =>
       import('./modules/administration/submodules/users/users.module').then(
-        (mod) => mod.UsersModule
+        (mod) => mod.UsersModule,
       ),
     canActivate: [canActivateAuthAdmin],
   },

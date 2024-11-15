@@ -13,7 +13,10 @@ export class UsersFilterFetchPolicy implements IFetchPolicy<UserRecord[]> {
   private readonly _apiUri: string;
   private _payload: object;
 
-  public constructor(user: User, private readonly _authService: AuthService) {
+  public constructor(
+    user: User,
+    private readonly _authService: AuthService,
+  ) {
     this._user = { ...user };
     this._apiUri = `${BASE_API_URI}/api/users/filter`;
   }
@@ -28,7 +31,7 @@ export class UsersFilterFetchPolicy implements IFetchPolicy<UserRecord[]> {
       user: {
         name: this._user.name,
         surname: this._user.surname,
-        patronymic: this._user.thirdname,
+        patronymic: this._user.patronymic,
         email: this._user.email,
         role: this._user.role,
       },

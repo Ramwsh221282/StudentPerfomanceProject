@@ -6,11 +6,11 @@ namespace SPerfomance.Domain.Models.Teachers.ValueObjects;
 
 public class TeacherWorkingState : DomainValueObject
 {
-    private static TeacherWorkingState[] _states =
+    private static readonly TeacherWorkingState[] States =
     [
         new("Штатный"),
         new("Удаленный совместитель"),
-        new("Совместиитель"),
+        new("Совместитель"),
     ];
 
     public string State { get; private set; }
@@ -26,10 +26,9 @@ public class TeacherWorkingState : DomainValueObject
         if (string.IsNullOrWhiteSpace(state))
             return Result<TeacherWorkingState>.Failure(TeacherErrors.WorkingStateEmpty());
 
-        if (_states.Any(s => s.State == state) == false)
-            return Result<TeacherWorkingState>.Failure(TeacherErrors.WorkingStateInvalid(state));
-
-        return Result<TeacherWorkingState>.Success(new TeacherWorkingState(state));
+        return States.Any(s => s.State == state) == false
+            ? Result<TeacherWorkingState>.Failure(TeacherErrors.WorkingStateInvalid(state))
+            : Result<TeacherWorkingState>.Success(new TeacherWorkingState(state));
     }
 
     public override IEnumerable<object> GetEqualityComponents()

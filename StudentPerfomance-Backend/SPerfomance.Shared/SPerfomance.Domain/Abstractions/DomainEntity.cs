@@ -26,7 +26,7 @@ public abstract class DomainEntity
         if (GetType() != obj.GetType())
             return false;
 
-        DomainValueObject valueObject = (DomainValueObject)obj;
+        DomainEntity valueObject = (DomainEntity)obj;
 
         return GetEqualityComponents().SequenceEqual(valueObject.GetEqualityComponents());
     }

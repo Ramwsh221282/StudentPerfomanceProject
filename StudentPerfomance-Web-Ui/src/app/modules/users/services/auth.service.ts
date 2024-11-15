@@ -80,7 +80,7 @@ export class AuthService {
     return this._httpClient.post<User>(apiUri, payload);
   }
 
-  private verify(): void {
+  public verify(): void {
     const token = this._cookieService.get('token');
     this._httpClient
       .post(`${BASE_API_URI}/api/users/verify`, { token: token })
@@ -91,7 +91,7 @@ export class AuthService {
         catchError((error: HttpErrorResponse) => {
           this._isAuthorized = false;
           return new Observable();
-        })
+        }),
       )
       .subscribe();
   }

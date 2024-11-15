@@ -23,7 +23,7 @@ export class UsersCreateAdminModalComponent implements ISubbmittable {
 
   public constructor(
     private readonly _creationService: UserCreationService,
-    private readonly _notificationService: UserOperationNotificationService
+    private readonly _notificationService: UserOperationNotificationService,
   ) {
     const builder: StringValueBuilder = new StringValueBuilder();
     this.initUser();
@@ -46,13 +46,17 @@ export class UsersCreateAdminModalComponent implements ISubbmittable {
       this.success,
       this.failure,
       this.refreshEmitter,
-      this.visibility
+      this.visibility,
     );
     this._creationService
       .create(this.user)
       .pipe(
-        tap((response) => handler.handle(response)),
-        catchError((error) => handler.handleError(error))
+        tap((response) => {
+          handler.handle(response);
+          this.refreshEmitter.emit();
+          this.visibility.emit(false);
+        }),
+        catchError((error) => handler.handleError(error)),
       )
       .subscribe();
     this.initUser();

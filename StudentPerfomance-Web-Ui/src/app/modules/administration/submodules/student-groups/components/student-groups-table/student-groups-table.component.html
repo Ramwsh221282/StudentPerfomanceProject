@@ -19,11 +19,11 @@
         <strong>Действия</strong>
       </div>
       @for (group of facadeService.groups; track group.name) {
-      <app-table-row
-        [group]="group"
-        (success)="isSuccess = true"
-        (failure)="isFailure = true"
-      ></app-table-row>
+        <app-table-row
+          [group]="group"
+          (success)="isSuccess = true"
+          (failure)="isFailure = true"
+        ></app-table-row>
       }
     </div>
   </div>
@@ -36,7 +36,9 @@
     (visibility)="closeCreationModal($event)"
   ></app-student-group-create-modal>
 </div>
-<div id="filter-modal-renderer" *ngIf="filterModalVisibility"></div>
+<div id="filter-modal-renderer" *ngIf="filterModalVisibility">
+  <app-student-group-filter-modal (visibility)="filterModalVisibility = false"></app-student-group-filter-modal>
+</div>
 <div id="success-modal-renderer" *ngIf="isSuccess">
   <app-success-result-notification
     [message]="notificationService.Message"

@@ -28,13 +28,14 @@ export class UsersTableComponent implements OnInit {
 
   protected isCreationModalVisible: boolean;
   protected isDeletionModalVisible: boolean;
+  protected isFilterModalVisible: boolean;
 
   public constructor(
     private readonly _datePipe: DatePipe,
     protected readonly _dataService: UsersDataService,
     protected readonly _notificationService: UserOperationNotificationService,
     private readonly _authService: AuthService,
-    private readonly _paginationService: UsersPaginationService
+    private readonly _paginationService: UsersPaginationService,
   ) {
     this.userRecords = [];
     this.isSuccess = false;
@@ -48,7 +49,7 @@ export class UsersTableComponent implements OnInit {
     const policy = new DefaultFetchPolicy(this._authService.userData);
     policy.addPages(
       this._paginationService.currentPage,
-      this._paginationService.pageSize
+      this._paginationService.pageSize,
     );
     this.fetchUsers();
   }
@@ -66,11 +67,11 @@ export class UsersTableComponent implements OnInit {
           for (let user of this.userRecords) {
             user.lastTimeOnline = this._datePipe.transform(
               user.lastTimeOnline,
-              'dd-MM-yyyy'
+              'dd-MM-yyyy',
             );
             user.registeredDate = this._datePipe.transform(
               user.registeredDate,
-              'dd-MM-yyyy'
+              'dd-MM-yyyy',
             );
           }
         }),
@@ -78,8 +79,9 @@ export class UsersTableComponent implements OnInit {
           this._notificationService.SetMessage = error.error;
           this.isFailure = true;
           return new Observable();
-        })
+        }),
       )
       .subscribe();
+    this._paginationService.refreshPagination();
   }
 }

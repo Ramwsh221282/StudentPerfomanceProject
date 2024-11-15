@@ -12,6 +12,10 @@
   text-indent: 0.01px;
   text-overflow: "";
 
+  & option {
+    font-size: 14px;
+  }
+
   &::-ms-expand {
     display: none;
   }

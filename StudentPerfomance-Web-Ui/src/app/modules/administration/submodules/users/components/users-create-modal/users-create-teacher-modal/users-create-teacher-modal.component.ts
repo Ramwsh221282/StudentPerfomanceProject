@@ -33,7 +33,7 @@ export class UsersCreateTeacherModalComponent implements OnInit, ISubbmittable {
     private readonly _departmentsFetchService: DepartmentDataService,
     private readonly _teacherFetchService: TeacherDataService,
     private readonly _authService: AuthService,
-    private readonly _notificationService: UserOperationNotificationService
+    private readonly _notificationService: UserOperationNotificationService,
   ) {
     this.departments = [];
     this.teachers = [];
@@ -56,13 +56,17 @@ export class UsersCreateTeacherModalComponent implements OnInit, ISubbmittable {
       this.success,
       this.failure,
       this.refresh,
-      this.visibility
+      this.visibility,
     );
     this._userCreationService
       .create(this.user)
       .pipe(
-        tap((response) => handler.handle(response)),
-        catchError((error) => handler.handleError(error))
+        tap((response) => {
+          handler.handle(response);
+          this.refresh.emit();
+          this.visibility.emit(false);
+        }),
+        catchError((error) => handler.handleError(error)),
       )
       .subscribe();
     this.initUser();
@@ -92,7 +96,8 @@ export class UsersCreateTeacherModalComponent implements OnInit, ISubbmittable {
   }
 
   protected selectDepartment(departmentName: any): void {
-    console.log(departmentName.target.value);
+    const name: string = departmentName.target.value;
+    this.fetchTeachers(name);
   }
 
   protected selectTeacher(data: any): void {
@@ -100,7 +105,7 @@ export class UsersCreateTeacherModalComponent implements OnInit, ISubbmittable {
     const parts = selectedTeacherNames.split(' ');
     const teacher = this.teachers.find(
       (t) =>
-        t.surname == parts[0] && t.name == parts[1] && t.patronymic == parts[2]
+        t.surname == parts[0] && t.name == parts[1] && t.patronymic == parts[2],
     );
     this.user.name = teacher!.name;
     this.user.surname = teacher!.surname;

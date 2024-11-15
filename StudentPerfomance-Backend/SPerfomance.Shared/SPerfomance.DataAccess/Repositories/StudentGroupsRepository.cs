@@ -56,6 +56,7 @@ public class StudentGroupsRepository : IStudentGroupsRepository
             .Groups.Where(g => !string.IsNullOrWhiteSpace(name) && g.Name.Name.Contains(name))
             .Skip((page - 1) * pageSize)
             .Take(pageSize)
+            .OrderBy(g => g.Name.Name)
             .Include(g => g.ActiveGroupSemester)
             .ThenInclude(a => a!.Disciplines)
             .ThenInclude(d => d.Teacher)
@@ -105,6 +106,7 @@ public class StudentGroupsRepository : IStudentGroupsRepository
         await _context
             .Groups.Skip((page - 1) * pageSize)
             .Take(pageSize)
+            .OrderBy(g => g.Name.Name)
             .Include(g => g.ActiveGroupSemester)
             .ThenInclude(a => a!.Disciplines)
             .ThenInclude(d => d.Teacher)

@@ -9,14 +9,14 @@ import { AuthService } from '../../../../../../users/services/auth.service';
 export class UsersPaginationService {
   private readonly _apiUri: string;
   private _totalCount: number = 0;
-  private _pageSize: number = 14;
+  private _pageSize: number = 10;
   private _pagesCount: number = 0;
   private _currentPage: number = 1;
   private _displayPages: number[] = [];
 
   constructor(
     private readonly _httpClient: HttpClient,
-    private readonly _authService: AuthService
+    private readonly _authService: AuthService,
   ) {
     this._apiUri = `${BASE_API_URI}/api/users/count`;
   }

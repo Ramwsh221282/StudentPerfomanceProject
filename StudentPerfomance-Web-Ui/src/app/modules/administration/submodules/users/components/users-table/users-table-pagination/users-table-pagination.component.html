@@ -1,15 +1,17 @@
 <div class="pagination-wrapper">
   <div class="pages-list">
     <strong>Страницы: </strong>
-    <div class="accept-button" (click)="paginationService.moveInitialPage()">
+    <div class="accept-button"
+         (click)="paginationService.moveInitialPage(); dataService.addPages(paginationService.currentPage, paginationService.pageSize); paginationRefresh.emit()">
       Начальная
     </div>
-    <div class="accept-button" (click)="paginationService.movePreviousPage()">
+    <div class="accept-button"
+         (click)="paginationService.movePreviousPage(); dataService.addPages(paginationService.currentPage, paginationService.pageSize); paginationRefresh.emit()">
       <
     </div>
     @for (page of paginationService.displayPages; track page) {
       <button
-        (click)="paginationService.selectPage(page)"
+        (click)="paginationService.selectPage(page); dataService.addPages(paginationService.currentPage, paginationService.pageSize); paginationRefresh.emit()"
         [ngClass]="[
         page == paginationService.currentPage
           ? 'accept-button-outline'
@@ -19,8 +21,12 @@
         {{ page }}
       </button>
     }
-    <div class="accept-button" (click)="paginationService.moveNextPage()">></div>
-    <div class="accept-button" (click)="paginationService.moveLastPage()">
+    <div class="accept-button"
+         (click)="paginationService.moveNextPage(); dataService.addPages(paginationService.currentPage, paginationService.pageSize); paginationRefresh.emit()">
+      >
+    </div>
+    <div class="accept-button"
+         (click)="paginationService.moveLastPage(); dataService.addPages(paginationService.currentPage, paginationService.pageSize); paginationRefresh.emit()">
       Конечная
     </div>
   </div>

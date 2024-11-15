@@ -12,7 +12,7 @@
 }
 
 #container {
-  width: 70%;
+  width: auto;
   border-radius: 15px;
   background-color: #016ef6;
 
@@ -79,15 +79,23 @@
   grid-gap: 10px;
 }
 
+.search-table-wrapper {
+  max-height: 400px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+}
+
 .search-table {
   border-collapse: collapse;
-  font-size: 0.9 em;
+  font-size: 14px;
   min-width: 350px;
 
   & thead tr {
     background-color: #93c4fa;
     color: #fff;
     text-align: left;
+    position: sticky;
+    top: 0;
   }
 
   & td,

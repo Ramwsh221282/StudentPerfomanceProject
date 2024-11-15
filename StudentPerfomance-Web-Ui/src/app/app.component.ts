@@ -17,12 +17,11 @@ import { AuthService } from './modules/users/services/auth.service';
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
-  providers: [AuthService],
 })
 export class AppComponent implements AfterViewInit {
   public constructor(private readonly auth: AuthService) {}
 
   ngAfterViewInit(): void {
-    this.auth.verifyAsync();
+    this.auth.verify();
   }
 }

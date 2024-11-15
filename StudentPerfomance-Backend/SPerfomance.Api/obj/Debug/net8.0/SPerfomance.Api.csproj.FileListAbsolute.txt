@@ -250,3 +250,5 @@ C:\Users\Ramwsh\Desktop\BACKENDCOPY\StudentPerfomance-Backend\SPerfomance.Api\ob
 C:\Users\Ramwsh\Desktop\BACKENDCOPY\StudentPerfomance-Backend\SPerfomance.Api\obj\Debug\net8.0\ref\SPerfomance.Api.dll
 C:\Users\Ramwsh\Desktop\BACKENDCOPY\StudentPerfomance-Backend\SPerfomance.Api\bin\Debug\net8.0\SPerfomance.Statistics.DataAccess.dll
 C:\Users\Ramwsh\Desktop\BACKENDCOPY\StudentPerfomance-Backend\SPerfomance.Api\bin\Debug\net8.0\SPerfomance.Statistics.DataAccess.pdb
+C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api\bin\Debug\net8.0\SPerfomance.Statistics.DataAccess.dll
+C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api\bin\Debug\net8.0\SPerfomance.Statistics.DataAccess.pdb

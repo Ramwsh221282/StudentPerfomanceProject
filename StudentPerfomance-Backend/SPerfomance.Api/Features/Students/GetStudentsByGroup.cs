@@ -40,6 +40,8 @@ public static class GetStudentsByGroup
         if (group.IsFailure)
             return Results.BadRequest(group.Error.Description);
 
-        return Results.Ok(group.Value.Students.Select(s => s.MapFromDomain()));
+        return Results.Ok(
+            group.Value.Students.Select(s => s.MapFromDomain()).OrderBy(s => s.Surname)
+        );
     }
 }

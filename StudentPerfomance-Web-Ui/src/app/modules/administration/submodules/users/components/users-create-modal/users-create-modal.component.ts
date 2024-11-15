@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { User } from '../../../../../users/services/user-interface';
 import { UserCreationService } from '../../services/user-create.service';
 
 @Component({

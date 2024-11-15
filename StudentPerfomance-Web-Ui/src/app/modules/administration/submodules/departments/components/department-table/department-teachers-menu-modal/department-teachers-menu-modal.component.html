@@ -13,16 +13,11 @@
       >
         Добавить преподавателя
       </button>
-      <!-- <button
-        class="accept-button-modal"
-        (click)="filterModalVisibility = true"
-      >
-        Фильтр списка
-      </button> -->
     </div>
     <div class="search-container">
-      <table class="search-table">
-        <thead>
+      <div class="search-table-wrapper">
+        <table class="search-table">
+          <thead>
           <tr>
             <th>Фамилия</th>
             <th>Имя</th>
@@ -32,40 +27,41 @@
             <th>Кафедра</th>
             <th>Действия</th>
           </tr>
-        </thead>
-        <tbody>
-          @for (teacher of teachers; track $index) {
-          <tr>
-            <td>{{ teacher.surname }}</td>
-            <td>{{ teacher.name }}</td>
-            <td>{{ teacher.patronymic }}</td>
-            <td>{{ teacher.jobTitle }}</td>
-            <td>{{ teacher.state }}</td>
-            <td>{{ teacher.department.acronymus }}</td>
-            <td>
-              <div class="controls-container">
-                <button
-                  class="warning-button"
-                  type="button"
-                  (click)="activeTeacher = teacher; editModalVisibility = true"
-                >
-                  Редактировать
-                </button>
-                <button
-                  class="danger-button"
-                  type="button"
-                  (click)="
+          </thead>
+          <tbody>
+            @for (teacher of teachers; track $index) {
+              <tr>
+                <td>{{ teacher.surname }}</td>
+                <td>{{ teacher.name }}</td>
+                <td>{{ teacher.patronymic }}</td>
+                <td>{{ teacher.jobTitle }}</td>
+                <td>{{ teacher.state }}</td>
+                <td>{{ teacher.department.acronymus }}</td>
+                <td>
+                  <div class="controls-container">
+                    <button
+                      class="warning-button"
+                      type="button"
+                      (click)="activeTeacher = teacher; editModalVisibility = true"
+                    >
+                      Редактировать
+                    </button>
+                    <button
+                      class="danger-button"
+                      type="button"
+                      (click)="
                     activeTeacher = teacher; deletionModalVisibility = true
                   "
-                >
-                  Удалить
-                </button>
-              </div>
-            </td>
-          </tr>
-          }
-        </tbody>
-      </table>
+                    >
+                      Удалить
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
   <div id="controls">
@@ -117,10 +113,3 @@
     (refreshEmitter)="fetchData()"
   ></app-teacher-edit-modal>
 </div>
-<!-- <div id="filter-modal-renderer" *ngIf="filterModalVisibility">
-  <app-teacher-filter-modal
-    [department]="department"
-    (visibilityEmitter)="filterModalVisibility = $event"
-    (refreshEmitter)="fetchData()"
-  ></app-teacher-filter-modal>
-</div> -->

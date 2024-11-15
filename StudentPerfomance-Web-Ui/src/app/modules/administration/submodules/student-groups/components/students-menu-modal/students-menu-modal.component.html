@@ -26,9 +26,10 @@
         Показать всех
       </button>
     </div>
-    <div class="search-container">
-      <table class="search-table">
-        <thead>
+    <div class="search-table-wrapper">
+      <div class="search-container">
+        <table class="search-table">
+          <thead>
           <tr>
             <th>Фамилия</th>
             <th>Имя</th>
@@ -37,32 +38,33 @@
             <th>Активность</th>
             <th>Действия</th>
           </tr>
-        </thead>
-        <tbody>
-          @for (student of students; track student.recordbook) {
-          <tr>
-            <td>{{ student.surname }}</td>
-            <td>{{ student.name }}</td>
-            <td>{{ student.patronymic }}</td>
-            <td>{{ student.recordbook }}</td>
-            <td>{{ student.state }}</td>
-            <td>
-              <div class="controls-container">
-                <button class="warning-button" (click)="openEditModal(student)">
-                  Редактировать
-                </button>
-                <button
-                  class="danger-button"
-                  (click)="openDeletionModal(student)"
-                >
-                  Удалить
-                </button>
-              </div>
-            </td>
-          </tr>
-          }
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            @for (student of students; track student.recordbook) {
+              <tr>
+                <td>{{ student.surname }}</td>
+                <td>{{ student.name }}</td>
+                <td>{{ student.patronymic }}</td>
+                <td>{{ student.recordbook }}</td>
+                <td>{{ student.state }}</td>
+                <td>
+                  <div class="controls-container">
+                    <button class="warning-button" (click)="openEditModal(student)">
+                      Редактировать
+                    </button>
+                    <button
+                      class="danger-button"
+                      (click)="openDeletionModal(student)"
+                    >
+                      Удалить
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
   <div id="controls">

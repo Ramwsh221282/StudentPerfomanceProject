@@ -3,7 +3,7 @@
     <button class="accept-button" (click)="isCreationModalVisible = true">
       Добавить пользователя
     </button>
-    <button class="accept-button">Отфильтровать список</button>
+    <button class="accept-button" (click)="isFilterModalVisible = true">Отфильтровать список</button>
   </div>
   <div class="users-table-container">
     <div class="users-table-grid">
@@ -19,15 +19,15 @@
         <strong>Действия</strong>
       </div>
       @for (user of userRecords; track user.email) {
-      <app-users-table-row
-        [user]="user"
-        (deletionEmitter)="activeUser = user; isDeletionModalVisible = true"
-      ></app-users-table-row>
+        <app-users-table-row
+          [user]="user"
+          (deletionEmitter)="activeUser = user; isDeletionModalVisible = true"
+        ></app-users-table-row>
       }
     </div>
   </div>
   <div class="pagination-wrapper">
-    <app-users-table-pagination></app-users-table-pagination>
+    <app-users-table-pagination (paginationRefresh)="fetchUsers()"></app-users-table-pagination>
   </div>
 </div>
 <div id="success-modal-renderer" *ngIf="isSuccess">
@@ -58,4 +58,8 @@
     (successEmitter)="this.isSuccess = true"
     (failureEmitter)="this.isFailure = true"
   ></app-users-remove-modal>
+</div>
+<div id="filter-modal-renderer" *ngIf="isFilterModalVisible">
+  <app-users-filter-modal (visibility)="isFilterModalVisible = false"
+                          (filteredEmitter)="fetchUsers();"></app-users-filter-modal>
 </div>

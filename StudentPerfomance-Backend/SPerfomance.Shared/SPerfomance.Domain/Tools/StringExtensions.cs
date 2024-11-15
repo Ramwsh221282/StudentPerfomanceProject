@@ -26,6 +26,7 @@ public static class StringExtensions
 
         StringBuilder builder = new StringBuilder(input.FormatSpaces());
         string acronymus = builder
+            .Replace("-", " ")
             .Replace(" - ", " ")
             .Replace(" и ", " ")
             .ToString()

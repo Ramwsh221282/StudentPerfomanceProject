@@ -19,7 +19,8 @@
     </button>
   </div>
   <div id="controls">
-    ><button
+    >
+    <button
       class="danger-button-modal"
       type="button"
       (click)="visibilityEmitter.emit(false)"
@@ -31,7 +32,7 @@
 <div id="admin-modal-renderer" *ngIf="_isCreatingAdmin">
   <app-users-create-admin-modal
     (failure)="failureEmitter.emit()"
-    (success)="successEmitter.emit()"
+    (success)="successEmitter.emit(); visibilityEmitter.emit(false)"
     (refreshEmitter)="refreshEmitter.emit()"
     (visibility)="_isCreatingAdmin = $event"
   ></app-users-create-admin-modal>
@@ -40,7 +41,7 @@
   <app-users-create-teacher-modal
     (failure)="failureEmitter.emit()"
     (success)="successEmitter.emit()"
-    (refreshEmitter)="refreshEmitter.emit()"
+    (refresh)="refreshEmitter.emit(); visibilityEmitter.emit(false)"
     (visibility)="_isCreatingTeacher = $event"
   ></app-users-create-teacher-modal>
 </div>

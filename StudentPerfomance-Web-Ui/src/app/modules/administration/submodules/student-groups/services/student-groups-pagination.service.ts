@@ -10,7 +10,7 @@ import { TokenPayloadBuilder } from '../../../../../shared/models/common/token-c
 export class StudentGroupsPaginationService extends StudentGroupsService {
   private readonly _apiUri: string = `${BASE_API_URI}/api/student-groups/count`;
   private _totalCount: number = 0;
-  private _pageSize: number = 14;
+  private _pageSize: number = 10;
   private _pagesCount: number = 0;
   private _currentPage: number = 1;
   private _displayPages: number[] = [];

@@ -26,7 +26,7 @@ export class StudentDeletionModalComponent
 
   public constructor(
     protected readonly notificationService: UserOperationNotificationService,
-    private readonly _deletionServiec: StudentDeletionService
+    private readonly _deletionServiec: StudentDeletionService,
   ) {
     this.isFailure = false;
     this.isSuccess = false;
@@ -36,13 +36,13 @@ export class StudentDeletionModalComponent
     const handler = StudentDeletionHandler(
       this.notificationService,
       this,
-      this
+      this,
     );
     this._deletionServiec
       .remove(this.student)
       .pipe(
         tap((response) => handler.handle(response)),
-        catchError((error: HttpErrorResponse) => handler.handleError(error))
+        catchError((error: HttpErrorResponse) => handler.handleError(error)),
       )
       .subscribe();
   }
@@ -53,6 +53,7 @@ export class StudentDeletionModalComponent
 
   protected manageFailure(value: boolean): void {
     this.isFailure = value;
+    this.close();
   }
 
   public notifySuccess(): void {
@@ -61,6 +62,7 @@ export class StudentDeletionModalComponent
 
   protected manageSuccess(value: boolean): void {
     this.isSuccess = value;
+    this.close();
   }
 
   protected close(): void {

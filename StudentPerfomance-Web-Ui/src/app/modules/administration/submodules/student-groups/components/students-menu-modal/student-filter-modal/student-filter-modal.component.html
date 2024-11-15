@@ -10,7 +10,7 @@
         formControlName="surname"
         placeholder="Фамилия"
       />
-      <input class="default-input" formControlName="name" placeholder="Имя" />
+      <input class="default-input" formControlName="name" placeholder="Имя"/>
       <input
         class="default-input"
         formControlName="thirdname"
@@ -36,8 +36,11 @@
     <button class="accept-button-modal" type="button" (click)="submit()">
       Применить фильтр
     </button>
-    <button class="danger-button-modal" type="button" (click)="close()">
+    <button class="danger-button-modal" type="button" (click)="cancelFilter()">
       Отменить фильтр
+    </button>
+    <button class="danger-button-modal" type="button" (click)="close()">
+      Закрыть окно
     </button>
   </div>
 </div>

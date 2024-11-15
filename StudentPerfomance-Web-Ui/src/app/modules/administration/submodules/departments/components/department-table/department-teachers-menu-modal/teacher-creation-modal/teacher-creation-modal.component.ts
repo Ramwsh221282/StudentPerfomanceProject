@@ -1,11 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnInit,
-  output,
-  Output,
-} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TeacherCreationService } from './teacher-creation.service';
 import { Department } from '../../../../models/departments.interface';
 import { ISubbmittable } from '../../../../../../../../shared/models/interfaces/isubbmitable';
@@ -34,7 +27,7 @@ export class TeacherCreationModalComponent
 
   public constructor(
     protected readonly notificationService: UserOperationNotificationService,
-    private readonly _creationService: TeacherCreationService
+    private readonly _creationService: TeacherCreationService,
   ) {
     super();
   }
@@ -44,7 +37,7 @@ export class TeacherCreationModalComponent
     const handler = TeacherCreationHandler(
       this.notificationService,
       this.successEmitter,
-      this.failureEmitter
+      this.failureEmitter,
     );
     this._creationService
       .create(teacher)
@@ -52,8 +45,9 @@ export class TeacherCreationModalComponent
         tap((response) => {
           handler.handle(response);
           this.refreshEmitter.emit();
+          this.ngOnInit();
         }),
-        catchError((error) => handler.handleError(error))
+        catchError((error) => handler.handleError(error)),
       )
       .subscribe();
   }

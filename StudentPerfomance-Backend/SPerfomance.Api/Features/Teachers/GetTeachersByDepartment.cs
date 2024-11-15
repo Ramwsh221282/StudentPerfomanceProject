@@ -38,6 +38,8 @@ public static class GetTeachersByDepartment
         ).Handle(request.Department);
         if (department.IsFailure)
             return Results.BadRequest(department.Error.Description);
-        return Results.Ok(department.Value.Teachers.Select(t => t.MapFromDomain()));
+        return Results.Ok(
+            department.Value.Teachers.Select(t => t.MapFromDomain()).OrderBy(t => t.Surname)
+        );
     }
 }
