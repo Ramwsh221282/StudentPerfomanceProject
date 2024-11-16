@@ -1,19 +1,77 @@
 .assignment-layout {
   background-color: #ffffff;
-  border: solid 1px #d9d9d9;
   width: 100%;
   display: grid;
-  grid-template-columns: 150px 150px;
+  grid-template-columns: 250px 200px;
+  gap: 5px
 }
 
 .assignment-student {
   border: solid 1px #d9d9d9;
 }
 
-.assignment-mark {
+.empty {
+  background-color: #D61F1F;
   border: solid 1px #d9d9d9;
+  color: #fff;
+
   &:hover {
-    background-color: #ecf4ff;
+    background-color: #E83535;
+    cursor: pointer;
+  }
+}
+
+.not-attestated {
+  background-color: #E03C32;
+  border: solid 1px #d9d9d9;
+  color: #fff;
+
+  &:hover {
+    background-color: #E85248;
+    cursor: pointer;
+  }
+}
+
+.bad {
+  background-color: #E03C32;
+  border: solid 1px #d9d9d9;
+  color: #fff;
+
+  &:hover {
+    background-color: #E85248;
+    cursor: pointer;
+  }
+}
+
+.normal {
+  background-color: #F17000;
+  border: solid 1px #d9d9d9;
+  color: #fff;
+
+  &:hover {
+    background-color: #FF8519;
+    cursor: pointer;
+  }
+}
+
+.good {
+  background-color: #7BB662;
+  border: solid 1px #d9d9d9;
+  color: #fff;
+
+  &:hover {
+    background-color: #8FC777;
+    cursor: pointer;
+  }
+}
+
+.very-good {
+  background-color: #006b3d;
+  border: solid 1px #d9d9d9;
+  color: #fff;
+
+  &:hover {
+    background-color: #008249;
     cursor: pointer;
   }
 }

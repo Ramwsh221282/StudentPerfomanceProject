@@ -40,33 +40,35 @@
           Отменить фильтр
         </button>
       </div>
-      <table class="search-table">
-        <thead>
+      <div class="search-table-wrapper">
+        <table class="search-table">
+          <thead>
           <tr>
             <th>Название</th>
             <th>Код</th>
             <th>Тип</th>
             <th>Действия</th>
           </tr>
-        </thead>
-        <tbody>
-          @for (direction of directions; track direction.code) {
-          <tr>
-            <td>{{ direction.name }}</td>
-            <td>{{ direction.code }}</td>
-            <td>{{ direction.type }}</td>
-            <td>
-              <button
-                class="accept-button"
-                (click)="selectDirection(direction)"
-              >
-                Выбрать
-              </button>
-            </td>
-          </tr>
-          }
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            @for (direction of directions; track direction.code) {
+              <tr>
+                <td>{{ direction.name }}</td>
+                <td>{{ direction.code }}</td>
+                <td>{{ direction.type }}</td>
+                <td>
+                  <button
+                    class="accept-button"
+                    (click)="selectDirection(direction)"
+                  >
+                    Выбрать
+                  </button>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
   <div id="controls">

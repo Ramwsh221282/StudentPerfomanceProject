@@ -11,7 +11,7 @@ export class DepartmentPaginationService {
   private readonly _apiUri: string;
   private readonly _authService: AuthService;
   private _totalCount: number = 0;
-  private _pageSize: number = 14;
+  private _pageSize: number = 10;
   private _pagesCount: number = 0;
   private _currentPage: number = 1;
   private _displayPages: number[] = [];

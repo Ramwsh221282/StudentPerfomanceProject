@@ -16,6 +16,7 @@
         class="default-input"
         placeholder="Код направления"
       />
+      <strong class="font-white">Выбрарать тип направления подготовки:</strong>
       <select
         formControlName="type"
         [ngModel]="direction.type"
@@ -34,7 +35,8 @@
     <button class="warning-button-outline" type="button" (click)="submit()">
       Редактировать
     </button>
-    ><button
+    >
+    <button
       class="danger-button-modal"
       type="button"
       (click)="modalDisabled.emit(false)"

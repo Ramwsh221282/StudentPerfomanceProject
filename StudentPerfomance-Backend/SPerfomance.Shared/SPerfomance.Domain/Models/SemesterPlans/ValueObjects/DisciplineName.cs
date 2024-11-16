@@ -6,7 +6,7 @@ namespace SPerfomance.Domain.Models.SemesterPlans.ValueObjects;
 
 public class DisciplineName : DomainValueObject
 {
-    private const int maxNameLength = 80;
+    private const int MaxNameLength = 150;
 
     public string Name { get; private set; }
 
@@ -26,9 +26,9 @@ public class DisciplineName : DomainValueObject
         if (string.IsNullOrWhiteSpace(name))
             return Result<DisciplineName>.Failure(SemesterPlanErrors.DisciplineNameEmpty());
 
-        if (name.Length > maxNameLength)
+        if (name.Length > MaxNameLength)
             return Result<DisciplineName>.Failure(
-                SemesterPlanErrors.DisciplineLengthExceess(maxNameLength)
+                SemesterPlanErrors.DisciplineLengthExceess(MaxNameLength)
             );
 
         return Result<DisciplineName>.Success(new DisciplineName(name));

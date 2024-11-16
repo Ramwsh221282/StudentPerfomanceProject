@@ -51,16 +51,23 @@
   }
 }
 
+.search-table-wrapper {
+  max-height: 400px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+}
+
 .disciplines-table {
   border-collapse: collapse;
-  margin-top: 25px 0;
-  font-size: 0.9 em;
-  min-width: 400px;
+  font-size: 14px;
+  width: 100%;
 
   & thead tr {
     background-color: #93c4fa;
     color: #fff;
     text-align: left;
+    position: sticky;
+    top: 0;
   }
 
   & td,

@@ -3,28 +3,30 @@
     <strong>Семестры</strong>
   </div>
   <div id="content">
-    <table class="semesters-table">
-      <thead>
+    <div class="search-table-wrapper">
+      <table class="semesters-table">
+        <thead>
         <tr>
           <th>Номер семестра</th>
           <th>Число дисциплин</th>
           <th>Действия</th>
         </tr>
-      </thead>
-      <tbody>
-        @for (semester of semesters; track semester.number) {
-        <tr>
-          <td>{{ semester.number }}</td>
-          <td>{{ semester.contractsCount }}</td>
-          <td>
-            <button class="accept-button" (click)="openSemesterModal(semester)">
-              Открыть дисциплины
-            </button>
-          </td>
-        </tr>
-        }
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          @for (semester of semesters; track semester.number) {
+            <tr>
+              <td>{{ semester.number }}</td>
+              <td>{{ semester.contractsCount }}</td>
+              <td>
+                <button class="accept-button" (click)="openSemesterModal(semester)">
+                  Открыть дисциплины
+                </button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
   </div>
   <div id="controls">
     <button class="danger-button-modal" (click)="close()">Закрыть окно</button>

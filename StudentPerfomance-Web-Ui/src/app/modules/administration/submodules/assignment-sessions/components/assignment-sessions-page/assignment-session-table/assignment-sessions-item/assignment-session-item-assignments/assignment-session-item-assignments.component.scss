@@ -72,6 +72,11 @@
   grid-template-columns: 170px 170px;
 }
 
+.search-table-wrapper {
+  height: 500px;
+  overflow: auto;
+}
+
 .search-table {
   border-collapse: collapse;
   font-size: 12px;
@@ -81,6 +86,8 @@
     background-color: #93c4fa;
     color: #1c1c1c;
     text-align: center;
+    position: sticky;
+    top: 0;
   }
 
   & td,

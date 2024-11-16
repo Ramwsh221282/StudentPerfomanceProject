@@ -14,6 +14,7 @@
         class="default-input"
         placeholder="Код направления"
       />
+      <strong class="font-white">Выбрарать тип направления подготовки:</strong>
       <select formControlName="type" class="default-select">
         <option disabled selected>
           Выберите тип направления (магистратура или бакалавриат)
@@ -27,7 +28,8 @@
     <button class="accept-button-modal" type="button" (click)="submit()">
       Добавить
     </button>
-    ><button
+    >
+    <button
       class="danger-button-modal"
       type="button"
       (click)="visibility.emit(false)"

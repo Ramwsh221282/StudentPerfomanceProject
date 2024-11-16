@@ -1,7 +1,10 @@
 <div class="navigation-links">
   <a>Проставление оценок</a>
+  <a>{{ selectedGroupName }}</a>
+  <a>{{ selectedDisciplineName }}</a>
 </div>
 <section class="page-layout">
   <app-teacher-assignment-session-info></app-teacher-assignment-session-info>
-  <app-teacher-assignments-table></app-teacher-assignments-table>
+  <app-teacher-assignments-table (selectedDisciplineEmitter)="selectedDisciplineName = $event"
+                                 (selectedGroupEmitter)="selectedGroupName = $event"></app-teacher-assignments-table>
 </section>

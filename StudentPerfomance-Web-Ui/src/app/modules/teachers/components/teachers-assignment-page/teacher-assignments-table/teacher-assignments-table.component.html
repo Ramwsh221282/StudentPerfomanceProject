@@ -1,34 +1,39 @@
 <div class="teacher-assignment-session-table-wrapper">
   <div class="teacher-assignment-session-groups">
+    <strong *ngIf="_teacherAssignments.journals == undefined || _teacherAssignments.journals.length == 0">Вам нечего
+      проставлять в текущей контрольной неделе</strong>
     @for (journal of _teacherAssignments.journals; track journal.groupName) {
-    <button class="accept-button-modal" (click)="selectGroup(journal)">
-      {{ journal.groupName.name }}
-    </button>
+      <button class="accept-button-modal" style="width: 125px" (click)="selectGroup(journal)">
+        {{ journal.groupName.name }}
+      </button>
     }
   </div>
   <div
     class="teacher-assignment-session-disciplines"
     *ngIf="_teacherJournal != undefined"
   >
-    @for (discipline of _teacherJournal.disciplines; track discipline.name.name)
-    {
-    <button
-      (click)="selectDiscipline(discipline)"
-      class="warning-button-outline"
-    >
-      {{ discipline.name.name }}
-    </button>
+    @for (discipline of _teacherJournal.disciplines; track discipline.name.name) {
+      <button
+        (click)="selectDiscipline(discipline)"
+        class="warning-button-outline"
+      >
+        {{ discipline.name.name }}
+      </button>
     }
   </div>
   <div
     class="teacher-assignment-session-assignments"
     *ngIf="_teacherDiscipline != undefined"
   >
+    <input class="assignments-search-input" (keyup)="filter($event)"
+           placeholder="Поле фильтра. Начните вводить фамилию, имя или отчество.">
+    <strong *ngIf="_teacherDiscipline == undefined || _teacherDiscipline.students == undefined">Выберите
+      дисциплину</strong>
     @for (student of _teacherDiscipline.students; track $index) {
-    <app-teacher-assignments
-      [discipline]="_teacherDiscipline"
-      [student]="student"
-    ></app-teacher-assignments>
+      <app-teacher-assignments
+        [discipline]="_teacherDiscipline"
+        [student]="student"
+      ></app-teacher-assignments>
     }
   </div>
 </div>

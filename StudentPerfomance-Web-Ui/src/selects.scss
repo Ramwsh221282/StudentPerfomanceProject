@@ -1,3 +1,12 @@
+.users-list-wrapper {
+  height: 200px;
+  overflow-y: auto;
+}
+
+.select-wrapper {
+  position: relative;
+}
+
 .default-select {
   width: auto;
   margin: 0;
@@ -7,18 +16,10 @@
   border-radius: 30px;
   background: #93c4fa;
   color: darken(#1fbded, 35%);
+  font-size: 14px;
+  overflow: auto;
   -webkit-appearance: none;
   -moz-appearance: none;
-  text-indent: 0.01px;
-  text-overflow: "";
-
-  & option {
-    font-size: 14px;
-  }
-
-  &::-ms-expand {
-    display: none;
-  }
 
   &:before,
   &:after {
@@ -43,5 +44,14 @@
     border-left: 0.25em solid transparent;
     border-right: 0.25em solid transparent;
     border-top: 0.375em solid darken(#1fbded, 25%);
+  }
+}
+
+.user-option {
+  padding: 10px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f0f0f0;
   }
 }

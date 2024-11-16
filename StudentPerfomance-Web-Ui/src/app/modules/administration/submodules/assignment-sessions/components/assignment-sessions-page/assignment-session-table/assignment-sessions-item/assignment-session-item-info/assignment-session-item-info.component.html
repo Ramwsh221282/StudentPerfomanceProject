@@ -32,37 +32,39 @@
       </button>
     </div>
     <div class="search-container">
-      <table class="search-table">
-        <thead>
-        <tr>
-          <th>Студенческая группа</th>
-          <th>% успеваемости</th>
-          <th>Средний балл</th>
-          <th>Действия</th>
-        </tr>
-        </thead>
-        <tbody>
-          @for (week of session.weeks; track week.group.name) {
-            <tr>
-              <td>{{ week.group.name }}</td>
-              <td>{{ week.averagePerfomancePercent }}</td>
-              <td>{{ week.averageMarks }}</td>
-              <td>
-                <div class="controls-container">
-                  <button
-                    class="accept-button"
-                    (click)="
+      <div class="search-table-wrapper">
+        <table class="search-table">
+          <thead>
+          <tr>
+            <th>Студенческая группа</th>
+            <th>% успеваемости</th>
+            <th>Средний балл</th>
+            <th>Действия</th>
+          </tr>
+          </thead>
+          <tbody>
+            @for (week of session.weeks; track week.group.name) {
+              <tr>
+                <td>{{ week.group.name }}</td>
+                <td>{{ week.averagePerfomancePercent }}</td>
+                <td>{{ week.averageMarks }}</td>
+                <td>
+                  <div class="controls-container">
+                    <button
+                      class="accept-button"
+                      (click)="
                     selectedAssignmentWeek = week; isAssignmentsVisible = true
                   "
-                  >
-                    Просмотреть ведомость
-                  </button>
-                </div>
-              </td>
-            </tr>
-          }
-        </tbody>
-      </table>
+                    >
+                      Просмотреть ведомость
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
   <div id="controls">

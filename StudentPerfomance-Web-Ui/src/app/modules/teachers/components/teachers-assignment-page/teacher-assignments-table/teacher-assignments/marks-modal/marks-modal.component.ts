@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { TeacherJournalStudent } from '../../../../../models/teacher-journal-students';
 import { TeacherJournalDiscipline } from '../../../../../models/teacher-journal-disciplines';
 import { ISubbmittable } from '../../../../../../../shared/models/interfaces/isubbmitable';
@@ -33,6 +33,7 @@ export class MarksModalComponent implements ISubbmittable {
   public submit(): void {
     this.student.assignment.value = this.selectedMark.value;
     this.markSelected.emit(this.student);
+    this.visibility.emit();
   }
 
   protected selectMark(value: any): void {

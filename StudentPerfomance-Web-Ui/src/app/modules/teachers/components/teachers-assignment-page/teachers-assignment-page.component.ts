@@ -5,4 +5,7 @@ import { Component } from '@angular/core';
   templateUrl: './teachers-assignment-page.component.html',
   styleUrl: './teachers-assignment-page.component.scss',
 })
-export class TeachersAssignmentPageComponent {}
+export class TeachersAssignmentPageComponent {
+  protected selectedGroupName: string = 'Выберите группу';
+  protected selectedDisciplineName: string = 'Выберите дисциплину';
+}

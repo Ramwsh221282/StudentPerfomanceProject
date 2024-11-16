@@ -93,7 +93,7 @@ public class CoursePerfomanceService
 
             coursePerfomance.Average = Math.Round((double)totalAverage / totalWeeks, 3);
             coursePerfomance.Perfomance = Math.Round((double)totalPerfomance / totalWeeks, 3);
-            coursePerfomance.DirectionType = "Бакалавриат";
+            coursePerfomance.DirectionType = "Магистратура";
             _coursePerfomances.Add(coursePerfomance);
         }
     }

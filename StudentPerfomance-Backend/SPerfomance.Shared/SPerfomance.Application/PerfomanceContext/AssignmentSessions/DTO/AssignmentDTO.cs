@@ -33,6 +33,7 @@ public class AssignmentDTO
         TeacherPatronymic = assignment.Discipline.Teacher!.Name.Patronymic;
         StudentAssignments = assignment
             .StudentAssignments.Select(a => new StudentAssignmentDTO(a))
+            .OrderBy(a => a.StudentSurname)
             .ToList();
         DisciplinePerfomanceService service = new DisciplinePerfomanceService(assignment);
         AssignmentAverage = service.CalculateAssignmentAverage();

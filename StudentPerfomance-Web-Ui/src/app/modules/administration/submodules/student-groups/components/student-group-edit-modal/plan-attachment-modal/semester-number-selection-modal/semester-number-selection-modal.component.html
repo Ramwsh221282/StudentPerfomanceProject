@@ -9,9 +9,9 @@
         (change)="selectSemesterNumber($event)"
       >
         @for (semester of semesterNumbers; track semester) {
-        <option [value]="semester">
-          {{ semester }}
-        </option>
+          <option [value]="semester">
+            {{ semester }}
+          </option>
         }
       </select>
     </section>

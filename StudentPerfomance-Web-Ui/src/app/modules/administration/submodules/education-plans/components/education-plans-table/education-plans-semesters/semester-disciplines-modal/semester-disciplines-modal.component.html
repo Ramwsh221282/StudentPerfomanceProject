@@ -10,50 +10,52 @@
         Добавить дисциплину
       </button>
     </div>
-    <table class="disciplines-table">
-      <thead>
+    <div class="search-table-wrapper">
+      <table class="disciplines-table">
+        <thead>
         <tr>
           <th>Название</th>
           <th>Преподаватель</th>
           <th>Действия</th>
         </tr>
-      </thead>
-      <tbody>
-        @for (plan of semesterPlans; track plan.discipline) {
-        <tr>
-          <td>{{ plan.discipline }}</td>
-          <td>
-            {{
-              plan.teacher
-                ? plan.teacher.surname +
-                  " " +
-                  plan.teacher.name[0] +
-                  plan.teacher.patronymic[0]
-                : "нет"
-            }}
-          </td>
-          <td>
-            <div class="controls-container">
-              <button
-                class="warning-button"
-                (click)="
+        </thead>
+        <tbody>
+          @for (plan of semesterPlans; track plan.discipline) {
+            <tr>
+              <td>{{ plan.discipline }}</td>
+              <td>
+                {{
+                  plan.teacher
+                    ? plan.teacher.surname +
+                    " " +
+                    plan.teacher.name[0] +
+                    plan.teacher.patronymic[0]
+                    : "нет"
+                }}
+              </td>
+              <td>
+                <div class="controls-container">
+                  <button
+                    class="warning-button"
+                    (click)="
                   this.activeSemesterPlan = plan; this.editModalState = true
                 "
-              >
-                Редактирование
-              </button>
-              <button
-                class="danger-button"
-                (click)="this.activeSemesterPlan = plan; startDeletion(plan)"
-              >
-                Удалить
-              </button>
-            </div>
-          </td>
-        </tr>
-        }
-      </tbody>
-    </table>
+                  >
+                    Редактирование
+                  </button>
+                  <button
+                    class="danger-button"
+                    (click)="this.activeSemesterPlan = plan; startDeletion(plan)"
+                  >
+                    Удалить
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
   </div>
   <div id="controls">
     <button class="danger-button-modal" (click)="close()">Закрыть окно</button>

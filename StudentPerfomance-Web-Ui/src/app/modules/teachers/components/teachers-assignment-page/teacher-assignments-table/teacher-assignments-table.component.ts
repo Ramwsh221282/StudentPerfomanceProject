@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { TeacherAssignmentsDataService } from './teacher-assignments-data.service';
 import { TeacherAssignmentInfo } from '../../../models/teacher-assignment-info';
 import { TeacherJournal } from '../../../models/teacher-journal';
@@ -15,6 +15,11 @@ export class TeacherAssignmentsTableComponent implements OnInit {
 
   protected _teacherJournal: TeacherJournal;
   protected _teacherDiscipline: TeacherJournalDiscipline;
+  protected _teacherDisciplineCopy: TeacherJournalDiscipline;
+
+  @Output() selectedDisciplineEmitter: EventEmitter<string> =
+    new EventEmitter();
+  @Output() selectedGroupEmitter: EventEmitter<string> = new EventEmitter();
 
   public constructor(private readonly _service: TeacherAssignmentsDataService) {
     this._teacherAssignments = {} as TeacherAssignmentInfo;
@@ -28,9 +33,29 @@ export class TeacherAssignmentsTableComponent implements OnInit {
 
   protected selectGroup(journal: TeacherJournal): void {
     this._teacherJournal = journal;
+    this.selectedGroupEmitter.emit(this._teacherJournal.groupName.name);
+    this._teacherDiscipline = {} as TeacherJournalDiscipline;
   }
 
   protected selectDiscipline(discipline: TeacherJournalDiscipline) {
     this._teacherDiscipline = discipline;
+    this._teacherDisciplineCopy = { ...discipline };
+    this.selectedDisciplineEmitter.emit(this._teacherDiscipline.name.name);
+  }
+
+  protected filter(input: any) {
+    if (this._teacherDiscipline.students == undefined) {
+      return;
+    }
+    const value = input.target.value;
+    if (value == undefined || value == '') {
+      this._teacherDiscipline.students = this._teacherDisciplineCopy.students;
+    }
+    this._teacherDiscipline.students = this._teacherDiscipline.students.filter(
+      (s) =>
+        s.name.startsWith(value) ||
+        s.surname.startsWith(value) ||
+        s.patronymic?.startsWith(value),
+    );
   }
 }

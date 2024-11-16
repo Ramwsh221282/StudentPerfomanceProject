@@ -49,16 +49,24 @@
   }
 }
 
+.search-table-wrapper {
+  max-height: 400px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+}
+
 .semesters-table {
+  width: 100%;
   border-collapse: collapse;
-  margin-top: 25px 0;
-  font-size: 0.9 em;
+  font-size: 14px;
   min-width: 400px;
 
   & thead tr {
     background-color: #93c4fa;
     color: #fff;
     text-align: left;
+    position: sticky;
+    top: 0;
   }
 
   & td,

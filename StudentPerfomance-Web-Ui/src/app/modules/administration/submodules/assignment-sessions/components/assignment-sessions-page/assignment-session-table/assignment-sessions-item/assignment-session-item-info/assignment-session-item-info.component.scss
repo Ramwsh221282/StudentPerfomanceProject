@@ -83,15 +83,22 @@
   grid-gap: 10px;
 }
 
+.search-table-wrapper {
+  height: 400px;
+  overflow: auto;
+}
+
 .search-table {
   border-collapse: collapse;
-  font-size: 0.9em;
-  min-width: 100px;
+  font-size: 14px;
+  width: auto;
 
   & thead tr {
     background-color: #93c4fa;
     color: #fff;
     text-align: left;
+    position: sticky;
+    top: 0;
   }
 
   & td,

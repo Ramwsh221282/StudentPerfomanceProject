@@ -27,7 +27,7 @@ export class SemesterNumberSelectionModalComponent
 
   public constructor(
     private readonly _attachmentService: EducationPlanAttachmentService,
-    protected readonly notificationService: UserOperationNotificationService
+    protected readonly notificationService: UserOperationNotificationService,
   ) {}
 
   public submit(): void {
@@ -35,7 +35,7 @@ export class SemesterNumberSelectionModalComponent
       this.notificationService,
       this.success,
       this.failure,
-      this.visibility
+      this.visibility,
     );
     this._attachmentService
       .attachPlan(this.group, this.educationPlan, this.selectedSemester)
@@ -45,7 +45,7 @@ export class SemesterNumberSelectionModalComponent
           this.group = { ...response };
           this.educationPlan = {} as EducationPlan;
         }),
-        catchError((error: HttpErrorResponse) => handler.handleError(error))
+        catchError((error: HttpErrorResponse) => handler.handleError(error)),
       )
       .subscribe();
   }
@@ -59,7 +59,7 @@ export class SemesterNumberSelectionModalComponent
   }
 
   private InitializeSemesterNumbers(): void {
-    if ((this.educationPlan.direction.type = 'Бакалавриат'))
+    if (this.educationPlan.direction.type == 'Бакалавриат')
       this.InitializeAsBachelor();
     else this.InitializeAsMagister();
   }

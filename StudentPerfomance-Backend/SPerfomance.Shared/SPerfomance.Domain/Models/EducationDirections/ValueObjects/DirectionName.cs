@@ -6,9 +6,9 @@ namespace SPerfomance.Domain.Models.EducationDirections.ValueObjects;
 
 public class DirectionName : DomainValueObject
 {
-    private const int nameMaxLength = 100;
+    private const int NameMaxLength = 100;
 
-    private const int nameMinLength = 10;
+    private const int NameMinLength = 5;
 
     public string Name { get; private set; }
 
@@ -28,16 +28,15 @@ public class DirectionName : DomainValueObject
         if (string.IsNullOrWhiteSpace(name))
             return Result<DirectionName>.Failure(EducationDirectionErrors.NameEmptyError());
 
-        if (name.Length > nameMaxLength)
-            return Result<DirectionName>.Failure(
-                EducationDirectionErrors.NameExceessLengthError(nameMaxLength)
-            );
-
-        if (name.Length < nameMinLength)
-            return Result<DirectionName>.Failure(
-                EducationDirectionErrors.NameIsNotSatisfineError(nameMinLength)
-            );
-
-        return Result<DirectionName>.Success(new DirectionName(name));
+        return name.Length switch
+        {
+            > NameMaxLength => Result<DirectionName>.Failure(
+                EducationDirectionErrors.NameExceessLengthError(NameMaxLength)
+            ),
+            < NameMinLength => Result<DirectionName>.Failure(
+                EducationDirectionErrors.NameIsNotSatisfineError(NameMinLength)
+            ),
+            _ => Result<DirectionName>.Success(new DirectionName(name)),
+        };
     }
 }

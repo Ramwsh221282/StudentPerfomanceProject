@@ -6,7 +6,7 @@
     <section class="creation-form">
       <strong class="font-white">Выбранная студенческая группа: </strong>
       <strong class="font-white"
-        >Выбранная группа:
+      >Выбранная группа:
         {{ activeGroup.name == "" ? "Не выбрана" : activeGroup.name }}</strong
       >
     </section>
@@ -28,26 +28,28 @@
           Отменить фильтр
         </button>
       </div>
-      <table class="search-table">
-        <thead>
+      <div class="search-table-wrapper">
+        <table class="search-table">
+          <thead>
           <tr>
             <th>Название группы</th>
             <th>Действия</th>
           </tr>
-        </thead>
-        <tbody>
-          @for (group of groups; track group.name) {
-          <tr>
-            <td>{{ group.name }}</td>
-            <td>
-              <button class="accept-button" (click)="selectGroup(group)">
-                Выбрать
-              </button>
-            </td>
-          </tr>
-          }
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            @for (group of groups; track group.name) {
+              <tr>
+                <td>{{ group.name }}</td>
+                <td>
+                  <button class="accept-button" (click)="selectGroup(group)">
+                    Выбрать
+                  </button>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
   <div id="controls">

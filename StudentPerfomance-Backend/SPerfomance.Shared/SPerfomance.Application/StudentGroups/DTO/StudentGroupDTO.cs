@@ -29,4 +29,62 @@ public static class StudentGroupDTOExtensions
     {
         return new StudentGroupDTO(group);
     }
+
+    public static byte EstimateCourse(this StudentGroupDTO group)
+    {
+        if (group.ActiveSemesterNumber == null)
+            return default;
+        if (group.Plan?.Direction == null)
+            return default;
+
+        return group.Plan.Direction.Type == "Бакалавриат"
+            ? group.EstimateCourseFromBachelor()
+            : group.EstimateCourseFromMagister();
+    }
+
+    private static byte EstimateCourseFromBachelor(this StudentGroupDTO group)
+    {
+        if (group.ActiveSemesterNumber == null)
+            return default;
+
+        if (group.Plan?.Direction == null)
+            return default;
+
+        if (group.Plan.Direction.Type != "Бакалавриат")
+            return default;
+
+        return group.ActiveSemesterNumber switch
+        {
+            1 => 1,
+            2 => 1,
+            3 => 2,
+            4 => 2,
+            5 => 3,
+            6 => 3,
+            7 => 4,
+            8 => 4,
+            _ => default,
+        };
+    }
+
+    private static byte EstimateCourseFromMagister(this StudentGroupDTO group)
+    {
+        if (group.ActiveSemesterNumber == null)
+            return default;
+
+        if (group.Plan?.Direction == null)
+            return default;
+
+        if (group.Plan.Direction.Type != "Магистратура")
+            return default;
+
+        return group.ActiveSemesterNumber switch
+        {
+            1 => 1,
+            2 => 1,
+            3 => 2,
+            4 => 2,
+            _ => default,
+        };
+    }
 }

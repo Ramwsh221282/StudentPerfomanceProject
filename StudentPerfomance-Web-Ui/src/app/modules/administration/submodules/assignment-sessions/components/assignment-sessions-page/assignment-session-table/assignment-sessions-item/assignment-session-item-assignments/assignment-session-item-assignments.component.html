@@ -6,43 +6,44 @@
   </div>
   <div id="content">
     <strong class="font-white"
-      >Процент успеваемости: {{ week.averagePerfomancePercent }}</strong
+    >Процент успеваемости: {{ week.averagePerfomancePercent }}</strong
     >
     <strong class="font-white">Средний балл: {{ week.averageMarks }}</strong>
-    <table class="search-table">
-      <thead>
+    <div class="search-table-wrapper">
+      <table class="search-table">
+        <thead>
         <tr>
           <th>{{ week.group.name }}</th>
           @for (discipline of week.assignments; track discipline.discipline) {
-          <th>{{ discipline.discipline }}</th>
+            <th>{{ discipline.discipline }}</th>
           }
           <th>% индивидуальной успеваемости</th>
           <th>средний балл</th>
         </tr>
-      </thead>
-      <tbody>
-        @for (student of getStudents(); track student.id) {
-        <tr>
-          <td>
-            {{ student.studentSurname }} {{ student.studentName[0] }}
-            {{
-              student.studentPatronymic == null
-                ? ""
-                : student.studentPatronymic[0]
-            }}
-          </td>
-          @for (discipline of week.assignments; track discipline.discipline) {
-          <td>{{ getStudentGrade(discipline.discipline, student) }}</td>
+        </thead>
+        <tbody>
+          @for (student of getStudents(); track student.id) {
+            <tr>
+              <td>
+                {{ student.studentSurname }} {{ student.studentName[0] }}
+                {{
+                  student.studentPatronymic == null
+                    ? ""
+                    : student.studentPatronymic[0]
+                }}
+              </td>
+              @for (discipline of week.assignments; track discipline.discipline) {
+                <td>{{ getStudentGrade(discipline.discipline, student) }}</td>
+              }
+              <td>{{ student.studentPerfomance }}</td>
+              <td>{{ student.studentAverage }}</td>
+            </tr>
           }
-          <td>{{ student.studentPerfomance }}</td>
-          <td>{{ student.studentAverage }}</td>
-        </tr>
-        }
         <tr>
           средний балл @for (discipline of week.assignments; track
           discipline.discipline) {
           <td>{{ discipline.assignmentAverage }}</td>
-          }
+        }
           <td>-</td>
           <td>-</td>
         </tr>
@@ -50,12 +51,13 @@
           % успеваемости @for (discipline of week.assignments; track
           discipline.discipline) {
           <td>{{ discipline.assignmentPerfomance }}</td>
-          }
+        }
           <td>-</td>
           <td>-</td>
         </tr>
-      </tbody>
-    </table>
+        </tbody>
+      </table>
+    </div>
   </div>
   <div id="controls">
     <button

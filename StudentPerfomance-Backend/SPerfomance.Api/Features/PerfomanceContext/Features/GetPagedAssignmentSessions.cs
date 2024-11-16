@@ -35,6 +35,7 @@ public static class GetPagedAssignmentSessions
             request.Pagination.Page,
             request.Pagination.PageSize
         );
+
         return Results.Ok(sessions.Select(s => new AssignmentSessionDTO(s)));
     }
 }

@@ -18,17 +18,23 @@ public class TeacherAssignmentSession
         Teacher = teacher.Name;
         foreach (AssignmentWeek week in session.Weeks)
         {
-            TeacherJournal journal = new TeacherJournal();
-            journal = journal.SetGroupName(week.Group!);
             Assignment[] assignments = week
                 .Assignments.Where(a => a.Discipline.Teacher!.Name == teacher.Name)
                 .ToArray();
+            if (assignments.Length == 0)
+                continue;
+            TeacherJournal journal = new TeacherJournal();
+            journal = journal.SetGroupName(week.Group!);
             foreach (Assignment assignment in assignments)
             {
                 TeacherJournalDiscipline discipline = new TeacherJournalDiscipline(
                     assignment.Discipline.Discipline
                 );
-                foreach (StudentAssignment student in assignment.StudentAssignments)
+                foreach (
+                    StudentAssignment student in assignment.StudentAssignments.OrderBy(s =>
+                        s.Student.Name.Surname
+                    )
+                )
                 {
                     discipline.AppendStudent(student, week.Group.Name.Name);
                 }
@@ -36,6 +42,7 @@ public class TeacherAssignmentSession
             }
             _journals.Add(journal);
         }
+        _journals = _journals.OrderBy(j => j.GroupName!.Name).ToList();
     }
 
     public List<TeacherJournal> Journals => _journals;

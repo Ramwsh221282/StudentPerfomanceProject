@@ -47,6 +47,7 @@ public class AssignmentWeekDTO
                     );
             }
         }
+
         AssignmentWeekPerfomanceService service = new AssignmentWeekPerfomanceService(week);
         AverageMarks = service.CalculateWeekAverageAssignments();
         AveragePerfomancePercent = service.CalculateWeekAveragePerfomance();

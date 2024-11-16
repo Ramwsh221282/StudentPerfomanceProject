@@ -64,3 +64,9 @@
 .font-white {
   color: #fff;
 }
+
+.users-list-wrapper {
+  height: 400px;
+  overflow: auto;
+  position: relative;
+}

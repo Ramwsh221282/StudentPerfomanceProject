@@ -9,11 +9,17 @@
   gap: 10px;
 }
 
+.assignments-search-input {
+  position: sticky;
+  top: 0;
+}
+
 .teacher-assignment-session-groups {
+  width: 1235px;
+  overflow: auto;
   padding: 5px;
   display: inline-flex;
   flex-direction: row;
-  width: 100%;
   gap: 5px;
   border-bottom: solid 1px #d9d9d9;
 }
@@ -28,8 +34,9 @@
 }
 
 .teacher-assignment-session-assignments {
-  display: grid;
-  grid-template-columns: 300px 300px;
-  grid-template-rows: auto;
+  display: flex;
+  flex-direction: column;
+  height: 680px;
+  overflow: auto;
   gap: 5px;
 }
