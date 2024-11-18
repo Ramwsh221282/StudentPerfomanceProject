@@ -22,10 +22,9 @@ public class UserEmail : DomainValueObject
         if (string.IsNullOrWhiteSpace(email))
             return Result<UserEmail>.Failure(UserErrors.EmailEmpty());
 
-        if (!_emailPattern.Match(email).Success)
-            return Result<UserEmail>.Failure(UserErrors.EmailInvalid(email));
-
-        return Result<UserEmail>.Success(new(email));
+        return !_emailPattern.Match(email).Success
+            ? Result<UserEmail>.Failure(UserErrors.EmailInvalid(email))
+            : Result<UserEmail>.Success(new(email));
     }
 
     public override IEnumerable<object> GetEqualityComponents()

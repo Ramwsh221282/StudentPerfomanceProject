@@ -1,56 +1,39 @@
-using SPerfomance.Domain.Models.StatisticsContext.Models.ControlWeekReport;
+using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Services.AssignmentSessionViewServices.Views;
 
 namespace SPerfomance.Statistics.DataAccess.EntityModels;
 
 public class ControlWeekReportEntity
 {
-    public int RowNumber { get; private set; }
-
-    public Guid Id { get; init; }
-
-    public DateTime CreationDate { get; init; }
-
-    public DateTime CompletionDate { get; init; }
-
-    public bool IsFinished { get; init; }
-
-    public List<GroupStatisticsReportEntity> GroupParts { get; init; } = [];
-
-    public CourseReportEntity CourseReport { get; init; }
-
-    public DirectionTypeReportEntity DirectionTypeReport { get; init; }
-
-    public DirectionCodeReportEntity DirectionCodeReport { get; init; }
-
-    public DepartmentStatisticsReportEntity DepartmentReport { get; init; }
-
-    private ControlWeekReportEntity()
-    {
-        CourseReport = null!;
-        DirectionTypeReport = null!;
-        DirectionCodeReport = null!;
-        DepartmentReport = null!;
-    }
-
-    public ControlWeekReportEntity(ControlWeekReport report)
-        : this()
-    {
-        Id = report.Id;
-        CreationDate = report.Period.CreationDate;
-        CompletionDate = report.Period.CompletionDate;
-        IsFinished = report.IsFinished;
-        foreach (var groupPart in report.GroupReports)
-        {
-            GroupParts.Add(new GroupStatisticsReportEntity(this, groupPart));
-        }
-        CourseReport = new CourseReportEntity(this, report.CourseReport);
-        DirectionTypeReport = new DirectionTypeReportEntity(this, report.DirectionTypeReport);
-        DirectionCodeReport = new DirectionCodeReportEntity(this, report.DirectionCodeReport);
-        DepartmentReport = new DepartmentStatisticsReportEntity(
-            this,
-            report.DepartmentStatisticsReport
-        );
-    }
+    public int RowNumber { get; set; }
+    public Guid Id { get; set; }
+    public DateTime CreationDate { get; set; }
+    public DateTime CompletionDate { get; set; }
+    public List<GroupStatisticsReportEntity> GroupParts { get; set; } = [];
+    public List<CourseStatisticsReportEntity> CourseParts { get; set; } = [];
+    public List<DirectionTypeStatisticsReportEntity> DirectionTypeReport { get; set; } = [];
+    public List<DirectionCodeStatisticsReportEntity> DirectionCodeReport { get; set; } = [];
 
     public void SetEntityNumber(int number) => RowNumber = number;
+
+    public static ControlWeekReportEntity CreateReport(AssignmentSessionView view)
+    {
+        ControlWeekReportEntity entity = new ControlWeekReportEntity
+        {
+            Id = view.Id,
+            RowNumber = view.Number,
+            CreationDate = DateTime.Parse(view.StartDate),
+            CompletionDate = DateTime.Parse(view.EndDate),
+        };
+        entity.GroupParts = GroupStatisticsReportEntity.CreateReport(entity, view.Weeks);
+        entity.CourseParts = CourseStatisticsReportEntity.CreateReport(entity, entity.GroupParts);
+        entity.DirectionTypeReport = DirectionTypeStatisticsReportEntity.CreateReport(
+            entity,
+            entity.CourseParts
+        );
+        entity.DirectionCodeReport = DirectionCodeStatisticsReportEntity.CreateReport(
+            entity,
+            entity.GroupParts
+        );
+        return entity;
+    }
 }

@@ -15,4 +15,18 @@
     <ProjectReference Include="..\SPerfomance.Domain\SPerfomance.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="PerfomanceContext\AssignmentSessions\Services\AssignmentSessionViewService\**" />
+    <Compile Remove="PerfomanceContext\AssignmentSessions\Services\AssignmentSessionViewServices\Handlers\CompositeParts\AssignmentSessionStudentViewComposite.cs" />
+    <Compile Remove="PerfomanceContext\AssignmentSessions\Services\AssignmentSessionViewServices\Handlers\CompositeParts\AssignmentSessionDisciplineViewComposite.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="PerfomanceContext\AssignmentSessions\Services\AssignmentSessionViewService\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="PerfomanceContext\AssignmentSessions\Services\AssignmentSessionViewService\**" />
+  </ItemGroup>
+
 </Project>

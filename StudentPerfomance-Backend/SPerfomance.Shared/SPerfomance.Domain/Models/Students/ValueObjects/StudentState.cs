@@ -8,9 +8,9 @@ public class StudentState : DomainValueObject
 {
     private static StudentState[] _states = [new("Активен"), new("Неактивен")];
 
-    public static StudentState Active = new StudentState("Активен");
+    public static readonly StudentState Active = new StudentState("Активен");
 
-    public static StudentState NotActive = new StudentState("Неактивен");
+    public static readonly StudentState NotActive = new StudentState("Неактивен");
 
     public string State { get; private set; }
 
@@ -25,10 +25,9 @@ public class StudentState : DomainValueObject
         if (string.IsNullOrWhiteSpace(state))
             return Result<StudentState>.Failure(StudentErrors.StateEmpty());
 
-        if (_states.Any(s => s.State == state) == false)
-            return Result<StudentState>.Failure(StudentErrors.InvalidState(state));
-
-        return Result<StudentState>.Success(new StudentState(state));
+        return _states.Any(s => s.State == state) == false
+            ? Result<StudentState>.Failure(StudentErrors.InvalidState(state))
+            : Result<StudentState>.Success(new StudentState(state));
     }
 
     public override IEnumerable<object> GetEqualityComponents()

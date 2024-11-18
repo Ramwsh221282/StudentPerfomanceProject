@@ -9,6 +9,15 @@
   <ItemGroup>
     <Compile Remove="Models\StatisticsContext\Models\ControlWeekReport\Abstractions\IStatisticsReport.cs" />
     <Compile Remove="Models\StatisticsContext\Models\ControlWeekReport\Abstractions\IStatisticsReportPart.cs" />
+    <Compile Remove="Models\StatisticsContext\Models\ControlWeekReport\Abstractions\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Models\StatisticsContext\Models\ControlWeekReport\Abstractions\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Models\StatisticsContext\Models\ControlWeekReport\Abstractions\**" />
   </ItemGroup>
 
 </Project>

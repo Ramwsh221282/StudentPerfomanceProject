@@ -29,9 +29,6 @@ namespace SPerfomance.Statistics.DataAccess.Migrations
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("TEXT");
 
-                    b.Property<bool>("IsFinished")
-                        .HasColumnType("INTEGER");
-
                     b.Property<int>("RowNumber")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
@@ -41,7 +38,7 @@ namespace SPerfomance.Statistics.DataAccess.Migrations
                     b.ToTable("ControlWeekReports");
                 });
 
-            modelBuilder.Entity("SPerfomance.Statistics.DataAccess.EntityModels.CourseReportEntity", b =>
+            modelBuilder.Entity("SPerfomance.Statistics.DataAccess.EntityModels.CourseStatisticsReportEntity", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -50,78 +47,10 @@ namespace SPerfomance.Statistics.DataAccess.Migrations
                     b.Property<double>("Average")
                         .HasColumnType("REAL");
 
-                    b.Property<double>("Perfomance")
-                        .HasColumnType("REAL");
-
-                    b.Property<Guid>("RootId")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RootId")
-                        .IsUnique();
-
-                    b.ToTable("CourseReports");
-                });
-
-            modelBuilder.Entity("SPerfomance.Statistics.DataAccess.EntityModels.CourseReportEntityPart", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
-
-                    b.Property<double>("Average")
-                        .HasColumnType("REAL");
-
-                    b.Property<byte>("Course")
+                    b.Property<int>("Course")
                         .HasColumnType("INTEGER");
 
-                    b.Property<double>("Perfomance")
-                        .HasColumnType("REAL");
-
-                    b.Property<Guid>("RootId")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RootId");
-
-                    b.ToTable("CourseReportEntityParts");
-                });
-
-            modelBuilder.Entity("SPerfomance.Statistics.DataAccess.EntityModels.DepartmentStatisticsReportEntity", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
-
-                    b.Property<double>("Average")
-                        .HasColumnType("REAL");
-
-                    b.Property<double>("Perfomance")
-                        .HasColumnType("REAL");
-
-                    b.Property<Guid>("RootId")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RootId")
-                        .IsUnique();
-
-                    b.ToTable("DepartmentStatisticsReports");
-                });
-
-            modelBuilder.Entity("SPerfomance.Statistics.DataAccess.EntityModels.DepartmentStatisticsReportPartEntity", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
-
-                    b.Property<double>("Average")
-                        .HasColumnType("REAL");
-
-                    b.Property<string>("DepartmentName")
+                    b.Property<string>("DirectionType")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -135,10 +64,10 @@ namespace SPerfomance.Statistics.DataAccess.Migrations
 
                     b.HasIndex("RootId");
 
-                    b.ToTable("DepartmentStatisticsReportParts");
+                    b.ToTable("CourseStatisticsReportEntities");
                 });
 
-            modelBuilder.Entity("SPerfomance.Statistics.DataAccess.EntityModels.DirectionCodeReportEntity", b =>
+            modelBuilder.Entity("SPerfomance.Statistics.DataAccess.EntityModels.DirectionCodeStatisticsReportEntity", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -147,30 +76,7 @@ namespace SPerfomance.Statistics.DataAccess.Migrations
                     b.Property<double>("Average")
                         .HasColumnType("REAL");
 
-                    b.Property<double>("Perfomance")
-                        .HasColumnType("REAL");
-
-                    b.Property<Guid>("RootId")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RootId")
-                        .IsUnique();
-
-                    b.ToTable("DirectionCodeReports");
-                });
-
-            modelBuilder.Entity("SPerfomance.Statistics.DataAccess.EntityModels.DirectionCodeReportPartEntity", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
-
-                    b.Property<double>("Average")
-                        .HasColumnType("REAL");
-
-                    b.Property<string>("Code")
+                    b.Property<string>("DirectionCode")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -184,33 +90,10 @@ namespace SPerfomance.Statistics.DataAccess.Migrations
 
                     b.HasIndex("RootId");
 
-                    b.ToTable("DirectionCodeReportParts");
+                    b.ToTable("DirectionCodeStatisticsReportEntities");
                 });
 
-            modelBuilder.Entity("SPerfomance.Statistics.DataAccess.EntityModels.DirectionTypeReportEntity", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
-
-                    b.Property<double>("Average")
-                        .HasColumnType("REAL");
-
-                    b.Property<double>("Perfomance")
-                        .HasColumnType("REAL");
-
-                    b.Property<Guid>("RootId")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RootId")
-                        .IsUnique();
-
-                    b.ToTable("DirectionTypeReports");
-                });
-
-            modelBuilder.Entity("SPerfomance.Statistics.DataAccess.EntityModels.DirectionTypeReportEntityPart", b =>
+            modelBuilder.Entity("SPerfomance.Statistics.DataAccess.EntityModels.DirectionTypeStatisticsReportEntity", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -233,7 +116,44 @@ namespace SPerfomance.Statistics.DataAccess.Migrations
 
                     b.HasIndex("RootId");
 
-                    b.ToTable("DirectionTypeReportParts");
+                    b.ToTable("DirectionTypeStatisticsReportEntities");
+                });
+
+            modelBuilder.Entity("SPerfomance.Statistics.DataAccess.EntityModels.DisciplinesStatisticsReportEntity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<double>("Average")
+                        .HasColumnType("REAL");
+
+                    b.Property<string>("DisciplineName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<double>("Perfomance")
+                        .HasColumnType("REAL");
+
+                    b.Property<Guid>("RootId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("TeacherName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("TeacherPatronymic")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("TeacherSurname")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RootId");
+
+                    b.ToTable("DisciplinesStatisticsReports");
                 });
 
             modelBuilder.Entity("SPerfomance.Statistics.DataAccess.EntityModels.GroupStatisticsReportEntity", b =>
@@ -242,11 +162,11 @@ namespace SPerfomance.Statistics.DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<byte>("AtSemester")
-                        .HasColumnType("INTEGER");
-
                     b.Property<double>("Average")
                         .HasColumnType("REAL");
+
+                    b.Property<byte>("Course")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("DirectionCode")
                         .IsRequired()
@@ -273,27 +193,7 @@ namespace SPerfomance.Statistics.DataAccess.Migrations
                     b.ToTable("GroupStatisticsReports");
                 });
 
-            modelBuilder.Entity("SPerfomance.Statistics.DataAccess.EntityModels.StudentStatisticsOnDisciplinePartEntity", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("DisciplineName")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("RootId")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RootId");
-
-                    b.ToTable("StudentStatisticsOnDisciplines");
-                });
-
-            modelBuilder.Entity("SPerfomance.Statistics.DataAccess.EntityModels.StudentStatisticsPartEntity", b =>
+            modelBuilder.Entity("SPerfomance.Statistics.DataAccess.EntityModels.StudentStatisticsReportEntity", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -315,9 +215,6 @@ namespace SPerfomance.Statistics.DataAccess.Migrations
                     b.Property<string>("StudentPatronymic")
                         .HasColumnType("TEXT");
 
-                    b.Property<ulong>("StudentRecordBook")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("StudentSurname")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -329,54 +226,10 @@ namespace SPerfomance.Statistics.DataAccess.Migrations
                     b.ToTable("StudentStatisticsReports");
                 });
 
-            modelBuilder.Entity("SPerfomance.Statistics.DataAccess.EntityModels.TeacherStatisticsReportPartEntity", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
-
-                    b.Property<double>("Average")
-                        .HasColumnType("REAL");
-
-                    b.Property<double>("Perfomance")
-                        .HasColumnType("REAL");
-
-                    b.Property<Guid>("RootId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("TeacherName")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("TeacherPatronymic")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("TeacherSurname")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RootId");
-
-                    b.ToTable("TeacherStatisticsReportParts");
-                });
-
-            modelBuilder.Entity("SPerfomance.Statistics.DataAccess.EntityModels.CourseReportEntity", b =>
+            modelBuilder.Entity("SPerfomance.Statistics.DataAccess.EntityModels.CourseStatisticsReportEntity", b =>
                 {
                     b.HasOne("SPerfomance.Statistics.DataAccess.EntityModels.ControlWeekReportEntity", "Root")
-                        .WithOne("CourseReport")
-                        .HasForeignKey("SPerfomance.Statistics.DataAccess.EntityModels.CourseReportEntity", "RootId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Root");
-                });
-
-            modelBuilder.Entity("SPerfomance.Statistics.DataAccess.EntityModels.CourseReportEntityPart", b =>
-                {
-                    b.HasOne("SPerfomance.Statistics.DataAccess.EntityModels.CourseReportEntity", "Root")
-                        .WithMany("Parts")
+                        .WithMany("CourseParts")
                         .HasForeignKey("RootId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -384,21 +237,10 @@ namespace SPerfomance.Statistics.DataAccess.Migrations
                     b.Navigation("Root");
                 });
 
-            modelBuilder.Entity("SPerfomance.Statistics.DataAccess.EntityModels.DepartmentStatisticsReportEntity", b =>
+            modelBuilder.Entity("SPerfomance.Statistics.DataAccess.EntityModels.DirectionCodeStatisticsReportEntity", b =>
                 {
                     b.HasOne("SPerfomance.Statistics.DataAccess.EntityModels.ControlWeekReportEntity", "Root")
-                        .WithOne("DepartmentReport")
-                        .HasForeignKey("SPerfomance.Statistics.DataAccess.EntityModels.DepartmentStatisticsReportEntity", "RootId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Root");
-                });
-
-            modelBuilder.Entity("SPerfomance.Statistics.DataAccess.EntityModels.DepartmentStatisticsReportPartEntity", b =>
-                {
-                    b.HasOne("SPerfomance.Statistics.DataAccess.EntityModels.DepartmentStatisticsReportEntity", "Root")
-                        .WithMany("Parts")
+                        .WithMany("DirectionCodeReport")
                         .HasForeignKey("RootId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -406,21 +248,10 @@ namespace SPerfomance.Statistics.DataAccess.Migrations
                     b.Navigation("Root");
                 });
 
-            modelBuilder.Entity("SPerfomance.Statistics.DataAccess.EntityModels.DirectionCodeReportEntity", b =>
+            modelBuilder.Entity("SPerfomance.Statistics.DataAccess.EntityModels.DirectionTypeStatisticsReportEntity", b =>
                 {
                     b.HasOne("SPerfomance.Statistics.DataAccess.EntityModels.ControlWeekReportEntity", "Root")
-                        .WithOne("DirectionCodeReport")
-                        .HasForeignKey("SPerfomance.Statistics.DataAccess.EntityModels.DirectionCodeReportEntity", "RootId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Root");
-                });
-
-            modelBuilder.Entity("SPerfomance.Statistics.DataAccess.EntityModels.DirectionCodeReportPartEntity", b =>
-                {
-                    b.HasOne("SPerfomance.Statistics.DataAccess.EntityModels.DirectionCodeReportEntity", "Root")
-                        .WithMany("Parts")
+                        .WithMany("DirectionTypeReport")
                         .HasForeignKey("RootId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -428,20 +259,9 @@ namespace SPerfomance.Statistics.DataAccess.Migrations
                     b.Navigation("Root");
                 });
 
-            modelBuilder.Entity("SPerfomance.Statistics.DataAccess.EntityModels.DirectionTypeReportEntity", b =>
+            modelBuilder.Entity("SPerfomance.Statistics.DataAccess.EntityModels.DisciplinesStatisticsReportEntity", b =>
                 {
-                    b.HasOne("SPerfomance.Statistics.DataAccess.EntityModels.ControlWeekReportEntity", "Root")
-                        .WithOne("DirectionTypeReport")
-                        .HasForeignKey("SPerfomance.Statistics.DataAccess.EntityModels.DirectionTypeReportEntity", "RootId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Root");
-                });
-
-            modelBuilder.Entity("SPerfomance.Statistics.DataAccess.EntityModels.DirectionTypeReportEntityPart", b =>
-                {
-                    b.HasOne("SPerfomance.Statistics.DataAccess.EntityModels.DirectionTypeReportEntity", "Root")
+                    b.HasOne("SPerfomance.Statistics.DataAccess.EntityModels.GroupStatisticsReportEntity", "Root")
                         .WithMany("Parts")
                         .HasForeignKey("RootId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -461,31 +281,9 @@ namespace SPerfomance.Statistics.DataAccess.Migrations
                     b.Navigation("Root");
                 });
 
-            modelBuilder.Entity("SPerfomance.Statistics.DataAccess.EntityModels.StudentStatisticsOnDisciplinePartEntity", b =>
+            modelBuilder.Entity("SPerfomance.Statistics.DataAccess.EntityModels.StudentStatisticsReportEntity", b =>
                 {
-                    b.HasOne("SPerfomance.Statistics.DataAccess.EntityModels.StudentStatisticsPartEntity", "Root")
-                        .WithMany("Parts")
-                        .HasForeignKey("RootId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Root");
-                });
-
-            modelBuilder.Entity("SPerfomance.Statistics.DataAccess.EntityModels.StudentStatisticsPartEntity", b =>
-                {
-                    b.HasOne("SPerfomance.Statistics.DataAccess.EntityModels.GroupStatisticsReportEntity", "Root")
-                        .WithMany("Parts")
-                        .HasForeignKey("RootId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Root");
-                });
-
-            modelBuilder.Entity("SPerfomance.Statistics.DataAccess.EntityModels.TeacherStatisticsReportPartEntity", b =>
-                {
-                    b.HasOne("SPerfomance.Statistics.DataAccess.EntityModels.DepartmentStatisticsReportPartEntity", "Root")
+                    b.HasOne("SPerfomance.Statistics.DataAccess.EntityModels.DisciplinesStatisticsReportEntity", "Root")
                         .WithMany("Parts")
                         .HasForeignKey("RootId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -496,52 +294,21 @@ namespace SPerfomance.Statistics.DataAccess.Migrations
 
             modelBuilder.Entity("SPerfomance.Statistics.DataAccess.EntityModels.ControlWeekReportEntity", b =>
                 {
-                    b.Navigation("CourseReport")
-                        .IsRequired();
+                    b.Navigation("CourseParts");
 
-                    b.Navigation("DepartmentReport")
-                        .IsRequired();
+                    b.Navigation("DirectionCodeReport");
 
-                    b.Navigation("DirectionCodeReport")
-                        .IsRequired();
-
-                    b.Navigation("DirectionTypeReport")
-                        .IsRequired();
+                    b.Navigation("DirectionTypeReport");
 
                     b.Navigation("GroupParts");
                 });
 
-            modelBuilder.Entity("SPerfomance.Statistics.DataAccess.EntityModels.CourseReportEntity", b =>
-                {
-                    b.Navigation("Parts");
-                });
-
-            modelBuilder.Entity("SPerfomance.Statistics.DataAccess.EntityModels.DepartmentStatisticsReportEntity", b =>
-                {
-                    b.Navigation("Parts");
-                });
-
-            modelBuilder.Entity("SPerfomance.Statistics.DataAccess.EntityModels.DepartmentStatisticsReportPartEntity", b =>
-                {
-                    b.Navigation("Parts");
-                });
-
-            modelBuilder.Entity("SPerfomance.Statistics.DataAccess.EntityModels.DirectionCodeReportEntity", b =>
-                {
-                    b.Navigation("Parts");
-                });
-
-            modelBuilder.Entity("SPerfomance.Statistics.DataAccess.EntityModels.DirectionTypeReportEntity", b =>
+            modelBuilder.Entity("SPerfomance.Statistics.DataAccess.EntityModels.DisciplinesStatisticsReportEntity", b =>
                 {
                     b.Navigation("Parts");
                 });
 
             modelBuilder.Entity("SPerfomance.Statistics.DataAccess.EntityModels.GroupStatisticsReportEntity", b =>
-                {
-                    b.Navigation("Parts");
-                });
-
-            modelBuilder.Entity("SPerfomance.Statistics.DataAccess.EntityModels.StudentStatisticsPartEntity", b =>
                 {
                     b.Navigation("Parts");
                 });

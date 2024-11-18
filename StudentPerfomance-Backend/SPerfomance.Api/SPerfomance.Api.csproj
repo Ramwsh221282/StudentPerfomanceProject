@@ -17,4 +17,20 @@
     <ProjectReference Include="..\SPerfomance.Shared\SPerfomance.Statistics.DataAccess\SPerfomance.Statistics.DataAccess.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="HostedServices\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="HostedServices\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="HostedServices\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="HostedServices\**" />
+  </ItemGroup>
+
 </Project>

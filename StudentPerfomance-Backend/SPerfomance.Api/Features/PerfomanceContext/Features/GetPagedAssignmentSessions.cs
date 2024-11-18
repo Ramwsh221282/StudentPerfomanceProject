@@ -1,6 +1,6 @@
 using SPerfomance.Api.Endpoints;
 using SPerfomance.Api.Features.Common;
-using SPerfomance.Application.PerfomanceContext.AssignmentSessions.DTO;
+using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Services.AssignmentSessionViewServices.Handlers;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions.Abstractions;
 
@@ -36,6 +36,6 @@ public static class GetPagedAssignmentSessions
             request.Pagination.PageSize
         );
 
-        return Results.Ok(sessions.Select(s => new AssignmentSessionDTO(s)));
+        return Results.Ok(sessions.Select(s => new AssignmentSessionViewFactory(s).CreateView()));
     }
 }

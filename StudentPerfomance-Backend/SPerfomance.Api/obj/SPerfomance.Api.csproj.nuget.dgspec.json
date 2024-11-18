@@ -350,6 +350,9 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
+              "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomance-Backend\\SPerfomance.Shared\\SPerfomance.Application\\SPerfomance.Application.csproj": {
+                "projectPath": "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomance-Backend\\SPerfomance.Shared\\SPerfomance.Application\\SPerfomance.Application.csproj"
+              },
               "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomance-Backend\\SPerfomance.Shared\\SPerfomance.DataAccess\\SPerfomance.DataAccess.csproj": {
                 "projectPath": "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomance-Backend\\SPerfomance.Shared\\SPerfomance.DataAccess\\SPerfomance.DataAccess.csproj"
               }

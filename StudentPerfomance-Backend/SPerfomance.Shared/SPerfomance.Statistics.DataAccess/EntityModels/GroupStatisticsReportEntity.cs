@@ -1,52 +1,53 @@
-using SPerfomance.Domain.Models.StatisticsContext.Models.ControlWeekReport.ConcreteReports.GroupStatisticsReports;
+using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Services.AssignmentSessionViewServices.Views;
 
 namespace SPerfomance.Statistics.DataAccess.EntityModels;
 
 public class GroupStatisticsReportEntity
 {
-    public Guid Id { get; init; }
+    public Guid Id { get; set; }
 
-    public Guid RootId { get; init; }
+    public Guid RootId { get; set; }
 
-    public ControlWeekReportEntity Root { get; init; }
+    public ControlWeekReportEntity Root { get; set; } = null!;
 
-    public string Average { get; init; }
+    public string DirectionCode { get; set; } = string.Empty;
 
-    public string Perfomance { get; init; }
+    public string DirectionType { get; set; } = string.Empty;
 
-    public string GroupName { get; init; }
+    public byte Course { get; set; }
 
-    public byte AtSemester { get; init; }
+    public double Average { get; set; }
 
-    public string DirectionCode { get; init; }
+    public double Perfomance { get; set; }
 
-    public string DirectionType { get; init; }
+    public string GroupName { get; set; } = string.Empty;
 
-    public List<StudentStatisticsPartEntity> Parts { get; init; } = [];
+    public List<DisciplinesStatisticsReportEntity> Parts { get; set; } = [];
 
-    private GroupStatisticsReportEntity()
+    public static List<GroupStatisticsReportEntity> CreateReport(
+        ControlWeekReportEntity entity,
+        AssignmentWeekView[] views
+    )
     {
-        Root = null!;
-        GroupName = string.Empty;
-        DirectionCode = string.Empty;
-        DirectionType = string.Empty;
-    }
-
-    public GroupStatisticsReportEntity(ControlWeekReportEntity root, GroupStatisticsReport report)
-        : this()
-    {
-        Id = report.Id;
-        RootId = report.Root.Id;
-        Root = root;
-        Average = report.Average.ToString("F2");
-        Perfomance = report.Perfomance.ToString("F0");
-        GroupName = report.StudentGroupName.Name;
-        AtSemester = report.AtSemester.Number;
-        DirectionCode = report.DirectionCode.Code;
-        DirectionType = report.DirectionType.Type;
-        foreach (var part in report.Parts)
+        List<GroupStatisticsReportEntity> reports = new List<GroupStatisticsReportEntity>();
+        foreach (var week in views)
         {
-            Parts.Add(new StudentStatisticsPartEntity(this, part));
+            GroupStatisticsReportEntity report = new GroupStatisticsReportEntity()
+            {
+                Id = week.Id,
+                RootId = entity.Id,
+                Root = entity,
+                DirectionCode = week.Code.Code,
+                DirectionType = week.Type.Type,
+                Course = week.Course.Value,
+                Average = week.Average,
+                Perfomance = week.Perfomance,
+                GroupName = week.GroupName.Name,
+            };
+            report.Parts = DisciplinesStatisticsReportEntity.CreateReport(report, week.Disciplines);
+            reports.Add(report);
         }
+
+        return reports;
     }
 }

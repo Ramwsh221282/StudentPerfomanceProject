@@ -23,7 +23,7 @@ public class JwtTokenService : IJwtTokenService
         JwtSecurityToken token = new JwtSecurityToken(
             claims: claims,
             signingCredentials: credentials,
-            expires: DateTime.UtcNow.AddHours(1)
+            expires: DateTime.UtcNow.AddHours(6)
         );
 
         var tokenValue = new JwtSecurityTokenHandler().WriteToken(token);

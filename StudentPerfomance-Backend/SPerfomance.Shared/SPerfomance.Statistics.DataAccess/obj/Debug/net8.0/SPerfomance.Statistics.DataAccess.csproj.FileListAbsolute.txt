@@ -37,3 +37,5 @@ C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backe
 C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Shared\SPerfomance.Statistics.DataAccess\obj\Debug\net8.0\SPerfomance.Statistics.DataAccess.pdb
 C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Shared\SPerfomance.Statistics.DataAccess\obj\Debug\net8.0\SPerfomance.Statistics.DataAccess.genruntimeconfig.cache
 C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Shared\SPerfomance.Statistics.DataAccess\obj\Debug\net8.0\ref\SPerfomance.Statistics.DataAccess.dll
+C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Shared\SPerfomance.Statistics.DataAccess\bin\Debug\net8.0\SPerfomance.Application.dll
+C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Shared\SPerfomance.Statistics.DataAccess\bin\Debug\net8.0\SPerfomance.Application.pdb

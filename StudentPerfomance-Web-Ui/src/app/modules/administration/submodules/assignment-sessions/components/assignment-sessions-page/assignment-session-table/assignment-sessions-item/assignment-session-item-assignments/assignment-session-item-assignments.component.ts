@@ -18,28 +18,22 @@ export class AssignmentSessionItemAssignmentsComponent implements OnInit {
 
   protected getStudents(): StudentAssignments[] {
     const students: StudentAssignments[] = [];
-
-    const assignment = this.week.assignments[0];
-
-    for (let student of assignment.studentAssignments) {
+    const assignment = this.week.disciplines[0];
+    for (let student of assignment.students) {
       students.push(student);
     }
-
     return students;
   }
 
-  protected getStudentGrade(
-    discipline: string,
-    student: StudentAssignments
-  ): string {
-    const assignment: AssignmentSessionAssignment = this.week.assignments.find(
-      (a) => a.discipline == discipline
+  protected getStudentGrade(discipline: string, recordBook: number): string {
+    const assignment: AssignmentSessionAssignment = this.week.disciplines.find(
+      (a) => a.discipline.name == discipline,
     )!;
 
-    const studentAssignment = assignment.studentAssignments.find(
-      (s) => s.studentRecordbook == student.studentRecordbook
+    const studentAssignment = assignment.students.find(
+      (s) => s.recordbook.recordbook == recordBook,
     )!;
-
+    console.log(studentAssignment);
     return studentAssignment.value;
   }
 }

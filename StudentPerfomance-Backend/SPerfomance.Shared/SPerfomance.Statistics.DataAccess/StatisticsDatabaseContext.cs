@@ -7,33 +7,14 @@ namespace SPerfomance.Statistics.DataAccess;
 internal sealed class StatisticsDatabaseContext : DbContext
 {
     public DbSet<ControlWeekReportEntity> ControlWeekReports { get; set; } = null!;
-
-    public DbSet<CourseReportEntity> CourseReports { get; set; } = null!;
-
-    public DbSet<CourseReportEntityPart> CourseReportEntityParts { get; set; } = null!;
-
-    public DbSet<DepartmentStatisticsReportEntity> DepartmentStatisticsReports { get; set; } =
-        null!;
-
-    public DbSet<DepartmentStatisticsReportPartEntity> DepartmentStatisticsReportParts { get; set; } =
-        null!;
-
-    public DbSet<DirectionCodeReportEntity> DirectionCodeReports { get; set; } = null!;
-
-    public DbSet<DirectionCodeReportPartEntity> DirectionCodeReportParts { get; set; } = null!;
-
-    public DbSet<DirectionTypeReportEntity> DirectionTypeReports { get; set; } = null!;
-
-    public DbSet<DirectionTypeReportEntityPart> DirectionTypeReportParts { get; set; } = null!;
-
     public DbSet<GroupStatisticsReportEntity> GroupStatisticsReports { get; set; } = null!;
-
-    public DbSet<StudentStatisticsPartEntity> StudentStatisticsReports { get; set; } = null!;
-
-    public DbSet<StudentStatisticsOnDisciplinePartEntity> StudentStatisticsOnDisciplines { get; set; } =
+    public DbSet<DisciplinesStatisticsReportEntity> DisciplinesStatisticsReports { get; set; } =
         null!;
-
-    public DbSet<TeacherStatisticsReportPartEntity> TeacherStatisticsReportParts { get; set; } =
+    public DbSet<StudentStatisticsReportEntity> StudentStatisticsReports { get; set; } = null!;
+    public DbSet<CourseStatisticsReportEntity> CourseStatisticsReportEntities { get; set; } = null!;
+    public DbSet<DirectionCodeStatisticsReportEntity> DirectionCodeStatisticsReportEntities { get; set; } =
+        null!;
+    public DbSet<DirectionTypeStatisticsReportEntity> DirectionTypeStatisticsReportEntities { get; set; } =
         null!;
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) =>
@@ -42,16 +23,10 @@ internal sealed class StatisticsDatabaseContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder) =>
         modelBuilder
             .ApplyConfiguration(new ControlWeekReportEntityConfiguration())
-            .ApplyConfiguration(new GroupStatisticsReportEntityConfiguration())
-            .ApplyConfiguration(new StudentStatisticsPartEntityConfiguration())
-            .ApplyConfiguration(new StudentStatisticsOnDisciplinePartEntityConfiguration())
-            .ApplyConfiguration(new CourseReportEntityConfiguration())
-            .ApplyConfiguration(new CourseReportEntityPartConfiguration())
-            .ApplyConfiguration(new DirectionTypeReportEntityConfiguration())
-            .ApplyConfiguration(new DirectionTypeReportEntityPartConfiguration())
-            .ApplyConfiguration(new DirectionCodeReportEntityConfiguration())
-            .ApplyConfiguration(new DirectionCodeReportPartEntityConfiguration())
-            .ApplyConfiguration(new DepartmentStatisticsReportEntityConfiguration())
-            .ApplyConfiguration(new DepartmentStatisticsReportPartEntityConfiguration())
-            .ApplyConfiguration(new TeacherStatisticsReportPartEntityConfiguration());
+            .ApplyConfiguration(new GroupStatisticsReportConfiguration())
+            .ApplyConfiguration(new DisciplineStatisticsReportEntityConfiguration())
+            .ApplyConfiguration(new StudentStatisticsReportEntityConfiguration())
+            .ApplyConfiguration(new CourseStatisticsReportEntityConfiguration())
+            .ApplyConfiguration(new DirectionCodeStatisticsReportConfiguration())
+            .ApplyConfiguration(new DirectionTypeStatisticsReportEntityConfiguration());
 }

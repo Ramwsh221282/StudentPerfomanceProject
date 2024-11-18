@@ -1,12 +1,28 @@
-import { StudentGroup } from '../../student-groups/services/studentsGroup.interface';
 import { AssignmentSessionAssignment } from './assignment-session-assignment';
 
 export interface AssignmentSessionWeek {
   id: string;
-  group: StudentGroup;
-  assignments: AssignmentSessionAssignment[];
-  averageMarks: number;
-  averagePerfomancePercent: number;
-  directionType: string;
-  course: number;
+  average: number;
+  perfomance: number;
+  groupName: AssignmentSessionWeekGroupName;
+  code: AssignmentSessionWeekDirectionCode;
+  type: AssignmentSessionWeekDirectionType;
+  course: AssignmentSessionWeekDirectionCourse;
+  disciplines: AssignmentSessionAssignment[];
+}
+
+export interface AssignmentSessionWeekGroupName {
+  name: string;
+}
+
+export interface AssignmentSessionWeekDirectionCode {
+  code: string;
+}
+
+export interface AssignmentSessionWeekDirectionType {
+  type: string;
+}
+
+export interface AssignmentSessionWeekDirectionCourse {
+  value: number;
 }

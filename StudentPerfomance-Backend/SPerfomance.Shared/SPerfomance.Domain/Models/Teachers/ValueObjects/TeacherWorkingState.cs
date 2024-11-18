@@ -13,7 +13,7 @@ public class TeacherWorkingState : DomainValueObject
         new("Совместитель"),
     ];
 
-    public string State { get; private set; }
+    public string State { get; }
 
     private TeacherWorkingState() => State = string.Empty;
 

@@ -6,7 +6,7 @@ namespace SPerfomance.Domain.Models.Students.ValueObjects;
 
 public class StudentRecordbook : DomainValueObject
 {
-    public ulong Recordbook { get; private set; }
+    public ulong Recordbook { get; }
 
     private StudentRecordbook() { }
 
@@ -16,10 +16,9 @@ public class StudentRecordbook : DomainValueObject
 
     internal static Result<StudentRecordbook> Create(ulong recordBook)
     {
-        if (recordBook <= 0)
-            return Result<StudentRecordbook>.Failure(StudentErrors.InvalidRecordbook(recordBook));
-
-        return Result<StudentRecordbook>.Success(new StudentRecordbook(recordBook));
+        return recordBook <= 0
+            ? Result<StudentRecordbook>.Failure(StudentErrors.InvalidRecordbook(recordBook))
+            : Result<StudentRecordbook>.Success(new StudentRecordbook(recordBook));
     }
 
     public override IEnumerable<object> GetEqualityComponents()

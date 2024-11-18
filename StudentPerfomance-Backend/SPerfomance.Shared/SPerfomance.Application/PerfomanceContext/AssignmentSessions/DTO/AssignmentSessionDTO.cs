@@ -6,29 +6,18 @@ namespace SPerfomance.Application.PerfomanceContext.AssignmentSessions.DTO;
 public class AssignmentSessionDTO
 {
     public Guid Id { get; init; }
-
     public int Number { get; init; }
-
     public string StartDate { get; init; }
-
     public string EndDate { get; init; }
-
     public string State { get; init; }
-
     public List<AssignmentWeekDTO> Weeks { get; init; }
-
     public List<AssignmentSessionCoursePerfomanceDTO> CoursePerfomances { get; init; } = [];
-
     public List<AssignmentSessionDirectionTypePerfomanceDTO> DirectionTypePerfomances { get; init; } =
         [];
-
     public List<AssignmentSessionDirectionCodePerfomanceDTO> DirectionCodePerfomances { get; init; } =
         [];
-
     public List<AssignmentSessionDepartmentPerfomanceDTO> DepartmentPerfomances { get; init; } = [];
-
-    public AssignmentSessionUniversityPerfomanceDTO UniversityPerfomance { get; init; } =
-        new AssignmentSessionUniversityPerfomanceDTO();
+    public AssignmentSessionUniversityPerfomanceDTO UniversityPerfomance { get; init; }
 
     public AssignmentSessionDTO(AssignmentSession session)
     {

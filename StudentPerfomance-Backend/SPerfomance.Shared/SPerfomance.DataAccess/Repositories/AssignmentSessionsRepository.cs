@@ -330,14 +330,4 @@ public class AssignmentSessionsRepository : IAssignmentSessionsRepository
             .ToArrayAsync();
         return numbers.GetOrderedValue();
     }
-
-    public void DoBackgroundWork()
-    {
-        DateTime current = DateTime.Now;
-        Console.WriteLine("Current date:");
-        Console.WriteLine(current.ToString());
-        Console.WriteLine("Making a query to check session with open date");
-        bool hasSession = _context.Sessions.Any(s => s.SessionStartDate >= current);
-        Console.WriteLine(hasSession);
-    }
 }

@@ -1,21 +1,21 @@
 <div id="container">
   <div id="header">
     <div class="header-container">
-      <strong>Ведомость группы {{ week.group.name }}</strong>
+      <strong>Ведомость группы {{ week.groupName.name }}</strong>
     </div>
   </div>
   <div id="content">
     <strong class="font-white"
-    >Процент успеваемости: {{ week.averagePerfomancePercent }}</strong
+    >Процент успеваемости: {{ week.perfomance | number }}</strong
     >
-    <strong class="font-white">Средний балл: {{ week.averageMarks }}</strong>
+    <strong class="font-white">Средний балл: {{ week.average | number }}</strong>
     <div class="search-table-wrapper">
       <table class="search-table">
         <thead>
         <tr>
-          <th>{{ week.group.name }}</th>
-          @for (discipline of week.assignments; track discipline.discipline) {
-            <th>{{ discipline.discipline }}</th>
+          <th>{{ week.groupName.name }}</th>
+          @for (discipline of week.disciplines; track discipline.discipline.name) {
+            <th>{{ discipline.discipline.name }}</th>
           }
           <th>% индивидуальной успеваемости</th>
           <th>средний балл</th>
@@ -25,32 +25,32 @@
           @for (student of getStudents(); track student.id) {
             <tr>
               <td>
-                {{ student.studentSurname }} {{ student.studentName[0] }}
+                {{ student.name.surname }} {{ student.name.name[0] }}
                 {{
-                  student.studentPatronymic == null
+                  student.name.patronymic == null
                     ? ""
-                    : student.studentPatronymic[0]
+                    : student.name.patronymic[0]
                 }}
               </td>
-              @for (discipline of week.assignments; track discipline.discipline) {
-                <td>{{ getStudentGrade(discipline.discipline, student) }}</td>
+              @for (discipline of week.disciplines; track discipline.discipline.name) {
+                <td>{{ getStudentGrade(discipline.discipline.name, student.recordbook.recordbook) }}</td>
               }
-              <td>{{ student.studentPerfomance }}</td>
-              <td>{{ student.studentAverage }}</td>
+              <td>{{ student.perfomance | number }}</td>
+              <td>{{ student.average | number }}</td>
             </tr>
           }
         <tr>
-          средний балл @for (discipline of week.assignments; track
-          discipline.discipline) {
-          <td>{{ discipline.assignmentAverage }}</td>
+          средний балл @for (discipline of week.disciplines; track
+          discipline.discipline.name) {
+          <td>{{ discipline.average | number }}</td>
         }
           <td>-</td>
           <td>-</td>
         </tr>
         <tr>
-          % успеваемости @for (discipline of week.assignments; track
-          discipline.discipline) {
-          <td>{{ discipline.assignmentPerfomance }}</td>
+          % успеваемости @for (discipline of week.disciplines; track
+          discipline.discipline.name) {
+          <td>{{ discipline.perfomance | number }}</td>
         }
           <td>-</td>
           <td>-</td>

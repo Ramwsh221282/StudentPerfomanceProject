@@ -45,10 +45,9 @@ public class StudentGroup : DomainEntity
     public static Result<StudentGroup> Create(string name)
     {
         Result<StudentGroupName> nameCreation = StudentGroupName.Create(name);
-        if (nameCreation.IsFailure)
-            return Result<StudentGroup>.Failure(nameCreation.Error);
-
-        return Result<StudentGroup>.Success(new StudentGroup(nameCreation.Value));
+        return nameCreation.IsFailure
+            ? Result<StudentGroup>.Failure(nameCreation.Error)
+            : Result<StudentGroup>.Success(new StudentGroup(nameCreation.Value));
     }
 
     internal Result<StudentGroup> SetEducationPlan(EducationPlan plan, byte activeNumber)
@@ -56,6 +55,7 @@ public class StudentGroup : DomainEntity
         Semester? active = plan.Semesters.FirstOrDefault(s => s.Number.Number == activeNumber);
         if (active == null)
             return SemesterErrors.NotFound();
+
         ActiveGroupSemester = active;
         EducationPlan = plan;
         return this;

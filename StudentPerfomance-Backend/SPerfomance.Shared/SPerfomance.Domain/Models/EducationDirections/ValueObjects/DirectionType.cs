@@ -6,9 +6,9 @@ namespace SPerfomance.Domain.Models.EducationDirections.ValueObjects;
 
 public class DirectionType : DomainValueObject
 {
-    public static DirectionType Magister = new DirectionType("Магистратура");
+    public static readonly DirectionType Magister = new DirectionType("Магистратура");
 
-    public static DirectionType Bachelor = new DirectionType("Бакалавриат");
+    public static readonly DirectionType Bachelor = new DirectionType("Бакалавриат");
 
     public string Type { get; private set; }
 
@@ -29,9 +29,9 @@ public class DirectionType : DomainValueObject
             return Result<DirectionType>.Failure(EducationDirectionErrors.TypeEmptyError());
 
         DirectionType[] types = [Magister, Bachelor];
-        if (types.Any(t => t.Type == type) == false)
-            return Result<DirectionType>.Failure(EducationDirectionErrors.TypeInvalidError(type));
 
-        return Result<DirectionType>.Success(new DirectionType(type));
+        return types.Any(t => t.Type == type) == false
+            ? Result<DirectionType>.Failure(EducationDirectionErrors.TypeInvalidError(type))
+            : Result<DirectionType>.Success(new DirectionType(type));
     }
 }

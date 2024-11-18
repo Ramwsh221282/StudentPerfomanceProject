@@ -6,13 +6,13 @@ namespace SPerfomance.Domain.Models.Teachers.ValueObjects;
 
 public class TeacherName : DomainValueObject
 {
-    private const int MAX_NAMES_LENGTH = 40;
+    private const int MaxNamesLength = 40;
 
-    public string Name { get; private set; }
+    public string Name { get; }
 
-    public string Surname { get; private set; }
+    public string Surname { get; }
 
-    public string Patronymic { get; private set; }
+    public string Patronymic { get; }
 
     private TeacherName()
     {
@@ -38,14 +38,14 @@ public class TeacherName : DomainValueObject
         if (string.IsNullOrWhiteSpace(surname))
             return Result<TeacherName>.Failure(TeacherErrors.SurnameEmpty());
 
-        if (name.Length > MAX_NAMES_LENGTH)
-            return Result<TeacherName>.Failure(TeacherErrors.NameExceess(MAX_NAMES_LENGTH));
+        if (name.Length > MaxNamesLength)
+            return Result<TeacherName>.Failure(TeacherErrors.NameExceess(MaxNamesLength));
 
-        if (surname.Length > MAX_NAMES_LENGTH)
-            return Result<TeacherName>.Failure(TeacherErrors.SurnameExceess(MAX_NAMES_LENGTH));
+        if (surname.Length > MaxNamesLength)
+            return Result<TeacherName>.Failure(TeacherErrors.SurnameExceess(MaxNamesLength));
 
-        if (!string.IsNullOrWhiteSpace(patronymic) && patronymic.Length > MAX_NAMES_LENGTH)
-            return Result<TeacherName>.Failure(TeacherErrors.PatronymicExceess(MAX_NAMES_LENGTH));
+        if (!string.IsNullOrWhiteSpace(patronymic) && patronymic.Length > MaxNamesLength)
+            return Result<TeacherName>.Failure(TeacherErrors.PatronymicExceess(MaxNamesLength));
 
         return Result<TeacherName>.Success(
             new TeacherName(name, surname, patronymic.ValueOrEmpty())

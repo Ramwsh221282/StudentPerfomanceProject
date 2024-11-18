@@ -6,21 +6,21 @@ public class SemesterNumber : DomainValueObject
 {
     public byte Number { get; init; }
 
-    public static SemesterNumber One = new SemesterNumber(1);
+    public static readonly SemesterNumber One = new SemesterNumber(1);
 
-    public static SemesterNumber Two = new SemesterNumber(2);
+    public static readonly SemesterNumber Two = new SemesterNumber(2);
 
-    public static SemesterNumber Three = new SemesterNumber(3);
+    public static readonly SemesterNumber Three = new SemesterNumber(3);
 
-    public static SemesterNumber Four = new SemesterNumber(4);
+    public static readonly SemesterNumber Four = new SemesterNumber(4);
 
-    public static SemesterNumber Five = new SemesterNumber(5);
+    public static readonly SemesterNumber Five = new SemesterNumber(5);
 
-    public static SemesterNumber Six = new SemesterNumber(6);
+    public static readonly SemesterNumber Six = new SemesterNumber(6);
 
-    public static SemesterNumber Seven = new SemesterNumber(7);
+    public static readonly SemesterNumber Seven = new SemesterNumber(7);
 
-    public static SemesterNumber Eight = new SemesterNumber(8);
+    public static readonly SemesterNumber Eight = new SemesterNumber(8);
 
     internal SemesterNumber() { }
 
@@ -33,7 +33,7 @@ public class SemesterNumber : DomainValueObject
 
     internal static SemesterNumber Create(byte number) => new SemesterNumber(number);
 
-    public int EstimateGroupCourse(Semester semester)
+    public static int EstimateGroupCourse(Semester semester)
     {
         if (semester.Number == Two || semester.Number == One)
             return 1;

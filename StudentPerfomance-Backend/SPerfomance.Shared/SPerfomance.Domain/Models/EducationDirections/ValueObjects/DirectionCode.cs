@@ -7,15 +7,15 @@ namespace SPerfomance.Domain.Models.EducationDirections.ValueObjects;
 
 public class DirectionCode : DomainValueObject
 {
-    private static Regex _pattern = new Regex(@"^\d+\.\d+\.\d+$");
+    private static readonly Regex Pattern = new Regex(@"^\d+\.\d+\.\d+$");
 
-    private const int codeMaxLength = 15;
+    private const int CodeMaxLength = 15;
 
     private DirectionCode() => Code = string.Empty;
 
     private DirectionCode(string code) => Code = code;
 
-    public string Code { get; private set; }
+    public string Code { get; }
 
     public override IEnumerable<object> GetEqualityComponents()
     {
@@ -29,14 +29,13 @@ public class DirectionCode : DomainValueObject
         if (string.IsNullOrWhiteSpace(code))
             return Result<DirectionCode>.Failure(EducationDirectionErrors.CodeEmptyError());
 
-        if (code.Length > codeMaxLength)
+        if (code.Length > CodeMaxLength)
             return Result<DirectionCode>.Failure(
-                EducationDirectionErrors.CodeExceessLengthError(codeMaxLength)
+                EducationDirectionErrors.CodeExceessLengthError(CodeMaxLength)
             );
 
-        if (!_pattern.Match(code).Success)
-            return Result<DirectionCode>.Failure(EducationDirectionErrors.CodeInvalidError(code));
-
-        return Result<DirectionCode>.Success(new DirectionCode(code));
+        return !Pattern.Match(code).Success
+            ? Result<DirectionCode>.Failure(EducationDirectionErrors.CodeInvalidError(code))
+            : Result<DirectionCode>.Success(new DirectionCode(code));
     }
 }

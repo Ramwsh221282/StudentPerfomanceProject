@@ -52,7 +52,7 @@ public class EducationPlan : AggregateRoot
 
     public Result<StudentGroup> AddStudentGroup(StudentGroup group, byte activeSemesterNumber)
     {
-        if (_groups.Any(g => g.Name == group.Name) == true)
+        if (_groups.Any(g => g.Name == group.Name))
             return Result<StudentGroup>.Failure(
                 StudentGroupErrors.EducationPlanHasGroupAlreadyError(this, group)
             );

@@ -84,14 +84,14 @@
 }
 
 .search-table-wrapper {
-  height: 400px;
+  height: 600px;
   overflow: auto;
 }
 
 .search-table {
   border-collapse: collapse;
   font-size: 14px;
-  width: auto;
+  width: 100%;
 
   & thead tr {
     background-color: #93c4fa;

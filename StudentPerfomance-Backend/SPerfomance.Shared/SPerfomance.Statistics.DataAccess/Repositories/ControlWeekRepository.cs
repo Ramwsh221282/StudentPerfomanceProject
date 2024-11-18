@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using SPerfomance.Domain.Models.StatisticsContext.Models.ControlWeekReport;
-using SPerfomance.Domain.Models.StatisticsContext.Models.ControlWeekReport.Abstractions;
-using SPerfomance.Domain.Models.StatisticsContext.Models.ControlWeekReport.Errors;
+using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Abstractions;
+using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Services.AssignmentSessionViewServices.Views;
 using SPerfomance.Domain.Tools;
 using SPerfomance.Statistics.DataAccess.EntityModels;
 
@@ -11,47 +10,56 @@ public sealed class ControlWeekRepository : IControlWeekReportRepository
 {
     private readonly StatisticsDatabaseContext _context = new StatisticsDatabaseContext();
 
-    public async Task<Result<ControlWeekReport>> Insert(ControlWeekReport report)
+    public async Task<Result<AssignmentSessionView>> Insert(AssignmentSessionView view)
     {
         if (
             await _context.ControlWeekReports.AnyAsync(w =>
                 (
-                    w.CreationDate == report.Period.CreationDate
-                    && w.CompletionDate == report.Period.CompletionDate
+                    w.CreationDate == DateTime.Parse(view.StartDate)
+                    && w.CompletionDate == DateTime.Parse(view.StartDate)
                 )
-                || w.Id == report.Id
+                || w.Id == view.Id
             )
         )
-            return ControlWeekReportErrors.ReportDuplicateInDatabase();
+            return new Error("Отчёт по контрольной неделе уже существует");
 
-        var entity = new ControlWeekReportEntity(report);
-        entity.SetEntityNumber(await GenerateEntityNumber());
+        ControlWeekReportEntity entity = ControlWeekReportEntity.CreateReport(view);
         await _context.ControlWeekReports.AddAsync(entity);
         await _context.SaveChangesAsync();
-        return report;
+        return view;
     }
 
-    public async Task<ControlWeekReportEntity?> GetById(Guid id) =>
+    public async Task<IReadOnlyList<ControlWeekReportEntity>> GetPaged(int page, int pageSize) =>
         await _context
-            .ControlWeekReports.Include(r => r.GroupParts)
-            .ThenInclude(p => p.Parts)
-            .ThenInclude(subp => subp.Parts)
-            .Include(r => r.CourseReport)
-            .ThenInclude(p => p.Parts)
-            .Include(r => r.DepartmentReport)
-            .ThenInclude(p => p.Parts)
-            .ThenInclude(subp => subp.Parts)
+            .ControlWeekReports.Skip((page - 1) * pageSize)
+            .Take(pageSize)
+            .Include(r => r.GroupParts)
+            .ThenInclude(g => g.Parts)
+            .ThenInclude(d => d.Parts)
+            .Include(r => r.CourseParts)
             .Include(r => r.DirectionCodeReport)
-            .ThenInclude(p => p.Parts)
             .Include(r => r.DirectionTypeReport)
-            .ThenInclude(p => p.Parts)
             .AsNoTracking()
-            .AsSplitQuery()
-            .FirstOrDefaultAsync(r => r.Id == id);
+            .ToListAsync();
 
-    private async Task<int> GenerateEntityNumber()
-    {
-        int[] numbers = await _context.ControlWeekReports.Select(r => r.RowNumber).ToArrayAsync();
-        return numbers.GetOrderedValue();
-    }
+    public async Task<IReadOnlyList<ControlWeekReportEntity>> GetPagedFilteredByPeriod(
+        int page,
+        int pageSize,
+        DateTime startDate,
+        DateTime endDate
+    ) =>
+        await _context
+            .ControlWeekReports.Where(r =>
+                r.CompletionDate >= startDate && r.CompletionDate <= endDate
+            )
+            .Skip((page - 1) * pageSize)
+            .Take(pageSize)
+            .Include(r => r.GroupParts)
+            .ThenInclude(g => g.Parts)
+            .ThenInclude(d => d.Parts)
+            .Include(r => r.CourseParts)
+            .Include(r => r.DirectionCodeReport)
+            .Include(r => r.DirectionTypeReport)
+            .AsNoTracking()
+            .ToListAsync();
 }

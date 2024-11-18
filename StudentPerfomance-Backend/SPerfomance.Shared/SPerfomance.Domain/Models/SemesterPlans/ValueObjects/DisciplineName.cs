@@ -8,7 +8,7 @@ public class DisciplineName : DomainValueObject
 {
     private const int MaxNameLength = 150;
 
-    public string Name { get; private set; }
+    public string Name { get; }
 
     internal DisciplineName() => Name = string.Empty;
 

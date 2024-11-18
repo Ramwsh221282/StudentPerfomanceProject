@@ -492,6 +492,7 @@
       },
       "SPerfomance.Statistics.DataAccess/1.0.0": {
         "dependencies": {
+          "SPerfomance.Application": "1.0.0",
           "SPerfomance.DataAccess": "1.0.0"
         },
         "runtime": {

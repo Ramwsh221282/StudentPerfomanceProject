@@ -25,10 +25,9 @@ public class UserRole : DomainValueObject
         if (string.IsNullOrWhiteSpace(role))
             return Result<UserRole>.Failure(UserErrors.RoleEmpty());
 
-        if (_roles.Any(r => r.Role == role) == false)
-            return Result<UserRole>.Failure(UserErrors.RoleInvalid(role));
-
-        return Result<UserRole>.Success(new(role));
+        return _roles.Any(r => r.Role == role) == false
+            ? Result<UserRole>.Failure(UserErrors.RoleInvalid(role))
+            : Result<UserRole>.Success(new(role));
     }
 
     public override IEnumerable<object> GetEqualityComponents()

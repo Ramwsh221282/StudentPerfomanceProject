@@ -12,6 +12,13 @@ export const routes: Routes = [
       ),
   },
   {
+    path: 'reports',
+    loadComponent: () =>
+      import(
+        './shared/components/session-reports-view/session-reports-view.component'
+      ).then((mod) => mod.SessionReportsViewComponent),
+  },
+  {
     path: 'user',
     loadComponent: () =>
       import('./shared/components/user-page/user-page.component').then(

@@ -55,4 +55,18 @@ public class AssignmentValue : DomainValueObject
             _ => 0,
         };
     }
+
+    public static implicit operator string(AssignmentValue value)
+    {
+        return value.Value switch
+        {
+            0 => "Нет аттестации",
+            1 => "Не проставлена",
+            2 => "2",
+            3 => "3",
+            4 => "4",
+            5 => "5",
+            _ => "Не проставлена",
+        };
+    }
 }

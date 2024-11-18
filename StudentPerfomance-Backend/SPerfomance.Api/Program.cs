@@ -5,6 +5,7 @@ global using SPerfomance.Domain.Models.Users;
 global using SPerfomance.Domain.Models.Users.Abstractions;
 global using SPerfomance.Domain.Models.Users.ValueObjects;
 using SPerfomance.Api.Endpoints;
+using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Abstractions;
 using SPerfomance.Application.Services.Authentication.Abstractions;
 using SPerfomance.Application.Services.Mailing;
 using SPerfomance.DataAccess.Repositories;
@@ -37,9 +38,7 @@ builder.Services.AddSingleton<IJwtTokenService, JwtTokenService>();
 builder.Services.AddScoped<IUsersRepository, UsersRepository>();
 builder.Services.AddScoped<IAssignmentSessionsRepository, AssignmentSessionsRepository>();
 builder.Services.AddScoped<IStudentAssignmentsRepository, StudentAssignmentsRepository>();
-builder.Services.AddScoped<ControlWeekRepository>();
-
-//builder.Services.AddHostedService<SessionChecker>();
+builder.Services.AddScoped<IControlWeekReportRepository, ControlWeekRepository>();
 
 builder.Services.AddEndpoints();
 

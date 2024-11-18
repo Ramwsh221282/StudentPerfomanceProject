@@ -106,7 +106,7 @@ public class EducationDirection : DomainEntity
 
     public Result<EducationPlan> AddEducationPlan(int planYear)
     {
-        if (_plans.Any(p => p.Year.Year == planYear) == true)
+        if (_plans.Any(p => p.Year.Year == planYear))
             return Result<EducationPlan>.Failure(
                 EducationPlanErrors.DublicateError(this, planYear)
             );

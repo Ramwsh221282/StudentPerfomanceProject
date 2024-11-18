@@ -27,10 +27,9 @@ public class TeacherJobTitle : DomainValueObject
         if (string.IsNullOrWhiteSpace(jobTitle))
             return Result<TeacherJobTitle>.Failure(TeacherErrors.JobTitleEmpty());
 
-        if (_jobTitles.Any(t => t.JobTitle == jobTitle) == false)
-            return Result<TeacherJobTitle>.Failure(TeacherErrors.JobTitleInvalid(jobTitle));
-
-        return Result<TeacherJobTitle>.Success(new TeacherJobTitle(jobTitle));
+        return _jobTitles.Any(t => t.JobTitle == jobTitle) == false
+            ? Result<TeacherJobTitle>.Failure(TeacherErrors.JobTitleInvalid(jobTitle))
+            : Result<TeacherJobTitle>.Success(new TeacherJobTitle(jobTitle));
     }
 
     public override IEnumerable<object> GetEqualityComponents()

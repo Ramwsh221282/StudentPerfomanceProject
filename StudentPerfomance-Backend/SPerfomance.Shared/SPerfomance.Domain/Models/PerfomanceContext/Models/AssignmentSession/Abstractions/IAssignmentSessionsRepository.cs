@@ -23,8 +23,6 @@ public interface IAssignmentSessionsRepository
 
     Task<int> GenerateEntityNumber();
 
-    void DoBackgroundWork();
-
     Task<int> Count();
 
     Task<AssignmentSession?> GetActiveSession();
