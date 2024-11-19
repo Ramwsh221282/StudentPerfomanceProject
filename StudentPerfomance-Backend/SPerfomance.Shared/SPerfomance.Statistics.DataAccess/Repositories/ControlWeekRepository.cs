@@ -33,13 +33,14 @@ public sealed class ControlWeekRepository : IControlWeekReportRepository
         await _context
             .ControlWeekReports.Skip((page - 1) * pageSize)
             .Take(pageSize)
-            .Include(r => r.GroupParts)
+            .Include(r => r.GroupParts.OrderBy(g => g.GroupName))
             .ThenInclude(g => g.Parts)
-            .ThenInclude(d => d.Parts)
+            .ThenInclude(d => d.Parts.OrderBy(s => s.StudentSurname))
             .Include(r => r.CourseParts)
             .Include(r => r.DirectionCodeReport)
             .Include(r => r.DirectionTypeReport)
             .AsNoTracking()
+            .AsSplitQuery()
             .ToListAsync();
 
     public async Task<IReadOnlyList<ControlWeekReportEntity>> GetPagedFilteredByPeriod(
@@ -54,12 +55,25 @@ public sealed class ControlWeekRepository : IControlWeekReportRepository
             )
             .Skip((page - 1) * pageSize)
             .Take(pageSize)
-            .Include(r => r.GroupParts)
+            .Include(r => r.GroupParts.OrderBy(g => g.GroupName))
             .ThenInclude(g => g.Parts)
-            .ThenInclude(d => d.Parts)
+            .ThenInclude(d => d.Parts.OrderBy(s => s.StudentSurname))
             .Include(r => r.CourseParts)
             .Include(r => r.DirectionCodeReport)
             .Include(r => r.DirectionTypeReport)
             .AsNoTracking()
+            .AsSplitQuery()
             .ToListAsync();
+
+    public async Task<ControlWeekReportEntity?> GetById(Guid id) =>
+        await _context
+            .ControlWeekReports.Include(r => r.GroupParts.OrderBy(g => g.GroupName))
+            .ThenInclude(g => g.Parts)
+            .ThenInclude(d => d.Parts.OrderBy(s => s.StudentSurname))
+            .Include(r => r.CourseParts)
+            .Include(r => r.DirectionCodeReport)
+            .Include(r => r.DirectionTypeReport)
+            .AsNoTracking()
+            .AsSplitQuery()
+            .FirstOrDefaultAsync(r => r.Id == id);
 }

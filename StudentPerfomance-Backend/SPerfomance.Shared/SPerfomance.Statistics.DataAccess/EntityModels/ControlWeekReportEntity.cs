@@ -24,16 +24,19 @@ public class ControlWeekReportEntity
             CreationDate = DateTime.Parse(view.StartDate),
             CompletionDate = DateTime.Parse(view.EndDate),
         };
+
         entity.GroupParts = GroupStatisticsReportEntity.CreateReport(entity, view.Weeks);
         entity.CourseParts = CourseStatisticsReportEntity.CreateReport(entity, entity.GroupParts);
         entity.DirectionTypeReport = DirectionTypeStatisticsReportEntity.CreateReport(
             entity,
             entity.CourseParts
         );
+
         entity.DirectionCodeReport = DirectionCodeStatisticsReportEntity.CreateReport(
             entity,
             entity.GroupParts
         );
+
         return entity;
     }
 }

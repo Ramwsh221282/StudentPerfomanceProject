@@ -1,0 +1,45 @@
+.groups-control-bar-container {
+  background-color: #ffffff;
+  border: solid 1px #d9d9d9;
+  border-radius: 10px;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.group-control-bar-title {
+  padding: 10px;
+  font-size: 18px;
+  border-bottom: 1px solid #cccccc;
+  width: 100%;
+  text-align: center;
+}
+
+.groups-wrapper {
+  align-self: center;
+  width: 90%;
+  height: 400px;
+  background-color: #ECF4FF;
+  overflow: auto;
+}
+
+.group-element {
+  text-align: center;
+  font-size: 18px;
+  background-color: #E0ECFF;
+  border-bottom: 1px solid #cccccc;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #ECF4FF;
+  }
+}
+
+.export-to-pdf-wrapper {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}

@@ -202,8 +202,15 @@ namespace SPerfomance.Statistics.DataAccess.Migrations
                     b.Property<double>("Average")
                         .HasColumnType("REAL");
 
+                    b.Property<string>("Grade")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<double>("Perfomance")
                         .HasColumnType("REAL");
+
+                    b.Property<ulong>("Recordbook")
+                        .HasColumnType("INTEGER");
 
                     b.Property<Guid>("RootId")
                         .HasColumnType("TEXT");

@@ -1,0 +1,38 @@
+<div class="group-content-layout">
+  <strong class="report-title-layout">Ведомость
+    группы {{ currentGroup.groupName }} Средний балл: {{ currentGroup.average }}
+    Успеваемость: {{ currentGroup.perfomance }}%</strong>
+  <div class="report-table-container">
+    <table class="report-table-layout">
+      <thead>
+      <tr>
+        <th>{{ currentGroup.groupName }}</th>
+        @for (discipline of currentGroup.parts; track discipline.id) {
+          <th>{{ discipline.disciplineName }}</th>
+        }
+        <th>Успеваемость</th>
+        <th>Среднее</th>
+      </tr>
+      </thead>
+      <tbody>
+        @for (student of students; track student.recordbook) {
+          <tr>
+            <td>
+              {{ student.studentSurname }} {{ student.studentName[0] }}
+              {{
+                student.studentPatronymic == null
+                  ? ""
+                  : student.studentPatronymic[0]
+              }}
+            </td>
+            @for (discipline of currentGroup.parts; track discipline.id) {
+              <td>{{ getStudentGrade(discipline.id, student.recordbook) }}</td>
+            }
+            <td>{{ student.average }}</td>
+            <td>{{ student.perfomance }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

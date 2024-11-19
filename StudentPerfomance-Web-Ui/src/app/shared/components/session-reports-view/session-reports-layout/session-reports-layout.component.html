@@ -1,0 +1,5 @@
+<div class="session-reports-layout-container">
+  @for (report of reports; track report.id) {
+    <app-session-report-item [report]="report"></app-session-report-item>
+  }
+</div>

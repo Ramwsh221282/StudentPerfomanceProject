@@ -9,5 +9,5 @@ export interface DisciplineReportInterface {
   teacherPatronymic: string | null;
   average: number;
   perfomance: number;
-  Parts: StudentReportInterface[];
+  parts: StudentReportInterface[];
 }

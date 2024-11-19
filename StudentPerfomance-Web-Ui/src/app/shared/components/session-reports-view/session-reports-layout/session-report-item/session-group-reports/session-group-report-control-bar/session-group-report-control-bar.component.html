@@ -1,0 +1,13 @@
+<div class="groups-control-bar-container">
+  <strong class="group-control-bar-title">Список групп:</strong>
+  <div class="groups-wrapper">
+    @for (group of groups; track group.groupName) {
+      <div class="group-element" (click)="selectedGroupEmitter.emit(group)">{{ group.groupName }}</div>
+    }
+  </div>
+</div>
+<div class="export-to-pdf-wrapper">
+  <button class="accept-button-modal">
+    Сохранить .PDF
+  </button>
+</div>

@@ -12,6 +12,8 @@ public class StudentStatisticsReportEntity
     public string? StudentPatronymic { get; set; }
     public double Average { get; set; }
     public double Perfomance { get; set; }
+    public string Grade { get; set; } = string.Empty;
+    public ulong Recordbook { get; set; }
 
     public static List<StudentStatisticsReportEntity> CreateReport(
         DisciplinesStatisticsReportEntity root,
@@ -30,9 +32,25 @@ public class StudentStatisticsReportEntity
             report.StudentPatronymic = student.Name.Patronymic;
             report.Average = student.Average;
             report.Perfomance = student.Perfomance;
+            report.Grade = ParseGrade(student);
+            report.Recordbook = student.Recordbook.Recordbook;
             reports.Add(report);
         }
 
         return reports;
+    }
+
+    private static string ParseGrade(AssignmentStudentView studentView)
+    {
+        return studentView.Grade.Value switch
+        {
+            0 => "НА",
+            1 => "НП",
+            2 => "2",
+            3 => "3",
+            4 => "4",
+            5 => "5",
+            _ => "НП",
+        };
     }
 }

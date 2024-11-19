@@ -1,5 +1,11 @@
-.navigation-links {
+.session-reports-page-contrainer {
   display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.navigation-links {
+  display: inline-flex;
   flex-direction: row;
   gap: 30px;
   padding: 5px;

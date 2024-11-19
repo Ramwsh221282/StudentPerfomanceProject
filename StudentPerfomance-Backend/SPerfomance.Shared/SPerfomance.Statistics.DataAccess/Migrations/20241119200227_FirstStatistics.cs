@@ -147,7 +147,9 @@ namespace SPerfomance.Statistics.DataAccess.Migrations
                     StudentSurname = table.Column<string>(type: "TEXT", nullable: false),
                     StudentPatronymic = table.Column<string>(type: "TEXT", nullable: true),
                     Average = table.Column<double>(type: "REAL", nullable: false),
-                    Perfomance = table.Column<double>(type: "REAL", nullable: false)
+                    Perfomance = table.Column<double>(type: "REAL", nullable: false),
+                    Grade = table.Column<string>(type: "TEXT", nullable: false),
+                    Recordbook = table.Column<ulong>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {

@@ -1,0 +1,15 @@
+<div class="navigation-links">
+  <a [routerLink]="['/reports']">Отчёты контрольных недель</a>
+  <a>Отчет
+    за {{ startDate | date: 'd-M-y' }} {{ endDate | date: 'd-M-y' }}</a>
+</div>
+<section class="session-group-reports-layout">
+  <app-session-group-report-control-bar *ngIf="isInited"
+                                        (selectedGroupEmitter)="currentGroup = $event; initializeDisciplinesFromGroup(currentGroup); initializeStudentsFromGroup(currentGroup)"
+                                        [groups]="groups"></app-session-group-report-control-bar>
+  <app-session-group-report-content *ngIf="isInited"
+                                    [disciplines]="disciplines"
+                                    [students]="students"
+                                    [currentGroup]="currentGroup"
+  ></app-session-group-report-content>
+</section>

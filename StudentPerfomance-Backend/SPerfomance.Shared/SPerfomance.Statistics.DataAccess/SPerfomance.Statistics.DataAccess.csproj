@@ -31,6 +31,10 @@
       <Compile Remove="Configurations\StudentStatisticsOnDisciplinePartEntityConfiguration.cs" />
       <Compile Remove="Configurations\StudentStatisticsPartEntityConfiguration.cs" />
       <Compile Remove="Configurations\TeacherStatisticsReportPartEntityConfiguration.cs" />
+      <Compile Remove="Migrations\20241118164133_FirstStatistics.cs" />
+      <Compile Remove="Migrations\20241118164133_FirstStatistics.Designer.cs" />
+      <Compile Remove="Migrations\20241119194908_FirstStatistics.cs" />
+      <Compile Remove="Migrations\20241119194908_FirstStatistics.Designer.cs" />
     </ItemGroup>
 
     <ItemGroup>

@@ -15,5 +15,7 @@ internal class StudentStatisticsReportEntityConfiguration
         builder.Property(r => r.StudentName).IsRequired();
         builder.Property(r => r.StudentSurname).IsRequired();
         builder.Property(r => r.StudentPatronymic);
+        builder.Property(r => r.Grade).IsRequired();
+        builder.Property(r => r.Recordbook).IsRequired();
     }
 }

@@ -9,5 +9,5 @@ export interface GroupReportInterface {
   average: number;
   perfomance: number;
   groupName: string;
-  Parts: DisciplineReportInterface[];
+  parts: DisciplineReportInterface[];
 }

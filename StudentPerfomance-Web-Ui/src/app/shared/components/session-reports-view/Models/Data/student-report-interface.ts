@@ -1,9 +1,11 @@
 export interface StudentReportInterface {
   id: string;
   rootId: string;
-  name: string;
-  surname: string;
-  patronymic: string | null;
+  studentName: string;
+  studentSurname: string;
+  studentPatronymic: string | null;
   average: number;
   perfomance: number;
+  grade: string;
+  recordbook: number;
 }
