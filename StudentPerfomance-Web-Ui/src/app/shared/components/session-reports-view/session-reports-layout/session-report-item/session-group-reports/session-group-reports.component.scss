@@ -1,7 +1,9 @@
 .session-group-reports-layout {
-  display: grid;
-  grid-template-columns: 10% 90%;
-  grid-gap: 5px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  //grid-template-columns: 20% auto;
+  //grid-gap: 5px;
 }
 
 .navigation-links {

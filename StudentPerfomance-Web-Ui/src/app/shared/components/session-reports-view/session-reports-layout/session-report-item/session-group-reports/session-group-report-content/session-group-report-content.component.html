@@ -1,23 +1,27 @@
 <div class="group-content-layout">
   <strong class="report-title-layout">Ведомость
     группы {{ currentGroup.groupName }} Средний балл: {{ currentGroup.average }}
-    Успеваемость: {{ currentGroup.perfomance }}%</strong>
+    Успеваемость: {{ currentGroup.perfomance }}%
+    <button class="accept-button-modal" (click)="saveAsPdf()">
+      Сохранить .PDF
+    </button>
+  </strong>
   <div class="report-table-container">
-    <table class="report-table-layout">
+    <table id="report" class="report-table-layout">
       <thead>
       <tr>
         <th>{{ currentGroup.groupName }}</th>
         @for (discipline of currentGroup.parts; track discipline.id) {
-          <th>{{ discipline.disciplineName }}</th>
+          <th><span class="rotate-sm-90">{{ discipline.disciplineName }}</span></th>
         }
-        <th>Успеваемость</th>
-        <th>Среднее</th>
+        <th><span class="rotate-sm-90">Успеваемость</span></th>
+        <th><span class="rotate-sm-90">Среднее</span></th>
       </tr>
       </thead>
       <tbody>
         @for (student of students; track student.recordbook) {
           <tr>
-            <td>
+            <td style="width: auto">
               {{ student.studentSurname }} {{ student.studentName[0] }}
               {{
                 student.studentPatronymic == null
@@ -33,6 +37,10 @@
           </tr>
         }
       </tbody>
+      <div class="results-container">
+        <strong>Итог успеваемости: {{ currentGroup.perfomance }}</strong>
+        <strong>Итог среднего: {{ currentGroup.average }}</strong>
+      </div>
     </table>
   </div>
 </div>

@@ -49,7 +49,6 @@ export class SessionGroupReportsComponent implements OnInit {
     this.dataService.getById(id).subscribe((response) => {
       this.groups = response;
       this.currentGroup = this.groups[0];
-      console.log(this.currentGroup);
       this.initializeDisciplinesFromGroup(this.currentGroup);
       this.initializeStudentsFromGroup(this.currentGroup);
       this.isInited = true;

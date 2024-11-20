@@ -14,7 +14,6 @@
   flex-direction: row;
   font-size: 18px;
   gap: 10px;
-  width: 100%;
   text-align: center;
   border-bottom: 1px solid #cccccc;
 }
@@ -26,40 +25,37 @@
   overflow: auto;
 }
 
-.header-container {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-}
-
 .report-table-layout {
-  border-collapse: collapse;
-
   & thead tr {
-    background-color: #93c4fa;
-    //color: #ffffff;
+    border: solid 1px black;
     text-align: center;
-    position: sticky;
-    top: 0;
   }
 
   & td,
   & th {
-    padding: 5px 5px;
+    border: solid 1px black;
   }
 
   & tbody tr {
     text-align: center;
-    background-color: #ffffff;
-    border-bottom: solid 2px #d9d9d9;
+    border: solid 1px black;
   }
+}
 
-  & tbody tr:nth-of-type(even) {
-    background-color: #ecf4ff;
-    border-bottom: solid 2px #d9d9d9;
-  }
 
-  & tbody tr:last-of-type {
-    border-bottom: solid 2px #d9d9d9;
-  }
+.rotate-sm-90 {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  max-height: 150px;
+  text-align: left;
+  min-width: 60px;
+}
+
+.results-container {
+  width: auto;
+  text-decoration: underline;
+  padding: 5px;
+  gap: 5px;
+  display: flex;
+  flex-direction: column;
 }
