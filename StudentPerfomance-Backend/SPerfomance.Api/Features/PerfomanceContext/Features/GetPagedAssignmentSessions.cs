@@ -1,5 +1,6 @@
 using SPerfomance.Api.Endpoints;
 using SPerfomance.Api.Features.Common;
+using SPerfomance.Api.Features.Common.Extensions;
 using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Services.AssignmentSessionViewServices.Handlers;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions.Abstractions;
@@ -23,12 +24,7 @@ public static class GetPagedAssignmentSessions
         IAssignmentSessionsRepository sessionsRepository
     )
     {
-        if (
-            !await new UserVerificationService(users).IsVerified(
-                request.Token,
-                UserRole.Administrator
-            )
-        )
+        if (!await request.Token.IsVerifiedAdmin(users))
             return Results.BadRequest(UserTags.UnauthorizedError);
 
         IReadOnlyCollection<AssignmentSession> sessions = await sessionsRepository.GetPaged(

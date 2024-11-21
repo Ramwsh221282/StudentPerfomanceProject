@@ -12,4 +12,6 @@ export interface ControlWeekReportInterface {
   courseParts: CourseReportInterface[];
   directionTypeReport: DirectionTypeReportInterface[];
   directionCodeReport: DirectionCodeReportInterface[];
+  average: number;
+  perfomance: number;
 }

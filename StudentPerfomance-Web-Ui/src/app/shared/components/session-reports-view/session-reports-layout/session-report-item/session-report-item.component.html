@@ -9,6 +9,9 @@
       Ведомость по
       группам
     </button>
-    <button class="warning-button-outline">Ведомость по направлениям</button>
+    <button class="warning-button-outline" [routerLink]="'/course-reports/:reportId:startDate:closeDate'"
+            [queryParams]="{reportId: report.id, startDate: report.creationDate, endDate: report.completionDate}">
+      Ведомость по направлениям
+    </button>
   </div>
 </div>

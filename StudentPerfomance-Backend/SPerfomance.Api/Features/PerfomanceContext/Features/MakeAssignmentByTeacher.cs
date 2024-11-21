@@ -1,5 +1,6 @@
 using SPerfomance.Api.Endpoints;
 using SPerfomance.Api.Features.Common;
+using SPerfomance.Api.Features.Common.Extensions;
 using SPerfomance.Api.Features.PerfomanceContext.Contracts;
 using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Commands.MakeAssignment;
 using SPerfomance.Application.PerfomanceContext.AssignmentSessions.DTO;
@@ -27,8 +28,7 @@ public static class MakeAssignmentByTeacher
         IStudentAssignmentsRepository assignments
     )
     {
-        Token token = request.Token;
-        if (!await new UserVerificationService(users).IsVerified(token, UserRole.Teacher))
+        if (!await request.Token.IsVerifiedTeacher(users))
             return Results.BadRequest(UserTags.UnauthorizedError);
 
         MakeAssignmentCommand command = new MakeAssignmentCommand(

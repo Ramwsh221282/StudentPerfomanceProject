@@ -1,5 +1,6 @@
 using SPerfomance.Api.Endpoints;
 using SPerfomance.Api.Features.Common;
+using SPerfomance.Api.Features.Common.Extensions;
 using SPerfomance.Api.Features.PerfomanceContext.Responses;
 using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Abstractions;
 using SPerfomance.Statistics.DataAccess.EntityModels;
@@ -24,18 +25,9 @@ public static class GetAssignmentSessionReportById
         IControlWeekReportRepository controlWeeks
     )
     {
-        Token token = request.Token;
-        bool isAdmin = await new UserVerificationService(users).IsVerified(
-            request.Token,
-            UserRole.Administrator
-        );
-        bool isTeacher = await new UserVerificationService(users).IsVerified(
-            request.Token,
-            UserRole.Teacher
-        );
-        if (!isAdmin && !isTeacher)
+        if (!await request.Token.IsVerified(users))
             return Results.BadRequest(
-                "Просмотр отчётов доступен только администраторам или преподавателям"
+                "Просмотр отчётов доступен только авторизованным пользователям"
             );
 
         if (string.IsNullOrWhiteSpace(request.Id))

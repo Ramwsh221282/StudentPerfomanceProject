@@ -8,6 +8,8 @@ import { SessionReportDefaultFetchPolicy } from './Services/data-services/report
 import { AuthService } from '../../../modules/users/services/auth.service';
 import { IFetchPolicy } from '../../models/fetch-policices/fetch-policy-interface';
 import { DatePipe } from '@angular/common';
+import { SessionReportsPaginationService } from './session-reports-pagination/session-reports-pagination-service';
+import { SessionReportsPaginationComponent } from './session-reports-pagination/session-reports-pagination.component';
 
 @Component({
   selector: 'app-session-reports-view',
@@ -16,15 +18,21 @@ import { DatePipe } from '@angular/common';
     RouterLink,
     SessionReportsLayoutComponent,
     SessionReportsFilterInputComponent,
+    SessionReportsPaginationComponent,
   ],
   templateUrl: './session-reports-view.component.html',
   styleUrl: './session-reports-view.component.scss',
-  providers: [SessionReportsDataService, DatePipe],
+  providers: [
+    SessionReportsPaginationService,
+    SessionReportsDataService,
+    DatePipe,
+  ],
 })
 export class SessionReportsViewComponent implements OnInit {
   protected reports: ControlWeekReportInterface[];
 
   public constructor(
+    private readonly _paginationService: SessionReportsPaginationService,
     private readonly _dataService: SessionReportsDataService,
     private readonly _authService: AuthService,
   ) {
@@ -34,8 +42,21 @@ export class SessionReportsViewComponent implements OnInit {
   public ngOnInit(): void {
     const policy: IFetchPolicy<ControlWeekReportInterface[]> =
       new SessionReportDefaultFetchPolicy(this._authService);
-    policy.addPages(1, 6);
+    policy.addPages(
+      this._paginationService.currentPage,
+      this._paginationService.pageSize,
+    );
     this._dataService.setPolicy(policy);
+    this._dataService.fetch().subscribe((response) => {
+      this.reports = response;
+    });
+  }
+
+  protected fetchOnPageChanged(): void {
+    this._dataService.addPages(
+      this._paginationService.currentPage,
+      this._paginationService.pageSize,
+    );
     this._dataService.fetch().subscribe((response) => {
       this.reports = response;
     });

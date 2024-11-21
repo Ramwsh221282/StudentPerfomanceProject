@@ -26,6 +26,13 @@ export const routes: Routes = [
       ).then((mod) => mod.SessionGroupReportsComponent),
   },
   {
+    path: 'course-reports/:reportId:startDate:closeDate',
+    loadComponent: () =>
+      import(
+        './shared/components/session-reports-view/session-reports-layout/session-report-item/session-course-report/session-course-report.component'
+      ).then((mod) => mod.SessionCourseReportComponent),
+  },
+  {
     path: 'user',
     loadComponent: () =>
       import('./shared/components/user-page/user-page.component').then(

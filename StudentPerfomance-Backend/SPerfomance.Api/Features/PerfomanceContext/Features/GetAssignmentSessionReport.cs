@@ -1,5 +1,6 @@
 using SPerfomance.Api.Endpoints;
 using SPerfomance.Api.Features.Common;
+using SPerfomance.Api.Features.Common.Extensions;
 using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Abstractions;
 
 namespace SPerfomance.Api.Features.PerfomanceContext.Features;
@@ -21,14 +22,8 @@ public static class GetAssignmentSessionReport
         IControlWeekReportRepository repository
     )
     {
-        if (
-            !await new UserVerificationService(users).IsVerified(
-                request.Token,
-                UserRole.Administrator
-            )
-        )
-            return Results.BadRequest(UserTags.UnauthorizedError);
-
-        return Results.Ok();
+        return !await request.Token.IsVerifiedAdmin(users)
+            ? Results.BadRequest(UserTags.UnauthorizedError)
+            : Results.Ok();
     }
 }

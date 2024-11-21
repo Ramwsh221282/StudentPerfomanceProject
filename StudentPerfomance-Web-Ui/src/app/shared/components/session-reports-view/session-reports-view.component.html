@@ -6,4 +6,7 @@
   <section>
     <app-session-reports-layout [reports]="reports"></app-session-reports-layout>
   </section>
+  <section class="pagination-wrapper">
+    <app-session-reports-pagination (pageEmitter)="fetchOnPageChanged()"></app-session-reports-pagination>
+  </section>
 </section>

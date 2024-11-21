@@ -1,5 +1,6 @@
 using SPerfomance.Api.Endpoints;
 using SPerfomance.Api.Features.Common;
+using SPerfomance.Api.Features.Common.Extensions;
 using SPerfomance.Api.Features.PerfomanceContext.Responses;
 using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Abstractions;
 using SPerfomance.Statistics.DataAccess.EntityModels;
@@ -24,31 +25,20 @@ public static class GetPagedAssignmentSessionReports
         IControlWeekReportRepository reports
     )
     {
-        Token token = request.Token;
-        bool isAdmin = await new UserVerificationService(users).IsVerified(
-            request.Token,
-            UserRole.Administrator
-        );
-        bool isTeacher = await new UserVerificationService(users).IsVerified(
-            request.Token,
-            UserRole.Teacher
-        );
-        if (!isAdmin && !isTeacher)
+        if (!await request.Token.IsVerified(users))
             return Results.BadRequest(
                 "Просмотр отчётов доступен только администраторам или преподавателям"
             );
 
-        if (reports is ControlWeekRepository repository)
-        {
-            IReadOnlyList<ControlWeekReportEntity> list = await repository.GetPaged(
-                request.Pagination.Page,
-                request.Pagination.PageSize
-            );
+        if (reports is not ControlWeekRepository repository)
+            return Results.NotFound();
 
-            ControlWeekReportDTO[] result = await ControlWeekReportDTO.InitializeArrayAsync(list);
-            return Results.Ok(result);
-        }
+        IReadOnlyList<ControlWeekReportEntity> list = await repository.GetPaged(
+            request.Pagination.Page,
+            request.Pagination.PageSize
+        );
 
-        return Results.NotFound();
+        ControlWeekReportDTO[] result = await ControlWeekReportDTO.InitializeArrayAsync(list);
+        return Results.Ok(result);
     }
 }

@@ -12,6 +12,8 @@ public sealed record ControlWeekReportDTO
     public CourseStatisticsReportDTO[] CourseParts { get; init; }
     public DirectionTypeReportDTO[] DirectionTypeReport { get; init; }
     public DirectionCodeReportDTO[] DirectionCodeReport { get; init; }
+    public double Average { get; init; }
+    public double Perfomance { get; init; }
 
     public ControlWeekReportDTO(ControlWeekReportEntity report)
     {
@@ -31,10 +33,8 @@ public sealed record ControlWeekReportDTO
         CourseParts = courseTask.Result;
         DirectionTypeReport = directionTypeTask.Result;
         DirectionCodeReport = directionCodeTask.Result;
-        // GroupParts = InitializeGroupReportArray(report.GroupParts);
-        // CourseParts = InitializeCourseReportArray(report.CourseParts);
-        // DirectionTypeReport = InitializeDirectionTypeReportArray(report.DirectionTypeReport);
-        // DirectionCodeReport = InitializeDirectionCodeReportArray(report.DirectionCodeReport);
+        Average = DirectionCodeReport.Select(d => d.Average).Average();
+        Perfomance = DirectionCodeReport.Select(d => d.Perfomance).Average();
     }
 
     private GroupStatisticsReportDTO[] InitializeGroupReportArray(

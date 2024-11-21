@@ -1,0 +1,84 @@
+.navigation-links {
+  display: inline-flex;
+  flex-direction: row;
+  gap: 30px;
+  padding: 5px;
+  font-size: 20px;
+  font-weight: 800;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.controls-container {
+  gap: 10px;
+  padding: 5px;
+}
+
+.course-report-content {
+  overflow: auto;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  color: #000000;
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  border: solid 1px #cccccc;
+  font-size: 14px;
+  width: auto;
+}
+
+.report-date-container {
+  padding: 10px;
+  display: inline-flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
+.report-title-layout {
+  padding: 10px;
+  display: inline-flex;
+  flex-direction: row;
+  font-size: 18px;
+  gap: 10px;
+  text-align: center;
+  border-bottom: 1px solid #cccccc;
+}
+
+.report-table-container {
+  font-size: 12px;
+  color: black;
+  height: 100vh;
+  overflow: auto;
+}
+
+.report-table-layout {
+  table-layout: fixed;
+  width: 100%;
+
+  & thead tr {
+    border: solid 1px black;
+    text-align: center;
+  }
+
+  & td,
+  & th {
+    width: 50%;
+    border: solid 1px black;
+  }
+
+  & tbody tr {
+    text-align: center;
+    border: solid 1px black;
+  }
+}
+
+.results-container {
+  width: auto;
+  text-decoration: underline;
+  padding: 5px;
+  gap: 5px;
+  display: flex;
+  flex-direction: column;
+}

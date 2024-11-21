@@ -26,6 +26,10 @@ export class SessionReportsDataService
     this._policy = policy;
   }
 
+  public addPages(page: number, pageSize: number): void {
+    this._policy.addPages(page, pageSize);
+  }
+
   public fetch(): Observable<ControlWeekReportInterface[]> {
     if (this._policy == undefined)
       return new Observable<ControlWeekReportInterface[]>();
@@ -39,5 +43,16 @@ export class SessionReportsDataService
       id: id,
     };
     return this._httpClient.post<GroupReportInterface[]>(apiUri, payload);
+  }
+
+  public getCourseReportById(
+    reportId: string,
+  ): Observable<ControlWeekReportInterface> {
+    const apiUri: string = `${BASE_API_URI}/app/assignment-sessions/course-report-by-id`;
+    const payload: object = {
+      token: TokenPayloadBuilder(this._authService.userData),
+      id: reportId,
+    };
+    return this._httpClient.post<ControlWeekReportInterface>(apiUri, payload);
   }
 }
