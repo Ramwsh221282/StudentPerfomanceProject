@@ -47,9 +47,7 @@ export class SessionReportsViewComponent implements OnInit {
       this._paginationService.pageSize,
     );
     this._dataService.setPolicy(policy);
-    this._dataService.fetch().subscribe((response) => {
-      this.reports = response;
-    });
+    this.fetchData();
   }
 
   protected fetchOnPageChanged(): void {
@@ -57,6 +55,10 @@ export class SessionReportsViewComponent implements OnInit {
       this._paginationService.currentPage,
       this._paginationService.pageSize,
     );
+    this.fetchData();
+  }
+
+  protected fetchData(): void {
     this._dataService.fetch().subscribe((response) => {
       this.reports = response;
     });

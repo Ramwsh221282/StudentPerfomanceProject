@@ -8,7 +8,7 @@ namespace SPerfomance.Statistics.DataAccess.Repositories;
 
 public sealed class ControlWeekRepository : IControlWeekReportRepository
 {
-    private readonly StatisticsDatabaseContext _context = new StatisticsDatabaseContext();
+    private readonly StatisticsDatabaseContext _context = new();
 
     public async Task<Result<AssignmentSessionView>> Insert(AssignmentSessionView view)
     {
@@ -23,7 +23,7 @@ public sealed class ControlWeekRepository : IControlWeekReportRepository
         )
             return new Error("Отчёт по контрольной неделе уже существует");
 
-        ControlWeekReportEntity entity = ControlWeekReportEntity.CreateReport(view);
+        var entity = ControlWeekReportEntity.CreateReport(view);
         await _context.ControlWeekReports.AddAsync(entity);
         await _context.SaveChangesAsync();
         return view;
@@ -52,11 +52,13 @@ public sealed class ControlWeekRepository : IControlWeekReportRepository
         DateTime? endDate
     )
     {
-        var query = _context.ControlWeekReports;
+        var query = _context.ControlWeekReports.AsQueryable();
         if (startDate != null)
-            query.Where(r => r.CreationDate >= startDate);
+            query = query.Where(r => r.CreationDate >= startDate);
+
         if (endDate != null)
-            query.Where(r => r.CompletionDate <= endDate);
+            query = query.Where(r => r.CompletionDate <= endDate);
+
         return await query
             .Skip((page - 1) * pageSize)
             .Take(pageSize)

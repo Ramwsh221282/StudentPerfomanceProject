@@ -2,7 +2,7 @@
   <div class="navigation-links">
     <a>Отчёты контрольных недель</a>
   </div>
-  <app-session-reports-filter-input></app-session-reports-filter-input>
+  <app-session-reports-filter-input (emitFilter)="fetchData()"></app-session-reports-filter-input>
   <section>
     <app-session-reports-layout [reports]="reports"></app-session-reports-layout>
   </section>

@@ -19,7 +19,7 @@ public static class GetPagedFilteredReports
     public sealed class Endpoint : IEndpoint
     {
         public void MapEndpoint(IEndpointRouteBuilder app) =>
-            app.MapPost($"{PerfomanceContextTags.SessionsApp}", Handler)
+            app.MapPost($"{PerfomanceContextTags.SessionsApp}/paged-filtered", Handler)
                 .WithTags($"{PerfomanceContextTags.SessionsTag}");
     }
 
@@ -49,10 +49,7 @@ public static class GetPagedFilteredReports
 
     private static DateTime? ConvertToDate(DatePeriod? period)
     {
-        if (period == null)
-            return null;
-
-        if (period.Day == null || period.Day == null || period.Day == null)
+        if (period?.Day == null || period.Month == null || period.Year == null)
             return null;
 
         try
