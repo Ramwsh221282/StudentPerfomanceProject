@@ -1,7 +1,6 @@
 using SPerfomance.Api.Endpoints;
 using SPerfomance.Api.Features.Common;
 using SPerfomance.Application.EducationDirections.DTO;
-using SPerfomance.Domain.Models.EducationDirections;
 using SPerfomance.Domain.Models.EducationDirections.Abstractions;
 
 namespace SPerfomance.Api.Features.EducationDirections;
@@ -22,18 +21,20 @@ public static class GetAllEducationDirections
     public static async Task<IResult> Handler(
         Request request,
         IUsersRepository users,
-        IEducationDirectionRepository repository
+        IEducationDirectionRepository repository,
+        CancellationToken ct
     )
     {
         if (
             !await new UserVerificationService(users).IsVerified(
                 request.Token,
-                UserRole.Administrator
+                UserRole.Administrator,
+                ct
             )
         )
             return Results.BadRequest(UserTags.UnauthorizedError);
 
-        IReadOnlyCollection<EducationDirection> directions = await repository.GetAll();
+        var directions = await repository.GetAll(ct);
         return Results.Ok(directions.Select(d => d.MapFromDomain()));
     }
 }

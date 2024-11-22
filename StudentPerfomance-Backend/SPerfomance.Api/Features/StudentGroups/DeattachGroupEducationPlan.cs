@@ -5,9 +5,7 @@ using SPerfomance.Api.Features.StudentGroups.Contracts;
 using SPerfomance.Application.StudentGroups.Commands.DeattachEducationPlan;
 using SPerfomance.Application.StudentGroups.DTO;
 using SPerfomance.Application.StudentGroups.Queries.GetStudentGroupByName;
-using SPerfomance.Domain.Models.StudentGroups;
 using SPerfomance.Domain.Models.StudentGroups.Abstractions;
-using SPerfomance.Domain.Tools;
 
 namespace SPerfomance.Api.Features.StudentGroups;
 
@@ -25,21 +23,24 @@ public static class DeattachGroupEducationPlan
     public static async Task<IResult> Handler(
         [FromBody] Request request,
         IStudentGroupsRepository groups,
-        IUsersRepository users
+        IUsersRepository users,
+        CancellationToken ct
     )
     {
         if (
             !await new UserVerificationService(users).IsVerified(
                 request.Token,
-                UserRole.Administrator
+                UserRole.Administrator,
+                ct
             )
         )
             return Results.BadRequest(UserTags.UnauthorizedError);
 
-        Result<StudentGroup> group = await new GetStudentGroupQueryHandler(groups).Handle(
-            request.Group
+        var group = await new GetStudentGroupQueryHandler(groups).Handle(request.Group, ct);
+        group = await new DeattachEducationPlanCommandHandler(groups).Handle(
+            new DeattachEducationPlanCommand(group.Value),
+            ct
         );
-        group = await new DeattachEducationPlanCommandHandler(groups).Handle(new(group.Value));
         return group.IsFailure
             ? Results.BadRequest(group.Error.Description)
             : Results.Ok(group.Value.MapFromDomain());

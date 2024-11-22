@@ -9,14 +9,15 @@ namespace SPerfomance.Application.StudentGroups.Commands.RemoveStudentGroup;
 public class RemoveStudentGroupCommandHandler(IStudentGroupsRepository repository)
     : ICommandHandler<RemoveStudentGroupCommand, StudentGroup>
 {
-    private readonly IStudentGroupsRepository _repository = repository;
-
-    public async Task<Result<StudentGroup>> Handle(RemoveStudentGroupCommand command)
+    public async Task<Result<StudentGroup>> Handle(
+        RemoveStudentGroupCommand command,
+        CancellationToken ct = default
+    )
     {
         if (command.Group == null)
             return Result<StudentGroup>.Failure(StudentGroupErrors.NotFound());
 
-        await _repository.Remove(command.Group);
+        await repository.Remove(command.Group, ct);
         return Result<StudentGroup>.Success(command.Group);
     }
 }

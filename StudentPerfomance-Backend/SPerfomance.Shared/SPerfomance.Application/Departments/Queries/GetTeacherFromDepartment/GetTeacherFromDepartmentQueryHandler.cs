@@ -8,12 +8,15 @@ namespace SPerfomance.Application.Departments.Queries.GetTeacherFromDepartment;
 public class GetTeacherFromDepartmentQueryHandler
     : IQueryHandler<GetTeacherFromDepartmentQuery, Teacher>
 {
-    public async Task<Result<Teacher>> Handle(GetTeacherFromDepartmentQuery command)
+    public async Task<Result<Teacher>> Handle(
+        GetTeacherFromDepartmentQuery command,
+        CancellationToken ct = default
+    )
     {
         if (command.Department == null)
             return Result<Teacher>.Failure(TeacherDepartmentErrors.NotFound());
 
-        Result<Teacher> teacher = command.Department.FindTeacher(
+        var teacher = command.Department.FindTeacher(
             command.Name,
             command.Surname,
             command.Patronymic,

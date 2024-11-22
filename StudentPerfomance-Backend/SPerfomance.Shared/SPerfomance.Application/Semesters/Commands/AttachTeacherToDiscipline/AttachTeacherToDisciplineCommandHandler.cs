@@ -10,9 +10,10 @@ namespace SPerfomance.Application.Semesters.Commands.AttachTeacherToDiscipline;
 public class AttachTeacherToDisciplineCommandHandler(ISemesterPlansRepository repository)
     : ICommandHandler<AttachTeacherToDisciplineCommand, SemesterPlan>
 {
-    private readonly ISemesterPlansRepository _repository = repository;
-
-    public async Task<Result<SemesterPlan>> Handle(AttachTeacherToDisciplineCommand command)
+    public async Task<Result<SemesterPlan>> Handle(
+        AttachTeacherToDisciplineCommand command,
+        CancellationToken ct = default
+    )
     {
         if (command.Teacher == null)
             return Result<SemesterPlan>.Failure(TeacherErrors.NotFound());
@@ -20,14 +21,14 @@ public class AttachTeacherToDisciplineCommandHandler(ISemesterPlansRepository re
         if (command.Discipline == null)
             return Result<SemesterPlan>.Failure(SemesterPlanErrors.NotFound());
 
-        Result<SemesterPlan> plan = command.Discipline.Semester.AttachTeacherToDiscipline(
+        var plan = command.Discipline.Semester.AttachTeacherToDiscipline(
             command.Discipline,
             command.Teacher
         );
         if (plan.IsFailure)
             return plan;
 
-        await _repository.AttachTeacherId(plan.Value);
+        await repository.AttachTeacherId(plan.Value, ct);
         return Result<SemesterPlan>.Success(plan.Value);
     }
 }

@@ -9,20 +9,21 @@ namespace SPerfomance.Application.EducationDirections.Commands.UpdateEducationDi
 public class UpdateEducationDirectionCommandHandler(IEducationDirectionRepository repository)
     : ICommandHandler<UpdateEducationDirectionCommand, EducationDirection>
 {
-    private readonly IEducationDirectionRepository _repository = repository;
-
-    public async Task<Result<EducationDirection>> Handle(UpdateEducationDirectionCommand command)
+    public async Task<Result<EducationDirection>> Handle(
+        UpdateEducationDirectionCommand command,
+        CancellationToken ct = default
+    )
     {
         if (command.Direction == null)
             return Result<EducationDirection>.Failure(EducationDirectionErrors.NotFoundError());
 
-        Result<EducationDirection> updated = command.Direction.ChangeName(command.NewName);
+        var updated = command.Direction.ChangeName(command.NewName);
         if (updated.IsFailure)
             return updated;
 
         if (updated.Value.Code.Code != command.NewCode)
         {
-            if (await _repository.HasWithCode(command.NewCode))
+            if (await repository.HasWithCode(command.NewCode, ct))
                 return Result<EducationDirection>.Failure(
                     EducationDirectionErrors.CodeDublicateError(command.NewCode)
                 );
@@ -35,7 +36,7 @@ public class UpdateEducationDirectionCommandHandler(IEducationDirectionRepositor
         if (updated.IsFailure)
             return updated;
 
-        await _repository.Update(updated.Value);
+        await repository.Update(updated.Value, ct);
         return Result<EducationDirection>.Success(updated.Value);
     }
 }

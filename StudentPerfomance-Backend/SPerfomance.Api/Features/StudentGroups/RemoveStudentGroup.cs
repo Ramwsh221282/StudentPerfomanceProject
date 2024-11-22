@@ -5,9 +5,7 @@ using SPerfomance.Api.Features.StudentGroups.Contracts;
 using SPerfomance.Application.StudentGroups.Commands.RemoveStudentGroup;
 using SPerfomance.Application.StudentGroups.DTO;
 using SPerfomance.Application.StudentGroups.Queries.GetStudentGroupByName;
-using SPerfomance.Domain.Models.StudentGroups;
 using SPerfomance.Domain.Models.StudentGroups.Abstractions;
-using SPerfomance.Domain.Tools;
 
 namespace SPerfomance.Api.Features.StudentGroups;
 
@@ -24,21 +22,24 @@ public static class RemoveStudentGroup
     public static async Task<IResult> Handler(
         [FromBody] Request request,
         IUsersRepository users,
-        IStudentGroupsRepository repository
+        IStudentGroupsRepository repository,
+        CancellationToken ct
     )
     {
         if (
             !await new UserVerificationService(users).IsVerified(
                 request.Token,
-                UserRole.Administrator
+                UserRole.Administrator,
+                ct
             )
         )
             return Results.BadRequest(UserTags.UnauthorizedError);
 
-        Result<StudentGroup> group = await new GetStudentGroupQueryHandler(repository).Handle(
-            request.Group
+        var group = await new GetStudentGroupQueryHandler(repository).Handle(request.Group, ct);
+        group = await new RemoveStudentGroupCommandHandler(repository).Handle(
+            new RemoveStudentGroupCommand(group.Value),
+            ct
         );
-        group = await new RemoveStudentGroupCommandHandler(repository).Handle(new(group.Value));
 
         return group.IsFailure
             ? Results.BadRequest(group.Error.Description)

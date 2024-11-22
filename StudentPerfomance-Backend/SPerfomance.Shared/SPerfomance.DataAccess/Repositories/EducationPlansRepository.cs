@@ -9,13 +9,13 @@ namespace SPerfomance.DataAccess.Repositories;
 
 public class EducationPlansRepository : IEducationPlansRepository
 {
-    private readonly DatabaseContext _context = new DatabaseContext();
+    private readonly DatabaseContext _context = new();
 
-    public async Task Insert(EducationPlan entity)
+    public async Task Insert(EducationPlan entity, CancellationToken ct = default)
     {
-        entity.SetNumber(await GenerateEntityNumber());
+        entity.SetNumber(await GenerateEntityNumber(ct));
 
-        int current = await GenerateSemestersEntityNumber();
+        var current = await GenerateSemestersEntityNumber(ct);
         foreach (var semester in entity.Semesters)
         {
             semester.SetNumber(current);
@@ -23,25 +23,30 @@ public class EducationPlansRepository : IEducationPlansRepository
         }
 
         _context.EducationDirections.Attach(entity.Direction);
-        await _context.EducationPlans.AddAsync(entity);
-        await _context.SaveChangesAsync();
+        await _context.EducationPlans.AddAsync(entity, ct);
+        await _context.SaveChangesAsync(ct);
     }
 
-    public async Task<int> Count() => await _context.EducationPlans.CountAsync();
+    public async Task<int> Count(CancellationToken ct = default) =>
+        await _context.EducationPlans.CountAsync(cancellationToken: ct);
 
-    public async Task<int> GenerateEntityNumber()
+    public async Task<int> GenerateEntityNumber(CancellationToken ct = default)
     {
-        int[] numbers = await _context.EducationPlans.Select(s => s.EntityNumber).ToArrayAsync();
+        var numbers = await _context
+            .EducationPlans.Select(s => s.EntityNumber)
+            .ToArrayAsync(cancellationToken: ct);
         return numbers.GetOrderedValue();
     }
 
-    private async Task<int> GenerateSemestersEntityNumber()
+    private async Task<int> GenerateSemestersEntityNumber(CancellationToken ct = default)
     {
-        int[] numbers = await _context.Semesters.Select(s => s.EntityNumber).ToArrayAsync();
+        var numbers = await _context
+            .Semesters.Select(s => s.EntityNumber)
+            .ToArrayAsync(cancellationToken: ct);
         return numbers.GetOrderedValue();
     }
 
-    public async Task<IReadOnlyCollection<EducationPlan>> GetAll() =>
+    public async Task<IReadOnlyCollection<EducationPlan>> GetAll(CancellationToken ct = default) =>
         await _context
             .EducationPlans.Include(p => p.Direction)
             .Include(p => p.Semesters)
@@ -49,9 +54,9 @@ public class EducationPlansRepository : IEducationPlansRepository
             .ThenInclude(c => c.Teacher)
             .AsNoTracking()
             .AsSplitQuery()
-            .ToListAsync();
+            .ToListAsync(cancellationToken: ct);
 
-    public async Task Remove(EducationPlan entity)
+    public async Task Remove(EducationPlan entity, CancellationToken ct = default)
     {
         await _context
             .EducationPlans.Include(p => p.Groups)
@@ -59,30 +64,42 @@ public class EducationPlansRepository : IEducationPlansRepository
             .Include(p => p.Semesters)
             .Where(p => p.Id == entity.Id)
             .AsSplitQuery()
-            .ExecuteDeleteAsync();
+            .ExecuteDeleteAsync(cancellationToken: ct);
     }
 
-    public async Task<bool> HasPlanWithYear(PlanYear year) =>
-        await _context.EducationPlans.AnyAsync(p => p.Year.Year == year.Year);
+    public async Task<bool> HasPlanWithYear(PlanYear year, CancellationToken ct = default) =>
+        await _context.EducationPlans.AnyAsync(
+            p => p.Year.Year == year.Year,
+            cancellationToken: ct
+        );
 
-    public async Task<bool> HasPlanWithYear(int year) =>
-        await _context.EducationPlans.AnyAsync(p => p.Year.Year == year);
+    public async Task<bool> HasPlanWithYear(int year, CancellationToken ct = default) =>
+        await _context.EducationPlans.AnyAsync(p => p.Year.Year == year, cancellationToken: ct);
 
-    public async Task Update(EducationPlan entity) =>
+    public async Task Update(EducationPlan entity, CancellationToken ct = default) =>
         await _context
             .EducationPlans.Where(p => p.Id == entity.Id)
-            .ExecuteUpdateAsync(p => p.SetProperty(p => p.Year.Year, entity.Year.Year));
+            .ExecuteUpdateAsync(
+                p => p.SetProperty(p => p.Year.Year, entity.Year.Year),
+                cancellationToken: ct
+            );
 
-    public async Task<bool> HasPlan(EducationDirection direction, int year) =>
-        await _context.EducationPlans.AnyAsync(p =>
-            p.Direction.Id == direction.Id && p.Year.Year == year
+    public async Task<bool> HasPlan(
+        EducationDirection direction,
+        int year,
+        CancellationToken ct = default
+    ) =>
+        await _context.EducationPlans.AnyAsync(
+            p => p.Direction.Id == direction.Id && p.Year.Year == year,
+            cancellationToken: ct
         );
 
     public async Task<IReadOnlyCollection<EducationPlan>> GetFiltered(
         string? directionName,
         string? directionCode,
         string? directionType,
-        int? year
+        int? year,
+        CancellationToken ct = default
     ) =>
         await _context
             .EducationPlans.Include(p => p.Direction)
@@ -100,7 +117,7 @@ public class EducationPlansRepository : IEducationPlansRepository
             )
             .AsNoTracking()
             .AsSplitQuery()
-            .ToListAsync();
+            .ToListAsync(cancellationToken: ct);
 
     public async Task<IReadOnlyCollection<EducationPlan>> GetPagedFiltered(
         string? directionName,
@@ -108,7 +125,8 @@ public class EducationPlansRepository : IEducationPlansRepository
         string? directionType,
         int? year,
         int page,
-        int pageSize
+        int pageSize,
+        CancellationToken ct = default
     ) =>
         await _context
             .EducationPlans.Include(p => p.Direction)
@@ -129,9 +147,13 @@ public class EducationPlansRepository : IEducationPlansRepository
             .Take(pageSize)
             .AsNoTracking()
             .AsSplitQuery()
-            .ToListAsync();
+            .ToListAsync(cancellationToken: ct);
 
-    public async Task<IReadOnlyCollection<EducationPlan>> GetPaged(int page, int pageSize) =>
+    public async Task<IReadOnlyCollection<EducationPlan>> GetPaged(
+        int page,
+        int pageSize,
+        CancellationToken ct = default
+    ) =>
         await _context
             .EducationPlans.Include(p => p.Direction)
             .Include(p => p.Semesters)
@@ -142,5 +164,5 @@ public class EducationPlansRepository : IEducationPlansRepository
             .Take(pageSize)
             .AsNoTracking()
             .AsSplitQuery()
-            .ToListAsync();
+            .ToListAsync(cancellationToken: ct);
 }

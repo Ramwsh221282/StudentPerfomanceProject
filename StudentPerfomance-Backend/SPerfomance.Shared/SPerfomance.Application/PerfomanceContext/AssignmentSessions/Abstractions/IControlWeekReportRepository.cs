@@ -5,6 +5,9 @@ namespace SPerfomance.Application.PerfomanceContext.AssignmentSessions.Abstracti
 
 public interface IControlWeekReportRepository
 {
-    Task<Result<AssignmentSessionView>> Insert(AssignmentSessionView view);
-    Task<int> Count();
+    Task<Result<AssignmentSessionView>> Insert(
+        AssignmentSessionView view,
+        CancellationToken ct = default
+    );
+    Task<int> Count(CancellationToken ct = default);
 }

@@ -9,14 +9,15 @@ namespace SPerfomance.Application.EducationDirections.Commands.RemoveEducationDi
 public class RemoveEducationDirectionCommandHandler(IEducationDirectionRepository repository)
     : ICommandHandler<RemoveEducationDirectionCommand, EducationDirection>
 {
-    private readonly IEducationDirectionRepository _repository = repository;
-
-    public async Task<Result<EducationDirection>> Handle(RemoveEducationDirectionCommand command)
+    public async Task<Result<EducationDirection>> Handle(
+        RemoveEducationDirectionCommand command,
+        CancellationToken ct = default
+    )
     {
         if (command.Direction == null)
             return Result<EducationDirection>.Failure(EducationDirectionErrors.NotFoundError());
 
-        await _repository.Remove(command.Direction);
+        await repository.Remove(command.Direction, ct);
         return Result<EducationDirection>.Success(command.Direction);
     }
 }

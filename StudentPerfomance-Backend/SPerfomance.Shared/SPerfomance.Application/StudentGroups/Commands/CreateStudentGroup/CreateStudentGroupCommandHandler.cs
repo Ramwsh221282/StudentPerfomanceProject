@@ -9,18 +9,19 @@ namespace SPerfomance.Application.StudentGroups.Commands.CreateStudentGroup;
 public class CreateStudentGroupCommandHandler(IStudentGroupsRepository repository)
     : ICommandHandler<CreateStudentGroupCommand, StudentGroup>
 {
-    private readonly IStudentGroupsRepository _repository = repository;
-
-    public async Task<Result<StudentGroup>> Handle(CreateStudentGroupCommand command)
+    public async Task<Result<StudentGroup>> Handle(
+        CreateStudentGroupCommand command,
+        CancellationToken ct = default
+    )
     {
-        if (await _repository.HasWithName(command.Name))
+        if (await repository.HasWithName(command.Name, ct))
             return Result<StudentGroup>.Failure(StudentGroupErrors.NameDublicate(command.Name));
 
-        Result<StudentGroup> group = StudentGroup.Create(command.Name);
+        var group = StudentGroup.Create(command.Name);
         if (group.IsFailure)
             return group;
 
-        await _repository.Insert(group.Value);
+        await repository.Insert(group.Value, ct);
         return Result<StudentGroup>.Success(group.Value);
     }
 }

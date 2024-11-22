@@ -13,20 +13,17 @@ public class RegisterUserCommandHandler(
     IPasswordHasher hasher
 ) : ICommandHandler<RegisterUserCommand, User>
 {
-    private readonly string _generatedPassword = generatedPassword;
-
-    private readonly IUsersRepository _repository = repository;
-
-    private readonly IPasswordHasher _hasher = hasher;
-
-    public async Task<Result<User>> Handle(RegisterUserCommand command)
+    public async Task<Result<User>> Handle(
+        RegisterUserCommand command,
+        CancellationToken ct = default
+    )
     {
-        if (await _repository.HasWithEmail(command.Email))
+        if (await repository.HasWithEmail(command.Email, ct))
             return Result<User>.Failure(UserErrors.EmailDublicate(command.Email));
 
-        string hashedPassword = _hasher.Hash(_generatedPassword);
+        var hashedPassword = hasher.Hash(generatedPassword);
 
-        Result<User> user = User.Create(
+        var user = User.Create(
             command.Name,
             command.Surname,
             command.Patronymic,
@@ -38,7 +35,7 @@ public class RegisterUserCommandHandler(
         if (user.IsFailure)
             return user;
 
-        await _repository.Insert(user.Value);
+        await repository.Insert(user.Value, ct);
         return user;
     }
 }

@@ -3,7 +3,7 @@ using SPerfomance.Domain.Models.SemesterPlans;
 using SPerfomance.Domain.Models.Semesters;
 using SPerfomance.Domain.Tools;
 
-namespace SPerfomance.Application.Semesters.CreateDiscipline.Commands;
+namespace SPerfomance.Application.Semesters.Commands.CreateDiscipline;
 
 public class CreateDisciplineCommand(Semester? semester, string? disciplineName)
     : ICommand<SemesterPlan>

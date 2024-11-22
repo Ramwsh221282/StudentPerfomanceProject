@@ -4,7 +4,12 @@ global using SPerfomance.Application.Services.Authentication.Models;
 global using SPerfomance.Domain.Models.Users;
 global using SPerfomance.Domain.Models.Users.Abstractions;
 global using SPerfomance.Domain.Models.Users.ValueObjects;
+using System.IO.Compression;
+using System.Threading.RateLimiting;
+using Microsoft.AspNetCore.RateLimiting;
+using Microsoft.AspNetCore.ResponseCompression;
 using SPerfomance.Api.Endpoints;
+using SPerfomance.Api.MiddleWare;
 using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Abstractions;
 using SPerfomance.Application.Services.Authentication.Abstractions;
 using SPerfomance.Application.Services.Mailing;
@@ -22,8 +27,39 @@ using SPerfomance.Statistics.DataAccess.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddRateLimiter(rateLimiterOptions =>
+{
+    rateLimiterOptions.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
+    rateLimiterOptions.AddFixedWindowLimiter(
+        "fixed",
+        options =>
+        {
+            options.Window = TimeSpan.FromSeconds(5);
+            options.PermitLimit = 3;
+            options.QueueLimit = 3;
+            options.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
+        }
+    );
+});
 
+builder.Services.AddResponseCompression(options =>
+{
+    options.EnableForHttps = true;
+    options.Providers.Add<BrotliCompressionProvider>();
+    options.Providers.Add<GzipCompressionProvider>();
+});
+
+builder.Services.Configure<BrotliCompressionProviderOptions>(options =>
+{
+    options.Level = CompressionLevel.SmallestSize;
+});
+
+builder.Services.Configure<GzipCompressionProviderOptions>(options =>
+{
+    options.Level = CompressionLevel.SmallestSize;
+});
+
+builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddScoped<IEducationDirectionRepository, EducationDirectionRepository>();
 builder.Services.AddScoped<IEducationPlansRepository, EducationPlansRepository>();
 builder.Services.AddScoped<ISemesterPlansRepository, SemesterPlansRepository>();
@@ -56,6 +92,9 @@ builder.Services.AddCors(options =>
 });
 
 var app = builder.Build();
+app.UseMiddleware<TaskCancellationTokenExtensions>();
+app.UseRateLimiter();
+app.UseResponseCompression();
 app.UseSwagger();
 app.UseSwaggerUI();
 app.UseCors();

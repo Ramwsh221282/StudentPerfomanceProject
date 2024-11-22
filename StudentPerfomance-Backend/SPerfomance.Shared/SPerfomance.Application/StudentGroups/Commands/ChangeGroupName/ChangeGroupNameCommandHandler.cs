@@ -9,18 +9,19 @@ namespace SPerfomance.Application.StudentGroups.Commands.ChangeGroupName;
 public class ChangeGroupNameCommandHandler(IStudentGroupsRepository repository)
     : ICommandHandler<ChangeGroupNameCommand, StudentGroup>
 {
-    private readonly IStudentGroupsRepository _repository = repository;
-
-    public async Task<Result<StudentGroup>> Handle(ChangeGroupNameCommand command)
+    public async Task<Result<StudentGroup>> Handle(
+        ChangeGroupNameCommand command,
+        CancellationToken ct = default
+    )
     {
         if (command.Group == null)
             return Result<StudentGroup>.Failure(StudentGroupErrors.NotFound());
 
-        Result<StudentGroup> update = command.Group.ChangeName(command.NewName);
+        var update = command.Group.ChangeName(command.NewName);
         if (update.IsFailure)
             return update;
 
-        await _repository.Update(update.Value);
+        await repository.Update(update.Value, ct);
         return update;
     }
 }

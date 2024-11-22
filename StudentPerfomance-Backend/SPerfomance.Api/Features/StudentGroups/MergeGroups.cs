@@ -5,9 +5,7 @@ using SPerfomance.Api.Features.StudentGroups.Contracts;
 using SPerfomance.Application.StudentGroups.Commands.MergeWithGroup;
 using SPerfomance.Application.StudentGroups.DTO;
 using SPerfomance.Application.StudentGroups.Queries.GetStudentGroupByName;
-using SPerfomance.Domain.Models.StudentGroups;
 using SPerfomance.Domain.Models.StudentGroups.Abstractions;
-using SPerfomance.Domain.Tools;
 
 namespace SPerfomance.Api.Features.StudentGroups;
 
@@ -28,26 +26,25 @@ public static class MergeGroups
     public static async Task<IResult> Handler(
         [FromBody] Request request,
         IUsersRepository users,
-        IStudentGroupsRepository repository
+        IStudentGroupsRepository repository,
+        CancellationToken ct
     )
     {
         if (
             !await new UserVerificationService(users).IsVerified(
                 request.Token,
-                UserRole.Administrator
+                UserRole.Administrator,
+                ct
             )
         )
             return Results.BadRequest(UserTags.UnauthorizedError);
 
-        Result<StudentGroup> initial = await new GetStudentGroupQueryHandler(repository).Handle(
-            request.Initial
-        );
-        Result<StudentGroup> target = await new GetStudentGroupQueryHandler(repository).Handle(
-            request.Target
-        );
+        var initial = await new GetStudentGroupQueryHandler(repository).Handle(request.Initial, ct);
+        var target = await new GetStudentGroupQueryHandler(repository).Handle(request.Target, ct);
 
-        Result<StudentGroup> result = await new MergeWithGroupCommandHandler(repository).Handle(
-            new(initial.Value, target.Value)
+        var result = await new MergeWithGroupCommandHandler(repository).Handle(
+            new MergeWithGroupCommand(initial.Value, target.Value),
+            ct
         );
         return result.IsFailure
             ? Results.BadRequest(result.Error.Description)

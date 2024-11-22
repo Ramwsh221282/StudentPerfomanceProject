@@ -29,18 +29,19 @@ public static class UsersAuth
         Request request,
         IUsersRepository repository,
         IPasswordHasher hasher,
-        IJwtTokenService service
+        IJwtTokenService service,
+        CancellationToken ct
     )
     {
-        User? user = await repository.GetByEmail(request.Email);
+        var user = await repository.GetByEmail(request.Email, ct);
         if (user == null)
             return Results.NotFound(UserErrors.NotFound());
 
-        bool isVerified = hasher.Verify(request.Password, user.HashedPassword);
+        var isVerified = hasher.Verify(request.Password, user.HashedPassword);
         if (!isVerified)
             return Results.BadRequest(UserErrors.PasswordInvalid());
 
-        string token = service.GenerateToken(user);
+        var token = service.GenerateToken(user);
 
         return Results.Ok(
             new Response(

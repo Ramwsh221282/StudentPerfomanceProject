@@ -9,19 +9,20 @@ namespace SPerfomance.Application.PerfomanceContext.AssignmentSessions.Commands.
 public class CloseAssignmentSessionCommandHandler(IAssignmentSessionsRepository repository)
     : ICommandHandler<CloseAssignmentSessionCommand, AssignmentSession>
 {
-    private readonly IAssignmentSessionsRepository _repository = repository;
-
-    public async Task<Result<AssignmentSession>> Handle(CloseAssignmentSessionCommand command)
+    public async Task<Result<AssignmentSession>> Handle(
+        CloseAssignmentSessionCommand command,
+        CancellationToken ct = default
+    )
     {
-        AssignmentSession? requested = await _repository.GetById(command.Id);
+        var requested = await repository.GetById(command.Id, ct);
         if (requested == null)
             return AssignmentSessionErrors.CantFindById(command.Id);
 
-        Result<AssignmentSession> closed = requested.CloseSession();
+        var closed = requested.CloseSession();
         if (closed.IsFailure)
             return closed;
 
-        await _repository.Update(closed);
+        await repository.Update(closed, ct);
         return closed;
     }
 }

@@ -8,7 +8,10 @@ namespace SPerfomance.Application.Semesters.Queries.GetDisciplineFromSemester;
 public class GetDisciplineFromSemesterQueryHandler
     : IQueryHandler<GetDisciplineFromSemesterQuery, SemesterPlan>
 {
-    public async Task<Result<SemesterPlan>> Handle(GetDisciplineFromSemesterQuery command)
+    public async Task<Result<SemesterPlan>> Handle(
+        GetDisciplineFromSemesterQuery command,
+        CancellationToken ct = default
+    )
     {
         if (command.Semester == null)
             return Result<SemesterPlan>.Failure(SemesterErrors.NotFound());

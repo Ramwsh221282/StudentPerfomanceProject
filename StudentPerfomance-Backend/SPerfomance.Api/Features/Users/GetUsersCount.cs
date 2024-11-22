@@ -13,19 +13,24 @@ public static class GetUsersCount
             app.MapPost($"{UserTags.Api}/count", Handler).WithTags($"{UserTags.Tag}");
     }
 
-    public static async Task<IResult> Handler(Request request, IUsersRepository repository)
+    public static async Task<IResult> Handler(
+        Request request,
+        IUsersRepository repository,
+        CancellationToken ct
+    )
     {
         if (
             !await new UserVerificationService(repository).IsVerified(
                 request.Token,
-                UserRole.Administrator
+                UserRole.Administrator,
+                ct
             )
         )
             return Results.BadRequest(
                 "Ваша сессия не удовлетворяет требованиям. Необходимо авторизоваться."
             );
 
-        int count = await repository.Count();
+        var count = await repository.Count(ct);
         return Results.Ok(count);
     }
 }

@@ -9,14 +9,15 @@ namespace SPerfomance.Application.EducationPlans.Commands.RemoveEducationPlan;
 public class RemoveEducationPlanCommandHandler(IEducationPlansRepository repository)
     : ICommandHandler<RemoveEducationPlanCommand, EducationPlan>
 {
-    private readonly IEducationPlansRepository _repository = repository;
-
-    public async Task<Result<EducationPlan>> Handle(RemoveEducationPlanCommand command)
+    public async Task<Result<EducationPlan>> Handle(
+        RemoveEducationPlanCommand command,
+        CancellationToken ct = default
+    )
     {
         if (command.Plan == null)
             return Result<EducationPlan>.Failure(EducationPlanErrors.NotFoundError());
 
-        await _repository.Remove(command.Plan);
+        await repository.Remove(command.Plan, ct);
         return Result<EducationPlan>.Success(command.Plan);
     }
 }

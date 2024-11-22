@@ -26,7 +26,8 @@ public static class GetPagedFilteredReports
     public static async Task<IResult> Handler(
         Request request,
         IUsersRepository users,
-        IControlWeekReportRepository reports
+        IControlWeekReportRepository reports,
+        CancellationToken ct
     )
     {
         if (!await request.Token.IsVerified(users))
@@ -41,7 +42,8 @@ public static class GetPagedFilteredReports
             request.Pagination.Page,
             request.Pagination.PageSize,
             ConvertToDate(request.Period.StartPeriod),
-            ConvertToDate(request.Period.EndPeriod)
+            ConvertToDate(request.Period.EndPeriod),
+            ct
         );
 
         return Results.Ok(list.Select(r => new ControlWeekReportDTO(r)));

@@ -1,8 +1,6 @@
 using SPerfomance.Api.Endpoints;
 using SPerfomance.Api.Features.Common;
-using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions.Abstractions;
-using SPerfomance.Domain.Models.Teachers;
 using SPerfomance.Domain.Models.Teachers.Errors;
 using SPerfomance.Domain.Models.Users.Errors;
 
@@ -22,22 +20,23 @@ public static class GetAssignmentSessionForTeacher
     public static async Task<IResult> Handler(
         Request request,
         IUsersRepository users,
-        IAssignmentSessionsRepository sessions
+        IAssignmentSessionsRepository sessions,
+        CancellationToken ct
     )
     {
         Token token = request.Token;
-        if (!await new UserVerificationService(users).IsVerified(token, UserRole.Teacher))
+        if (!await new UserVerificationService(users).IsVerified(token, UserRole.Teacher, ct))
             return Results.BadRequest(UserTags.UnauthorizedError);
 
-        User? user = await users.GetById(token.UserId);
+        var user = await users.GetById(token.UserId, ct);
         if (user == null)
             return Results.BadRequest(UserErrors.NotFound().Description);
 
-        Teacher? teacher = await users.GetTeacherByUser(user);
+        var teacher = await users.GetTeacherByUser(user, ct);
         if (teacher == null)
             return Results.BadRequest(TeacherErrors.NotFound().Description);
 
-        TeacherAssignmentSession? session = await sessions.GetAssignmentSessionForTeacher(teacher);
+        var session = await sessions.GetAssignmentSessionForTeacher(teacher, ct);
         return session == null
             ? Results.BadRequest(TeacherErrors.NotFound().Description)
             : Results.Ok(session);

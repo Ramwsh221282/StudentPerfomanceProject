@@ -9,15 +9,10 @@ using SPerfomance.Application.EducationDirections.Queries.GetEducationDirection;
 using SPerfomance.Application.EducationPlans.Queries.GetEducationPlan;
 using SPerfomance.Application.Semesters.Commands.ChangeDisciplineName;
 using SPerfomance.Application.Semesters.DTO;
-using SPerfomance.Application.Semesters.GetSemester.Queries;
 using SPerfomance.Application.Semesters.Queries.GetDisciplineFromSemester;
-using SPerfomance.Domain.Models.EducationDirections;
+using SPerfomance.Application.Semesters.Queries.GetSemester;
 using SPerfomance.Domain.Models.EducationDirections.Abstractions;
-using SPerfomance.Domain.Models.EducationPlans;
-using SPerfomance.Domain.Models.SemesterPlans;
 using SPerfomance.Domain.Models.SemesterPlans.Abstractions;
-using SPerfomance.Domain.Models.Semesters;
-using SPerfomance.Domain.Tools;
 
 namespace SPerfomance.Api.Features.SemesterPlans;
 
@@ -42,31 +37,38 @@ public static class ChangeSemesterPlanName
         [FromBody] Request request,
         IUsersRepository users,
         IEducationDirectionRepository directions,
-        ISemesterPlansRepository semesterPlans
+        ISemesterPlansRepository semesterPlans,
+        CancellationToken ct
     )
     {
         if (
             !await new UserVerificationService(users).IsVerified(
                 request.Token,
-                UserRole.Administrator
+                UserRole.Administrator,
+                ct
             )
         )
             return Results.BadRequest(UserTags.UnauthorizedError);
 
-        Result<EducationDirection> direction = await new GetEducationDirectionQueryHandler(
-            directions
-        ).Handle(request.Direction);
-        Result<EducationPlan> plan = await new GetEducationPlanQueryHandler().Handle(
-            new(direction.Value, request.Plan.PlanYear)
+        var direction = await new GetEducationDirectionQueryHandler(directions).Handle(
+            request.Direction,
+            ct
         );
-        Result<Semester> semester = await new GetSemesterQueryHandler().Handle(
-            new(plan.Value, request.Semester.Number)
+        var plan = await new GetEducationPlanQueryHandler().Handle(
+            new GetEducationPlanQuery(direction.Value, request.Plan.PlanYear),
+            ct
         );
-        Result<SemesterPlan> discipline = await new GetDisciplineFromSemesterQueryHandler().Handle(
-            new(semester.Value, request.Initial.Discipline)
+        var semester = await new GetSemesterQueryHandler().Handle(
+            new GetSemesterQuery(plan.Value, request.Semester.Number),
+            ct
+        );
+        var discipline = await new GetDisciplineFromSemesterQueryHandler().Handle(
+            new GetDisciplineFromSemesterQuery(semester.Value, request.Initial.Discipline),
+            ct
         );
         discipline = await new ChangeDisciplineNameCommandHandler(semesterPlans).Handle(
-            new(discipline.Value, request.Updated.Discipline)
+            new ChangeDisciplineNameCommand(discipline.Value, request.Updated.Discipline),
+            ct
         );
 
         return discipline.IsFailure

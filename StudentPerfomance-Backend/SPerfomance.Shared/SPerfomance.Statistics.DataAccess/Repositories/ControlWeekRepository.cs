@@ -10,28 +10,38 @@ public sealed class ControlWeekRepository : IControlWeekReportRepository
 {
     private readonly StatisticsDatabaseContext _context = new();
 
-    public async Task<Result<AssignmentSessionView>> Insert(AssignmentSessionView view)
+    public async Task<Result<AssignmentSessionView>> Insert(
+        AssignmentSessionView view,
+        CancellationToken ct = default
+    )
     {
         if (
-            await _context.ControlWeekReports.AnyAsync(w =>
-                (
-                    w.CreationDate == DateTime.Parse(view.StartDate)
-                    && w.CompletionDate == DateTime.Parse(view.StartDate)
-                )
-                || w.Id == view.Id
+            await _context.ControlWeekReports.AnyAsync(
+                w =>
+                    (
+                        w.CreationDate == DateTime.Parse(view.StartDate)
+                        && w.CompletionDate == DateTime.Parse(view.StartDate)
+                    )
+                    || w.Id == view.Id,
+                cancellationToken: ct
             )
         )
             return new Error("Отчёт по контрольной неделе уже существует");
 
         var entity = ControlWeekReportEntity.CreateReport(view);
-        await _context.ControlWeekReports.AddAsync(entity);
-        await _context.SaveChangesAsync();
+        await _context.ControlWeekReports.AddAsync(entity, ct);
+        await _context.SaveChangesAsync(ct);
         return view;
     }
 
-    public async Task<int> Count() => await _context.ControlWeekReports.CountAsync();
+    public async Task<int> Count(CancellationToken ct = default) =>
+        await _context.ControlWeekReports.CountAsync(cancellationToken: ct);
 
-    public async Task<IReadOnlyList<ControlWeekReportEntity>> GetPaged(int page, int pageSize) =>
+    public async Task<IReadOnlyList<ControlWeekReportEntity>> GetPaged(
+        int page,
+        int pageSize,
+        CancellationToken ct = default
+    ) =>
         await _context
             .ControlWeekReports.Skip((page - 1) * pageSize)
             .Take(pageSize)
@@ -43,13 +53,14 @@ public sealed class ControlWeekRepository : IControlWeekReportRepository
             .Include(r => r.DirectionTypeReport)
             .AsNoTracking()
             .AsSplitQuery()
-            .ToListAsync();
+            .ToListAsync(cancellationToken: ct);
 
     public async Task<IReadOnlyList<ControlWeekReportEntity>> GetPagedFilteredByPeriod(
         int page,
         int pageSize,
         DateTime? startDate,
-        DateTime? endDate
+        DateTime? endDate,
+        CancellationToken ct = default
     )
     {
         var query = _context.ControlWeekReports.AsQueryable();
@@ -70,10 +81,10 @@ public sealed class ControlWeekRepository : IControlWeekReportRepository
             .Include(r => r.DirectionTypeReport)
             .AsNoTracking()
             .AsSplitQuery()
-            .ToListAsync();
+            .ToListAsync(cancellationToken: ct);
     }
 
-    public async Task<ControlWeekReportEntity?> GetById(Guid id) =>
+    public async Task<ControlWeekReportEntity?> GetById(Guid id, CancellationToken ct = default) =>
         await _context
             .ControlWeekReports.Include(r => r.GroupParts.OrderBy(g => g.GroupName))
             .ThenInclude(g => g.Parts)
@@ -83,10 +94,11 @@ public sealed class ControlWeekRepository : IControlWeekReportRepository
             .Include(r => r.DirectionTypeReport)
             .AsNoTracking()
             .AsSplitQuery()
-            .FirstOrDefaultAsync(r => r.Id == id);
+            .FirstOrDefaultAsync(r => r.Id == id, cancellationToken: ct);
 
     public async Task<ControlWeekReportEntity?> GetDirectionCodeTypeCourseReportsById(
-        Guid controlWeekReportId
+        Guid controlWeekReportId,
+        CancellationToken ct = default
     ) =>
         await _context
             .ControlWeekReports.Include(r => r.GroupParts.OrderBy(g => g.GroupName))
@@ -94,5 +106,5 @@ public sealed class ControlWeekRepository : IControlWeekReportRepository
             .Include(r => r.DirectionCodeReport.OrderBy(c => c.DirectionCode))
             .Include(r => r.DirectionTypeReport.OrderBy(c => c.DirectionType))
             .AsNoTracking()
-            .FirstOrDefaultAsync(r => r.Id == controlWeekReportId);
+            .FirstOrDefaultAsync(r => r.Id == controlWeekReportId, cancellationToken: ct);
 }

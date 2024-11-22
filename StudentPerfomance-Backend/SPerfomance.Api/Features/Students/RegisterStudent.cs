@@ -3,9 +3,7 @@ using SPerfomance.Api.Features.Common;
 using SPerfomance.Api.Features.Students.Contracts;
 using SPerfomance.Application.StudentGroups.Commands.AddStudentCommand;
 using SPerfomance.Application.StudentGroups.DTO;
-using SPerfomance.Domain.Models.StudentGroups;
 using SPerfomance.Domain.Models.StudentGroups.Abstractions;
-using SPerfomance.Domain.Models.Students;
 using SPerfomance.Domain.Models.Students.Abstractions;
 using SPerfomance.Domain.Models.Students.Errors;
 using SPerfomance.Domain.Tools;
@@ -26,10 +24,11 @@ public static class RegisterStudent
         Request request,
         IUsersRepository users,
         IStudentsRepository students,
-        IStudentGroupsRepository groups
+        IStudentGroupsRepository groups,
+        CancellationToken ct
     )
     {
-        if (await students.HasWithRecordbook(request.Student.Recordbook.ValueOrEmpty()))
+        if (await students.HasWithRecordbook(request.Student.Recordbook.ValueOrEmpty(), ct))
             return Results.BadRequest(
                 StudentErrors
                     .RecordbookDublicate(request.Student.Recordbook.ValueOrEmpty())
@@ -39,21 +38,23 @@ public static class RegisterStudent
         if (
             !await new UserVerificationService(users).IsVerified(
                 request.Token,
-                UserRole.Administrator
+                UserRole.Administrator,
+                ct
             )
         )
             return Results.BadRequest(UserTags.UnauthorizedError);
 
-        StudentGroup? group = await groups.Get(request.Student.GroupName.ValueOrEmpty());
-        Result<Student> student = await new AddStudentCommandHandler(students).Handle(
-            new(
+        var group = await groups.Get(request.Student.GroupName.ValueOrEmpty(), ct);
+        var student = await new AddStudentCommandHandler(students).Handle(
+            new AddStudentCommand(
                 request.Student.Name,
                 request.Student.Surname,
                 request.Student.Patronymic,
                 request.Student.State,
                 request.Student.Recordbook,
                 group
-            )
+            ),
+            ct
         );
 
         return student.IsFailure

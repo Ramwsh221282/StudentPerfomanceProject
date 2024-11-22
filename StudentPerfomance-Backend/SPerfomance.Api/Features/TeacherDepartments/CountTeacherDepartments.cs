@@ -18,18 +18,20 @@ public static class CountTeacherDepartments
     public static async Task<IResult> Handler(
         Request request,
         IUsersRepository users,
-        ITeacherDepartmentsRepository repository
+        ITeacherDepartmentsRepository repository,
+        CancellationToken ct
     )
     {
         if (
             !await new UserVerificationService(users).IsVerified(
                 request.Contract,
-                UserRole.Administrator
+                UserRole.Administrator,
+                ct
             )
         )
             return Results.BadRequest(UserTags.UnauthorizedError);
 
-        int count = await repository.Count();
+        var count = await repository.Count(ct);
         return Results.Ok(count);
     }
 }

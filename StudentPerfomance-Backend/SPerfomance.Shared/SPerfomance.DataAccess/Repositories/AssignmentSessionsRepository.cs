@@ -1,12 +1,8 @@
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Storage;
-using SPerfomance.Domain.Models.PerfomanceContext.Models.Assignments;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions.Abstractions;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions.ValueObject;
-using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentsWeeks;
-using SPerfomance.Domain.Models.PerfomanceContext.Models.StudentAssignments;
 using SPerfomance.Domain.Models.Teachers;
 using SPerfomance.Domain.Tools;
 
@@ -14,22 +10,22 @@ namespace SPerfomance.DataAccess.Repositories;
 
 public class AssignmentSessionsRepository : IAssignmentSessionsRepository
 {
-    private readonly DatabaseContext _context = new DatabaseContext();
+    private readonly DatabaseContext _context = new();
 
-    public async Task Insert(AssignmentSession session)
+    public async Task Insert(AssignmentSession session, CancellationToken ct = default)
     {
-        await using (
-            IDbContextTransaction transaction = await _context.Database.BeginTransactionAsync()
-        )
+        await using (var transaction = await _context.Database.BeginTransactionAsync(ct))
         {
             try
             {
-                int currentWeekNumbers = await GenerateWeekEntityNumber();
-                int currentMarkNumber = await GenerateAssignmentEntityNumber();
-                int currentStudentAssignmentNumber = await GenerateStudentAssignmentEntityNumber();
+                var currentWeekNumbers = await GenerateWeekEntityNumber(ct);
+                var currentMarkNumber = await GenerateAssignmentEntityNumber(ct);
+                var currentStudentAssignmentNumber = await GenerateStudentAssignmentEntityNumber(
+                    ct
+                );
 
-                session.SetNumber(await GenerateEntityNumber());
-                string sessionSql = """
+                session.SetNumber(await GenerateEntityNumber(ct));
+                const string sessionSql = """
                     INSERT INTO Sessions(Id, SessionStartDate, SessionCloseDate, State_State, EntityNumber)
                     VALUES
                     (@Id, @StartDate, @EndDate, @State, @EntityNumber)
@@ -42,25 +38,25 @@ public class AssignmentSessionsRepository : IAssignmentSessionsRepository
                     new SqliteParameter("@State", session.State.State),
                     new SqliteParameter("@EntityNumber", session.EntityNumber),
                 ];
-                await _context.Database.ExecuteSqlRawAsync(sessionSql, sessionParameters);
+                await _context.Database.ExecuteSqlRawAsync(sessionSql, sessionParameters, ct);
 
-                string weekSql = """
+                const string weekSql = """
                     INSERT INTO Weeks(Id, SessionId, GroupId, EntityNumber)
                     VALUES
                     (@Id, @SessionId, @GroupId, @EntityNumber)
                     """;
 
-                string assignmentSQL = """
+                const string assignmentSQL = """
                     INSERT INTO Assignments (Id, DisciplineId, WeekId, EntityNumber)
                     VALUES (@Id, @DisciplineId, @WeekId, @EntityNumber)
                     """;
 
-                string studentAssignmentSQL = """
+                const string studentAssignmentSQL = """
                     INSERT INTO StudentAssignments (Id, AssignmentId, StudentId, Value_Value, EntityNumber)
                     VALUES (@Id, @AssignmentId, @StudentId, @Value_Value, @EntityNumber)
                     """;
 
-                foreach (AssignmentWeek week in session.Weeks)
+                foreach (var week in session.Weeks)
                 {
                     week.SetNumber(currentWeekNumbers);
                     SqliteParameter[] weekParameters =
@@ -70,9 +66,9 @@ public class AssignmentSessionsRepository : IAssignmentSessionsRepository
                         new SqliteParameter("@GroupId", week.Group!.Id),
                         new SqliteParameter("@EntityNumber", week.EntityNumber),
                     ];
-                    await _context.Database.ExecuteSqlRawAsync(weekSql, weekParameters);
+                    await _context.Database.ExecuteSqlRawAsync(weekSql, weekParameters, ct);
                     currentWeekNumbers++;
-                    foreach (Assignment mark in week.Assignments)
+                    foreach (var mark in week.Assignments)
                     {
                         mark.SetNumber(currentMarkNumber);
                         SqliteParameter[] markParameters =
@@ -82,9 +78,13 @@ public class AssignmentSessionsRepository : IAssignmentSessionsRepository
                             new SqliteParameter("@WeekId", week.Id),
                             new SqliteParameter("@EntityNumber", mark.EntityNumber),
                         ];
-                        await _context.Database.ExecuteSqlRawAsync(assignmentSQL, markParameters);
+                        await _context.Database.ExecuteSqlRawAsync(
+                            assignmentSQL,
+                            markParameters,
+                            ct
+                        );
                         currentMarkNumber++;
-                        foreach (StudentAssignment studentAssignment in mark.StudentAssignments)
+                        foreach (var studentAssignment in mark.StudentAssignments)
                         {
                             studentAssignment.SetNumber(currentStudentAssignmentNumber);
                             SqliteParameter[] studentAssignmentParameters =
@@ -103,22 +103,23 @@ public class AssignmentSessionsRepository : IAssignmentSessionsRepository
                             ];
                             await _context.Database.ExecuteSqlRawAsync(
                                 studentAssignmentSQL,
-                                studentAssignmentParameters
+                                studentAssignmentParameters,
+                                ct
                             );
                         }
                     }
                 }
 
-                await transaction.CommitAsync();
+                await transaction.CommitAsync(ct);
             }
             catch
             {
-                await transaction.RollbackAsync();
+                await transaction.RollbackAsync(ct);
             }
         }
     }
 
-    public async Task<AssignmentSession?> GetById(Guid id) =>
+    public async Task<AssignmentSession?> GetById(Guid id, CancellationToken ct = default) =>
         await _context
             .Sessions.Include(s => s.Weeks)
             .ThenInclude(w => w.Assignments)
@@ -140,22 +141,31 @@ public class AssignmentSessionsRepository : IAssignmentSessionsRepository
             .ThenInclude(p => p!.Direction)
             .AsNoTracking()
             .AsSplitQuery()
-            .FirstOrDefaultAsync(s => s.Id == id);
+            .FirstOrDefaultAsync(s => s.Id == id, cancellationToken: ct);
 
-    public async Task<int> Count() => await _context.Sessions.CountAsync();
+    public async Task<int> Count(CancellationToken ct = default) =>
+        await _context.Sessions.CountAsync(cancellationToken: ct);
 
-    public async Task Remove(AssignmentSession session) =>
-        await _context.Sessions.Where(s => s.Id == session.Id).ExecuteDeleteAsync();
-
-    public async Task Update(AssignmentSession session) =>
+    public async Task Remove(AssignmentSession session, CancellationToken ct = default) =>
         await _context
             .Sessions.Where(s => s.Id == session.Id)
-            .ExecuteUpdateAsync(s =>
-                s.SetProperty(s => s.SessionCloseDate, session.SessionCloseDate)
-                    .SetProperty(s => s.State.State, session.State.State)
+            .ExecuteDeleteAsync(cancellationToken: ct);
+
+    public async Task Update(AssignmentSession session, CancellationToken ct = default) =>
+        await _context
+            .Sessions.Where(s => s.Id == session.Id)
+            .ExecuteUpdateAsync(
+                s =>
+                    s.SetProperty(s => s.SessionCloseDate, session.SessionCloseDate)
+                        .SetProperty(s => s.State.State, session.State.State),
+                cancellationToken: ct
             );
 
-    public async Task<IReadOnlyCollection<AssignmentSession>> GetPaged(int page, int pageSize) =>
+    public async Task<IReadOnlyCollection<AssignmentSession>> GetPaged(
+        int page,
+        int pageSize,
+        CancellationToken ct = default
+    ) =>
         await _context
             .Sessions.Skip((page - 1) * pageSize)
             .Take(pageSize)
@@ -180,13 +190,14 @@ public class AssignmentSessionsRepository : IAssignmentSessionsRepository
             .ThenInclude(p => p!.Direction)
             .AsNoTracking()
             .AsSplitQuery()
-            .ToListAsync();
+            .ToListAsync(cancellationToken: ct);
 
     public async Task<IReadOnlyCollection<AssignmentSession>> GetInPeriodPaged(
         DateTime startDate,
         DateTime endDate,
         int page,
-        int pageSize
+        int pageSize,
+        CancellationToken ct = default
     ) =>
         await _context
             .Sessions.Where(s =>
@@ -220,9 +231,13 @@ public class AssignmentSessionsRepository : IAssignmentSessionsRepository
             .ThenInclude(p => p!.Direction)
             .AsNoTracking()
             .AsSplitQuery()
-            .ToListAsync();
+            .ToListAsync(cancellationToken: ct);
 
-    public async Task GetByPeriod(DateTime startDate, DateTime endDate) =>
+    public async Task GetByPeriod(
+        DateTime startDate,
+        DateTime endDate,
+        CancellationToken ct = default
+    ) =>
         await _context
             .Sessions.Where(s =>
                 s.SessionCloseDate.Day == endDate.Day
@@ -252,17 +267,22 @@ public class AssignmentSessionsRepository : IAssignmentSessionsRepository
             .ThenInclude(p => p!.Direction)
             .AsNoTracking()
             .AsSplitQuery()
-            .ToListAsync();
+            .ToListAsync(cancellationToken: ct);
 
-    public async Task<int> GenerateEntityNumber()
+    public async Task<int> GenerateEntityNumber(CancellationToken ct = default)
     {
-        int[] numbers = await _context.Sessions.Select(s => s.EntityNumber).ToArrayAsync();
+        var numbers = await _context
+            .Sessions.Select(s => s.EntityNumber)
+            .ToArrayAsync(cancellationToken: ct);
         return numbers.GetOrderedValue();
     }
 
-    public async Task<TeacherAssignmentSession?> GetAssignmentSessionForTeacher(Teacher teacher)
+    public async Task<TeacherAssignmentSession?> GetAssignmentSessionForTeacher(
+        Teacher teacher,
+        CancellationToken ct = default
+    )
     {
-        AssignmentSession? session = await _context
+        var session = await _context
             .Sessions.Include(s => s.Weeks)
             .ThenInclude(w => w.Assignments)
             .ThenInclude(a => a.StudentAssignments)
@@ -283,11 +303,14 @@ public class AssignmentSessionsRepository : IAssignmentSessionsRepository
             .ThenInclude(p => p!.Direction)
             .AsNoTracking()
             .AsSplitQuery()
-            .FirstOrDefaultAsync(a => a.State.State == AssignmentSessionState.Opened.State);
+            .FirstOrDefaultAsync(
+                a => a.State.State == AssignmentSessionState.Opened.State,
+                cancellationToken: ct
+            );
         return session == null ? null : new TeacherAssignmentSession(teacher, session);
     }
 
-    public async Task<AssignmentSession?> GetActiveSession() =>
+    public async Task<AssignmentSession?> GetActiveSession(CancellationToken ct = default) =>
         await _context
             .Sessions.Include(s => s.Weeks)
             .ThenInclude(w => w.Assignments)
@@ -309,25 +332,32 @@ public class AssignmentSessionsRepository : IAssignmentSessionsRepository
             .ThenInclude(p => p!.Direction)
             .AsNoTracking()
             .AsSplitQuery()
-            .FirstOrDefaultAsync(s => s.State.State == AssignmentSessionState.Opened.State);
+            .FirstOrDefaultAsync(
+                s => s.State.State == AssignmentSessionState.Opened.State,
+                cancellationToken: ct
+            );
 
-    private async Task<int> GenerateWeekEntityNumber()
+    private async Task<int> GenerateWeekEntityNumber(CancellationToken ct = default)
     {
-        int[] numbers = await _context.Weeks.Select(s => s.EntityNumber).ToArrayAsync();
+        var numbers = await _context
+            .Weeks.Select(s => s.EntityNumber)
+            .ToArrayAsync(cancellationToken: ct);
         return numbers.GetOrderedValue();
     }
 
-    private async Task<int> GenerateAssignmentEntityNumber()
+    private async Task<int> GenerateAssignmentEntityNumber(CancellationToken ct = default)
     {
-        int[] numbers = await _context.Assignments.Select(a => a.EntityNumber).ToArrayAsync();
+        var numbers = await _context
+            .Assignments.Select(a => a.EntityNumber)
+            .ToArrayAsync(cancellationToken: ct);
         return numbers.GetOrderedValue();
     }
 
-    private async Task<int> GenerateStudentAssignmentEntityNumber()
+    private async Task<int> GenerateStudentAssignmentEntityNumber(CancellationToken ct = default)
     {
-        int[] numbers = await _context
+        var numbers = await _context
             .StudentAssignments.Select(a => a.EntityNumber)
-            .ToArrayAsync();
+            .ToArrayAsync(cancellationToken: ct);
         return numbers.GetOrderedValue();
     }
 }

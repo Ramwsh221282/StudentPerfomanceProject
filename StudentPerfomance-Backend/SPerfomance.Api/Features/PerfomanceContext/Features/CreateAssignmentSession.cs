@@ -2,11 +2,9 @@ using SPerfomance.Api.Endpoints;
 using SPerfomance.Api.Features.Common;
 using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Commands.Create;
 using SPerfomance.Application.PerfomanceContext.AssignmentSessions.DTO;
-using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions.Abstractions;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentsWeeks.Errors;
 using SPerfomance.Domain.Models.StudentGroups.Abstractions;
-using SPerfomance.Domain.Tools;
 
 namespace SPerfomance.Api.Features.PerfomanceContext.Features;
 
@@ -25,19 +23,21 @@ public static class CreateAssignmentSession
         Request request,
         IUsersRepository users,
         IAssignmentSessionsRepository sessions,
-        IStudentGroupsRepository groups
+        IStudentGroupsRepository groups,
+        CancellationToken ct
     )
     {
         if (
             !await new UserVerificationService(users).IsVerified(
                 request.Token,
-                UserRole.Administrator
+                UserRole.Administrator,
+                ct
             )
         )
             return Results.BadRequest(UserTags.UnauthorizedError);
 
-        DateTime dateStart = default;
-        DateTime dateEnd = default;
+        DateTime dateStart;
+        DateTime dateEnd;
         try
         {
             dateStart = new DateTime(
@@ -57,10 +57,10 @@ public static class CreateAssignmentSession
             return Results.BadRequest(AssignmentWeekErrors.InvalidDateFormat().Description);
         }
 
-        Result<AssignmentSession> session = await new CreateAssignmentSessionCommandHandler(
-            sessions,
-            groups
-        ).Handle(new(dateStart, dateEnd));
+        var session = await new CreateAssignmentSessionCommandHandler(sessions, groups).Handle(
+            new CreateAssignmentSessionCommand(dateStart, dateEnd),
+            ct
+        );
 
         return session.IsFailure
             ? Results.BadRequest(session.Error.Description)

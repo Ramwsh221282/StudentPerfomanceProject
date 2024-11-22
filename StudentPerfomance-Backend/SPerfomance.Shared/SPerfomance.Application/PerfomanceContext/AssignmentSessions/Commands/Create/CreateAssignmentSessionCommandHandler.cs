@@ -1,7 +1,6 @@
 using SPerfomance.Application.Abstractions;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions.Abstractions;
-using SPerfomance.Domain.Models.StudentGroups;
 using SPerfomance.Domain.Models.StudentGroups.Abstractions;
 using SPerfomance.Domain.Tools;
 
@@ -16,18 +15,17 @@ public class CreateAssignmentSessionCommandHandler(
 
     private readonly IStudentGroupsRepository _groups = groups;
 
-    public async Task<Result<AssignmentSession>> Handle(CreateAssignmentSessionCommand command)
+    public async Task<Result<AssignmentSession>> Handle(
+        CreateAssignmentSessionCommand command,
+        CancellationToken ct = default
+    )
     {
-        IReadOnlyCollection<StudentGroup> groups = await _groups.GetAll();
-        Result<AssignmentSession> session = AssignmentSession.Create(
-            groups,
-            command.StartDate,
-            command.EndDate
-        );
+        var groups = await _groups.GetAll(ct);
+        var session = AssignmentSession.Create(groups, command.StartDate, command.EndDate);
         if (session.IsFailure)
             return session;
 
-        await _sessions.Insert(session.Value);
+        await _sessions.Insert(session.Value, ct);
         return session;
     }
 }

@@ -8,33 +8,38 @@ namespace SPerfomance.DataAccess.Repositories;
 
 public class UsersRepository : IUsersRepository
 {
-    private readonly DatabaseContext _context = new DatabaseContext();
+    private readonly DatabaseContext _context = new();
 
-    public async Task Insert(User entity)
+    public async Task Insert(User entity, CancellationToken ct = default)
     {
         entity.SetNumber(await GenerateEntityNumber());
-        await _context.AddAsync(entity);
-        await _context.SaveChangesAsync();
+        await _context.AddAsync(entity, ct);
+        await _context.SaveChangesAsync(ct);
     }
 
-    public async Task<int> Count() => await _context.Users.CountAsync();
+    public async Task<int> Count(CancellationToken ct = default) =>
+        await _context.Users.CountAsync(cancellationToken: ct);
 
-    public async Task<int> GenerateEntityNumber()
+    public async Task<int> GenerateEntityNumber(CancellationToken ct = default)
     {
-        int[] numbers = await _context.Users.Select(u => u.EntityNumber).ToArrayAsync();
+        var numbers = await _context
+            .Users.Select(u => u.EntityNumber)
+            .ToArrayAsync(cancellationToken: ct);
         return numbers.GetOrderedValue();
     }
 
-    public async Task<User?> GetById(string Id) =>
+    public async Task<User?> GetById(string Id, CancellationToken ct = default) =>
         await _context
             .Users.AsNoTracking()
-            .FirstOrDefaultAsync(u => u.Id.ToString() == Id.ToUpper());
+            .FirstOrDefaultAsync(u => u.Id.ToString() == Id.ToUpper(), cancellationToken: ct);
 
-    public async Task<Teacher?> GetTeacherByUser(User user) =>
-        await _context.Teachers.FirstOrDefaultAsync(t =>
-            t.Name.Name == user.Name.Name
-            && t.Name.Surname == user.Name.Surname
-            && t.Name.Patronymic == user.Name.Patronymic
+    public async Task<Teacher?> GetTeacherByUser(User user, CancellationToken ct = default) =>
+        await _context.Teachers.FirstOrDefaultAsync(
+            t =>
+                t.Name.Name == user.Name.Name
+                && t.Name.Surname == user.Name.Surname
+                && t.Name.Patronymic == user.Name.Patronymic,
+            cancellationToken: ct
         );
 
     public async Task<IReadOnlyCollection<User>> GetFiltered(
@@ -44,7 +49,8 @@ public class UsersRepository : IUsersRepository
         string? email,
         string? role,
         int page,
-        int pageSize
+        int pageSize,
+        CancellationToken ct = default
     ) =>
         await _context
             .Users.Where(u =>
@@ -57,39 +63,52 @@ public class UsersRepository : IUsersRepository
             .Skip((page - 1) * pageSize)
             .Take(pageSize)
             .AsNoTracking()
-            .ToListAsync();
+            .ToListAsync(cancellationToken: ct);
 
-    public async Task<IReadOnlyCollection<User>> GetPaged(int page, int pageSize) =>
+    public async Task<IReadOnlyCollection<User>> GetPaged(
+        int page,
+        int pageSize,
+        CancellationToken ct = default
+    ) =>
         await _context
             .Users.Skip((page - 1) * pageSize)
             .Take(pageSize)
             .AsNoTracking()
-            .ToListAsync();
+            .ToListAsync(cancellationToken: ct);
 
-    public async Task Remove(User entity) =>
-        await _context.Users.Where(u => u.Id == entity.Id).ExecuteDeleteAsync();
-
-    public async Task Update(User entity) =>
+    public async Task Remove(User entity, CancellationToken ct = default) =>
         await _context
             .Users.Where(u => u.Id == entity.Id)
-            .ExecuteUpdateAsync(u =>
-                u.SetProperty(u => u.Name.Name, entity.Name.Name)
-                    .SetProperty(u => u.Name.Surname, entity.Name.Surname)
-                    .SetProperty(u => u.Name.Patronymic, entity.Name.Patronymic)
-                    .SetProperty(u => u.Email.Email, entity.Email.Email)
-                    .SetProperty(u => u.Role.Role, entity.Role.Role)
-                    .SetProperty(u => u.HashedPassword, entity.HashedPassword)
-                    .SetProperty(u => u.AttachedRoleId, entity.AttachedRoleId)
+            .ExecuteDeleteAsync(cancellationToken: ct);
+
+    public async Task Update(User entity, CancellationToken ct = default) =>
+        await _context
+            .Users.Where(u => u.Id == entity.Id)
+            .ExecuteUpdateAsync(
+                u =>
+                    u.SetProperty(u => u.Name.Name, entity.Name.Name)
+                        .SetProperty(u => u.Name.Surname, entity.Name.Surname)
+                        .SetProperty(u => u.Name.Patronymic, entity.Name.Patronymic)
+                        .SetProperty(u => u.Email.Email, entity.Email.Email)
+                        .SetProperty(u => u.Role.Role, entity.Role.Role)
+                        .SetProperty(u => u.HashedPassword, entity.HashedPassword)
+                        .SetProperty(u => u.AttachedRoleId, entity.AttachedRoleId),
+                cancellationToken: ct
             );
 
-    public async Task<User?> GetByEmail(string? email) =>
-        await _context.Users.AsNoTracking().FirstOrDefaultAsync(u => u.Email.Email == email);
+    public async Task<User?> GetByEmail(string? email, CancellationToken ct = default) =>
+        await _context
+            .Users.AsNoTracking()
+            .FirstOrDefaultAsync(u => u.Email.Email == email, cancellationToken: ct);
 
-    public async Task<bool> HasWithEmail(string? email) =>
-        await _context.Users.AnyAsync(u => u.Email.Email == email);
+    public async Task<bool> HasWithEmail(string? email, CancellationToken ct = default) =>
+        await _context.Users.AnyAsync(u => u.Email.Email == email, cancellationToken: ct);
 
-    public async Task UpdateLoginDate(User entity) =>
+    public async Task UpdateLoginDate(User entity, CancellationToken ct = default) =>
         await _context
             .Users.Where(u => u.Id == entity.Id)
-            .ExecuteUpdateAsync(u => u.SetProperty(u => u.LastLoginDate, entity.LastLoginDate));
+            .ExecuteUpdateAsync(
+                u => u.SetProperty(u => u.LastLoginDate, entity.LastLoginDate),
+                cancellationToken: ct
+            );
 }

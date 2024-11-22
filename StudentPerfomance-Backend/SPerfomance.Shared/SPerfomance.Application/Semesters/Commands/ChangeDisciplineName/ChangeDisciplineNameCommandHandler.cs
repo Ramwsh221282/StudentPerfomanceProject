@@ -9,21 +9,22 @@ namespace SPerfomance.Application.Semesters.Commands.ChangeDisciplineName;
 public class ChangeDisciplineNameCommandHandler(ISemesterPlansRepository repository)
     : ICommandHandler<ChangeDisciplineNameCommand, SemesterPlan>
 {
-    private readonly ISemesterPlansRepository _repository = repository;
-
-    public async Task<Result<SemesterPlan>> Handle(ChangeDisciplineNameCommand command)
+    public async Task<Result<SemesterPlan>> Handle(
+        ChangeDisciplineNameCommand command,
+        CancellationToken ct = default
+    )
     {
         if (command.Discipline == null)
             return Result<SemesterPlan>.Failure(SemesterPlanErrors.NotFound());
 
-        Result<SemesterPlan> updated = command.Discipline.Semester.ChangeDisciplineName(
+        var updated = command.Discipline.Semester.ChangeDisciplineName(
             command.Discipline,
             command.NewName
         );
         if (updated.IsFailure)
             return updated;
 
-        await _repository.Update(updated.Value);
+        await repository.Update(updated.Value, ct);
         return updated;
     }
 }

@@ -1,7 +1,6 @@
 using SPerfomance.Api.Endpoints;
 using SPerfomance.Api.Features.Common;
 using SPerfomance.Application.EducationDirections.DTO;
-using SPerfomance.Domain.Models.EducationDirections;
 using SPerfomance.Domain.Models.EducationDirections.Abstractions;
 
 namespace SPerfomance.Api.Features.EducationDirections;
@@ -20,20 +19,23 @@ public static class GetPagedEducationDirections
     public static async Task<IResult> Handler(
         Request request,
         IUsersRepository users,
-        IEducationDirectionRepository repository
+        IEducationDirectionRepository repository,
+        CancellationToken ct
     )
     {
         if (
             !await new UserVerificationService(users).IsVerified(
                 request.Token,
-                UserRole.Administrator
+                UserRole.Administrator,
+                ct
             )
         )
             return Results.BadRequest(UserTags.UnauthorizedError);
 
-        IReadOnlyCollection<EducationDirection> directions = await repository.GetPaged(
+        var directions = await repository.GetPaged(
             request.Pagination.Page,
-            request.Pagination.PageSize
+            request.Pagination.PageSize,
+            ct
         );
         return Results.Ok(directions.Select(d => d.MapFromDomain()));
     }

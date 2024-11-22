@@ -9,25 +9,22 @@ namespace SPerfomance.Application.EducationDirections.Commands.CreateEducationDi
 public class CreateEducationDirectionCommandHandler(IEducationDirectionRepository repository)
     : ICommandHandler<CreateEducationDirectionCommand, EducationDirection>
 {
-    private readonly IEducationDirectionRepository _repository = repository;
-
-    public async Task<Result<EducationDirection>> Handle(CreateEducationDirectionCommand command)
+    public async Task<Result<EducationDirection>> Handle(
+        CreateEducationDirectionCommand command,
+        CancellationToken ct = default
+    )
     {
-        Result<EducationDirection> creation = EducationDirection.Create(
-            command.Code,
-            command.Name,
-            command.Type
-        );
+        var creation = EducationDirection.Create(command.Code, command.Name, command.Type);
         if (creation.IsFailure)
             return creation;
 
-        EducationDirection direction = creation.Value;
-        if (await _repository.HasWithCode(direction.Code.Code))
+        var direction = creation.Value;
+        if (await repository.HasWithCode(direction.Code.Code, ct))
             return Result<EducationDirection>.Failure(
                 EducationDirectionErrors.CodeDublicateError(direction.Code.Code)
             );
 
-        if (await _repository.Has(direction.Code.Code, direction.Name.Name, direction.Type.Type))
+        if (await repository.Has(direction.Code.Code, direction.Name.Name, direction.Type.Type, ct))
             return Result<EducationDirection>.Failure(
                 EducationDirectionErrors.DirectionDublicateError(
                     direction.Code.Code,
@@ -36,7 +33,7 @@ public class CreateEducationDirectionCommandHandler(IEducationDirectionRepositor
                 )
             );
 
-        await _repository.Insert(direction);
+        await repository.Insert(direction, ct);
         return Result<EducationDirection>.Success(direction);
     }
 }

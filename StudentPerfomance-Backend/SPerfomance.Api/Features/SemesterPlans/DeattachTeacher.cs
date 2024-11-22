@@ -8,15 +8,10 @@ using SPerfomance.Application.EducationDirections.Queries.GetEducationDirection;
 using SPerfomance.Application.EducationPlans.Queries.GetEducationPlan;
 using SPerfomance.Application.Semesters.Commands.DeattachTeacherFromDiscipline;
 using SPerfomance.Application.Semesters.DTO;
-using SPerfomance.Application.Semesters.GetSemester.Queries;
 using SPerfomance.Application.Semesters.Queries.GetDisciplineFromSemester;
-using SPerfomance.Domain.Models.EducationDirections;
+using SPerfomance.Application.Semesters.Queries.GetSemester;
 using SPerfomance.Domain.Models.EducationDirections.Abstractions;
-using SPerfomance.Domain.Models.EducationPlans;
-using SPerfomance.Domain.Models.SemesterPlans;
 using SPerfomance.Domain.Models.SemesterPlans.Abstractions;
-using SPerfomance.Domain.Models.Semesters;
-using SPerfomance.Domain.Tools;
 
 namespace SPerfomance.Api.Features.SemesterPlans;
 
@@ -41,31 +36,38 @@ public static class DeattachTeacher
         Request request,
         IUsersRepository users,
         IEducationDirectionRepository directions,
-        ISemesterPlansRepository disciplines
+        ISemesterPlansRepository disciplines,
+        CancellationToken ct
     )
     {
         if (
             !await new UserVerificationService(users).IsVerified(
                 request.Token,
-                UserRole.Administrator
+                UserRole.Administrator,
+                ct
             )
         )
             return Results.BadRequest(UserTags.UnauthorizedError);
 
-        Result<EducationDirection> direction = await new GetEducationDirectionQueryHandler(
-            directions
-        ).Handle(request.Direction);
-        Result<EducationPlan> educationPlan = await new GetEducationPlanQueryHandler().Handle(
-            new(direction.Value, request.Plan.PlanYear)
+        var direction = await new GetEducationDirectionQueryHandler(directions).Handle(
+            request.Direction,
+            ct
         );
-        Result<Semester> semester = await new GetSemesterQueryHandler().Handle(
-            new(educationPlan.Value, request.Semester.Number)
+        var educationPlan = await new GetEducationPlanQueryHandler().Handle(
+            new GetEducationPlanQuery(direction.Value, request.Plan.PlanYear),
+            ct
         );
-        Result<SemesterPlan> discipline = await new GetDisciplineFromSemesterQueryHandler().Handle(
-            new(semester.Value, request.Discipline.Discipline)
+        var semester = await new GetSemesterQueryHandler().Handle(
+            new GetSemesterQuery(educationPlan.Value, request.Semester.Number),
+            ct
+        );
+        var discipline = await new GetDisciplineFromSemesterQueryHandler().Handle(
+            new GetDisciplineFromSemesterQuery(semester.Value, request.Discipline.Discipline),
+            ct
         );
         discipline = await new DeattachTeacherFromDisciplineCommandHandler(disciplines).Handle(
-            new(discipline.Value)
+            new DeattachTeacherFromDisciplineCommand(discipline.Value),
+            ct
         );
 
         return discipline.IsFailure

@@ -2,7 +2,6 @@ using SPerfomance.Api.Endpoints;
 using SPerfomance.Api.Features.Common;
 using SPerfomance.Api.Features.StudentGroups.Contracts;
 using SPerfomance.Application.StudentGroups.DTO;
-using SPerfomance.Domain.Models.StudentGroups;
 using SPerfomance.Domain.Models.StudentGroups.Abstractions;
 
 namespace SPerfomance.Api.Features.StudentGroups;
@@ -24,21 +23,24 @@ public static class GetGroupsByFilter
     public static async Task<IResult> Handler(
         Request request,
         IUsersRepository users,
-        IStudentGroupsRepository repository
+        IStudentGroupsRepository repository,
+        CancellationToken ct
     )
     {
         if (
             !await new UserVerificationService(users).IsVerified(
                 request.Token,
-                UserRole.Administrator
+                UserRole.Administrator,
+                ct
             )
         )
             return Results.BadRequest(UserTags.UnauthorizedError);
 
-        IReadOnlyCollection<StudentGroup> groups = await repository.FilterPaged(
+        var groups = await repository.FilterPaged(
             request.Group.Name,
             request.Pagination.Page,
-            request.Pagination.PageSize
+            request.Pagination.PageSize,
+            ct
         );
 
         return Results.Ok(groups.Select(g => g.MapFromDomain()));

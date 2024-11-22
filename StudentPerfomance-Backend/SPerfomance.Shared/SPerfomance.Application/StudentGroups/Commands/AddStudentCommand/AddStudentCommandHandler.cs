@@ -9,14 +9,15 @@ namespace SPerfomance.Application.StudentGroups.Commands.AddStudentCommand;
 public class AddStudentCommandHandler(IStudentsRepository students)
     : ICommandHandler<AddStudentCommand, Student>
 {
-    private readonly IStudentsRepository _students = students;
-
-    public async Task<Result<Student>> Handle(AddStudentCommand command)
+    public async Task<Result<Student>> Handle(
+        AddStudentCommand command,
+        CancellationToken ct = default
+    )
     {
         if (command.Group == null)
             return Result<Student>.Failure(StudentGroupErrors.NotFound());
 
-        Result<Student> student = command.Group.AddStudent(
+        var student = command.Group.AddStudent(
             command.Name.ValueOrEmpty(),
             command.Surname.ValueOrEmpty(),
             command.Patronymic.ValueOrEmpty(),
@@ -27,7 +28,7 @@ public class AddStudentCommandHandler(IStudentsRepository students)
         if (student.IsFailure)
             return student;
 
-        await _students.Insert(student.Value);
+        await students.Insert(student.Value, ct);
         return Result<Student>.Success(student.Value);
     }
 }

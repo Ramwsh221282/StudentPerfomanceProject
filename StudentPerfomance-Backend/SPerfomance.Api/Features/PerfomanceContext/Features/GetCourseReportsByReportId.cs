@@ -3,7 +3,6 @@ using SPerfomance.Api.Features.Common;
 using SPerfomance.Api.Features.Common.Extensions;
 using SPerfomance.Api.Features.PerfomanceContext.Responses;
 using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Abstractions;
-using SPerfomance.Statistics.DataAccess.EntityModels;
 using SPerfomance.Statistics.DataAccess.Repositories;
 
 namespace SPerfomance.Api.Features.PerfomanceContext.Features;
@@ -22,7 +21,8 @@ public static class GetCourseReportsByReportId
     public static async Task<IResult> Handler(
         Request request,
         IUsersRepository usersRepository,
-        IControlWeekReportRepository controlWeekReportRepository
+        IControlWeekReportRepository controlWeekReportRepository,
+        CancellationToken ct
     )
     {
         if (!await request.Token.IsVerified(usersRepository))
@@ -32,9 +32,7 @@ public static class GetCourseReportsByReportId
 
         if (controlWeekReportRepository is not ControlWeekRepository repository)
             return Results.Ok();
-        ControlWeekReportEntity? report = await repository.GetDirectionCodeTypeCourseReportsById(
-            request.Id
-        );
+        var report = await repository.GetDirectionCodeTypeCourseReportsById(request.Id, ct);
         return report == null
             ? Results.BadRequest("Отчёт не найден")
             : Results.Ok(new ControlWeekReportDTO(report));

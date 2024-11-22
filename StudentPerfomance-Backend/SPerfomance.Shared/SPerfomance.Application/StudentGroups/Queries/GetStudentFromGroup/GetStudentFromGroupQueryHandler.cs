@@ -7,12 +7,15 @@ namespace SPerfomance.Application.StudentGroups.Queries.GetStudentFromGroup;
 
 public class GetStudentFromGroupQueryHandler : IQueryHandler<GetStudentFromGroupQuery, Student>
 {
-    public async Task<Result<Student>> Handle(GetStudentFromGroupQuery command)
+    public async Task<Result<Student>> Handle(
+        GetStudentFromGroupQuery command,
+        CancellationToken ct = default
+    )
     {
         if (command.Group == null)
             return Result<Student>.Failure(StudentGroupErrors.NotFound());
 
-        Result<Student> student = command.Group.GetStudent(
+        var student = command.Group.GetStudent(
             command.Name.ValueOrEmpty(),
             command.Surname.ValueOrEmpty(),
             command.Patronymic.ValueOrEmpty(),

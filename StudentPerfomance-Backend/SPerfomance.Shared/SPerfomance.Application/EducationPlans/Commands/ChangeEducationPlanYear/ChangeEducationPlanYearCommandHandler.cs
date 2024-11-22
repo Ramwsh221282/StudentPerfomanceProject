@@ -9,18 +9,19 @@ namespace SPerfomance.Application.EducationPlans.Commands.ChangeEducationPlanYea
 public class ChangeEducationPlanYearCommandHandler(IEducationPlansRepository repository)
     : ICommandHandler<ChangeEducationPlanYearCommand, EducationPlan>
 {
-    private readonly IEducationPlansRepository _repository = repository;
-
-    public async Task<Result<EducationPlan>> Handle(ChangeEducationPlanYearCommand command)
+    public async Task<Result<EducationPlan>> Handle(
+        ChangeEducationPlanYearCommand command,
+        CancellationToken ct = default
+    )
     {
         if (command.Plan == null)
             return Result<EducationPlan>.Failure(EducationPlanErrors.NotFoundError());
 
-        Result<EducationPlan> updated = command.Plan.ChangeYear(command.NewYear);
+        var updated = command.Plan.ChangeYear(command.NewYear);
         if (updated.IsFailure)
             return updated;
 
-        await _repository.Update(updated.Value);
+        await repository.Update(updated.Value, ct);
         return Result<EducationPlan>.Success(updated.Value);
     }
 }

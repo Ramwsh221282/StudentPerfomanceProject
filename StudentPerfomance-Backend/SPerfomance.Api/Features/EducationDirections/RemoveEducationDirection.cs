@@ -5,9 +5,7 @@ using SPerfomance.Api.Features.EducationDirections.Contracts;
 using SPerfomance.Application.EducationDirections.Commands.RemoveEducationDirection;
 using SPerfomance.Application.EducationDirections.DTO;
 using SPerfomance.Application.EducationDirections.Queries.GetEducationDirection;
-using SPerfomance.Domain.Models.EducationDirections;
 using SPerfomance.Domain.Models.EducationDirections.Abstractions;
-using SPerfomance.Domain.Tools;
 
 namespace SPerfomance.Api.Features.EducationDirections;
 
@@ -27,23 +25,27 @@ public static class RemoveEducationDirection
     public static async Task<IResult> Handler(
         [FromBody] Request request,
         IUsersRepository users,
-        IEducationDirectionRepository repository
+        IEducationDirectionRepository repository,
+        CancellationToken ct
     )
     {
         if (
             !await new UserVerificationService(users).IsVerified(
                 request.Token,
-                UserRole.Administrator
+                UserRole.Administrator,
+                ct
             )
         )
             return Results.BadRequest(UserTags.UnauthorizedError);
 
-        Result<EducationDirection> direction = await new GetEducationDirectionQueryHandler(
-            repository
-        ).Handle(request.Direction);
+        var direction = await new GetEducationDirectionQueryHandler(repository).Handle(
+            request.Direction,
+            ct
+        );
 
         direction = await new RemoveEducationDirectionCommandHandler(repository).Handle(
-            new(direction.Value)
+            new RemoveEducationDirectionCommand(direction.Value),
+            ct
         );
 
         return direction.IsFailure

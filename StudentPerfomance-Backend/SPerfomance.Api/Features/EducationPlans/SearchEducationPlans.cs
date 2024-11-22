@@ -3,7 +3,6 @@ using SPerfomance.Api.Features.Common;
 using SPerfomance.Api.Features.EducationDirections.Contracts;
 using SPerfomance.Api.Features.EducationPlans.Contracts;
 using SPerfomance.Application.EducationPlans.DTO;
-using SPerfomance.Domain.Models.EducationPlans;
 using SPerfomance.Domain.Models.EducationPlans.Abstractions;
 
 namespace SPerfomance.Api.Features.EducationPlans;
@@ -25,22 +24,25 @@ public static class SearchEducationPlans
     public static async Task<IResult> Handler(
         Request request,
         IUsersRepository users,
-        IEducationPlansRepository repository
+        IEducationPlansRepository repository,
+        CancellationToken ct
     )
     {
         if (
             !await new UserVerificationService(users).IsVerified(
                 request.Token,
-                UserRole.Administrator
+                UserRole.Administrator,
+                ct
             )
         )
             return Results.BadRequest(UserTags.UnauthorizedError);
 
-        IReadOnlyCollection<EducationPlan> plans = await repository.GetFiltered(
+        var plans = await repository.GetFiltered(
             request.Direction.Name,
             request.Direction.Code,
             request.Direction.Type,
-            request.Plan.PlanYear
+            request.Plan.PlanYear,
+            ct
         );
         return Results.Ok(plans.Select(p => p.MapFromDomain()));
     }

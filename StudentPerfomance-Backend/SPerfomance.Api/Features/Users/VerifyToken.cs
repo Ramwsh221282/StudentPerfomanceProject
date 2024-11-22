@@ -12,18 +12,18 @@ public static class VerifyToken
             app.MapPost($"{UserTags.Api}/verify", Handler).WithTags(UserTags.Tag);
     }
 
-    public static async Task<IResult> Handler(Request request)
+    public static async Task<IResult> Handler(Request request, CancellationToken ct)
     {
-        return await Task.Run(() =>
-        {
-            if (string.IsNullOrWhiteSpace(request.Token))
-                return Results.Unauthorized();
+        return await Task.Run(
+            () =>
+            {
+                if (string.IsNullOrWhiteSpace(request.Token))
+                    return Results.Unauthorized();
 
-            Token token = new Token(request.Token);
-            if (token.IsExpired)
-                return Results.Unauthorized();
-
-            return Results.Ok();
-        });
+                var token = new Token(request.Token);
+                return token.IsExpired ? Results.Unauthorized() : Results.Ok();
+            },
+            ct
+        );
     }
 }

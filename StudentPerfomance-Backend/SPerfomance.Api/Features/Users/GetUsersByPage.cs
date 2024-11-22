@@ -14,21 +14,27 @@ public static class GetUsersByPage
             app.MapPost($"{UserTags.Api}/byPage", Handler).WithTags(UserTags.Tag);
     }
 
-    public static async Task<IResult> Handler(Request request, IUsersRepository repository)
+    public static async Task<IResult> Handler(
+        Request request,
+        IUsersRepository repository,
+        CancellationToken ct
+    )
     {
         if (
             !await new UserVerificationService(repository).IsVerified(
                 request.Token,
-                UserRole.Administrator
+                UserRole.Administrator,
+                ct
             )
         )
             return Results.BadRequest(
                 "Ваша сессия не удовлетворяет требованиям. Необходимо авторизоваться."
             );
 
-        IReadOnlyCollection<User> users = await repository.GetPaged(
+        var users = await repository.GetPaged(
             request.Pagination.Page,
-            request.Pagination.PageSize
+            request.Pagination.PageSize,
+            ct
         );
         return Results.Ok(users.Select(u => u.MapFromDomain()));
     }

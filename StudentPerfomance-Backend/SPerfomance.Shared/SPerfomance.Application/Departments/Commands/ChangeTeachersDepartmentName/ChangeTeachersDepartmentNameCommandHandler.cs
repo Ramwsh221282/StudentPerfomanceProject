@@ -9,26 +9,25 @@ namespace SPerfomance.Application.Departments.Commands.ChangeTeachersDepartmentN
 public class ChangeTeachersDepartmentNameCommandHandler(ITeacherDepartmentsRepository repository)
     : ICommandHandler<ChangeTeachersDepartmentNameCommand, TeachersDepartments>
 {
-    private readonly ITeacherDepartmentsRepository _repository = repository;
-
     public async Task<Result<TeachersDepartments>> Handle(
-        ChangeTeachersDepartmentNameCommand command
+        ChangeTeachersDepartmentNameCommand command,
+        CancellationToken ct = default
     )
     {
         if (command.Department == null)
             return Result<TeachersDepartments>.Failure(TeacherDepartmentErrors.NotFound());
 
-        string name = command.NewName.ValueOrEmpty();
-        if (await _repository.HasWithName(name))
+        var name = command.NewName.ValueOrEmpty();
+        if (await repository.HasWithName(name, ct))
             return Result<TeachersDepartments>.Failure(
                 TeacherDepartmentErrors.DepartmentDublicate(name)
             );
 
-        Result<TeachersDepartments> department = command.Department.ChangeName(command.NewName);
+        var department = command.Department.ChangeName(command.NewName);
         if (department.IsFailure)
             return department;
 
-        await _repository.Update(department.Value);
+        await repository.Update(department.Value, ct);
         return department;
     }
 }

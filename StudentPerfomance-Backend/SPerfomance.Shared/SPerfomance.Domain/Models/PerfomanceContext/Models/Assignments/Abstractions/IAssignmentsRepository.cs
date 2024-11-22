@@ -11,8 +11,9 @@ public interface IAssignmentsRepository
         string studentSurname,
         string? studentPatronymic,
         ulong studentRecordbook,
-        string disciplineName
+        string disciplineName,
+        CancellationToken ct = default
     );
 
-    Task UpdateAssignmentMark(Assignment assignment);
+    Task UpdateAssignmentMark(Assignment assignment, CancellationToken ct = default);
 }

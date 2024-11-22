@@ -9,9 +9,9 @@ public class PasswordGenerator : IPasswordGenerator
 
     public string Generate()
     {
-        int length = 10;
+        const int length = 10;
         var random = new Random();
-        string password = new string(
+        var password = new string(
             Enumerable.Repeat(_characters, length).Select(s => s[random.Next(s.Length)]).ToArray()
         );
         return password;

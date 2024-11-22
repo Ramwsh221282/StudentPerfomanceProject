@@ -17,7 +17,8 @@ public static class GetAssignmentSessionReportsCount
     public static async Task<IResult> Handler(
         TokenContract token,
         IUsersRepository users,
-        IControlWeekReportRepository reports
+        IControlWeekReportRepository reports,
+        CancellationToken ct
     )
     {
         if (!await token.IsVerified(users))
@@ -25,6 +26,6 @@ public static class GetAssignmentSessionReportsCount
                 "Просмотр отчётов доступен только администраторам и преподавателям"
             );
 
-        return Results.Ok(await reports.Count());
+        return Results.Ok(await reports.Count(ct));
     }
 }

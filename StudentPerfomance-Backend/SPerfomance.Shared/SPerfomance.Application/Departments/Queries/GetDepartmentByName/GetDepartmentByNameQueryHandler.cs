@@ -9,11 +9,12 @@ namespace SPerfomance.Application.Departments.Queries.GetDepartmentByName;
 public class GetDepartmentByNameQueryHandler(ITeacherDepartmentsRepository repository)
     : IQueryHandler<GetDepartmentByNameQuery, TeachersDepartments>
 {
-    private readonly ITeacherDepartmentsRepository _repository = repository;
-
-    public async Task<Result<TeachersDepartments>> Handle(GetDepartmentByNameQuery command)
+    public async Task<Result<TeachersDepartments>> Handle(
+        GetDepartmentByNameQuery command,
+        CancellationToken ct = default
+    )
     {
-        TeachersDepartments? requestedDepartment = await _repository.Get(command.Name);
+        var requestedDepartment = await repository.Get(command.Name, ct);
         return requestedDepartment == null
             ? Result<TeachersDepartments>.Failure(TeacherDepartmentErrors.NotFound())
             : Result<TeachersDepartments>.Success(requestedDepartment);

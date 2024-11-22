@@ -10,12 +10,8 @@ using SPerfomance.Application.EducationPlans.Queries.GetEducationPlan;
 using SPerfomance.Application.StudentGroups.Commands.AttachEducationPlan;
 using SPerfomance.Application.StudentGroups.DTO;
 using SPerfomance.Application.StudentGroups.Queries.GetStudentGroupByName;
-using SPerfomance.Domain.Models.EducationDirections;
 using SPerfomance.Domain.Models.EducationDirections.Abstractions;
-using SPerfomance.Domain.Models.EducationPlans;
-using SPerfomance.Domain.Models.StudentGroups;
 using SPerfomance.Domain.Models.StudentGroups.Abstractions;
-using SPerfomance.Domain.Tools;
 
 namespace SPerfomance.Api.Features.StudentGroups;
 
@@ -40,28 +36,31 @@ public static class AttachGroupEducationPlan
         [FromBody] Request request,
         IUsersRepository users,
         IEducationDirectionRepository directions,
-        IStudentGroupsRepository groups
+        IStudentGroupsRepository groups,
+        CancellationToken ct
     )
     {
         if (
             !await new UserVerificationService(users).IsVerified(
                 request.Token,
-                UserRole.Administrator
+                UserRole.Administrator,
+                ct
             )
         )
             return Results.BadRequest(UserTags.UnauthorizedError);
 
-        Result<EducationDirection> direction = await new GetEducationDirectionQueryHandler(
-            directions
-        ).Handle(request.Direction);
-        Result<EducationPlan> plan = await new GetEducationPlanQueryHandler().Handle(
-            new(direction.Value, request.Plan.PlanYear)
+        var direction = await new GetEducationDirectionQueryHandler(directions).Handle(
+            request.Direction,
+            ct
         );
-        Result<StudentGroup> group = await new GetStudentGroupQueryHandler(groups).Handle(
-            request.Group
+        var plan = await new GetEducationPlanQueryHandler().Handle(
+            new GetEducationPlanQuery(direction.Value, request.Plan.PlanYear),
+            ct
         );
+        var group = await new GetStudentGroupQueryHandler(groups).Handle(request.Group, ct);
         group = await new AttachEducationPlanCommandHandler(groups).Handle(
-            new(plan.Value, group.Value, request.Semester.Number)
+            new AttachEducationPlanCommand(plan.Value, group.Value, request.Semester.Number),
+            ct
         );
 
         return group.IsFailure

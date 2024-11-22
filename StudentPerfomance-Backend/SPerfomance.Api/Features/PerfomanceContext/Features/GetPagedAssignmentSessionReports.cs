@@ -3,7 +3,6 @@ using SPerfomance.Api.Features.Common;
 using SPerfomance.Api.Features.Common.Extensions;
 using SPerfomance.Api.Features.PerfomanceContext.Responses;
 using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Abstractions;
-using SPerfomance.Statistics.DataAccess.EntityModels;
 using SPerfomance.Statistics.DataAccess.Repositories;
 
 namespace SPerfomance.Api.Features.PerfomanceContext.Features;
@@ -22,7 +21,8 @@ public static class GetPagedAssignmentSessionReports
     public static async Task<IResult> Handler(
         Request request,
         IUsersRepository users,
-        IControlWeekReportRepository reports
+        IControlWeekReportRepository reports,
+        CancellationToken ct
     )
     {
         if (!await request.Token.IsVerified(users))
@@ -33,12 +33,13 @@ public static class GetPagedAssignmentSessionReports
         if (reports is not ControlWeekRepository repository)
             return Results.NotFound();
 
-        IReadOnlyList<ControlWeekReportEntity> list = await repository.GetPaged(
+        var list = await repository.GetPaged(
             request.Pagination.Page,
-            request.Pagination.PageSize
+            request.Pagination.PageSize,
+            ct
         );
 
-        ControlWeekReportDTO[] result = await ControlWeekReportDTO.InitializeArrayAsync(list);
+        var result = await ControlWeekReportDTO.InitializeArrayAsync(list);
         return Results.Ok(result);
     }
 }

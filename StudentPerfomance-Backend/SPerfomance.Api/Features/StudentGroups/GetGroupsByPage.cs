@@ -1,7 +1,6 @@
 using SPerfomance.Api.Endpoints;
 using SPerfomance.Api.Features.Common;
 using SPerfomance.Application.StudentGroups.DTO;
-using SPerfomance.Domain.Models.StudentGroups;
 using SPerfomance.Domain.Models.StudentGroups.Abstractions;
 
 namespace SPerfomance.Api.Features.StudentGroups;
@@ -19,20 +18,23 @@ public static class GetGroupsByPage
     public static async Task<IResult> Handler(
         Request request,
         IUsersRepository users,
-        IStudentGroupsRepository repository
+        IStudentGroupsRepository repository,
+        CancellationToken ct
     )
     {
         if (
             !await new UserVerificationService(users).IsVerified(
                 request.Token,
-                UserRole.Administrator
+                UserRole.Administrator,
+                ct
             )
         )
             return Results.BadRequest(UserTags.UnauthorizedError);
 
-        IReadOnlyCollection<StudentGroup> groups = await repository.GetPaged(
+        var groups = await repository.GetPaged(
             request.Pagination.Page,
-            request.Pagination.PageSize
+            request.Pagination.PageSize,
+            ct
         );
         return Results.Ok(groups.Select(g => g.MapFromDomain()));
     }

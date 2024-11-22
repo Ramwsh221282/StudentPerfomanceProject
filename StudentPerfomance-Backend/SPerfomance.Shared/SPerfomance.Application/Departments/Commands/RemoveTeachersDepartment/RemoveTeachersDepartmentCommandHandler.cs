@@ -9,14 +9,15 @@ namespace SPerfomance.Application.Departments.Commands.RemoveTeachersDepartment;
 public class RemoveTeachersDepartmentCommandHandler(ITeacherDepartmentsRepository repository)
     : ICommandHandler<RemoveTeachersDepartmentCommand, TeachersDepartments>
 {
-    private readonly ITeacherDepartmentsRepository _repository = repository;
-
-    public async Task<Result<TeachersDepartments>> Handle(RemoveTeachersDepartmentCommand command)
+    public async Task<Result<TeachersDepartments>> Handle(
+        RemoveTeachersDepartmentCommand command,
+        CancellationToken ct = default
+    )
     {
         if (command.Department == null)
             return Result<TeachersDepartments>.Failure(TeacherDepartmentErrors.NotFound());
 
-        await _repository.Remove(command.Department);
+        await repository.Remove(command.Department, ct);
         return Result<TeachersDepartments>.Success(command.Department);
     }
 }

@@ -10,9 +10,10 @@ namespace SPerfomance.Application.StudentGroups.Commands.AttachEducationPlan;
 public class AttachEducationPlanCommandHandler(IStudentGroupsRepository repository)
     : ICommandHandler<AttachEducationPlanCommand, StudentGroup>
 {
-    private readonly IStudentGroupsRepository _repository = repository;
-
-    public async Task<Result<StudentGroup>> Handle(AttachEducationPlanCommand command)
+    public async Task<Result<StudentGroup>> Handle(
+        AttachEducationPlanCommand command,
+        CancellationToken ct = default
+    )
     {
         if (command.Group == null)
             return Result<StudentGroup>.Failure(StudentGroupErrors.NotFound());
@@ -20,12 +21,10 @@ public class AttachEducationPlanCommandHandler(IStudentGroupsRepository reposito
         if (command.Plan == null)
             return Result<StudentGroup>.Failure(EducationPlanErrors.NotFoundError());
 
-        Result<StudentGroup> group = command.Plan.AddStudentGroup(
-            command.Group,
-            command.SemesterNumber
-        );
+        var group = command.Plan.AddStudentGroup(command.Group, command.SemesterNumber);
+
         if (!group.IsFailure)
-            await _repository.AttachEducationPlanId(group.Value);
+            await repository.AttachEducationPlanId(group.Value, ct);
 
         return group;
     }

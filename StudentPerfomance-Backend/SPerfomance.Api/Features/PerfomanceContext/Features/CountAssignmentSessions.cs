@@ -18,18 +18,20 @@ public static class CountAssignmentSessions
     public static async Task<IResult> Handler(
         Request request,
         IUsersRepository users,
-        IAssignmentSessionsRepository sessions
+        IAssignmentSessionsRepository sessions,
+        CancellationToken ct
     )
     {
         if (
             !await new UserVerificationService(users).IsVerified(
                 request.Token,
-                UserRole.Administrator
+                UserRole.Administrator,
+                ct
             )
         )
             return Results.BadRequest(UserTags.UnauthorizedError);
 
-        int count = await sessions.Count();
+        var count = await sessions.Count(ct);
         return Results.Ok(count);
     }
 }

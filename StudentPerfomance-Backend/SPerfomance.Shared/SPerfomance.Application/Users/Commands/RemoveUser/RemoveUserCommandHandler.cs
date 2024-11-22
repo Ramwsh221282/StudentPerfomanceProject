@@ -9,14 +9,15 @@ namespace SPerfomance.Application.Users.Commands.RemoveUser;
 public class RemoveUserCommandHandler(IUsersRepository repository)
     : ICommandHandler<RemoveUserCommand, User>
 {
-    private readonly IUsersRepository _repository = repository;
-
-    public async Task<Result<User>> Handle(RemoveUserCommand command)
+    public async Task<Result<User>> Handle(
+        RemoveUserCommand command,
+        CancellationToken ct = default
+    )
     {
         if (command.User == null)
             return Result<User>.Failure(UserErrors.NotFound());
 
-        await _repository.Remove(command.User);
+        await repository.Remove(command.User, ct);
         return Result<User>.Success(command.User);
     }
 }

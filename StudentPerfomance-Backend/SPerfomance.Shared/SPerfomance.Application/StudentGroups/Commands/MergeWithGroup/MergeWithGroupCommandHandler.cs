@@ -9,15 +9,16 @@ namespace SPerfomance.Application.StudentGroups.Commands.MergeWithGroup;
 public class MergeWithGroupCommandHandler(IStudentGroupsRepository repository)
     : ICommandHandler<MergeWithGroupCommand, StudentGroup>
 {
-    private readonly IStudentGroupsRepository _repository = repository;
-
-    public async Task<Result<StudentGroup>> Handle(MergeWithGroupCommand command)
+    public async Task<Result<StudentGroup>> Handle(
+        MergeWithGroupCommand command,
+        CancellationToken ct = default
+    )
     {
         if (command.Initial == null || command.Target == null)
             return Result<StudentGroup>.Failure(StudentGroupErrors.NotFound());
 
-        Result<StudentGroup> mergedGroup = command.Initial.MergeWithGroup(command.Target);
-        await _repository.UpdateMerge(mergedGroup.Value, command.Target);
+        var mergedGroup = command.Initial.MergeWithGroup(command.Target);
+        await repository.UpdateMerge(mergedGroup.Value, command.Target, ct);
         return Result<StudentGroup>.Success(mergedGroup.Value);
     }
 }

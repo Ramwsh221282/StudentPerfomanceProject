@@ -3,9 +3,7 @@ using SPerfomance.Api.Features.Common;
 using SPerfomance.Api.Features.StudentGroups.Contracts;
 using SPerfomance.Application.StudentGroups.DTO;
 using SPerfomance.Application.StudentGroups.Queries.GetStudentGroupByName;
-using SPerfomance.Domain.Models.StudentGroups;
 using SPerfomance.Domain.Models.StudentGroups.Abstractions;
-using SPerfomance.Domain.Tools;
 
 namespace SPerfomance.Api.Features.Students;
 
@@ -22,19 +20,22 @@ public static class GetStudentsByGroup
     public static async Task<IResult> Handler(
         Request request,
         IUsersRepository users,
-        IStudentGroupsRepository repository
+        IStudentGroupsRepository repository,
+        CancellationToken ct
     )
     {
         if (
             !await new UserVerificationService(users).IsVerified(
                 request.Token,
-                UserRole.Administrator
+                UserRole.Administrator,
+                ct
             )
         )
             return Results.BadRequest(UserTags.UnauthorizedError);
 
-        Result<StudentGroup> group = await new GetStudentGroupQueryHandler(repository).Handle(
-            new(request.Group.Name)
+        var group = await new GetStudentGroupQueryHandler(repository).Handle(
+            new GetStudentGroupQuery(request.Group.Name),
+            ct
         );
 
         if (group.IsFailure)

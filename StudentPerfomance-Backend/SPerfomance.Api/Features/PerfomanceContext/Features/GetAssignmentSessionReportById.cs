@@ -3,7 +3,6 @@ using SPerfomance.Api.Features.Common;
 using SPerfomance.Api.Features.Common.Extensions;
 using SPerfomance.Api.Features.PerfomanceContext.Responses;
 using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Abstractions;
-using SPerfomance.Statistics.DataAccess.EntityModels;
 using SPerfomance.Statistics.DataAccess.Repositories;
 
 namespace SPerfomance.Api.Features.PerfomanceContext.Features;
@@ -22,7 +21,8 @@ public static class GetAssignmentSessionReportById
     public static async Task<IResult> Handler(
         Request request,
         IUsersRepository users,
-        IControlWeekReportRepository controlWeeks
+        IControlWeekReportRepository controlWeeks,
+        CancellationToken ct
     )
     {
         if (!await request.Token.IsVerified(users))
@@ -36,7 +36,7 @@ public static class GetAssignmentSessionReportById
         if (controlWeeks is not ControlWeekRepository repository)
             return Results.Ok();
 
-        ControlWeekReportEntity? report = await repository.GetById(Guid.Parse(request.Id));
+        var report = await repository.GetById(Guid.Parse(request.Id), ct);
         return report == null
             ? Results.BadRequest("Отчёт не найден")
             : Results.Ok(new ControlWeekReportDTO(report).GroupParts);

@@ -9,14 +9,15 @@ namespace SPerfomance.Application.Departments.Commands.UpdateTeacher;
 public class UpdateTeacherCommandHandler(ITeachersRepository repository)
     : ICommandHandler<UpdateTeacherCommand, Teacher>
 {
-    private readonly ITeachersRepository _repository = repository;
-
-    public async Task<Result<Teacher>> Handle(UpdateTeacherCommand command)
+    public async Task<Result<Teacher>> Handle(
+        UpdateTeacherCommand command,
+        CancellationToken ct = default
+    )
     {
         if (command.Teacher == null)
             return Result<Teacher>.Failure(TeacherErrors.NotFound());
 
-        Result<Teacher> updatedTeacher = command.Teacher.ChangeName(
+        var updatedTeacher = command.Teacher.ChangeName(
             command.NewName,
             command.NewSurname,
             command.NewPatronymic
@@ -32,7 +33,7 @@ public class UpdateTeacherCommandHandler(ITeachersRepository repository)
         if (updatedTeacher.IsFailure)
             return updatedTeacher;
 
-        await _repository.Update(updatedTeacher.Value);
+        await repository.Update(updatedTeacher.Value, ct);
         return Result<Teacher>.Success(updatedTeacher.Value);
     }
 }

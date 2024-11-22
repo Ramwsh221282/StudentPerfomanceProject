@@ -6,11 +6,8 @@ using SPerfomance.Application.StudentGroups.Commands.RemoveStudent;
 using SPerfomance.Application.StudentGroups.DTO;
 using SPerfomance.Application.StudentGroups.Queries.GetStudentFromGroup;
 using SPerfomance.Application.StudentGroups.Queries.GetStudentGroupByName;
-using SPerfomance.Domain.Models.StudentGroups;
 using SPerfomance.Domain.Models.StudentGroups.Abstractions;
-using SPerfomance.Domain.Models.Students;
 using SPerfomance.Domain.Models.Students.Abstractions;
-using SPerfomance.Domain.Tools;
 
 namespace SPerfomance.Api.Features.Students;
 
@@ -28,33 +25,40 @@ public class FireStudent
         [FromBody] Request request,
         IUsersRepository users,
         IStudentGroupsRepository groups,
-        IStudentsRepository students
+        IStudentsRepository students,
+        CancellationToken ct
     )
     {
         if (
             !await new UserVerificationService(users).IsVerified(
                 request.Token,
-                UserRole.Administrator
+                UserRole.Administrator,
+                ct
             )
         )
             return Results.BadRequest(UserTags.UnauthorizedError);
 
-        Result<StudentGroup> group = await new GetStudentGroupQueryHandler(groups).Handle(
-            new(request.Student.GroupName)
+        var group = await new GetStudentGroupQueryHandler(groups).Handle(
+            new GetStudentGroupQuery(request.Student.GroupName),
+            ct
         );
 
-        Result<Student> student = await new GetStudentFromGroupQueryHandler().Handle(
-            new(
+        var student = await new GetStudentFromGroupQueryHandler().Handle(
+            new GetStudentFromGroupQuery(
                 group.Value,
                 request.Student.Name,
                 request.Student.Surname,
                 request.Student.Patronymic,
                 request.Student.State,
                 request.Student.Recordbook
-            )
+            ),
+            ct
         );
 
-        student = await new RemoveStudentCommandHandler(students).Handle(new(student.Value));
+        student = await new RemoveStudentCommandHandler(students).Handle(
+            new RemoveStudentCommand(student.Value),
+            ct
+        );
         return student.IsFailure
             ? Results.BadRequest(student.Error.Description)
             : Results.Ok(student.Value.MapFromDomain());

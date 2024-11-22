@@ -1,9 +1,7 @@
 using SPerfomance.Api.Endpoints;
 using SPerfomance.Api.Features.Common;
-using SPerfomance.Application.PerfomanceContext.AssignmentSessions.DTO;
 using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Queries.GetInfo;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions.Abstractions;
-using SPerfomance.Domain.Tools;
 
 namespace SPerfomance.Api.Features.PerfomanceContext.Features;
 
@@ -21,23 +19,27 @@ public static class GetActiveControlWeekInformation
     public static async Task<IResult> Handler(
         Request request,
         IUsersRepository users,
-        IAssignmentSessionsRepository sessions
+        IAssignmentSessionsRepository sessions,
+        CancellationToken ct
     )
     {
-        bool isTeacher = await new UserVerificationService(users).IsVerified(
+        var isTeacher = await new UserVerificationService(users).IsVerified(
             request.Token,
-            UserRole.Teacher
+            UserRole.Teacher,
+            ct
         );
-        bool isAdmin = await new UserVerificationService(users).IsVerified(
+        var isAdmin = await new UserVerificationService(users).IsVerified(
             request.Token,
-            UserRole.Administrator
+            UserRole.Administrator,
+            ct
         );
         if (!isTeacher && !isAdmin)
             return Results.BadRequest(UserTags.UnauthorizedError);
 
-        Result<AssignmentSessionInfoDTO> response = await new GetAssignmentSessionInfoQueryHandler(
-            sessions
-        ).Handle(new());
+        var response = await new GetAssignmentSessionInfoQueryHandler(sessions).Handle(
+            new GetAssignmentSessionInfoQuery(),
+            ct
+        );
 
         return response.IsFailure
             ? Results.BadRequest(response.Error.Description)

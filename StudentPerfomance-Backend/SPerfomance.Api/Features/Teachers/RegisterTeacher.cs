@@ -5,11 +5,8 @@ using SPerfomance.Api.Features.Teachers.Contracts;
 using SPerfomance.Application.Departments.Commands.RegisterTeacher;
 using SPerfomance.Application.Departments.DTO;
 using SPerfomance.Application.Departments.Queries.GetDepartmentByName;
-using SPerfomance.Domain.Models.TeacherDepartments;
 using SPerfomance.Domain.Models.TeacherDepartments.Abstractions;
-using SPerfomance.Domain.Models.Teachers;
 using SPerfomance.Domain.Models.Teachers.Abstractions;
-using SPerfomance.Domain.Tools;
 
 namespace SPerfomance.Api.Features.Teachers;
 
@@ -31,29 +28,33 @@ public static class RegisterTeacher
         Request request,
         IUsersRepository users,
         ITeacherDepartmentsRepository departments,
-        ITeachersRepository teachers
+        ITeachersRepository teachers,
+        CancellationToken ct
     )
     {
         if (
             !await new UserVerificationService(users).IsVerified(
                 request.Token,
-                UserRole.Administrator
+                UserRole.Administrator,
+                ct
             )
         )
             return Results.BadRequest(UserTags.UnauthorizedError);
 
-        Result<TeachersDepartments> department = await new GetDepartmentByNameQueryHandler(
-            departments
-        ).Handle(request.Department);
-        Result<Teacher> teacher = await new RegisterTeacherCommandHandler(teachers).Handle(
-            new(
+        var department = await new GetDepartmentByNameQueryHandler(departments).Handle(
+            request.Department,
+            ct
+        );
+        var teacher = await new RegisterTeacherCommandHandler(teachers).Handle(
+            new RegisterTeacherCommand(
                 department.Value,
                 request.Teacher.Name,
                 request.Teacher.Surname,
                 request.Teacher.Patronymic,
                 request.Teacher.Job,
                 request.Teacher.State
-            )
+            ),
+            ct
         );
 
         return teacher.IsFailure

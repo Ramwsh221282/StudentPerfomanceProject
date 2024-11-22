@@ -7,11 +7,8 @@ using SPerfomance.Application.Departments.Commands.FireTeacher;
 using SPerfomance.Application.Departments.DTO;
 using SPerfomance.Application.Departments.Queries.GetDepartmentByName;
 using SPerfomance.Application.Departments.Queries.GetTeacherFromDepartment;
-using SPerfomance.Domain.Models.TeacherDepartments;
 using SPerfomance.Domain.Models.TeacherDepartments.Abstractions;
-using SPerfomance.Domain.Models.Teachers;
 using SPerfomance.Domain.Models.Teachers.Abstractions;
-using SPerfomance.Domain.Tools;
 
 namespace SPerfomance.Api.Features.Teachers;
 
@@ -33,33 +30,40 @@ public static class FireTeacherFromDepartment
         [FromBody] Request request,
         IUsersRepository users,
         ITeacherDepartmentsRepository departments,
-        ITeachersRepository teachers
+        ITeachersRepository teachers,
+        CancellationToken ct
     )
     {
         if (
             !await new UserVerificationService(users).IsVerified(
                 request.Token,
-                UserRole.Administrator
+                UserRole.Administrator,
+                ct
             )
         )
             return Results.BadRequest(UserTags.UnauthorizedError);
 
-        Result<TeachersDepartments> department = await new GetDepartmentByNameQueryHandler(
-            departments
-        ).Handle(request.Department);
+        var department = await new GetDepartmentByNameQueryHandler(departments).Handle(
+            request.Department,
+            ct
+        );
 
-        Result<Teacher> teacher = await new GetTeacherFromDepartmentQueryHandler().Handle(
-            new(
+        var teacher = await new GetTeacherFromDepartmentQueryHandler().Handle(
+            new GetTeacherFromDepartmentQuery(
                 department.Value,
                 request.Teacher.Name,
                 request.Teacher.Surname,
                 request.Teacher.Patronymic,
                 request.Teacher.Job,
                 request.Teacher.State
-            )
+            ),
+            ct
         );
 
-        teacher = await new FireTeacherCommandHandler(teachers).Handle(new(teacher.Value));
+        teacher = await new FireTeacherCommandHandler(teachers).Handle(
+            new FireTeacherCommand(teacher.Value),
+            ct
+        );
         return teacher.IsFailure
             ? Results.BadRequest(teacher.Error.Description)
             : Results.Ok(teacher.Value.MapFromDomain());

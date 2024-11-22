@@ -7,26 +7,29 @@ namespace SPerfomance.DataAccess.Repositories;
 
 public class EducationDirectionRepository : IEducationDirectionRepository
 {
-    private readonly DatabaseContext _context = new DatabaseContext();
+    private readonly DatabaseContext _context = new();
 
-    public async Task Insert(EducationDirection direction)
+    public async Task Insert(EducationDirection direction, CancellationToken ct = default)
     {
-        direction.SetNumber(await GenerateEntityNumber());
-        await _context.EducationDirections.AddAsync(direction);
-        await _context.SaveChangesAsync();
+        direction.SetNumber(await GenerateEntityNumber(ct));
+        await _context.EducationDirections.AddAsync(direction, ct);
+        await _context.SaveChangesAsync(ct);
     }
 
-    public async Task<int> Count() => await _context.EducationDirections.CountAsync();
+    public async Task<int> Count(CancellationToken ct = default) =>
+        await _context.EducationDirections.CountAsync(ct);
 
-    public async Task<int> GenerateEntityNumber()
+    public async Task<int> GenerateEntityNumber(CancellationToken ct = default)
     {
-        int[] numbers = await _context
+        var numbers = await _context
             .EducationDirections.Select(s => s.EntityNumber)
-            .ToArrayAsync();
+            .ToArrayAsync(ct);
         return numbers.GetOrderedValue();
     }
 
-    public async Task<IReadOnlyCollection<EducationDirection>> GetAll() =>
+    public async Task<IReadOnlyCollection<EducationDirection>> GetAll(
+        CancellationToken ct = default
+    ) =>
         await _context
             .EducationDirections.OrderByDescending(d => d.EntityNumber)
             .Include(d => d.Plans)
@@ -35,9 +38,13 @@ public class EducationDirectionRepository : IEducationDirectionRepository
             .ThenInclude(d => d.Teacher)
             .AsNoTracking()
             .AsSplitQuery()
-            .ToListAsync();
+            .ToListAsync(ct);
 
-    public async Task<IReadOnlyCollection<EducationDirection>> GetPaged(int page, int pageSize) =>
+    public async Task<IReadOnlyCollection<EducationDirection>> GetPaged(
+        int page,
+        int pageSize,
+        CancellationToken ct = default
+    ) =>
         await _context
             .EducationDirections.OrderBy(d => d.EntityNumber)
             .Skip((page - 1) * pageSize)
@@ -48,25 +55,30 @@ public class EducationDirectionRepository : IEducationDirectionRepository
             .ThenInclude(d => d.Teacher)
             .AsNoTracking()
             .AsSplitQuery()
-            .ToListAsync();
+            .ToListAsync(ct);
 
-    public async Task Remove(EducationDirection direction)
-    {
-        await _context.EducationDirections.Where(d => d.Id == direction.Id).ExecuteDeleteAsync();
-    }
+    public async Task Remove(EducationDirection direction, CancellationToken ct = default) =>
+        await _context.EducationDirections.Where(d => d.Id == direction.Id).ExecuteDeleteAsync(ct);
 
-    public async Task Update(EducationDirection direction)
+    public async Task Update(EducationDirection direction, CancellationToken ct = default)
     {
         await _context
             .EducationDirections.Where(d => d.Id == direction.Id)
-            .ExecuteUpdateAsync(d =>
-                d.SetProperty(d => d.Name.Name, direction.Name.Name)
-                    .SetProperty(d => d.Type.Type, direction.Type.Type)
-                    .SetProperty(d => d.Code.Code, direction.Code.Code)
+            .ExecuteUpdateAsync(
+                d =>
+                    d.SetProperty(d => d.Name.Name, direction.Name.Name)
+                        .SetProperty(d => d.Type.Type, direction.Type.Type)
+                        .SetProperty(d => d.Code.Code, direction.Code.Code),
+                cancellationToken: ct
             );
     }
 
-    public async Task<EducationDirection?> Get(string code, string name, string type) =>
+    public async Task<EducationDirection?> Get(
+        string code,
+        string name,
+        string type,
+        CancellationToken ct = default
+    ) =>
         await _context
             .EducationDirections.Include(d => d.Plans)
             .ThenInclude(p => p.Semesters)
@@ -75,11 +87,12 @@ public class EducationDirectionRepository : IEducationDirectionRepository
             .ThenInclude(t => t!.Department)
             .AsNoTracking()
             .AsSplitQuery()
-            .FirstOrDefaultAsync(d =>
-                d.Code.Code == code && d.Name.Name == name && d.Type.Type == type
+            .FirstOrDefaultAsync(
+                d => d.Code.Code == code && d.Name.Name == name && d.Type.Type == type,
+                ct
             );
 
-    public async Task<EducationDirection?> GetByCode(string code) =>
+    public async Task<EducationDirection?> GetByCode(string code, CancellationToken ct = default) =>
         await _context
             .EducationDirections.Include(d => d.Plans)
             .ThenInclude(p => p.Semesters)
@@ -87,12 +100,13 @@ public class EducationDirectionRepository : IEducationDirectionRepository
             .ThenInclude(d => d.Teacher)
             .AsNoTracking()
             .AsSplitQuery()
-            .FirstOrDefaultAsync(d => d.Code.Code == code);
+            .FirstOrDefaultAsync(d => d.Code.Code == code, ct);
 
     public async Task<IReadOnlyCollection<EducationDirection>> GetFiltered(
         string? code,
         string? name,
-        string? type
+        string? type,
+        CancellationToken ct = default
     ) =>
         await _context
             .EducationDirections.OrderBy(d => d.EntityNumber)
@@ -107,14 +121,15 @@ public class EducationDirectionRepository : IEducationDirectionRepository
             .ThenInclude(d => d.Teacher)
             .AsNoTracking()
             .AsSplitQuery()
-            .ToListAsync();
+            .ToListAsync(ct);
 
     public async Task<IReadOnlyCollection<EducationDirection>> GetPagedFiltered(
         string? code,
         string? name,
         string? type,
         int page,
-        int pageSize
+        int pageSize,
+        CancellationToken ct = default
     ) =>
         await _context
             .EducationDirections.OrderBy(d => d.EntityNumber)
@@ -131,13 +146,19 @@ public class EducationDirectionRepository : IEducationDirectionRepository
             .ThenInclude(d => d.Teacher)
             .AsNoTracking()
             .AsSplitQuery()
-            .ToListAsync();
+            .ToListAsync(ct);
 
-    public async Task<bool> Has(string code, string name, string type) =>
-        await _context.EducationDirections.AnyAsync(d =>
-            d.Code.Code == code && d.Name.Name == name && d.Type.Type == type
+    public async Task<bool> Has(
+        string code,
+        string name,
+        string type,
+        CancellationToken ct = default
+    ) =>
+        await _context.EducationDirections.AnyAsync(
+            d => d.Code.Code == code && d.Name.Name == name && d.Type.Type == type,
+            ct
         );
 
-    public async Task<bool> HasWithCode(string code) =>
-        await _context.EducationDirections.AnyAsync(d => d.Code.Code == code);
+    public async Task<bool> HasWithCode(string code, CancellationToken ct = default) =>
+        await _context.EducationDirections.AnyAsync(d => d.Code.Code == code, ct);
 }

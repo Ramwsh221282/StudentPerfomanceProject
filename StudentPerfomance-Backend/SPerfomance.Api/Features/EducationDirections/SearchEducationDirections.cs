@@ -2,7 +2,6 @@ using SPerfomance.Api.Endpoints;
 using SPerfomance.Api.Features.Common;
 using SPerfomance.Api.Features.EducationDirections.Contracts;
 using SPerfomance.Application.EducationDirections.DTO;
-using SPerfomance.Domain.Models.EducationDirections;
 using SPerfomance.Domain.Models.EducationDirections.Abstractions;
 
 namespace SPerfomance.Api.Features.EducationDirections;
@@ -21,21 +20,24 @@ public static class SearchEducationDirections
     public static async Task<IResult> Handler(
         Request request,
         IUsersRepository users,
-        IEducationDirectionRepository repository
+        IEducationDirectionRepository repository,
+        CancellationToken ct
     )
     {
         if (
             !await new UserVerificationService(users).IsVerified(
                 request.Token,
-                UserRole.Administrator
+                UserRole.Administrator,
+                ct
             )
         )
             return Results.BadRequest(UserTags.UnauthorizedError);
 
-        IReadOnlyCollection<EducationDirection> directions = await repository.GetFiltered(
+        var directions = await repository.GetFiltered(
             request.Direction.Code,
             request.Direction.Name,
-            request.Direction.Type
+            request.Direction.Type,
+            ct
         );
 
         return Results.Ok(directions.Select(d => d.MapFromDomain()));

@@ -15,24 +15,30 @@ public static class GetUsersByFilter
             app.MapPost($"{UserTags.Api}/filter", Handler).WithTags(UserTags.Tag);
     }
 
-    public static async Task<IResult> Handler(Request request, IUsersRepository repository)
+    public static async Task<IResult> Handler(
+        Request request,
+        IUsersRepository repository,
+        CancellationToken ct
+    )
     {
         if (
             !await new UserVerificationService(repository).IsVerified(
                 request.Token,
-                UserRole.Administrator
+                UserRole.Administrator,
+                ct
             )
         )
             return Results.BadRequest(UserTags.UnauthorizedError);
 
-        IReadOnlyCollection<User> users = await repository.GetFiltered(
+        var users = await repository.GetFiltered(
             request.User.Name,
             request.User.Surname,
             request.User.Patronymic,
             request.User.Email,
             request.User.Role,
             request.Pagination.Page,
-            request.Pagination.PageSize
+            request.Pagination.PageSize,
+            ct
         );
         return Results.Ok(users.Select(u => u.MapFromDomain()));
     }

@@ -5,9 +5,7 @@ using SPerfomance.Api.Features.TeacherDepartments.Contracts;
 using SPerfomance.Application.Departments.Commands.RemoveTeachersDepartment;
 using SPerfomance.Application.Departments.DTO;
 using SPerfomance.Application.Departments.Queries.GetDepartmentByName;
-using SPerfomance.Domain.Models.TeacherDepartments;
 using SPerfomance.Domain.Models.TeacherDepartments.Abstractions;
-using SPerfomance.Domain.Tools;
 
 namespace SPerfomance.Api.Features.TeacherDepartments;
 
@@ -25,22 +23,26 @@ public static class RemoveTeacherDepartment
     public static async Task<IResult> Handler(
         [FromBody] Request request,
         IUsersRepository users,
-        ITeacherDepartmentsRepository repository
+        ITeacherDepartmentsRepository repository,
+        CancellationToken ct
     )
     {
         if (
             !await new UserVerificationService(users).IsVerified(
                 request.Token,
-                UserRole.Administrator
+                UserRole.Administrator,
+                ct
             )
         )
             return Results.BadRequest(UserTags.UnauthorizedError);
 
-        Result<TeachersDepartments> department = await new GetDepartmentByNameQueryHandler(
-            repository
-        ).Handle(request.Department);
+        var department = await new GetDepartmentByNameQueryHandler(repository).Handle(
+            request.Department,
+            ct
+        );
         department = await new RemoveTeachersDepartmentCommandHandler(repository).Handle(
-            new(department.Value)
+            new RemoveTeachersDepartmentCommand(department.Value),
+            ct
         );
 
         return department.IsFailure

@@ -9,20 +9,21 @@ namespace SPerfomance.Application.Semesters.Commands.DeattachTeacherFromDiscipli
 public class DeattachTeacherFromDisciplineCommandHandler(ISemesterPlansRepository repository)
     : ICommandHandler<DeattachTeacherFromDisciplineCommand, SemesterPlan>
 {
-    private readonly ISemesterPlansRepository _repository = repository;
-
-    public async Task<Result<SemesterPlan>> Handle(DeattachTeacherFromDisciplineCommand command)
+    public async Task<Result<SemesterPlan>> Handle(
+        DeattachTeacherFromDisciplineCommand command,
+        CancellationToken ct = default
+    )
     {
         if (command.Discipline == null)
             return Result<SemesterPlan>.Failure(SemesterPlanErrors.NotFound());
 
-        Result<SemesterPlan> discipline = command.Discipline.Semester.DeattachTeacherFromDiscipline(
+        var discipline = command.Discipline.Semester.DeattachTeacherFromDiscipline(
             command.Discipline
         );
         if (discipline.IsFailure)
             return discipline;
 
-        await _repository.DeattachTeacherId(discipline.Value);
+        await repository.DeattachTeacherId(discipline.Value, ct);
         return Result<SemesterPlan>.Success(discipline.Value);
     }
 }

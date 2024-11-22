@@ -7,12 +7,15 @@ namespace SPerfomance.Application.EducationPlans.Queries.GetEducationPlan;
 
 public class GetEducationPlanQueryHandler : IQueryHandler<GetEducationPlanQuery, EducationPlan>
 {
-    public async Task<Result<EducationPlan>> Handle(GetEducationPlanQuery command)
+    public async Task<Result<EducationPlan>> Handle(
+        GetEducationPlanQuery command,
+        CancellationToken ct = default
+    )
     {
         if (command.Direction == null)
             return Result<EducationPlan>.Failure(EducationDirectionErrors.NotFoundError());
 
-        Result<EducationPlan> plan = command.Direction.GetEducationPlan(command.PlanYear);
+        var plan = command.Direction.GetEducationPlan(command.PlanYear);
         return await Task.FromResult(plan);
     }
 }

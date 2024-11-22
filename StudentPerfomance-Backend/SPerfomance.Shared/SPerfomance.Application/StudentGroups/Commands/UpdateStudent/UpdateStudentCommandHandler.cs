@@ -14,16 +14,15 @@ public class UpdateStudentCommandHandler(
     IStudentGroupsRepository groups
 ) : ICommandHandler<UpdateStudentCommand, Student>
 {
-    private readonly IStudentsRepository _students = students;
-
-    private readonly IStudentGroupsRepository _groups = groups;
-
-    public async Task<Result<Student>> Handle(UpdateStudentCommand command)
+    public async Task<Result<Student>> Handle(
+        UpdateStudentCommand command,
+        CancellationToken ct = default
+    )
     {
         if (command.Student == null)
             return Result<Student>.Failure(StudentErrors.NotFound());
 
-        Result<Student> updatedStudent = command.Student.ChangeName(
+        var updatedStudent = command.Student.ChangeName(
             command.NewName,
             command.NewSurname,
             command.NewPatronymic
@@ -39,21 +38,25 @@ public class UpdateStudentCommandHandler(
         if (updatedStudent.IsFailure)
             return updatedStudent;
 
-        bool isGroupChanged = false;
+        var isGroupChanged = false;
         if (updatedStudent.Value.AttachedGroup.Name.Name != command.NewGroup)
         {
-            StudentGroup? newGroup = await _groups.Get(command.NewGroup);
+            var newGroup = await groups.Get(command.NewGroup, ct);
             if (newGroup == null)
                 return Result<Student>.Failure(StudentGroupErrors.NotFound());
             updatedStudent.Value.ChangeGroup(newGroup);
             isGroupChanged = true;
         }
 
-        if (isGroupChanged)
-            await _students.UpdateWithGroupId(updatedStudent.Value);
-
-        if (!isGroupChanged)
-            await _students.Update(updatedStudent.Value);
+        switch (isGroupChanged)
+        {
+            case true:
+                await students.UpdateWithGroupId(updatedStudent.Value, ct);
+                break;
+            case false:
+                await students.Update(updatedStudent.Value, ct);
+                break;
+        }
 
         return updatedStudent;
     }

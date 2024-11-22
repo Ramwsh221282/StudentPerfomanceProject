@@ -3,9 +3,7 @@ using SPerfomance.Api.Features.Common;
 using SPerfomance.Api.Features.EducationDirections.Contracts;
 using SPerfomance.Application.EducationDirections.Commands.CreateEducationDirection;
 using SPerfomance.Application.EducationDirections.DTO;
-using SPerfomance.Domain.Models.EducationDirections;
 using SPerfomance.Domain.Models.EducationDirections.Abstractions;
-using SPerfomance.Domain.Tools;
 
 namespace SPerfomance.Api.Features.EducationDirections;
 
@@ -23,20 +21,23 @@ public static class CreateEducationDirection
     public static async Task<IResult> Handler(
         Request request,
         IUsersRepository users,
-        IEducationDirectionRepository repository
+        IEducationDirectionRepository repository,
+        CancellationToken ct
     )
     {
         if (
             !await new UserVerificationService(users).IsVerified(
                 request.Token,
-                UserRole.Administrator
+                UserRole.Administrator,
+                ct
             )
         )
             return Results.BadRequest(UserTags.UnauthorizedError);
 
-        Result<EducationDirection> direction = await new CreateEducationDirectionCommandHandler(
-            repository
-        ).Handle(request.Direction);
+        var direction = await new CreateEducationDirectionCommandHandler(repository).Handle(
+            request.Direction,
+            ct
+        );
 
         return direction.IsFailure
             ? Results.BadRequest(direction.Error.Description)

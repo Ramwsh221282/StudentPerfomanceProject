@@ -3,10 +3,7 @@ using SPerfomance.Api.Features.Common;
 using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Abstractions;
 using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Commands.CloseAssignmentSession;
 using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Services.AssignmentSessionViewServices.Handlers;
-using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Services.AssignmentSessionViewServices.Views;
-using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions.Abstractions;
-using SPerfomance.Domain.Tools;
 
 namespace SPerfomance.Api.Features.PerfomanceContext.Features;
 
@@ -25,29 +22,29 @@ public static class CloseAssignmentSession
         IUsersRepository users,
         IAssignmentSessionsRepository repository,
         IControlWeekReportRepository reports,
-        Request request
+        Request request,
+        CancellationToken ct
     )
     {
         if (
             !await new UserVerificationService(users).IsVerified(
                 request.Token,
-                UserRole.Administrator
+                UserRole.Administrator,
+                ct
             )
         )
             return Results.BadRequest(UserTags.UnauthorizedError);
 
-        CloseAssignmentSessionCommand command = new CloseAssignmentSessionCommand(request.Id);
-        CloseAssignmentSessionCommandHandler handler = new CloseAssignmentSessionCommandHandler(
-            repository
-        );
+        var command = new CloseAssignmentSessionCommand(request.Id);
+        var handler = new CloseAssignmentSessionCommandHandler(repository);
 
-        Result<AssignmentSession> session = await handler.Handle(command);
+        var session = await handler.Handle(command, ct);
         if (session.IsFailure)
             return Results.BadRequest(session.Error.Description);
 
-        AssignmentSessionViewFactory factory = new AssignmentSessionViewFactory(session.Value);
-        AssignmentSessionView view = factory.CreateView();
-        Result<AssignmentSessionView> insertion = await reports.Insert(view);
+        var factory = new AssignmentSessionViewFactory(session.Value);
+        var view = factory.CreateView();
+        var insertion = await reports.Insert(view, ct);
         return insertion.IsFailure ? Results.BadRequest(insertion.Error.Description) : Results.Ok();
     }
 }

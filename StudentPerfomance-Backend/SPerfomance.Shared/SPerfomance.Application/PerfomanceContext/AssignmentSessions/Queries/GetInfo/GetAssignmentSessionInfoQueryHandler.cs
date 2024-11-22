@@ -10,31 +10,30 @@ namespace SPerfomance.Application.PerfomanceContext.AssignmentSessions.Queries.G
 public sealed class GetAssignmentSessionInfoQueryHandler(IAssignmentSessionsRepository repository)
     : IQueryHandler<GetAssignmentSessionInfoQuery, AssignmentSessionInfoDTO>
 {
-    private readonly IAssignmentSessionsRepository _repository = repository;
-
     public async Task<Result<AssignmentSessionInfoDTO>> Handle(
-        GetAssignmentSessionInfoQuery command
+        GetAssignmentSessionInfoQuery command,
+        CancellationToken ct = default
     )
     {
-        AssignmentSession? session = await _repository.GetActiveSession();
+        AssignmentSession? session = await repository.GetActiveSession(ct);
         if (session == null)
             return AssignmentSessionErrors.NoActiveFound();
 
-        string dateStart = session.SessionStartDate.ToString("yyyy.MM.dd");
-        string dateEnd = session.SessionCloseDate.ToString("yyyy.MM.dd");
-        int daysToEnd = CalculateDaysUntilEnd(session);
-        int completionPercent = CalculateAssignmentsCompletionPercent(session);
+        var dateStart = session.SessionStartDate.ToString("yyyy.MM.dd");
+        var dateEnd = session.SessionCloseDate.ToString("yyyy.MM.dd");
+        var daysToEnd = CalculateDaysUntilEnd(session);
+        var completionPercent = CalculateAssignmentsCompletionPercent(session);
         return new AssignmentSessionInfoDTO(dateStart, dateEnd, daysToEnd, completionPercent);
     }
 
-    private int CalculateDaysUntilEnd(AssignmentSession session)
+    private static int CalculateDaysUntilEnd(AssignmentSession session)
     {
-        DateTime currentDate = DateTime.Now;
-        TimeSpan difference = session.SessionCloseDate - currentDate;
-        return (int)difference.Days + 1;
+        var currentDate = DateTime.Now;
+        var difference = session.SessionCloseDate - currentDate;
+        return difference.Days + 1;
     }
 
-    private int CalculateAssignmentsCompletionPercent(AssignmentSession session)
+    private static int CalculateAssignmentsCompletionPercent(AssignmentSession session)
     {
         return 1;
     }

@@ -7,11 +7,8 @@ using SPerfomance.Application.Departments.Commands.UpdateTeacher;
 using SPerfomance.Application.Departments.DTO;
 using SPerfomance.Application.Departments.Queries.GetDepartmentByName;
 using SPerfomance.Application.Departments.Queries.GetTeacherFromDepartment;
-using SPerfomance.Domain.Models.TeacherDepartments;
 using SPerfomance.Domain.Models.TeacherDepartments.Abstractions;
-using SPerfomance.Domain.Models.Teachers;
 using SPerfomance.Domain.Models.Teachers.Abstractions;
-using SPerfomance.Domain.Tools;
 
 namespace SPerfomance.Api.Features.Teachers;
 
@@ -34,41 +31,46 @@ public static class UpdateTeacher
         [FromBody] Request request,
         IUsersRepository users,
         ITeacherDepartmentsRepository departments,
-        ITeachersRepository teachers
+        ITeachersRepository teachers,
+        CancellationToken ct
     )
     {
         if (
             !await new UserVerificationService(users).IsVerified(
                 request.Token,
-                UserRole.Administrator
+                UserRole.Administrator,
+                ct
             )
         )
             return Results.BadRequest(UserTags.UnauthorizedError);
 
-        Result<TeachersDepartments> department = await new GetDepartmentByNameQueryHandler(
-            departments
-        ).Handle(request.Department);
+        var department = await new GetDepartmentByNameQueryHandler(departments).Handle(
+            request.Department,
+            ct
+        );
 
-        Result<Teacher> teacher = await new GetTeacherFromDepartmentQueryHandler().Handle(
-            new(
+        var teacher = await new GetTeacherFromDepartmentQueryHandler().Handle(
+            new GetTeacherFromDepartmentQuery(
                 department.Value,
                 request.Initial.Name,
                 request.Initial.Surname,
                 request.Initial.Patronymic,
                 request.Initial.Job,
                 request.Initial.State
-            )
+            ),
+            ct
         );
 
         teacher = await new UpdateTeacherCommandHandler(teachers).Handle(
-            new(
+            new UpdateTeacherCommand(
                 teacher.Value,
                 request.Updated.Name,
                 request.Updated.Surname,
                 request.Updated.Patronymic,
                 request.Updated.Job,
                 request.Updated.State
-            )
+            ),
+            ct
         );
 
         return teacher.IsFailure

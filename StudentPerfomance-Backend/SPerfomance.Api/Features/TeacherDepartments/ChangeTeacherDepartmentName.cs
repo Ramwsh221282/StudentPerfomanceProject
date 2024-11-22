@@ -5,9 +5,7 @@ using SPerfomance.Api.Features.TeacherDepartments.Contracts;
 using SPerfomance.Application.Departments.Commands.ChangeTeachersDepartmentName;
 using SPerfomance.Application.Departments.DTO;
 using SPerfomance.Application.Departments.Queries.GetDepartmentByName;
-using SPerfomance.Domain.Models.TeacherDepartments;
 using SPerfomance.Domain.Models.TeacherDepartments.Abstractions;
-using SPerfomance.Domain.Tools;
 
 namespace SPerfomance.Api.Features.TeacherDepartments;
 
@@ -29,22 +27,26 @@ public static class ChangeTeacherDepartmentName
     public static async Task<IResult> Handler(
         [FromBody] Request request,
         IUsersRepository users,
-        ITeacherDepartmentsRepository repository
+        ITeacherDepartmentsRepository repository,
+        CancellationToken ct
     )
     {
         if (
             !await new UserVerificationService(users).IsVerified(
                 request.Token,
-                UserRole.Administrator
+                UserRole.Administrator,
+                ct
             )
         )
             return Results.BadRequest(UserTags.UnauthorizedError);
 
-        Result<TeachersDepartments> department = await new GetDepartmentByNameQueryHandler(
-            repository
-        ).Handle(request.Initial);
+        var department = await new GetDepartmentByNameQueryHandler(repository).Handle(
+            request.Initial,
+            ct
+        );
         department = await new ChangeTeachersDepartmentNameCommandHandler(repository).Handle(
-            new(department.Value, request.Updated.Name)
+            new ChangeTeachersDepartmentNameCommand(department.Value, request.Updated.Name),
+            ct
         );
 
         return department.IsFailure

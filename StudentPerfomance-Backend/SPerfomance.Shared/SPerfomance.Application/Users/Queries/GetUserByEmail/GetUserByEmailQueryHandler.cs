@@ -9,14 +9,14 @@ namespace SPerfomance.Application.Users.Queries.GetUserByEmail;
 public class GetUserByEmailQueryHandler(IUsersRepository repository)
     : IQueryHandler<GetUserByEmailQuery, User>
 {
-    private readonly IUsersRepository _repository = repository;
-
-    public async Task<Result<User>> Handle(GetUserByEmailQuery command)
+    public async Task<Result<User>> Handle(
+        GetUserByEmailQuery command,
+        CancellationToken ct = default
+    )
     {
-        User? user = await _repository.GetByEmail(command.Email);
-        if (user == null)
-            return Result<User>.Failure(UserErrors.NotFound());
-
-        return Result<User>.Success(user);
+        var user = await repository.GetByEmail(command.Email, ct);
+        return user == null
+            ? Result<User>.Failure(UserErrors.NotFound())
+            : Result<User>.Success(user);
     }
 }

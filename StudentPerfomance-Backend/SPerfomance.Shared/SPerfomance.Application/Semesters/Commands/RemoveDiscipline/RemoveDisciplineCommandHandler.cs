@@ -9,19 +9,18 @@ namespace SPerfomance.Application.Semesters.Commands.RemoveDiscipline;
 public class RemoveDisciplineCommandHandler(ISemesterPlansRepository repository)
     : ICommandHandler<RemoveDisciplineCommand, SemesterPlan>
 {
-    private readonly ISemesterPlansRepository _repository = repository;
-
-    public async Task<Result<SemesterPlan>> Handle(RemoveDisciplineCommand command)
+    public async Task<Result<SemesterPlan>> Handle(
+        RemoveDisciplineCommand command,
+        CancellationToken ct = default
+    )
     {
         if (command.Discipline == null)
             return Result<SemesterPlan>.Failure(SemesterPlanErrors.NotFound());
 
-        Result<SemesterPlan> result = command.Discipline.Semester.RemoveDiscipline(
-            command.Discipline
-        );
+        var result = command.Discipline.Semester.RemoveDiscipline(command.Discipline);
 
         if (!result.IsFailure)
-            await _repository.Remove(command.Discipline);
+            await repository.Remove(command.Discipline, ct);
 
         return result;
     }

@@ -15,12 +15,12 @@ public class JwtTokenService : IJwtTokenService
     {
         Claim[] claims = [new("userId", user.Id.ToString())];
 
-        SigningCredentials credentials = new SigningCredentials(
+        var credentials = new SigningCredentials(
             new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_secret)),
             SecurityAlgorithms.HmacSha256
         );
 
-        JwtSecurityToken token = new JwtSecurityToken(
+        var token = new JwtSecurityToken(
             claims: claims,
             signingCredentials: credentials,
             expires: DateTime.UtcNow.AddHours(6)

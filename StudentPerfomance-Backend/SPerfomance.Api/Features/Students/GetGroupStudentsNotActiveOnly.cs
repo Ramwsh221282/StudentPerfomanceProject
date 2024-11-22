@@ -4,10 +4,8 @@ using SPerfomance.Api.Features.Common;
 using SPerfomance.Api.Features.StudentGroups.Contracts;
 using SPerfomance.Application.StudentGroups.DTO;
 using SPerfomance.Application.StudentGroups.Queries.GetStudentGroupByName;
-using SPerfomance.Domain.Models.StudentGroups;
 using SPerfomance.Domain.Models.StudentGroups.Abstractions;
 using SPerfomance.Domain.Models.Students.ValueObjects;
-using SPerfomance.Domain.Tools;
 
 namespace SPerfomance.Api.Features.Students;
 
@@ -25,20 +23,20 @@ public class GetGroupStudentsNotActiveOnly
     public static async Task<IResult> Handler(
         [FromBody] Request request,
         IStudentGroupsRepository groups,
-        IUsersRepository users
+        IUsersRepository users,
+        CancellationToken ct
     )
     {
         if (
             !await new UserVerificationService(users).IsVerified(
                 request.Token,
-                UserRole.Administrator
+                UserRole.Administrator,
+                ct
             )
         )
             return Results.BadRequest(UserTags.UnauthorizedError);
 
-        Result<StudentGroup> group = await new GetStudentGroupQueryHandler(groups).Handle(
-            request.Group
-        );
+        var group = await new GetStudentGroupQueryHandler(groups).Handle(request.Group, ct);
         if (group.IsFailure)
             return Results.BadRequest(group.Error.Description);
 

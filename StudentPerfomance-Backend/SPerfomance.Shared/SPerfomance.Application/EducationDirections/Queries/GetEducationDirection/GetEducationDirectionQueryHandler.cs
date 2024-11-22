@@ -9,15 +9,12 @@ namespace SPerfomance.Application.EducationDirections.Queries.GetEducationDirect
 public class GetEducationDirectionQueryHandler(IEducationDirectionRepository repository)
     : IQueryHandler<GetEducationDirectionQuery, EducationDirection>
 {
-    private readonly IEducationDirectionRepository _repository = repository;
-
-    public async Task<Result<EducationDirection>> Handle(GetEducationDirectionQuery command)
+    public async Task<Result<EducationDirection>> Handle(
+        GetEducationDirectionQuery command,
+        CancellationToken ct = default
+    )
     {
-        EducationDirection? requested = await _repository.Get(
-            command.Code,
-            command.Name,
-            command.Type
-        );
+        var requested = await repository.Get(command.Code, command.Name, command.Type, ct);
         return requested == null
             ? Result<EducationDirection>.Failure(EducationDirectionErrors.NotFoundError())
             : Result<EducationDirection>.Success(requested);

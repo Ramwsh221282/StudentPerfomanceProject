@@ -5,18 +5,12 @@ using SPerfomance.Api.Features.EducationPlans.Contracts;
 using SPerfomance.Api.Features.SemesterPlans.Contracts;
 using SPerfomance.Api.Features.Semesters.Contracts;
 using SPerfomance.Application.EducationDirections.Queries.GetEducationDirection;
-using SPerfomance.Application.EducationPlans.DTO;
 using SPerfomance.Application.EducationPlans.Queries.GetEducationPlan;
-using SPerfomance.Application.Semesters.CreateDiscipline.Commands;
+using SPerfomance.Application.Semesters.Commands.CreateDiscipline;
 using SPerfomance.Application.Semesters.DTO;
-using SPerfomance.Application.Semesters.GetSemester.Queries;
-using SPerfomance.Domain.Models.EducationDirections;
+using SPerfomance.Application.Semesters.Queries.GetSemester;
 using SPerfomance.Domain.Models.EducationDirections.Abstractions;
-using SPerfomance.Domain.Models.EducationPlans;
-using SPerfomance.Domain.Models.SemesterPlans;
 using SPerfomance.Domain.Models.SemesterPlans.Abstractions;
-using SPerfomance.Domain.Models.Semesters;
-using SPerfomance.Domain.Tools;
 
 namespace SPerfomance.Api.Features.SemesterPlans;
 
@@ -40,28 +34,34 @@ public static class RegisterSemesterPlan
         Request request,
         IUsersRepository users,
         IEducationDirectionRepository directions,
-        ISemesterPlansRepository semesterPlans
+        ISemesterPlansRepository semesterPlans,
+        CancellationToken ct
     )
     {
         if (
             !await new UserVerificationService(users).IsVerified(
                 request.Token,
-                UserRole.Administrator
+                UserRole.Administrator,
+                ct
             )
         )
             return Results.BadRequest(UserTags.UnauthorizedError);
 
-        Result<EducationDirection> direction = await new GetEducationDirectionQueryHandler(
-            directions
-        ).Handle(request.Direction);
-        Result<EducationPlan> educationPlan = await new GetEducationPlanQueryHandler().Handle(
-            new(direction.Value, request.Plan.PlanYear)
+        var direction = await new GetEducationDirectionQueryHandler(directions).Handle(
+            request.Direction,
+            ct
         );
-        Result<Semester> semester = await new GetSemesterQueryHandler().Handle(
-            new(educationPlan.Value, request.Semester.Number)
+        var educationPlan = await new GetEducationPlanQueryHandler().Handle(
+            new GetEducationPlanQuery(direction.Value, request.Plan.PlanYear),
+            ct
         );
-        Result<SemesterPlan> plan = await new CreateDisciplineCommandHandler(semesterPlans).Handle(
-            new(semester.Value, request.Discipline.Discipline)
+        var semester = await new GetSemesterQueryHandler().Handle(
+            new GetSemesterQuery(educationPlan.Value, request.Semester.Number),
+            ct
+        );
+        var plan = await new CreateDisciplineCommandHandler(semesterPlans).Handle(
+            new CreateDisciplineCommand(semester.Value, request.Discipline.Discipline),
+            ct
         );
 
         return plan.IsFailure

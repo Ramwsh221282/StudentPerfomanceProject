@@ -6,12 +6,8 @@ using SPerfomance.Api.Features.Semesters.Contracts;
 using SPerfomance.Application.EducationDirections.Queries.GetEducationDirection;
 using SPerfomance.Application.EducationPlans.Queries.GetEducationPlan;
 using SPerfomance.Application.Semesters.DTO;
-using SPerfomance.Application.Semesters.GetSemester.Queries;
-using SPerfomance.Domain.Models.EducationDirections;
+using SPerfomance.Application.Semesters.Queries.GetSemester;
 using SPerfomance.Domain.Models.EducationDirections.Abstractions;
-using SPerfomance.Domain.Models.EducationPlans;
-using SPerfomance.Domain.Models.Semesters;
-using SPerfomance.Domain.Tools;
 
 namespace SPerfomance.Api.Features.SemesterPlans;
 
@@ -34,30 +30,34 @@ public static class GetSemesterPlansBySemester
     public static async Task<IResult> Handler(
         Request request,
         IUsersRepository users,
-        IEducationDirectionRepository repository
+        IEducationDirectionRepository repository,
+        CancellationToken ct
     )
     {
         if (
             !await new UserVerificationService(users).IsVerified(
                 request.Token,
-                UserRole.Administrator
+                UserRole.Administrator,
+                ct
             )
         )
             return Results.BadRequest(UserTags.UnauthorizedError);
 
-        Result<EducationDirection> direction = await new GetEducationDirectionQueryHandler(
-            repository
-        ).Handle(request.Direction);
-        Result<EducationPlan> educationPlan = await new GetEducationPlanQueryHandler().Handle(
-            new(direction.Value, request.Plan.PlanYear)
+        var direction = await new GetEducationDirectionQueryHandler(repository).Handle(
+            request.Direction,
+            ct
         );
-        Result<Semester> semester = await new GetSemesterQueryHandler().Handle(
-            new(educationPlan.Value, request.Semester.Number)
+        var educationPlan = await new GetEducationPlanQueryHandler().Handle(
+            new GetEducationPlanQuery(direction.Value, request.Plan.PlanYear),
+            ct
+        );
+        var semester = await new GetSemesterQueryHandler().Handle(
+            new GetSemesterQuery(educationPlan.Value, request.Semester.Number),
+            ct
         );
 
-        if (semester.IsFailure)
-            return Results.BadRequest(semester.Error.Description);
-
-        return Results.Ok(semester.Value.Disciplines.Select(d => d.MapFromDomain()));
+        return semester.IsFailure
+            ? Results.BadRequest(semester.Error.Description)
+            : Results.Ok(semester.Value.Disciplines.Select(d => d.MapFromDomain()));
     }
 }
