@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { IFetchPolicy } from '../../../models/fetch-policices/fetch-policy-interface';
 import { ControlWeekReportInterface } from '../Models/Data/control-week-report-interface';
 import { SessionReportPeriodFetchPolicy } from '../Services/data-services/reports-fetch-policies/session-report-period-fetch-policy';
+import { SessionReportDefaultFetchPolicy } from '../Services/data-services/reports-fetch-policies/session-report-default-fetch-policy';
 
 @Component({
   selector: 'app-session-reports-filter-input',
@@ -42,6 +43,17 @@ export class SessionReportsFilterInputComponent implements ISubbmittable {
         this.startDate,
         this.endDate,
       );
+    policy.addPages(
+      this._paginationService.currentPage,
+      this._paginationService.pageSize,
+    );
+    this._dataService.setPolicy(policy);
+    this.emitFilter.emit();
+  }
+
+  public cancelFilter(): void {
+    const policy: IFetchPolicy<ControlWeekReportInterface[]> =
+      new SessionReportDefaultFetchPolicy(this._authService);
     policy.addPages(
       this._paginationService.currentPage,
       this._paginationService.pageSize,

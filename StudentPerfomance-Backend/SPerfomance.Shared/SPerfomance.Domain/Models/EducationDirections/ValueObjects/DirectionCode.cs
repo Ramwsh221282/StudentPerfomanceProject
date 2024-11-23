@@ -24,7 +24,7 @@ public class DirectionCode : DomainValueObject
 
     public static DirectionCode Empty => new DirectionCode();
 
-    public static Result<DirectionCode> Create(string code)
+    public static Result<DirectionCode> Create(string? code)
     {
         if (string.IsNullOrWhiteSpace(code))
             return Result<DirectionCode>.Failure(EducationDirectionErrors.CodeEmptyError());

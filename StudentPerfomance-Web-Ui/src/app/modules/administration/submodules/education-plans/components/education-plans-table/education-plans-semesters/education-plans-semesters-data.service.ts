@@ -1,39 +1,40 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { BASE_API_URI } from '../../../../../../../shared/models/api/api-constants';
 import { EducationPlan } from '../../../models/education-plan-interface';
 import { Observable } from 'rxjs';
 import { Semester } from '../../../../semesters/models/semester.interface';
-import { User } from '../../../../../../users/services/user-interface';
 import { AuthService } from '../../../../../../users/services/auth.service';
-import { DirectionPayloadBuilder } from '../../../../education-directions/models/contracts/direction-payload-builder';
-import { EducationPlanPayloadBuilder } from '../../../models/contracts/education-plan-contract/education-plan-payload-builder';
-import { TokenPayloadBuilder } from '../../../../../../../shared/models/common/token-contract/token-payload-builder';
 
 @Injectable({
   providedIn: 'any',
 })
 export class EducationPlanSemestersService {
-  private readonly _user: User;
-  private readonly _httpClient: HttpClient;
-  private readonly _apiUri: string = `${BASE_API_URI}/api/semesters/by-education-plan`;
+  private readonly _apiUri: string = `${BASE_API_URI}/api/semesters`;
 
-  public constructor() {
-    this._httpClient = inject(HttpClient);
-    const authService = inject(AuthService);
-    this._user = { ...authService.userData };
-  }
+  public constructor(
+    private readonly _httpClient: HttpClient,
+    private readonly _authService: AuthService,
+  ) {}
 
   public getPlanSemesters(plan: EducationPlan): Observable<Semester[]> {
-    const payload = this.buildPayload(plan);
-    return this._httpClient.post<Semester[]>(this._apiUri, payload);
+    const headers = this.buildHttpHeaders();
+    const params = this.buildHttpParams(plan);
+    return this._httpClient.get<Semester[]>(this._apiUri, {
+      headers: headers,
+      params,
+    });
   }
 
-  private buildPayload(plan: EducationPlan): object {
-    return {
-      direction: DirectionPayloadBuilder(plan.direction),
-      plan: EducationPlanPayloadBuilder(plan),
-      token: TokenPayloadBuilder(this._user),
-    };
+  private buildHttpParams(plan: EducationPlan): HttpParams {
+    return new HttpParams()
+      .set('directionName', plan.direction.name)
+      .set('directionCode', plan.direction.code)
+      .set('directionType', plan.direction.type)
+      .set('planYear', plan.year);
+  }
+
+  private buildHttpHeaders(): HttpHeaders {
+    return new HttpHeaders().set('token', this._authService.userData.token);
   }
 }

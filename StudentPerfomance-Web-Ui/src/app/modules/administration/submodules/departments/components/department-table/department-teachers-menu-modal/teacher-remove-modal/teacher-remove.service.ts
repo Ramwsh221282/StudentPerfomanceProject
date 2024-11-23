@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { BASE_API_URI } from '../../../../../../../../shared/models/api/api-constants';
 import { Teacher } from '../../../../../teachers/models/teacher.interface';
@@ -21,8 +21,16 @@ export class TeacherRemoveService {
   }
 
   public remove(teacher: Teacher): Observable<Teacher> {
+    const headers = this.buildHttpHeaders();
     const body = this.buildRequestBody(teacher);
-    return this._httpClient.delete<Teacher>(this._apiUri, { body });
+    return this._httpClient.delete<Teacher>(this._apiUri, {
+      headers: headers,
+      body,
+    });
+  }
+
+  private buildHttpHeaders(): HttpHeaders {
+    return new HttpHeaders().set('token', this._authService.userData.token);
   }
 
   private buildRequestBody(teacher: Teacher): object {

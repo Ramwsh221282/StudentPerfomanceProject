@@ -6,9 +6,9 @@
   </div>
   <div id="content">
     <strong class="font-white"
-    >Процент успеваемости: {{ week.perfomance | number }}</strong
+    >Процент успеваемости: {{ week.perfomance | number: '2.0-2' }}</strong
     >
-    <strong class="font-white">Средний балл: {{ week.average | number }}</strong>
+    <strong class="font-white">Средний балл: {{ week.average | number: '1.1-2' }}</strong>
     <div class="search-table-wrapper">
       <table class="search-table">
         <thead>
@@ -35,14 +35,14 @@
               @for (discipline of week.disciplines; track discipline.discipline.name) {
                 <td>{{ getStudentGrade(discipline.discipline.name, student.recordbook.recordbook) }}</td>
               }
-              <td>{{ student.perfomance | number }}</td>
-              <td>{{ student.average | number }}</td>
+              <td>{{ student.perfomance | number: '2.0-2' }}</td>
+              <td>{{ student.average | number: '1.1-2' }}</td>
             </tr>
           }
         <tr>
           средний балл @for (discipline of week.disciplines; track
           discipline.discipline.name) {
-          <td>{{ discipline.average | number }}</td>
+          <td>{{ discipline.average | number: '1.1-2' }}</td>
         }
           <td>-</td>
           <td>-</td>
@@ -50,7 +50,7 @@
         <tr>
           % успеваемости @for (discipline of week.disciplines; track
           discipline.discipline.name) {
-          <td>{{ discipline.perfomance | number }}</td>
+          <td>{{ discipline.perfomance | number: '2.0-2' }}</td>
         }
           <td>-</td>
           <td>-</td>

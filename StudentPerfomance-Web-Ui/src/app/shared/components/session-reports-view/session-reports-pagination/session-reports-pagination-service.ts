@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from '../../../../modules/users/services/auth.service';
 import { BASE_API_URI } from '../../../models/api/api-constants';
 
@@ -69,11 +69,9 @@ export class SessionReportsPaginationService {
   }
 
   public refreshPagination() {
-    const payload: object = {
-      token: this._authService.userData.token,
-    };
+    const headers = this.buildHttpHeaders();
     this._httpClient
-      .post<number>(this._apiUri, payload)
+      .get<number>(this._apiUri, { headers: headers })
       .subscribe((response) => {
         this._totalCount = response;
         this._pagesCount = Math.ceil(this._totalCount / this._pageSize);
@@ -93,6 +91,10 @@ export class SessionReportsPaginationService {
         }
         this.pushFirstPage();
       });
+  }
+
+  private buildHttpHeaders(): HttpHeaders {
+    return new HttpHeaders().set('token', this._authService.userData.token);
   }
 
   private pushFirstPage() {

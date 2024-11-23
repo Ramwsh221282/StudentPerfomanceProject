@@ -1,48 +1,53 @@
+using System.Text;
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
 using SPerfomance.Api.Endpoints;
-using SPerfomance.Api.Features.Common;
+using SPerfomance.Api.Features.Common.Extensions;
+using SPerfomance.Application.Abstractions;
+using SPerfomance.Application.PerfomanceContext.AssignmentSessions.DTO;
 using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Queries.GetInfo;
-using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions.Abstractions;
 
 namespace SPerfomance.Api.Features.PerfomanceContext.Features;
 
 public static class GetActiveControlWeekInformation
 {
-    public record Request(TokenContract Token);
-
     public sealed class Endpoint : IEndpoint
     {
         public void MapEndpoint(IEndpointRouteBuilder app) =>
-            app.MapPost($"{PerfomanceContextTags.SessionsApp}/active-session-info", Handler)
-                .WithTags($"{PerfomanceContextTags.SessionsTag}");
+            app.MapGet($"{PerfomanceContextTags.SessionsApp}/active-session-info", Handler)
+                .WithTags($"{PerfomanceContextTags.SessionsTag}")
+                .WithOpenApi()
+                .WithName("GetActiveControlWeekInformation")
+                .WithDescription(
+                    new StringBuilder()
+                        .AppendLine("Метод возвращает активную сессию контрольной недели")
+                        .AppendLine("Результат ОК (200): Активная сессия контрольной недели.")
+                        .AppendLine("Результат Ошибки (400): Ошибка запроса.")
+                        .AppendLine("Результат Ошибки (401): Ошибка авторизации.")
+                        .ToString()
+                );
     }
 
-    public static async Task<IResult> Handler(
-        Request request,
+    public static async Task<
+        Results<UnauthorizedHttpResult, BadRequest<string>, Ok<AssignmentSessionInfoDTO>>
+    > Handler(
+        [FromHeader(Name = "token")] string token,
         IUsersRepository users,
-        IAssignmentSessionsRepository sessions,
+        IQueryDispatcher dispatcher,
         CancellationToken ct
     )
     {
-        var isTeacher = await new UserVerificationService(users).IsVerified(
-            request.Token,
-            UserRole.Teacher,
-            ct
-        );
-        var isAdmin = await new UserVerificationService(users).IsVerified(
-            request.Token,
-            UserRole.Administrator,
-            ct
-        );
-        if (!isTeacher && !isAdmin)
-            return Results.BadRequest(UserTags.UnauthorizedError);
+        if (!await new Token(token).IsVerified(users, ct))
+            return TypedResults.Unauthorized();
 
-        var response = await new GetAssignmentSessionInfoQueryHandler(sessions).Handle(
-            new GetAssignmentSessionInfoQuery(),
-            ct
-        );
+        var query = new GetAssignmentSessionInfoQuery();
+        var info = await dispatcher.Dispatch<
+            GetAssignmentSessionInfoQuery,
+            AssignmentSessionInfoDTO
+        >(query, ct);
 
-        return response.IsFailure
-            ? Results.BadRequest(response.Error.Description)
-            : Results.Ok(response.Value);
+        return info.IsFailure
+            ? TypedResults.BadRequest(info.Error.Description)
+            : TypedResults.Ok(info.Value);
     }
 }

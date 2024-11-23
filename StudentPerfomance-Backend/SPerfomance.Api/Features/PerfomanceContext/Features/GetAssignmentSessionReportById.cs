@@ -1,5 +1,7 @@
+using System.Text;
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
 using SPerfomance.Api.Endpoints;
-using SPerfomance.Api.Features.Common;
 using SPerfomance.Api.Features.Common.Extensions;
 using SPerfomance.Api.Features.PerfomanceContext.Responses;
 using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Abstractions;
@@ -9,36 +11,48 @@ namespace SPerfomance.Api.Features.PerfomanceContext.Features;
 
 public static class GetAssignmentSessionReportById
 {
-    public record Request(TokenContract Token, string? Id);
-
     public sealed class Endpoint : IEndpoint
     {
         public void MapEndpoint(IEndpointRouteBuilder app) =>
-            app.MapPost($"{PerfomanceContextTags.SessionsApp}/group-report-by-id", Handler)
-                .WithTags($"{PerfomanceContextTags.SessionsTag}");
+            app.MapGet($"{PerfomanceContextTags.SessionsApp}/group-report-by-id", Handler)
+                .WithTags($"{PerfomanceContextTags.SessionsTag}")
+                .WithOpenApi()
+                .WithName("GetAssignmentSessionReportById")
+                .WithDescription(
+                    new StringBuilder()
+                        .AppendLine("Метод возвращает отчёт контрольной недели по группам")
+                        .AppendLine("Результат ОК (200): Отчёт контрольной недели.")
+                        .AppendLine("Результат Ошибки (400): Ошибка запроса.")
+                        .AppendLine("Результат Ошибки (401): Ошибка авторизации.")
+                        .AppendLine("Результат Ошибки (404): Отчёт не найден.")
+                        .ToString()
+                );
     }
 
-    public static async Task<IResult> Handler(
-        Request request,
+    public static async Task<
+        Results<
+            UnauthorizedHttpResult,
+            BadRequest<string>,
+            Ok<string>,
+            Ok<GroupStatisticsReportDTO[]>
+        >
+    > Handler(
+        [FromHeader(Name = "token")] string token,
+        [FromQuery(Name = "id")] string id,
         IUsersRepository users,
         IControlWeekReportRepository controlWeeks,
         CancellationToken ct
     )
     {
-        if (!await request.Token.IsVerified(users))
-            return Results.BadRequest(
-                "Просмотр отчётов доступен только авторизованным пользователям"
-            );
-
-        if (string.IsNullOrWhiteSpace(request.Id))
-            return Results.BadRequest("Не указан Id отчёта");
+        if (!await new Token(token).IsVerified(users, ct))
+            return TypedResults.Unauthorized();
 
         if (controlWeeks is not ControlWeekRepository repository)
-            return Results.Ok();
+            return TypedResults.Ok("OK");
 
-        var report = await repository.GetById(Guid.Parse(request.Id), ct);
+        var report = await repository.GetById(Guid.Parse(id), ct);
         return report == null
-            ? Results.BadRequest("Отчёт не найден")
-            : Results.Ok(new ControlWeekReportDTO(report).GroupParts);
+            ? TypedResults.BadRequest("Отчёт не найден")
+            : TypedResults.Ok(new ControlWeekReportDTO(report).GroupParts);
     }
 }

@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AuthService } from '../../../../users/services/auth.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BASE_API_URI } from '../../../../../shared/models/api/api-constants';
 import { Observable } from 'rxjs';
 import { AssignmentSessionInfo } from './assignment-session-into';
-import { TokenPayloadBuilder } from '../../../../../shared/models/common/token-contract/token-payload-builder';
 
 @Injectable({
   providedIn: 'any',
@@ -14,15 +13,19 @@ export class TeacherAssignmentInfoSessionService {
 
   public constructor(
     private readonly _authService: AuthService,
-    private readonly _httpClient: HttpClient
+    private readonly _httpClient: HttpClient,
   ) {
     this._apiUri = `${BASE_API_URI}/app/assignment-sessions/active-session-info`;
   }
 
   public getInfo(): Observable<AssignmentSessionInfo> {
-    const payload = {
-      token: TokenPayloadBuilder(this._authService.userData),
-    };
-    return this._httpClient.post<AssignmentSessionInfo>(this._apiUri, payload);
+    const headers = this.buildHttpHeaders();
+    return this._httpClient.get<AssignmentSessionInfo>(this._apiUri, {
+      headers: headers,
+    });
+  }
+
+  private buildHttpHeaders(): HttpHeaders {
+    return new HttpHeaders().set('token', this._authService.userData.token);
   }
 }

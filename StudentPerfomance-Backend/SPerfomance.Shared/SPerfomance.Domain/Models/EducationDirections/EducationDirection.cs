@@ -36,17 +36,17 @@ public class EducationDirection : DomainEntity
 
     public static EducationDirection Empty => new EducationDirection();
 
-    public static Result<EducationDirection> Create(string code, string name, string type)
+    public static Result<EducationDirection> Create(string? code, string? name, string? type)
     {
-        Result<DirectionCode> requestedCode = DirectionCode.Create(code);
+        var requestedCode = DirectionCode.Create(code);
         if (requestedCode.IsFailure)
             return requestedCode.Error;
 
-        Result<DirectionName> requestedName = DirectionName.Create(name);
+        var requestedName = DirectionName.Create(name);
         if (requestedName.IsFailure)
             return requestedName.Error;
 
-        Result<DirectionType> requestedType = DirectionType.Create(type);
+        var requestedType = DirectionType.Create(type);
         if (requestedType.IsFailure)
             return requestedType.Error;
 
@@ -59,7 +59,7 @@ public class EducationDirection : DomainEntity
 
     public Result<EducationDirection> ChangeCode(string code)
     {
-        Result<DirectionCode> newCode = DirectionCode.Create(code);
+        var newCode = DirectionCode.Create(code);
         if (newCode.IsFailure)
             return Result<EducationDirection>.Failure(newCode.Error);
 
@@ -72,7 +72,7 @@ public class EducationDirection : DomainEntity
 
     public Result<EducationDirection> ChangeName(string name)
     {
-        Result<DirectionName> newName = DirectionName.Create(name);
+        var newName = DirectionName.Create(name);
         if (newName.IsFailure)
             return Result<EducationDirection>.Failure(newName.Error);
 
@@ -85,7 +85,7 @@ public class EducationDirection : DomainEntity
 
     public Result<EducationDirection> ChangeType(string type)
     {
-        Result<DirectionType> newType = DirectionType.Create(type);
+        var newType = DirectionType.Create(type);
         if (newType.IsFailure)
             return Result<EducationDirection>.Failure(newType.Error);
 
@@ -98,7 +98,7 @@ public class EducationDirection : DomainEntity
 
     public Result<EducationPlan> GetEducationPlan(int planYear)
     {
-        EducationPlan? plan = _plans.FirstOrDefault(p => p.Year.Year == planYear);
+        var plan = _plans.FirstOrDefault(p => p.Year.Year == planYear);
         return plan == null
             ? Result<EducationPlan>.Failure(EducationPlanErrors.NotFoundError())
             : Result<EducationPlan>.Success(plan);
@@ -111,7 +111,7 @@ public class EducationDirection : DomainEntity
                 EducationPlanErrors.DublicateError(this, planYear)
             );
 
-        Result<EducationPlan> plan = EducationPlan.Create(planYear, this);
+        var plan = EducationPlan.Create(planYear, this);
         return plan;
     }
 }

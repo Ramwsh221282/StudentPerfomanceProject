@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { BASE_API_URI } from '../../../../../shared/models/api/api-constants';
 import { User } from '../../../../users/services/user-interface';
@@ -19,8 +19,11 @@ export class UserCreationService {
   }
 
   public create(user: User): Observable<UserRecord> {
+    const headers = this.buildHttpHeaders();
     const payload = this.buildPayload(user);
-    return this._httpClient.post<UserRecord>(this._apiUri, payload);
+    return this._httpClient.post<UserRecord>(this._apiUri, payload, {
+      headers: headers,
+    });
   }
 
   private buildPayload(user: User): object {
@@ -36,5 +39,9 @@ export class UserCreationService {
         token: this._user.token,
       },
     };
+  }
+
+  private buildHttpHeaders(): HttpHeaders {
+    return new HttpHeaders().set('token', this._user.token);
   }
 }

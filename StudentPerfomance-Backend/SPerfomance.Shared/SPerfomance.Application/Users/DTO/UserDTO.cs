@@ -2,38 +2,19 @@ using SPerfomance.Domain.Models.Users;
 
 namespace SPerfomance.Application.Users.DTO;
 
-public class UserDTO
+public class UserDto(User user)
 {
-    public int Number { get; init; }
-
-    public string Name { get; init; }
-
-    public string Surname { get; init; }
-
-    public string? Patronymic { get; init; }
-
-    public string Email { get; init; }
-
-    public string Role { get; init; }
-
-    public DateTime LastTimeOnline { get; init; }
-
-    public DateTime RegisteredDate { get; init; }
-
-    public UserDTO(User user)
-    {
-        Number = user.EntityNumber;
-        Name = user.Name.Name;
-        Surname = user.Name.Surname;
-        Patronymic = user.Name.Patronymic;
-        Email = user.Email.Email;
-        Role = user.Role.Role;
-        LastTimeOnline = user.LastLoginDate;
-        RegisteredDate = user.RegisteredDate;
-    }
+    public int Number { get; init; } = user.EntityNumber;
+    public string Name { get; init; } = user.Name.Name;
+    public string Surname { get; init; } = user.Name.Surname;
+    public string? Patronymic { get; init; } = user.Name.Patronymic;
+    public string Email { get; init; } = user.Email.Email;
+    public string Role { get; init; } = user.Role.Role;
+    public DateTime LastTimeOnline { get; init; } = user.LastLoginDate;
+    public DateTime RegisteredDate { get; init; } = user.RegisteredDate;
 }
 
-public static class UserDTOExtensions
+public static class UserDtoExtensions
 {
-    public static UserDTO MapFromDomain(this User user) => new UserDTO(user);
+    public static UserDto MapFromDomain(this User user) => new(user);
 }

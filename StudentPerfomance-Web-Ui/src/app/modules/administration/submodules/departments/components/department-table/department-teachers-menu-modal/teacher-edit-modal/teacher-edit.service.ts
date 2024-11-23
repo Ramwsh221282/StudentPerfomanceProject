@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { BASE_API_URI } from '../../../../../../../../shared/models/api/api-constants';
 import { Teacher } from '../../../../../teachers/models/teacher.interface';
@@ -18,11 +18,19 @@ export class TeacherEditService {
   public constructor(private readonly _authService: AuthService) {
     this._apiUri = `${BASE_API_URI}/api/teachers`;
     this._httpClient = inject(HttpClient);
+    this.buildHttpHeaders();
   }
 
   public update(initial: Teacher, updated: Teacher): Observable<Teacher> {
+    const header = this.buildHttpHeaders();
     const body = this.buildRequestBody(initial, updated);
-    return this._httpClient.put<Teacher>(this._apiUri, body);
+    return this._httpClient.put<Teacher>(this._apiUri, body, {
+      headers: header,
+    });
+  }
+
+  private buildHttpHeaders(): HttpHeaders {
+    return new HttpHeaders().set('token', this._authService.userData.token);
   }
 
   private buildRequestBody(initial: Teacher, updated: Teacher): object {

@@ -8,7 +8,7 @@ namespace SPerfomance.Application.PerfomanceContext.AssignmentSessions.DTO;
 public class AssignmentWeekDTO
 {
     public Guid Id { get; init; }
-    public StudentGroupDTO? Group { get; init; }
+    public StudentGroupDto? Group { get; init; }
     public string DirectionType { get; init; }
     public string DirectionCode { get; init; }
     public List<AssignmentDTO> Assignments { get; init; }

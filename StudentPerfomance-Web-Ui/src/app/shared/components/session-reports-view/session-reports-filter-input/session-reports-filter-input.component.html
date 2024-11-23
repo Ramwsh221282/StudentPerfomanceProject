@@ -4,6 +4,6 @@
   <input type="date" [(ngModel)]="endDateStringRepresentation" placeholder="Введите дату окончания контрольной недели">
   <div class="session-reports-controls-container">
     <button (click)="submit()" class="accept-button">Применить</button>
-    <button class="danger-button">Отменить</button>
+    <button (click)="cancelFilter()" class="danger-button">Отменить</button>
   </div>
 </div>

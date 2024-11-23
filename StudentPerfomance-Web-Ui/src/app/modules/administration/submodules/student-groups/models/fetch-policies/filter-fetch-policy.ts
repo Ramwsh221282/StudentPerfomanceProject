@@ -1,37 +1,50 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IFetchPolicy } from '../../../../../../shared/models/fetch-policices/fetch-policy-interface';
 import { StudentGroup } from '../../services/studentsGroup.interface';
 import { BASE_API_URI } from '../../../../../../shared/models/api/api-constants';
 import { AuthService } from '../../../../../users/services/auth.service';
-import { StudentGroupPayloadBuilder } from '../contracts/student-group-contract/student-group-payload-builder';
-import { PaginationPayloadBuilder } from '../../../../../../shared/models/common/pagination-contract/pagination-payload-builder';
-import { TokenPayloadBuilder } from '../../../../../../shared/models/common/token-contract/token-payload-builder';
 
 export class FilterFetchPolicy implements IFetchPolicy<StudentGroup[]> {
   private readonly _apiUri: string = `${BASE_API_URI}/api/student-groups/filter`;
   private readonly _group: StudentGroup;
-  private _payload: object;
+  private _httpHeaders: HttpHeaders;
+  private _httpParams: HttpParams;
 
   public constructor(
     group: StudentGroup,
-    private readonly authService: AuthService
+    private readonly authService: AuthService,
   ) {
     this._group = group;
+    this.buildHttpHeaders();
   }
 
   public executeFetchPolicy(
-    httpClient: HttpClient
+    httpClient: HttpClient,
   ): Observable<StudentGroup[]> {
-    const payload = this._payload;
-    return httpClient.post<StudentGroup[]>(this._apiUri, payload);
+    const params = this._httpParams;
+    const headers = this._httpHeaders;
+    return httpClient.get<StudentGroup[]>(this._apiUri, {
+      headers: headers,
+      params,
+    });
   }
 
   public addPages(page: number, pageSize: number): void {
-    this._payload = {
-      group: StudentGroupPayloadBuilder(this._group),
-      pagination: PaginationPayloadBuilder(page, pageSize),
-      token: TokenPayloadBuilder(this.authService.userData),
-    };
+    this.buildHttpParams(page, pageSize);
+  }
+
+  private buildHttpParams(page: number, pageSize: number): void {
+    this._httpParams = new HttpParams()
+      .set('page', page)
+      .set('pageSize', pageSize)
+      .set('groupName', this._group.name);
+  }
+
+  private buildHttpHeaders(): void {
+    this._httpHeaders = new HttpHeaders().set(
+      'token',
+      this.authService.userData.token,
+    );
   }
 }

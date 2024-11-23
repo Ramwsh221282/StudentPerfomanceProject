@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { AssignmentSession } from '../../../../../models/assignment-session-interface';
 import { AssignmentSessionWeek } from '../../../../../models/assignment-session-week';
 import { ControlWeekReportEntity } from '../../../../../models/report/control-week-report';
@@ -11,7 +11,7 @@ import { DatePipe } from '@angular/common';
   styleUrl: './assignment-session-item-info.component.scss',
   providers: [DatePipe],
 })
-export class AssignmentSessionItemInfoComponent implements OnInit {
+export class AssignmentSessionItemInfoComponent {
   @Input({ required: true }) session: AssignmentSession;
   @Output() visibility: EventEmitter<void> = new EventEmitter();
   protected isAssignmentsVisible: boolean = false;
@@ -31,21 +31,5 @@ export class AssignmentSessionItemInfoComponent implements OnInit {
     private readonly _datePipe: DatePipe,
   ) {
     this.report == null;
-  }
-
-  public ngOnInit(): void {
-    this.service.getReport(this.session).subscribe((response) => {
-      this.report = response;
-      if (this.report != null) {
-        this.report.creationDate = this._datePipe.transform(
-          this.report.creationDate,
-          'dd-MM-yyyy',
-        )!;
-        this.report.completionDate = this._datePipe.transform(
-          this.report.completionDate,
-          'dd-MM-yyyy',
-        )!;
-      }
-    });
   }
 }

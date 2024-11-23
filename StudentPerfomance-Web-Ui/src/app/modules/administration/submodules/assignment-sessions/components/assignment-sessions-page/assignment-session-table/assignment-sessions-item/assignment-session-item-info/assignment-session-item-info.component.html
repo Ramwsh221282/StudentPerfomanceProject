@@ -23,8 +23,8 @@
             @for (week of session.weeks; track week.groupName.name) {
               <tr>
                 <td>{{ week.groupName.name }}</td>
-                <td>{{ week.perfomance | number }}</td>
-                <td>{{ week.average | number }}</td>
+                <td>{{ week.perfomance | number: '2.0-2' }}</td>
+                <td>{{ week.average | number: '1.1-2' }}</td>
                 <td>
                   <div class="controls-container">
                     <button

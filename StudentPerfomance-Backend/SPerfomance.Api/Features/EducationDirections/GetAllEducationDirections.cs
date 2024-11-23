@@ -1,5 +1,8 @@
+using System.Text;
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
 using SPerfomance.Api.Endpoints;
-using SPerfomance.Api.Features.Common;
+using SPerfomance.Api.Features.Common.Extensions;
 using SPerfomance.Application.EducationDirections.DTO;
 using SPerfomance.Domain.Models.EducationDirections.Abstractions;
 
@@ -7,34 +10,36 @@ namespace SPerfomance.Api.Features.EducationDirections;
 
 public static class GetAllEducationDirections
 {
-    public record Request(TokenContract Token);
-
     public class Endpoint : IEndpoint
     {
         public void MapEndpoint(IEndpointRouteBuilder app)
         {
-            app.MapPost($"{EducationDirectionTags.Api}/all", Handler)
-                .WithTags(EducationDirectionTags.Tag);
+            app.MapGet($"{EducationDirectionTags.Api}/all", Handler)
+                .WithTags(EducationDirectionTags.Tag)
+                .WithOpenApi()
+                .WithName("GetAllEducationDirections")
+                .WithDescription(
+                    new StringBuilder()
+                        .AppendLine("Метод возвращает все направления подготовки из базы данных.")
+                        .AppendLine("Результат ОК (200): Коллекция направлений подготовки.")
+                        .AppendLine("Результат Ошибки (401): Ошибка авторизации.")
+                        .ToString()
+                );
         }
     }
 
-    public static async Task<IResult> Handler(
-        Request request,
+    public static async Task<
+        Results<UnauthorizedHttpResult, Ok<IEnumerable<EducationDirectionDto>>>
+    > Handler(
+        [FromHeader(Name = "token")] string token,
         IUsersRepository users,
         IEducationDirectionRepository repository,
         CancellationToken ct
     )
     {
-        if (
-            !await new UserVerificationService(users).IsVerified(
-                request.Token,
-                UserRole.Administrator,
-                ct
-            )
-        )
-            return Results.BadRequest(UserTags.UnauthorizedError);
-
+        if (!await new Token(token).IsVerifiedAdmin(users, ct))
+            return TypedResults.Unauthorized();
         var directions = await repository.GetAll(ct);
-        return Results.Ok(directions.Select(d => d.MapFromDomain()));
+        return TypedResults.Ok(directions.Select(d => d.MapFromDomain()));
     }
 }

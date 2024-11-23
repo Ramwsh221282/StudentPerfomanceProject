@@ -4,5 +4,5 @@ import { Teacher } from '../../teachers/models/teacher.interface';
 export interface SemesterPlan {
   discipline: string;
   semester: Semester;
-  teacher: Teacher;
+  teacher: Teacher | null;
 }

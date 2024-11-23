@@ -14,7 +14,6 @@ import { Observable } from 'rxjs';
 export class UsersDataService implements IObservableFetchable<UserRecord[]> {
   private readonly _httpClient: HttpClient;
   private readonly _user: User;
-
   private _policy: IFetchPolicy<UserRecord[]>;
 
   public constructor() {

@@ -1,5 +1,5 @@
-import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { BASE_API_URI } from '../../../../../../shared/models/api/api-constants';
 import { AuthService } from '../../../../../users/services/auth.service';
 
@@ -7,18 +7,17 @@ import { AuthService } from '../../../../../users/services/auth.service';
   providedIn: 'any',
 })
 export class DepartmentPaginationService {
-  private readonly _httpClient: HttpClient;
   private readonly _apiUri: string;
-  private readonly _authService: AuthService;
   private _totalCount: number = 0;
   private _pageSize: number = 10;
   private _pagesCount: number = 0;
   private _currentPage: number = 1;
   private _displayPages: number[] = [];
 
-  constructor() {
-    this._authService = inject(AuthService);
-    this._httpClient = inject(HttpClient);
+  constructor(
+    private readonly _httpClient: HttpClient,
+    private readonly _authService: AuthService,
+  ) {
     this._apiUri = `${BASE_API_URI}/api/teacher-departments/count`;
   }
 
@@ -70,13 +69,9 @@ export class DepartmentPaginationService {
   }
 
   public refreshPagination() {
-    const payload: object = {
-      contract: {
-        token: this._authService.userData.token,
-      },
-    };
+    const headers = this.buildHttpHeaders();
     this._httpClient
-      .post<number>(this._apiUri, payload)
+      .get<number>(this._apiUri, { headers: headers })
       .subscribe((response) => {
         this._totalCount = response;
         this._pagesCount = Math.ceil(this._totalCount / this._pageSize);
@@ -96,6 +91,10 @@ export class DepartmentPaginationService {
         }
         this.pushFirstPage();
       });
+  }
+
+  private buildHttpHeaders(): HttpHeaders {
+    return new HttpHeaders().set('token', this._authService.userData.token);
   }
 
   private pushFirstPage() {

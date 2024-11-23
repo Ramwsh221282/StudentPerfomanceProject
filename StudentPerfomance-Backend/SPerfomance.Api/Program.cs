@@ -1,81 +1,34 @@
 global using SPerfomance.Api.Features.Users;
 global using SPerfomance.Application.Services.Authentication;
 global using SPerfomance.Application.Services.Authentication.Models;
-global using SPerfomance.Domain.Models.Users;
 global using SPerfomance.Domain.Models.Users.Abstractions;
 global using SPerfomance.Domain.Models.Users.ValueObjects;
-using System.IO.Compression;
-using System.Threading.RateLimiting;
-using Microsoft.AspNetCore.RateLimiting;
-using Microsoft.AspNetCore.ResponseCompression;
 using SPerfomance.Api.Endpoints;
+using SPerfomance.Api.Features.Common.Configuration;
+using SPerfomance.Api.Features.EducationDirections.Configuration;
+using SPerfomance.Api.Features.EducationPlans.Configuration;
+using SPerfomance.Api.Features.PerfomanceContext.Configuration;
+using SPerfomance.Api.Features.Semesters.Configuration;
+using SPerfomance.Api.Features.StudentGroups.Configurations;
+using SPerfomance.Api.Features.TeacherDepartments.Configuration;
+using SPerfomance.Api.Features.Users.Configurations;
 using SPerfomance.Api.MiddleWare;
-using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Abstractions;
-using SPerfomance.Application.Services.Authentication.Abstractions;
-using SPerfomance.Application.Services.Mailing;
-using SPerfomance.DataAccess.Repositories;
-using SPerfomance.Domain.Models.EducationDirections.Abstractions;
-using SPerfomance.Domain.Models.EducationPlans.Abstractions;
-using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions.Abstractions;
-using SPerfomance.Domain.Models.PerfomanceContext.Models.StudentAssignments;
-using SPerfomance.Domain.Models.SemesterPlans.Abstractions;
-using SPerfomance.Domain.Models.StudentGroups.Abstractions;
-using SPerfomance.Domain.Models.Students.Abstractions;
-using SPerfomance.Domain.Models.TeacherDepartments.Abstractions;
-using SPerfomance.Domain.Models.Teachers.Abstractions;
-using SPerfomance.Statistics.DataAccess.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddRateLimiter(rateLimiterOptions =>
-{
-    rateLimiterOptions.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
-    rateLimiterOptions.AddFixedWindowLimiter(
-        "fixed",
-        options =>
-        {
-            options.Window = TimeSpan.FromSeconds(5);
-            options.PermitLimit = 3;
-            options.QueueLimit = 3;
-            options.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
-        }
-    );
-});
-
-builder.Services.AddResponseCompression(options =>
-{
-    options.EnableForHttps = true;
-    options.Providers.Add<BrotliCompressionProvider>();
-    options.Providers.Add<GzipCompressionProvider>();
-});
-
-builder.Services.Configure<BrotliCompressionProviderOptions>(options =>
-{
-    options.Level = CompressionLevel.SmallestSize;
-});
-
-builder.Services.Configure<GzipCompressionProviderOptions>(options =>
-{
-    options.Level = CompressionLevel.SmallestSize;
-});
+builder.Services.ConfigureCqrsDispatchers();
+builder.Services.ConfigureEducationDirectionsComponents();
+builder.Services.ConfigureEducationPlans();
+builder.Services.ConfigureTeacherDepartments();
+builder.Services.ConfigureSemesters();
+builder.Services.ConfigureStudentGroups();
+builder.Services.ConfigureMailru();
+builder.Services.ConfigureAuth();
+builder.Services.ConfigureUsers();
+builder.Services.ConfigurePerfomanceContext();
+builder.Services.ConfigureMiddleWare();
 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddScoped<IEducationDirectionRepository, EducationDirectionRepository>();
-builder.Services.AddScoped<IEducationPlansRepository, EducationPlansRepository>();
-builder.Services.AddScoped<ISemesterPlansRepository, SemesterPlansRepository>();
-builder.Services.AddScoped<ITeacherDepartmentsRepository, TeacherDepartmentsRepository>();
-builder.Services.AddScoped<ITeachersRepository, TeachersRepository>();
-builder.Services.AddScoped<IStudentGroupsRepository, StudentGroupsRepository>();
-builder.Services.AddSingleton<IStudentsRepository, StudentsRepository>();
-builder.Services.AddSingleton<IPasswordHasher, PasswordHasher>();
-builder.Services.AddSingleton<IPasswordGenerator, PasswordGenerator>();
-builder.Services.AddSingleton<IMailingService, MailingService>();
-builder.Services.AddSingleton<IJwtTokenService, JwtTokenService>();
-builder.Services.AddScoped<IUsersRepository, UsersRepository>();
-builder.Services.AddScoped<IAssignmentSessionsRepository, AssignmentSessionsRepository>();
-builder.Services.AddScoped<IStudentAssignmentsRepository, StudentAssignmentsRepository>();
-builder.Services.AddScoped<IControlWeekReportRepository, ControlWeekRepository>();
-
 builder.Services.AddEndpoints();
 
 builder.Services.AddSwaggerGen(options =>

@@ -1,25 +1,21 @@
-import { inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { BaseService } from './base.service';
-import { User } from '../../../../users/services/user-interface';
 import { AuthService } from '../../../../users/services/auth.service';
 import { BASE_API_URI } from '../../../../../shared/models/api/api-constants';
-import { TokenPayloadBuilder } from '../../../../../shared/models/common/token-contract/token-payload-builder';
+import { HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'any',
 })
 export class PaginationService extends BaseService {
-  private readonly _user: User;
   private _totalCount: number = 0;
   private _pageSize: number = 10;
   private _pagesCount: number = 0;
   private _currentPage: number = 1;
   private _displayPages: number[] = [];
 
-  public constructor() {
+  public constructor(private readonly _authService: AuthService) {
     super();
-    const authService = inject(AuthService);
-    this._user = { ...authService.userData };
   }
 
   public get pageSize(): number {
@@ -65,9 +61,10 @@ export class PaginationService extends BaseService {
   }
 
   public refreshPagination(): void {
+    const headers = this.buildHttpHeaders();
     this.httpClient
-      .post<number>(`${BASE_API_URI}/api/education-plans/count`, {
-        token: TokenPayloadBuilder(this._user),
+      .get<number>(`${BASE_API_URI}/api/education-plans/count`, {
+        headers: headers,
       })
       .subscribe((response) => {
         this._totalCount = response;
@@ -88,6 +85,10 @@ export class PaginationService extends BaseService {
         }
         this.pushFirstPage();
       });
+  }
+
+  private buildHttpHeaders(): HttpHeaders {
+    return new HttpHeaders().set('token', this._authService.userData.token);
   }
 
   private pushFirstPage() {

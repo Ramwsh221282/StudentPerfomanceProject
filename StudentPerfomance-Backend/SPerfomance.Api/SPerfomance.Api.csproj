@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <Compile Remove="HostedServices\**" />
+    <Compile Remove="Features\PerfomanceContext\Features\GetAssignmentSessionReport.cs" />
   </ItemGroup>
 
   <ItemGroup>

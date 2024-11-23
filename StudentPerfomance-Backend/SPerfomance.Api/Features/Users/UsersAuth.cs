@@ -1,3 +1,4 @@
+using System.Text;
 using SPerfomance.Api.Endpoints;
 using SPerfomance.Application.Services.Authentication.Abstractions;
 using SPerfomance.Domain.Models.Users.Errors;
@@ -21,7 +22,11 @@ public static class UsersAuth
     {
         public void MapEndpoint(IEndpointRouteBuilder app)
         {
-            app.MapPost($"{UserTags.App}/login", Handler).WithTags(UserTags.Tag);
+            app.MapPost($"{UserTags.App}/login", Handler)
+                .WithTags(UserTags.Tag)
+                .WithOpenApi()
+                .WithName("UsersAuth")
+                .WithDescription(new StringBuilder().AppendLine("Авторизация").ToString());
         }
     }
 

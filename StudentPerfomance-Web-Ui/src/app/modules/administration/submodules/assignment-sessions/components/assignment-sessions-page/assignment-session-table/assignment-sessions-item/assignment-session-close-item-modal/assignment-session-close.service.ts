@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from '../../../../../../../../users/services/auth.service';
 import { BASE_API_URI } from '../../../../../../../../../shared/models/api/api-constants';
 import { AssignmentSession } from '../../../../../models/assignment-session-interface';
@@ -21,7 +21,8 @@ export class AssignmentSessionCloseService {
 
   public close(session: AssignmentSession): Observable<any> {
     const payload = this.buildPayload(session);
-    return this._httpClient.post(this._apiUri, payload);
+    const headers = this.buildHttpHeaders();
+    return this._httpClient.put(this._apiUri, payload, { headers: headers });
   }
 
   private buildPayload(session: AssignmentSession): object {
@@ -29,5 +30,9 @@ export class AssignmentSessionCloseService {
       token: TokenPayloadBuilder(this._authService.userData),
       id: session.id,
     };
+  }
+
+  private buildHttpHeaders(): HttpHeaders {
+    return new HttpHeaders().set('token', this._authService.userData.token);
   }
 }

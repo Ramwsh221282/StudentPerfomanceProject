@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { User } from '../../../../../users/services/user-interface';
 import { AuthService } from '../../../../../users/services/auth.service';
@@ -23,7 +23,11 @@ export class UserRemoveService {
 
   public remove(user: UserRecord): Observable<UserRecord> {
     const body = this.buildPayload(user);
-    return this._httpClient.delete<UserRecord>(this._apiUri, { body });
+    const headers = this.buildHttpHeaders();
+    return this._httpClient.delete<UserRecord>(this._apiUri, {
+      headers: headers,
+      body,
+    });
   }
 
   private buildPayload(user: UserRecord): object {
@@ -39,5 +43,9 @@ export class UserRemoveService {
         token: this._user.token,
       },
     };
+  }
+
+  private buildHttpHeaders(): HttpHeaders {
+    return new HttpHeaders().set('token', this._user.token);
   }
 }

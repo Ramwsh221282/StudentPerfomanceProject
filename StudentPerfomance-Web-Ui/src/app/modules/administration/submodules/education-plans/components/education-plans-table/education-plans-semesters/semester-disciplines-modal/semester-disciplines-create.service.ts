@@ -1,7 +1,6 @@
-import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { BASE_API_URI } from '../../../../../../../../shared/models/api/api-constants';
-import { Semester } from '../../../../../semesters/models/semester.interface';
 import { SemesterPlan } from '../../../../../semester-plans/models/semester-plan.interface';
 import { Observable } from 'rxjs';
 import { AuthService } from '../../../../../../../users/services/auth.service';
@@ -15,16 +14,19 @@ import { TokenPayloadBuilder } from '../../../../../../../../shared/models/commo
   providedIn: 'any',
 })
 export class SemesterDisciplinesCreationService {
-  private readonly _httpClient: HttpClient;
   private readonly _apiUri: string = `${BASE_API_URI}/api/semester-plans`;
 
-  public constructor(private readonly _authService: AuthService) {
-    this._httpClient = inject(HttpClient);
-  }
+  public constructor(
+    private readonly _httpClient: HttpClient,
+    private readonly _authService: AuthService,
+  ) {}
 
   public create(plan: SemesterPlan): Observable<SemesterPlan> {
     const body = this.buildRequestBody(plan);
-    return this._httpClient.post<SemesterPlan>(this._apiUri, body);
+    const headers = this.buildHttpHeaders();
+    return this._httpClient.post<SemesterPlan>(this._apiUri, body, {
+      headers: headers,
+    });
   }
 
   private buildRequestBody(plan: SemesterPlan): object {
@@ -35,5 +37,9 @@ export class SemesterDisciplinesCreationService {
       discipline: SemesterPlanPayloadBuilder(plan),
       token: TokenPayloadBuilder(this._authService.userData),
     };
+  }
+
+  private buildHttpHeaders(): HttpHeaders {
+    return new HttpHeaders().set('token', this._authService.userData.token);
   }
 }

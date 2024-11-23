@@ -1,10 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BASE_API_URI } from '../../../../../../../shared/models/api/api-constants';
 import { Student } from '../../../../students/models/student.interface';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { StudentPayloadBuilder } from '../../../../students/models/contracts/student-contracts/student-payload-builder';
-import { TokenPayloadBuilder } from '../../../../../../../shared/models/common/token-contract/token-payload-builder';
 import { AuthService } from '../../../../../../users/services/auth.service';
 
 @Injectable({
@@ -21,14 +20,20 @@ export class StudentEditService {
 
   public update(initial: Student, updated: Student): Observable<Student> {
     const body = this.buildRequestBody(initial, updated);
-    return this._httpClient.put<Student>(this._apiUri, body);
+    const headers = this.buildHttpHeaders();
+    return this._httpClient.put<Student>(this._apiUri, body, {
+      headers: headers,
+    });
   }
 
   private buildRequestBody(initial: Student, updated: Student): object {
     return {
       student: StudentPayloadBuilder(initial),
       updated: StudentPayloadBuilder(updated),
-      token: TokenPayloadBuilder(this._authService.userData),
     };
+  }
+
+  private buildHttpHeaders(): HttpHeaders {
+    return new HttpHeaders().set('token', this._authService.userData.token);
   }
 }

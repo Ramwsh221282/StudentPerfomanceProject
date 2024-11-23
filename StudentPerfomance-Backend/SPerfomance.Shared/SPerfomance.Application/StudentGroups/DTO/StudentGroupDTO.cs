@@ -3,34 +3,25 @@ using SPerfomance.Domain.Models.StudentGroups;
 
 namespace SPerfomance.Application.StudentGroups.DTO;
 
-public class StudentGroupDTO
+public class StudentGroupDto(StudentGroup group)
 {
-    public int EntityNumber { get; init; }
-
-    public string Name { get; init; }
-
-    public EducationPlanDTO? Plan { get; init; }
-
-    public byte? ActiveSemesterNumber { get; init; }
-
-    public StudentGroupDTO(StudentGroup group)
-    {
-        EntityNumber = group.EntityNumber;
-        Name = group.Name.Name;
-        Plan = group.EducationPlan == null ? null : group.EducationPlan.MapFromDomain();
-        ActiveSemesterNumber =
-            group.ActiveGroupSemester == null ? null : group.ActiveGroupSemester.Number.Number;
-    }
+    public Guid Id { get; set; } = group.Id;
+    public int EntityNumber { get; init; } = group.EntityNumber;
+    public string Name { get; init; } = group.Name.Name;
+    public EducationPlanDto? Plan { get; init; } =
+        group.EducationPlan == null ? null : group.EducationPlan.MapFromDomain();
+    public byte? ActiveSemesterNumber { get; init; } =
+        group.ActiveGroupSemester == null ? null : group.ActiveGroupSemester.Number.Number;
 }
 
-public static class StudentGroupDTOExtensions
+public static class StudentGroupDtoExtensions
 {
-    public static StudentGroupDTO MapFromDomain(this StudentGroup group)
+    public static StudentGroupDto MapFromDomain(this StudentGroup group)
     {
-        return new StudentGroupDTO(group);
+        return new StudentGroupDto(group);
     }
 
-    public static byte EstimateCourse(this StudentGroupDTO group)
+    public static byte EstimateCourse(this StudentGroupDto group)
     {
         if (group.ActiveSemesterNumber == null)
             return default;
@@ -42,7 +33,7 @@ public static class StudentGroupDTOExtensions
             : group.EstimateCourseFromMagister();
     }
 
-    private static byte EstimateCourseFromBachelor(this StudentGroupDTO group)
+    private static byte EstimateCourseFromBachelor(this StudentGroupDto group)
     {
         if (group.ActiveSemesterNumber == null)
             return default;
@@ -67,7 +58,7 @@ public static class StudentGroupDTOExtensions
         };
     }
 
-    private static byte EstimateCourseFromMagister(this StudentGroupDTO group)
+    private static byte EstimateCourseFromMagister(this StudentGroupDto group)
     {
         if (group.ActiveSemesterNumber == null)
             return default;

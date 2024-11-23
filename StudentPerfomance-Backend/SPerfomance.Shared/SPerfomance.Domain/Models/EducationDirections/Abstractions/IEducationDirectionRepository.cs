@@ -9,9 +9,9 @@ public interface IEducationDirectionRepository
     public Task Update(EducationDirection direction, CancellationToken ct = default);
 
     public Task<EducationDirection?> Get(
-        string code,
-        string name,
-        string type,
+        string? code,
+        string? name,
+        string? type,
         CancellationToken ct = default
     );
 

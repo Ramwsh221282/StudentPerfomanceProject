@@ -1,37 +1,40 @@
+using System.Text;
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
 using SPerfomance.Api.Endpoints;
-using SPerfomance.Api.Features.Common;
+using SPerfomance.Api.Features.Common.Extensions;
 using SPerfomance.Domain.Models.TeacherDepartments.Abstractions;
 
 namespace SPerfomance.Api.Features.TeacherDepartments;
 
 public static class CountTeacherDepartments
 {
-    public record Request(TokenContract Contract);
-
     public sealed class Endpoint : IEndpoint
     {
         public void MapEndpoint(IEndpointRouteBuilder app) =>
-            app.MapPost($"{TeacherDepartmentsTags.Api}/count", Handler)
-                .WithTags(TeacherDepartmentsTags.Tag);
+            app.MapGet($"{TeacherDepartmentsTags.Api}/count", Handler)
+                .WithTags(TeacherDepartmentsTags.Tag)
+                .WithOpenApi()
+                .WithName("CountTeacherDepartments")
+                .WithDescription(
+                    new StringBuilder()
+                        .AppendLine("Метод возвращает количество кафедр")
+                        .AppendLine("Результат ОК (200): Количество кафедр.")
+                        .AppendLine("Результат Ошибки (401): Ошибка авторизации.")
+                        .ToString()
+                );
     }
 
-    public static async Task<IResult> Handler(
-        Request request,
+    public static async Task<Results<UnauthorizedHttpResult, Ok<int>>> Handler(
+        [FromHeader(Name = "token")] string token,
         IUsersRepository users,
         ITeacherDepartmentsRepository repository,
         CancellationToken ct
     )
     {
-        if (
-            !await new UserVerificationService(users).IsVerified(
-                request.Contract,
-                UserRole.Administrator,
-                ct
-            )
-        )
-            return Results.BadRequest(UserTags.UnauthorizedError);
-
+        if (!await new Token(token).IsVerifiedAdmin(users, ct))
+            return TypedResults.Unauthorized();
         var count = await repository.Count(ct);
-        return Results.Ok(count);
+        return TypedResults.Ok(count);
     }
 }

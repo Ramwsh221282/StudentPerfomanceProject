@@ -1,48 +1,71 @@
+using System.Text;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using SPerfomance.Api.Endpoints;
-using SPerfomance.Api.Features.Common;
-using SPerfomance.Api.Features.StudentGroups.Contracts;
+using SPerfomance.Api.Features.Common.Extensions;
+using SPerfomance.Application.Abstractions;
 using SPerfomance.Application.StudentGroups.Commands.DeattachEducationPlan;
 using SPerfomance.Application.StudentGroups.DTO;
 using SPerfomance.Application.StudentGroups.Queries.GetStudentGroupByName;
-using SPerfomance.Domain.Models.StudentGroups.Abstractions;
+using SPerfomance.Domain.Models.StudentGroups;
 
 namespace SPerfomance.Api.Features.StudentGroups;
 
 public static class DeattachGroupEducationPlan
 {
-    public record Request(StudentGroupContract Group, TokenContract Token);
+    public record Request(GetStudentGroupQuery Group);
 
     public sealed class Endpoint : IEndpoint
     {
         public void MapEndpoint(IEndpointRouteBuilder app) =>
             app.MapPut($"{StudentGroupTags.Api}/deattach-education-plan", Handler)
-                .WithTags($"{StudentGroupTags.Tag}");
+                .WithTags($"{StudentGroupTags.Tag}")
+                .WithOpenApi()
+                .WithName("DeattachGroupEducationPlan")
+                .WithDescription(
+                    new StringBuilder()
+                        .AppendLine("Открепляет учебный план от группы")
+                        .AppendLine(
+                            "Результат ОК (200): Возвращает студенческую группу с открепленным учебным планом."
+                        )
+                        .AppendLine("Результат Ошибки (400): Ошибка запроса.")
+                        .AppendLine("Результат Ошибки (401): Ошибка авторизации.")
+                        .AppendLine(
+                            "Результат Ошибки (404): Студенческая группа или учебный план не найдены"
+                        )
+                        .ToString()
+                );
     }
 
-    public static async Task<IResult> Handler(
+    public static async Task<
+        Results<UnauthorizedHttpResult, NotFound<string>, BadRequest<string>, Ok<StudentGroupDto>>
+    > Handler(
+        [FromHeader(Name = "token")] string token,
         [FromBody] Request request,
-        IStudentGroupsRepository groups,
+        IQueryDispatcher queryDispatcher,
+        ICommandDispatcher commandDispatcher,
         IUsersRepository users,
         CancellationToken ct
     )
     {
-        if (
-            !await new UserVerificationService(users).IsVerified(
-                request.Token,
-                UserRole.Administrator,
-                ct
-            )
-        )
-            return Results.BadRequest(UserTags.UnauthorizedError);
+        if (!await new Token(token).IsVerifiedAdmin(users, ct))
+            return TypedResults.Unauthorized();
 
-        var group = await new GetStudentGroupQueryHandler(groups).Handle(request.Group, ct);
-        group = await new DeattachEducationPlanCommandHandler(groups).Handle(
+        var group = await queryDispatcher.Dispatch<GetStudentGroupQuery, StudentGroup>(
+            request.Group,
+            ct
+        );
+
+        if (group.IsFailure)
+            return TypedResults.NotFound(group.Error.Description);
+
+        group = await commandDispatcher.Dispatch<DeattachEducationPlanCommand, StudentGroup>(
             new DeattachEducationPlanCommand(group.Value),
             ct
         );
+
         return group.IsFailure
-            ? Results.BadRequest(group.Error.Description)
-            : Results.Ok(group.Value.MapFromDomain());
+            ? TypedResults.BadRequest(group.Error.Description)
+            : TypedResults.Ok(group.Value.MapFromDomain());
     }
 }

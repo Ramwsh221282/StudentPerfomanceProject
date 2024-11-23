@@ -2,6 +2,7 @@ using SPerfomance.Application.Abstractions;
 using SPerfomance.Domain.Models.StudentGroups.Errors;
 using SPerfomance.Domain.Models.Students;
 using SPerfomance.Domain.Models.Students.Abstractions;
+using SPerfomance.Domain.Models.Students.Errors;
 using SPerfomance.Domain.Tools;
 
 namespace SPerfomance.Application.StudentGroups.Commands.AddStudentCommand;
@@ -16,6 +17,12 @@ public class AddStudentCommandHandler(IStudentsRepository students)
     {
         if (command.Group == null)
             return Result<Student>.Failure(StudentGroupErrors.NotFound());
+
+        if (command.Recordbook == null)
+            return new Error("Зачётная книжка не была указана");
+
+        if (await students.HasWithRecordbook(command.Recordbook.Value, ct))
+            return StudentErrors.RecordbookDublicate(command.Recordbook.Value);
 
         var student = command.Group.AddStudent(
             command.Name.ValueOrEmpty(),

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { BASE_API_URI } from '../../../../../../../shared/models/api/api-constants';
 import { Department } from '../../../models/departments.interface';
@@ -20,8 +20,12 @@ export class DepartmentDeletionService {
   }
 
   public remove(department: Department): Observable<Department> {
+    const headers = this.buildHttpHeaders();
     const body = this.buildRequestBody(department);
-    return this._httpClient.delete<Department>(this._apiUri, { body });
+    return this._httpClient.delete<Department>(this._apiUri, {
+      headers: headers,
+      body,
+    });
   }
 
   private buildRequestBody(department: Department): object {
@@ -29,5 +33,9 @@ export class DepartmentDeletionService {
       department: DepartmentPayloadBuilder(department),
       token: TokenPayloadBuilder(this._authService.userData),
     };
+  }
+
+  private buildHttpHeaders(): HttpHeaders {
+    return new HttpHeaders().set('token', this._authService.userData.token);
   }
 }

@@ -23,7 +23,7 @@ public class DirectionName : DomainValueObject
 
     public static DirectionName Empty => new DirectionName();
 
-    public static Result<DirectionName> Create(string name)
+    public static Result<DirectionName> Create(string? name)
     {
         if (string.IsNullOrWhiteSpace(name))
             return Result<DirectionName>.Failure(EducationDirectionErrors.NameEmptyError());

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { BASE_API_URI } from '../../../../../../../shared/models/api/api-constants';
 import { Department } from '../../../models/departments.interface';
@@ -21,10 +21,13 @@ export class DepartmentEditService {
 
   public update(
     initial: Department,
-    updated: Department
+    updated: Department,
   ): Observable<Department> {
+    const headers = this.buildHttpHeaders();
     const body = this.buildRequestBody(initial, updated);
-    return this._httpClient.put<Department>(this._apiUri, body);
+    return this._httpClient.put<Department>(this._apiUri, body, {
+      headers: headers,
+    });
   }
 
   private buildRequestBody(initial: Department, updated: Department): object {
@@ -33,5 +36,9 @@ export class DepartmentEditService {
       updated: DepartmentPayloadBuilder(updated),
       token: TokenPayloadBuilder(this._authService.userData),
     };
+  }
+
+  private buildHttpHeaders(): HttpHeaders {
+    return new HttpHeaders().set('token', this._authService.userData.token);
   }
 }

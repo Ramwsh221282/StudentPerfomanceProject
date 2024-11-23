@@ -1,37 +1,42 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IFetchPolicy } from '../../../../../../shared/models/fetch-policices/fetch-policy-interface';
 import { AssignmentSession } from '../assignment-session-interface';
 import { AuthService } from '../../../../../users/services/auth.service';
 import { BASE_API_URI } from '../../../../../../shared/models/api/api-constants';
-import { PaginationPayloadBuilder } from '../../../../../../shared/models/common/pagination-contract/pagination-payload-builder';
-import { TokenPayloadBuilder } from '../../../../../../shared/models/common/token-contract/token-payload-builder';
 
 export class AssignmentSessionDefaultFetchPolicy
   implements IFetchPolicy<AssignmentSession[]>
 {
   private readonly _apiUri: string;
-  private _payload: object;
+  private readonly _httpHeaders: HttpHeaders;
+  private _httpParams: HttpParams;
 
   public constructor(private readonly _authService: AuthService) {
     this._apiUri = `${BASE_API_URI}/api/assignment-sessions/byPage`;
+    this._httpHeaders = this.buildHttpHeaders();
   }
 
   public executeFetchPolicy(
-    httpClient: HttpClient
+    httpClient: HttpClient,
   ): Observable<AssignmentSession[]> {
-    const payload = this._payload;
-    return httpClient.post<AssignmentSession[]>(this._apiUri, payload);
+    const headers = this._httpHeaders;
+    const params = this._httpParams;
+    return httpClient.get<AssignmentSession[]>(this._apiUri, {
+      headers: headers,
+      params,
+    });
   }
 
   public addPages(page: number, pageSize: number): void {
-    this.buildPayload(page, pageSize);
+    this._httpParams = this.buildHttpParams(page, pageSize);
   }
 
-  private buildPayload(page: number, pageSize: number): void {
-    this._payload = {
-      pagination: PaginationPayloadBuilder(page, pageSize),
-      token: TokenPayloadBuilder(this._authService.userData),
-    };
+  private buildHttpHeaders(): HttpHeaders {
+    return new HttpHeaders().set('token', this._authService.userData.token);
+  }
+
+  private buildHttpParams(page: number, pageSize: number): HttpParams {
+    return new HttpParams().set('page', page).set('pageSize', pageSize);
   }
 }

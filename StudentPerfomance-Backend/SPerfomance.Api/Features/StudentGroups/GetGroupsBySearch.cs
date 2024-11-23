@@ -1,6 +1,8 @@
+using System.Text;
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
 using SPerfomance.Api.Endpoints;
-using SPerfomance.Api.Features.Common;
-using SPerfomance.Api.Features.StudentGroups.Contracts;
+using SPerfomance.Api.Features.Common.Extensions;
 using SPerfomance.Application.StudentGroups.DTO;
 using SPerfomance.Domain.Models.StudentGroups.Abstractions;
 
@@ -8,31 +10,35 @@ namespace SPerfomance.Api.Features.StudentGroups;
 
 public static class GetGroupsBySearch
 {
-    public record Request(StudentGroupContract Group, TokenContract Token);
-
     public sealed class Endpoint : IEndpoint
     {
         public void MapEndpoint(IEndpointRouteBuilder app) =>
-            app.MapPost($"{StudentGroupTags.Api}/search", Handler).WithTags(StudentGroupTags.Tag);
+            app.MapGet($"{StudentGroupTags.Api}/search", Handler)
+                .WithTags(StudentGroupTags.Tag)
+                .WithOpenApi()
+                .WithName("GetGroupsBySearch")
+                .WithDescription(
+                    new StringBuilder()
+                        .AppendLine("Метод возвращает отфильтрованный список студенческих групп")
+                        .AppendLine("Результат ОК (200): Список отфильтрованных групп по названию.")
+                        .AppendLine("Результат Ошибки (401): Ошибка авторизации.")
+                        .ToString()
+                );
     }
 
-    public static async Task<IResult> Handler(
-        Request request,
+    public static async Task<
+        Results<UnauthorizedHttpResult, Ok<IEnumerable<StudentGroupDto>>>
+    > Handler(
+        [FromHeader(Name = "token")] string token,
+        [FromQuery(Name = "groupName")] string groupName,
         IUsersRepository users,
         IStudentGroupsRepository repository,
         CancellationToken ct
     )
     {
-        if (
-            !await new UserVerificationService(users).IsVerified(
-                request.Token,
-                UserRole.Administrator,
-                ct
-            )
-        )
-            return Results.BadRequest(UserTags.UnauthorizedError);
-
-        var groups = await repository.Filter(request.Group.Name, ct);
-        return Results.Ok(groups.Select(g => g.MapFromDomain()));
+        if (!await new Token(token).IsVerifiedAdmin(users, ct))
+            return TypedResults.Unauthorized();
+        var groups = await repository.Filter(groupName, ct);
+        return TypedResults.Ok(groups.Select(g => g.MapFromDomain()));
     }
 }

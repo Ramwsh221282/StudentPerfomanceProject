@@ -48,9 +48,6 @@ export class SessionCourseReportComponent implements OnInit {
       this.groupReports = response.groupParts;
       this.average = response.average;
       this.perfomance = response.perfomance;
-      console.log(this.groupReports);
-      console.log(this.average);
-      console.log(this.perfomance);
     });
   }
 

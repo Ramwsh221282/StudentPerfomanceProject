@@ -1,77 +1,107 @@
+using System.Text;
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
 using SPerfomance.Api.Endpoints;
-using SPerfomance.Api.Features.Common;
-using SPerfomance.Api.Features.EducationDirections.Contracts;
+using SPerfomance.Api.Features.Common.Extensions;
 using SPerfomance.Api.Features.EducationPlans.Contracts;
 using SPerfomance.Api.Features.SemesterPlans.Contracts;
 using SPerfomance.Api.Features.Semesters.Contracts;
+using SPerfomance.Application.Abstractions;
 using SPerfomance.Application.EducationDirections.Queries.GetEducationDirection;
 using SPerfomance.Application.EducationPlans.Queries.GetEducationPlan;
 using SPerfomance.Application.Semesters.Commands.DeattachTeacherFromDiscipline;
 using SPerfomance.Application.Semesters.DTO;
 using SPerfomance.Application.Semesters.Queries.GetDisciplineFromSemester;
 using SPerfomance.Application.Semesters.Queries.GetSemester;
-using SPerfomance.Domain.Models.EducationDirections.Abstractions;
-using SPerfomance.Domain.Models.SemesterPlans.Abstractions;
+using SPerfomance.Domain.Models.EducationDirections;
+using SPerfomance.Domain.Models.EducationPlans;
+using SPerfomance.Domain.Models.SemesterPlans;
+using SPerfomance.Domain.Models.Semesters;
 
 namespace SPerfomance.Api.Features.SemesterPlans;
 
 public static class DeattachTeacher
 {
     public record Request(
-        EducationDirectionContract Direction,
+        GetEducationDirectionQuery Direction,
         EducationPlanContract Plan,
         SemesterContract Semester,
-        SemesterPlanContract Discipline,
-        TokenContract Token
+        SemesterPlanContract Discipline
     );
 
     public sealed class Endpoint : IEndpoint
     {
         public void MapEndpoint(IEndpointRouteBuilder app) =>
-            app.MapPost($"{SemesterPlanTags.Api}/deattach-teacher", Handler)
-                .WithTags(SemesterPlanTags.Tag);
+            app.MapPut($"{SemesterPlanTags.Api}/deattach-teacher", Handler)
+                .WithTags(SemesterPlanTags.Tag)
+                .WithOpenApi()
+                .WithName("DeattachTeacher")
+                .WithDescription(
+                    new StringBuilder()
+                        .AppendLine("Метод открепляет дисциплину от преподавателя")
+                        .AppendLine("Результат ОК (200): Возвращает дисциплину без преподавателя.")
+                        .AppendLine("Результат Ошибки (400): Ошибка запроса.")
+                        .AppendLine("Результат Ошибки (401): Ошибка авторизации.")
+                        .AppendLine(
+                            "Результат Ошибки (404): Дисциплина или преподаватель не найдены."
+                        )
+                        .ToString()
+                );
     }
 
-    public static async Task<IResult> Handler(
-        Request request,
+    public static async Task<
+        Results<UnauthorizedHttpResult, NotFound<string>, BadRequest<string>, Ok<SemesterPlanDto>>
+    > Handler(
+        [FromHeader(Name = "token")] string token,
+        [FromBody] Request request,
         IUsersRepository users,
-        IEducationDirectionRepository directions,
-        ISemesterPlansRepository disciplines,
+        IQueryDispatcher queryDispatcher,
+        ICommandDispatcher commandDispatcher,
         CancellationToken ct
     )
     {
-        if (
-            !await new UserVerificationService(users).IsVerified(
-                request.Token,
-                UserRole.Administrator,
-                ct
-            )
-        )
-            return Results.BadRequest(UserTags.UnauthorizedError);
+        if (!await new Token(token).IsVerifiedAdmin(users, ct))
+            return TypedResults.Unauthorized();
 
-        var direction = await new GetEducationDirectionQueryHandler(directions).Handle(
-            request.Direction,
-            ct
-        );
-        var educationPlan = await new GetEducationPlanQueryHandler().Handle(
+        var direction = await queryDispatcher.Dispatch<
+            GetEducationDirectionQuery,
+            EducationDirection
+        >(request.Direction, ct);
+
+        if (direction.IsFailure)
+            return TypedResults.NotFound(direction.Error.Description);
+
+        var educationPlan = await queryDispatcher.Dispatch<GetEducationPlanQuery, EducationPlan>(
             new GetEducationPlanQuery(direction.Value, request.Plan.PlanYear),
             ct
         );
-        var semester = await new GetSemesterQueryHandler().Handle(
+
+        if (educationPlan.IsFailure)
+            return TypedResults.NotFound(educationPlan.Error.Description);
+
+        var semester = await queryDispatcher.Dispatch<GetSemesterQuery, Semester>(
             new GetSemesterQuery(educationPlan.Value, request.Semester.Number),
             ct
         );
-        var discipline = await new GetDisciplineFromSemesterQueryHandler().Handle(
-            new GetDisciplineFromSemesterQuery(semester.Value, request.Discipline.Discipline),
-            ct
-        );
-        discipline = await new DeattachTeacherFromDisciplineCommandHandler(disciplines).Handle(
-            new DeattachTeacherFromDisciplineCommand(discipline.Value),
-            ct
-        );
+
+        if (semester.IsFailure)
+            return TypedResults.NotFound(semester.Error.Description);
+
+        var discipline = await queryDispatcher.Dispatch<
+            GetDisciplineFromSemesterQuery,
+            SemesterPlan
+        >(new GetDisciplineFromSemesterQuery(semester.Value, request.Discipline.Discipline), ct);
+
+        if (discipline.IsFailure)
+            return TypedResults.NotFound(discipline.Error.Description);
+
+        discipline = await commandDispatcher.Dispatch<
+            DeattachTeacherFromDisciplineCommand,
+            SemesterPlan
+        >(new DeattachTeacherFromDisciplineCommand(discipline.Value), ct);
 
         return discipline.IsFailure
-            ? Results.BadRequest(discipline.Error.Description)
-            : Results.Ok(discipline.Value.MapFromDomain());
+            ? TypedResults.BadRequest(discipline.Error.Description)
+            : TypedResults.Ok(discipline.Value.MapFromDomain());
     }
 }

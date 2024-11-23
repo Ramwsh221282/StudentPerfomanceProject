@@ -1,48 +1,53 @@
+using System.Text;
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
 using SPerfomance.Api.Endpoints;
-using SPerfomance.Api.Features.Common;
-using SPerfomance.Api.Features.StudentGroups.Contracts;
+using SPerfomance.Api.Features.Common.Extensions;
+using SPerfomance.Application.Abstractions;
 using SPerfomance.Application.StudentGroups.DTO;
 using SPerfomance.Application.StudentGroups.Queries.GetStudentGroupByName;
-using SPerfomance.Domain.Models.StudentGroups.Abstractions;
+using SPerfomance.Domain.Models.StudentGroups;
 
 namespace SPerfomance.Api.Features.Students;
 
 public static class GetStudentsByGroup
 {
-    public record Request(StudentGroupContract Group, TokenContract Token);
-
     public sealed class Endpoint : IEndpoint
     {
         public void MapEndpoint(IEndpointRouteBuilder app) =>
-            app.MapPost($"{StudentTags.Api}/by-group", Handler).WithTags(StudentTags.Tag);
+            app.MapGet($"{StudentTags.Api}", Handler)
+                .WithTags(StudentTags.Tag)
+                .WithOpenApi()
+                .WithName("GetStudentsByGroup")
+                .WithDescription(
+                    new StringBuilder()
+                        .AppendLine("Метод возвращает студентов группы")
+                        .AppendLine("Результат ОК (200): Список неактивных студентов.")
+                        .AppendLine("Результат Ошибки (401): Ошибка авторизации.")
+                        .ToString()
+                );
     }
 
-    public static async Task<IResult> Handler(
-        Request request,
+    public static async Task<
+        Results<UnauthorizedHttpResult, NotFound<string>, Ok<IEnumerable<StudentDto>>>
+    > Handler(
+        [FromHeader(Name = "token")] string token,
+        [FromQuery(Name = "groupName")] string groupName,
+        IQueryDispatcher dispatcher,
         IUsersRepository users,
-        IStudentGroupsRepository repository,
         CancellationToken ct
     )
     {
-        if (
-            !await new UserVerificationService(users).IsVerified(
-                request.Token,
-                UserRole.Administrator,
-                ct
-            )
-        )
-            return Results.BadRequest(UserTags.UnauthorizedError);
+        if (!await new Token(token).IsVerifiedAdmin(users, ct))
+            return TypedResults.Unauthorized();
 
-        var group = await new GetStudentGroupQueryHandler(repository).Handle(
-            new GetStudentGroupQuery(request.Group.Name),
+        var group = await dispatcher.Dispatch<GetStudentGroupQuery, StudentGroup>(
+            new GetStudentGroupQuery(groupName),
             ct
         );
-
         if (group.IsFailure)
-            return Results.BadRequest(group.Error.Description);
+            return TypedResults.NotFound(group.Error.Description);
 
-        return Results.Ok(
-            group.Value.Students.Select(s => s.MapFromDomain()).OrderBy(s => s.Surname)
-        );
+        return TypedResults.Ok(group.Value.Students.Select(s => s.MapFromDomain()));
     }
 }

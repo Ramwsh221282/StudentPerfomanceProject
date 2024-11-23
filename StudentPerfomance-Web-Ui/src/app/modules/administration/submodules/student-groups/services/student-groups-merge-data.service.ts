@@ -5,6 +5,7 @@ import { BASE_API_URI } from '../../../../../shared/models/api/api-constants';
 import { AuthService } from '../../../../users/services/auth.service';
 import { StudentGroupPayloadBuilder } from '../models/contracts/student-group-contract/student-group-payload-builder';
 import { TokenPayloadBuilder } from '../../../../../shared/models/common/token-contract/token-payload-builder';
+import { HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'any',
@@ -18,7 +19,10 @@ export class StudentGroupsMergeDataService extends StudentGroupsService {
 
   public merge(initial: StudentGroup, target: StudentGroup) {
     const payload = this.buildPayload(initial, target);
-    return this.httpClient.put<StudentGroup>(this._apiUri, payload);
+    const headers = this.buildHttpHeaders();
+    return this.httpClient.put<StudentGroup>(this._apiUri, payload, {
+      headers: headers,
+    });
   }
 
   private buildPayload(initial: StudentGroup, target: StudentGroup): object {
@@ -27,5 +31,9 @@ export class StudentGroupsMergeDataService extends StudentGroupsService {
       target: StudentGroupPayloadBuilder(target),
       token: TokenPayloadBuilder(this._authService.userData),
     };
+  }
+
+  private buildHttpHeaders(): HttpHeaders {
+    return new HttpHeaders().set('token', this._authService.userData.token);
   }
 }

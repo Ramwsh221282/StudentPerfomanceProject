@@ -43,7 +43,7 @@ export class SemesterDisciplinesEditModalComponent
     private readonly _teacherDataService: TeacherDataService,
     private readonly _editService: SemesterDisciplinesEditService,
     private readonly _notificationService: UserOperationNotificationService,
-    private readonly _authService: AuthService
+    private readonly _authService: AuthService,
   ) {
     this.activePlan = {} as SemesterPlan;
     this.departments = [];
@@ -68,7 +68,7 @@ export class SemesterDisciplinesEditModalComponent
             this.failureEmitter.emit();
             this.plan = { ...this.activePlan };
             return new Observable();
-          })
+          }),
         )
         .subscribe();
     }
@@ -95,7 +95,7 @@ export class SemesterDisciplinesEditModalComponent
 
   protected selectDepartment(value: any): void {
     this.selectedDepartment = this.departments.find(
-      (d) => d.name == value.target.value
+      (d) => d.name == value.target.value,
     )!;
     this.fetchDepartmentTeacher();
   }
@@ -108,7 +108,7 @@ export class SemesterDisciplinesEditModalComponent
         .pipe(
           tap((response) => {
             this.plan = { ...response };
-            this._notificationService.SetMessage = `Назначен преподаватель ${response.teacher.surname} ${response.teacher.name} ${response.teacher.patronymic}`;
+            this._notificationService.SetMessage = `Назначен преподаватель ${response.teacher!.surname} ${response.teacher!.name} ${response.teacher!.patronymic}`;
             this.successEmitter.emit();
             this.refreshEmitter.emit();
           }),
@@ -117,7 +117,7 @@ export class SemesterDisciplinesEditModalComponent
             this.plan = { ...this.activePlan };
             this.failureEmitter.emit();
             return new Observable();
-          })
+          }),
         )
         .subscribe();
     }
@@ -131,7 +131,7 @@ export class SemesterDisciplinesEditModalComponent
         .deattachTeacher(this.plan)
         .pipe(
           tap((response) => {
-            this._notificationService.SetMessage = `Преподаватель ${response.teacher.surname} ${response.teacher.name} ${response.teacher.patronymic} откреплен`;
+            this._notificationService.SetMessage = `Преподаватель ${this.plan.teacher!.surname} ${this.plan.teacher!.name} ${this.plan.teacher!.patronymic} откреплен от дисциплины ${this.plan.discipline}`;
             this.successEmitter.emit();
             this.refreshEmitter.emit();
             this.plan = { ...response };
@@ -141,7 +141,7 @@ export class SemesterDisciplinesEditModalComponent
             this.failureEmitter.emit();
             this.plan = { ...this.activePlan };
             return new Observable();
-          })
+          }),
         )
         .subscribe();
       this.fetchDepartments();
@@ -153,8 +153,8 @@ export class SemesterDisciplinesEditModalComponent
       this._teacherDataService.setPolicy(
         new DefaultTeacherFetchPolicy(
           this.selectedDepartment,
-          this._authService
-        )
+          this._authService,
+        ),
       );
       this._teacherDataService.fetch().subscribe((response) => {
         this.deparmtentTeachers = response;

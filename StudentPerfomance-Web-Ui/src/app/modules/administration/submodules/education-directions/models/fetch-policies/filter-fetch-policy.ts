@@ -1,37 +1,55 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IFetchPolicy } from '../../../../../../shared/models/fetch-policices/fetch-policy-interface';
 import { EducationDirection } from '../education-direction-interface';
 import { BASE_API_URI } from '../../../../../../shared/models/api/api-constants';
 import { AuthService } from '../../../../../users/services/auth.service';
-import { PaginationPayloadBuilder } from '../../../../../../shared/models/common/pagination-contract/pagination-payload-builder';
-import { TokenPayloadBuilder } from '../../../../../../shared/models/common/token-contract/token-payload-builder';
-import { DirectionPayloadBuilder } from '../contracts/direction-payload-builder';
 
 export class FilterFetchPolicy implements IFetchPolicy<EducationDirection[]> {
   private readonly _baseApiUri = `${BASE_API_URI}/api/education-direction/filter`;
   private readonly _direction: EducationDirection;
-  private payload: object;
+  private _headers: HttpHeaders;
+  private _params: HttpParams;
 
   public constructor(
     direction: EducationDirection,
-    private readonly authService: AuthService
+    private readonly authService: AuthService,
   ) {
     this._direction = direction;
+    this.buildHeaders();
+    this.buildParams();
   }
 
   public executeFetchPolicy(
-    httpClient: HttpClient
+    httpClient: HttpClient,
   ): Observable<EducationDirection[]> {
-    const payload = this.payload;
-    return httpClient.post<EducationDirection[]>(this._baseApiUri, payload);
+    const headers = this._headers;
+    const params = this._params;
+    return httpClient.get<EducationDirection[]>(this._baseApiUri, {
+      headers: headers,
+      params,
+    });
   }
 
   public addPages(page: number, pageSize: number): void {
-    this.payload = {
-      direction: DirectionPayloadBuilder(this._direction),
-      pagination: PaginationPayloadBuilder(page, pageSize),
-      token: TokenPayloadBuilder(this.authService.userData),
-    };
+    this.appendPages(page, pageSize);
+  }
+
+  private appendPages(page: number, pageSize: number): void {
+    this._params = new HttpParams().set('page', page).set('pageSize', pageSize);
+  }
+
+  private buildParams(): void {
+    this._params = new HttpParams()
+      .set('filterCode', this._direction.code)
+      .set('filterName', this._direction.name)
+      .set('filterType', this._direction.type);
+  }
+
+  private buildHeaders(): void {
+    this._headers = new HttpHeaders().set(
+      'token',
+      this.authService.userData.token,
+    );
   }
 }

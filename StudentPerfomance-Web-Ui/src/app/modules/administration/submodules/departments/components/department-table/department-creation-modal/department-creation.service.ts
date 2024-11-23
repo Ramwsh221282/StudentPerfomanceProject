@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BASE_API_URI } from '../../../../../../../shared/models/api/api-constants';
 import { inject, Injectable } from '@angular/core';
 import { Department } from '../../../models/departments.interface';
@@ -20,8 +20,11 @@ export class DepartmentCreationService {
   }
 
   public create(department: Department): Observable<Department> {
+    const headers = this.buildHttpHeaders();
     const body = this.buildRequestBody(department);
-    return this._httpClient.post<Department>(this._apiUri, body);
+    return this._httpClient.post<Department>(this._apiUri, body, {
+      headers: headers,
+    });
   }
 
   private buildRequestBody(department: Department): object {
@@ -29,5 +32,9 @@ export class DepartmentCreationService {
       department: DepartmentPayloadBuilder(department),
       token: TokenPayloadBuilder(this._authService.userData),
     };
+  }
+
+  private buildHttpHeaders(): HttpHeaders {
+    return new HttpHeaders().set('token', this._authService.userData.token);
   }
 }

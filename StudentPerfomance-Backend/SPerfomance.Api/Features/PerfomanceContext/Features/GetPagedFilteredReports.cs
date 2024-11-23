@@ -1,3 +1,5 @@
+using System.Text;
+using Microsoft.AspNetCore.Http.HttpResults;
 using SPerfomance.Api.Endpoints;
 using SPerfomance.Api.Features.Common;
 using SPerfomance.Api.Features.Common.Extensions;
@@ -20,23 +22,35 @@ public static class GetPagedFilteredReports
     {
         public void MapEndpoint(IEndpointRouteBuilder app) =>
             app.MapPost($"{PerfomanceContextTags.SessionsApp}/paged-filtered", Handler)
-                .WithTags($"{PerfomanceContextTags.SessionsTag}");
+                .WithTags($"{PerfomanceContextTags.SessionsTag}")
+                .WithOpenApi()
+                .WithName("GetPagedFilteredReports")
+                .WithDescription(
+                    new StringBuilder()
+                        .AppendLine(
+                            "Метод возвращает отфильтрованные отчёты контрольных недель постранично"
+                        )
+                        .AppendLine("Результат ОК (200): Постраничные отчёты контрольных недель.")
+                        .AppendLine("Результат Ошибки (400): Ошибка запроса.")
+                        .AppendLine("Результат Ошибки (401): Ошибка авторизации.")
+                        .ToString()
+                );
     }
 
-    public static async Task<IResult> Handler(
+    public static async Task<
+        Results<UnauthorizedHttpResult, Ok<string>, Ok<IEnumerable<ControlWeekReportDTO>>>
+    > Handler(
         Request request,
         IUsersRepository users,
         IControlWeekReportRepository reports,
         CancellationToken ct
     )
     {
-        if (!await request.Token.IsVerified(users))
-            return Results.BadRequest(
-                "Просмотр отчётов доступен только администраторам и преподавателям"
-            );
+        if (!await new Token(request.Token.Token).IsVerified(users, ct))
+            return TypedResults.Unauthorized();
 
         if (reports is not ControlWeekRepository repository)
-            return Results.Ok();
+            return TypedResults.Ok("OK");
 
         var list = await repository.GetPagedFilteredByPeriod(
             request.Pagination.Page,
@@ -46,7 +60,7 @@ public static class GetPagedFilteredReports
             ct
         );
 
-        return Results.Ok(list.Select(r => new ControlWeekReportDTO(r)));
+        return TypedResults.Ok(list.Select(r => new ControlWeekReportDTO(r)));
     }
 
     private static DateTime? ConvertToDate(DatePeriod? period)

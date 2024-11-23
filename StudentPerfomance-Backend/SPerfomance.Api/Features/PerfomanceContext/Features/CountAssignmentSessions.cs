@@ -1,37 +1,41 @@
+using System.Text;
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
 using SPerfomance.Api.Endpoints;
-using SPerfomance.Api.Features.Common;
+using SPerfomance.Api.Features.Common.Extensions;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions.Abstractions;
 
 namespace SPerfomance.Api.Features.PerfomanceContext.Features;
 
 public static class CountAssignmentSessions
 {
-    public record Request(TokenContract Token);
-
     public sealed class Endpoint : IEndpoint
     {
         public void MapEndpoint(IEndpointRouteBuilder app) =>
-            app.MapPost($"{PerfomanceContextTags.SessionsApi}/count", Handler)
-                .WithTags($"{PerfomanceContextTags.SessionsTag}");
+            app.MapGet($"{PerfomanceContextTags.SessionsApi}/count", Handler)
+                .WithTags($"{PerfomanceContextTags.SessionsTag}")
+                .WithOpenApi()
+                .WithName("CountAssignmentSessions")
+                .WithDescription(
+                    new StringBuilder()
+                        .AppendLine("Метод возвращает количество контрольных недель в системе")
+                        .AppendLine("Результат ОК (200): Количество контрольных недель.")
+                        .AppendLine("Результат Ошибки (400): Ошибка запроса.")
+                        .AppendLine("Результат Ошибки (401): Ошибка авторизации.")
+                        .ToString()
+                );
     }
 
-    public static async Task<IResult> Handler(
-        Request request,
+    public static async Task<Results<UnauthorizedHttpResult, Ok<int>>> Handler(
+        [FromHeader(Name = "token")] string token,
         IUsersRepository users,
         IAssignmentSessionsRepository sessions,
         CancellationToken ct
     )
     {
-        if (
-            !await new UserVerificationService(users).IsVerified(
-                request.Token,
-                UserRole.Administrator,
-                ct
-            )
-        )
-            return Results.BadRequest(UserTags.UnauthorizedError);
-
+        if (!await new Token(token).IsVerifiedAdmin(users, ct))
+            return TypedResults.Unauthorized();
         var count = await sessions.Count(ct);
-        return Results.Ok(count);
+        return TypedResults.Ok(count);
     }
 }

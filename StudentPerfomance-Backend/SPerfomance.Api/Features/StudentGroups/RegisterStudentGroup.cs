@@ -1,45 +1,57 @@
+using System.Text;
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
 using SPerfomance.Api.Endpoints;
-using SPerfomance.Api.Features.Common;
+using SPerfomance.Api.Features.Common.Extensions;
 using SPerfomance.Api.Features.StudentGroups.Contracts;
+using SPerfomance.Application.Abstractions;
 using SPerfomance.Application.StudentGroups.Commands.CreateStudentGroup;
 using SPerfomance.Application.StudentGroups.DTO;
-using SPerfomance.Domain.Models.StudentGroups.Abstractions;
+using SPerfomance.Domain.Models.StudentGroups;
 
 namespace SPerfomance.Api.Features.StudentGroups;
 
 public static class RegisterStudentGroup
 {
-    public record Request(StudentGroupContract Group, TokenContract Token);
+    public record Request(StudentGroupContract Group);
 
     public sealed class Endpoint : IEndpoint
     {
         public void MapEndpoint(IEndpointRouteBuilder app) =>
-            app.MapPost($"{StudentGroupTags.Api}", Handler).WithTags(StudentGroupTags.Tag);
+            app.MapPost($"{StudentGroupTags.Api}", Handler)
+                .WithTags(StudentGroupTags.Tag)
+                .WithOpenApi()
+                .WithName("RegisterStudentGroup")
+                .WithDescription(
+                    new StringBuilder()
+                        .AppendLine("Метод добавляет студенческую группу")
+                        .AppendLine("Результат ОК (200): Студенческая группа.")
+                        .AppendLine("Результат Ошибки (400): Ошибка запроса.")
+                        .AppendLine("Результат Ошибки (401): Ошибка авторизации.")
+                        .ToString()
+                );
     }
 
-    public static async Task<IResult> Handler(
+    public static async Task<
+        Results<UnauthorizedHttpResult, NotFound<string>, BadRequest<string>, Ok<StudentGroupDto>>
+    > Handler(
+        [FromHeader(Name = "token")] string token,
         Request request,
-        IStudentGroupsRepository repository,
+        ICommandDispatcher dispatcher,
         IUsersRepository users,
         CancellationToken ct
     )
     {
-        if (
-            !await new UserVerificationService(users).IsVerified(
-                request.Token,
-                UserRole.Administrator,
-                ct
-            )
-        )
-            return Results.BadRequest(UserTags.UnauthorizedError);
+        if (!await new Token(token).IsVerifiedAdmin(users, ct))
+            return TypedResults.Unauthorized();
 
-        var group = await new CreateStudentGroupCommandHandler(repository).Handle(
+        var group = await dispatcher.Dispatch<CreateStudentGroupCommand, StudentGroup>(
             new CreateStudentGroupCommand(request.Group.Name),
             ct
         );
 
         return group.IsFailure
-            ? Results.BadRequest(group.Error.Description)
-            : Results.Ok(group.Value.MapFromDomain());
+            ? TypedResults.BadRequest(group.Error.Description)
+            : TypedResults.Ok(group.Value.MapFromDomain());
     }
 }

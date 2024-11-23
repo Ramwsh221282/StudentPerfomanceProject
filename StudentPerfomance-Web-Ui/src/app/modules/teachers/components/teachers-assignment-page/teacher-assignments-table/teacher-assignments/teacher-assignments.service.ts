@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AuthService } from '../../../../../users/services/auth.service';
 import { BASE_API_URI } from '../../../../../../shared/models/api/api-constants';
@@ -15,23 +15,27 @@ export class TeacherAssignmentsService {
 
   public constructor(
     private readonly _httpClient: HttpClient,
-    private readonly _authService: AuthService
+    private readonly _authService: AuthService,
   ) {
     this.apiUri = `${BASE_API_URI}/app/assignment-sessions/make-assignment`;
   }
 
   public makeAssignment(
     student: TeacherJournalStudent,
-    discipline: TeacherJournalDiscipline
+    discipline: TeacherJournalDiscipline,
   ): Observable<any> {
-    const paylod = this.buildPayload(student, discipline);
-    return this._httpClient.post<any>(this.apiUri, paylod);
+    const paylod = this.buildPayload(student);
+    const headers = this.buildHttpHeaders();
+    return this._httpClient.post<any>(this.apiUri, paylod, {
+      headers: headers,
+    });
   }
 
-  private buildPayload(
-    student: TeacherJournalStudent,
-    discipline: TeacherJournalDiscipline
-  ): object {
+  private buildHttpHeaders(): HttpHeaders {
+    return new HttpHeaders().set('token', this._authService.userData.token);
+  }
+
+  private buildPayload(student: TeacherJournalStudent): object {
     return {
       token: TokenPayloadBuilder(this._authService.userData),
       assignment: {

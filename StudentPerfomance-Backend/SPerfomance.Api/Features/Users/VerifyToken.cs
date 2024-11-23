@@ -1,3 +1,4 @@
+using System.Text;
 using SPerfomance.Api.Endpoints;
 
 namespace SPerfomance.Api.Features.Users;
@@ -9,7 +10,11 @@ public static class VerifyToken
     public sealed class Endpoint : IEndpoint
     {
         public void MapEndpoint(IEndpointRouteBuilder app) =>
-            app.MapPost($"{UserTags.Api}/verify", Handler).WithTags(UserTags.Tag);
+            app.MapPost($"{UserTags.Api}/verify", Handler)
+                .WithTags(UserTags.Tag)
+                .WithOpenApi()
+                .WithName("VerifyToken")
+                .WithDescription(new StringBuilder().AppendLine("Проверка токена JWT").ToString());
     }
 
     public static async Task<IResult> Handler(Request request, CancellationToken ct)

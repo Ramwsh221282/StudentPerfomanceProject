@@ -2,20 +2,20 @@ using SPerfomance.Domain.Models.TeacherDepartments;
 
 namespace SPerfomance.Application.Departments.DTO;
 
-public class TeachersDepartmentDTO
+public class TeachersDepartmentDto
 {
+    public Guid Id { get; set; }
     public string? Name { get; set; }
-
     public string? Acronymus { get; set; }
-
     public int? EntityNumber { get; set; }
 }
 
-public static class TeachersDepartmentDTOExtensions
+public static class TeachersDepartmentDtoExtensions
 {
-    public static TeachersDepartmentDTO MapFromDomain(this TeachersDepartments department) =>
-        new TeachersDepartmentDTO()
+    public static TeachersDepartmentDto MapFromDomain(this TeachersDepartments department) =>
+        new()
         {
+            Id = department.Id,
             Name = department.Name.Name,
             Acronymus = department.Acronymus,
             EntityNumber = department.EntityNumber,

@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { IFetchPolicy } from '../../../../../../shared/models/fetch-policices/fetch-policy-interface';
 import { Department } from '../../models/departments.interface';
 import { inject, Injectable } from '@angular/core';
@@ -7,7 +7,6 @@ import { Observable } from 'rxjs';
 import { BASE_API_URI } from '../../../../../../shared/models/api/api-constants';
 import { IObservableFetchable } from '../../../../../../shared/models/fetch-policices/iobservable-fetchable.interface';
 import { AuthService } from '../../../../../users/services/auth.service';
-import { TokenPayloadBuilder } from '../../../../../../shared/models/common/token-contract/token-payload-builder';
 
 @Injectable({
   providedIn: 'any',
@@ -38,10 +37,12 @@ export class DepartmentDataService
   }
 
   public getAllDepartments(): Observable<Department[]> {
-    const payload: object = {
-      token: TokenPayloadBuilder(this._authService.userData),
-    };
     const apiUri: string = `${BASE_API_URI}/api/teacher-departments/all`;
-    return this._httpClient.post<Department[]>(apiUri, payload);
+    const headers = this.buildHttpHeaders();
+    return this._httpClient.get<Department[]>(apiUri, { headers: headers });
+  }
+
+  private buildHttpHeaders(): HttpHeaders {
+    return new HttpHeaders().set('token', this._authService.userData.token);
   }
 }

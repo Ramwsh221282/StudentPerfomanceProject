@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { BASE_API_URI } from '../../../../../../../shared/models/api/api-constants';
 import { StudentGroup } from '../../../services/studentsGroup.interface';
@@ -27,21 +27,27 @@ export class EducationPlanAttachmentService {
   public attachPlan(
     group: StudentGroup,
     plan: EducationPlan,
-    semesterNumber: number
+    semesterNumber: number,
   ): Observable<StudentGroup> {
     const body = this.buildAttachmentRequestBody(group, plan, semesterNumber);
-    return this._httpClient.put<StudentGroup>(this._attachmentApiUri, body);
+    const headers = this.buildHttpHeaders();
+    return this._httpClient.put<StudentGroup>(this._attachmentApiUri, body, {
+      headers: headers,
+    });
   }
 
   public deattachPlan(group: StudentGroup): Observable<StudentGroup> {
     const body = this.buildDeattachmentRequestBody(group);
-    return this._httpClient.put<StudentGroup>(this._deattachmentApiUri, body);
+    const headers = this.buildHttpHeaders();
+    return this._httpClient.put<StudentGroup>(this._deattachmentApiUri, body, {
+      headers: headers,
+    });
   }
 
   private buildAttachmentRequestBody(
     group: StudentGroup,
     plan: EducationPlan,
-    semesterNumber: number
+    semesterNumber: number,
   ): object {
     return {
       direction: DirectionPayloadBuilder(plan.direction),
@@ -59,5 +65,9 @@ export class EducationPlanAttachmentService {
       group: StudentGroupPayloadBuilder(group),
       token: TokenPayloadBuilder(this._authService.userData),
     };
+  }
+
+  private buildHttpHeaders(): HttpHeaders {
+    return new HttpHeaders().set('token', this._authService.userData.token);
   }
 }

@@ -1,48 +1,64 @@
+using System.Text;
 using Microsoft.AspNetCore.Mvc;
 using SPerfomance.Api.Endpoints;
-using SPerfomance.Api.Features.Common;
-using SPerfomance.Api.Features.StudentGroups.Contracts;
+using SPerfomance.Api.Features.Common.Extensions;
+using SPerfomance.Application.Abstractions;
 using SPerfomance.Application.StudentGroups.Commands.RemoveStudentGroup;
 using SPerfomance.Application.StudentGroups.DTO;
 using SPerfomance.Application.StudentGroups.Queries.GetStudentGroupByName;
-using SPerfomance.Domain.Models.StudentGroups.Abstractions;
+using SPerfomance.Domain.Models.StudentGroups;
 
 namespace SPerfomance.Api.Features.StudentGroups;
 
 public static class RemoveStudentGroup
 {
-    public record Request(StudentGroupContract Group, TokenContract Token);
+    public record Request(GetStudentGroupQuery Group);
 
     public sealed class Endpoint : IEndpoint
     {
         public void MapEndpoint(IEndpointRouteBuilder app) =>
-            app.MapDelete($"{StudentGroupTags.Api}", Handler).WithTags(StudentGroupTags.Tag);
+            app.MapDelete($"{StudentGroupTags.Api}", Handler)
+                .WithTags(StudentGroupTags.Tag)
+                .WithOpenApi()
+                .WithName("RemoveStudentGroup")
+                .WithDescription(
+                    new StringBuilder()
+                        .AppendLine("Метод удаляет студенческую группу из системы")
+                        .AppendLine("Результат ОК (200): Удаленная студенческая группа.")
+                        .AppendLine("Результат Ошибки (400): Ошибка запроса.")
+                        .AppendLine("Результат Ошибки (401): Ошибка авторизации.")
+                        .AppendLine("Результат Ошибки (404): Студенческая группа не найдена")
+                        .ToString()
+                );
     }
 
     public static async Task<IResult> Handler(
+        [FromHeader(Name = "token")] string token,
         [FromBody] Request request,
         IUsersRepository users,
-        IStudentGroupsRepository repository,
+        IQueryDispatcher queryDispatcher,
+        ICommandDispatcher commandDispatcher,
         CancellationToken ct
     )
     {
-        if (
-            !await new UserVerificationService(users).IsVerified(
-                request.Token,
-                UserRole.Administrator,
-                ct
-            )
-        )
-            return Results.BadRequest(UserTags.UnauthorizedError);
+        if (!await new Token(token).IsVerifiedAdmin(users, ct))
+            return TypedResults.Unauthorized();
 
-        var group = await new GetStudentGroupQueryHandler(repository).Handle(request.Group, ct);
-        group = await new RemoveStudentGroupCommandHandler(repository).Handle(
+        var group = await queryDispatcher.Dispatch<GetStudentGroupQuery, StudentGroup>(
+            request.Group,
+            ct
+        );
+
+        if (group.IsFailure)
+            return TypedResults.NotFound(group.Error.Description);
+
+        group = await commandDispatcher.Dispatch<RemoveStudentGroupCommand, StudentGroup>(
             new RemoveStudentGroupCommand(group.Value),
             ct
         );
 
         return group.IsFailure
-            ? Results.BadRequest(group.Error.Description)
-            : Results.Ok(group.Value.MapFromDomain());
+            ? TypedResults.BadRequest(group.Error.Description)
+            : TypedResults.Ok(group.Value.MapFromDomain());
     }
 }

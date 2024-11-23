@@ -3,23 +3,23 @@ using SPerfomance.Domain.Models.Semesters;
 
 namespace SPerfomance.Application.Semesters.DTO;
 
-public class SemesterDTO
+public class SemesterDto
 {
-    public EducationPlanDTO? EducationPlan { get; set; }
-
+    public Guid Id { get; set; }
+    public EducationPlanDto? EducationPlan { get; set; }
     public byte? Number { get; set; }
-
     public int? ContractsCount { get; set; }
 }
 
-public static class SemesterPlanDTOExtensions
+public static class SemesterPlanDtoExtensions
 {
-    public static SemesterDTO MapFromDomain(this Semester semester)
+    public static SemesterDto MapFromDomain(this Semester semester)
     {
-        EducationPlanDTO planDTO = semester.Plan.MapFromDomain();
-        SemesterDTO dto = new SemesterDTO()
+        var planDto = semester.Plan.MapFromDomain();
+        var dto = new SemesterDto()
         {
-            EducationPlan = planDTO,
+            Id = semester.Id,
+            EducationPlan = planDto,
             Number = semester.Number.Number,
             ContractsCount = semester.Disciplines.Count,
         };

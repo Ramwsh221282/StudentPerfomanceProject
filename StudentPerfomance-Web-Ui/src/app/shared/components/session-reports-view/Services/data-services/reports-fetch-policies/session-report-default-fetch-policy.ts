@@ -1,40 +1,42 @@
 import { IFetchPolicy } from '../../../../../models/fetch-policices/fetch-policy-interface';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AuthService } from '../../../../../../modules/users/services/auth.service';
 import { BASE_API_URI } from '../../../../../models/api/api-constants';
-import { TokenPayloadBuilder } from '../../../../../models/common/token-contract/token-payload-builder';
-import { PaginationPayloadBuilder } from '../../../../../models/common/pagination-contract/pagination-payload-builder';
 import { ControlWeekReportInterface } from '../../../Models/Data/control-week-report-interface';
 
 export class SessionReportDefaultFetchPolicy
   implements IFetchPolicy<ControlWeekReportInterface[]>
 {
   private readonly _baseApiUri: string;
-  private _payload: object;
+  private readonly _httpHeaders: HttpHeaders;
+  private _httpParams: HttpParams;
 
   public constructor(private readonly _authService: AuthService) {
     this._baseApiUri = `${BASE_API_URI}/app/assignment-sessions/reports-paged`;
+    this._httpHeaders = this.buildHttpHeaders();
   }
 
   public executeFetchPolicy(
     httpClient: HttpClient,
   ): Observable<ControlWeekReportInterface[]> {
-    const payload = this._payload;
-    return httpClient.post<ControlWeekReportInterface[]>(
-      this._baseApiUri,
-      payload,
-    );
+    const headers = this._httpHeaders;
+    const params = this._httpParams;
+    return httpClient.get<ControlWeekReportInterface[]>(this._baseApiUri, {
+      headers: headers,
+      params: params,
+    });
   }
 
   public addPages(page: number, pageSize: number): void {
-    this.buildPayload(page, pageSize);
+    this._httpParams = this.buildHttpParams(page, pageSize);
   }
 
-  private buildPayload(page: number, pageSize: number) {
-    this._payload = {
-      token: TokenPayloadBuilder(this._authService.userData),
-      pagination: PaginationPayloadBuilder(page, pageSize),
-    };
+  private buildHttpParams(page: number, pageSize: number): HttpParams {
+    return new HttpParams().set('page', page).set('pageSize', pageSize);
+  }
+
+  private buildHttpHeaders(): HttpHeaders {
+    return new HttpHeaders().set('token', this._authService.userData.token);
   }
 }

@@ -23,7 +23,7 @@ public class DirectionType : DomainValueObject
 
     public static DirectionType Empty => new DirectionType();
 
-    public static Result<DirectionType> Create(string type)
+    public static Result<DirectionType> Create(string? type)
     {
         if (string.IsNullOrWhiteSpace(type))
             return Result<DirectionType>.Failure(EducationDirectionErrors.TypeEmptyError());

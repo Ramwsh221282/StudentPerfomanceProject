@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { StudentGroupsService } from './student-groups-base-service';
 import { BASE_API_URI } from '../../../../../shared/models/api/api-constants';
 import { AuthService } from '../../../../users/services/auth.service';
-import { TokenPayloadBuilder } from '../../../../../shared/models/common/token-contract/token-payload-builder';
+import { HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'any',
@@ -67,11 +67,9 @@ export class StudentGroupsPaginationService extends StudentGroupsService {
   }
 
   public refreshPagination() {
-    const payload = {
-      token: TokenPayloadBuilder(this._authService.userData),
-    };
+    const headers = this.buildHttpHeaders();
     this.httpClient
-      .post<number>(this._apiUri, payload)
+      .get<number>(this._apiUri, { headers: headers })
       .subscribe((response) => {
         this._totalCount = response;
         this._pagesCount = Math.ceil(this._totalCount / this._pageSize);
@@ -98,5 +96,9 @@ export class StudentGroupsPaginationService extends StudentGroupsService {
     if (this.displayPages.length == 0) {
       this.displayPages.push(1);
     }
+  }
+
+  private buildHttpHeaders(): HttpHeaders {
+    return new HttpHeaders().set('token', this._authService.userData.token);
   }
 }

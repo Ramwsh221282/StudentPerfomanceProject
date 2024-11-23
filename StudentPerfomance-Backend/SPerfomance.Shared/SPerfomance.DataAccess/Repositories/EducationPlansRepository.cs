@@ -1,3 +1,4 @@
+using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using SPerfomance.Domain.Models.EducationDirections;
 using SPerfomance.Domain.Models.EducationPlans;
@@ -14,17 +15,43 @@ public class EducationPlansRepository : IEducationPlansRepository
     public async Task Insert(EducationPlan entity, CancellationToken ct = default)
     {
         entity.SetNumber(await GenerateEntityNumber(ct));
+        const string planSql = """
+            INSERT INTO EducationPlans
+            (Id, DirectionId, Year_Year, EntityNumber)
+            VALUES
+            (@Id, @DirectionId, @Year_Year, @EntityNumber)
+            """;
+
+        const string semesterSql = """
+            INSERT INTO Semesters
+            (Id, PlanId, Number_Number, EntityNumber)
+            VALUES
+            (@Id, @PlanId, @Number_Number, @EntityNumber)
+            """;
+
+        var planParameters = new[]
+        {
+            new SqliteParameter("@Id", entity.Id),
+            new SqliteParameter("@DirectionId", entity.Direction.Id),
+            new SqliteParameter("@Year_Year", entity.Year.Year),
+            new SqliteParameter("@EntityNumber", entity.EntityNumber),
+        };
+        await _context.Database.ExecuteSqlRawAsync(planSql, planParameters, ct);
 
         var current = await GenerateSemestersEntityNumber(ct);
         foreach (var semester in entity.Semesters)
         {
             semester.SetNumber(current);
             current++;
+            var semesterParameters = new[]
+            {
+                new SqliteParameter("@Id", semester.Id),
+                new SqliteParameter("@PlanId", semester.Plan.Id),
+                new SqliteParameter("@Number_Number", semester.Number.Number),
+                new SqliteParameter("@EntityNumber", semester.EntityNumber),
+            };
+            await _context.Database.ExecuteSqlRawAsync(semesterSql, semesterParameters, ct);
         }
-
-        _context.EducationDirections.Attach(entity.Direction);
-        await _context.EducationPlans.AddAsync(entity, ct);
-        await _context.SaveChangesAsync(ct);
     }
 
     public async Task<int> Count(CancellationToken ct = default) =>

@@ -3,9 +3,8 @@ import { StudentGroupsService } from './student-groups-base-service';
 import { StudentGroup } from './studentsGroup.interface';
 import { Observable } from 'rxjs';
 import { AuthService } from '../../../../users/services/auth.service';
-import { TokenPayloadBuilder } from '../../../../../shared/models/common/token-contract/token-payload-builder';
 import { BASE_API_URI } from '../../../../../shared/models/api/api-constants';
-import { StudentGroupPayloadBuilder } from '../models/contracts/student-group-contract/student-group-payload-builder';
+import { HttpHeaders, HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'any',
@@ -16,23 +15,32 @@ export class StudentGroupSearchService extends StudentGroupsService {
   }
 
   public getAllGroups(): Observable<StudentGroup[]> {
-    const payload = {
-      token: TokenPayloadBuilder(this._authService.userData),
-    };
-    return this.httpClient.post<StudentGroup[]>(
+    const headers = this.buildHttpHeaders();
+    return this.httpClient.get<StudentGroup[]>(
       `${BASE_API_URI}/api/student-groups/all`,
-      payload
+      {
+        headers: headers,
+      },
     );
   }
 
   public searchGroups(group: StudentGroup): Observable<StudentGroup[]> {
-    const payload = {
-      group: StudentGroupPayloadBuilder(group),
-      token: TokenPayloadBuilder(this._authService.userData),
-    };
+    const params = this.buildHttpParams(group);
+    const headers = this.buildHttpHeaders();
     return this.httpClient.post<StudentGroup[]>(
       `${BASE_API_URI}/api/student-groups/search`,
-      payload
+      {
+        headers: headers,
+        params,
+      },
     );
+  }
+
+  private buildHttpParams(group: StudentGroup): HttpParams {
+    return new HttpParams().set('groupName', group.name);
+  }
+
+  private buildHttpHeaders(): HttpHeaders {
+    return new HttpHeaders().set('token', this._authService.userData.token);
   }
 }

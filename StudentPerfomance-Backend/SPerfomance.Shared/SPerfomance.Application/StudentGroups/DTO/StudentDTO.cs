@@ -2,28 +2,24 @@ using SPerfomance.Domain.Models.Students;
 
 namespace SPerfomance.Application.StudentGroups.DTO;
 
-public class StudentDTO
+public class StudentDto
 {
+    public Guid Id { get; set; }
     public int? EntityNumber { get; set; }
-
     public string? Name { get; set; }
-
     public string? Surname { get; set; }
-
     public string? Patronymic { get; set; }
-
     public string? State { get; set; }
-
     public ulong? Recordbook { get; set; }
-
-    public StudentGroupDTO? Group { get; set; }
+    public StudentGroupDto? Group { get; set; }
 }
 
-public static class StudentDTOExtensions
+public static class StudentDtoExtensions
 {
-    public static StudentDTO MapFromDomain(this Student student) =>
-        new StudentDTO()
+    public static StudentDto MapFromDomain(this Student student) =>
+        new()
         {
+            Id = student.Id,
             Name = student.Name.Name,
             Surname = student.Name.Surname,
             Patronymic = student.Name.Patronymic,

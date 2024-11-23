@@ -1,9 +1,8 @@
-import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { BASE_API_URI } from '../../../../../../../../shared/models/api/api-constants';
 import { SemesterPlan } from '../../../../../semester-plans/models/semester-plan.interface';
 import { Observable } from 'rxjs';
-import { Semester } from '../../../../../semesters/models/semester.interface';
 import { AuthService } from '../../../../../../../users/services/auth.service';
 import { DirectionPayloadBuilder } from '../../../../../education-directions/models/contracts/direction-payload-builder';
 import { EducationPlanPayloadBuilder } from '../../../../models/contracts/education-plan-contract/education-plan-payload-builder';
@@ -15,16 +14,20 @@ import { TokenPayloadBuilder } from '../../../../../../../../shared/models/commo
   providedIn: 'any',
 })
 export class SemesterDisciplinesRemoveService {
-  private readonly _httpClient: HttpClient;
   private readonly _apiUri: string = `${BASE_API_URI}/api/semester-plans`;
 
-  public constructor(private readonly _authService: AuthService) {
-    this._httpClient = inject(HttpClient);
-  }
+  public constructor(
+    private readonly _httpClient: HttpClient,
+    private readonly _authService: AuthService,
+  ) {}
 
   public remove(plan: SemesterPlan): Observable<SemesterPlan> {
     const body = this.buildRequestBody(plan);
-    return this._httpClient.delete<SemesterPlan>(this._apiUri, { body });
+    const headers = this.buildHttpHeaders();
+    return this._httpClient.delete<SemesterPlan>(this._apiUri, {
+      headers: headers,
+      body,
+    });
   }
 
   private buildRequestBody(plan: SemesterPlan): object {
@@ -35,5 +38,9 @@ export class SemesterDisciplinesRemoveService {
       discipline: SemesterPlanPayloadBuilder(plan),
       token: TokenPayloadBuilder(this._authService.userData),
     };
+  }
+
+  private buildHttpHeaders(): HttpHeaders {
+    return new HttpHeaders().set('token', this._authService.userData.token);
   }
 }

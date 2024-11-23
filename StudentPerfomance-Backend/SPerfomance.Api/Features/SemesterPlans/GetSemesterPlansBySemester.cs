@@ -1,63 +1,96 @@
+using System.Text;
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
 using SPerfomance.Api.Endpoints;
-using SPerfomance.Api.Features.Common;
-using SPerfomance.Api.Features.EducationDirections.Contracts;
+using SPerfomance.Api.Features.Common.Extensions;
 using SPerfomance.Api.Features.EducationPlans.Contracts;
 using SPerfomance.Api.Features.Semesters.Contracts;
+using SPerfomance.Application.Abstractions;
 using SPerfomance.Application.EducationDirections.Queries.GetEducationDirection;
 using SPerfomance.Application.EducationPlans.Queries.GetEducationPlan;
 using SPerfomance.Application.Semesters.DTO;
 using SPerfomance.Application.Semesters.Queries.GetSemester;
-using SPerfomance.Domain.Models.EducationDirections.Abstractions;
+using SPerfomance.Domain.Models.EducationDirections;
+using SPerfomance.Domain.Models.EducationPlans;
+using SPerfomance.Domain.Models.Semesters;
 
 namespace SPerfomance.Api.Features.SemesterPlans;
 
 public static class GetSemesterPlansBySemester
 {
     public record Request(
-        EducationDirectionContract Direction,
+        GetEducationDirectionQuery Direction,
         EducationPlanContract Plan,
-        SemesterContract Semester,
-        TokenContract Token
+        SemesterContract Semester
     );
 
     public sealed class Endpoint : IEndpoint
     {
         public void MapEndpoint(IEndpointRouteBuilder app) =>
-            app.MapPost($"{SemesterPlanTags.Api}/get-by-semester", Handler)
-                .WithTags(SemesterPlanTags.Tag);
+            app.MapGet($"{SemesterPlanTags.Api}", Handler)
+                .WithTags(SemesterPlanTags.Tag)
+                .WithOpenApi()
+                .WithName("GetSemesterPlansBySemester")
+                .WithDescription(
+                    new StringBuilder()
+                        .AppendLine("Метод возвращает дисциплины семестра")
+                        .AppendLine("Результат ОК (200): Список дисциплин.")
+                        .AppendLine("Результат Ошибки (400): Ошибка запроса.")
+                        .AppendLine("Результат Ошибки (401): Ошибка авторизации.")
+                        .AppendLine("Результат Ошибки (404): Семестр не найден.")
+                        .ToString()
+                );
     }
 
-    public static async Task<IResult> Handler(
-        Request request,
+    public static async Task<
+        Results<
+            UnauthorizedHttpResult,
+            NotFound<string>,
+            BadRequest<string>,
+            Ok<IEnumerable<SemesterPlanDto>>
+        >
+    > Handler(
+        [FromHeader(Name = "token")] string token,
+        [FromQuery(Name = "directionName")] string directionName,
+        [FromQuery(Name = "directionCode")] string directionCode,
+        [FromQuery(Name = "directionType")] string directionType,
+        [FromQuery(Name = "planYear")] int planYear,
+        [FromQuery(Name = "semesterNumber")] int semesterNumber,
         IUsersRepository users,
-        IEducationDirectionRepository repository,
+        IQueryDispatcher dispatcher,
         CancellationToken ct
     )
     {
-        if (
-            !await new UserVerificationService(users).IsVerified(
-                request.Token,
-                UserRole.Administrator,
-                ct
-            )
-        )
-            return Results.BadRequest(UserTags.UnauthorizedError);
+        if (!await new Token(token).IsVerifiedAdmin(users, ct))
+            return TypedResults.Unauthorized();
 
-        var direction = await new GetEducationDirectionQueryHandler(repository).Handle(
-            request.Direction,
+        var directionQuery = new GetEducationDirectionQuery(
+            directionName,
+            directionCode,
+            directionType
+        );
+        var direction = await dispatcher.Dispatch<GetEducationDirectionQuery, EducationDirection>(
+            directionQuery,
             ct
         );
-        var educationPlan = await new GetEducationPlanQueryHandler().Handle(
-            new GetEducationPlanQuery(direction.Value, request.Plan.PlanYear),
-            ct
-        );
-        var semester = await new GetSemesterQueryHandler().Handle(
-            new GetSemesterQuery(educationPlan.Value, request.Semester.Number),
-            ct
-        );
+
+        if (direction.IsFailure)
+            return TypedResults.NotFound(direction.Error.Description);
+
+        var planQuery = new GetEducationPlanQuery(direction.Value, planYear);
+        var plan = await dispatcher.Dispatch<GetEducationPlanQuery, EducationPlan>(planQuery, ct);
+
+        if (plan.IsFailure)
+            return TypedResults.NotFound(plan.Error.Description);
+
+        var semesterQuery = new GetSemesterQuery(plan.Value, (byte)semesterNumber);
+        var semester = await dispatcher.Dispatch<GetSemesterQuery, Semester>(semesterQuery, ct);
+
+        if (semester.IsFailure)
+            return TypedResults.NotFound(semester.Error.Description);
 
         return semester.IsFailure
-            ? Results.BadRequest(semester.Error.Description)
-            : Results.Ok(semester.Value.Disciplines.Select(d => d.MapFromDomain()));
+            ? TypedResults.BadRequest(semester.Error.Description)
+            : TypedResults.Ok(semester.Value.Disciplines.Select(d => d.MapFromDomain()));
     }
 }

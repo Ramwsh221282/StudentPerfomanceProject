@@ -1,36 +1,42 @@
+using System.Text;
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
 using SPerfomance.Api.Endpoints;
-using SPerfomance.Api.Features.Common;
+using SPerfomance.Api.Features.Common.Extensions;
 using SPerfomance.Domain.Models.EducationDirections.Abstractions;
 
 namespace SPerfomance.Api.Features.EducationDirections;
 
 public static class CountEducationDirections
 {
-    public record Request(TokenContract Contract);
-
     public sealed class Endpoint : IEndpoint
     {
         public void MapEndpoint(IEndpointRouteBuilder app) =>
-            app.MapPost($"{EducationDirectionTags.Api}/count", Handler)
-                .WithTags(EducationDirectionTags.Tag);
+            app.MapGet($"{EducationDirectionTags.Api}/count", Handler)
+                .WithTags(EducationDirectionTags.Tag)
+                .WithOpenApi()
+                .WithName("GetEducationDirectionsCount")
+                .WithDescription(
+                    new StringBuilder()
+                        .AppendLine(
+                            "Метод возвращает количество существующих направлений подготовки из базы данных"
+                        )
+                        .AppendLine("Результат ОК (200): целое число.")
+                        .AppendLine("Результат Ошибки (401): Ошибка авторизации.")
+                        .ToString()
+                );
     }
 
-    public static async Task<IResult> Handler(
-        Request request,
+    public static async Task<Results<Ok<int>, UnauthorizedHttpResult>> Handler(
+        [FromHeader(Name = "token")] string token,
         IUsersRepository users,
         IEducationDirectionRepository repository,
         CancellationToken ct
     )
     {
-        if (
-            !await new UserVerificationService(users).IsVerified(
-                request.Contract,
-                UserRole.Administrator,
-                ct
-            )
-        )
-            return Results.BadRequest(UserTags.UnauthorizedError);
+        if (!await new Token(token).IsVerifiedAdmin(users, ct))
+            return TypedResults.Unauthorized();
         var count = await repository.Count(ct);
-        return Results.Ok(count);
+        return TypedResults.Ok(count);
     }
 }

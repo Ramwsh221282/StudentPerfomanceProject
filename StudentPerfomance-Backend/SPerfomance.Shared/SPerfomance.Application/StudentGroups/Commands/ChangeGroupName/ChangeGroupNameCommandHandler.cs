@@ -17,6 +17,12 @@ public class ChangeGroupNameCommandHandler(IStudentGroupsRepository repository)
         if (command.Group == null)
             return Result<StudentGroup>.Failure(StudentGroupErrors.NotFound());
 
+        if (string.IsNullOrWhiteSpace(command.NewName))
+            return StudentGroupErrors.NameEmpty();
+
+        if (await repository.HasWithName(command.NewName, ct))
+            return StudentGroupErrors.NameDublicate(command.NewName);
+
         var update = command.Group.ChangeName(command.NewName);
         if (update.IsFailure)
             return update;

@@ -27,7 +27,7 @@ export class DepartmentTableComponent implements OnInit {
   public constructor(
     protected readonly paginationService: DepartmentPaginationService,
     protected readonly dataService: DepartmentDataService,
-    protected readonly notificationService: UserOperationNotificationService
+    protected readonly notificationService: UserOperationNotificationService,
   ) {
     this.isSuccess = false;
     this.isFailure = false;
@@ -37,10 +37,9 @@ export class DepartmentTableComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.paginationService.refreshPagination();
     this.dataService.addPages(
       this.paginationService.currentPage,
-      this.paginationService.pageSize
+      this.paginationService.pageSize,
     );
     this.dataService.fetch().subscribe((response) => {
       this.departments = response;

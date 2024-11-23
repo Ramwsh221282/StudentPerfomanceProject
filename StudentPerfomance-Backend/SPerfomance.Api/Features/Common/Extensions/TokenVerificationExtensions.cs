@@ -3,36 +3,36 @@ namespace SPerfomance.Api.Features.Common.Extensions;
 public static class TokenVerificationExtensions
 {
     public static async Task<bool> IsVerified(
-        this TokenContract contract,
-        IUsersRepository usersRepository
+        this Token token,
+        IUsersRepository usersRepository,
+        CancellationToken ct = default
     )
     {
-        UserVerificationService service = new UserVerificationService(usersRepository);
-        Token token = contract;
-        bool isAdmin = await service.IsVerified(token, UserRole.Administrator);
-        bool isTeacher = await service.IsVerified(token, UserRole.Teacher);
+        var service = new UserVerificationService(usersRepository);
+        var isAdmin = await service.IsVerified(token, UserRole.Administrator, ct);
+        var isTeacher = await service.IsVerified(token, UserRole.Teacher, ct);
         return isAdmin || isTeacher;
     }
 
     public static async Task<bool> IsVerifiedAdmin(
-        this TokenContract contract,
-        IUsersRepository usersRepository
+        this Token token,
+        IUsersRepository usersRepository,
+        CancellationToken ct = default
     )
     {
-        UserVerificationService service = new UserVerificationService(usersRepository);
-        Token token = contract;
-        bool isAdmin = await service.IsVerified(token, UserRole.Administrator);
+        var service = new UserVerificationService(usersRepository);
+        var isAdmin = await service.IsVerified(token, UserRole.Administrator, ct);
         return isAdmin;
     }
 
     public static async Task<bool> IsVerifiedTeacher(
-        this TokenContract contract,
-        IUsersRepository usersRepository
+        this Token token,
+        IUsersRepository usersRepository,
+        CancellationToken ct = default
     )
     {
-        UserVerificationService service = new UserVerificationService(usersRepository);
-        Token token = contract;
-        bool isTeacher = await service.IsVerified(token, UserRole.Teacher);
+        var service = new UserVerificationService(usersRepository);
+        var isTeacher = await service.IsVerified(token, UserRole.Teacher, ct);
         return isTeacher;
     }
 }

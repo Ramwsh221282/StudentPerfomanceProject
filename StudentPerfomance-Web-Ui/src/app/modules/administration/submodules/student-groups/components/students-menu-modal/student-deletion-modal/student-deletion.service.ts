@@ -1,11 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BASE_API_URI } from '../../../../../../../shared/models/api/api-constants';
 import { inject, Injectable } from '@angular/core';
 import { Student } from '../../../../students/models/student.interface';
 import { Observable } from 'rxjs';
 import { AuthService } from '../../../../../../users/services/auth.service';
-import { StudentPayloadBuilder } from '../../../../students/models/contracts/student-contracts/student-payload-builder';
-import { TokenPayloadBuilder } from '../../../../../../../shared/models/common/token-contract/token-payload-builder';
 
 @Injectable({
   providedIn: 'any',
@@ -20,8 +18,12 @@ export class StudentDeletionService {
   }
 
   public remove(student: Student): Observable<Student> {
+    const headers = this.buildHttpHeaders();
     const body = this.buildRequestBody(student);
-    return this._httpClient.delete<Student>(this._apiUri, { body });
+    return this._httpClient.delete<Student>(this._apiUri, {
+      headers: headers,
+      body,
+    });
   }
 
   private buildRequestBody(student: Student): object {
@@ -34,7 +36,10 @@ export class StudentDeletionService {
         recordbook: student.recordbook,
         groupName: student.group.name,
       },
-      token: TokenPayloadBuilder(this._authService.userData),
     };
+  }
+
+  private buildHttpHeaders(): HttpHeaders {
+    return new HttpHeaders().set('token', this._authService.userData.token);
   }
 }

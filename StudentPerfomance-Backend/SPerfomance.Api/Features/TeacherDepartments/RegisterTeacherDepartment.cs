@@ -1,45 +1,54 @@
+using System.Text;
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
 using SPerfomance.Api.Endpoints;
-using SPerfomance.Api.Features.Common;
-using SPerfomance.Api.Features.TeacherDepartments.Contracts;
+using SPerfomance.Api.Features.Common.Extensions;
+using SPerfomance.Application.Abstractions;
 using SPerfomance.Application.Departments.Commands.CreateTeachersDepartment;
 using SPerfomance.Application.Departments.DTO;
-using SPerfomance.Domain.Models.TeacherDepartments.Abstractions;
+using SPerfomance.Domain.Models.TeacherDepartments;
 
 namespace SPerfomance.Api.Features.TeacherDepartments;
 
 public static class RegisterTeacherDepartment
 {
-    public record Request(TeacherDepartmentContract Department, TokenContract Token);
+    public record Request(CreateTeachersDepartmentCommand Department);
 
     public sealed class Endpoint : IEndpoint
     {
         public void MapEndpoint(IEndpointRouteBuilder app) =>
             app.MapPost($"{TeacherDepartmentsTags.Api}", Handler)
-                .WithTags(TeacherDepartmentsTags.Tag);
+                .WithTags(TeacherDepartmentsTags.Tag)
+                .WithOpenApi()
+                .WithName("RegisterTeacherDepartments")
+                .WithDescription(
+                    new StringBuilder()
+                        .AppendLine("Метод создаёт кафедру")
+                        .AppendLine("Результат ОК (200): Созданная кафедра.")
+                        .AppendLine("Результат Ошибки (400): Ошибка запроса.")
+                        .AppendLine("Результат Ошибки (401): Ошибка авторизации.")
+                        .ToString()
+                );
     }
 
-    public static async Task<IResult> Handler(
+    public static async Task<
+        Results<UnauthorizedHttpResult, BadRequest<string>, Ok<TeachersDepartmentDto>>
+    > Handler(
+        [FromHeader(Name = "token")] string token,
         Request request,
         IUsersRepository users,
-        ITeacherDepartmentsRepository repository,
+        ICommandDispatcher dispatcher,
         CancellationToken ct
     )
     {
-        if (
-            !await new UserVerificationService(users).IsVerified(
-                request.Token,
-                UserRole.Administrator,
-                ct
-            )
-        )
-            return Results.BadRequest(UserTags.UnauthorizedError);
-
-        var department = await new CreateTeachersDepartmentCommandHandler(repository).Handle(
-            request.Department,
-            ct
-        );
+        if (!await new Token(token).IsVerifiedAdmin(users, ct))
+            return TypedResults.Unauthorized();
+        var department = await dispatcher.Dispatch<
+            CreateTeachersDepartmentCommand,
+            TeachersDepartments
+        >(request.Department, ct);
         return department.IsFailure
-            ? Results.BadRequest(department.Error.Description)
-            : Results.Ok(department.Value.MapFromDomain());
+            ? TypedResults.BadRequest(department.Error.Description)
+            : TypedResults.Ok(department.Value.MapFromDomain());
     }
 }
