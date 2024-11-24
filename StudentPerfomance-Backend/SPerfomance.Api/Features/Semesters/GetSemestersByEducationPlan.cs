@@ -30,6 +30,7 @@ public static class GetSemestersByEducationPlan
                 .WithOpenApi()
                 .WithTags($"{SemestersTags.Tag}")
                 .WithName("GetSemestersByEducationPlan")
+                .RequireRateLimiting("fixed")
                 .WithDescription(
                     new StringBuilder()
                         .AppendLine("Метод возвращает семестры учебного плана")
@@ -51,11 +52,17 @@ public static class GetSemestersByEducationPlan
         [FromQuery(Name = "planYear")] int planYear,
         IUsersRepository users,
         IQueryDispatcher dispatcher,
+        ILogger<Endpoint> logger,
         CancellationToken ct
     )
     {
-        if (!await new Token(token).IsVerifiedAdmin(users, ct))
+        logger.LogInformation("Запрос на получение семестров учебного плана");
+        var jwtToken = new Token(token);
+        if (!await jwtToken.IsVerifiedAdmin(users, ct))
+        {
+            logger.LogError("Пользователь не найден");
             return TypedResults.Unauthorized();
+        }
 
         var directionQuery = new GetEducationDirectionQuery(
             directionName,
@@ -68,18 +75,36 @@ public static class GetSemestersByEducationPlan
         );
 
         if (direction.IsFailure)
+        {
+            logger.LogError(
+                "Запрос пользователя {id} на получение семестров учебного плана отменен. Причина: {text}",
+                jwtToken.UserId,
+                direction.Error.Description
+            );
             return TypedResults.NotFound(direction.Error.Description);
+        }
 
         var planQuery = new GetEducationPlanQuery(direction.Value, planYear);
         var plan = await dispatcher.Dispatch<GetEducationPlanQuery, EducationPlan>(planQuery, ct);
 
         if (plan.IsFailure)
+        {
+            logger.LogError(
+                "Запрос пользователя {id} на получение семестров учебного плана отменен. Причина: {text}",
+                jwtToken.UserId,
+                plan.Error.Description
+            );
             return TypedResults.NotFound(plan.Error.Description);
+        }
 
         IEnumerable<SemesterDto> semesters = plan
             .Value.Semesters.Select(s => s.MapFromDomain())
             .OrderBy(s => s.Number);
-
+        logger.LogInformation(
+            "Пользователь {id} получает семестры учебного плана {planYear}",
+            jwtToken.UserId,
+            planYear
+        );
         return TypedResults.Ok(semesters);
     }
 }

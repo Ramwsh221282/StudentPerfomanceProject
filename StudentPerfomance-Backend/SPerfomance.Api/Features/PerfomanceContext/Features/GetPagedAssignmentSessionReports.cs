@@ -18,6 +18,7 @@ public static class GetPagedAssignmentSessionReports
                 .WithTags($"{PerfomanceContextTags.SessionsTag}")
                 .WithOpenApi()
                 .WithName("GetPagedAssignmentSessionReports")
+                .RequireRateLimiting("fixed")
                 .WithDescription(
                     new StringBuilder()
                         .AppendLine("Метод возвращает отчёты контрольных недель постранично")
@@ -36,17 +37,30 @@ public static class GetPagedAssignmentSessionReports
         [FromQuery(Name = "pageSize")] int pageSize,
         IUsersRepository users,
         IControlWeekReportRepository reports,
+        ILogger<Endpoint> logger,
         CancellationToken ct
     )
     {
-        if (!await new Token(token).IsVerified(users, ct))
+        logger.LogInformation("Запрос на получение отчетов контрольных недель постранично");
+        var jwtToken = new Token(token);
+        if (!await jwtToken.IsVerified(users, ct))
+        {
+            logger.LogError("Пользователь не авторизован");
             return TypedResults.Unauthorized();
+        }
 
         if (reports is not ControlWeekRepository repository)
-            return TypedResults.Ok("OK");
+        {
+            logger.LogError("Репозиторий не ControlWeekRepository");
+            return TypedResults.Unauthorized();
+        }
 
         var list = await repository.GetPaged(page, pageSize, ct);
         var result = await ControlWeekReportDTO.InitializeArrayAsync(list);
+        logger.LogInformation(
+            "Пользователь {id} получает отчёты контрольных недель",
+            jwtToken.UserId
+        );
         return TypedResults.Ok(result);
     }
 }

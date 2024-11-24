@@ -19,6 +19,7 @@ public static class GetUsersByPage
                 .WithTags(UserTags.Tag)
                 .WithOpenApi()
                 .WithName("GetUsersByPage")
+                .RequireRateLimiting("fixed")
                 .WithDescription(
                     new StringBuilder()
                         .AppendLine("Метод возаращает пользователей постранично")
@@ -28,17 +29,29 @@ public static class GetUsersByPage
                 );
     }
 
-    public static async Task<Results<UnauthorizedHttpResult, Ok<IEnumerable<UserDto>>>> Handler(
+    public static async Task<Results<UnauthorizedHttpResult, Ok<UserDto[]>>> Handler(
         [FromHeader(Name = "token")] string token,
         [FromQuery(Name = "page")] int page,
         [FromQuery(Name = "pageSize")] int pageSize,
         IUsersRepository repository,
+        ILogger<Endpoint> logger,
         CancellationToken ct
     )
     {
-        if (!await new Token(token).IsVerifiedAdmin(repository, ct))
+        logger.LogInformation("Получение пользователей системы постранично");
+        var jwtToken = new Token(token);
+        if (!await jwtToken.IsVerifiedAdmin(repository, ct))
+        {
+            logger.LogError("Пользователь не является администратором");
             return TypedResults.Unauthorized();
+        }
         var users = await repository.GetPaged(page, pageSize, ct);
-        return TypedResults.Ok(users.Select(u => u.MapFromDomain()));
+        var result = users.Select(u => u.MapFromDomain()).ToArray();
+        logger.LogInformation(
+            "Пользователь {id} получает список пользователей системы постранично {count}",
+            jwtToken.UserId,
+            result.Length
+        );
+        return TypedResults.Ok(result);
     }
 }

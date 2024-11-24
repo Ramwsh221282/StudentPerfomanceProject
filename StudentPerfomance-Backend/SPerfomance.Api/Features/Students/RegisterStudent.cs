@@ -24,6 +24,7 @@ public static class RegisterStudent
                 .WithTags(StudentTags.Tag)
                 .WithOpenApi()
                 .WithName("RegisterStudent")
+                .RequireRateLimiting("fixed")
                 .WithDescription(
                     new StringBuilder()
                         .AppendLine("Метод добавляет студента в группу")
@@ -43,11 +44,17 @@ public static class RegisterStudent
         IUsersRepository users,
         IQueryDispatcher queryDispatcher,
         ICommandDispatcher commandDispatcher,
+        ILogger<Endpoint> logger,
         CancellationToken ct
     )
     {
-        if (!await new Token(token).IsVerifiedAdmin(users, ct))
+        logger.LogInformation("Запрос на создание студента в группе");
+        var jwtToken = new Token(token);
+        if (!await jwtToken.IsVerifiedAdmin(users, ct))
+        {
+            logger.LogError("Пользователь не является администратором");
             return TypedResults.Unauthorized();
+        }
 
         var group = await queryDispatcher.Dispatch<GetStudentGroupQuery, StudentGroup>(
             new GetStudentGroupQuery(request.Student.GroupName),
@@ -55,7 +62,14 @@ public static class RegisterStudent
         );
 
         if (group.IsFailure)
+        {
+            logger.LogError(
+                "Запрос пользователя {id} на создание студента отменен. Причина: {text}",
+                jwtToken.UserId,
+                group.Error.Description
+            );
             return TypedResults.NotFound(group.Error.Description);
+        }
 
         var student = await commandDispatcher.Dispatch<AddStudentCommand, Student>(
             new AddStudentCommand(
@@ -69,8 +83,26 @@ public static class RegisterStudent
             ct
         );
 
-        return student.IsFailure
-            ? TypedResults.BadRequest(student.Error.Description)
-            : TypedResults.Ok(student.Value.MapFromDomain());
+        if (student.IsFailure)
+        {
+            logger.LogError(
+                "Запрос пользователя {id} на создание студента отменен. Причина: {text}",
+                jwtToken.UserId,
+                student.Error.Description
+            );
+            return TypedResults.BadRequest(student.Error.Description);
+        }
+
+        logger.LogInformation(
+            "Пользователь {id} добавляет студента {sname} {ssurname} {spatronymic}, {srecordbook}, {state} в группу {gname}",
+            jwtToken.UserId,
+            request.Student.Name,
+            request.Student.Surname,
+            request.Student.Patronymic,
+            request.Student.Recordbook,
+            request.Student.State,
+            request.Student.GroupName
+        );
+        return TypedResults.Ok(student.Value.MapFromDomain());
     }
 }

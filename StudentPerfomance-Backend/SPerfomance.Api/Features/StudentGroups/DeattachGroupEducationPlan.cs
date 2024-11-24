@@ -22,6 +22,7 @@ public static class DeattachGroupEducationPlan
                 .WithTags($"{StudentGroupTags.Tag}")
                 .WithOpenApi()
                 .WithName("DeattachGroupEducationPlan")
+                .RequireRateLimiting("fixed")
                 .WithDescription(
                     new StringBuilder()
                         .AppendLine("Открепляет учебный план от группы")
@@ -45,10 +46,13 @@ public static class DeattachGroupEducationPlan
         IQueryDispatcher queryDispatcher,
         ICommandDispatcher commandDispatcher,
         IUsersRepository users,
+        ILogger<Endpoint> logger,
         CancellationToken ct
     )
     {
-        if (!await new Token(token).IsVerifiedAdmin(users, ct))
+        logger.LogInformation("Запрос на открепление учебного плана у группы");
+        var jwtToken = new Token(token);
+        if (!await jwtToken.IsVerifiedAdmin(users, ct))
             return TypedResults.Unauthorized();
 
         var group = await queryDispatcher.Dispatch<GetStudentGroupQuery, StudentGroup>(
@@ -57,15 +61,35 @@ public static class DeattachGroupEducationPlan
         );
 
         if (group.IsFailure)
+        {
+            logger.LogError(
+                "Запрос пользователя {id} на открепление учебного плана у группы отменен. Причина: {text}",
+                jwtToken.UserId,
+                group.Error.Description
+            );
             return TypedResults.NotFound(group.Error.Description);
+        }
 
         group = await commandDispatcher.Dispatch<DeattachEducationPlanCommand, StudentGroup>(
             new DeattachEducationPlanCommand(group.Value),
             ct
         );
 
-        return group.IsFailure
-            ? TypedResults.BadRequest(group.Error.Description)
-            : TypedResults.Ok(group.Value.MapFromDomain());
+        if (group.IsFailure)
+        {
+            logger.LogError(
+                "Запрос пользователя {id} на открепление учебного плана у группы отменен. Причина: {text}",
+                jwtToken.UserId,
+                group.Error.Description
+            );
+            return TypedResults.BadRequest(group.Error.Description);
+        }
+
+        logger.LogInformation(
+            "Пользователь {id} открепляет учебный план у группы {gname}",
+            jwtToken.UserId,
+            request.Group.Name
+        );
+        return TypedResults.Ok(group.Value.MapFromDomain());
     }
 }

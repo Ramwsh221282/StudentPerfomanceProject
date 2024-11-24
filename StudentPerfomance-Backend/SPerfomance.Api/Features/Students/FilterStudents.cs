@@ -19,6 +19,7 @@ public static class FilterStudents
                 .WithTags(StudentTags.Tag)
                 .WithOpenApi()
                 .WithName("FilterStudents")
+                .RequireRateLimiting("fixed")
                 .WithDescription(
                     new StringBuilder()
                         .AppendLine("Метод фильтрует студентов в группе")
@@ -33,7 +34,7 @@ public static class FilterStudents
     }
 
     public static async Task<
-        Results<UnauthorizedHttpResult, NotFound<string>, Ok<IEnumerable<StudentDto>>>
+        Results<UnauthorizedHttpResult, NotFound<string>, Ok<StudentDto[]>>
     > Handler(
         [FromHeader(Name = "token")] string token,
         [FromQuery(Name = "groupName")] string groupName,
@@ -42,31 +43,48 @@ public static class FilterStudents
         [FromQuery(Name = "patronymic")] string? patronymic,
         [FromQuery(Name = "state")] string? state,
         [FromQuery(Name = "recordBook")] int? recordbook,
+        ILogger<Endpoint> logger,
         IUsersRepository users,
         IQueryDispatcher dispatcher,
         CancellationToken ct
     )
     {
-        if (!await new Token(token).IsVerifiedAdmin(users, ct))
+        logger.LogInformation("Запрос на получение студентов по фильтру постранично");
+        var jwtToken = new Token(token);
+        if (!await jwtToken.IsVerifiedAdmin(users, ct))
+        {
+            logger.LogError("Пользователь не является администратором");
             return TypedResults.Unauthorized();
+        }
 
         var groupQuery = new GetStudentGroupQuery(groupName);
         var group = await dispatcher.Dispatch<GetStudentGroupQuery, StudentGroup>(groupQuery, ct);
 
         if (group.IsFailure)
+        {
+            logger.LogError(
+                "Запрос пользователя {id} на получение студентов по фильтру постранично отменен. Причина: {text}",
+                jwtToken.UserId,
+                group.Error.Description
+            );
             return TypedResults.NotFound(group.Error.Description);
+        }
 
-        return TypedResults.Ok(
-            group
-                .Value.Students.Where(s =>
-                    !string.IsNullOrWhiteSpace(name) && s.Name.Name.Contains(name)
-                    || !string.IsNullOrWhiteSpace(surname) && s.Name.Surname.Contains(surname)
-                    || !string.IsNullOrWhiteSpace(patronymic)
-                        && s.Name.Patronymic.Contains(patronymic)
-                    || !string.IsNullOrWhiteSpace(state) && s.State.State.Contains(state)
-                    || recordbook != null && s.Recordbook.Recordbook == (ulong)recordbook.Value
-                )
-                .Select(s => s.MapFromDomain())
+        var students = group
+            .Value.Students.Where(s =>
+                !string.IsNullOrWhiteSpace(name) && s.Name.Name.Contains(name)
+                || !string.IsNullOrWhiteSpace(surname) && s.Name.Surname.Contains(surname)
+                || !string.IsNullOrWhiteSpace(patronymic) && s.Name.Patronymic.Contains(patronymic)
+                || !string.IsNullOrWhiteSpace(state) && s.State.State.Contains(state)
+                || recordbook != null && s.Recordbook.Recordbook == (ulong)recordbook.Value
+            )
+            .Select(s => s.MapFromDomain())
+            .ToArray();
+        logger.LogInformation(
+            "Пользователь {id} получает студентов по фильтру постранично {count}",
+            jwtToken.UserId,
+            students.Length
         );
+        return TypedResults.Ok(students);
     }
 }

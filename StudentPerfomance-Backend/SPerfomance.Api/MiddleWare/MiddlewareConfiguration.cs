@@ -20,7 +20,7 @@ public static class MiddlewareConfiguration
                         options.Window = TimeSpan.FromSeconds(5);
                         options.PermitLimit = 3;
                         options.QueueLimit = 3;
-                        options.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
+                        options.QueueProcessingOrder = QueueProcessingOrder.NewestFirst;
                     }
                 );
             })

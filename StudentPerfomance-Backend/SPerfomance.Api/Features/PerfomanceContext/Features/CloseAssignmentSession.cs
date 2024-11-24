@@ -22,6 +22,7 @@ public static class CloseAssignmentSession
                 .WithTags($"{PerfomanceContextTags.SessionsTag}")
                 .WithOpenApi()
                 .WithName("CloseAssignmentSession")
+                .RequireRateLimiting("fixed")
                 .WithDescription(
                     new StringBuilder()
                         .AppendLine(
@@ -45,12 +46,18 @@ public static class CloseAssignmentSession
         IQueryDispatcher queryDispatcher,
         ICommandDispatcher commandDispatcher,
         IControlWeekReportRepository reports,
+        ILogger<Endpoint> logger,
         Request request,
         CancellationToken ct
     )
     {
-        if (!await new Token(token).IsVerifiedAdmin(users, ct))
+        logger.LogInformation("Запрос на закрытие сессии контрольной недели");
+        var jwtToken = new Token(token);
+        if (!await jwtToken.IsVerifiedAdmin(users, ct))
+        {
+            logger.LogError("Пользователь не является администратором");
             return TypedResults.Unauthorized();
+        }
 
         var command = new CloseAssignmentSessionCommand(request.Id);
         var session = await commandDispatcher.Dispatch<
@@ -59,13 +66,33 @@ public static class CloseAssignmentSession
         >(command, ct);
 
         if (session.IsFailure)
+        {
+            logger.LogError(
+                "Сессия контрольной недели не закрыта. Причина: {text}",
+                session.Error.Description
+            );
             return TypedResults.BadRequest(session.Error.Description);
+        }
 
+        logger.LogInformation(
+            "Пользователь {id} закрывает сессию контрольной недели",
+            jwtToken.UserId
+        );
         var factory = new AssignmentSessionViewFactory(session.Value);
         var view = factory.CreateView();
         var insertion = await reports.Insert(view, ct);
-        return insertion.IsFailure
-            ? TypedResults.BadRequest(insertion.Error.Description)
-            : TypedResults.Ok("Closed");
+        if (insertion.IsFailure)
+        {
+            logger.LogError(
+                "Не удалось создать отчёт о закрытой контрольной недели. Причина {text}",
+                insertion.Error.Description
+            );
+            return TypedResults.BadRequest(insertion.Error.Description);
+        }
+        logger.LogInformation(
+            "Пользователь {id} создаёт отчёт о контрольной неделе",
+            jwtToken.UserId
+        );
+        return TypedResults.Ok("Closed");
     }
 }

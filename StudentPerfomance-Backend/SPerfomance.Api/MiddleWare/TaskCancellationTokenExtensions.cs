@@ -10,7 +10,7 @@ public class TaskCancellationTokenExtensions(RequestDelegate next)
         }
         catch (Exception _) when (_ is OperationCanceledException or TaskCanceledException)
         {
-            Console.WriteLine("The request was canceled.");
+            Console.WriteLine("Запрос отменён.");
         }
     }
 }

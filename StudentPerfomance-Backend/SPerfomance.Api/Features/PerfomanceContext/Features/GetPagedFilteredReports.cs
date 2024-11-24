@@ -25,6 +25,7 @@ public static class GetPagedFilteredReports
                 .WithTags($"{PerfomanceContextTags.SessionsTag}")
                 .WithOpenApi()
                 .WithName("GetPagedFilteredReports")
+                .RequireRateLimiting("fixed")
                 .WithDescription(
                     new StringBuilder()
                         .AppendLine(
@@ -43,14 +44,25 @@ public static class GetPagedFilteredReports
         Request request,
         IUsersRepository users,
         IControlWeekReportRepository reports,
+        ILogger<Endpoint> logger,
         CancellationToken ct
     )
     {
-        if (!await new Token(request.Token.Token).IsVerified(users, ct))
+        logger.LogInformation(
+            "Запрос на получение отфильтрованных отчётов о контрольных неделях постранично"
+        );
+        var jwtToken = new Token(request.Token.Token);
+        if (!await jwtToken.IsVerified(users, ct))
+        {
+            logger.LogError("Пользователь не авторизован");
             return TypedResults.Unauthorized();
+        }
 
         if (reports is not ControlWeekRepository repository)
+        {
+            logger.LogError("Репозиторий не ControlWeekRepository");
             return TypedResults.Ok("OK");
+        }
 
         var list = await repository.GetPagedFilteredByPeriod(
             request.Pagination.Page,
@@ -60,6 +72,11 @@ public static class GetPagedFilteredReports
             ct
         );
 
+        logger.LogInformation(
+            "Пользователь {id} получает отфильтрованные отчёты о контрольных неделях постранично {count}",
+            jwtToken.UserId,
+            list.Count
+        );
         return TypedResults.Ok(list.Select(r => new ControlWeekReportDTO(r)));
     }
 

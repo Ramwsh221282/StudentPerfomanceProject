@@ -21,6 +21,7 @@ public static class RemoveStudentGroup
                 .WithTags(StudentGroupTags.Tag)
                 .WithOpenApi()
                 .WithName("RemoveStudentGroup")
+                .RequireRateLimiting("fixed")
                 .WithDescription(
                     new StringBuilder()
                         .AppendLine("Метод удаляет студенческую группу из системы")
@@ -38,11 +39,17 @@ public static class RemoveStudentGroup
         IUsersRepository users,
         IQueryDispatcher queryDispatcher,
         ICommandDispatcher commandDispatcher,
+        ILogger<Endpoint> logger,
         CancellationToken ct
     )
     {
-        if (!await new Token(token).IsVerifiedAdmin(users, ct))
+        var jwtToken = new Token(token);
+        logger.LogInformation("Запрос на удаление студенческой группы");
+        if (!await jwtToken.IsVerifiedAdmin(users, ct))
+        {
+            logger.LogError("Пользователь не является администратором");
             return TypedResults.Unauthorized();
+        }
 
         var group = await queryDispatcher.Dispatch<GetStudentGroupQuery, StudentGroup>(
             request.Group,
@@ -50,15 +57,35 @@ public static class RemoveStudentGroup
         );
 
         if (group.IsFailure)
+        {
+            logger.LogInformation(
+                "Запрос пользователя {id} на удаление группы отменен. Причина: {error}",
+                jwtToken.UserId,
+                group.Error.Description
+            );
             return TypedResults.NotFound(group.Error.Description);
+        }
 
         group = await commandDispatcher.Dispatch<RemoveStudentGroupCommand, StudentGroup>(
             new RemoveStudentGroupCommand(group.Value),
             ct
         );
 
-        return group.IsFailure
-            ? TypedResults.BadRequest(group.Error.Description)
-            : TypedResults.Ok(group.Value.MapFromDomain());
+        if (group.IsFailure)
+        {
+            logger.LogInformation(
+                "Запрос пользователя {id} на удаление группы отменен. Причина: {error}",
+                jwtToken.UserId,
+                group.Error.Description
+            );
+            return TypedResults.BadRequest(group.Error.Description);
+        }
+
+        logger.LogInformation(
+            "Пользователь {id} удаляет группу {gname}",
+            jwtToken.UserId,
+            request.Group.Name
+        );
+        return TypedResults.Ok(group.Value.MapFromDomain());
     }
 }

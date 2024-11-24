@@ -16,6 +16,7 @@ public static class CountEducationDirections
                 .WithTags(EducationDirectionTags.Tag)
                 .WithOpenApi()
                 .WithName("GetEducationDirectionsCount")
+                .RequireRateLimiting("fixed")
                 .WithDescription(
                     new StringBuilder()
                         .AppendLine(
@@ -31,12 +32,19 @@ public static class CountEducationDirections
         [FromHeader(Name = "token")] string token,
         IUsersRepository users,
         IEducationDirectionRepository repository,
+        ILogger<Endpoint> logger,
         CancellationToken ct
     )
     {
-        if (!await new Token(token).IsVerifiedAdmin(users, ct))
+        logger.LogInformation("Запрос на получение количества направлений подготовки");
+        var jwtToken = new Token(token);
+        if (!await jwtToken.IsVerifiedAdmin(users, ct))
+        {
+            logger.LogError("Пользователь не является администратором");
             return TypedResults.Unauthorized();
+        }
         var count = await repository.Count(ct);
+        logger.LogInformation("Количество направлений подготовки: {Count}", count);
         return TypedResults.Ok(count);
     }
 }

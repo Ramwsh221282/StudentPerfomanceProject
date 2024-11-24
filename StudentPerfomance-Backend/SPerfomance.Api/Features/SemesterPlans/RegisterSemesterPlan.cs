@@ -35,6 +35,7 @@ public static class RegisterSemesterPlan
                 .WithTags(SemesterPlanTags.Tag)
                 .WithOpenApi()
                 .WithName("RegisterSemesterPlan")
+                .RequireRateLimiting("fixed")
                 .WithDescription(
                     new StringBuilder()
                         .AppendLine("Метод добавляет дисциплину в семестр")
@@ -54,11 +55,17 @@ public static class RegisterSemesterPlan
         IUsersRepository users,
         IQueryDispatcher queryDispatcher,
         ICommandDispatcher commandDispatcher,
+        ILogger<Endpoint> logger,
         CancellationToken ct
     )
     {
-        if (!await new Token(token).IsVerifiedAdmin(users, ct))
+        logger.LogInformation("Запрос на создание дисциплины в семестре");
+        var jwtToken = new Token(token);
+        if (!await jwtToken.IsVerifiedAdmin(users, ct))
+        {
+            logger.LogError("Пользователь не является администратором");
             return TypedResults.Unauthorized();
+        }
 
         var direction = await queryDispatcher.Dispatch<
             GetEducationDirectionQuery,
@@ -66,7 +73,14 @@ public static class RegisterSemesterPlan
         >(request.Direction, ct);
 
         if (direction.IsFailure)
+        {
+            logger.LogError(
+                "Запрос создания дисциплины в семестре пользователя {id} отменён. Причина: {text}",
+                jwtToken.UserId,
+                direction.Error.Description
+            );
             return TypedResults.NotFound(direction.Error.Description);
+        }
 
         var educationPlan = await queryDispatcher.Dispatch<GetEducationPlanQuery, EducationPlan>(
             new GetEducationPlanQuery(direction.Value, request.Plan.PlanYear),
@@ -74,7 +88,14 @@ public static class RegisterSemesterPlan
         );
 
         if (educationPlan.IsFailure)
+        {
+            logger.LogError(
+                "Запрос создания дисциплины в семестре пользователя {id} отменён. Причина: {text}",
+                jwtToken.UserId,
+                educationPlan.Error.Description
+            );
             return TypedResults.NotFound(educationPlan.Error.Description);
+        }
 
         var semester = await queryDispatcher.Dispatch<GetSemesterQuery, Semester>(
             new GetSemesterQuery(educationPlan.Value, request.Semester.Number),
@@ -82,15 +103,40 @@ public static class RegisterSemesterPlan
         );
 
         if (semester.IsFailure)
+        {
+            logger.LogError(
+                "Запрос создания дисциплины в семестре пользователя {id} отменён. Причина: {text}",
+                jwtToken.UserId,
+                semester.Error.Description
+            );
             return TypedResults.NotFound(semester.Error.Description);
+        }
 
         var plan = await commandDispatcher.Dispatch<CreateDisciplineCommand, SemesterPlan>(
             new CreateDisciplineCommand(semester.Value, request.Discipline.Discipline),
             ct
         );
 
-        return plan.IsFailure
-            ? TypedResults.BadRequest(plan.Error.Description)
-            : TypedResults.Ok(plan.Value.MapFromDomain());
+        if (plan.IsFailure)
+        {
+            logger.LogError(
+                "Запрос создания дисциплины в семестре пользователя {id} отменён. Причина: {text}",
+                jwtToken.UserId,
+                plan.Error.Description
+            );
+            return TypedResults.BadRequest(plan.Error.Description);
+        }
+
+        logger.LogInformation(
+            "Пользователь {id} создаёт дисциплину {name} в семестре {number} учебном плане {planYear}, направлении подготовки {code} {name} {type}",
+            jwtToken.UserId,
+            request.Discipline.Discipline,
+            request.Semester.Number,
+            request.Plan.PlanYear,
+            request.Direction.Code,
+            request.Direction.Name,
+            request.Direction.Type
+        );
+        return TypedResults.Ok(plan.Value.MapFromDomain());
     }
 }

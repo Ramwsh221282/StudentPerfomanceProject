@@ -31,6 +31,7 @@ public static class GetSemesterPlansBySemester
                 .WithTags(SemesterPlanTags.Tag)
                 .WithOpenApi()
                 .WithName("GetSemesterPlansBySemester")
+                .RequireRateLimiting("fixed")
                 .WithDescription(
                     new StringBuilder()
                         .AppendLine("Метод возвращает дисциплины семестра")
@@ -58,11 +59,17 @@ public static class GetSemesterPlansBySemester
         [FromQuery(Name = "semesterNumber")] int semesterNumber,
         IUsersRepository users,
         IQueryDispatcher dispatcher,
+        ILogger<Endpoint> logger,
         CancellationToken ct
     )
     {
-        if (!await new Token(token).IsVerifiedAdmin(users, ct))
+        logger.LogInformation("Запрос на получение дисциплин семестра");
+        var jwtToken = new Token(token);
+        if (!await jwtToken.IsVerifiedAdmin(users, ct))
+        {
+            logger.LogError("Пользователь не является администратором");
             return TypedResults.Unauthorized();
+        }
 
         var directionQuery = new GetEducationDirectionQuery(
             directionName,
@@ -75,22 +82,50 @@ public static class GetSemesterPlansBySemester
         );
 
         if (direction.IsFailure)
+        {
+            logger.LogError(
+                "Запрос пользователя {id} на получение дисциплин семестра отменён. Причина: {text}",
+                jwtToken.UserId,
+                direction.Error.Description
+            );
             return TypedResults.NotFound(direction.Error.Description);
+        }
 
         var planQuery = new GetEducationPlanQuery(direction.Value, planYear);
         var plan = await dispatcher.Dispatch<GetEducationPlanQuery, EducationPlan>(planQuery, ct);
 
         if (plan.IsFailure)
+        {
+            logger.LogError(
+                "Запрос пользователя {id} на получение дисциплин семестра отменён. Причина: {text}",
+                jwtToken.UserId,
+                plan.Error.Description
+            );
             return TypedResults.NotFound(plan.Error.Description);
+        }
 
         var semesterQuery = new GetSemesterQuery(plan.Value, (byte)semesterNumber);
         var semester = await dispatcher.Dispatch<GetSemesterQuery, Semester>(semesterQuery, ct);
 
         if (semester.IsFailure)
+        {
+            logger.LogError(
+                "Запрос пользователя {id} на получение дисциплин семестра отменён. Причина: {text}",
+                jwtToken.UserId,
+                semester.Error.Description
+            );
             return TypedResults.NotFound(semester.Error.Description);
+        }
 
-        return semester.IsFailure
-            ? TypedResults.BadRequest(semester.Error.Description)
-            : TypedResults.Ok(semester.Value.Disciplines.Select(d => d.MapFromDomain()));
+        logger.LogInformation(
+            "Пользователь {id} получает дисциплины семестра {number} плана {planYear} направления подготовки {code} {name} {type}",
+            jwtToken.UserId,
+            semesterNumber,
+            planYear,
+            directionCode,
+            directionName,
+            directionType
+        );
+        return TypedResults.Ok(semester.Value.Disciplines.Select(d => d.MapFromDomain()));
     }
 }

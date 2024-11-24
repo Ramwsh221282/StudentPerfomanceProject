@@ -16,6 +16,7 @@ public static class GetAssignmentSessionReportsCount
                 .WithTags($"{PerfomanceContextTags.SessionsTag}")
                 .WithOpenApi()
                 .WithName("GetAssignmentSessionReportsCount")
+                .RequireRateLimiting("fixed")
                 .WithDescription(
                     new StringBuilder()
                         .AppendLine("Метод возвращает количество отчётов о контрольных неделях")
@@ -30,11 +31,24 @@ public static class GetAssignmentSessionReportsCount
         [FromHeader(Name = "token")] string token,
         IUsersRepository users,
         IControlWeekReportRepository reports,
+        ILogger<Endpoint> logger,
         CancellationToken ct
     )
     {
-        if (!await new Token(token).IsVerified(users, ct))
+        logger.LogInformation("Запрос на получение количества отчётов контрольных недель");
+        var jwtToken = new Token(token);
+        if (!await jwtToken.IsVerified(users, ct))
+        {
+            logger.LogError("Пользователь не авторизован");
             return TypedResults.Unauthorized();
-        return TypedResults.Ok(await reports.Count(ct));
+        }
+
+        var count = await reports.Count(ct);
+        logger.LogInformation(
+            "Пользователь {id} получает количество отчётов контрольных недель в количестве {count}",
+            jwtToken.UserId,
+            count
+        );
+        return TypedResults.Ok(count);
     }
 }

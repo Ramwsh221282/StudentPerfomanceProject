@@ -21,6 +21,7 @@ public static class RegisterTeacherDepartment
                 .WithTags(TeacherDepartmentsTags.Tag)
                 .WithOpenApi()
                 .WithName("RegisterTeacherDepartments")
+                .RequireRateLimiting("fixed")
                 .WithDescription(
                     new StringBuilder()
                         .AppendLine("Метод создаёт кафедру")
@@ -38,17 +39,35 @@ public static class RegisterTeacherDepartment
         Request request,
         IUsersRepository users,
         ICommandDispatcher dispatcher,
+        ILogger<Endpoint> logger,
         CancellationToken ct
     )
     {
-        if (!await new Token(token).IsVerifiedAdmin(users, ct))
+        var jwtToken = new Token(token);
+        logger.LogInformation("Запрос на добавление кафедры");
+        if (!await jwtToken.IsVerifiedAdmin(users, ct))
+        {
+            logger.LogError("Пользователь не является администратором");
             return TypedResults.Unauthorized();
+        }
         var department = await dispatcher.Dispatch<
             CreateTeachersDepartmentCommand,
             TeachersDepartments
         >(request.Department, ct);
-        return department.IsFailure
-            ? TypedResults.BadRequest(department.Error.Description)
-            : TypedResults.Ok(department.Value.MapFromDomain());
+        if (department.IsFailure)
+        {
+            logger.LogError(
+                "Запрос пользователя {id} на добавление кафедры отменен. Причина: {text}",
+                jwtToken.UserId,
+                department.Error.Description
+            );
+            return TypedResults.BadRequest(department.Error.Description);
+        }
+        logger.LogInformation(
+            "Пользователь {id} добавляет кафедру {dname}",
+            jwtToken.UserId,
+            request.Department.Name
+        );
+        return TypedResults.Ok(department.Value.MapFromDomain());
     }
 }

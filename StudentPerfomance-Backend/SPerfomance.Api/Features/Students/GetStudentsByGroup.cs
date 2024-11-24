@@ -19,6 +19,7 @@ public static class GetStudentsByGroup
                 .WithTags(StudentTags.Tag)
                 .WithOpenApi()
                 .WithName("GetStudentsByGroup")
+                .RequireRateLimiting("fixed")
                 .WithDescription(
                     new StringBuilder()
                         .AppendLine("Метод возвращает студентов группы")
@@ -29,25 +30,45 @@ public static class GetStudentsByGroup
     }
 
     public static async Task<
-        Results<UnauthorizedHttpResult, NotFound<string>, Ok<IEnumerable<StudentDto>>>
+        Results<UnauthorizedHttpResult, NotFound<string>, Ok<StudentDto[]>>
     > Handler(
         [FromHeader(Name = "token")] string token,
         [FromQuery(Name = "groupName")] string groupName,
         IQueryDispatcher dispatcher,
         IUsersRepository users,
+        ILogger<Endpoint> logger,
         CancellationToken ct
     )
     {
-        if (!await new Token(token).IsVerifiedAdmin(users, ct))
+        logger.LogInformation("Запрос на получение студентов группы");
+        var jwtToken = new Token(token);
+        if (!await jwtToken.IsVerifiedAdmin(users, ct))
+        {
+            logger.LogError("Пользователь не является администратором");
             return TypedResults.Unauthorized();
+        }
 
         var group = await dispatcher.Dispatch<GetStudentGroupQuery, StudentGroup>(
             new GetStudentGroupQuery(groupName),
             ct
         );
         if (group.IsFailure)
+        {
+            logger.LogError(
+                "Запрос пользователя {id} на получение студенческих групп отменен. Причина: {text}",
+                jwtToken.UserId,
+                group.Error.Description
+            );
             return TypedResults.NotFound(group.Error.Description);
+        }
 
-        return TypedResults.Ok(group.Value.Students.Select(s => s.MapFromDomain()));
+        var students = group.Value.Students.Select(s => s.MapFromDomain()).ToArray();
+        logger.LogInformation(
+            "Пользователь {id} получает студентов группы {gname} {count}",
+            jwtToken.UserId,
+            groupName,
+            students.Length
+        );
+        return TypedResults.Ok(students);
     }
 }

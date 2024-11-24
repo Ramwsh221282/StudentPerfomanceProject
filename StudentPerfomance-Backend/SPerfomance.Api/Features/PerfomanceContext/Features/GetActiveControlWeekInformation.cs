@@ -18,6 +18,7 @@ public static class GetActiveControlWeekInformation
                 .WithTags($"{PerfomanceContextTags.SessionsTag}")
                 .WithOpenApi()
                 .WithName("GetActiveControlWeekInformation")
+                .RequireRateLimiting("fixed")
                 .WithDescription(
                     new StringBuilder()
                         .AppendLine("Метод возвращает активную сессию контрольной недели")
@@ -34,11 +35,17 @@ public static class GetActiveControlWeekInformation
         [FromHeader(Name = "token")] string token,
         IUsersRepository users,
         IQueryDispatcher dispatcher,
+        ILogger<Endpoint> logger,
         CancellationToken ct
     )
     {
-        if (!await new Token(token).IsVerified(users, ct))
+        logger.LogInformation("Запрос на получение текущих активных сессий контрольных недель");
+        var jwtToken = new Token(token);
+        if (!await jwtToken.IsVerified(users, ct))
+        {
+            logger.LogError("Пользователь не авторизован");
             return TypedResults.Unauthorized();
+        }
 
         var query = new GetAssignmentSessionInfoQuery();
         var info = await dispatcher.Dispatch<
@@ -46,8 +53,20 @@ public static class GetActiveControlWeekInformation
             AssignmentSessionInfoDTO
         >(query, ct);
 
-        return info.IsFailure
-            ? TypedResults.BadRequest(info.Error.Description)
-            : TypedResults.Ok(info.Value);
+        if (info.IsFailure)
+        {
+            logger.LogError(
+                "Пользователь {id} не получил текущую активную контрольную неделю. Причина: {text}",
+                jwtToken.UserId,
+                info.Error.Description
+            );
+            return TypedResults.BadRequest(info.Error.Description);
+        }
+
+        logger.LogInformation(
+            "Пользователь {id} получает текущую активную контрольную неделю",
+            jwtToken.UserId
+        );
+        return TypedResults.Ok(info.Value);
     }
 }

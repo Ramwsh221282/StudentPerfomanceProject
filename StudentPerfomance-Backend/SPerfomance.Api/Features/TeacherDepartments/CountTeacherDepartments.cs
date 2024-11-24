@@ -16,6 +16,7 @@ public static class CountTeacherDepartments
                 .WithTags(TeacherDepartmentsTags.Tag)
                 .WithOpenApi()
                 .WithName("CountTeacherDepartments")
+                .RequireRateLimiting("fixed")
                 .WithDescription(
                     new StringBuilder()
                         .AppendLine("Метод возвращает количество кафедр")
@@ -29,12 +30,23 @@ public static class CountTeacherDepartments
         [FromHeader(Name = "token")] string token,
         IUsersRepository users,
         ITeacherDepartmentsRepository repository,
+        ILogger<Endpoint> logger,
         CancellationToken ct
     )
     {
-        if (!await new Token(token).IsVerifiedAdmin(users, ct))
+        var jwtToken = new Token(token);
+        logger.LogInformation("Запрос на получение количества кафедр");
+        if (!await jwtToken.IsVerifiedAdmin(users, ct))
+        {
+            logger.LogError("Пользователь не является администратором");
             return TypedResults.Unauthorized();
+        }
         var count = await repository.Count(ct);
+        logger.LogInformation(
+            "Пользователь {id} получает количество кафедр {count}",
+            jwtToken.UserId,
+            count
+        );
         return TypedResults.Ok(count);
     }
 }

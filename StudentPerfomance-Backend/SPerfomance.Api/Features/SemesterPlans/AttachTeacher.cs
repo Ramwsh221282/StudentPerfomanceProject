@@ -43,6 +43,7 @@ public static class AttachTeacher
                 .WithTags(SemesterPlanTags.Tag)
                 .WithOpenApi()
                 .WithName("AttachTeacher")
+                .RequireRateLimiting("fixed")
                 .WithDescription(
                     new StringBuilder()
                         .AppendLine("Метод устанавливает преподавателю дисциплину")
@@ -64,20 +65,41 @@ public static class AttachTeacher
         IUsersRepository users,
         IQueryDispatcher queryDispatcher,
         ICommandDispatcher commandDispatcher,
+        ILogger<Endpoint> logger,
         CancellationToken ct
     )
     {
-        if (!await new Token(token).IsVerifiedAdmin(users, ct))
+        logger.LogInformation("Запрос на закрепление дисциплины преподавателю");
+        var jwtToken = new Token(token);
+        if (!await jwtToken.IsVerifiedAdmin(users, ct))
+        {
+            logger.LogError("Пользователь не является администратором");
             return TypedResults.Unauthorized();
+        }
 
+        logger.LogInformation(
+            "Пользователь {id} запрашивает кафедру для получения преподавателя",
+            jwtToken.UserId
+        );
         var department = await queryDispatcher.Dispatch<
             GetDepartmentByNameQuery,
             TeachersDepartments
         >(request.Department, ct);
 
         if (department.IsFailure)
+        {
+            logger.LogError(
+                "Запрос пользователя {id} на закрепление дисциплины преподавателю отменён. Причина: {text}",
+                jwtToken.UserId,
+                department.Error.Description
+            );
             return TypedResults.NotFound(department.Error.Description);
+        }
 
+        logger.LogInformation(
+            "Пользователь {id} запрашивает преподавателя из кафедры для закрепления дисциплины",
+            jwtToken.UserId
+        );
         var teacher = await queryDispatcher.Dispatch<GetTeacherFromDepartmentQuery, Teacher>(
             new GetTeacherFromDepartmentQuery(
                 department.Value,
@@ -91,47 +113,113 @@ public static class AttachTeacher
         );
 
         if (teacher.IsFailure)
+        {
+            logger.LogError(
+                "Запрос пользователя {id} на закрепление дисциплины преподавателю отменён. Причина: {text}",
+                jwtToken.UserId,
+                teacher.Error.Description
+            );
             return TypedResults.NotFound(teacher.Error.Description);
+        }
 
+        logger.LogInformation(
+            "Пользователь {id} запрашивает направление подготовки, чтобы получить дисциплину для закрепления преподавателю",
+            jwtToken.UserId
+        );
         var direction = await queryDispatcher.Dispatch<
             GetEducationDirectionQuery,
             EducationDirection
         >(request.Direction, ct);
 
         if (direction.IsFailure)
+        {
+            logger.LogError(
+                "Запрос пользователя {id} на закрепление дисциплины преподавателю отменён. Причина: {text}",
+                jwtToken.UserId,
+                direction.Error.Description
+            );
             return TypedResults.NotFound(direction.Error.Description);
+        }
 
+        logger.LogInformation(
+            "Пользователь {id} запрашивает учебный план из направления подготовки, чтобы получить дисциплину для закрепления преподавателю",
+            jwtToken.UserId
+        );
         var educationPlan = await queryDispatcher.Dispatch<GetEducationPlanQuery, EducationPlan>(
             new GetEducationPlanQuery(direction.Value, request.Plan.PlanYear),
             ct
         );
 
         if (educationPlan.IsFailure)
+        {
+            logger.LogError(
+                "Запрос пользователя {id} на закрепление дисциплины преподавателю отменён. Причина: {text}",
+                jwtToken.UserId,
+                educationPlan.Error.Description
+            );
             return TypedResults.NotFound(educationPlan.Error.Description);
+        }
 
+        logger.LogInformation(
+            "Пользователь {id} запрашивает семестр из учебного плана, чтобы получить дисциплину для закрепления преподавателю",
+            jwtToken.UserId
+        );
         var semester = await queryDispatcher.Dispatch<GetSemesterQuery, Semester>(
             new GetSemesterQuery(educationPlan.Value, request.Semester.Number),
             ct
         );
 
         if (semester.IsFailure)
+        {
+            logger.LogError(
+                "Запрос пользователя {id} на закрепление дисциплины преподавателю отменён. Причина: {text}",
+                jwtToken.UserId,
+                semester.Error.Description
+            );
             return TypedResults.NotFound(semester.Error.Description);
+        }
 
+        logger.LogInformation(
+            "Пользователь {id} запрашивает дисциплину из семестра для закрепления преподавателю",
+            jwtToken.UserId
+        );
         var discipline = await queryDispatcher.Dispatch<
             GetDisciplineFromSemesterQuery,
             SemesterPlan
         >(new GetDisciplineFromSemesterQuery(semester.Value, request.Discipline.Discipline), ct);
 
         if (discipline.IsFailure)
+        {
+            logger.LogError(
+                "Запрос пользователя {id} на закрепление дисциплины преподавателю отменён. Причина: {text}",
+                jwtToken.UserId,
+                discipline.Error.Description
+            );
             return TypedResults.NotFound(discipline.Error.Description);
+        }
 
         discipline = await commandDispatcher.Dispatch<
             AttachTeacherToDisciplineCommand,
             SemesterPlan
         >(new AttachTeacherToDisciplineCommand(teacher.Value, discipline.Value), ct);
 
-        return discipline.IsFailure
-            ? TypedResults.BadRequest(discipline.Error.Description)
-            : TypedResults.Ok(discipline.Value.MapFromDomain());
+        if (discipline.IsFailure)
+        {
+            logger.LogError(
+                "Запрос пользователя {id} на закрепление дисциплины преподавателю отменён. Причина: {text}",
+                jwtToken.UserId,
+                discipline.Error.Description
+            );
+            return TypedResults.BadRequest(discipline.Error.Description);
+        }
+
+        logger.LogInformation(
+            "Пользователь {id} закрепляет дисциплину {name} преподавателю {tname} {tsurname}",
+            jwtToken.UserId,
+            discipline.Value.Discipline.Name,
+            discipline.Value.Teacher!.Name.Name,
+            discipline.Value.Teacher!.Name.Surname
+        );
+        return TypedResults.Ok(discipline.Value.MapFromDomain());
     }
 }

@@ -18,6 +18,7 @@ public static class GetUsersCount
                 .WithTags($"{UserTags.Tag}")
                 .WithOpenApi()
                 .WithName("GetUsersCount")
+                .RequireRateLimiting("fixed")
                 .WithDescription(
                     new StringBuilder()
                         .AppendLine("Метод возвращает количество пользователей")
@@ -30,13 +31,24 @@ public static class GetUsersCount
     public static async Task<Results<UnauthorizedHttpResult, Ok<int>>> Handler(
         [FromHeader(Name = "token")] string token,
         IUsersRepository repository,
+        ILogger<Endpoint> logger,
         CancellationToken ct
     )
     {
-        if (!await new Token(token).IsVerifiedAdmin(repository, ct))
+        logger.LogInformation("Получение количества пользователей в системе");
+        var jwtToken = new Token(token);
+        if (!await jwtToken.IsVerifiedAdmin(repository, ct))
+        {
+            logger.LogError("Пользователь не является администратором");
             return TypedResults.Unauthorized();
+        }
 
         var count = await repository.Count(ct);
+        logger.LogInformation(
+            "Пользователь {id} получает количество пользователей в системе {count}",
+            jwtToken.UserId,
+            count
+        );
         return TypedResults.Ok(count);
     }
 }

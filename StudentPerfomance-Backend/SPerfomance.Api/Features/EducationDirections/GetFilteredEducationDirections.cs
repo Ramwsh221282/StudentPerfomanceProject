@@ -17,6 +17,7 @@ public static class GetFilteredEducationDirections
                 .WithTags(EducationDirectionTags.Tag)
                 .WithOpenApi()
                 .WithName("GetPagedFilteredEducationDirections")
+                .RequireRateLimiting("fixed")
                 .WithDescription(
                     new StringBuilder()
                         .AppendLine(
@@ -41,11 +42,17 @@ public static class GetFilteredEducationDirections
         [FromQuery(Name = "filterType")] string? filterType,
         IUsersRepository users,
         IEducationDirectionRepository repository,
+        ILogger<Endpoint> logger,
         CancellationToken ct
     )
     {
-        if (!await new Token(token).IsVerifiedAdmin(users, ct))
+        var jwtToken = new Token(token);
+        logger.LogInformation("Запрос на фильтрацию списка направлений подготовки");
+        if (!await jwtToken.IsVerifiedAdmin(users, ct))
+        {
+            logger.LogError("Пользователь не является администратором");
             return TypedResults.Unauthorized();
+        }
 
         var directions = await repository.GetPagedFiltered(
             filterCode,
@@ -55,7 +62,10 @@ public static class GetFilteredEducationDirections
             pageSize,
             ct
         );
-
+        logger.LogInformation(
+            "Получены отфильтрованные направления подготовки в количестве {count}",
+            directions.Count
+        );
         return TypedResults.Ok(directions.Select(d => d.MapFromDomain()));
     }
 }

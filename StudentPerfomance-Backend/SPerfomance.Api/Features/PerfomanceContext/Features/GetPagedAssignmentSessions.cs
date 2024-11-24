@@ -18,6 +18,7 @@ public static class GetPagedAssignmentSessions
                 .WithTags($"{PerfomanceContextTags.SessionsTag}")
                 .WithOpenApi()
                 .WithName("GetPagedAssignmentSessions")
+                .RequireRateLimiting("fixed")
                 .WithDescription(
                     new StringBuilder()
                         .AppendLine("Метод возвращает сессии контрольных недель постранично")
@@ -35,14 +36,24 @@ public static class GetPagedAssignmentSessions
         [FromQuery(Name = "page")] int page,
         [FromQuery(Name = "pageSize")] int pageSize,
         IUsersRepository users,
+        ILogger<Endpoint> logger,
         IAssignmentSessionsRepository sessionsRepository,
         CancellationToken ct
     )
     {
-        if (!await new Token(token).IsVerified(users, ct))
+        logger.LogInformation("Запрос на получение сессий контрольных недель постранично");
+        var jwtToken = new Token(token);
+        if (!await jwtToken.IsVerified(users, ct))
+        {
+            logger.LogError("Пользователь не авторизован");
             return TypedResults.Unauthorized();
+        }
         var sessions = await sessionsRepository.GetPaged(page, pageSize, ct);
         var list = sessions.Select(s => new AssignmentSessionViewFactory(s).CreateView());
+        logger.LogInformation(
+            "Пользователь {id} получает сессии контрольных недель постранично",
+            jwtToken.UserId
+        );
         return TypedResults.Ok(list);
     }
 }

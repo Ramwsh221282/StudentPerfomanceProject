@@ -19,6 +19,7 @@ public static class GetTeachersByDepartment
                 .WithTags(TeacherTags.Tag)
                 .WithOpenApi()
                 .WithName("GetTeachersByDepartment")
+                .RequireRateLimiting("fixed")
                 .WithDescription(
                     new StringBuilder()
                         .AppendLine("Возвращает преподавателей кафедры")
@@ -30,17 +31,23 @@ public static class GetTeachersByDepartment
     }
 
     public static async Task<
-        Results<UnauthorizedHttpResult, NotFound<string>, Ok<IEnumerable<TeacherDto>>>
+        Results<UnauthorizedHttpResult, NotFound<string>, Ok<TeacherDto[]>>
     > Handler(
         [FromHeader(Name = "token")] string token,
         [FromQuery(Name = "departmentName")] string departmentName,
         IUsersRepository users,
         IQueryDispatcher dispatcher,
+        ILogger<Endpoint> logger,
         CancellationToken ct
     )
     {
-        if (!await new Token(token).IsVerifiedAdmin(users, ct))
+        logger.LogInformation("Запрос на получение преподавателей из кафедры");
+        var jwtToken = new Token(token);
+        if (!await jwtToken.IsVerifiedAdmin(users, ct))
+        {
+            logger.LogError("Пользователь не является администратором");
             return TypedResults.Unauthorized();
+        }
 
         var query = new GetDepartmentByNameQuery(departmentName);
         var department = await dispatcher.Dispatch<GetDepartmentByNameQuery, TeachersDepartments>(
@@ -49,11 +56,25 @@ public static class GetTeachersByDepartment
         );
 
         if (department.IsFailure)
+        {
+            logger.LogError(
+                "Запрос пользователя {id} на получение преподавателей из кафедры отменён. Причина: {text}",
+                jwtToken.UserId,
+                department.Error.Description
+            );
             return TypedResults.NotFound(department.Error.Description);
+        }
 
-        IEnumerable<TeacherDto> teachers = department
+        TeacherDto[] teachers = department
             .Value.Teachers.Select(t => t.MapFromDomain())
-            .OrderBy(t => t.Surname);
+            .OrderBy(t => t.Surname)
+            .ToArray();
+        logger.LogInformation(
+            "Пользователь {id} получает преподавателей кафедры {dname} {count}",
+            jwtToken.UserId,
+            departmentName,
+            teachers.Length
+        );
         return TypedResults.Ok(teachers);
     }
 }

@@ -25,6 +25,7 @@ public static class FireTeacherFromDepartment
                 .WithTags(TeacherTags.Tag)
                 .WithOpenApi()
                 .WithName("FireTeacherFromDepartment")
+                .RequireRateLimiting("fixed")
                 .WithDescription(
                     new StringBuilder()
                         .AppendLine("Метод удаляет преподавателя из кафедры")
@@ -44,11 +45,17 @@ public static class FireTeacherFromDepartment
         IUsersRepository users,
         IQueryDispatcher queryDispatcher,
         ICommandDispatcher commandDispatcher,
+        ILogger<Endpoint> logger,
         CancellationToken ct
     )
     {
-        if (!await new Token(token).IsVerifiedAdmin(users, ct))
+        var jwtToken = new Token(token);
+        logger.LogInformation("Запрос на удаление преподавателя из кафедры");
+        if (!await jwtToken.IsVerifiedAdmin(users, ct))
+        {
+            logger.LogError("Пользователь не является администратором");
             return TypedResults.Unauthorized();
+        }
 
         var department = await queryDispatcher.Dispatch<
             GetDepartmentByNameQuery,
@@ -56,7 +63,14 @@ public static class FireTeacherFromDepartment
         >(request.Department, ct);
 
         if (department.IsFailure)
+        {
+            logger.LogError(
+                "Запрос пользователя {id} на удаление преподавателя из кафедры отменен. Причина: {text}",
+                jwtToken.UserId,
+                department.Error.Description
+            );
             return TypedResults.NotFound(department.Error.Description);
+        }
 
         var teacher = await queryDispatcher.Dispatch<GetTeacherFromDepartmentQuery, Teacher>(
             new GetTeacherFromDepartmentQuery(
@@ -71,15 +85,36 @@ public static class FireTeacherFromDepartment
         );
 
         if (teacher.IsFailure)
+        {
+            logger.LogError(
+                "Запрос пользователя {id} на удаление преподавателя из кафедры отменен. Причина: {text}",
+                jwtToken.UserId,
+                teacher.Error.Description
+            );
             return TypedResults.NotFound(teacher.Error.Description);
+        }
 
         teacher = await commandDispatcher.Dispatch<FireTeacherCommand, Teacher>(
             new FireTeacherCommand(teacher.Value),
             ct
         );
 
-        return teacher.IsFailure
-            ? TypedResults.BadRequest(teacher.Error.Description)
-            : TypedResults.Ok(teacher.Value.MapFromDomain());
+        if (teacher.IsFailure)
+        {
+            logger.LogError(
+                "Запрос пользователя {id} на удаление преподавателя из кафедры отменен. Причина: {text}",
+                jwtToken.UserId,
+                teacher.Error.Description
+            );
+            return TypedResults.BadRequest(teacher.Error.Description);
+        }
+
+        logger.LogInformation(
+            "Пользователь {id} удаляет преподавателя {tname} {tsurname}",
+            jwtToken.UserId,
+            request.Teacher.Name,
+            request.Teacher.Surname
+        );
+        return TypedResults.Ok(teacher.Value.MapFromDomain());
     }
 }

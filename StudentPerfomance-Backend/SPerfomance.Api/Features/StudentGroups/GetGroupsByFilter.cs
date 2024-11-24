@@ -17,6 +17,7 @@ public static class GetGroupsByFilter
                 .WithTags(StudentGroupTags.Tag)
                 .WithOpenApi()
                 .WithName("GetGroupsByFilter")
+                .RequireRateLimiting("fixed")
                 .WithDescription(
                     new StringBuilder()
                         .AppendLine(
@@ -39,12 +40,23 @@ public static class GetGroupsByFilter
         [FromQuery(Name = "groupName")] string? groupName,
         IUsersRepository users,
         IStudentGroupsRepository repository,
+        ILogger<Endpoint> logger,
         CancellationToken ct
     )
     {
-        if (!await new Token(token).IsVerifiedAdmin(users, ct))
+        logger.LogInformation("Запрос на получение студенческих групп по фильтру постранично");
+        var jwtToken = new Token(token);
+        if (!await jwtToken.IsVerifiedAdmin(users, ct))
+        {
+            logger.LogError("Пользователь не является администратором");
             return TypedResults.Unauthorized();
+        }
         var groups = await repository.FilterPaged(groupName, page, pageSize, ct);
+        logger.LogInformation(
+            "Пользователь {id} получает студенческие группы по фильтру постранично {count}",
+            jwtToken.UserId,
+            groups.Count
+        );
         return TypedResults.Ok(groups.Select(g => g.MapFromDomain()));
     }
 }

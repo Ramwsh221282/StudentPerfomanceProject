@@ -22,6 +22,7 @@ public static class MergeGroups
                 .WithTags(StudentGroupTags.Tag)
                 .WithOpenApi()
                 .WithName("MergeGroups")
+                .RequireRateLimiting("fixed")
                 .WithDescription(
                     new StringBuilder()
                         .AppendLine("Метод добавляет студентов из 2 группы в 1 группу")
@@ -41,11 +42,17 @@ public static class MergeGroups
         IUsersRepository users,
         IQueryDispatcher queryDispatcher,
         ICommandDispatcher commandDispatcher,
+        ILogger<Endpoint> logger,
         CancellationToken ct
     )
     {
-        if (!await new Token(token).IsVerifiedAdmin(users, ct))
+        logger.LogInformation("Запрос на смешивание групп");
+        var jwtToken = new Token(token);
+        if (!await jwtToken.IsVerifiedAdmin(users, ct))
+        {
+            logger.LogError("Пользователль не является администратором");
             return TypedResults.Unauthorized();
+        }
 
         var initial = await queryDispatcher.Dispatch<GetStudentGroupQuery, StudentGroup>(
             request.Initial,
@@ -53,7 +60,14 @@ public static class MergeGroups
         );
 
         if (initial.IsFailure)
+        {
+            logger.LogError(
+                "Запрос пользователя {id} по смешиванию групп отменен. Причина {text}",
+                jwtToken.UserId,
+                initial.Error
+            );
             return TypedResults.NotFound(initial.Error.Description);
+        }
 
         var target = await queryDispatcher.Dispatch<GetStudentGroupQuery, StudentGroup>(
             request.Target,
@@ -61,15 +75,36 @@ public static class MergeGroups
         );
 
         if (target.IsFailure)
+        {
+            logger.LogError(
+                "Запрос пользователя {id} по смешиванию групп отменен. Причина {text}",
+                jwtToken.UserId,
+                target.Error
+            );
             return TypedResults.NotFound(target.Error.Description);
+        }
 
         var result = await commandDispatcher.Dispatch<MergeWithGroupCommand, StudentGroup>(
             new MergeWithGroupCommand(initial.Value, target.Value),
             ct
         );
 
-        return result.IsFailure
-            ? TypedResults.BadRequest(result.Error.Description)
-            : TypedResults.Ok(result.Value.MapFromDomain());
+        if (result.IsFailure)
+        {
+            logger.LogError(
+                "Запрос пользователя {id} по смешиванию групп отменен. Причина {text}",
+                jwtToken.UserId,
+                result.Error
+            );
+            return TypedResults.BadRequest(result.Error.Description);
+        }
+
+        logger.LogInformation(
+            "Пользователь {id} смешивает группу {target} с {initial}",
+            jwtToken.UserId,
+            request.Target.Name,
+            request.Initial.Name
+        );
+        return TypedResults.Ok(result.Value.MapFromDomain());
     }
 }

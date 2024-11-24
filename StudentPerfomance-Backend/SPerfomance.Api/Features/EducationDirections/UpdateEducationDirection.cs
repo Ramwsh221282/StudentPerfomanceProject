@@ -23,6 +23,7 @@ public static class UpdateEducationDirection
                 .WithTags(EducationDirectionTags.Tag)
                 .WithOpenApi()
                 .WithName("UpdateEducationDirection")
+                .RequireRateLimiting("fixed")
                 .WithDescription(
                     new StringBuilder()
                         .AppendLine("Метод изменяет аттрибуты записи направления подготовки")
@@ -46,19 +47,51 @@ public static class UpdateEducationDirection
         IUsersRepository users,
         ICommandDispatcher commandDispatcher,
         IQueryDispatcher queryDispatcher,
+        ILogger<Endpoint> logger,
         CancellationToken ct
     )
     {
-        if (!await new Token(token).IsVerifiedAdmin(users, ct))
+        var jwtToken = new Token(token);
+        if (!await jwtToken.IsVerifiedAdmin(users, ct))
+        {
+            logger.LogError("Пользователь не является администратором");
             return TypedResults.Unauthorized();
+        }
 
+        logger.LogInformation(
+            "Пользователь {id} запрашивает направление подготовки для изменения",
+            jwtToken.UserId
+        );
         var direction = await queryDispatcher.Dispatch<
             GetEducationDirectionQuery,
             EducationDirection
         >(request.Initial, ct);
-        if (direction is null)
-            return TypedResults.NotFound(direction.Error.Description);
 
+        logger.LogInformation(
+            "Пользователь {id} запрашивает направление подготовки для изменения",
+            jwtToken.UserId
+        );
+        if (direction.IsFailure)
+        {
+            logger.LogError(
+                "Пользователю {id} не удается получить направление подготовки для изменения",
+                jwtToken.UserId
+            );
+            return TypedResults.NotFound(direction.Error.Description);
+        }
+
+        logger.LogInformation(
+            "Изменяется направление подготовки {code}, {name}, {type}",
+            direction.Value.Code.Code,
+            direction.Value.Name.Name,
+            direction.Value.Type.Type
+        );
+        logger.LogInformation(
+            "Запрашиваемые изменения: {code}, {name}, {type}",
+            request.Updated.Code,
+            request.Updated.Name,
+            request.Updated.Type
+        );
         var updateCommand = new UpdateEducationDirectionCommand(
             direction.Value,
             request.Updated.Name,
@@ -71,8 +104,23 @@ public static class UpdateEducationDirection
             EducationDirection
         >(updateCommand, ct);
 
-        return direction.IsFailure
-            ? TypedResults.BadRequest(direction.Error.Description)
-            : TypedResults.Ok(direction.Value.MapFromDomain());
+        if (direction.IsFailure)
+        {
+            logger.LogError(
+                "Пользователь {id} не может изменить направление подготовки причина: {text}",
+                jwtToken.UserId,
+                direction.Error.Description
+            );
+            return TypedResults.BadRequest(direction.Error.Description);
+        }
+
+        logger.LogInformation(
+            "Пользователь {id} изменяет информацию о направлении подготовки. Новая информация {code} {name} {type}",
+            jwtToken.UserId,
+            direction.Value.Code.Code,
+            direction.Value.Name.Name,
+            direction.Value.Type.Type
+        );
+        return TypedResults.Ok(direction.Value.MapFromDomain());
     }
 }

@@ -11,10 +11,14 @@ public class StudentAssignmentsRepository : IStudentAssignmentsRepository
         Guid id,
         CancellationToken ct = default
     ) =>
-        await _context.StudentAssignments.FirstOrDefaultAsync(
-            a => a.Id == id,
-            cancellationToken: ct
-        );
+        await _context
+            .StudentAssignments.Include(a => a.Assignment)
+            .ThenInclude(d => d.Discipline)
+            .Include(a => a.Student)
+            .ThenInclude(s => s.AttachedGroup)
+            .AsNoTracking()
+            .AsSplitQuery()
+            .FirstOrDefaultAsync(a => a.Id == id, cancellationToken: ct);
 
     public async Task UpdateAssignmentValue(
         StudentAssignment assignment,

@@ -17,6 +17,7 @@ public static class GetGroupsByPage
                 .WithTags(StudentGroupTags.Tag)
                 .WithOpenApi()
                 .WithName("GetGroupsByPage")
+                .RequireRateLimiting("fixed")
                 .WithDescription(
                     new StringBuilder()
                         .AppendLine("Метод возвращает студенческие группы постранично")
@@ -34,12 +35,23 @@ public static class GetGroupsByPage
         [FromQuery(Name = "pageSize")] int pageSize,
         IUsersRepository users,
         IStudentGroupsRepository repository,
+        ILogger<Endpoint> logger,
         CancellationToken ct
     )
     {
-        if (!await new Token(token).IsVerifiedAdmin(users, ct))
+        var jwtToken = new Token(token);
+        logger.LogInformation("Запрос на получение студенческих групп постранично.");
+        if (!await jwtToken.IsVerifiedAdmin(users, ct))
+        {
+            logger.LogError("Пользователь не является администратором");
             return TypedResults.Unauthorized();
+        }
         var groups = await repository.GetPaged(page, pageSize, ct);
+        logger.LogInformation(
+            "Пользователь {id} получает студенческие группы постранично {count}",
+            jwtToken.UserId,
+            groups.Count
+        );
         return TypedResults.Ok(groups.Select(g => g.MapFromDomain()));
     }
 }

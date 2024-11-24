@@ -23,6 +23,7 @@ public static class ChangeGroupName
                 .WithTags(StudentGroupTags.Tag)
                 .WithOpenApi()
                 .WithName("ChangeGroupName")
+                .RequireRateLimiting("fixed")
                 .WithDescription(
                     new StringBuilder()
                         .AppendLine("Метод изменяет название группы")
@@ -44,11 +45,17 @@ public static class ChangeGroupName
         IUsersRepository users,
         IQueryDispatcher queryDispatcher,
         ICommandDispatcher commandDispatcher,
+        ILogger<Endpoint> logger,
         CancellationToken ct
     )
     {
-        if (!await new Token(token).IsVerifiedAdmin(users, ct))
+        logger.LogInformation("Запрос на изменение название группы");
+        var jwtToken = new Token(token);
+        if (!await jwtToken.IsVerifiedAdmin(users, ct))
+        {
+            logger.LogError("Пользователь не является администратором");
             return TypedResults.BadRequest(UserTags.UnauthorizedError);
+        }
 
         var group = await queryDispatcher.Dispatch<GetStudentGroupQuery, StudentGroup>(
             request.Initial,
@@ -56,15 +63,36 @@ public static class ChangeGroupName
         );
 
         if (group.IsFailure)
+        {
+            logger.LogError(
+                "Запрос пользователя {id} на изменение названия группы отменен. Причина: {text}",
+                jwtToken.UserId,
+                group.Error.Description
+            );
             return TypedResults.NotFound(group.Error.Description);
+        }
 
         group = await commandDispatcher.Dispatch<ChangeGroupNameCommand, StudentGroup>(
             new ChangeGroupNameCommand(group.Value, request.Updated.Name),
             ct
         );
 
-        return group.IsFailure
-            ? TypedResults.BadRequest(group.Error.Description)
-            : TypedResults.Ok(group.Value.MapFromDomain());
+        if (group.IsFailure)
+        {
+            logger.LogError(
+                "Запрос пользователя {id} на изменение названия группы отменен. Причина: {text}",
+                jwtToken.UserId,
+                group.Error.Description
+            );
+            TypedResults.BadRequest(group.Error.Description);
+        }
+
+        logger.LogInformation(
+            "Пользователь {id} изменяет название группы с {oldName} на {newName}",
+            jwtToken.UserId,
+            request.Initial.Name,
+            request.Updated.Name
+        );
+        return TypedResults.Ok(group.Value.MapFromDomain());
     }
 }

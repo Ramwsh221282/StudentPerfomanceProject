@@ -16,6 +16,7 @@ public static class GetUsersByFilter
                 .WithTags(UserTags.Tag)
                 .WithOpenApi()
                 .WithName("GetUsersByFilter")
+                .RequireRateLimiting("fixed")
                 .WithDescription(
                     new StringBuilder()
                         .AppendLine("Метод фильтрует пользователей постранично")
@@ -27,7 +28,7 @@ public static class GetUsersByFilter
                 );
     }
 
-    public static async Task<Results<UnauthorizedHttpResult, Ok<IEnumerable<UserDto>>>> Handler(
+    public static async Task<Results<UnauthorizedHttpResult, Ok<UserDto[]>>> Handler(
         [FromHeader(Name = "token")] string token,
         [FromQuery(Name = "page")] int page,
         [FromQuery(Name = "pageSize")] int pageSize,
@@ -37,11 +38,17 @@ public static class GetUsersByFilter
         [FromQuery(Name = "email")] string? email,
         [FromQuery(Name = "role")] string? role,
         IUsersRepository repository,
+        ILogger<Endpoint> logger,
         CancellationToken ct
     )
     {
-        if (!await new Token(token).IsVerifiedAdmin(repository, ct))
+        logger.LogInformation("Запрос на получение пользователей системы постранично по фильтру");
+        var jwtToken = new Token(token);
+        if (!await jwtToken.IsVerifiedAdmin(repository, ct))
+        {
+            logger.LogInformation("Пользователь не является администратором");
             return TypedResults.Unauthorized();
+        }
 
         var users = await repository.GetFiltered(
             name,
@@ -53,6 +60,12 @@ public static class GetUsersByFilter
             pageSize,
             ct
         );
-        return TypedResults.Ok(users.Select(u => u.MapFromDomain()));
+        var result = users.Select(u => u.MapFromDomain()).ToArray();
+        logger.LogInformation(
+            "Пользователь {id} получает пользователей системы постранично по фильтру {count}",
+            jwtToken.UserId,
+            result.Length
+        );
+        return TypedResults.Ok(result);
     }
 }

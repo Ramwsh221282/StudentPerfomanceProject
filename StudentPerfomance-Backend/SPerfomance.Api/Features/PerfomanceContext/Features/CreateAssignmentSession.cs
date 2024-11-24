@@ -23,6 +23,7 @@ public static class CreateAssignmentSession
                 .WithTags($"{PerfomanceContextTags.SessionsTag}")
                 .WithOpenApi()
                 .WithName("CreateAssignmentSession")
+                .RequireRateLimiting("fixed")
                 .WithDescription(
                     new StringBuilder()
                         .AppendLine(
@@ -44,11 +45,17 @@ public static class CreateAssignmentSession
         Request request,
         IUsersRepository users,
         ICommandDispatcher dispatcher,
+        ILogger<Endpoint> logger,
         CancellationToken ct
     )
     {
-        if (!await new Token(token).IsVerifiedAdmin(users, ct))
+        logger.LogInformation("Запрос на создание сессии контрольной недели");
+        var jwtToken = new Token(token);
+        if (!await jwtToken.IsVerifiedAdmin(users, ct))
+        {
+            logger.LogError("Пользователь не является администратором");
             return TypedResults.Unauthorized();
+        }
 
         DateTime dateStart;
         DateTime dateEnd;
@@ -68,7 +75,9 @@ public static class CreateAssignmentSession
         }
         catch
         {
-            return TypedResults.BadRequest(AssignmentWeekErrors.InvalidDateFormat().Description);
+            var error = AssignmentWeekErrors.InvalidDateFormat().Description;
+            logger.LogError("Не удалось создать сессию контрольной недели. Причина {text}", error);
+            return TypedResults.BadRequest(error);
         }
 
         var command = new CreateAssignmentSessionCommand(dateStart, dateEnd);
@@ -77,8 +86,21 @@ public static class CreateAssignmentSession
             ct
         );
 
-        return session.IsFailure
-            ? TypedResults.BadRequest(session.Error.Description)
-            : TypedResults.Ok(new AssignmentSessionDTO(session.Value));
+        if (session.IsFailure)
+        {
+            logger.LogError(
+                "Не удалось создать сессию контрольной недели. Причина: {text}",
+                session.Error.Description
+            );
+            return TypedResults.BadRequest(session.Error.Description);
+        }
+
+        logger.LogInformation(
+            "Пользователь {id} создаёт контрольную неделю {dateStart} {dateEnd}",
+            jwtToken.UserId,
+            session.Value.SessionStartDate.ToString("dd-mm-YYYY"),
+            session.Value.SessionCloseDate.ToString("dd-MM-yyyy")
+        );
+        return TypedResults.Ok(new AssignmentSessionDTO(session.Value));
     }
 }

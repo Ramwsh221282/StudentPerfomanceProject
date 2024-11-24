@@ -23,6 +23,7 @@ public static class ChangeTeacherDepartmentName
                 .WithTags(TeacherDepartmentsTags.Tag)
                 .WithOpenApi()
                 .WithName("ChangeDepartmentName")
+                .RequireRateLimiting("fixed")
                 .WithDescription(
                     new StringBuilder()
                         .AppendLine("Метод изменяет название кафедры")
@@ -47,11 +48,17 @@ public static class ChangeTeacherDepartmentName
         IUsersRepository users,
         IQueryDispatcher queryDispatcher,
         ICommandDispatcher commandDispatcher,
+        ILogger<Endpoint> logger,
         CancellationToken ct
     )
     {
-        if (!await new Token(token).IsVerifiedAdmin(users, ct))
+        logger.LogInformation("Запрос на изменение названия кафедры");
+        var jwtToken = new Token(token);
+        if (!await jwtToken.IsVerifiedAdmin(users, ct))
+        {
+            logger.LogError("Пользователь не является администратором");
             return TypedResults.Unauthorized();
+        }
 
         var department = await queryDispatcher.Dispatch<
             GetDepartmentByNameQuery,
@@ -59,15 +66,36 @@ public static class ChangeTeacherDepartmentName
         >(request.Initial, ct);
 
         if (department.IsFailure)
+        {
+            logger.LogError(
+                "Запрос пользователя {id} на изменение названия кафедры отменён. Причина: {text}",
+                jwtToken.UserId,
+                department.Error.Description
+            );
             return TypedResults.NotFound(department.Error.Description);
+        }
 
         department = await commandDispatcher.Dispatch<
             ChangeTeachersDepartmentNameCommand,
             TeachersDepartments
         >(new ChangeTeachersDepartmentNameCommand(department.Value, request.Updated.Name), ct);
 
-        return department.IsFailure
-            ? TypedResults.BadRequest(department.Error.Description)
-            : TypedResults.Ok(department.Value.MapFromDomain());
+        if (department.IsFailure)
+        {
+            logger.LogError(
+                "Запрос пользователя {id} на изменение названия кафедры отменён. Причина: {text}",
+                jwtToken.UserId,
+                department.Error.Description
+            );
+            return TypedResults.BadRequest(department.Error.Description);
+        }
+
+        logger.LogInformation(
+            "Пользователь {id} изменяет название кафедры с {oldName} на {newName}",
+            jwtToken.UserId,
+            request.Initial.Name,
+            request.Updated.Name
+        );
+        return TypedResults.Ok(department.Value.MapFromDomain());
     }
 }

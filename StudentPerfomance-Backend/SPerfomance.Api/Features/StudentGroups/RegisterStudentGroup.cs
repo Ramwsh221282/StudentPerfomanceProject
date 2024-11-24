@@ -22,6 +22,7 @@ public static class RegisterStudentGroup
                 .WithTags(StudentGroupTags.Tag)
                 .WithOpenApi()
                 .WithName("RegisterStudentGroup")
+                .RequireRateLimiting("fixed")
                 .WithDescription(
                     new StringBuilder()
                         .AppendLine("Метод добавляет студенческую группу")
@@ -39,19 +40,38 @@ public static class RegisterStudentGroup
         Request request,
         ICommandDispatcher dispatcher,
         IUsersRepository users,
+        ILogger<Endpoint> logger,
         CancellationToken ct
     )
     {
-        if (!await new Token(token).IsVerifiedAdmin(users, ct))
+        logger.LogInformation("Запрос на создание студенческой группы");
+        var jwtToken = new Token(token);
+        if (!await jwtToken.IsVerifiedAdmin(users, ct))
+        {
+            logger.LogError("Пользователь не является администратором");
             return TypedResults.Unauthorized();
+        }
 
         var group = await dispatcher.Dispatch<CreateStudentGroupCommand, StudentGroup>(
             new CreateStudentGroupCommand(request.Group.Name),
             ct
         );
 
-        return group.IsFailure
-            ? TypedResults.BadRequest(group.Error.Description)
-            : TypedResults.Ok(group.Value.MapFromDomain());
+        if (group.IsFailure)
+        {
+            logger.LogError(
+                "Запрос пользователя {id} на создание группы отменён. Причина: {text}",
+                jwtToken.UserId,
+                group.Error.Description
+            );
+            return TypedResults.BadRequest(group.Error.Description);
+        }
+
+        logger.LogInformation(
+            "Пользователь {id} создает группу {gname}",
+            jwtToken.UserId,
+            request.Group.Name
+        );
+        return TypedResults.Ok(group.Value.MapFromDomain());
     }
 }

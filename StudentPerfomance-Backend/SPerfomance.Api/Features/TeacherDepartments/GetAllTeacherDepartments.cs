@@ -17,6 +17,7 @@ public static class GetAllTeacherDepartments
                 .WithTags(TeacherDepartmentsTags.Tag)
                 .WithOpenApi()
                 .WithName("GetAllTeacherDepartments")
+                .RequireRateLimiting("fixed")
                 .WithDescription(
                     new StringBuilder()
                         .AppendLine("Метод возвращает все кафедры")
@@ -26,18 +27,28 @@ public static class GetAllTeacherDepartments
                 );
     }
 
-    public static async Task<
-        Results<UnauthorizedHttpResult, Ok<IEnumerable<TeachersDepartmentDto>>>
-    > Handler(
+    public static async Task<Results<UnauthorizedHttpResult, Ok<TeachersDepartmentDto[]>>> Handler(
         [FromHeader(Name = "token")] string token,
         IUsersRepository users,
         ITeacherDepartmentsRepository repository,
+        ILogger<Endpoint> logger,
         CancellationToken ct
     )
     {
-        if (!await new Token(token).IsVerifiedAdmin(users, ct))
+        logger.LogInformation("Запрос на получение всех преподавателей");
+        var jwtToken = new Token(token);
+        if (!await jwtToken.IsVerifiedAdmin(users, ct))
+        {
+            logger.LogError("Пользователь не является администратором");
             return TypedResults.Unauthorized();
+        }
         var departments = await repository.GetAll(ct);
-        return TypedResults.Ok(departments.Select(d => d.MapFromDomain()));
+        var result = departments.Select(d => d.MapFromDomain()).ToArray();
+        logger.LogInformation(
+            "Пользователь {id} получает все кафедры {count}",
+            jwtToken.UserId,
+            result.Length
+        );
+        return TypedResults.Ok(result);
     }
 }

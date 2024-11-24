@@ -23,6 +23,7 @@ public static class UsersRegistration
                 .WithTags(UserTags.Tag)
                 .WithOpenApi()
                 .WithName("UsersRegistration")
+                .RequireRateLimiting("fixed")
                 .WithDescription(
                     new StringBuilder()
                         .AppendLine("Добавление пользователя в систему")
@@ -41,11 +42,17 @@ public static class UsersRegistration
         IPasswordGenerator generator,
         IPasswordHasher hasher,
         IMailingService mailing,
+        ILogger<Endpoint> logger,
         CancellationToken ct
     )
     {
-        if (!await new Token(request.Token.Token).IsVerified(repository, ct))
+        logger.LogInformation("Запрос на регистрацию пользователя в системе");
+        var jwtToken = new Token(request.Token.Token);
+        if (!await jwtToken.IsVerified(repository, ct))
+        {
+            logger.LogError("Пользователь не является администратором");
             return TypedResults.Unauthorized();
+        }
 
         var generatedPass = generator.Generate();
 
@@ -60,7 +67,14 @@ public static class UsersRegistration
         );
 
         if (user.IsFailure)
+        {
+            logger.LogError(
+                "Запрос пользователя {id} на регистрацию пользователя в системе отменен. Причина: {text}",
+                jwtToken.UserId,
+                user.Error.Description
+            );
             return TypedResults.BadRequest(user.Error.Description);
+        }
 
         var messageBuilder = new StringBuilder();
         messageBuilder.AppendLine($"Почта: {user.Value.Email.Email}");
@@ -71,8 +85,16 @@ public static class UsersRegistration
         );
 
         var sending = mailing.SendMessage(message);
-        return user.IsFailure
-            ? TypedResults.BadRequest(user.Error.Description)
-            : TypedResults.Ok(user.Value.MapFromDomain());
+
+        logger.LogInformation(
+            "Пользователь {id} добавил пользователя {uid} {uname} {usurname} {uemail} {urole} в систему",
+            jwtToken.UserId,
+            user.Value.Id,
+            user.Value.Name.Name,
+            user.Value.Name.Surname,
+            user.Value.Email.Email,
+            user.Value.Role.Role
+        );
+        return TypedResults.Ok(user.Value.MapFromDomain());
     }
 }

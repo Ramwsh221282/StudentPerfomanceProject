@@ -17,6 +17,7 @@ public static class GetAllStudentGroups
                 .WithTags(StudentGroupTags.Tag)
                 .WithOpenApi()
                 .WithName("GetAllStudentGroups")
+                .RequireRateLimiting("fixed")
                 .WithDescription(
                     new StringBuilder()
                         .AppendLine("Метод возвращает все студенческие группы")
@@ -32,12 +33,23 @@ public static class GetAllStudentGroups
         [FromHeader(Name = "token")] string token,
         IUsersRepository users,
         IStudentGroupsRepository repository,
+        ILogger<Endpoint> logger,
         CancellationToken ct
     )
     {
-        if (!await new Token(token).IsVerifiedAdmin(users, ct))
+        logger.LogInformation("Запрос на получение всех студенческих групп");
+        var jwtToken = new Token(token);
+        if (!await jwtToken.IsVerifiedAdmin(users, ct))
+        {
+            logger.LogError("Пользователь не является администратором");
             return TypedResults.Unauthorized();
+        }
         var groups = await repository.GetAll(ct);
+        logger.LogInformation(
+            "Пользователь {id} получает все студенческие группы {count}",
+            jwtToken.UserId,
+            groups.Count
+        );
         return TypedResults.Ok(groups.Select(g => g.MapFromDomain()));
     }
 }

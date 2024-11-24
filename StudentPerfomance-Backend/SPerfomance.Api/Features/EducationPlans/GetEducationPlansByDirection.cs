@@ -20,6 +20,7 @@ public static class GetEducationPlansByDirection
                 .WithTags($"{EducationPlanTags.Tag}")
                 .WithOpenApi()
                 .WithName("GetEducationPlansByDirection")
+                .RequireRateLimiting("fixed")
                 .WithDescription(
                     new StringBuilder()
                         .AppendLine(
@@ -42,20 +43,39 @@ public static class GetEducationPlansByDirection
         [FromQuery(Name = "directionType")] string directionType,
         IUsersRepository users,
         IQueryDispatcher dispatcher,
+        ILogger<Endpoint> logger,
         CancellationToken ct
     )
     {
-        if (!await new Token(token).IsVerifiedAdmin(users, ct))
+        var jwtToken = new Token(token);
+        logger.LogInformation("Запрос на получение учебных планов направления подготовки");
+        if (!await jwtToken.IsVerifiedAdmin(users, ct))
+        {
+            logger.LogError("Пользователь не является администратором");
             return TypedResults.Unauthorized();
+        }
 
         var query = new GetEducationDirectionQuery(directionName, directionCode, directionType);
         var direction = await dispatcher.Dispatch<GetEducationDirectionQuery, EducationDirection>(
             query,
             ct
         );
-
-        return direction == null || direction.IsFailure
-            ? TypedResults.NotFound(EducationDirectionErrors.NotFoundError().Description)
-            : TypedResults.Ok(direction.Value.Plans.Select(p => p.MapFromDomain()));
+        if (direction.IsFailure)
+        {
+            logger.LogError(
+                "Пользователь {id} не может получить учебные планы направления подготовки. Причина: {text}",
+                jwtToken.UserId,
+                direction.Error.Description
+            );
+            return TypedResults.NotFound(EducationDirectionErrors.NotFoundError().Description);
+        }
+        logger.LogInformation(
+            "Пользователь {id} получает учебные планы направления подготовки {code} {name} {type}",
+            jwtToken.UserId,
+            direction.Value.Code.Code,
+            direction.Value.Name.Name,
+            direction.Value.Type.Type
+        );
+        return TypedResults.Ok(direction.Value.Plans.Select(p => p.MapFromDomain()));
     }
 }

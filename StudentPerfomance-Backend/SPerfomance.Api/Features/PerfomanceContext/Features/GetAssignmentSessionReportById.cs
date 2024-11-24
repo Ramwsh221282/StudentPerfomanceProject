@@ -18,6 +18,7 @@ public static class GetAssignmentSessionReportById
                 .WithTags($"{PerfomanceContextTags.SessionsTag}")
                 .WithOpenApi()
                 .WithName("GetAssignmentSessionReportById")
+                .RequireRateLimiting("fixed")
                 .WithDescription(
                     new StringBuilder()
                         .AppendLine("Метод возвращает отчёт контрольной недели по группам")
@@ -41,18 +42,34 @@ public static class GetAssignmentSessionReportById
         [FromQuery(Name = "id")] string id,
         IUsersRepository users,
         IControlWeekReportRepository controlWeeks,
+        ILogger<Endpoint> logger,
         CancellationToken ct
     )
     {
-        if (!await new Token(token).IsVerified(users, ct))
+        var jwtToken = new Token(token);
+        if (!await jwtToken.IsVerified(users, ct))
+        {
+            logger.LogError("Пользователь не авторизован");
             return TypedResults.Unauthorized();
+        }
 
         if (controlWeeks is not ControlWeekRepository repository)
+        {
+            logger.LogError("Репозиторий не является ControlWeekRepository");
             return TypedResults.Ok("OK");
+        }
 
         var report = await repository.GetById(Guid.Parse(id), ct);
-        return report == null
-            ? TypedResults.BadRequest("Отчёт не найден")
-            : TypedResults.Ok(new ControlWeekReportDTO(report).GroupParts);
+        if (report == null)
+        {
+            logger.LogError("Отчёт о контрольной неделе не найден");
+            return TypedResults.BadRequest("Отчёт не найден");
+        }
+
+        logger.LogInformation(
+            "Пользователь {id} получает отчёт о контрольной неделе",
+            jwtToken.UserId
+        );
+        return TypedResults.Ok(new ControlWeekReportDTO(report).GroupParts);
     }
 }

@@ -16,6 +16,7 @@ public static class CountStudentGroups
                 .WithTags(StudentGroupTags.Tag)
                 .WithOpenApi()
                 .WithName("CountStudentGroups")
+                .RequireRateLimiting("fixed")
                 .WithDescription(
                     new StringBuilder()
                         .AppendLine("Метод возвращает количество студенческих групп")
@@ -31,12 +32,23 @@ public static class CountStudentGroups
         [FromHeader(Name = "token")] string token,
         IUsersRepository users,
         IStudentGroupsRepository repository,
+        ILogger<Endpoint> logger,
         CancellationToken ct
     )
     {
-        if (!await new Token(token).IsVerifiedAdmin(users, ct))
+        logger.LogInformation("Запрос на получение количества студенческих групп");
+        var jwtToken = new Token(token);
+        if (!await jwtToken.IsVerifiedAdmin(users, ct))
+        {
+            logger.LogError("Пользователь не является администратором");
             return TypedResults.Unauthorized();
+        }
         var count = await repository.Count(ct);
+        logger.LogInformation(
+            "Пользователь {id} получает количество студенческих групп {count}",
+            jwtToken.UserId,
+            count
+        );
         return TypedResults.Ok(count);
     }
 }

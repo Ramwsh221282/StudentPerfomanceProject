@@ -16,6 +16,7 @@ public static class CountAssignmentSessions
                 .WithTags($"{PerfomanceContextTags.SessionsTag}")
                 .WithOpenApi()
                 .WithName("CountAssignmentSessions")
+                .RequireRateLimiting("fixed")
                 .WithDescription(
                     new StringBuilder()
                         .AppendLine("Метод возвращает количество контрольных недель в системе")
@@ -30,12 +31,23 @@ public static class CountAssignmentSessions
         [FromHeader(Name = "token")] string token,
         IUsersRepository users,
         IAssignmentSessionsRepository sessions,
+        ILogger<Endpoint> logger,
         CancellationToken ct
     )
     {
-        if (!await new Token(token).IsVerifiedAdmin(users, ct))
+        logger.LogInformation("Запрос на получение количества сессий контрольных недель");
+        var jwtToken = new Token(token);
+        if (!await jwtToken.IsVerifiedAdmin(users, ct))
+        {
+            logger.LogError("Пользователь не является администратором");
             return TypedResults.Unauthorized();
+        }
         var count = await sessions.Count(ct);
+        logger.LogInformation(
+            "Пользователь {id} получает количество контрольных недель {count}",
+            jwtToken.UserId,
+            count
+        );
         return TypedResults.Ok(count);
     }
 }

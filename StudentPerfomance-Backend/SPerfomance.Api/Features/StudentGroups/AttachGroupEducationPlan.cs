@@ -33,6 +33,7 @@ public static class AttachGroupEducationPlan
                 .WithTags($"{StudentGroupTags.Tag}")
                 .WithOpenApi()
                 .WithName("AttachGroupEducationPlan")
+                .RequireRateLimiting("fixed")
                 .WithDescription(
                     new StringBuilder()
                         .AppendLine("Метод закрепляет учебный план в группе")
@@ -54,11 +55,17 @@ public static class AttachGroupEducationPlan
         IUsersRepository users,
         IQueryDispatcher queryDispatcher,
         ICommandDispatcher commandDispatcher,
+        ILogger<Endpoint> logger,
         CancellationToken ct
     )
     {
-        if (!await new Token(token).IsVerifiedAdmin(users, ct))
+        logger.LogInformation("Запрос на закрепление учебного плана для группы");
+        var jwtToken = new Token(token);
+        if (!await jwtToken.IsVerifiedAdmin(users, ct))
+        {
+            logger.LogError("Пользователь не является администратором");
             return TypedResults.Unauthorized();
+        }
 
         var direction = await queryDispatcher.Dispatch<
             GetEducationDirectionQuery,
@@ -66,7 +73,14 @@ public static class AttachGroupEducationPlan
         >(request.Direction, ct);
 
         if (direction.IsFailure)
+        {
+            logger.LogError(
+                "Запрос пользователя {id} на закрепление учебного плана для группы отмёнен. Причина: {text}",
+                jwtToken.UserId,
+                direction.Error.Description
+            );
             return TypedResults.NotFound(direction.Error.Description);
+        }
 
         var plan = await queryDispatcher.Dispatch<GetEducationPlanQuery, EducationPlan>(
             new GetEducationPlanQuery(direction.Value, request.Plan.PlanYear),
@@ -74,14 +88,28 @@ public static class AttachGroupEducationPlan
         );
 
         if (plan.IsFailure)
+        {
+            logger.LogError(
+                "Запрос пользователя {id} на закрепление учебного плана для группы отмёнен. Причина: {text}",
+                jwtToken.UserId,
+                plan.Error.Description
+            );
             return TypedResults.NotFound(plan.Error.Description);
+        }
 
         var group = await queryDispatcher.Dispatch<GetStudentGroupQuery, StudentGroup>(
             request.Group,
             ct
         );
         if (group.IsFailure)
+        {
+            logger.LogError(
+                "Запрос пользователя {id} на закрепление учебного плана для группы отмёнен. Причина: {text}",
+                jwtToken.UserId,
+                group.Error.Description
+            );
             return TypedResults.NotFound(group.Error.Description);
+        }
 
         group = await commandDispatcher.Dispatch<AttachEducationPlanCommand, StudentGroup>(
             new AttachEducationPlanCommand(plan.Value, group.Value, request.Semester.Number),
@@ -89,10 +117,24 @@ public static class AttachGroupEducationPlan
         );
 
         if (group.IsFailure)
+        {
+            logger.LogError(
+                "Запрос пользователя {id} на закрепление учебного плана для группы отмёнен. Причина: {text}",
+                jwtToken.UserId,
+                group.Error.Description
+            );
             return TypedResults.NotFound(group.Error.Description);
+        }
 
-        return group.IsFailure
-            ? TypedResults.BadRequest(group.Error.Description)
-            : TypedResults.Ok(group.Value.MapFromDomain());
+        logger.LogInformation(
+            "Пользователь {id} закрепляет учебный план {planYear} {code} {dname} {dtype} группе {gname}",
+            jwtToken.UserId,
+            request.Plan.PlanYear,
+            request.Direction.Code,
+            request.Direction.Name,
+            request.Direction.Type,
+            request.Group.Name
+        );
+        return TypedResults.Ok(group.Value.MapFromDomain());
     }
 }

@@ -24,6 +24,7 @@ public static class RegisterTeacher
                 .WithTags(TeacherTags.Tag)
                 .WithOpenApi()
                 .WithName("CreateTeacher")
+                .RequireRateLimiting("fixed")
                 .WithDescription(
                     new StringBuilder()
                         .AppendLine("Метод добавляет преподавателя в кафедру")
@@ -43,11 +44,17 @@ public static class RegisterTeacher
         IUsersRepository users,
         IQueryDispatcher queryDispatcher,
         ICommandDispatcher commandDispatcher,
+        ILogger<Endpoint> logger,
         CancellationToken ct
     )
     {
-        if (!await new Token(token).IsVerifiedAdmin(users, ct))
+        var jwtToken = new Token(token);
+        logger.LogInformation("Запрос на добавление преподавателя в кафедру");
+        if (!await jwtToken.IsVerifiedAdmin(users, ct))
+        {
+            logger.LogError("Пользователь не является администратором");
             return TypedResults.Unauthorized();
+        }
 
         var department = await queryDispatcher.Dispatch<
             GetDepartmentByNameQuery,
@@ -55,7 +62,14 @@ public static class RegisterTeacher
         >(request.Department, ct);
 
         if (department.IsFailure)
+        {
+            logger.LogError(
+                "Запрос пользователя {id} на добавление преподавателя в кафедру отменен. Причина: {text}",
+                jwtToken.UserId,
+                department.Error.Description
+            );
             return TypedResults.NotFound(department.Error.Description);
+        }
 
         var teacher = await commandDispatcher.Dispatch<RegisterTeacherCommand, Teacher>(
             new RegisterTeacherCommand(
@@ -69,8 +83,23 @@ public static class RegisterTeacher
             ct
         );
 
-        return teacher.IsFailure
-            ? TypedResults.BadRequest(teacher.Error.Description)
-            : TypedResults.Ok(teacher.Value.MapFromDomain());
+        if (teacher.IsFailure)
+        {
+            logger.LogError(
+                "Запрос пользователя {id} на добавление преподавателя в кафедру отменен. Причина: {text}",
+                jwtToken.UserId,
+                teacher.Error.Description
+            );
+            return TypedResults.BadRequest(teacher.Error.Description);
+        }
+
+        logger.LogInformation(
+            "Пользователь {id} добавляет преподавателя {tname} {tsurname} в кафедру {tdepartment}",
+            jwtToken.UserId,
+            request.Teacher.Name,
+            request.Teacher.Surname,
+            request.Department.Name
+        );
+        return TypedResults.Ok(teacher.Value.MapFromDomain());
     }
 }

@@ -16,6 +16,7 @@ public static class FilterEducationPlans
                 .WithTags(EducationPlanTags.Tag)
                 .WithOpenApi()
                 .WithName("FilterEducationPlans")
+                .RequireRateLimiting("fixed")
                 .WithDescription(
                     new StringBuilder()
                         .AppendLine("Метод возвращает отфильтрованные учебные планы постранично")
@@ -37,11 +38,17 @@ public static class FilterEducationPlans
         [FromQuery(Name = "filterYear")] int? filterYear,
         IUsersRepository users,
         IEducationPlansRepository repository,
+        ILogger<Endpoint> logger,
         CancellationToken ct
     )
     {
-        if (!await new Token(token).IsVerifiedAdmin(users, ct))
+        logger.LogInformation("Запрос на фильтр учебных планов постранично");
+        var jwtToken = new Token(token);
+        if (!await jwtToken.IsVerifiedAdmin(users, ct))
+        {
+            logger.LogError("Пользователь не является администратором");
             return TypedResults.BadRequest(UserTags.UnauthorizedError);
+        }
 
         var plans = await repository.GetPagedFiltered(
             filterName,
@@ -52,7 +59,11 @@ public static class FilterEducationPlans
             pageSize,
             ct
         );
-
+        logger.LogInformation(
+            "Пользователь {id} получает отфильтрованные постранично учебные планы в количестве {count}",
+            jwtToken.UserId,
+            plans.Count
+        );
         return TypedResults.Ok(plans.Select(p => p.MapFromDomain()));
     }
 }

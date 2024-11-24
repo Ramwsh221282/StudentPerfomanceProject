@@ -17,6 +17,7 @@ public static class SearchEducationPlans
                 .WithTags(EducationPlanTags.Tag)
                 .WithOpenApi()
                 .WithName("SearchEducationPlans")
+                .RequireRateLimiting("fixed")
                 .WithDescription(
                     new StringBuilder()
                         .AppendLine("Метод возвращает отфильтрованные учебные планы из всех")
@@ -36,11 +37,17 @@ public static class SearchEducationPlans
         [FromQuery(Name = "searchYear")] int? searchYear,
         IUsersRepository users,
         IEducationPlansRepository repository,
+        ILogger<Endpoint> logger,
         CancellationToken ct
     )
     {
+        logger.LogInformation("Запрос на поиск учебных планов");
+        var jwtToken = new Token(token);
         if (!await new Token(token).IsVerifiedAdmin(users, ct))
+        {
+            logger.LogError("Пользователь не является администратором");
             return TypedResults.Unauthorized();
+        }
 
         var plans = await repository.GetFiltered(
             searchName,
@@ -48,6 +55,11 @@ public static class SearchEducationPlans
             searchType,
             searchYear,
             ct
+        );
+        logger.LogInformation(
+            "Пользователь {id} получает учебные планы в количестве {count}",
+            jwtToken.UserId,
+            plans.Count
         );
         return TypedResults.Ok(plans.Select(p => p.MapFromDomain()));
     }

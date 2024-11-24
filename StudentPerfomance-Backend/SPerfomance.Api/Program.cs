@@ -3,6 +3,7 @@ global using SPerfomance.Application.Services.Authentication;
 global using SPerfomance.Application.Services.Authentication.Models;
 global using SPerfomance.Domain.Models.Users.Abstractions;
 global using SPerfomance.Domain.Models.Users.ValueObjects;
+using NReco.Logging.File;
 using SPerfomance.Api.Endpoints;
 using SPerfomance.Api.Features.Common.Configuration;
 using SPerfomance.Api.Features.EducationDirections.Configuration;
@@ -42,6 +43,11 @@ builder.Services.AddCors(options =>
         policy.AllowAnyHeader();
         policy.AllowAnyMethod();
     });
+});
+
+builder.Services.AddLogging(loggingBuilder =>
+{
+    loggingBuilder.AddFile("app.log", append: true);
 });
 
 var app = builder.Build();

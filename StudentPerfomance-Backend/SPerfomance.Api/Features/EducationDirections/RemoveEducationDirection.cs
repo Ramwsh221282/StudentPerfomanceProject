@@ -24,6 +24,7 @@ public static class RemoveEducationDirection
                 .WithTags(EducationDirectionTags.Tag)
                 .WithOpenApi()
                 .WithName("RemoveEducationDirection")
+                .RequireRateLimiting("fixed")
                 .WithDescription(
                     new StringBuilder()
                         .AppendLine("Метод удаляет направление подготовки из системы")
@@ -52,27 +53,55 @@ public static class RemoveEducationDirection
         IUsersRepository users,
         IQueryDispatcher queryDispatcher,
         ICommandDispatcher commandDispatcher,
+        ILogger<Endpoint> logger,
         CancellationToken ct
     )
     {
-        if (!await new Token(token).IsVerifiedAdmin(users, ct))
+        logger.LogInformation(
+            "Запрос на удаление направления подготовки: {code}, {name}, {type}",
+            request.Query.Code,
+            request.Query.Name,
+            request.Query.Type
+        );
+        var jwtToken = new Token(token);
+        if (!await jwtToken.IsVerifiedAdmin(users, ct))
+        {
+            logger.LogError("Пользователь не является администратором");
             return TypedResults.Unauthorized();
+        }
 
+        logger.LogInformation("Запрашивается удаляемое направление подготовки");
         var direction = await queryDispatcher.Dispatch<
             GetEducationDirectionQuery,
             EducationDirection
         >(request.Query, ct);
 
-        if (direction.Value is null)
+        if (direction.IsFailure)
+        {
+            logger.LogError("Удаляемое направление подготовки не найдено");
             return TypedResults.NotFound(direction.Error.Description);
+        }
 
         direction = await commandDispatcher.Dispatch<
             RemoveEducationDirectionCommand,
             EducationDirection
         >(new RemoveEducationDirectionCommand(direction), ct);
 
-        return direction.IsFailure
-            ? TypedResults.BadRequest(direction.Error.Description)
-            : TypedResults.Ok(direction.Value.MapFromDomain());
+        if (direction.IsFailure)
+        {
+            logger.LogError(
+                "Не удалось удалить направление подготовки по причине: {text}",
+                direction.Error.Description
+            );
+            return TypedResults.BadRequest(direction.Error.Description);
+        }
+
+        logger.LogInformation(
+            "Направление подготовки {code} {name} {type} было удалено",
+            direction.Value.Code.Code,
+            direction.Value.Name.Name,
+            direction.Value.Type.Type
+        );
+        return TypedResults.Ok(direction.Value.MapFromDomain());
     }
 }

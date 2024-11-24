@@ -17,6 +17,7 @@ public static class FilterTeacherDepartments
                 .WithTags(TeacherDepartmentsTags.Tag)
                 .WithOpenApi()
                 .WithName("FilterTeacherDepartments")
+                .RequireRateLimiting("fixed")
                 .WithDescription(
                     new StringBuilder()
                         .AppendLine("Метод возвращает отфильтрованные кафедры постранично")
@@ -27,21 +28,31 @@ public static class FilterTeacherDepartments
                 );
     }
 
-    public static async Task<
-        Results<UnauthorizedHttpResult, Ok<IEnumerable<TeachersDepartmentDto>>>
-    > Handler(
+    public static async Task<Results<UnauthorizedHttpResult, Ok<TeachersDepartmentDto[]>>> Handler(
         [FromHeader(Name = "token")] string token,
         [FromQuery(Name = "page")] int page,
         [FromQuery(Name = "pageSize")] int pageSize,
         [FromQuery(Name = "filterName")] string? filterName,
         IUsersRepository users,
         ITeacherDepartmentsRepository repository,
+        ILogger<Endpoint> logger,
         CancellationToken ct
     )
     {
-        if (!await new Token(token).IsVerifiedAdmin(users, ct))
+        logger.LogInformation("Запрос на получение кафедр постранично фильтром");
+        var jwtToken = new Token(token);
+        if (!await jwtToken.IsVerifiedAdmin(users, ct))
+        {
+            logger.LogError("Пользователь не является администратором");
             return TypedResults.Unauthorized();
+        }
         var departments = await repository.GetPagedFiltered(filterName, page, pageSize, ct);
-        return TypedResults.Ok(departments.Select(d => d.MapFromDomain()));
+        var result = departments.Select(d => d.MapFromDomain()).ToArray();
+        logger.LogInformation(
+            "Пользователь {id} получает отфильтрованные кафедры постранично {count}",
+            jwtToken.UserId,
+            result.Length
+        );
+        return TypedResults.Ok(result);
     }
 }

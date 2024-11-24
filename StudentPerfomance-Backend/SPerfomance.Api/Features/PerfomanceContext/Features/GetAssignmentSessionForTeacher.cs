@@ -19,6 +19,7 @@ public static class GetAssignmentSessionForTeacher
                 .WithTags($"{PerfomanceContextTags.SessionsTag}")
                 .WithOpenApi()
                 .WithName("GetAssignmentSessionForTeacher")
+                .RequireRateLimiting("fixed")
                 .WithDescription(
                     new StringBuilder()
                         .AppendLine(
@@ -45,24 +46,56 @@ public static class GetAssignmentSessionForTeacher
         [FromHeader(Name = "token")] string token,
         IUsersRepository users,
         IAssignmentSessionsRepository sessions,
+        ILogger<Endpoint> logger,
         CancellationToken ct
     )
     {
+        logger.LogInformation("Запрос на получение контрольных недель для преподавателя");
         var jwtToken = new Token(token);
         if (!await jwtToken.IsVerifiedTeacher(users, ct))
+        {
+            logger.LogError("Пользователь не является преподавателем");
             return TypedResults.Unauthorized();
+        }
 
         var user = await users.GetById(jwtToken.UserId, ct);
         if (user == null)
+        {
+            logger.LogError("Пользователь не найден");
             return TypedResults.NotFound(UserErrors.NotFound().Description);
+        }
 
         var teacher = await users.GetTeacherByUser(user, ct);
         if (teacher == null)
+        {
+            logger.LogError(
+                "Пользователь {name} {surname} {email} {id} не является преподавателем",
+                user.Name.Name,
+                user.Name.Surname,
+                user.Email.Email,
+                user.Id
+            );
             return TypedResults.NotFound(TeacherErrors.NotFound().Description);
+        }
 
         var session = await sessions.GetAssignmentSessionForTeacher(teacher, ct);
-        return session == null
-            ? TypedResults.BadRequest(TeacherErrors.NotFound().Description)
-            : TypedResults.Ok(session);
+        if (session == null)
+        {
+            logger.LogError(
+                "Нет активной контрольной недели для преподавателя {name} {surname} {id}",
+                teacher.Name.Name,
+                teacher.Name.Surname,
+                teacher.Id
+            );
+            return TypedResults.BadRequest(TeacherErrors.NotFound().Description);
+        }
+
+        logger.LogInformation(
+            "Преподаватель {name} {surname} {id} получает контрольную неделю",
+            teacher.Name.Name,
+            teacher.Name.Surname,
+            teacher.Id
+        );
+        return TypedResults.Ok(session);
     }
 }

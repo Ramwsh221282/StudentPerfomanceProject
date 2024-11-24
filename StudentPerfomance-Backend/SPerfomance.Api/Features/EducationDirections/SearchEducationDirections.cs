@@ -21,6 +21,7 @@ public static class SearchEducationDirections
                 .WithTags(EducationDirectionTags.Tag)
                 .WithOpenApi()
                 .WithName("SearchEducationDirections")
+                .RequireRateLimiting("fixed")
                 .WithDescription(
                     new StringBuilder()
                         .AppendLine(
@@ -43,12 +44,21 @@ public static class SearchEducationDirections
         [FromQuery(Name = "searchName")] string? searchName,
         IUsersRepository users,
         IEducationDirectionRepository repository,
+        ILogger<Endpoint> logger,
         CancellationToken ct
     )
     {
+        logger.LogInformation("Запрос на поиск направлений подготовок");
         if (!await new Token(token).IsVerifiedAdmin(users, ct))
+        {
+            logger.LogError("Пользователь не является администратором");
             return TypedResults.Unauthorized();
+        }
         var directions = await repository.GetFiltered(searchCode, searchName, searchType, ct);
+        logger.LogInformation(
+            "Получены направления подготовки в количестве {count}",
+            directions.Count
+        );
         return TypedResults.Ok(directions.Select(d => d.MapFromDomain()));
     }
 }

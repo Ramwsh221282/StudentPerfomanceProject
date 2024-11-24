@@ -25,6 +25,7 @@ public class FireStudent
                 .WithTags(StudentTags.Tag)
                 .WithOpenApi()
                 .WithName("FireStudent")
+                .RequireRateLimiting("fixed")
                 .WithDescription(
                     new StringBuilder()
                         .AppendLine("Метод удаляет студента из группы")
@@ -44,11 +45,17 @@ public class FireStudent
         IUsersRepository users,
         IQueryDispatcher queryDispatcher,
         ICommandDispatcher commandDispatcher,
+        ILogger<Endpoint> logger,
         CancellationToken ct
     )
     {
-        if (!await new Token(token).IsVerifiedAdmin(users, ct))
+        logger.LogInformation("Запрос на удаление студента из группы");
+        var jwtToken = new Token(token);
+        if (!await jwtToken.IsVerifiedAdmin(users, ct))
+        {
+            logger.LogError("Пользователь не является администратором");
             return TypedResults.Unauthorized();
+        }
 
         var groupQuery = new GetStudentGroupQuery(request.Student.GroupName);
         var group = await queryDispatcher.Dispatch<GetStudentGroupQuery, StudentGroup>(
@@ -57,7 +64,14 @@ public class FireStudent
         );
 
         if (group.IsFailure)
+        {
+            logger.LogError(
+                "Запрос пользователя {id} отменен. Причина: {text}",
+                jwtToken.UserId,
+                group.Error.Description
+            );
             return TypedResults.NotFound(group.Error.Description);
+        }
 
         var student = await queryDispatcher.Dispatch<GetStudentFromGroupQuery, Student>(
             new GetStudentFromGroupQuery(
@@ -72,15 +86,38 @@ public class FireStudent
         );
 
         if (student.IsFailure)
+        {
+            logger.LogError(
+                "Запрос пользователя {id} отменен. Причина: {text}",
+                jwtToken.UserId,
+                student.Error.Description
+            );
             return TypedResults.NotFound(student.Error.Description);
+        }
 
         student = await commandDispatcher.Dispatch<RemoveStudentCommand, Student>(
             new RemoveStudentCommand(student.Value),
             ct
         );
 
-        return student.IsFailure
-            ? TypedResults.BadRequest(student.Error.Description)
-            : TypedResults.Ok(student.Value.MapFromDomain());
+        if (student.IsFailure)
+        {
+            logger.LogError(
+                "Запрос пользователя {id} отменен. Причина: {text}",
+                jwtToken.UserId,
+                student.Error.Description
+            );
+            return TypedResults.BadRequest(student.Error.Description);
+        }
+
+        logger.LogInformation(
+            "Пользователь {id} удаляет студента {sname} {surname} {srecordBook} из группы {gname}",
+            jwtToken.UserId,
+            request.Student.Name,
+            request.Student.Surname,
+            request.Student.Recordbook,
+            request.Student.GroupName
+        );
+        return TypedResults.Ok(student.Value.MapFromDomain());
     }
 }

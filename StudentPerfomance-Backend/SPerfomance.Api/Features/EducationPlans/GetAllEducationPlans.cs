@@ -17,6 +17,7 @@ public static class GetAllEducationPlans
                 .WithTags(EducationPlanTags.Tag)
                 .WithOpenApi()
                 .WithName("GetAllEducationPlans")
+                .RequireRateLimiting("fixed")
                 .WithDescription(
                     new StringBuilder()
                         .AppendLine("Метод возвращает все учебные планы постранично")
@@ -32,12 +33,23 @@ public static class GetAllEducationPlans
         [FromHeader(Name = "token")] string token,
         IUsersRepository users,
         IEducationPlansRepository repository,
+        ILogger<Endpoint> logger,
         CancellationToken ct
     )
     {
-        if (!await new Token(token).IsVerifiedAdmin(users, ct))
+        logger.LogInformation("Запрос на получение всех учебных планов");
+        var jwtToken = new Token(token);
+        if (!await jwtToken.IsVerifiedAdmin(users, ct))
+        {
+            logger.LogError("Пользователь не является администратором");
             return TypedResults.Unauthorized();
+        }
         var plans = await repository.GetAll(ct);
+        logger.LogInformation(
+            "Пользователь {id} получает все учебные планы в количестве {count}",
+            jwtToken.UserId,
+            plans.Count
+        );
         return TypedResults.Ok(plans.Select(p => p.MapFromDomain()));
     }
 }

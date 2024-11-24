@@ -252,3 +252,6 @@ C:\Users\Ramwsh\Desktop\BACKENDCOPY\StudentPerfomance-Backend\SPerfomance.Api\bi
 C:\Users\Ramwsh\Desktop\BACKENDCOPY\StudentPerfomance-Backend\SPerfomance.Api\bin\Debug\net8.0\SPerfomance.Statistics.DataAccess.pdb
 C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api\bin\Debug\net8.0\SPerfomance.Statistics.DataAccess.dll
 C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api\bin\Debug\net8.0\SPerfomance.Statistics.DataAccess.pdb
+C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Binder.dll
+C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api\bin\Debug\net8.0\Microsoft.Extensions.Logging.Configuration.dll
+C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api\bin\Debug\net8.0\NReco.Logging.File.dll

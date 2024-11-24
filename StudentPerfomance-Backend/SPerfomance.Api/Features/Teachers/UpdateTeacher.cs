@@ -29,6 +29,7 @@ public static class UpdateTeacher
                 .WithTags(TeacherTags.Tag)
                 .WithOpenApi()
                 .WithName("UpdateTeacher")
+                .RequireRateLimiting("fixed")
                 .WithDescription(
                     new StringBuilder()
                         .AppendLine("Метод изменяет данные о преподавателе")
@@ -48,11 +49,17 @@ public static class UpdateTeacher
         IUsersRepository users,
         IQueryDispatcher queryDispatcher,
         ICommandDispatcher commandDispatcher,
+        ILogger<Endpoint> logger,
         CancellationToken ct
     )
     {
-        if (!await new Token(token).IsVerifiedAdmin(users, ct))
+        logger.LogInformation("Запрос на обновление данных о преподавателе");
+        var jwtToken = new Token(token);
+        if (!await jwtToken.IsVerifiedAdmin(users, ct))
+        {
+            logger.LogInformation("Пользователь не является администратором");
             return TypedResults.Unauthorized();
+        }
 
         var department = await queryDispatcher.Dispatch<
             GetDepartmentByNameQuery,
@@ -60,7 +67,14 @@ public static class UpdateTeacher
         >(request.Department, ct);
 
         if (department.IsFailure)
+        {
+            logger.LogError(
+                "Запрос пользователя {id} на обновление данных о преподавателе отменен. Причина {text}",
+                jwtToken.UserId,
+                department.Error.Description
+            );
             return TypedResults.NotFound(department.Error.Description);
+        }
 
         var teacher = await queryDispatcher.Dispatch<GetTeacherFromDepartmentQuery, Teacher>(
             new GetTeacherFromDepartmentQuery(
@@ -75,7 +89,14 @@ public static class UpdateTeacher
         );
 
         if (teacher.IsFailure)
+        {
+            logger.LogError(
+                "Запрос пользователя {id} на обновление данных о преподавателе отменен. Причина {text}",
+                jwtToken.UserId,
+                teacher.Error.Description
+            );
             return TypedResults.NotFound(teacher.Error.Description);
+        }
 
         teacher = await commandDispatcher.Dispatch<UpdateTeacherCommand, Teacher>(
             new UpdateTeacherCommand(
@@ -89,8 +110,21 @@ public static class UpdateTeacher
             ct
         );
 
-        return teacher.IsFailure
-            ? TypedResults.BadRequest(teacher.Error.Description)
-            : TypedResults.Ok(teacher.Value.MapFromDomain());
+        if (teacher.IsFailure)
+        {
+            logger.LogError(
+                "Запрос пользователя {id} на обновление данных о преподавателе отменен. Причина {text}",
+                jwtToken.UserId,
+                teacher.Error.Description
+            );
+            TypedResults.BadRequest(teacher.Error.Description);
+        }
+
+        logger.LogInformation(
+            "Пользователь {id} изменяет данные преподавателя {tid}",
+            jwtToken.UserId,
+            teacher.Value.Id
+        );
+        return TypedResults.Ok(teacher.Value.MapFromDomain());
     }
 }

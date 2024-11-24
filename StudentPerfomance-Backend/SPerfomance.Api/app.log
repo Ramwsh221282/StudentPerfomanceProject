@@ -1,0 +1,164 @@
+2024-11-24T14:38:23.0911330+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T14:38:23.4807484+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T14:49:13.8975849+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T14:49:13.9992224+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос от 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2:
+2024-11-24T14:49:15.7422634+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T14:49:43.6911655+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CreateEducationDirection.Endpoint]	[0]	Запрос на создание нового направления подготовки
+2024-11-24T14:49:43.9453208+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CreateEducationDirection.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 создаёт направление подготовки SPerfomance.Domain.Models.EducationDirections.ValueObjects.DirectionCode SPerfomance.Domain.Models.EducationDirections.ValueObjects.DirectionName SPerfomance.Domain.Models.EducationDirections.ValueObjects.DirectionType
+2024-11-24T14:49:43.9544336+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T14:49:43.9559594+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос от 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2:
+2024-11-24T14:49:43.9606361+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 6
+2024-11-24T14:49:59.6501568+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T14:49:59.6516957+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос от 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2:
+2024-11-24T14:49:59.6562215+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T18:58:08.8519070+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T18:58:08.8519070+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Запрос на получение списка направлений подготовки постранично
+2024-11-24T18:58:09.1236915+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T18:58:09.3584973+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Получен список направлений подготовок в количестве: 5
+2024-11-24T18:58:18.7943599+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T18:58:18.7966611+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Запрос на получение списка направлений подготовки постранично
+2024-11-24T18:58:18.8046907+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T18:58:18.9699283+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Получен список направлений подготовок в количестве: 5
+2024-11-24T18:58:22.0938922+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T18:58:22.0990749+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T18:58:25.9741158+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T18:58:25.9795154+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T18:58:28.9319545+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T18:58:28.9376860+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T18:58:29.0493892+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T18:58:29.0551466+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T18:58:29.1610269+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T18:58:29.1673929+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T18:58:29.2785590+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T18:58:29.2843253+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T18:58:29.3949853+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T18:58:29.3993479+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T18:58:29.5136740+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T18:58:29.5179965+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T18:58:29.6525707+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T18:58:29.6784576+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T18:58:29.7816222+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T18:58:29.8076098+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T18:58:29.8891665+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T18:58:29.9135760+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T18:58:30.0198791+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T18:58:30.0446834+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T18:58:30.1955372+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T18:58:30.2174574+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T18:58:30.2541036+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T18:58:30.2778775+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T18:58:30.3770320+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T18:58:30.3910736+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T18:58:30.4960196+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T18:58:30.5091775+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T18:58:30.6126492+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T18:58:30.6179319+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T18:58:30.7540774+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T18:58:30.7599204+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T18:58:30.8804455+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T18:58:30.8856574+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T18:58:31.0141638+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T18:58:31.0189493+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T18:58:32.0338705+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T18:58:32.0390596+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T18:58:32.1601931+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T18:58:32.1663242+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T18:58:32.2853647+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T18:58:32.2902100+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T18:58:32.4043035+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T18:58:32.4093640+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T18:58:32.5439843+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T18:58:32.5487020+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T18:58:41.3564989+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T18:58:41.3622383+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T18:58:41.4715037+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T18:58:41.4770036+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T18:58:41.5824109+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T18:58:41.5883826+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T18:58:41.6929075+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T18:58:41.6990015+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T18:58:41.8111542+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T18:58:41.8167411+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T18:58:41.9370171+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T18:58:41.9434119+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T18:58:42.0547295+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T18:58:42.0605515+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T18:58:42.1773027+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T18:58:42.1824695+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T18:58:42.2881805+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T18:58:42.2936632+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T18:58:42.4052389+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T18:58:42.4100264+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T18:58:42.5309289+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T18:58:42.5354893+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T18:58:42.6576524+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T18:58:42.6625494+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T18:58:42.7833087+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T18:58:42.7885193+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T18:58:42.9077736+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T18:58:42.9124022+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T18:58:43.0266739+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T18:58:43.0324361+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T18:58:43.1605629+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T18:58:43.1659789+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T18:58:43.2942512+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T18:58:43.2999381+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T18:59:24.5519344+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T18:59:24.5519323+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Запрос на получение списка направлений подготовки постранично
+2024-11-24T18:59:26.5061796+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Получен список направлений подготовок в количестве: 5
+2024-11-24T18:59:26.5433236+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T18:59:28.2519404+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T18:59:28.2586294+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T18:59:28.3754012+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T18:59:28.3805168+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T18:59:29.4401077+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T18:59:29.4448566+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T18:59:29.4482087+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T18:59:29.4537673+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T18:59:29.4570733+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T18:59:29.4642903+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T18:59:34.4415958+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T18:59:34.4462984+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T18:59:34.4495028+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T18:59:34.4539442+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T18:59:34.4575724+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T18:59:34.4631100+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T18:59:39.5291247+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T18:59:39.5331427+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T18:59:39.5363658+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T18:59:39.5408849+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T19:00:46.9590041+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T19:00:46.9590078+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Запрос на получение списка направлений подготовки постранично
+2024-11-24T19:00:48.8864031+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Получен список направлений подготовок в количестве: 5
+2024-11-24T19:00:48.9292586+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T19:00:49.7035120+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T19:00:49.7104297+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T19:00:49.8439185+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T19:00:49.8488006+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T19:00:51.8753830+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T19:00:51.8798664+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T19:00:51.8839528+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T19:00:51.8889011+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T19:00:51.8921665+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T19:00:51.8978784+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T19:00:56.9715904+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T19:00:56.9758197+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T19:01:12.4732148+03:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Запрос на получение учебных планов постранично
+2024-11-24T19:01:12.4858045+03:00	INFO	[SPerfomance.Api.Features.EducationPlans.CountEducationPlans.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество учебных планов 10
+2024-11-24T19:01:12.6646063+03:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает учебные планы постранично 10
+2024-11-24T19:01:17.2102336+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Запрос на получение сессий контрольных недель постранично
+2024-11-24T19:01:17.2231115+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Запрос на получение количества сессий контрольных недель
+2024-11-24T19:01:17.2338568+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество контрольных недель 1
+2024-11-24T19:01:17.5093901+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает сессии контрольных недель постранично
+2024-11-24T19:01:23.9603211+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-24T19:01:23.9642840+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Запрос на получение списка направлений подготовки постранично
+2024-11-24T19:01:23.9714459+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-24T19:01:23.9885859+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Получен список направлений подготовок в количестве: 5
+2024-11-24T19:57:31.5756173+03:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.CountTeacherDepartments.Endpoint]	[0]	Запрос на получение количества кафедр
+2024-11-24T19:57:31.5756149+03:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.GetPagedTeacherDepartments.Endpoint]	[0]	Запрос на получение кафедр постранично
+2024-11-24T19:57:33.6061467+03:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.GetPagedTeacherDepartments.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает кафедры постранично: 3
+2024-11-24T19:57:33.6245624+03:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.CountTeacherDepartments.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество кафедр 3
+2024-11-24T19:57:37.2291031+03:00	INFO	[SPerfomance.Api.Features.Teachers.GetTeachersByDepartment.Endpoint]	[0]	Запрос на получение преподавателей из кафедры
+2024-11-24T19:57:37.2722375+03:00	INFO	[SPerfomance.Api.Features.Teachers.GetTeachersByDepartment.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает преподавателей кафедры Информационные и технические системы 5
+2024-11-24T19:57:42.1276825+03:00	INFO	[SPerfomance.Api.Features.Teachers.RegisterTeacher.Endpoint]	[0]	Запрос на добавление преподавателя в кафедру
+2024-11-24T19:57:42.1510262+03:00	FAIL	[SPerfomance.Api.Features.Teachers.RegisterTeacher.Endpoint]	[0]	Запрос пользователя 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 на добавление преподавателя в кафедру отменен. Причина: Имя преподавателя было пустым

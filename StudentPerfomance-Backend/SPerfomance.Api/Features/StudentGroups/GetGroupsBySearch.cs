@@ -17,6 +17,7 @@ public static class GetGroupsBySearch
                 .WithTags(StudentGroupTags.Tag)
                 .WithOpenApi()
                 .WithName("GetGroupsBySearch")
+                .RequireRateLimiting("fixed")
                 .WithDescription(
                     new StringBuilder()
                         .AppendLine("Метод возвращает отфильтрованный список студенческих групп")
@@ -33,12 +34,23 @@ public static class GetGroupsBySearch
         [FromQuery(Name = "groupName")] string groupName,
         IUsersRepository users,
         IStudentGroupsRepository repository,
+        ILogger<Endpoint> logger,
         CancellationToken ct
     )
     {
-        if (!await new Token(token).IsVerifiedAdmin(users, ct))
+        logger.LogInformation("Запрос на получение групп через поиск");
+        var jwtToken = new Token(token);
+        if (!await jwtToken.IsVerifiedAdmin(users, ct))
+        {
+            logger.LogError("Пользователь не является администратором");
             return TypedResults.Unauthorized();
+        }
         var groups = await repository.Filter(groupName, ct);
+        logger.LogInformation(
+            "Пользователь {id} получает группы через поиск {count}",
+            jwtToken.UserId,
+            groups.Count
+        );
         return TypedResults.Ok(groups.Select(g => g.MapFromDomain()));
     }
 }

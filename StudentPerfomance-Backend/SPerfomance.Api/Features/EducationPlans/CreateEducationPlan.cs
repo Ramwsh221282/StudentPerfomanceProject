@@ -24,6 +24,7 @@ public static class CreateEducationPlan
                 .WithTags(EducationPlanTags.Tag)
                 .WithOpenApi()
                 .WithName("CreateEducationPlan")
+                .RequireRateLimiting("fixed")
                 .WithDescription(
                     new StringBuilder()
                         .AppendLine("Метод создаёт учебный план")
@@ -42,11 +43,17 @@ public static class CreateEducationPlan
         IUsersRepository users,
         ICommandDispatcher commandDispatcher,
         IQueryDispatcher queryDispatcher,
+        ILogger<Endpoint> logger,
         CancellationToken ct
     )
     {
+        logger.LogInformation("Запрос на создание учебного плана");
+        var jwtToken = new Token(token);
         if (!await new Token(token).IsVerifiedAdmin(users, ct))
+        {
+            logger.LogError("Пользователь не является администратором");
             return TypedResults.Unauthorized();
+        }
 
         var direction = await queryDispatcher.Dispatch<
             GetEducationDirectionQuery,
@@ -54,15 +61,30 @@ public static class CreateEducationPlan
         >(request.Direction, ct);
 
         if (direction.IsFailure)
-            return TypedResults.NotFound(direction.Error.Description);
+        {
+            logger.LogError("{text}", direction.Error.Description);
+            return TypedResults.Unauthorized();
+        }
 
         var plan = await commandDispatcher.Dispatch<CreateEducationPlanCommand, EducationPlan>(
             new CreateEducationPlanCommand(direction.Value, request.Plan.PlanYear),
             ct
         );
 
-        return plan.IsFailure
-            ? TypedResults.BadRequest(plan.Error.Description)
-            : TypedResults.Ok(plan.Value.MapFromDomain());
+        if (plan.IsFailure)
+        {
+            logger.LogError("{text}", plan.Error.Description);
+            return TypedResults.BadRequest(plan.Error.Description);
+        }
+
+        logger.LogInformation(
+            "Пользователь {id} создает учебный план {year} направления {code} {name} {type}",
+            jwtToken.UserId,
+            plan.Value.Year,
+            plan.Value.Direction.Code.Code,
+            plan.Value.Direction.Name.Name,
+            plan.Value.Direction.Type.Type
+        );
+        return TypedResults.Ok(plan.Value.MapFromDomain());
     }
 }

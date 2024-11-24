@@ -34,6 +34,7 @@ public static class ChangeSemesterPlanName
         public void MapEndpoint(IEndpointRouteBuilder app) =>
             app.MapPut($"{SemesterPlanTags.Api}", Handler)
                 .WithTags(SemesterPlanTags.Tag)
+                .RequireRateLimiting("fixed")
                 .WithOpenApi()
                 .WithName("ChangeSemesterPlanName")
                 .WithDescription(
@@ -53,11 +54,17 @@ public static class ChangeSemesterPlanName
         IUsersRepository users,
         IQueryDispatcher queryDispatcher,
         ICommandDispatcher commandDispatcher,
+        ILogger<Endpoint> logger,
         CancellationToken ct
     )
     {
-        if (!await new Token(token).IsVerifiedAdmin(users, ct))
+        logger.LogInformation("Запрос на изменения названия дисциплины");
+        var jwtToken = new Token(token);
+        if (!await jwtToken.IsVerifiedAdmin(users, ct))
+        {
+            logger.LogError("Пользователь не является администратором");
             return TypedResults.Unauthorized();
+        }
 
         var direction = await queryDispatcher.Dispatch<
             GetEducationDirectionQuery,
@@ -65,7 +72,14 @@ public static class ChangeSemesterPlanName
         >(request.Direction, ct);
 
         if (direction.IsFailure)
+        {
+            logger.LogError(
+                "Запрос пользователя {id} на изменение названия дисциплины отменен. Причина: {text}",
+                jwtToken.UserId,
+                direction.Error.Description
+            );
             return TypedResults.NotFound(direction.Error.Description);
+        }
 
         var plan = await queryDispatcher.Dispatch<GetEducationPlanQuery, EducationPlan>(
             new GetEducationPlanQuery(direction.Value, request.Plan.PlanYear),
@@ -73,7 +87,14 @@ public static class ChangeSemesterPlanName
         );
 
         if (plan.IsFailure)
+        {
+            logger.LogError(
+                "Запрос пользователя {id} на изменение названия дисциплины отменен. Причина: {text}",
+                jwtToken.UserId,
+                plan.Error.Description
+            );
             return TypedResults.NotFound(plan.Error.Description);
+        }
 
         var semester = await queryDispatcher.Dispatch<GetSemesterQuery, Semester>(
             new GetSemesterQuery(plan.Value, request.Semester.Number),
@@ -81,7 +102,14 @@ public static class ChangeSemesterPlanName
         );
 
         if (semester.IsFailure)
+        {
+            logger.LogError(
+                "Запрос пользователя {id} на изменение названия дисциплины отменен. Причина: {text}",
+                jwtToken.UserId,
+                semester.Error.Description
+            );
             return TypedResults.NotFound(semester.Error.Description);
+        }
 
         var discipline = await queryDispatcher.Dispatch<
             GetDisciplineFromSemesterQuery,
@@ -89,15 +117,36 @@ public static class ChangeSemesterPlanName
         >(new GetDisciplineFromSemesterQuery(semester.Value, request.Initial.Discipline), ct);
 
         if (discipline.IsFailure)
+        {
+            logger.LogError(
+                "Запрос пользователя {id} на изменение названия дисциплины отменен. Причина: {text}",
+                jwtToken.UserId,
+                discipline.Error.Description
+            );
             return TypedResults.NotFound(discipline.Error.Description);
+        }
 
         discipline = await commandDispatcher.Dispatch<ChangeDisciplineNameCommand, SemesterPlan>(
             new ChangeDisciplineNameCommand(discipline.Value, request.Updated.Discipline),
             ct
         );
 
-        return discipline.IsFailure
-            ? TypedResults.BadRequest(discipline.Error.Description)
-            : TypedResults.Ok(discipline.Value.MapFromDomain());
+        if (discipline.IsFailure)
+        {
+            logger.LogError(
+                "Запрос пользователя {id} на изменение названия дисциплины отменен. Причина: {text}",
+                jwtToken.UserId,
+                discipline.Error.Description
+            );
+            return TypedResults.BadRequest(discipline.Error.Description);
+        }
+
+        logger.LogInformation(
+            "Пользователь {id} изменяет название дисциплины с {oldName} на {newName}",
+            jwtToken.UserId,
+            request.Initial.Discipline,
+            request.Updated.Discipline
+        );
+        return TypedResults.Ok(discipline.Value.MapFromDomain());
     }
 }

@@ -22,6 +22,7 @@ public static class RemoveTeacherDepartment
                 .WithTags(TeacherDepartmentsTags.Tag)
                 .WithOpenApi()
                 .WithName("RemoveTeacherDepartments")
+                .RequireRateLimiting("fixed")
                 .WithDescription(
                     new StringBuilder()
                         .AppendLine("Метод удаляет кафедру из системы")
@@ -46,11 +47,17 @@ public static class RemoveTeacherDepartment
         IUsersRepository users,
         IQueryDispatcher queryDispatcher,
         ICommandDispatcher commandDispatcher,
+        ILogger<Endpoint> logger,
         CancellationToken ct
     )
     {
-        if (!await new Token(token).IsVerifiedAdmin(users, ct))
+        var jwtToken = new Token(token);
+        logger.LogInformation("Запрос на удаление кафедры");
+        if (!await jwtToken.IsVerifiedAdmin(users, ct))
+        {
+            logger.LogError("Пользователь не является администратором");
             return TypedResults.Unauthorized();
+        }
 
         var department = await queryDispatcher.Dispatch<
             GetDepartmentByNameQuery,
@@ -58,15 +65,34 @@ public static class RemoveTeacherDepartment
         >(request.Department, ct);
 
         if (department.IsFailure)
+        {
+            logger.LogError(
+                "Запрос пользователя {id} на удаление кафедры отменен причина {text}",
+                jwtToken.UserId,
+                department.Error.Description
+            );
             return TypedResults.NotFound(department.Error.Description);
+        }
 
         department = await commandDispatcher.Dispatch<
             RemoveTeachersDepartmentCommand,
             TeachersDepartments
         >(new RemoveTeachersDepartmentCommand(department.Value), ct);
+        if (department.IsFailure)
+        {
+            logger.LogError(
+                "Запрос пользователя {id} на удаление кафедры отменен причина {text}",
+                jwtToken.UserId,
+                department.Error.Description
+            );
+            return TypedResults.BadRequest(department.Error.Description);
+        }
 
-        return department.IsFailure
-            ? TypedResults.BadRequest(department.Error.Description)
-            : TypedResults.Ok(department.Value.MapFromDomain());
+        logger.LogInformation(
+            "Пользователь {id} удаляет кафедру {dname}",
+            jwtToken.UserId,
+            request.Department.Name
+        );
+        return TypedResults.Ok(department.Value.MapFromDomain());
     }
 }

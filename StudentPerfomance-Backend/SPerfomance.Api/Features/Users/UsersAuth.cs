@@ -26,6 +26,7 @@ public static class UsersAuth
                 .WithTags(UserTags.Tag)
                 .WithOpenApi()
                 .WithName("UsersAuth")
+                .RequireRateLimiting("fixed")
                 .WithDescription(new StringBuilder().AppendLine("Авторизация").ToString());
         }
     }
@@ -35,19 +36,34 @@ public static class UsersAuth
         IUsersRepository repository,
         IPasswordHasher hasher,
         IJwtTokenService service,
+        ILogger<Endpoint> logger,
         CancellationToken ct
     )
     {
+        logger.LogInformation("Авторизация пользователя");
         var user = await repository.GetByEmail(request.Email, ct);
         if (user == null)
+        {
+            logger.LogError("Ошибка авторизации. Пользователь не найден");
             return Results.NotFound(UserErrors.NotFound());
+        }
 
         var isVerified = hasher.Verify(request.Password, user.HashedPassword);
         if (!isVerified)
+        {
+            logger.LogInformation("Ошибка авторизации. Пароль неверный");
             return Results.BadRequest(UserErrors.PasswordInvalid());
+        }
 
         var token = service.GenerateToken(user);
 
+        logger.LogInformation(
+            "Авторизован пользователь {uemail} {uname} {usurname} {urole}",
+            user.Email.Email,
+            user.Name.Name,
+            user.Name.Surname,
+            user.Role.Role
+        );
         return Results.Ok(
             new Response(
                 user.Name.Name,

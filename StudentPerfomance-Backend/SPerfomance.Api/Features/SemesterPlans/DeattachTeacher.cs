@@ -36,6 +36,7 @@ public static class DeattachTeacher
                 .WithTags(SemesterPlanTags.Tag)
                 .WithOpenApi()
                 .WithName("DeattachTeacher")
+                .RequireRateLimiting("fixed")
                 .WithDescription(
                     new StringBuilder()
                         .AppendLine("Метод открепляет дисциплину от преподавателя")
@@ -57,11 +58,17 @@ public static class DeattachTeacher
         IUsersRepository users,
         IQueryDispatcher queryDispatcher,
         ICommandDispatcher commandDispatcher,
+        ILogger<Endpoint> logger,
         CancellationToken ct
     )
     {
-        if (!await new Token(token).IsVerifiedAdmin(users, ct))
+        logger.LogInformation("Запрос на открепление дисциплины у преподавателя");
+        var jwtToken = new Token(token);
+        if (!await jwtToken.IsVerifiedAdmin(users, ct))
+        {
+            logger.LogInformation("Пользователь не является администратором");
             return TypedResults.Unauthorized();
+        }
 
         var direction = await queryDispatcher.Dispatch<
             GetEducationDirectionQuery,
@@ -69,7 +76,14 @@ public static class DeattachTeacher
         >(request.Direction, ct);
 
         if (direction.IsFailure)
+        {
+            logger.LogError(
+                "Запрос пользователя {id} на открепление дисциплины у преподавателя отмёнен. Прична: {text}",
+                jwtToken.UserId,
+                direction.Error.Description
+            );
             return TypedResults.NotFound(direction.Error.Description);
+        }
 
         var educationPlan = await queryDispatcher.Dispatch<GetEducationPlanQuery, EducationPlan>(
             new GetEducationPlanQuery(direction.Value, request.Plan.PlanYear),
@@ -77,7 +91,14 @@ public static class DeattachTeacher
         );
 
         if (educationPlan.IsFailure)
+        {
+            logger.LogError(
+                "Запрос пользователя {id} на открепление дисциплины у преподавателя отмёнен. Прична: {text}",
+                jwtToken.UserId,
+                educationPlan.Error.Description
+            );
             return TypedResults.NotFound(educationPlan.Error.Description);
+        }
 
         var semester = await queryDispatcher.Dispatch<GetSemesterQuery, Semester>(
             new GetSemesterQuery(educationPlan.Value, request.Semester.Number),
@@ -85,7 +106,14 @@ public static class DeattachTeacher
         );
 
         if (semester.IsFailure)
+        {
+            logger.LogError(
+                "Запрос пользователя {id} на открепление дисциплины у преподавателя отмёнен. Прична: {text}",
+                jwtToken.UserId,
+                semester.Error.Description
+            );
             return TypedResults.NotFound(semester.Error.Description);
+        }
 
         var discipline = await queryDispatcher.Dispatch<
             GetDisciplineFromSemesterQuery,
@@ -93,15 +121,35 @@ public static class DeattachTeacher
         >(new GetDisciplineFromSemesterQuery(semester.Value, request.Discipline.Discipline), ct);
 
         if (discipline.IsFailure)
+        {
+            logger.LogError(
+                "Запрос пользователя {id} на открепление дисциплины у преподавателя отмёнен. Прична: {text}",
+                jwtToken.UserId,
+                discipline.Error.Description
+            );
             return TypedResults.NotFound(discipline.Error.Description);
+        }
 
         discipline = await commandDispatcher.Dispatch<
             DeattachTeacherFromDisciplineCommand,
             SemesterPlan
         >(new DeattachTeacherFromDisciplineCommand(discipline.Value), ct);
 
-        return discipline.IsFailure
-            ? TypedResults.BadRequest(discipline.Error.Description)
-            : TypedResults.Ok(discipline.Value.MapFromDomain());
+        if (discipline.IsFailure)
+        {
+            logger.LogError(
+                "Запрос пользователя {id} на открепление дисциплины у преподавателя отмёнен. Прична: {text}",
+                jwtToken.UserId,
+                discipline.Error.Description
+            );
+            return TypedResults.BadRequest(discipline.Error.Description);
+        }
+
+        logger.LogInformation(
+            "Пользователь {id} открепляет преподавателя у дисциплины {name}",
+            jwtToken.UserId,
+            request.Discipline.Discipline
+        );
+        return TypedResults.Ok(discipline.Value.MapFromDomain());
     }
 }

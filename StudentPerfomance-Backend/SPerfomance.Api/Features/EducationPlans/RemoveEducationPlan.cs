@@ -25,6 +25,7 @@ public static class RemoveEducationPlan
                 .WithTags(EducationPlanTags.Tag)
                 .WithOpenApi()
                 .WithName("RemoveEducationPlan")
+                .RequireRateLimiting("fixed")
                 .WithDescription(
                     new StringBuilder()
                         .AppendLine("Метод удаляет учебный план из направления подготовки")
@@ -44,11 +45,17 @@ public static class RemoveEducationPlan
         IUsersRepository users,
         ICommandDispatcher commandDispatcher,
         IQueryDispatcher queryDispatcher,
+        ILogger<Endpoint> logger,
         CancellationToken ct
     )
     {
-        if (!await new Token(token).IsVerifiedAdmin(users, ct))
+        logger.LogInformation("Запрос на удаление учебного плана");
+        var jwtToken = new Token(token);
+        if (!await jwtToken.IsVerifiedAdmin(users, ct))
+        {
+            logger.LogError("Пользователь не является администратором");
             return TypedResults.Unauthorized();
+        }
 
         var direction = await queryDispatcher.Dispatch<
             GetEducationDirectionQuery,
@@ -56,7 +63,13 @@ public static class RemoveEducationPlan
         >(request.Direction, ct);
 
         if (direction.IsFailure)
+        {
+            logger.LogError(
+                "Запрос на удаление учебного плана. Ошибка: {text}",
+                direction.Error.Description
+            );
             return TypedResults.NotFound(direction.Error.Description);
+        }
 
         var plan = await queryDispatcher.Dispatch<GetEducationPlanQuery, EducationPlan>(
             new GetEducationPlanQuery(direction.Value, request.Plan.PlanYear),
@@ -64,15 +77,36 @@ public static class RemoveEducationPlan
         );
 
         if (plan.IsFailure)
+        {
+            logger.LogError(
+                "Запрос на удаление учебного плана. Ошибка {text}",
+                plan.Error.Description
+            );
             return TypedResults.NotFound(plan.Error.Description);
+        }
 
         plan = await commandDispatcher.Dispatch<RemoveEducationPlanCommand, EducationPlan>(
             new RemoveEducationPlanCommand(plan.Value),
             ct
         );
 
-        return plan.IsFailure
-            ? TypedResults.BadRequest(plan.Error.Description)
-            : TypedResults.Ok(plan.Value.MapFromDomain());
+        if (plan.IsFailure)
+        {
+            logger.LogError(
+                "Запрос на удаление учебного плана. Ошибка {text}",
+                plan.Error.Description
+            );
+            return TypedResults.BadRequest(plan.Error.Description);
+        }
+
+        logger.LogInformation(
+            "Пользователь {id} удаляет учебный план {year} {code} {name} {type}",
+            jwtToken.UserId,
+            plan.Value.Year.Year,
+            plan.Value.Direction.Code.Code,
+            plan.Value.Direction.Name.Name,
+            plan.Value.Direction.Type.Type
+        );
+        return TypedResults.Ok(plan.Value.MapFromDomain());
     }
 }

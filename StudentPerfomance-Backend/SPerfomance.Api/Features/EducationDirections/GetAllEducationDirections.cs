@@ -18,6 +18,7 @@ public static class GetAllEducationDirections
                 .WithTags(EducationDirectionTags.Tag)
                 .WithOpenApi()
                 .WithName("GetAllEducationDirections")
+                .RequireRateLimiting("fixed")
                 .WithDescription(
                     new StringBuilder()
                         .AppendLine("Метод возвращает все направления подготовки из базы данных.")
@@ -34,12 +35,22 @@ public static class GetAllEducationDirections
         [FromHeader(Name = "token")] string token,
         IUsersRepository users,
         IEducationDirectionRepository repository,
+        ILogger<Endpoint> logger,
         CancellationToken ct
     )
     {
-        if (!await new Token(token).IsVerifiedAdmin(users, ct))
+        logger.LogInformation("Запрос на получение всех направлений подготовки");
+        var jwtToken = new Token(token);
+        if (!await jwtToken.IsVerifiedAdmin(users, ct))
+        {
+            logger.LogError("Пользователь не является администратором");
             return TypedResults.Unauthorized();
+        }
         var directions = await repository.GetAll(ct);
+        logger.LogInformation(
+            "Получены все направления подготовки в количестве {count}",
+            directions.Count
+        );
         return TypedResults.Ok(directions.Select(d => d.MapFromDomain()));
     }
 }

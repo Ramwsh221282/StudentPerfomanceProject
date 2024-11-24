@@ -19,6 +19,7 @@ public static class CreateEducationDirection
         public void MapEndpoint(IEndpointRouteBuilder app) =>
             app.MapPost($"{EducationDirectionTags.Api}", Handler)
                 .WithTags(EducationDirectionTags.Tag)
+                .RequireRateLimiting("fixed")
                 .WithOpenApi()
                 .WithName("CreateEducationDirection")
                 .WithDescription(
@@ -38,19 +39,40 @@ public static class CreateEducationDirection
         [FromHeader(Name = "token")] string token,
         IUsersRepository users,
         ICommandDispatcher dispatcher,
+        ILogger<Endpoint> logger,
         CancellationToken ct
     )
     {
-        if (!await new Token(token).IsVerifiedAdmin(users, ct))
+        logger.LogInformation("Запрос на создание нового направления подготовки");
+        var jwtToken = new Token(token);
+
+        if (!await jwtToken.IsVerifiedAdmin(users, ct))
+        {
+            logger.LogError("Пользователь не является администратором");
             return TypedResults.Unauthorized();
+        }
 
         var direction = await dispatcher.Dispatch<
             CreateEducationDirectionCommand,
             EducationDirection
         >(request.Command, ct);
 
-        return direction.IsFailure
-            ? TypedResults.BadRequest(direction.Error.Description)
-            : TypedResults.Ok(direction.Value.MapFromDomain());
+        if (direction.IsFailure)
+        {
+            logger.LogError(
+                "Ошибка создания направления подготовки: {description}",
+                direction.Error.Description
+            );
+            return TypedResults.BadRequest(direction.Error.Description);
+        }
+
+        logger.LogInformation(
+            "Пользователь {Id} создаёт направление подготовки {code} {name} {type}",
+            jwtToken.UserId,
+            direction.Value.Code.Code,
+            direction.Value.Name.Name,
+            direction.Value.Type.Type
+        );
+        return TypedResults.Ok(direction.Value.MapFromDomain());
     }
 }

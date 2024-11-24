@@ -22,6 +22,7 @@ public static class MakeAssignmentByTeacher
                 .WithTags($"{PerfomanceContextTags.SessionsTag}")
                 .WithOpenApi()
                 .WithName("MakeAssignmentByTeacher")
+                .RequireRateLimiting("fixed")
                 .WithDescription(
                     new StringBuilder()
                         .AppendLine(
@@ -40,19 +41,43 @@ public static class MakeAssignmentByTeacher
         Request request,
         IUsersRepository users,
         ICommandDispatcher dispatcher,
+        ILogger<Endpoint> logger,
         CancellationToken ct
     )
     {
-        if (!await new Token(request.Token.Token).IsVerifiedTeacher(users, ct))
+        logger.LogInformation("Запрос на проставление оценки за контрольную неделю");
+        var jwtToken = new Token(request.Token.Token);
+        if (!await jwtToken.IsVerifiedTeacher(users, ct))
+        {
+            logger.LogError("Пользователь не является преподавателем");
             return TypedResults.Unauthorized();
+        }
 
         var command = new MakeAssignmentCommand(request.Assignment.Id, request.Assignment.Mark);
         var assignment = await dispatcher.Dispatch<MakeAssignmentCommand, StudentAssignment>(
             command,
             ct
         );
-        return assignment.IsFailure
-            ? TypedResults.BadRequest(assignment.Error.Description)
-            : TypedResults.Ok(new StudentMarkAssignmentFromTeacherDTO(assignment.Value));
+        if (assignment.IsFailure)
+        {
+            logger.LogError(
+                "Пользователь {id} не может проставить оценку за контрольную неделю. Причина: {text}",
+                jwtToken.UserId,
+                assignment.Error.Description
+            );
+            TypedResults.BadRequest(assignment.Error.Description);
+        }
+
+        logger.LogInformation(
+            "Пользователь {id} проставляет оценку за контрольную неделю {mark} студенту {name} {surname} {recordbook} {group} по дисциплине {discipline}",
+            jwtToken.UserId,
+            assignment.Value.Value.Value,
+            assignment.Value.Student.Name.Name,
+            assignment.Value.Student.Name.Surname,
+            assignment.Value.Student.Recordbook.Recordbook,
+            assignment.Value.Student.AttachedGroup.Name.Name,
+            assignment.Value.Assignment.Discipline.Discipline
+        );
+        return TypedResults.Ok(new StudentMarkAssignmentFromTeacherDTO(assignment.Value));
     }
 }

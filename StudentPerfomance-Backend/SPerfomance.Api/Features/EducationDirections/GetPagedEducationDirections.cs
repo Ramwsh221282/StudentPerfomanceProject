@@ -17,6 +17,7 @@ public static class GetPagedEducationDirections
                 .WithTags(EducationDirectionTags.Tag)
                 .WithOpenApi()
                 .WithName("GetPagedEducationDirections")
+                .RequireRateLimiting("fixed")
                 .WithDescription(
                     new StringBuilder()
                         .AppendLine("Метод возвращает коллекцию направлений подготовки постранично")
@@ -36,12 +37,22 @@ public static class GetPagedEducationDirections
         [FromQuery(Name = "pageSize")] int pageSize,
         IUsersRepository users,
         IEducationDirectionRepository repository,
+        ILogger<Endpoint> logger,
         CancellationToken ct
     )
     {
-        if (!await new Token(token).IsVerifiedAdmin(users, ct))
+        logger.LogInformation("Запрос на получение списка направлений подготовки постранично");
+        var jwtToken = new Token(token);
+        if (!await jwtToken.IsVerifiedAdmin(users, ct))
+        {
+            logger.LogError("Пользователь не является администратором");
             return TypedResults.Unauthorized();
+        }
         var directions = await repository.GetPaged(page, pageSize, ct);
+        logger.LogInformation(
+            "Получен список направлений подготовок в количестве: {count}",
+            directions.Count
+        );
         return TypedResults.Ok(directions.Select(d => d.MapFromDomain()));
     }
 }
