@@ -2,12 +2,15 @@ using SPerfomance.Application.Abstractions;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions.Abstractions;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions.Errors;
+using SPerfomance.Domain.Models.StudentGroups.Abstractions;
 using SPerfomance.Domain.Tools;
 
 namespace SPerfomance.Application.PerfomanceContext.AssignmentSessions.Commands.CloseAssignmentSession;
 
-public class CloseAssignmentSessionCommandHandler(IAssignmentSessionsRepository repository)
-    : ICommandHandler<CloseAssignmentSessionCommand, AssignmentSession>
+public class CloseAssignmentSessionCommandHandler(
+    IAssignmentSessionsRepository repository,
+    IStudentGroupsRepository groups
+) : ICommandHandler<CloseAssignmentSessionCommand, AssignmentSession>
 {
     public async Task<Result<AssignmentSession>> Handle(
         CloseAssignmentSessionCommand command,
@@ -22,7 +25,10 @@ public class CloseAssignmentSessionCommandHandler(IAssignmentSessionsRepository 
         if (closed.IsFailure)
             return closed;
 
-        await repository.Update(closed, ct);
+        AssignmentSessionStudentGroupActiveSemesterResolver resolver =
+            new AssignmentSessionStudentGroupActiveSemesterResolver(groups, closed);
+        await resolver.ResolveGroupsActiveSemesters(ct);
+        await repository.Remove(closed, ct);
         return closed;
     }
 }

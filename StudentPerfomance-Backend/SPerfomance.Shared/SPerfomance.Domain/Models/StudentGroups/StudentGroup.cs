@@ -1,4 +1,5 @@
 using SPerfomance.Domain.Abstractions;
+using SPerfomance.Domain.Models.EducationDirections.ValueObjects;
 using SPerfomance.Domain.Models.EducationPlans;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentsWeeks;
 using SPerfomance.Domain.Models.Semesters;
@@ -59,6 +60,44 @@ public class StudentGroup : DomainEntity
         ActiveGroupSemester = active;
         EducationPlan = plan;
         return this;
+    }
+
+    public void SetActiveGroupSemester(Semester semester)
+    {
+        ActiveGroupSemester = semester;
+    }
+
+    public void SetNextSemester()
+    {
+        if (EducationPlan is null)
+            return;
+
+        if (ActiveGroupSemester is null)
+            return;
+
+        if (EducationPlan.Direction.Type == DirectionType.Bachelor)
+        {
+            byte finalSemesterValue = 8;
+            if (ActiveGroupSemester.Number.Number == finalSemesterValue)
+                return;
+            byte nextSemesterValue = (byte)(ActiveGroupSemester.Number.Number + 1);
+            var nextSemester = EducationPlan.Semesters.FirstOrDefault(s =>
+                s.Number.Number == nextSemesterValue
+            )!;
+            ActiveGroupSemester = nextSemester;
+        }
+
+        if (EducationPlan.Direction.Type == DirectionType.Magister)
+        {
+            byte finalSemesterValue = 4;
+            if (ActiveGroupSemester.Number.Number == finalSemesterValue)
+                return;
+            byte nextSemesterValue = (byte)(ActiveGroupSemester.Number.Number + 1);
+            var nextSemester = EducationPlan.Semesters.FirstOrDefault(s =>
+                s.Number.Number == nextSemesterValue
+            )!;
+            ActiveGroupSemester = nextSemester;
+        }
     }
 
     internal void DeattachEducationPlan()

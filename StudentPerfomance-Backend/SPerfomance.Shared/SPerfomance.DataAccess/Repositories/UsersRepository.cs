@@ -12,7 +12,7 @@ public class UsersRepository : IUsersRepository
 
     public async Task Insert(User entity, CancellationToken ct = default)
     {
-        entity.SetNumber(await GenerateEntityNumber());
+        entity.SetNumber(await GenerateEntityNumber(ct));
         await _context.AddAsync(entity, ct);
         await _context.SaveChangesAsync(ct);
     }
@@ -28,10 +28,10 @@ public class UsersRepository : IUsersRepository
         return numbers.GetOrderedValue();
     }
 
-    public async Task<User?> GetById(string Id, CancellationToken ct = default) =>
+    public async Task<User?> GetById(string id, CancellationToken ct = default) =>
         await _context
             .Users.AsNoTracking()
-            .FirstOrDefaultAsync(u => u.Id.ToString() == Id.ToUpper(), cancellationToken: ct);
+            .FirstOrDefaultAsync(u => u.Id.ToString() == id.ToUpper(), cancellationToken: ct);
 
     public async Task<Teacher?> GetTeacherByUser(User user, CancellationToken ct = default) =>
         await _context.Teachers.FirstOrDefaultAsync(

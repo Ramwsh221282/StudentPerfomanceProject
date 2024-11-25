@@ -19,6 +19,13 @@ export const routes: Routes = [
       ).then((mod) => mod.SessionReportsViewComponent),
   },
   {
+    path: 'reset-password',
+    loadComponent: () =>
+      import(
+        './shared/components/login-page/login-form/recovery-confirmation/recovery-confirmation.component'
+      ).then((mod) => mod.RecoveryConfirmationComponent),
+  },
+  {
     path: 'group-reports/:reportId:startDate:closeDate',
     loadComponent: () =>
       import(

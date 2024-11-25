@@ -16,6 +16,7 @@ import { LoginHandler } from './login-handler';
 import { NgIf } from '@angular/common';
 import { SuccessResultNotificationComponent } from '../../success-result-notification/success-result-notification.component';
 import { FailureResultNotificationComponent } from '../../failure-result-notification/failure-result-notification.component';
+import { PasswordRecoveryModalComponent } from './password-recovery-modal/password-recovery-modal.component';
 
 @Component({
   selector: 'app-login-form',
@@ -26,6 +27,7 @@ import { FailureResultNotificationComponent } from '../../failure-result-notific
     NgIf,
     SuccessResultNotificationComponent,
     FailureResultNotificationComponent,
+    PasswordRecoveryModalComponent,
   ],
   templateUrl: './login-form.component.html',
   styleUrl: './login-form.component.scss',
@@ -42,9 +44,11 @@ export class LoginFormComponent
   public isSuccess: boolean;
   public isFailure: boolean;
 
+  protected isRecoveryModalVisible: boolean = false;
+
   public constructor(
     private readonly _authService: AuthService,
-    protected readonly notificationService: UserOperationNotificationService
+    protected readonly notificationService: UserOperationNotificationService,
   ) {
     this.isSuccess = false;
     this.isFailure = false;
@@ -82,7 +86,7 @@ export class LoginFormComponent
           handler.handle(response);
           this._authService.authorize(response);
         }),
-        catchError((error) => handler.handleError(error))
+        catchError((error) => handler.handleError(error)),
       )
       .subscribe();
     this.ngOnInit();

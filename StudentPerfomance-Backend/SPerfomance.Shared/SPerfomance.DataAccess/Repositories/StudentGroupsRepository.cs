@@ -31,6 +31,19 @@ public class StudentGroupsRepository : IStudentGroupsRepository
         await _context.Database.ExecuteSqlRawAsync(sql, parameter);
     }
 
+    public async Task SetNextSemester(StudentGroup group, CancellationToken ct = default)
+    {
+        const string sql = """
+            UPDATE GROUPS SET ActiveGroupSemesterId = @SemesterId WHERE Id = @Id
+            """;
+        SqliteParameter[] parameters =
+        [
+            new("@Id", group.Id),
+            new("@SemesterId", group.ActiveGroupSemester!.Id),
+        ];
+        await _context.Database.ExecuteSqlRawAsync(sql, parameters, ct);
+    }
+
     public async Task<int> Count(CancellationToken ct = default) =>
         await _context.Groups.CountAsync(ct);
 

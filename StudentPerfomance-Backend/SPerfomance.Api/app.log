@@ -162,3 +162,473 @@
 2024-11-24T19:57:37.2722375+03:00	INFO	[SPerfomance.Api.Features.Teachers.GetTeachersByDepartment.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает преподавателей кафедры Информационные и технические системы 5
 2024-11-24T19:57:42.1276825+03:00	INFO	[SPerfomance.Api.Features.Teachers.RegisterTeacher.Endpoint]	[0]	Запрос на добавление преподавателя в кафедру
 2024-11-24T19:57:42.1510262+03:00	FAIL	[SPerfomance.Api.Features.Teachers.RegisterTeacher.Endpoint]	[0]	Запрос пользователя 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 на добавление преподавателя в кафедру отменен. Причина: Имя преподавателя было пустым
+2024-11-24T22:10:49.1590808+03:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизация пользователя
+2024-11-24T22:10:51.5941303+03:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизован пользователь admin@mail.com admin admin Администратор
+2024-11-24T22:11:15.5647504+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-24T22:11:15.5702665+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-11-24T22:11:15.7229615+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 10
+2024-11-24T22:11:15.9016674+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-24T22:11:15.9104300+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-24T22:11:15.9342105+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-24T22:11:20.6380839+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-24T22:11:20.6390929+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-11-24T22:11:20.6437211+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 5
+2024-11-24T22:11:20.8085889+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-24T22:11:20.8111062+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-24T22:11:20.8152879+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-24T22:11:25.6438570+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-11-24T22:11:25.6449883+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-24T22:11:25.6490027+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-24T22:11:25.6512352+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-24T22:11:25.6552497+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-24T22:11:25.8138082+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 10
+2024-11-24T22:11:30.7434591+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-24T22:11:30.7725860+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-11-24T22:11:30.7774324+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-24T22:11:30.7802507+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-24T22:11:30.7843244+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-24T22:11:30.9367751+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 10
+2024-11-24T22:11:38.3967552+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-11-24T22:11:38.3979330+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-24T22:11:38.4019600+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 10
+2024-11-24T22:11:38.5659610+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-24T22:11:38.5684476+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-24T22:11:38.5724182+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-24T22:11:40.9411244+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-24T22:11:40.9420947+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-11-24T22:11:40.9457159+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-24T22:11:40.9479324+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-24T22:11:40.9518950+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-24T22:11:41.0985240+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 10
+2024-11-24T22:11:46.0424078+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-11-24T22:11:46.0436918+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-24T22:11:46.0476394+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-24T22:11:46.0506467+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-24T22:11:46.0552183+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-24T22:11:46.2002017+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 10
+2024-11-24T22:11:51.0435482+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-24T22:11:51.0449043+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-11-24T22:11:51.0494538+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 10
+2024-11-24T22:11:51.2029738+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-24T22:11:51.2058685+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-24T22:11:51.2103555+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-24T22:11:59.1498617+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-24T22:11:59.1532209+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-11-24T22:11:59.1583998+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-24T22:11:59.1633760+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-24T22:11:59.1741156+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-24T22:11:59.3100657+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 10
+2024-11-24T22:12:01.1409563+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-11-24T22:12:01.1426408+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-24T22:12:01.1468844+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-24T22:12:01.1501075+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-24T22:12:01.1545969+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-24T22:12:01.3128385+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 10
+2024-11-24T22:12:06.2416474+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-24T22:12:06.2428254+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-11-24T22:12:06.2477049+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 5
+2024-11-24T22:12:06.2537915+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-11-24T22:12:06.2589854+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 5
+2024-11-24T22:12:06.4021478+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-24T22:12:11.2431921+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-24T22:12:11.2441992+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-11-24T22:12:11.2480309+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 10
+2024-11-24T22:12:11.4125874+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-24T22:12:11.4152659+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-24T22:12:11.4193031+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-24T22:12:16.3313500+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-24T22:12:16.3353033+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-24T22:12:16.3384138+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-24T22:12:16.3424293+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-24T22:12:16.3450186+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-24T22:12:16.3494038+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-24T22:13:27.8340144+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-11-24T22:13:27.8362011+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-24T22:13:27.8420109+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 10
+2024-11-24T22:13:28.0046914+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-24T22:13:28.0085335+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-24T22:13:28.0132050+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-24T22:13:37.9835586+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-11-24T22:13:37.9872751+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-24T22:13:37.9928613+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 10
+2024-11-24T22:13:38.1445522+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-24T22:13:38.1491442+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-24T22:13:38.1537348+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-24T22:13:42.9540344+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-24T22:13:42.9554522+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-11-24T22:13:42.9592909+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-24T22:13:43.1106721+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 10
+2024-11-24T22:13:43.8688977+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-24T22:13:43.8744963+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-24T22:13:47.9616594+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-11-24T22:13:47.9663992+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 10
+2024-11-24T22:13:49.7332883+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-24T22:13:49.7346707+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-11-24T22:13:49.7393404+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-24T22:13:49.8992590+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 10
+2024-11-24T22:13:53.0611395+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-24T22:13:53.0630657+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-11-24T22:13:53.0669496+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 10
+2024-11-24T22:13:53.2329443+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-24T22:14:16.2514840+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-24T22:14:16.2530602+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-11-24T22:14:16.2567560+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-24T22:14:16.4169445+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 10
+2024-11-24T22:14:17.1526790+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-24T22:14:17.1572689+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-24T22:14:21.3623094+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-11-24T22:14:21.3665538+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 10
+2024-11-24T22:14:22.1707558+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-24T22:14:22.1717968+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-11-24T22:14:22.1754246+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-24T22:14:22.3347364+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 10
+2024-11-24T22:14:26.4525273+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-24T22:14:26.4535478+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-11-24T22:14:26.4572529+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 5
+2024-11-24T22:14:26.6102028+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-24T22:14:27.3640592+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-24T22:14:27.3685121+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-24T22:14:31.4623115+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-11-24T22:14:31.4673754+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 10
+2024-11-24T22:15:19.0554302+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-11-24T22:15:19.0554303+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-24T22:15:20.8257259+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-24T22:15:20.9473632+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 10
+2024-11-24T22:15:21.8099757+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-24T22:15:21.8161669+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-11-24T22:15:21.8528178+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 10
+2024-11-24T22:15:22.0085934+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-24T22:15:22.5494579+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-24T22:15:22.5803724+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-11-24T22:15:22.5850541+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-24T22:15:22.7378340+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 10
+2024-11-24T22:15:23.9833853+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-24T22:15:23.9849828+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-11-24T22:15:23.9888270+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-24T22:15:24.1541744+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 10
+2024-11-24T22:15:25.1487227+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-24T22:15:25.1496759+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-11-24T22:15:25.1545797+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-24T22:15:25.3060017+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 5
+2024-11-24T22:15:27.8419519+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-24T22:15:27.8435342+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-11-24T22:15:27.8471293+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-24T22:15:28.0060079+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 10
+2024-11-24T22:15:30.6423285+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-24T22:15:30.6678150+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-11-24T22:15:30.6716886+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-24T22:15:30.8256618+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 10
+2024-11-24T22:15:49.5594005+03:00	INFO	[SPerfomance.Api.Features.Users.UsersRegistration.Endpoint]	[0]	Запрос на регистрацию пользователя в системе
+2024-11-24T22:15:50.3541077+03:00	INFO	[SPerfomance.Api.Features.Users.UsersRegistration.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 добавил пользователя 2cd64662-c1ae-4c78-8318-63935b2b2b23 Роман Панов jimkrauz@gmail.com Администратор в систему
+2024-11-24T22:15:50.3641898+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-11-24T22:15:50.3654060+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-24T22:15:50.3693318+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 10
+2024-11-24T22:15:50.3775977+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-11-24T22:15:50.3820422+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 10
+2024-11-24T22:15:50.5275803+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 36
+2024-11-24T22:15:50.5303208+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-24T22:15:50.5344005+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 36
+2024-11-24T22:16:56.4860059+03:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизация пользователя
+2024-11-24T22:16:56.9881441+03:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизован пользователь jimkrauz@gmail.com Роман Панов Администратор
+2024-11-25T13:07:21.3869323+03:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизация пользователя
+2024-11-25T13:07:24.2297807+03:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизован пользователь jimkrauz@gmail.com Роман Панов Администратор
+2024-11-25T17:33:45.9497988+03:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизация пользователя
+2024-11-25T17:33:48.6685936+03:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизован пользователь admin@mail.com admin admin Администратор
+2024-11-25T17:56:18.2121780+03:00	INFO	[SPerfomance.Api.Features.Users.ChangeUserPasswordEndpoint.Endpoint]	[0]	Запрос на изменения пароля пользователя
+2024-11-25T17:56:18.2734759+03:00	FAIL	[SPerfomance.Api.Features.Users.ChangeUserPasswordEndpoint.Endpoint]	[0]	Запрос на изменением пароля отменён. Причина: Пароль авторизации неверный
+2024-11-25T17:58:14.4660944+03:00	INFO	[SPerfomance.Api.Features.Users.ChangeUserPasswordEndpoint.Endpoint]	[0]	Запрос на изменения пароля пользователя
+2024-11-25T17:58:48.1787975+03:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизация пользователя
+2024-11-25T17:58:48.7487348+03:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизован пользователь admin@mail.com admin admin Администратор
+2024-11-25T17:59:52.0711489+03:00	INFO	[SPerfomance.Api.Features.Users.ChangeUserPasswordEndpoint.Endpoint]	[0]	Запрос на изменения пароля пользователя
+2024-11-25T18:45:18.2333371+03:00	INFO	[SPerfomance.Api.Features.Users.ChangeUserEmailEndpoint.Endpoint]	[0]	Запрос на изменение почты пользователя
+2024-11-25T18:45:18.2424025+03:00	FAIL	[SPerfomance.Api.Features.Users.ChangeUserEmailEndpoint.Endpoint]	[0]	Ошибка изменения почты пользователя. Почта не была указана
+2024-11-25T18:46:11.4097322+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetAssignmentSessionReportsCount.Endpoint]	[0]	Запрос на получение количества отчётов контрольных недель
+2024-11-25T18:46:11.4210578+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessionReports.Endpoint]	[0]	Запрос на получение отчетов контрольных недель постранично
+2024-11-25T18:46:11.5208109+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetAssignmentSessionReportsCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество отчётов контрольных недель в количестве 1
+2024-11-25T18:46:11.7600544+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessionReports.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает отчёты контрольных недель
+2024-11-25T18:46:14.0984046+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetAssignmentSessionReportsCount.Endpoint]	[0]	Запрос на получение количества отчётов контрольных недель
+2024-11-25T18:46:14.1057661+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetAssignmentSessionReportsCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество отчётов контрольных недель в количестве 1
+2024-11-25T18:46:14.1107250+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessionReports.Endpoint]	[0]	Запрос на получение отчетов контрольных недель постранично
+2024-11-25T18:46:14.1867593+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessionReports.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает отчёты контрольных недель
+2024-11-25T18:46:18.5195294+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetAssignmentSessionReportsCount.Endpoint]	[0]	Запрос на получение количества отчётов контрольных недель
+2024-11-25T18:46:18.5214237+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessionReports.Endpoint]	[0]	Запрос на получение отчетов контрольных недель постранично
+2024-11-25T18:46:18.5787320+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessionReports.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает отчёты контрольных недель
+2024-11-25T18:46:18.6846221+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetAssignmentSessionReportsCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество отчётов контрольных недель в количестве 1
+2024-11-25T18:46:22.6579386+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetAssignmentSessionReportsCount.Endpoint]	[0]	Запрос на получение количества отчётов контрольных недель
+2024-11-25T18:46:22.6605011+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessionReports.Endpoint]	[0]	Запрос на получение отчетов контрольных недель постранично
+2024-11-25T18:46:22.6661185+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetAssignmentSessionReportsCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество отчётов контрольных недель в количестве 1
+2024-11-25T18:46:22.8609153+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessionReports.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает отчёты контрольных недель
+2024-11-25T18:47:26.8924170+03:00	INFO	[SPerfomance.Api.Features.Users.ChangeUserEmailEndpoint.Endpoint]	[0]	Запрос на изменение почты пользователя
+2024-11-25T18:47:27.3377246+03:00	FAIL	[SPerfomance.Api.Features.Users.ChangeUserEmailEndpoint.Endpoint]	[0]	Ошибка изменения почты пользователя. jimkrauz@gmail.com занята
+2024-11-25T18:47:33.1282542+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-11-25T18:47:33.1409956+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-25T18:47:33.1490849+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 10
+2024-11-25T18:47:33.1529676+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 36
+2024-11-25T18:47:33.1569117+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-25T18:47:33.1617344+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 36
+2024-11-25T18:47:39.2914584+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-25T18:47:39.2925190+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-11-25T18:47:39.2962472+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 6
+2024-11-25T18:47:39.4538338+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 36
+2024-11-25T18:47:44.2857529+03:00	INFO	[SPerfomance.Api.Features.Users.RemoveUser.Endpoint]	[0]	Запрос на удаление пользователя из системы
+2024-11-25T18:47:44.3568413+03:00	INFO	[SPerfomance.Api.Features.Users.RemoveUser.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 удаляет пользователя 2cd64662-c1ae-4c78-8318-63935b2b2b23 jimkrauz@gmail.com Администратор
+2024-11-25T18:47:44.3659033+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-11-25T18:47:44.3675486+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-25T18:47:44.3823520+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 5
+2024-11-25T18:47:44.5307209+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-25T18:47:45.6936578+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-25T18:47:45.6968314+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-11-25T18:47:45.6985104+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-25T18:47:45.7021380+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 10
+2024-11-25T18:48:02.7025177+03:00	INFO	[SPerfomance.Api.Features.Users.ChangeUserEmailEndpoint.Endpoint]	[0]	Запрос на изменение почты пользователя
+2024-11-25T18:48:03.1491734+03:00	INFO	[SPerfomance.Api.Features.Users.ChangeUserEmailEndpoint.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 admin поменял почту с admin@mail.com на jimkrauz@gmail.com
+2024-11-25T18:49:14.4324888+03:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизация пользователя
+2024-11-25T18:49:14.8648681+03:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизован пользователь jimkrauz@gmail.com admin admin Администратор
+2024-11-25T23:34:57.6954177+03:00	FAIL	[Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware]	[UnhandledException]	An unhandled exception has occurred while executing the request.System.InvalidOperationException: Failure to infer one or more parameters.
+Below is the list of parameters that we found: 
+
+Parameter           | Source                        
+---------------------------------------------------------------------------------
+request             | Body (Attribute)
+dispatcher          | Services (Inferred)
+logger              | Services (Inferred)
+mailing             | Services (Inferred)
+httpContextAccessor | UNKNOWN        
+
+
+Did you mean to register the "UNKNOWN" parameters as a Service?
+
+
+   at Microsoft.AspNetCore.Http.RequestDelegateFactory.CreateArguments(ParameterInfo[] parameters, RequestDelegateFactoryContext factoryContext)
+   at Microsoft.AspNetCore.Http.RequestDelegateFactory.CreateArgumentsAndInferMetadata(MethodInfo methodInfo, RequestDelegateFactoryContext factoryContext)
+   at Microsoft.AspNetCore.Http.RequestDelegateFactory.InferMetadata(MethodInfo methodInfo, RequestDelegateFactoryOptions options)
+   at Microsoft.AspNetCore.Routing.RouteEndpointDataSource.CreateRouteEndpointBuilder(RouteEntry entry, RoutePattern groupPrefix, IReadOnlyList`1 groupConventions, IReadOnlyList`1 groupFinallyConventions)
+   at Microsoft.AspNetCore.Routing.RouteEndpointDataSource.get_Endpoints()
+   at Microsoft.AspNetCore.Routing.CompositeEndpointDataSource.CreateEndpointsUnsynchronized()
+   at Microsoft.AspNetCore.Routing.CompositeEndpointDataSource.EnsureEndpointsInitialized()
+   at Microsoft.AspNetCore.Routing.CompositeEndpointDataSource.get_Endpoints()
+   at Microsoft.AspNetCore.Routing.DataSourceDependentCache`1.Initialize()
+   at System.Threading.LazyInitializer.EnsureInitializedCore[T](T& target, Boolean& initialized, Object& syncLock, Func`1 valueFactory)
+   at Microsoft.AspNetCore.Routing.Matching.DataSourceDependentMatcher..ctor(EndpointDataSource dataSource, Lifetime lifetime, Func`1 matcherBuilderFactory)
+   at Microsoft.AspNetCore.Routing.Matching.DfaMatcherFactory.CreateMatcher(EndpointDataSource dataSource)
+   at Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware.InitializeCoreAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware.<Invoke>g__AwaitMatcher|10_0(EndpointRoutingMiddleware middleware, HttpContext httpContext, Task`1 matcherTask)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+
+2024-11-25T23:34:58.2050683+03:00	FAIL	[Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware]	[UnhandledException]	An unhandled exception has occurred while executing the request.System.InvalidOperationException: Failure to infer one or more parameters.
+Below is the list of parameters that we found: 
+
+Parameter           | Source                        
+---------------------------------------------------------------------------------
+request             | Body (Attribute)
+dispatcher          | Services (Inferred)
+logger              | Services (Inferred)
+mailing             | Services (Inferred)
+httpContextAccessor | UNKNOWN        
+
+
+Did you mean to register the "UNKNOWN" parameters as a Service?
+
+
+   at Microsoft.AspNetCore.Http.RequestDelegateFactory.CreateArguments(ParameterInfo[] parameters, RequestDelegateFactoryContext factoryContext)
+   at Microsoft.AspNetCore.Http.RequestDelegateFactory.CreateArgumentsAndInferMetadata(MethodInfo methodInfo, RequestDelegateFactoryContext factoryContext)
+   at Microsoft.AspNetCore.Http.RequestDelegateFactory.InferMetadata(MethodInfo methodInfo, RequestDelegateFactoryOptions options)
+   at Microsoft.AspNetCore.Routing.RouteEndpointDataSource.CreateRouteEndpointBuilder(RouteEntry entry, RoutePattern groupPrefix, IReadOnlyList`1 groupConventions, IReadOnlyList`1 groupFinallyConventions)
+   at Microsoft.AspNetCore.Routing.RouteEndpointDataSource.get_Endpoints()
+   at Microsoft.AspNetCore.Routing.CompositeEndpointDataSource.CreateEndpointsUnsynchronized()
+   at Microsoft.AspNetCore.Routing.CompositeEndpointDataSource.EnsureEndpointsInitialized()
+   at Microsoft.AspNetCore.Routing.CompositeEndpointDataSource.get_Endpoints()
+   at Microsoft.AspNetCore.Routing.DataSourceDependentCache`1.Initialize()
+   at System.Threading.LazyInitializer.EnsureInitializedCore[T](T& target, Boolean& initialized, Object& syncLock, Func`1 valueFactory)
+   at Microsoft.AspNetCore.Routing.Matching.DataSourceDependentMatcher..ctor(EndpointDataSource dataSource, Lifetime lifetime, Func`1 matcherBuilderFactory)
+   at Microsoft.AspNetCore.Routing.Matching.DfaMatcherFactory.CreateMatcher(EndpointDataSource dataSource)
+   at Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware.InitializeCoreAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware.<Invoke>g__AwaitMatcher|10_0(EndpointRoutingMiddleware middleware, HttpContext httpContext, Task`1 matcherTask)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+
+2024-11-26T00:00:57.5126863+03:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизация пользователя
+2024-11-26T00:00:59.1078837+03:00	FAIL	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Ошибка авторизации. Пользователь не найден
+2024-11-26T00:01:10.4418528+03:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизация пользователя
+2024-11-26T00:01:10.4608540+03:00	FAIL	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Ошибка авторизации. Пользователь не найден
+2024-11-26T00:01:23.2912368+03:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизация пользователя
+2024-11-26T00:01:23.3097036+03:00	FAIL	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Ошибка авторизации. Пользователь не найден
+2024-11-26T00:01:40.5571454+03:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизация пользователя
+2024-11-26T00:01:40.5600417+03:00	FAIL	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Ошибка авторизации. Пользователь не найден
+2024-11-26T00:16:16.8916997+03:00	INFO	[SPerfomance.Api.Features.Users.Contracts.CreatePasswordRecoveryEndpoint.Endpoint]	[0]	Запрос на восстановление пароля
+2024-11-26T00:16:16.8970924+03:00	FAIL	[SPerfomance.Api.Features.Users.Contracts.CreatePasswordRecoveryEndpoint.Endpoint]	[0]	Запрос на восстановление пароля отменен. Причина Почта не была указана
+2024-11-26T00:17:00.6409987+03:00	INFO	[SPerfomance.Api.Features.Users.Contracts.CreatePasswordRecoveryEndpoint.Endpoint]	[0]	Запрос на восстановление пароля
+2024-11-26T00:26:41.8734652+03:00	INFO	[SPerfomance.Api.Features.Users.Contracts.CreatePasswordRecoveryEndpoint.Endpoint]	[0]	Запрос на восстановление пароля
+2024-11-26T00:26:43.5412627+03:00	INFO	[SPerfomance.Api.Features.Users.Contracts.CreatePasswordRecoveryEndpoint.Endpoint]	[0]	Отправлен запрос на восстановление пароля jimkrauz@gmail.com
+2024-11-26T00:58:13.1749708+03:00	INFO	[SPerfomance.Api.Features.Users.ConfirmPasswordRecoveryEndpoint.Endpoint]	[0]	Подтверждение восстановления пароля пользователя
+2024-11-26T00:58:13.8689307+03:00	FAIL	[Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware]	[UnhandledException]	An unhandled exception has occurred while executing the request.Microsoft.IdentityModel.Tokens.SecurityTokenSignatureKeyNotFoundException: IDX10503: Signature validation failed. Token does not have a kid. Keys tried: '[PII of type 'System.Text.StringBuilder' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]'. Number of keys in TokenValidationParameters: '1'. 
+Number of keys in Configuration: '0'. 
+Exceptions caught:
+ '[PII of type 'System.Text.StringBuilder' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]'.
+token: '[PII of type 'System.IdentityModel.Tokens.Jwt.JwtSecurityToken' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]'. See https://aka.ms/IDX10503 for details.
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateSignature(String token, JwtSecurityToken jwtToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateSignatureAndIssuerSecurityKey(String token, JwtSecurityToken jwtToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateJWS(String token, TokenValidationParameters validationParameters, BaseConfiguration currentConfiguration, SecurityToken& signatureValidatedToken, ExceptionDispatchInfo& exceptionThrown)
+--- End of stack trace from previous location ---
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, JwtSecurityToken outerToken, TokenValidationParameters validationParameters, SecurityToken& signatureValidatedToken)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, TokenValidationParameters validationParameters, SecurityToken& validatedToken)
+   at SPerfomance.Application.Services.Authentication.Models.Token..ctor(String token) in C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Shared\SPerfomance.Application\Services\Authentication\Models\Token.cs:line 23
+   at SPerfomance.Application.Services.Authentication.Models.PasswordRecoveryToken..ctor(String token) in C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Shared\SPerfomance.Application\Services\Authentication\Models\PasswordRecoveryToken.cs:line 15
+   at SPerfomance.Application.PasswordRecoveryContext.Commands.ResolvePasswordRecovery.ResolvePasswordRecoveryCommandHandler.Handle(ResolvePasswordRecoveryCommand command, CancellationToken ct) in C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Shared\SPerfomance.Application\PasswordRecoveryContext\Commands\ResolvePasswordRecovery\ResolvePasswordRecoveryCommandHandler.cs:line 32
+   at SPerfomance.Application.Common.CommandDispatcher.Dispatch[TCommand,TResult](TCommand command, CancellationToken ct) in C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Shared\SPerfomance.Application\Common\CommandDispatcher.cs:line 17
+   at SPerfomance.Api.Features.Users.ConfirmPasswordRecoveryEndpoint.Handler(String token, ICommandDispatcher dispatcher, IMailingService service, ILogger`1 logger, CancellationToken ct) in C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api\Features\Users\ConfirmPasswordRecoveryEndpoint.cs:line 30
+   at Microsoft.AspNetCore.Http.RequestDelegateFactory.ExecuteTaskResult[T](Task`1 task, HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.ResponseCompression.ResponseCompressionMiddleware.InvokeCore(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at SPerfomance.Api.MiddleWare.TaskCancellationTokenExtensions.Invoke(HttpContext context) in C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api\MiddleWare\TaskCancellationTokenExtensions.cs:line 9
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+
+2024-11-26T00:58:55.7518058+03:00	INFO	[SPerfomance.Api.Features.Users.ConfirmPasswordRecoveryEndpoint.Endpoint]	[0]	Подтверждение восстановления пароля пользователя
+2024-11-26T01:00:39.7937008+03:00	INFO	[SPerfomance.Api.Features.Users.ConfirmPasswordRecoveryEndpoint.Endpoint]	[0]	Подтверждение восстановления пароля пользователя
+2024-11-26T01:00:42.1458619+03:00	FAIL	[Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware]	[UnhandledException]	An unhandled exception has occurred while executing the request.Microsoft.IdentityModel.Tokens.SecurityTokenSignatureKeyNotFoundException: IDX10503: Signature validation failed. Token does not have a kid. Keys tried: '[PII of type 'System.Text.StringBuilder' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]'. Number of keys in TokenValidationParameters: '1'. 
+Number of keys in Configuration: '0'. 
+Exceptions caught:
+ '[PII of type 'System.Text.StringBuilder' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]'.
+token: '[PII of type 'System.IdentityModel.Tokens.Jwt.JwtSecurityToken' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]'. See https://aka.ms/IDX10503 for details.
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateSignature(String token, JwtSecurityToken jwtToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateSignatureAndIssuerSecurityKey(String token, JwtSecurityToken jwtToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateJWS(String token, TokenValidationParameters validationParameters, BaseConfiguration currentConfiguration, SecurityToken& signatureValidatedToken, ExceptionDispatchInfo& exceptionThrown)
+--- End of stack trace from previous location ---
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, JwtSecurityToken outerToken, TokenValidationParameters validationParameters, SecurityToken& signatureValidatedToken)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, TokenValidationParameters validationParameters, SecurityToken& validatedToken)
+   at SPerfomance.Application.Services.Authentication.Models.Token..ctor(String token) in C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Shared\SPerfomance.Application\Services\Authentication\Models\Token.cs:line 23
+   at SPerfomance.Application.Services.Authentication.Models.PasswordRecoveryToken..ctor(String token) in C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Shared\SPerfomance.Application\Services\Authentication\Models\PasswordRecoveryToken.cs:line 15
+   at SPerfomance.Api.Features.Users.ConfirmPasswordRecoveryEndpoint.Handler(String token, ICommandDispatcher dispatcher, IMailingService service, ILogger`1 logger, CancellationToken ct) in C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api\Features\Users\ConfirmPasswordRecoveryEndpoint.cs:line 40
+   at Microsoft.AspNetCore.Http.RequestDelegateFactory.ExecuteTaskResult[T](Task`1 task, HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.ResponseCompression.ResponseCompressionMiddleware.InvokeCore(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at SPerfomance.Api.MiddleWare.TaskCancellationTokenExtensions.Invoke(HttpContext context) in C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api\MiddleWare\TaskCancellationTokenExtensions.cs:line 9
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+
+2024-11-26T01:04:47.6158792+03:00	INFO	[SPerfomance.Api.Features.Users.CreatePasswordRecoveryEndpoint.Endpoint]	[0]	Запрос на восстановление пароля
+2024-11-26T01:04:49.2750622+03:00	INFO	[SPerfomance.Api.Features.Users.CreatePasswordRecoveryEndpoint.Endpoint]	[0]	Отправлен запрос на восстановление пароля jimkrauz@gmail.com
+2024-11-26T01:05:02.7017824+03:00	INFO	[SPerfomance.Api.Features.Users.ConfirmPasswordRecoveryEndpoint.Endpoint]	[0]	Подтверждение восстановления пароля пользователя
+2024-11-26T01:05:03.3039653+03:00	INFO	[SPerfomance.Api.Features.Users.ConfirmPasswordRecoveryEndpoint.Endpoint]	[0]	Восстановления пароля подтверждено jimkrauz@gmail.com
+2024-11-26T01:05:17.4359357+03:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизация пользователя
+2024-11-26T01:05:17.8899350+03:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизован пользователь jimkrauz@gmail.com admin admin Администратор
+2024-11-26T01:31:43.8682744+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Запрос на получение количества сессий контрольных недель
+2024-11-26T01:31:43.8682762+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Запрос на получение сессий контрольных недель постранично
+2024-11-26T01:31:45.4769318+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество контрольных недель 1
+2024-11-26T01:31:45.5539841+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает сессии контрольных недель постранично
+2024-11-26T01:31:51.7511676+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CloseAssignmentSession.Endpoint]	[0]	Запрос на закрытие сессии контрольной недели
+2024-11-26T01:31:52.1907570+03:00	FAIL	[Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware]	[UnhandledException]	An unhandled exception has occurred while executing the request.System.NullReferenceException: Object reference not set to an instance of an object.
+   at SPerfomance.DataAccess.Repositories.StudentGroupsRepository.SetNextSemester(StudentGroup group, CancellationToken ct) in C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Shared\SPerfomance.DataAccess\Repositories\StudentGroupsRepository.cs:line 39
+   at SPerfomance.Application.PerfomanceContext.AssignmentSessions.Commands.CloseAssignmentSession.AssignmentSessionStudentGroupActiveSemesterResolver.ResolveGroupsActiveSemesters(CancellationToken ct) in C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Shared\SPerfomance.Application\PerfomanceContext\AssignmentSessions\Commands\CloseAssignmentSession\AssignmentSessionStudentGroupActiveSemesterResolver.cs:line 18
+   at SPerfomance.Application.PerfomanceContext.AssignmentSessions.Commands.CloseAssignmentSession.CloseAssignmentSessionCommandHandler.Handle(CloseAssignmentSessionCommand command, CancellationToken ct) in C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Shared\SPerfomance.Application\PerfomanceContext\AssignmentSessions\Commands\CloseAssignmentSession\CloseAssignmentSessionCommandHandler.cs:line 30
+   at SPerfomance.Application.Common.CommandDispatcher.Dispatch[TCommand,TResult](TCommand command, CancellationToken ct) in C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Shared\SPerfomance.Application\Common\CommandDispatcher.cs:line 17
+   at SPerfomance.Api.Features.PerfomanceContext.Features.CloseAssignmentSession.Handler(String token, IUsersRepository users, IQueryDispatcher queryDispatcher, ICommandDispatcher commandDispatcher, IControlWeekReportRepository reports, ILogger`1 logger, Request request, CancellationToken ct) in C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api\Features\PerfomanceContext\Features\CloseAssignmentSession.cs:line 63
+   at Microsoft.AspNetCore.Http.RequestDelegateFactory.ExecuteTaskResult[T](Task`1 task, HttpContext httpContext)
+   at Microsoft.AspNetCore.Http.RequestDelegateFactory.<>c__DisplayClass102_2.<<HandleRequestBodyAndCompileRequestDelegateForJson>b__2>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.ResponseCompression.ResponseCompressionMiddleware.InvokeCore(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at SPerfomance.Api.MiddleWare.TaskCancellationTokenExtensions.Invoke(HttpContext context) in C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api\MiddleWare\TaskCancellationTokenExtensions.cs:line 9
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+
+2024-11-26T01:32:12.3094033+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Запрос на получение сессий контрольных недель постранично
+2024-11-26T01:32:12.3340349+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Запрос на получение количества сессий контрольных недель
+2024-11-26T01:32:12.3391522+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество контрольных недель 1
+2024-11-26T01:32:12.6005004+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает сессии контрольных недель постранично
+2024-11-26T01:34:35.9926546+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CloseAssignmentSession.Endpoint]	[0]	Запрос на закрытие сессии контрольной недели
+2024-11-26T01:34:37.9630526+03:00	FAIL	[Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware]	[UnhandledException]	An unhandled exception has occurred while executing the request.System.NullReferenceException: Object reference not set to an instance of an object.
+   at SPerfomance.DataAccess.Repositories.StudentGroupsRepository.SetNextSemester(StudentGroup group, CancellationToken ct) in C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Shared\SPerfomance.DataAccess\Repositories\StudentGroupsRepository.cs:line 39
+   at SPerfomance.Application.PerfomanceContext.AssignmentSessions.Commands.CloseAssignmentSession.AssignmentSessionStudentGroupActiveSemesterResolver.ResolveGroupsActiveSemesters(CancellationToken ct) in C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Shared\SPerfomance.Application\PerfomanceContext\AssignmentSessions\Commands\CloseAssignmentSession\AssignmentSessionStudentGroupActiveSemesterResolver.cs:line 18
+   at SPerfomance.Application.PerfomanceContext.AssignmentSessions.Commands.CloseAssignmentSession.CloseAssignmentSessionCommandHandler.Handle(CloseAssignmentSessionCommand command, CancellationToken ct) in C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Shared\SPerfomance.Application\PerfomanceContext\AssignmentSessions\Commands\CloseAssignmentSession\CloseAssignmentSessionCommandHandler.cs:line 30
+   at SPerfomance.Application.Common.CommandDispatcher.Dispatch[TCommand,TResult](TCommand command, CancellationToken ct) in C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Shared\SPerfomance.Application\Common\CommandDispatcher.cs:line 17
+   at SPerfomance.Api.Features.PerfomanceContext.Features.CloseAssignmentSession.Handler(String token, IUsersRepository users, IQueryDispatcher queryDispatcher, ICommandDispatcher commandDispatcher, IControlWeekReportRepository reports, ILogger`1 logger, Request request, CancellationToken ct) in C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api\Features\PerfomanceContext\Features\CloseAssignmentSession.cs:line 63
+   at Microsoft.AspNetCore.Http.RequestDelegateFactory.ExecuteTaskResult[T](Task`1 task, HttpContext httpContext)
+   at Microsoft.AspNetCore.Http.RequestDelegateFactory.<>c__DisplayClass102_2.<<HandleRequestBodyAndCompileRequestDelegateForJson>b__2>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.ResponseCompression.ResponseCompressionMiddleware.InvokeCore(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at SPerfomance.Api.MiddleWare.TaskCancellationTokenExtensions.Invoke(HttpContext context) in C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api\MiddleWare\TaskCancellationTokenExtensions.cs:line 9
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+
+2024-11-26T01:35:42.0060642+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Запрос на получение количества сессий контрольных недель
+2024-11-26T01:35:42.0136107+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Запрос на получение сессий контрольных недель постранично
+2024-11-26T01:35:42.0780817+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество контрольных недель 1
+2024-11-26T01:35:42.3579531+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает сессии контрольных недель постранично
+2024-11-26T01:35:45.4132264+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CloseAssignmentSession.Endpoint]	[0]	Запрос на закрытие сессии контрольной недели
+2024-11-26T01:42:00.4396801+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Запрос на получение сессий контрольных недель постранично
+2024-11-26T01:42:00.4396814+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Запрос на получение количества сессий контрольных недель
+2024-11-26T01:42:02.0301479+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество контрольных недель 1
+2024-11-26T01:42:02.1297408+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает сессии контрольных недель постранично
+2024-11-26T01:42:05.1648650+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CloseAssignmentSession.Endpoint]	[0]	Запрос на закрытие сессии контрольной недели
+2024-11-26T01:42:24.2964390+03:00	FAIL	[Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware]	[UnhandledException]	An unhandled exception has occurred while executing the request.System.NullReferenceException: Object reference not set to an instance of an object.
+   at SPerfomance.DataAccess.Repositories.StudentGroupsRepository.SetNextSemester(StudentGroup group, CancellationToken ct) in C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Shared\SPerfomance.DataAccess\Repositories\StudentGroupsRepository.cs:line 39
+   at SPerfomance.Application.PerfomanceContext.AssignmentSessions.Commands.CloseAssignmentSession.AssignmentSessionStudentGroupActiveSemesterResolver.ResolveGroupsActiveSemesters(CancellationToken ct) in C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Shared\SPerfomance.Application\PerfomanceContext\AssignmentSessions\Commands\CloseAssignmentSession\AssignmentSessionStudentGroupActiveSemesterResolver.cs:line 21
+   at SPerfomance.Application.PerfomanceContext.AssignmentSessions.Commands.CloseAssignmentSession.CloseAssignmentSessionCommandHandler.Handle(CloseAssignmentSessionCommand command, CancellationToken ct) in C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Shared\SPerfomance.Application\PerfomanceContext\AssignmentSessions\Commands\CloseAssignmentSession\CloseAssignmentSessionCommandHandler.cs:line 30
+   at SPerfomance.Application.Common.CommandDispatcher.Dispatch[TCommand,TResult](TCommand command, CancellationToken ct) in C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Shared\SPerfomance.Application\Common\CommandDispatcher.cs:line 17
+   at SPerfomance.Api.Features.PerfomanceContext.Features.CloseAssignmentSession.Handler(String token, IUsersRepository users, IQueryDispatcher queryDispatcher, ICommandDispatcher commandDispatcher, IControlWeekReportRepository reports, ILogger`1 logger, Request request, CancellationToken ct) in C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api\Features\PerfomanceContext\Features\CloseAssignmentSession.cs:line 63
+   at Microsoft.AspNetCore.Http.RequestDelegateFactory.ExecuteTaskResult[T](Task`1 task, HttpContext httpContext)
+   at Microsoft.AspNetCore.Http.RequestDelegateFactory.<>c__DisplayClass102_2.<<HandleRequestBodyAndCompileRequestDelegateForJson>b__2>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.ResponseCompression.ResponseCompressionMiddleware.InvokeCore(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at SPerfomance.Api.MiddleWare.TaskCancellationTokenExtensions.Invoke(HttpContext context) in C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api\MiddleWare\TaskCancellationTokenExtensions.cs:line 9
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+
+2024-11-26T01:43:12.6939577+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Запрос на получение количества сессий контрольных недель
+2024-11-26T01:43:12.6939601+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Запрос на получение сессий контрольных недель постранично
+2024-11-26T01:43:14.2327156+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество контрольных недель 1
+2024-11-26T01:43:14.3233074+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает сессии контрольных недель постранично
+2024-11-26T01:43:16.7081805+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CloseAssignmentSession.Endpoint]	[0]	Запрос на закрытие сессии контрольной недели
+2024-11-26T01:47:18.4548274+03:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизация пользователя
+2024-11-26T01:47:20.2857520+03:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизован пользователь jimkrauz@gmail.com admin admin Администратор
+2024-11-26T01:47:24.4409727+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Запрос на получение количества сессий контрольных недель
+2024-11-26T01:47:24.4444850+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Запрос на получение сессий контрольных недель постранично
+2024-11-26T01:47:24.6223995+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество контрольных недель 1
+2024-11-26T01:47:25.0432798+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает сессии контрольных недель постранично
+2024-11-26T01:47:31.2009870+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CloseAssignmentSession.Endpoint]	[0]	Запрос на закрытие сессии контрольной недели
+2024-11-26T01:50:55.6838236+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Запрос на получение количества сессий контрольных недель
+2024-11-26T01:50:55.6838249+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Запрос на получение сессий контрольных недель постранично
+2024-11-26T01:50:57.2378675+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество контрольных недель 1
+2024-11-26T01:50:57.3413560+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает сессии контрольных недель постранично
+2024-11-26T01:51:00.4183332+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CloseAssignmentSession.Endpoint]	[0]	Запрос на закрытие сессии контрольной недели
+2024-11-26T01:52:52.0095768+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Запрос на получение количества сессий контрольных недель
+2024-11-26T01:52:52.0095754+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Запрос на получение сессий контрольных недель постранично
+2024-11-26T01:52:53.5618592+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество контрольных недель 1
+2024-11-26T01:52:53.6464594+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает сессии контрольных недель постранично
+2024-11-26T01:52:56.5029176+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CloseAssignmentSession.Endpoint]	[0]	Запрос на закрытие сессии контрольной недели
+2024-11-26T01:54:21.9134626+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Запрос на получение количества сессий контрольных недель
+2024-11-26T01:54:21.9134613+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Запрос на получение сессий контрольных недель постранично
+2024-11-26T01:54:23.3182359+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество контрольных недель 1
+2024-11-26T01:54:23.6758776+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает сессии контрольных недель постранично
+2024-11-26T01:54:26.8488163+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CloseAssignmentSession.Endpoint]	[0]	Запрос на закрытие сессии контрольной недели
+2024-11-26T01:54:31.4634125+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CloseAssignmentSession.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 закрывает сессию контрольной недели
+2024-11-26T01:54:32.3351214+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CloseAssignmentSession.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 создаёт отчёт о контрольной неделе
+2024-11-26T01:54:32.3432556+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Запрос на получение сессий контрольных недель постранично
+2024-11-26T01:54:32.3506720+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает сессии контрольных недель постранично
+2024-11-26T01:54:44.3361194+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetAssignmentSessionReportsCount.Endpoint]	[0]	Запрос на получение количества отчётов контрольных недель
+2024-11-26T01:54:44.3380260+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessionReports.Endpoint]	[0]	Запрос на получение отчетов контрольных недель постранично
+2024-11-26T01:54:44.4298031+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessionReports.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает отчёты контрольных недель
+2024-11-26T01:54:44.4993227+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetAssignmentSessionReportsCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество отчётов контрольных недель в количестве 1
+2024-11-26T01:55:00.1076886+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetAssignmentSessionReportById.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает отчёт о контрольной неделе
+2024-11-26T01:55:09.8019028+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessionReports.Endpoint]	[0]	Запрос на получение отчетов контрольных недель постранично
+2024-11-26T01:55:09.8036613+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetAssignmentSessionReportsCount.Endpoint]	[0]	Запрос на получение количества отчётов контрольных недель
+2024-11-26T01:55:09.8105337+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetAssignmentSessionReportsCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество отчётов контрольных недель в количестве 1
+2024-11-26T01:55:10.0189018+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessionReports.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает отчёты контрольных недель
+2024-11-26T01:55:11.7844365+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetCourseReportsByReportId.Endpoint]	[0]	Запрос на получение отчётов контрольной недели по курсам
+2024-11-26T01:55:11.8385979+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetCourseReportsByReportId.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает отчёт о курсах контрольной недели
+2024-11-26T01:55:17.5208113+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-11-26T01:55:17.5219324+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-11-26T01:55:17.5294015+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 14
+2024-11-26T01:55:17.7170234+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 10
+2024-11-26T01:55:27.7606550+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-11-26T01:55:27.7727501+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 10

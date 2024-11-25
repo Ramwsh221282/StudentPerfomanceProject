@@ -19,12 +19,11 @@ public class Token
             return;
         }
 
-        SecurityToken validatedToken;
         TokenValidationParameters parameters = BuildParameters();
         ClaimsPrincipal principal = new JwtSecurityTokenHandler().ValidateToken(
             token,
             parameters,
-            out validatedToken
+            out _
         );
         var userIdPrincipal = principal.FindFirst("userId");
         var lifeTimePrincipal = principal.FindFirst("exp");

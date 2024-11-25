@@ -63,7 +63,8 @@ public static class UsersRegistration
                 request.User.Patronymic,
                 request.User.Email,
                 request.User.Role
-            )
+            ),
+            ct
         );
 
         if (user.IsFailure)

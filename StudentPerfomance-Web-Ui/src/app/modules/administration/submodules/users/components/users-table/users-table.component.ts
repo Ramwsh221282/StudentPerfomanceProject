@@ -84,4 +84,30 @@ export class UsersTableComponent implements OnInit {
       .subscribe();
     this._paginationService.refreshPagination();
   }
+
+  protected fetchOnPageChanged(): void {
+    this._dataService
+      .fetch()
+      .pipe(
+        tap((response) => {
+          this.userRecords = response;
+          for (let user of this.userRecords) {
+            user.lastTimeOnline = this._datePipe.transform(
+              user.lastTimeOnline,
+              'dd-MM-yyyy',
+            );
+            user.registeredDate = this._datePipe.transform(
+              user.registeredDate,
+              'dd-MM-yyyy',
+            );
+          }
+        }),
+        catchError((error) => {
+          this._notificationService.SetMessage = error.error;
+          this.isFailure = true;
+          return new Observable();
+        }),
+      )
+      .subscribe();
+  }
 }

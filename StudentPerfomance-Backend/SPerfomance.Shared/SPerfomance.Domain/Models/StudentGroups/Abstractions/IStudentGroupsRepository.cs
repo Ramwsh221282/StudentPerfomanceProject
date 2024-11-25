@@ -12,6 +12,8 @@ public interface IStudentGroupsRepository
 
     public Task DeattachEducationPlanId(StudentGroup group, CancellationToken ct = default);
 
+    public Task SetNextSemester(StudentGroup group, CancellationToken ct = default);
+
     public Task UpdateMerge(
         StudentGroup target,
         StudentGroup merged,

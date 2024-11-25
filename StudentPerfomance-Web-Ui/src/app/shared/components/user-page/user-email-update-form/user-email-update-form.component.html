@@ -1,0 +1,12 @@
+<div class="email-update-container">
+  <div class="email-update-header-wrapper">
+    <strong class="email-update-header">Изменение почты</strong>
+  </div>
+  <div class="email-update-content">
+    <input class="general-input" type="password" [(ngModel)]="currentPassword" placeholder="Введите пароль авторизации">
+    <input class="general-input" [(ngModel)]="Email" placeholder="Введите новую почту">
+  </div>
+  <div class="button-container">
+    <button class="accept-button-outline" (click)="submit()">Подтвердить</button>
+  </div>
+</div>

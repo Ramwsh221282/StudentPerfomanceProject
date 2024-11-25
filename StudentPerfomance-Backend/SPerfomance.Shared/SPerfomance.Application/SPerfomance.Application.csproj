@@ -19,14 +19,17 @@
     <Compile Remove="PerfomanceContext\AssignmentSessions\Services\AssignmentSessionViewService\**" />
     <Compile Remove="PerfomanceContext\AssignmentSessions\Services\AssignmentSessionViewServices\Handlers\CompositeParts\AssignmentSessionStudentViewComposite.cs" />
     <Compile Remove="PerfomanceContext\AssignmentSessions\Services\AssignmentSessionViewServices\Handlers\CompositeParts\AssignmentSessionDisciplineViewComposite.cs" />
+    <Compile Remove="Users\Commands\RequestUserPasswordReset\**" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Remove="PerfomanceContext\AssignmentSessions\Services\AssignmentSessionViewService\**" />
+    <EmbeddedResource Remove="Users\Commands\RequestUserPasswordReset\**" />
   </ItemGroup>
 
   <ItemGroup>
     <None Remove="PerfomanceContext\AssignmentSessions\Services\AssignmentSessionViewService\**" />
+    <None Remove="Users\Commands\RequestUserPasswordReset\**" />
   </ItemGroup>
 
 </Project>

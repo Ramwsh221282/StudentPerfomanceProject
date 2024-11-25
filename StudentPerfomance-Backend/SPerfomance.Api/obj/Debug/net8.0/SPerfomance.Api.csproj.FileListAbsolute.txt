@@ -255,3 +255,7 @@ C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backe
 C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Binder.dll
 C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api\bin\Debug\net8.0\Microsoft.Extensions.Logging.Configuration.dll
 C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api\bin\Debug\net8.0\NReco.Logging.File.dll
+C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api\bin\Debug\net8.0\LiteDB.dll
+C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api\bin\Debug\net8.0\LiteDB.Async.dll
+C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api\bin\Debug\net8.0\SPerfomance.PasswordRecovery.DataAccess.dll
+C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api\bin\Debug\net8.0\SPerfomance.PasswordRecovery.DataAccess.pdb

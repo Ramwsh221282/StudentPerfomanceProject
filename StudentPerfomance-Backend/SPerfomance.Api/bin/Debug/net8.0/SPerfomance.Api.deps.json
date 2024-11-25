@@ -12,6 +12,7 @@
           "NReco.Logging.File": "1.2.2",
           "SPerfomance.Application": "1.0.0",
           "SPerfomance.DataAccess": "1.0.0",
+          "SPerfomance.PasswordRecovery.DataAccess": "1.0.0",
           "SPerfomance.Statistics.DataAccess": "1.0.0",
           "Swashbuckle.AspNetCore": "6.4.0"
         },
@@ -24,6 +25,25 @@
           "lib/net6.0/BCrypt.Net-Next.dll": {
             "assemblyVersion": "4.0.3.0",
             "fileVersion": "4.0.3.0"
+          }
+        }
+      },
+      "LiteDB/5.0.20": {
+        "runtime": {
+          "lib/netstandard2.0/LiteDB.dll": {
+            "assemblyVersion": "5.0.20.0",
+            "fileVersion": "5.0.20.0"
+          }
+        }
+      },
+      "LiteDB.Async/0.1.8": {
+        "dependencies": {
+          "LiteDB": "5.0.20"
+        },
+        "runtime": {
+          "lib/netstandard2.0/LiteDB.Async.dll": {
+            "assemblyVersion": "0.1.8.0",
+            "fileVersion": "0.1.8.0"
           }
         }
       },
@@ -548,6 +568,15 @@
           "SPerfomance.Domain.dll": {}
         }
       },
+      "SPerfomance.PasswordRecovery.DataAccess/1.0.0": {
+        "dependencies": {
+          "LiteDB.Async": "0.1.8",
+          "SPerfomance.Application": "1.0.0"
+        },
+        "runtime": {
+          "SPerfomance.PasswordRecovery.DataAccess.dll": {}
+        }
+      },
       "SPerfomance.Statistics.DataAccess/1.0.0": {
         "dependencies": {
           "SPerfomance.Application": "1.0.0",
@@ -571,6 +600,20 @@
       "sha512": "sha512-W+U9WvmZQgi5cX6FS5GDtDoPzUCV4LkBLkywq/kRZhuDwcbavOzcDAr3LXJFqHUi952Yj3LEYoWW0jbEUQChsA==",
       "path": "bcrypt.net-next/4.0.3",
       "hashPath": "bcrypt.net-next.4.0.3.nupkg.sha512"
+    },
+    "LiteDB/5.0.20": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/tUhRpJvx1sXJni7cbXPpctFHH1vifoJlg/QB+Cw22IYWqzbC3MAMOy/11limMHmZSPk6NU6JRA+lwqLy2f1Xw==",
+      "path": "litedb/5.0.20",
+      "hashPath": "litedb.5.0.20.nupkg.sha512"
+    },
+    "LiteDB.Async/0.1.8": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-uZyLJz5AEMSVbtyFM7LpU+GcMnAsAqDn1Q43p2nCw3chrtkKv8u3O0fyMqdxIGE32DBudRC9HpanpHuacnJ/fQ==",
+      "path": "litedb.async/0.1.8",
+      "hashPath": "litedb.async.0.1.8.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Authentication.JwtBearer/8.0.10": {
       "type": "package",
@@ -877,6 +920,11 @@
       "sha512": ""
     },
     "SPerfomance.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SPerfomance.PasswordRecovery.DataAccess/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

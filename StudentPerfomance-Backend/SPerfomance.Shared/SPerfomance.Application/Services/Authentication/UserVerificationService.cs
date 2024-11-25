@@ -18,4 +18,16 @@ public class UserVerificationService(IUsersRepository repository)
         await repository.UpdateLoginDate(user, ct);
         return user.Role == role;
     }
+
+    public async Task<bool> IsVerifiedAny(Token token, CancellationToken ct = default)
+    {
+        if (token.IsExpired)
+            return false;
+
+        var user = await repository.GetById(token.UserId, ct);
+        if (user == null)
+            return false;
+        user.UpdateLoginDate();
+        return true;
+    }
 }

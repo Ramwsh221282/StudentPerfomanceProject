@@ -15,12 +15,14 @@
   <ItemGroup>
     <ProjectReference Include="..\SPerfomance.Shared\SPerfomance.Application\SPerfomance.Application.csproj" />
     <ProjectReference Include="..\SPerfomance.Shared\SPerfomance.DataAccess\SPerfomance.DataAccess.csproj" />
+    <ProjectReference Include="..\SPerfomance.Shared\SPerfomance.PasswordRecovery.DataAccess\SPerfomance.PasswordRecovery.DataAccess.csproj" />
     <ProjectReference Include="..\SPerfomance.Shared\SPerfomance.Statistics.DataAccess\SPerfomance.Statistics.DataAccess.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Compile Remove="HostedServices\**" />
     <Compile Remove="Features\PerfomanceContext\Features\GetAssignmentSessionReport.cs" />
+    <Compile Remove="Features\Users\ResetPasswordFeature.cs" />
   </ItemGroup>
 
   <ItemGroup>

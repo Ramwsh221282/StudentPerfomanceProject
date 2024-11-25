@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPerfomance.Tests", "SPerfo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPerfomance.Statistics.DataAccess", "SPerfomance.Shared\SPerfomance.Statistics.DataAccess\SPerfomance.Statistics.DataAccess.csproj", "{FBA9DC68-BAAA-4C52-A5CC-13FF35A7395F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPerfomance.PasswordRecovery.DataAccess", "SPerfomance.Shared\SPerfomance.PasswordRecovery.DataAccess\SPerfomance.PasswordRecovery.DataAccess.csproj", "{B40B6C56-40C6-458A-AA52-516AB87F3F57}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{FBA9DC68-BAAA-4C52-A5CC-13FF35A7395F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FBA9DC68-BAAA-4C52-A5CC-13FF35A7395F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FBA9DC68-BAAA-4C52-A5CC-13FF35A7395F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B40B6C56-40C6-458A-AA52-516AB87F3F57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B40B6C56-40C6-458A-AA52-516AB87F3F57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B40B6C56-40C6-458A-AA52-516AB87F3F57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B40B6C56-40C6-458A-AA52-516AB87F3F57}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -56,5 +62,6 @@ Global
 		{A3ED0078-2F32-4C2C-B15B-EBD5598C2DB9} = {3D01BD29-2F3B-4C95-8935-62CB2107C629}
 		{E8CE6DB0-7528-4D89-BFB7-1FD07CF7C4AC} = {3D01BD29-2F3B-4C95-8935-62CB2107C629}
 		{FBA9DC68-BAAA-4C52-A5CC-13FF35A7395F} = {3D01BD29-2F3B-4C95-8935-62CB2107C629}
+		{B40B6C56-40C6-458A-AA52-516AB87F3F57} = {3D01BD29-2F3B-4C95-8935-62CB2107C629}
 	EndGlobalSection
 EndGlobal

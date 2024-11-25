@@ -19,10 +19,14 @@
       <button type="button" (click)="submit()" class="accept-button-modal">
         Авторизоваться
       </button>
-      <button class="warning-button-outline">Восстановить пароль</button>
+      <button class="warning-button-outline" (click)="isRecoveryModalVisible = true">Восстановить пароль</button>
     </div>
   </form>
 </section>
+<div id="recovery-modal-renderer" *ngIf="isRecoveryModalVisible">
+  <app-password-recovery-modal (visibilityEmitter)="isRecoveryModalVisible = false" (successEmitter)="isSuccess = true"
+                               (failureEmitter)="isFailure = true"></app-password-recovery-modal>
+</div>
 <div id="success-modal-renderer" *ngIf="isSuccess">
   <app-success-result-notification
     [message]="notificationService.Message"

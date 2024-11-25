@@ -3,7 +3,17 @@
     <strong class="user-card-form-header">Настройка учетной записи:</strong>
   </div>
   <div class="button-container">
-    <div class="accept-button-outline">Изменить почту</div>
-    <div class="accept-button-outline">Изменить пароль</div>
+    <div (click)="isEmailUpdateContainerVisible = true" class="accept-button-outline">Изменить почту</div>
+    <div (click)="isPasswordUpdateContainerVisible = true" class="accept-button-outline">Изменить пароль</div>
   </div>
 </div>
+<app-user-email-update-form *ngIf="isEmailUpdateContainerVisible" (successEmitter)="isSuccess=true"
+                            (failureEmitter)="isFailure=true"></app-user-email-update-form>
+<app-user-password-update-form *ngIf="isPasswordUpdateContainerVisible" (successEmitter)="isSuccess = true"
+                               (failureEmitter)="isFailure = true"></app-user-password-update-form>
+<app-success-result-notification [message]="notificationService.Message"
+                                 *ngIf="isSuccess"
+                                 (visibilityEmitter)="isSuccess = false"></app-success-result-notification>
+<app-failure-result-notification [message]="notificationService.Message"
+                                 *ngIf="isFailure"
+                                 (visibilityEmitter)="isFailure=false"></app-failure-result-notification>

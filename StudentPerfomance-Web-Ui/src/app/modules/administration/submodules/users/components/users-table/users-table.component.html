@@ -27,7 +27,7 @@
     </div>
   </div>
   <div class="pagination-wrapper">
-    <app-users-table-pagination (paginationRefresh)="fetchUsers()"></app-users-table-pagination>
+    <app-users-table-pagination (paginationRefresh)="fetchOnPageChanged()"></app-users-table-pagination>
   </div>
 </div>
 <div id="success-modal-renderer" *ngIf="isSuccess">

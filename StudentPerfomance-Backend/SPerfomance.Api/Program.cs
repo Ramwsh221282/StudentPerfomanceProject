@@ -35,11 +35,13 @@ builder.Services.AddEndpoints();
 builder.Services.AddSwaggerGen(options =>
     options.CustomSchemaIds(t => t.FullName?.Replace('+', '.'))
 );
+
 builder.Services.AddCors(options =>
 {
+    var origins = builder.Configuration.GetSection("Cors").GetSection("Origins").Get<string[]>()!;
     options.AddDefaultPolicy(policy =>
     {
-        policy.WithOrigins("http://localhost:4200");
+        policy.WithOrigins(origins);
         policy.AllowAnyHeader();
         policy.AllowAnyMethod();
     });
