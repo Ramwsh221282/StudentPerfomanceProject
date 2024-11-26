@@ -6,6 +6,9 @@
     <button class="accept-button" (click)="startFilter()">
       Отфильтровать список
     </button>
+    <button class="accept-button-outline" [routerLink]="['/education-directions-info']">
+      Документация
+    </button>
   </div>
   <div class="education-direction-table-container">
     <div class="education-direction-table-grid">
@@ -18,12 +21,12 @@
       </div>
 
       @for (direction of directions; track direction.code) {
-      <app-education-directions-table-row
-        [Direction]="direction"
-        (failureEmitter)="isFailure = true"
-        (successEmitter)="isSuccess = true"
-        (refreshEmitter)="ngOnInit()"
-      ></app-education-directions-table-row>
+        <app-education-directions-table-row
+          [Direction]="direction"
+          (failureEmitter)="isFailure = true"
+          (successEmitter)="isSuccess = true"
+          (refreshEmitter)="ngOnInit()"
+        ></app-education-directions-table-row>
       }
     </div>
   </div>

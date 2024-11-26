@@ -3,7 +3,9 @@
     <button class="accept-button" (click)="_isCreationVisible = true">
       Создать новую контрольную неделю
     </button>
-    <button class="accept-button">Отфильтровать список</button>
+    <button class="accept-button-outline" [routerLink]="['/assignment-sessions-info']">
+      Документация
+    </button>
   </div>
   <div class="assignment-sessions-table-container">
     <div class="assignment-sessions-table-grid">

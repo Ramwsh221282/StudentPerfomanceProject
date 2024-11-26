@@ -6,6 +6,9 @@
     <button class="accept-button" (click)="filterModalVisibility = true">
       Отфильтровать список
     </button>
+    <button class="accept-button-outline" [routerLink]="['/departments-info']">
+      Документация
+    </button>
   </div>
   <div class="departments-table-container">
     <div class="departments-table-grid">
@@ -16,12 +19,12 @@
         <strong>Действия</strong>
       </div>
       @for (department of departments; track department.name) {
-      <app-department-table-row
-        [department]="department"
-        (emitFailure)="this.isFailure = true"
-        (emitSuccess)="this.isSuccess = true"
-        (emitRefresh)="this.ngOnInit()"
-      ></app-department-table-row>
+        <app-department-table-row
+          [department]="department"
+          (emitFailure)="this.isFailure = true"
+          (emitSuccess)="this.isSuccess = true"
+          (emitRefresh)="this.ngOnInit()"
+        ></app-department-table-row>
       }
     </div>
   </div>

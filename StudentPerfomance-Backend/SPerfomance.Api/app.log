@@ -632,3 +632,394 @@ token: '[PII of type 'System.IdentityModel.Tokens.Jwt.JwtSecurityToken' is hidde
 2024-11-26T01:55:17.7170234+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 10
 2024-11-26T01:55:27.7606550+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
 2024-11-26T01:55:27.7727501+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 10
+2024-11-26T12:58:56.3507819+03:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизация пользователя
+2024-11-26T12:58:58.3975740+03:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизован пользователь jimkrauz@gmail.com admin admin Администратор
+2024-11-26T13:04:51.0678896+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-26T13:04:51.0725353+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Запрос на получение списка направлений подготовки постранично
+2024-11-26T13:04:51.2306516+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-26T13:04:51.4520092+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Получен список направлений подготовок в количестве: 5
+2024-11-26T13:04:56.4631944+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-26T13:04:56.4644046+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Запрос на получение списка направлений подготовки постранично
+2024-11-26T13:04:56.4709430+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-26T13:04:56.6385015+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Получен список направлений подготовок в количестве: 5
+2024-11-26T13:05:05.6014398+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-26T13:05:05.6025502+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Запрос на получение списка направлений подготовки постранично
+2024-11-26T13:05:05.6154314+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Получен список направлений подготовок в количестве: 5
+2024-11-26T13:05:05.7742737+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-26T13:05:20.3865056+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-26T13:05:20.3878341+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Запрос на получение списка направлений подготовки постранично
+2024-11-26T13:05:20.3939748+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-26T13:05:20.5579960+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Получен список направлений подготовок в количестве: 5
+2024-11-26T13:05:37.9033869+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-26T13:05:37.9371582+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Запрос на получение списка направлений подготовки постранично
+2024-11-26T13:05:37.9416197+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-26T13:05:38.1022103+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Получен список направлений подготовок в количестве: 5
+2024-11-26T13:06:54.5403200+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Запрос на получение списка направлений подготовки постранично
+2024-11-26T13:06:54.5414570+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-26T13:06:54.5500982+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-26T13:06:54.7191002+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Получен список направлений подготовок в количестве: 5
+2024-11-26T13:09:25.2227745+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Запрос на получение списка направлений подготовки постранично
+2024-11-26T13:09:25.2239975+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-26T13:09:25.2296840+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-26T13:09:25.3944870+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Получен список направлений подготовок в количестве: 5
+2024-11-26T13:09:28.1119018+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-26T13:09:28.1451736+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Запрос на получение списка направлений подготовки постранично
+2024-11-26T13:09:28.1501833+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-26T13:09:28.3130443+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Получен список направлений подготовок в количестве: 5
+2024-11-26T13:10:06.3295891+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-26T13:10:06.3313098+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Запрос на получение списка направлений подготовки постранично
+2024-11-26T13:10:06.3418234+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-26T13:10:06.4971353+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Получен список направлений подготовок в количестве: 5
+2024-11-26T13:10:22.3774931+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Запрос на получение списка направлений подготовки постранично
+2024-11-26T13:10:22.3784480+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-26T13:10:22.3944111+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Получен список направлений подготовок в количестве: 5
+2024-11-26T13:10:22.5415766+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-26T13:10:34.5257707+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Запрос на получение списка направлений подготовки постранично
+2024-11-26T13:10:34.5268252+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-26T13:10:34.5397483+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Получен список направлений подготовок в количестве: 5
+2024-11-26T13:10:34.6931345+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-26T13:10:39.9058151+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-26T13:10:39.9069086+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Запрос на получение списка направлений подготовки постранично
+2024-11-26T13:10:39.9192757+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Получен список направлений подготовок в количестве: 5
+2024-11-26T13:10:40.0790834+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-26T13:14:45.3140487+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-26T13:14:45.3151681+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Запрос на получение списка направлений подготовки постранично
+2024-11-26T13:14:45.3233784+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-26T13:14:45.4876963+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Получен список направлений подготовок в количестве: 5
+2024-11-26T13:15:29.3503231+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Запрос на получение списка направлений подготовки постранично
+2024-11-26T13:15:29.3512498+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-26T13:15:29.3686223+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Получен список направлений подготовок в количестве: 5
+2024-11-26T13:15:29.5222465+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-26T13:16:52.1562159+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Запрос на получение списка направлений подготовки постранично
+2024-11-26T13:16:52.1573912+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-26T13:16:52.1661966+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-26T13:16:52.3272876+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Получен список направлений подготовок в количестве: 5
+2024-11-26T13:17:39.2032268+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-26T13:17:39.2044889+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Запрос на получение списка направлений подготовки постранично
+2024-11-26T13:17:39.2106459+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-26T13:17:39.3705757+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Получен список направлений подготовок в количестве: 5
+2024-11-26T13:18:09.5720843+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-26T13:18:09.5732977+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Запрос на получение списка направлений подготовки постранично
+2024-11-26T13:18:09.5829160+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-26T13:18:09.7485965+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Получен список направлений подготовок в количестве: 5
+2024-11-26T13:20:10.0144700+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-26T13:20:10.0155610+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Запрос на получение списка направлений подготовки постранично
+2024-11-26T13:20:10.0238715+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-26T13:20:10.1808098+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Получен список направлений подготовок в количестве: 5
+2024-11-26T13:20:40.4345741+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-26T13:20:40.4365987+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Запрос на получение списка направлений подготовки постранично
+2024-11-26T13:20:40.4468730+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-26T13:20:40.6087370+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Получен список направлений подготовок в количестве: 5
+2024-11-26T13:22:40.5172157+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-26T13:22:40.5187525+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Запрос на получение списка направлений подготовки постранично
+2024-11-26T13:22:40.5376700+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Получен список направлений подготовок в количестве: 5
+2024-11-26T13:22:40.6836905+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-26T13:23:31.3954000+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-26T13:23:31.3976175+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Запрос на получение списка направлений подготовки постранично
+2024-11-26T13:23:31.4095904+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-26T13:23:31.5657711+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Получен список направлений подготовок в количестве: 5
+2024-11-26T13:24:00.7136099+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-26T13:24:00.7146891+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Запрос на получение списка направлений подготовки постранично
+2024-11-26T13:24:00.7230016+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-26T13:24:00.8800389+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Получен список направлений подготовок в количестве: 5
+2024-11-26T13:24:12.6519542+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Запрос на получение списка направлений подготовки постранично
+2024-11-26T13:24:12.6529926+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-26T13:24:12.6656311+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Получен список направлений подготовок в количестве: 5
+2024-11-26T13:24:12.8175173+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-26T13:25:16.9212669+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-26T13:25:16.9227125+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Запрос на получение списка направлений подготовки постранично
+2024-11-26T13:25:16.9333567+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-26T13:25:17.0937615+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Получен список направлений подготовок в количестве: 5
+2024-11-26T13:27:44.3578680+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-26T13:27:44.3956916+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Запрос на получение списка направлений подготовки постранично
+2024-11-26T13:27:44.4009257+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-26T13:27:44.5635389+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Получен список направлений подготовок в количестве: 5
+2024-11-26T13:27:59.6565992+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-26T13:27:59.6579170+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Запрос на получение списка направлений подготовки постранично
+2024-11-26T13:27:59.6638819+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-26T13:27:59.8313400+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Получен список направлений подготовок в количестве: 5
+2024-11-26T13:29:13.9249390+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Запрос на получение списка направлений подготовки постранично
+2024-11-26T13:29:13.9260956+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-26T13:29:13.9449234+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Получен список направлений подготовок в количестве: 5
+2024-11-26T13:29:14.1001891+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-26T13:34:49.8877805+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Запрос на получение списка направлений подготовки постранично
+2024-11-26T13:34:49.8892023+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-26T13:34:49.9082747+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Получен список направлений подготовок в количестве: 5
+2024-11-26T13:34:50.0646357+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-26T13:41:01.7468203+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-26T13:41:01.7482389+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Запрос на получение списка направлений подготовки постранично
+2024-11-26T13:41:01.7598121+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-26T13:41:01.9207295+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Получен список направлений подготовок в количестве: 5
+2024-11-26T13:41:33.3934979+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-26T13:41:33.3965353+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Запрос на получение списка направлений подготовки постранично
+2024-11-26T13:41:33.4042994+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-26T13:41:33.5743068+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Получен список направлений подготовок в количестве: 5
+2024-11-26T13:41:37.3273601+03:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Запрос на получение учебных планов постранично
+2024-11-26T13:41:37.3365772+03:00	INFO	[SPerfomance.Api.Features.EducationPlans.CountEducationPlans.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество учебных планов 10
+2024-11-26T13:41:37.5178902+03:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает учебные планы постранично 10
+2024-11-26T13:41:45.4112465+03:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Запрос на получение учебных планов постранично
+2024-11-26T13:41:45.4157655+03:00	INFO	[SPerfomance.Api.Features.EducationPlans.CountEducationPlans.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество учебных планов 10
+2024-11-26T13:41:45.5831546+03:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает учебные планы постранично 10
+2024-11-26T13:41:49.6958137+03:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Запрос на получение учебных планов постранично
+2024-11-26T13:41:49.7067255+03:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает учебные планы постранично 10
+2024-11-26T13:41:49.8593091+03:00	INFO	[SPerfomance.Api.Features.EducationPlans.CountEducationPlans.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество учебных планов 10
+2024-11-26T13:42:54.1888576+03:00	INFO	[SPerfomance.Api.Features.EducationPlans.CountEducationPlans.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество учебных планов 10
+2024-11-26T13:42:54.1900304+03:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Запрос на получение учебных планов постранично
+2024-11-26T13:42:54.2036867+03:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает учебные планы постранично 10
+2024-11-26T13:42:58.7183084+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-26T13:42:58.7504612+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Запрос на получение списка направлений подготовки постранично
+2024-11-26T13:42:58.7914301+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Получен список направлений подготовок в количестве: 5
+2024-11-26T13:42:58.9108211+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-26T13:43:11.8340209+03:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Запрос на получение учебных планов постранично
+2024-11-26T13:43:11.8387304+03:00	INFO	[SPerfomance.Api.Features.EducationPlans.CountEducationPlans.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество учебных планов 10
+2024-11-26T13:43:11.9988317+03:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает учебные планы постранично 10
+2024-11-26T13:43:15.9490408+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Запрос на получение списка направлений подготовки постранично
+2024-11-26T13:43:15.9500563+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-26T13:43:15.9606958+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Получен список направлений подготовок в количестве: 5
+2024-11-26T13:43:16.1092545+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-26T13:43:32.7076029+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-26T13:43:32.7086740+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Запрос на получение списка направлений подготовки постранично
+2024-11-26T13:43:32.7195682+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Получен список направлений подготовок в количестве: 5
+2024-11-26T13:43:32.8783624+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-26T13:43:37.6092413+03:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Запрос на получение учебных планов постранично
+2024-11-26T13:43:37.6148683+03:00	INFO	[SPerfomance.Api.Features.EducationPlans.CountEducationPlans.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество учебных планов 10
+2024-11-26T13:43:37.7785024+03:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает учебные планы постранично 10
+2024-11-26T13:43:41.0736331+03:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Запрос на получение учебных планов постранично
+2024-11-26T13:43:41.0860214+03:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает учебные планы постранично 10
+2024-11-26T13:43:41.2316970+03:00	INFO	[SPerfomance.Api.Features.EducationPlans.CountEducationPlans.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество учебных планов 10
+2024-11-26T13:46:25.2736548+03:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Запрос на получение учебных планов постранично
+2024-11-26T13:46:25.2880061+03:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает учебные планы постранично 10
+2024-11-26T13:46:25.4436946+03:00	INFO	[SPerfomance.Api.Features.EducationPlans.CountEducationPlans.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество учебных планов 10
+2024-11-26T13:47:17.8156404+03:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Запрос на получение учебных планов постранично
+2024-11-26T13:47:17.8233386+03:00	INFO	[SPerfomance.Api.Features.EducationPlans.CountEducationPlans.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество учебных планов 10
+2024-11-26T13:47:17.9918202+03:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает учебные планы постранично 10
+2024-11-26T13:52:26.9934470+03:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Запрос на получение учебных планов постранично
+2024-11-26T13:52:27.0079711+03:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает учебные планы постранично 10
+2024-11-26T13:52:27.1614026+03:00	INFO	[SPerfomance.Api.Features.EducationPlans.CountEducationPlans.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество учебных планов 10
+2024-11-26T13:55:42.0660234+03:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Запрос на получение учебных планов постранично
+2024-11-26T13:55:42.0709823+03:00	INFO	[SPerfomance.Api.Features.EducationPlans.CountEducationPlans.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество учебных планов 10
+2024-11-26T13:55:42.2427614+03:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает учебные планы постранично 10
+2024-11-26T13:56:13.2883203+03:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Запрос на получение учебных планов постранично
+2024-11-26T13:56:13.3035540+03:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает учебные планы постранично 10
+2024-11-26T13:56:13.4532552+03:00	INFO	[SPerfomance.Api.Features.EducationPlans.CountEducationPlans.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество учебных планов 10
+2024-11-26T13:56:16.2928452+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Запрос на получение количества сессий контрольных недель
+2024-11-26T13:56:16.2939557+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Запрос на получение сессий контрольных недель постранично
+2024-11-26T13:56:16.3019912+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество контрольных недель 0
+2024-11-26T13:56:16.5507977+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает сессии контрольных недель постранично
+2024-11-26T13:56:25.4096206+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Запрос на получение сессий контрольных недель постранично
+2024-11-26T13:56:25.4109919+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Запрос на получение количества сессий контрольных недель
+2024-11-26T13:56:25.4164078+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество контрольных недель 0
+2024-11-26T13:56:25.5716344+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает сессии контрольных недель постранично
+2024-11-26T13:58:48.7959151+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Запрос на получение сессий контрольных недель постранично
+2024-11-26T13:58:48.7968905+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Запрос на получение количества сессий контрольных недель
+2024-11-26T13:58:48.8043362+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество контрольных недель 0
+2024-11-26T13:58:48.9615945+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает сессии контрольных недель постранично
+2024-11-26T13:59:15.3860547+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Запрос на получение сессий контрольных недель постранично
+2024-11-26T13:59:15.3872467+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Запрос на получение количества сессий контрольных недель
+2024-11-26T13:59:15.3953340+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество контрольных недель 0
+2024-11-26T13:59:15.5510522+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает сессии контрольных недель постранично
+2024-11-26T13:59:46.3976011+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Запрос на получение количества сессий контрольных недель
+2024-11-26T13:59:46.3987902+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Запрос на получение сессий контрольных недель постранично
+2024-11-26T13:59:46.4057722+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает сессии контрольных недель постранично
+2024-11-26T13:59:46.5545203+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество контрольных недель 0
+2024-11-26T13:59:59.5259604+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Запрос на получение количества сессий контрольных недель
+2024-11-26T13:59:59.5270828+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Запрос на получение сессий контрольных недель постранично
+2024-11-26T13:59:59.5321938+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество контрольных недель 0
+2024-11-26T13:59:59.6924063+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает сессии контрольных недель постранично
+2024-11-26T14:19:41.1314193+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Запрос на получение сессий контрольных недель постранично
+2024-11-26T14:19:41.1325292+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Запрос на получение количества сессий контрольных недель
+2024-11-26T14:19:41.1472289+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает сессии контрольных недель постранично
+2024-11-26T14:19:41.2989967+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество контрольных недель 0
+2024-11-26T14:19:58.6283117+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Запрос на получение сессий контрольных недель постранично
+2024-11-26T14:19:58.6294695+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Запрос на получение количества сессий контрольных недель
+2024-11-26T14:19:58.6349827+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество контрольных недель 0
+2024-11-26T14:19:58.8028302+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает сессии контрольных недель постранично
+2024-11-26T14:19:59.9967571+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetAssignmentSessionReportsCount.Endpoint]	[0]	Запрос на получение количества отчётов контрольных недель
+2024-11-26T14:19:59.9981431+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessionReports.Endpoint]	[0]	Запрос на получение отчетов контрольных недель постранично
+2024-11-26T14:20:00.1660885+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetAssignmentSessionReportsCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество отчётов контрольных недель в количестве 1
+2024-11-26T14:20:00.1794604+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessionReports.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает отчёты контрольных недель
+2024-11-26T14:20:03.6687056+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetAssignmentSessionReportById.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает отчёт о контрольной неделе
+2024-11-26T14:48:01.9073566+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetAssignmentSessionReportsCount.Endpoint]	[0]	Запрос на получение количества отчётов контрольных недель
+2024-11-26T14:48:01.9230837+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessionReports.Endpoint]	[0]	Запрос на получение отчетов контрольных недель постранично
+2024-11-26T14:48:01.9267410+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetAssignmentSessionReportsCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество отчётов контрольных недель в количестве 1
+2024-11-26T14:48:01.9922565+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessionReports.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает отчёты контрольных недель
+2024-11-26T14:48:04.4297159+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetCourseReportsByReportId.Endpoint]	[0]	Запрос на получение отчётов контрольной недели по курсам
+2024-11-26T14:48:04.4929972+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetCourseReportsByReportId.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает отчёт о курсах контрольной недели
+2024-11-26T14:48:28.6753678+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Запрос на получение количества сессий контрольных недель
+2024-11-26T14:48:28.6766287+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Запрос на получение сессий контрольных недель постранично
+2024-11-26T14:48:28.6851573+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество контрольных недель 0
+2024-11-26T14:48:28.6888828+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает сессии контрольных недель постранично
+2024-11-26T14:49:18.3641205+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Запрос на получение количества сессий контрольных недель
+2024-11-26T14:49:18.3651635+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Запрос на получение сессий контрольных недель постранично
+2024-11-26T14:49:18.3771163+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает сессии контрольных недель постранично
+2024-11-26T14:49:18.5266648+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество контрольных недель 0
+2024-11-26T14:49:33.3821207+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Запрос на получение количества сессий контрольных недель
+2024-11-26T14:49:33.3831961+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Запрос на получение сессий контрольных недель постранично
+2024-11-26T14:49:33.3877620+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество контрольных недель 0
+2024-11-26T14:49:33.5436148+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает сессии контрольных недель постранично
+2024-11-26T14:49:38.5045373+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-11-26T14:49:38.5057038+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-11-26T14:49:38.5135140+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 14
+2024-11-26T14:49:38.7022012+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 10
+2024-11-26T14:51:19.7203396+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-11-26T14:51:19.7263478+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-11-26T14:51:19.7307141+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 14
+2024-11-26T14:51:19.7355814+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 10
+2024-11-26T14:55:12.7426976+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-11-26T14:55:12.7437528+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-11-26T14:55:12.7497424+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 14
+2024-11-26T14:55:12.9046605+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 10
+2024-11-26T14:55:26.4110161+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-11-26T14:55:26.4124033+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-11-26T14:55:26.4177920+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 14
+2024-11-26T14:55:26.5742425+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 10
+2024-11-26T14:56:23.4459799+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-11-26T14:56:23.4470624+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-11-26T14:56:23.5160662+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 14
+2024-11-26T14:56:23.6132906+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 10
+2024-11-26T14:56:28.0435717+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-11-26T14:56:28.0452029+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-11-26T14:56:28.0500020+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 14
+2024-11-26T14:56:28.2121014+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 10
+2024-11-26T15:06:05.4372105+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-11-26T15:06:05.4464516+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-11-26T15:06:05.4520677+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 14
+2024-11-26T15:06:05.4612788+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 10
+2024-11-26T15:06:11.2566285+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-11-26T15:06:11.2576744+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-11-26T15:06:11.2655203+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 14
+2024-11-26T15:06:11.4244391+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 10
+2024-11-26T15:06:14.6984384+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Запрос на получение сессий контрольных недель постранично
+2024-11-26T15:06:14.6997339+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Запрос на получение количества сессий контрольных недель
+2024-11-26T15:06:14.7070411+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает сессии контрольных недель постранично
+2024-11-26T15:06:14.8675012+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество контрольных недель 0
+2024-11-26T15:06:18.2269153+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Запрос на получение сессий контрольных недель постранично
+2024-11-26T15:06:18.2281355+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Запрос на получение количества сессий контрольных недель
+2024-11-26T15:06:18.2349639+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает сессии контрольных недель постранично
+2024-11-26T15:06:18.3877995+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество контрольных недель 0
+2024-11-26T15:06:20.7454075+03:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Запрос на получение учебных планов постранично
+2024-11-26T15:06:20.7503677+03:00	INFO	[SPerfomance.Api.Features.EducationPlans.CountEducationPlans.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество учебных планов 10
+2024-11-26T15:06:20.9059722+03:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает учебные планы постранично 10
+2024-11-26T15:06:28.0292169+03:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Запрос на получение учебных планов постранично
+2024-11-26T15:06:28.0341494+03:00	INFO	[SPerfomance.Api.Features.EducationPlans.CountEducationPlans.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество учебных планов 10
+2024-11-26T15:06:28.1899810+03:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает учебные планы постранично 10
+2024-11-26T15:06:41.3971788+03:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.GetPagedTeacherDepartments.Endpoint]	[0]	Запрос на получение кафедр постранично
+2024-11-26T15:06:41.3984430+03:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.CountTeacherDepartments.Endpoint]	[0]	Запрос на получение количества кафедр
+2024-11-26T15:06:41.4072840+03:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.CountTeacherDepartments.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество кафедр 3
+2024-11-26T15:06:41.6004446+03:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.GetPagedTeacherDepartments.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает кафедры постранично: 3
+2024-11-26T15:12:37.4501789+03:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.GetPagedTeacherDepartments.Endpoint]	[0]	Запрос на получение кафедр постранично
+2024-11-26T15:12:37.4583458+03:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.CountTeacherDepartments.Endpoint]	[0]	Запрос на получение количества кафедр
+2024-11-26T15:12:37.4626380+03:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.CountTeacherDepartments.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество кафедр 3
+2024-11-26T15:12:37.4709677+03:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.GetPagedTeacherDepartments.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает кафедры постранично: 3
+2024-11-26T15:12:53.4182966+03:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.GetPagedTeacherDepartments.Endpoint]	[0]	Запрос на получение кафедр постранично
+2024-11-26T15:12:53.4260663+03:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.CountTeacherDepartments.Endpoint]	[0]	Запрос на получение количества кафедр
+2024-11-26T15:12:53.4309505+03:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.CountTeacherDepartments.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество кафедр 3
+2024-11-26T15:12:53.4349604+03:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.GetPagedTeacherDepartments.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает кафедры постранично: 3
+2024-11-26T15:13:17.4138153+03:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.GetPagedTeacherDepartments.Endpoint]	[0]	Запрос на получение кафедр постранично
+2024-11-26T15:13:17.4168572+03:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.CountTeacherDepartments.Endpoint]	[0]	Запрос на получение количества кафедр
+2024-11-26T15:13:17.4301798+03:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.GetPagedTeacherDepartments.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает кафедры постранично: 3
+2024-11-26T15:13:17.5831868+03:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.CountTeacherDepartments.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество кафедр 3
+2024-11-26T15:20:59.9777552+03:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.GetPagedTeacherDepartments.Endpoint]	[0]	Запрос на получение кафедр постранично
+2024-11-26T15:20:59.9790721+03:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.CountTeacherDepartments.Endpoint]	[0]	Запрос на получение количества кафедр
+2024-11-26T15:20:59.9989819+03:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.GetPagedTeacherDepartments.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает кафедры постранично: 3
+2024-11-26T15:21:00.0016330+03:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.CountTeacherDepartments.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество кафедр 3
+2024-11-26T15:23:22.7275675+03:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.GetPagedTeacherDepartments.Endpoint]	[0]	Запрос на получение кафедр постранично
+2024-11-26T15:23:22.7324842+03:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.CountTeacherDepartments.Endpoint]	[0]	Запрос на получение количества кафедр
+2024-11-26T15:23:22.7365392+03:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.CountTeacherDepartments.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество кафедр 3
+2024-11-26T15:23:22.7415065+03:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.GetPagedTeacherDepartments.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает кафедры постранично: 3
+2024-11-26T15:23:36.0214809+03:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.GetPagedTeacherDepartments.Endpoint]	[0]	Запрос на получение кафедр постранично
+2024-11-26T15:23:36.0225988+03:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.CountTeacherDepartments.Endpoint]	[0]	Запрос на получение количества кафедр
+2024-11-26T15:23:36.0376485+03:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.GetPagedTeacherDepartments.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает кафедры постранично: 3
+2024-11-26T15:23:36.1835528+03:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.CountTeacherDepartments.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество кафедр 3
+2024-11-26T15:23:39.2496134+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-11-26T15:23:39.2770746+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-26T15:23:39.2910964+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 10
+2024-11-26T15:23:39.4405832+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-26T15:23:39.4435250+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-26T15:23:39.4478697+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-26T15:24:15.9345571+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-26T15:24:15.9354704+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-11-26T15:24:15.9442389+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 10
+2024-11-26T15:24:16.1034128+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-26T15:24:17.4133008+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-26T15:24:17.4145142+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-11-26T15:24:17.4176752+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 10
+2024-11-26T15:24:17.5682727+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-26T15:24:18.7965956+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-26T15:24:18.7980113+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-11-26T15:24:18.8005660+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-26T15:24:18.9661779+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 5
+2024-11-26T15:24:23.0041228+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-26T15:24:23.0049547+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-11-26T15:24:23.0085612+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 10
+2024-11-26T15:24:23.1744137+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-26T15:24:32.4005898+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-11-26T15:24:32.4013701+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-26T15:24:32.4048432+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-26T15:24:32.5701167+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 10
+2024-11-26T15:24:34.5038294+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-26T15:24:34.5059688+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-11-26T15:24:34.5092227+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-26T15:24:34.6756670+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 10
+2024-11-26T15:25:18.7275671+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-11-26T15:25:18.7286117+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-26T15:25:18.7350716+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-26T15:25:18.7377360+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-26T15:25:18.7419436+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-26T15:25:18.8971897+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 10
+2024-11-26T15:25:33.4118896+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-11-26T15:25:33.4133077+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-26T15:25:33.4180141+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-26T15:25:33.4208254+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-26T15:25:33.4258850+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-26T15:25:33.5772459+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 10
+2024-11-26T15:25:36.6955554+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-26T15:25:36.6972057+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-11-26T15:25:36.7012607+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 10
+2024-11-26T15:25:36.8660293+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-26T15:25:38.1073878+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-26T15:25:38.1085144+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-11-26T15:25:38.1118434+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-26T15:25:38.2796375+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 5
+2024-11-26T15:25:40.5538251+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-11-26T15:25:40.5546003+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-26T15:25:40.5579353+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 10
+2024-11-26T15:25:40.7235940+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-26T15:29:56.2248817+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-11-26T15:29:56.2260481+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-26T15:29:56.2312745+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 10
+2024-11-26T15:29:56.3949259+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-26T15:29:56.3985533+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-26T15:29:56.4038614+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-26T15:30:00.8712179+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-11-26T15:30:00.8726381+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-26T15:30:00.8771886+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-26T15:30:00.8802358+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-26T15:30:00.8854456+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-26T15:30:01.0337444+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 10
+2024-11-26T15:30:04.4277138+03:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.GetPagedTeacherDepartments.Endpoint]	[0]	Запрос на получение кафедр постранично
+2024-11-26T15:30:04.4292561+03:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.CountTeacherDepartments.Endpoint]	[0]	Запрос на получение количества кафедр
+2024-11-26T15:30:04.4347748+03:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.CountTeacherDepartments.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество кафедр 3
+2024-11-26T15:30:04.6051953+03:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.GetPagedTeacherDepartments.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает кафедры постранично: 3
+2024-11-26T15:30:08.8226675+03:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.GetPagedTeacherDepartments.Endpoint]	[0]	Запрос на получение кафедр постранично
+2024-11-26T15:30:08.8241040+03:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.CountTeacherDepartments.Endpoint]	[0]	Запрос на получение количества кафедр
+2024-11-26T15:30:08.8289867+03:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.CountTeacherDepartments.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество кафедр 3
+2024-11-26T15:30:08.9893370+03:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.GetPagedTeacherDepartments.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает кафедры постранично: 3
+2024-11-26T15:30:12.0193633+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-11-26T15:30:12.0206312+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-26T15:30:12.0258722+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-26T15:30:12.0289504+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-26T15:30:12.0351447+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-26T15:30:12.1802874+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 10
+2024-11-26T15:36:13.8404130+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-11-26T15:36:13.8441823+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-26T15:36:13.8513158+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-26T15:36:13.8548120+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-26T15:36:13.8571501+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 10
+2024-11-26T15:36:13.8602105+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-26T15:36:33.2340861+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-11-26T15:36:33.2359309+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-26T15:36:33.2405189+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 10
+2024-11-26T15:36:33.3964400+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-26T15:36:33.3993637+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-11-26T15:36:33.4040959+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35

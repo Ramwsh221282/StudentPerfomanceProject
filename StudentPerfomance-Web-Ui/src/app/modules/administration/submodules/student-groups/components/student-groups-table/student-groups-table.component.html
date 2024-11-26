@@ -6,6 +6,9 @@
     <button class="accept-button" (click)="openFilterModal()">
       Отфильтровать список
     </button>
+    <button class="accept-button-outline" [routerLink]="['/groups-info']">
+      Документация
+    </button>
   </div>
   <div class="student-groups-table-container">
     <div class="student-groups-table-grid">
@@ -15,7 +18,7 @@
         <strong>Название направления</strong>
         <strong>Код направления</strong>
         <strong>Тип направления</strong>
-        <strong>Год набора</strong>
+        <strong>Учебный план (год)</strong>
         <strong>Действия</strong>
       </div>
       @for (group of facadeService.groups; track group.name) {
