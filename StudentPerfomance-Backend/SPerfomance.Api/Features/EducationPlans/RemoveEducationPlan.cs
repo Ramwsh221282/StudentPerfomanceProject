@@ -40,7 +40,7 @@ public static class RemoveEducationPlan
     public static async Task<
         Results<UnauthorizedHttpResult, NotFound<string>, BadRequest<string>, Ok<EducationPlanDto>>
     > Handler(
-        [FromHeader(Name = "token")] string token,
+        [FromHeader(Name = "token")] string? token,
         [FromBody] Request request,
         IUsersRepository users,
         ICommandDispatcher commandDispatcher,

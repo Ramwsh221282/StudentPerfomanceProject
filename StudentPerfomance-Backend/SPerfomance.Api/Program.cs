@@ -3,6 +3,7 @@ global using SPerfomance.Application.Services.Authentication;
 global using SPerfomance.Application.Services.Authentication.Models;
 global using SPerfomance.Domain.Models.Users.Abstractions;
 global using SPerfomance.Domain.Models.Users.ValueObjects;
+using Microsoft.AspNetCore.HttpOverrides;
 using NReco.Logging.File;
 using SPerfomance.Api.Endpoints;
 using SPerfomance.Api.Features.Common.Configuration;
@@ -16,7 +17,6 @@ using SPerfomance.Api.Features.Users.Configurations;
 using SPerfomance.Api.MiddleWare;
 
 var builder = WebApplication.CreateBuilder(args);
-
 builder.Services.ConfigureCqrsDispatchers();
 builder.Services.ConfigureEducationDirectionsComponents();
 builder.Services.ConfigureEducationPlans();
@@ -32,32 +32,40 @@ builder.Services.ConfigureMiddleWare();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddEndpoints();
 
-builder.Services.AddSwaggerGen(options =>
-    options.CustomSchemaIds(t => t.FullName?.Replace('+', '.'))
-);
-
 builder.Services.AddCors(options =>
 {
     var origins = builder.Configuration.GetSection("Cors").GetSection("Origins").Get<string[]>()!;
-    options.AddDefaultPolicy(policy =>
-    {
-        policy.WithOrigins(origins);
-        policy.AllowAnyHeader();
-        policy.AllowAnyMethod();
-    });
+    options.AddPolicy(
+        name: "Frontend",
+        policy =>
+        {
+            policy.WithOrigins(origins).AllowAnyHeader().AllowAnyMethod();
+        }
+    );
 });
 
 builder.Services.AddLogging(loggingBuilder =>
 {
     loggingBuilder.AddFile("app.log", append: true);
+    loggingBuilder.AddConsole();
 });
 
 var app = builder.Build();
+
+app.UseForwardedHeaders(
+    new ForwardedHeadersOptions
+    {
+        ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto,
+    }
+);
+
+var logger = app.Services.GetRequiredService<ILogger<Program>>()!;
+logger.LogInformation("Application starting...");
+app.UseHttpsRedirection();
 app.UseMiddleware<TaskCancellationTokenExtensions>();
 app.UseRateLimiter();
 app.UseResponseCompression();
-app.UseSwagger();
-app.UseSwaggerUI();
-app.UseCors();
+app.UseCors("Frontend");
 app.MapEndpoints();
+logger.LogInformation("Application started");
 app.Run();

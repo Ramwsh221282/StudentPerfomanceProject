@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SPerfomance.Shared\SPerfomance.Application\SPerfomance.Application.csproj" />
+    <ProjectReference Include="..\SPerfomance.Shared\SPerfomance.ControlWeekDocuments\SPerfomance.ControlWeekDocuments.csproj" />
     <ProjectReference Include="..\SPerfomance.Shared\SPerfomance.DataAccess\SPerfomance.DataAccess.csproj" />
     <ProjectReference Include="..\SPerfomance.Shared\SPerfomance.PasswordRecovery.DataAccess\SPerfomance.PasswordRecovery.DataAccess.csproj" />
     <ProjectReference Include="..\SPerfomance.Shared\SPerfomance.Statistics.DataAccess\SPerfomance.Statistics.DataAccess.csproj" />
@@ -35,6 +36,11 @@
 
   <ItemGroup>
     <None Remove="HostedServices\**" />
+    <None Remove="Properties\launchSettings.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
   </ItemGroup>
 
 </Project>

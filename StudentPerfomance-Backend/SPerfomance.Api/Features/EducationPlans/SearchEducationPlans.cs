@@ -30,7 +30,7 @@ public static class SearchEducationPlans
     public static async Task<
         Results<UnauthorizedHttpResult, Ok<IEnumerable<EducationPlanDto>>>
     > Handler(
-        [FromHeader(Name = "token")] string token,
+        [FromHeader(Name = "token")] string? token,
         [FromQuery(Name = "searchName")] string? searchName,
         [FromQuery(Name = "searchCode")] string? searchCode,
         [FromQuery(Name = "searchType")] string? searchType,

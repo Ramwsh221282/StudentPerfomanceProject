@@ -29,7 +29,7 @@ public static class FilterEducationPlans
     }
 
     public static async Task<IResult> Handler(
-        [FromHeader(Name = "token")] string token,
+        [FromHeader(Name = "token")] string? token,
         [FromQuery(Name = "page")] int page,
         [FromQuery(Name = "pageSize")] int pageSize,
         [FromQuery(Name = "filterName")] string? filterName,

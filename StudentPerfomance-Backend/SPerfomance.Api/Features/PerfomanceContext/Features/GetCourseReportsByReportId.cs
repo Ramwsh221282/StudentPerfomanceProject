@@ -42,7 +42,7 @@ public static class GetCourseReportsByReportId
             Ok<ControlWeekReportDTO>
         >
     > Handler(
-        [FromHeader(Name = "token")] string token,
+        [FromHeader(Name = "token")] string? token,
         [FromQuery(Name = "id")] string id,
         IUsersRepository usersRepository,
         IControlWeekReportRepository controlWeekReportRepository,

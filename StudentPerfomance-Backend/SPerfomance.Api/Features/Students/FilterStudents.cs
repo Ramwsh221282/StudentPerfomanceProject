@@ -36,7 +36,7 @@ public static class FilterStudents
     public static async Task<
         Results<UnauthorizedHttpResult, NotFound<string>, Ok<StudentDto[]>>
     > Handler(
-        [FromHeader(Name = "token")] string token,
+        [FromHeader(Name = "token")] string? token,
         [FromQuery(Name = "groupName")] string groupName,
         [FromQuery(Name = "name")] string? name,
         [FromQuery(Name = "surname")] string? surname,

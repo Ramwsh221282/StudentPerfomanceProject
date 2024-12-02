@@ -6,7 +6,7 @@ namespace SPerfomance.PasswordRecovery.DataAccess.Repository;
 
 public sealed class RecoveryTicketsRepository : IPasswordRecoveryTicketsRepository
 {
-    private const string Connection = "Filename=password_recovery_database.db;";
+    private const string Connection = "Filename=password_recovery_database.db; Connection=shared";
     private const string Collection = "password_recovery_tickets";
 
     public async Task RegisterTicket(PasswordRecoveryTicket ticket, CancellationToken ct = default)

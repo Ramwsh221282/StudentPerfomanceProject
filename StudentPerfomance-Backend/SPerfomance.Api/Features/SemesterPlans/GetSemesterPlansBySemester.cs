@@ -51,7 +51,7 @@ public static class GetSemesterPlansBySemester
             Ok<IEnumerable<SemesterPlanDto>>
         >
     > Handler(
-        [FromHeader(Name = "token")] string token,
+        [FromHeader(Name = "token")] string? token,
         [FromQuery(Name = "directionName")] string directionName,
         [FromQuery(Name = "directionCode")] string directionCode,
         [FromQuery(Name = "directionType")] string directionType,

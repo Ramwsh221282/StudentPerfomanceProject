@@ -1,4 +1,3 @@
-using System.Text;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using SPerfomance.Api.Endpoints;
@@ -6,7 +5,6 @@ using SPerfomance.Application.Abstractions;
 using SPerfomance.Application.PasswordRecoveryContext.Commands.ResolvePasswordRecovery;
 using SPerfomance.Application.PasswordRecoveryContext.Models;
 using SPerfomance.Application.Services.Mailing;
-using SPerfomance.Application.Services.Mailing.MailingMessages;
 
 namespace SPerfomance.Api.Features.Users;
 

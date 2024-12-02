@@ -32,8 +32,20 @@ public class CreatePasswordRecoveryEndpoint
     )
     {
         logger.LogInformation("Запрос на восстановление пароля");
-
         var origins = configuration.GetSection("Cors:Origins").Get<string[]>();
+        var frontendUrl = configuration
+            .GetSection("PasswordRecoveryFrontend:Frontend")
+            .Get<string[]>();
+
+        if (frontendUrl == null || frontendUrl.Length == 0)
+        {
+            logger.LogError("Не удалось получить значение FrontendUrl из конфигурации");
+            return TypedResults.BadRequest(
+                "Не удалось обработать запрос. Повторите попытку позже."
+            );
+        }
+        var frontendRecoveryUrl = frontendUrl[0];
+
         if (origins == null || origins.Length == 0)
         {
             logger.LogError("Не удалось получить значение Origins из конфигурации");
@@ -72,7 +84,8 @@ public class CreatePasswordRecoveryEndpoint
             return TypedResults.BadRequest(ticket.Error.Description);
         }
 
-        string recoveryLink = $"{baseUrl}/reset-password?token={ticket.Value.Token}";
+        string recoveryLink =
+            $"{baseUrl}/{frontendRecoveryUrl}/reset-password?token={ticket.Value.Token}";
         StringBuilder messageBuilder = new StringBuilder();
         messageBuilder.AppendLine("Запрос на восстановление пароля принят.");
         messageBuilder.AppendLine("Для восстановления пароля перейдите по ссылке:");

@@ -41,7 +41,7 @@ public static class CloseAssignmentSession
     public static async Task<
         Results<UnauthorizedHttpResult, BadRequest<string>, Ok<string>>
     > Handler(
-        [FromHeader(Name = "token")] string token,
+        [FromHeader(Name = "token")] string? token,
         IUsersRepository users,
         IQueryDispatcher queryDispatcher,
         ICommandDispatcher commandDispatcher,

@@ -1,5 +1,4 @@
 using SPerfomance.Domain.Abstractions;
-using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions.Errors;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions.ValueObject;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentsWeeks;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentsWeeks.Errors;
@@ -96,17 +95,17 @@ public class AssignmentSession : AggregateRoot
 
     public Result<AssignmentSession> CloseSession()
     {
-        if (State == AssignmentSessionState.Closed)
-            return AssignmentSessionErrors.AlreadyClosed(this);
-
-        if (
-            !(
-                SessionCloseDate.Day <= DateTime.Now.Day
-                && SessionCloseDate.Month <= DateTime.Now.Month
-                && SessionCloseDate.Year <= DateTime.Now.Year
-            )
-        )
-            return AssignmentSessionErrors.CloseDateIsNotReached(this);
+        // if (State == AssignmentSessionState.Closed)
+        //     return AssignmentSessionErrors.AlreadyClosed(this);
+        //
+        // if (
+        //     !(
+        //         SessionCloseDate.Day <= DateTime.Now.Day
+        //         && SessionCloseDate.Month <= DateTime.Now.Month
+        //         && SessionCloseDate.Year <= DateTime.Now.Year
+        //     )
+        // )
+        //     return AssignmentSessionErrors.CloseDateIsNotReached(this);
 
         State = AssignmentSessionState.Closed;
         return this;

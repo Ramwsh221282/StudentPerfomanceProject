@@ -32,7 +32,7 @@ public static class GetActiveControlWeekInformation
     public static async Task<
         Results<UnauthorizedHttpResult, BadRequest<string>, Ok<AssignmentSessionInfoDTO>>
     > Handler(
-        [FromHeader(Name = "token")] string token,
+        [FromHeader(Name = "token")] string? token,
         IUsersRepository users,
         IQueryDispatcher dispatcher,
         ILogger<Endpoint> logger,

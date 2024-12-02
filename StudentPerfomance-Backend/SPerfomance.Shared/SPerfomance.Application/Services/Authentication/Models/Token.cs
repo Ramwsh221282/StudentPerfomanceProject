@@ -10,7 +10,7 @@ public class Token
     public string UserId { get; init; }
     public bool IsExpired { get; init; }
 
-    public Token(string token)
+    public Token(string? token)
     {
         if (string.IsNullOrWhiteSpace(token))
         {

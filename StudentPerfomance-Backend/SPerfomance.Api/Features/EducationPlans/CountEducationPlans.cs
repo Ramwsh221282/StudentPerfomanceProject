@@ -28,7 +28,7 @@ public static class CountEducationPlans
     }
 
     public static async Task<IResult> Handler(
-        [FromHeader(Name = "token")] string token,
+        [FromHeader(Name = "token")] string? token,
         IUsersRepository users,
         IEducationPlansRepository repository,
         ILogger<Endpoint> logger,

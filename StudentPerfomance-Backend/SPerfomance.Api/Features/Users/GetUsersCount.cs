@@ -29,7 +29,7 @@ public static class GetUsersCount
     }
 
     public static async Task<Results<UnauthorizedHttpResult, Ok<int>>> Handler(
-        [FromHeader(Name = "token")] string token,
+        [FromHeader(Name = "token")] string? token,
         IUsersRepository repository,
         ILogger<Endpoint> logger,
         CancellationToken ct

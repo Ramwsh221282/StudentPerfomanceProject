@@ -33,7 +33,7 @@ public static class GetTeachersByDepartment
     public static async Task<
         Results<UnauthorizedHttpResult, NotFound<string>, Ok<TeacherDto[]>>
     > Handler(
-        [FromHeader(Name = "token")] string token,
+        [FromHeader(Name = "token")] string? token,
         [FromQuery(Name = "departmentName")] string departmentName,
         IUsersRepository users,
         IQueryDispatcher dispatcher,

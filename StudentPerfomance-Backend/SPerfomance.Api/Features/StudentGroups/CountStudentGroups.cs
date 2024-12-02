@@ -29,7 +29,7 @@ public static class CountStudentGroups
     }
 
     public static async Task<Results<UnauthorizedHttpResult, Ok<int>>> Handler(
-        [FromHeader(Name = "token")] string token,
+        [FromHeader(Name = "token")] string? token,
         IUsersRepository users,
         IStudentGroupsRepository repository,
         ILogger<Endpoint> logger,

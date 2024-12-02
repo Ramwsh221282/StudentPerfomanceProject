@@ -43,7 +43,7 @@ public static class GetAssignmentSessionForTeacher
             Ok<TeacherAssignmentSession>
         >
     > Handler(
-        [FromHeader(Name = "token")] string token,
+        [FromHeader(Name = "token")] string? token,
         IUsersRepository users,
         IAssignmentSessionsRepository sessions,
         ILogger<Endpoint> logger,

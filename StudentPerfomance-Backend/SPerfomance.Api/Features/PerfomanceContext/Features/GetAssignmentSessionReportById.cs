@@ -38,7 +38,7 @@ public static class GetAssignmentSessionReportById
             Ok<GroupStatisticsReportDTO[]>
         >
     > Handler(
-        [FromHeader(Name = "token")] string token,
+        [FromHeader(Name = "token")] string? token,
         [FromQuery(Name = "id")] string id,
         IUsersRepository users,
         IControlWeekReportRepository controlWeeks,

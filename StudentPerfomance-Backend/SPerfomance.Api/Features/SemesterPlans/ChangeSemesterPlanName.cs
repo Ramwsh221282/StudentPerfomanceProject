@@ -49,7 +49,7 @@ public static class ChangeSemesterPlanName
     }
 
     public static async Task<IResult> Handler(
-        [FromHeader(Name = "token")] string token,
+        [FromHeader(Name = "token")] string? token,
         [FromBody] Request request,
         IUsersRepository users,
         IQueryDispatcher queryDispatcher,

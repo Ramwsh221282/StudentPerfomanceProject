@@ -37,7 +37,7 @@ public static class MergeGroups
     public static async Task<
         Results<UnauthorizedHttpResult, BadRequest<string>, NotFound<string>, Ok<StudentGroupDto>>
     > Handler(
-        [FromHeader(Name = "token")] string token,
+        [FromHeader(Name = "token")] string? token,
         [FromBody] Request request,
         IUsersRepository users,
         IQueryDispatcher queryDispatcher,

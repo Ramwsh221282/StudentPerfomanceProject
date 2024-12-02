@@ -43,7 +43,7 @@ public static class ChangeTeacherDepartmentName
             Ok<TeachersDepartmentDto>
         >
     > Handler(
-        [FromHeader(Name = "token")] string token,
+        [FromHeader(Name = "token")] string? token,
         [FromBody] Request request,
         IUsersRepository users,
         IQueryDispatcher queryDispatcher,

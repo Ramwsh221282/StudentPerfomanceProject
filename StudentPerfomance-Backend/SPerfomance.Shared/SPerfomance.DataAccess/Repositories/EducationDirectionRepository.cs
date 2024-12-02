@@ -74,9 +74,9 @@ public class EducationDirectionRepository : IEducationDirectionRepository
     }
 
     public async Task<EducationDirection?> Get(
-        string code,
-        string name,
-        string type,
+        string? code,
+        string? name,
+        string? type,
         CancellationToken ct = default
     ) =>
         await _context

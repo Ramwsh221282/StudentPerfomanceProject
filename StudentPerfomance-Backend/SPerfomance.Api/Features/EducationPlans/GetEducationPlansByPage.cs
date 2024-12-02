@@ -30,7 +30,7 @@ public static class GetEducationPlansByPage
     public static async Task<
         Results<UnauthorizedHttpResult, Ok<IEnumerable<EducationPlanDto>>>
     > Handler(
-        [FromHeader(Name = "token")] string token,
+        [FromHeader(Name = "token")] string? token,
         [FromQuery(Name = "page")] int page,
         [FromQuery(Name = "pageSize")] int pageSize,
         IUsersRepository users,

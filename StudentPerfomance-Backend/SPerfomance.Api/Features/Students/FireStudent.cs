@@ -40,7 +40,7 @@ public class FireStudent
     public static async Task<
         Results<UnauthorizedHttpResult, NotFound<string>, BadRequest<string>, Ok<StudentDto>>
     > Handler(
-        [FromHeader(Name = "token")] string token,
+        [FromHeader(Name = "token")] string? token,
         [FromBody] Request request,
         IUsersRepository users,
         IQueryDispatcher queryDispatcher,

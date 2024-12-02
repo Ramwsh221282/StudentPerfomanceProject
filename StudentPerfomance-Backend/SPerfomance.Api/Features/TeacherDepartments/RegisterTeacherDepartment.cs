@@ -35,7 +35,7 @@ public static class RegisterTeacherDepartment
     public static async Task<
         Results<UnauthorizedHttpResult, BadRequest<string>, Ok<TeachersDepartmentDto>>
     > Handler(
-        [FromHeader(Name = "token")] string token,
+        [FromHeader(Name = "token")] string? token,
         Request request,
         IUsersRepository users,
         ICommandDispatcher dispatcher,

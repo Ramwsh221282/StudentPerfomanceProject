@@ -27,7 +27,7 @@ public static class CountTeacherDepartments
     }
 
     public static async Task<Results<UnauthorizedHttpResult, Ok<int>>> Handler(
-        [FromHeader(Name = "token")] string token,
+        [FromHeader(Name = "token")] string? token,
         IUsersRepository users,
         ITeacherDepartmentsRepository repository,
         ILogger<Endpoint> logger,

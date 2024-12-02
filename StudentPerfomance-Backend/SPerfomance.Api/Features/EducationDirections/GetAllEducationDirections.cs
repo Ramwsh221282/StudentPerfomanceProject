@@ -32,7 +32,7 @@ public static class GetAllEducationDirections
     public static async Task<
         Results<UnauthorizedHttpResult, Ok<IEnumerable<EducationDirectionDto>>>
     > Handler(
-        [FromHeader(Name = "token")] string token,
+        [FromHeader(Name = "token")] string? token,
         IUsersRepository users,
         IEducationDirectionRepository repository,
         ILogger<Endpoint> logger,

@@ -1,0 +1,3 @@
+C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Shared\SPerfomance.Domain\bin\Release\net8.0\linux-x64\publish\SPerfomance.Domain.dll
+C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Shared\SPerfomance.Domain\bin\Release\net8.0\linux-x64\publish\SPerfomance.Domain.deps.json
+C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Shared\SPerfomance.Domain\bin\Release\net8.0\linux-x64\publish\SPerfomance.Domain.pdb

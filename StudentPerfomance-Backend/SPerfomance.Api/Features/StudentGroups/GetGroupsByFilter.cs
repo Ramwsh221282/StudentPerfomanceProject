@@ -34,7 +34,7 @@ public static class GetGroupsByFilter
     public static async Task<
         Results<UnauthorizedHttpResult, Ok<IEnumerable<StudentGroupDto>>>
     > Handler(
-        [FromHeader(Name = "token")] string token,
+        [FromHeader(Name = "token")] string? token,
         [FromQuery(Name = "page")] int page,
         [FromQuery(Name = "pageSize")] int pageSize,
         [FromQuery(Name = "groupName")] string? groupName,

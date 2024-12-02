@@ -36,7 +36,7 @@ public static class CreateEducationDirection
         Results<UnauthorizedHttpResult, BadRequest<string>, Ok<EducationDirectionDto>>
     > Handler(
         Request request,
-        [FromHeader(Name = "token")] string token,
+        [FromHeader(Name = "token")] string? token,
         IUsersRepository users,
         ICommandDispatcher dispatcher,
         ILogger<Endpoint> logger,

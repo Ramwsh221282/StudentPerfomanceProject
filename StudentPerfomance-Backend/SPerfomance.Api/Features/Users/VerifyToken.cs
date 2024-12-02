@@ -14,7 +14,8 @@ public static class VerifyToken
                 .WithTags(UserTags.Tag)
                 .WithOpenApi()
                 .WithName("VerifyToken")
-                .WithDescription(new StringBuilder().AppendLine("Проверка токена JWT").ToString());
+                .WithDescription(new StringBuilder().AppendLine("Проверка токена JWT").ToString())
+                .RequireCors("Frontend");
     }
 
     public static async Task<IResult> Handler(Request request, CancellationToken ct)

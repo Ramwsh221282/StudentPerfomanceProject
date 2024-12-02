@@ -30,7 +30,7 @@ public static class GetAllEducationPlans
     public static async Task<
         Results<UnauthorizedHttpResult, Ok<IEnumerable<EducationPlanDto>>>
     > Handler(
-        [FromHeader(Name = "token")] string token,
+        [FromHeader(Name = "token")] string? token,
         IUsersRepository users,
         IEducationPlansRepository repository,
         ILogger<Endpoint> logger,

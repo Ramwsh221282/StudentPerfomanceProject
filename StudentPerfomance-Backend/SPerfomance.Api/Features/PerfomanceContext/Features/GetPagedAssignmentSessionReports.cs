@@ -32,7 +32,7 @@ public static class GetPagedAssignmentSessionReports
     public static async Task<
         Results<UnauthorizedHttpResult, Ok<string>, Ok<ControlWeekReportDTO[]>>
     > Handler(
-        [FromHeader(Name = "token")] string token,
+        [FromHeader(Name = "token")] string? token,
         [FromQuery(Name = "page")] int page,
         [FromQuery(Name = "pageSize")] int pageSize,
         IUsersRepository users,

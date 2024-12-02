@@ -30,7 +30,7 @@ public static class GetUsersByPage
     }
 
     public static async Task<Results<UnauthorizedHttpResult, Ok<UserDto[]>>> Handler(
-        [FromHeader(Name = "token")] string token,
+        [FromHeader(Name = "token")] string? token,
         [FromQuery(Name = "page")] int page,
         [FromQuery(Name = "pageSize")] int pageSize,
         IUsersRepository repository,

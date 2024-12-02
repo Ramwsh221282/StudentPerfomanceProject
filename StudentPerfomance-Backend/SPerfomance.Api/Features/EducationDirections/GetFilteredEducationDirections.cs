@@ -34,7 +34,7 @@ public static class GetFilteredEducationDirections
     public static async Task<
         Results<UnauthorizedHttpResult, Ok<IEnumerable<EducationDirectionDto>>>
     > Handler(
-        [FromHeader(Name = "token")] string token,
+        [FromHeader(Name = "token")] string? token,
         [FromQuery(Name = "page")] int page,
         [FromQuery(Name = "pageSize")] int pageSize,
         [FromQuery(Name = "filterCode")] string? filterCode,

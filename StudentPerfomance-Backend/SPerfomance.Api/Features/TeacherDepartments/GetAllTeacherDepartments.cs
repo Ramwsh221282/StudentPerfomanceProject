@@ -28,7 +28,7 @@ public static class GetAllTeacherDepartments
     }
 
     public static async Task<Results<UnauthorizedHttpResult, Ok<TeachersDepartmentDto[]>>> Handler(
-        [FromHeader(Name = "token")] string token,
+        [FromHeader(Name = "token")] string? token,
         IUsersRepository users,
         ITeacherDepartmentsRepository repository,
         ILogger<Endpoint> logger,

@@ -38,7 +38,7 @@ public static class SearchEducationDirections
     public static async Task<
         Results<UnauthorizedHttpResult, Ok<IEnumerable<EducationDirectionDto>>>
     > Handler(
-        [FromHeader(Name = "token")] string token,
+        [FromHeader(Name = "token")] string? token,
         [FromQuery(Name = "searchCode")] string? searchCode,
         [FromQuery(Name = "searchType")] string? searchType,
         [FromQuery(Name = "searchName")] string? searchName,

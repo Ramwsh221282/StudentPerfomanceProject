@@ -39,7 +39,7 @@ public static class RemoveUser
     public static async Task<
         Results<UnauthorizedHttpResult, BadRequest<string>, NotFound<string>, Ok<UserDto>>
     > Handler(
-        [FromHeader(Name = "token")] string token,
+        [FromHeader(Name = "token")] string? token,
         [FromBody] Request request,
         IUsersRepository repository,
         IMailingService service,

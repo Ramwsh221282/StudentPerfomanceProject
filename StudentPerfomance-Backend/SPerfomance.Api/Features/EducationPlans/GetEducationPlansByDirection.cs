@@ -37,7 +37,7 @@ public static class GetEducationPlansByDirection
     public static async Task<
         Results<UnauthorizedHttpResult, NotFound<string>, Ok<IEnumerable<EducationPlanDto>>>
     > Handler(
-        [FromHeader(Name = "token")] string token,
+        [FromHeader(Name = "token")] string? token,
         [FromQuery(Name = "directionCode")] string directionCode,
         [FromQuery(Name = "directionName")] string directionName,
         [FromQuery(Name = "directionType")] string directionType,

@@ -6,6 +6,7 @@ using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Commands.Crea
 using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Commands.MakeAssignment;
 using SPerfomance.Application.PerfomanceContext.AssignmentSessions.DTO;
 using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Queries.GetInfo;
+using SPerfomance.ControlWeekDocuments.Documents;
 using SPerfomance.DataAccess.Repositories;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions.Abstractions;
@@ -27,7 +28,8 @@ public static class PerfomanceContextConfiguration
         services = services
             .AddScoped<IAssignmentSessionsRepository, AssignmentSessionsRepository>()
             .AddScoped<IStudentAssignmentsRepository, StudentAssignmentsRepository>()
-            .AddScoped<IControlWeekReportRepository, ControlWeekRepository>();
+            .AddScoped<IControlWeekReportRepository, ControlWeekRepository>()
+            .AddScoped<IControlWeekGroupDocument, GroupControlWeekDocument>();
         return services;
     }
 

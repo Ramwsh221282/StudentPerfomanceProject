@@ -30,7 +30,7 @@ public static class GetAllStudentGroups
     public static async Task<
         Results<UnauthorizedHttpResult, Ok<IEnumerable<StudentGroupDto>>>
     > Handler(
-        [FromHeader(Name = "token")] string token,
+        [FromHeader(Name = "token")] string? token,
         IUsersRepository users,
         IStudentGroupsRepository repository,
         ILogger<Endpoint> logger,

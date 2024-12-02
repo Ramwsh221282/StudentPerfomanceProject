@@ -1023,3 +1023,193 @@ token: '[PII of type 'System.IdentityModel.Tokens.Jwt.JwtSecurityToken' is hidde
 2024-11-26T15:36:33.3964400+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
 2024-11-26T15:36:33.3993637+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
 2024-11-26T15:36:33.4040959+03:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 35
+2024-11-26T18:22:53.2648562+03:00	INFO	[SPerfomance.Api.Features.Users.CreatePasswordRecoveryEndpoint.Endpoint]	[0]	Запрос на восстановление пароля
+2024-11-26T18:22:55.2495285+03:00	INFO	[SPerfomance.Api.Features.Users.CreatePasswordRecoveryEndpoint.Endpoint]	[0]	Отправлен запрос на восстановление пароля jimkrauz@gmail.com
+2024-11-26T18:23:11.2484057+03:00	INFO	[SPerfomance.Api.Features.Users.ConfirmPasswordRecoveryEndpoint.Endpoint]	[0]	Подтверждение восстановления пароля пользователя
+2024-11-26T18:23:11.8724624+03:00	INFO	[SPerfomance.Api.Features.Users.ConfirmPasswordRecoveryEndpoint.Endpoint]	[0]	Восстановления пароля подтверждено jimkrauz@gmail.com
+2024-11-26T18:23:23.2948192+03:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизация пользователя
+2024-11-26T18:23:23.7141185+03:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизован пользователь jimkrauz@gmail.com admin admin Администратор
+2024-11-26T18:23:33.5586467+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Запрос на получение количества сессий контрольных недель
+2024-11-26T18:23:33.5598270+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Запрос на получение сессий контрольных недель постранично
+2024-11-26T18:23:33.8286824+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество контрольных недель 1
+2024-11-26T18:23:33.9010797+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает сессии контрольных недель постранично
+2024-11-26T18:23:40.8012966+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-11-26T18:23:40.8038019+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-11-26T18:23:40.8522283+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 10
+2024-11-26T18:23:40.9625089+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 14
+2024-11-26T18:23:48.5815759+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-11-26T18:23:48.5957367+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 10
+2024-11-26T18:23:50.2224152+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Запрос на получение сессий контрольных недель постранично
+2024-11-26T18:23:50.2236147+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Запрос на получение количества сессий контрольных недель
+2024-11-26T18:23:50.2283744+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество контрольных недель 1
+2024-11-26T18:23:50.4862177+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает сессии контрольных недель постранично
+2024-11-26T18:24:13.1908844+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CloseAssignmentSession.Endpoint]	[0]	Запрос на закрытие сессии контрольной недели
+2024-11-26T18:24:13.6668114+03:00	FAIL	[Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware]	[UnhandledException]	An unhandled exception has occurred while executing the request.LiteDB.LiteException: Failed to create instance for type 'SPerfomance.ControlWeekDocuments.Documents.GroupControlWeekDocumentData' from assembly 'SPerfomance.ControlWeekDocuments.Documents.GroupControlWeekDocumentData, SPerfomance.ControlWeekDocuments, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Checks if the class has a public constructor with no parameters.
+ ---> System.ArgumentException: Type 'SPerfomance.ControlWeekDocuments.Documents.GroupControlWeekDocumentData' does not have a default constructor (Parameter 'type')
+   at System.Linq.Expressions.Expression.New(Type type)
+   at LiteDB.Reflection.CreateClass(Type type)
+   at LiteDB.Reflection.CreateInstance(Type type)
+   --- End of inner exception stack trace ---
+   at LiteDB.Reflection.CreateInstance(Type type)
+   at LiteDB.BsonMapper.<>c__DisplayClass59_0.<Deserialize>b__0(BsonDocument v)
+   at LiteDB.BsonMapper.Deserialize(Type type, BsonValue value)
+   at LiteDB.LiteQueryable`1.<ToEnumerable>b__27_2(BsonDocument x)
+   at System.Linq.Enumerable.SelectEnumerableIterator`2.GetCount(Boolean onlyIfCheap)
+   at SPerfomance.ControlWeekDocuments.Documents.GroupControlWeekDocument.ShouldGroupSemesterIncrease(StudentGroup group) in C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Shared\SPerfomance.ControlWeekDocuments\Documents\GroupControlWeekDocument.cs:line 37
+   at SPerfomance.Application.PerfomanceContext.AssignmentSessions.Commands.CloseAssignmentSession.AssignmentSessionStudentGroupActiveSemesterResolver.ResolveGroupsActiveSemesters(CancellationToken ct) in C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Shared\SPerfomance.Application\PerfomanceContext\AssignmentSessions\Commands\CloseAssignmentSession\AssignmentSessionStudentGroupActiveSemesterResolver.cs:line 20
+   at SPerfomance.Application.PerfomanceContext.AssignmentSessions.Commands.CloseAssignmentSession.CloseAssignmentSessionCommandHandler.Handle(CloseAssignmentSessionCommand command, CancellationToken ct) in C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Shared\SPerfomance.Application\PerfomanceContext\AssignmentSessions\Commands\CloseAssignmentSession\CloseAssignmentSessionCommandHandler.cs:line 32
+   at SPerfomance.Application.Common.CommandDispatcher.Dispatch[TCommand,TResult](TCommand command, CancellationToken ct) in C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Shared\SPerfomance.Application\Common\CommandDispatcher.cs:line 17
+   at SPerfomance.Api.Features.PerfomanceContext.Features.CloseAssignmentSession.Handler(String token, IUsersRepository users, IQueryDispatcher queryDispatcher, ICommandDispatcher commandDispatcher, IControlWeekReportRepository reports, ILogger`1 logger, Request request, CancellationToken ct) in C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api\Features\PerfomanceContext\Features\CloseAssignmentSession.cs:line 63
+   at Microsoft.AspNetCore.Http.RequestDelegateFactory.ExecuteTaskResult[T](Task`1 task, HttpContext httpContext)
+   at Microsoft.AspNetCore.Http.RequestDelegateFactory.<>c__DisplayClass102_2.<<HandleRequestBodyAndCompileRequestDelegateForJson>b__2>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.ResponseCompression.ResponseCompressionMiddleware.InvokeCore(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at SPerfomance.Api.MiddleWare.TaskCancellationTokenExtensions.Invoke(HttpContext context) in C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api\MiddleWare\TaskCancellationTokenExtensions.cs:line 9
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+
+2024-11-26T18:26:11.4291270+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Запрос на получение сессий контрольных недель постранично
+2024-11-26T18:26:11.4290882+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Запрос на получение количества сессий контрольных недель
+2024-11-26T18:26:12.9006326+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество контрольных недель 1
+2024-11-26T18:26:12.9683470+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает сессии контрольных недель постранично
+2024-11-26T18:26:16.6327237+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CloseAssignmentSession.Endpoint]	[0]	Запрос на закрытие сессии контрольной недели
+2024-11-26T18:26:17.1132605+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CloseAssignmentSession.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 закрывает сессию контрольной недели
+2024-11-26T18:26:17.9525919+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CloseAssignmentSession.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 создаёт отчёт о контрольной неделе
+2024-11-26T18:26:17.9603343+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Запрос на получение сессий контрольных недель постранично
+2024-11-26T18:26:17.9677350+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает сессии контрольных недель постранично
+2024-11-26T18:26:35.1433160+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-11-26T18:26:35.1447547+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-11-26T18:26:35.1522203+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 14
+2024-11-26T18:26:35.3507607+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 10
+2024-11-26T18:26:41.6394116+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-11-26T18:26:41.6522079+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 10
+2024-11-26T18:26:44.3171515+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Запрос на получение сессий контрольных недель постранично
+2024-11-26T18:26:44.3181165+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Запрос на получение количества сессий контрольных недель
+2024-11-26T18:26:44.3233343+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество контрольных недель 0
+2024-11-26T18:26:44.4840955+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает сессии контрольных недель постранично
+2024-11-26T18:26:53.8379364+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CreateAssignmentSession.Endpoint]	[0]	Запрос на создание сессии контрольной недели
+2024-11-26T18:26:54.0303108+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CreateAssignmentSession.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 создаёт контрольную неделю 26-00-YYYY 04-12-2024
+2024-11-26T18:26:54.8154106+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Запрос на получение сессий контрольных недель постранично
+2024-11-26T18:26:54.8180410+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-26T18:26:54.9090500+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает сессии контрольных недель постранично
+2024-11-26T18:26:55.0425595+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-26T18:27:00.1374565+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CloseAssignmentSession.Endpoint]	[0]	Запрос на закрытие сессии контрольной недели
+2024-11-26T18:27:00.2357934+03:00	FAIL	[SPerfomance.Api.Features.PerfomanceContext.Features.CloseAssignmentSession.Endpoint]	[0]	Сессия контрольной недели не закрыта. Причина: Нельзя закрыть контрольную неделю, поскольку дата окончания - 04.12.2024 не достигнута
+2024-11-26T18:31:22.4387846+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Запрос на получение сессий контрольных недель постранично
+2024-11-26T18:31:22.4387870+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Запрос на получение количества сессий контрольных недель
+2024-11-26T18:31:23.8946416+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество контрольных недель 1
+2024-11-26T18:31:24.2303224+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает сессии контрольных недель постранично
+2024-11-26T18:31:27.6418641+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CloseAssignmentSession.Endpoint]	[0]	Запрос на закрытие сессии контрольной недели
+2024-11-26T18:31:28.0982088+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CloseAssignmentSession.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 закрывает сессию контрольной недели
+2024-11-26T18:31:28.8261587+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CloseAssignmentSession.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 создаёт отчёт о контрольной неделе
+2024-11-26T18:31:28.8367103+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Запрос на получение сессий контрольных недель постранично
+2024-11-26T18:31:28.8435725+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает сессии контрольных недель постранично
+2024-11-26T18:32:22.2380795+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-11-26T18:32:22.2397120+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-11-26T18:32:22.2922173+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 10
+2024-11-26T18:32:22.3980616+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 14
+2024-11-26T18:32:26.7788432+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-11-26T18:32:26.7927566+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 10
+2024-11-26T18:32:36.9434065+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Запрос на получение сессий контрольных недель постранично
+2024-11-26T18:32:36.9443937+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Запрос на получение количества сессий контрольных недель
+2024-11-26T18:32:36.9487887+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество контрольных недель 0
+2024-11-26T18:32:37.1022988+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает сессии контрольных недель постранично
+2024-11-26T18:32:48.2716013+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CreateAssignmentSession.Endpoint]	[0]	Запрос на создание сессии контрольной недели
+2024-11-26T18:32:48.4553189+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CreateAssignmentSession.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 создаёт контрольную неделю 27-00-YYYY 04-12-2024
+2024-11-26T18:32:49.2366563+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Запрос на получение сессий контрольных недель постранично
+2024-11-26T18:32:49.2392480+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-26T18:32:49.2454088+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 5
+2024-11-26T18:32:49.4846228+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает сессии контрольных недель постранично
+2024-11-26T18:32:52.5834797+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CloseAssignmentSession.Endpoint]	[0]	Запрос на закрытие сессии контрольной недели
+2024-11-26T18:32:52.9488069+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CloseAssignmentSession.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 закрывает сессию контрольной недели
+2024-11-26T18:32:53.3452773+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CloseAssignmentSession.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 создаёт отчёт о контрольной неделе
+2024-11-26T18:32:53.3502833+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Запрос на получение сессий контрольных недель постранично
+2024-11-26T18:32:53.3568962+03:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает сессии контрольных недель постранично
+2024-11-26T18:32:56.2156883+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-11-26T18:32:56.2170339+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-11-26T18:32:56.2226549+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 14
+2024-11-26T18:32:56.3920214+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 10
+2024-11-26T18:32:57.9192022+03:00	INFO	[SPerfomance.Api.Features.Students.GetStudentsByGroup.Endpoint]	[0]	Запрос на получение студентов группы
+2024-11-26T18:32:57.9609815+03:00	INFO	[SPerfomance.Api.Features.Students.GetStudentsByGroup.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студентов группы БДТ 21-11 10
+2024-11-26T18:33:04.4364198+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-11-26T18:33:04.4475898+03:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 10
+2024-11-27T18:03:40.1519942+03:00	FAIL	[Microsoft.Extensions.Hosting.Internal.Host]	[HostedServiceStartupFaulted]	Hosting failed to startSystem.IO.IOException: Failed to bind to address http://127.0.0.1:5000: address already in use.
+ ---> Microsoft.AspNetCore.Connections.AddressInUseException: Обычно разрешается только одно использование адреса сокета (протокол/сетевой адрес/порт).
+ ---> System.Net.Sockets.SocketException (10048): Обычно разрешается только одно использование адреса сокета (протокол/сетевой адрес/порт).
+   at System.Net.Sockets.Socket.UpdateStatusAfterSocketErrorAndThrowException(SocketError error, Boolean disconnectOnFailure, String callerName)
+   at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportOptions.CreateDefaultBoundListenSocket(EndPoint endpoint)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportFactory.BindAsync(EndPoint endpoint, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Infrastructure.TransportManager.BindAsync(EndPoint endPoint, ConnectionDelegate connectionDelegate, EndpointConfig endpointConfig, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.<>c__DisplayClass28_0`1.<<StartAsync>g__OnBind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.LocalhostListenOptions.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.DefaultAddressStrategy.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindAsync(ListenOptions[] listenOptions, AddressBindContext context, Func`2 useHttps, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.BindAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+
+2024-11-27T18:21:58.0422714+03:00	INFO	[Program]	[0]	Приложение запущено, но не удалось определить порт и адрес
+2024-11-27T18:22:59.4267847+03:00	CRIT	[Microsoft.AspNetCore.Server.Kestrel]	[0]	Unable to reload configuration.System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api\path\to\your\certificate.pfx'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at System.Security.Cryptography.X509Certificates.X509Certificate2Collection.ImportFromPemFile(String certPemFilePath)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Certificates.CertificateConfigLoader.LoadCertificate(CertificateConfig certInfo, String endpointName)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.TlsConfigurationLoader.ApplyHttpsConfiguration(HttpsConnectionAdapterOptions httpsOptions, EndpointConfig endpoint, KestrelServerOptions serverOptions, CertificateConfig defaultCertificateConfig, ConfigurationReader configurationReader)
+   at Microsoft.AspNetCore.Server.Kestrel.KestrelConfigurationLoader.Reload()
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.RebindAsync()
+
+2024-11-27T18:23:12.3750053+03:00	INFO	[Program]	[0]	Приложение запущено, но не удалось определить порт и адрес
+2024-11-27T18:29:56.0176452+03:00	INFO	[Program]	[0]	Приложение запущено, но не удалось определить порт и адрес
+2024-11-27T18:32:07.3337456+03:00	INFO	[Program]	[0]	Приложение запущено, но не удалось определить порт и адрес
+2024-11-27T18:32:56.0549851+03:00	INFO	[Program]	[0]	Приложение запущено, но не удалось определить порт и адрес
+2024-11-27T18:34:14.6526674+03:00	INFO	[Program]	[0]	Приложение запущено, но не удалось определить порт и адрес
+2024-11-27T18:55:52.3558402+03:00	INFO	[Program]	[0]	Application starting...
+2024-11-27T18:55:52.3862291+03:00	INFO	[Program]	[0]	Application started
+2024-11-27T18:57:13.7556106+03:00	FAIL	[Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware]	[UnhandledException]	An unhandled exception has occurred while executing the request.Microsoft.AspNetCore.Http.BadHttpRequestException: Required parameter "string token" was not provided from header.
+   at lambda_method70(Closure, Object, HttpContext)
+   at Microsoft.AspNetCore.ResponseCompression.ResponseCompressionMiddleware.InvokeCore(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at SPerfomance.Api.MiddleWare.TaskCancellationTokenExtensions.Invoke(HttpContext context) in C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api\MiddleWare\TaskCancellationTokenExtensions.cs:line 9
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+
+2024-11-27T19:05:33.8997563+03:00	INFO	[Program]	[0]	Application starting...
+2024-11-27T19:05:33.9293913+03:00	INFO	[Program]	[0]	Application started
+2024-11-27T19:05:39.9651877+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-27T19:05:39.9748409+03:00	FAIL	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Пользователь не является администратором
+2024-11-27T19:14:30.9258355+03:00	INFO	[Program]	[0]	Application starting...
+2024-11-27T19:14:30.9548753+03:00	INFO	[Program]	[0]	Application started
+2024-11-27T19:14:41.2918107+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-27T19:14:41.3004316+03:00	FAIL	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Пользователь не является администратором
+2024-11-27T19:29:10.1672048+03:00	INFO	[Program]	[0]	Application starting...
+2024-11-27T19:29:10.1964773+03:00	INFO	[Program]	[0]	Application started
+2024-11-27T19:32:43.6213189+03:00	INFO	[Program]	[0]	Application starting...
+2024-11-27T19:32:43.6550419+03:00	INFO	[Program]	[0]	Application started
+2024-11-27T19:33:58.7411811+03:00	INFO	[Program]	[0]	Application starting...
+2024-11-27T19:33:58.7682699+03:00	INFO	[Program]	[0]	Application started
+2024-11-27T19:34:05.2117142+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-27T19:34:05.2201403+03:00	FAIL	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Пользователь не является администратором
+2024-11-27T19:34:16.3523939+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-27T19:34:16.3527344+03:00	FAIL	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Пользователь не является администратором
+2024-11-27T19:41:42.4090471+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-27T19:41:42.4094917+03:00	FAIL	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Пользователь не является администратором
+2024-11-27T20:58:32.6455281+03:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-11-27T20:58:32.6459701+03:00	FAIL	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Пользователь не является администратором
+2024-11-29T14:39:19.1735419+03:00	INFO	[Program]	[0]	Application starting...
+2024-11-29T14:39:19.2258616+03:00	INFO	[Program]	[0]	Application started

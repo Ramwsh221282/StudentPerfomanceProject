@@ -28,7 +28,7 @@ public static class GetAssignmentSessionReportsCount
     }
 
     public static async Task<Results<UnauthorizedHttpResult, Ok<int>>> Handler(
-        [FromHeader(Name = "token")] string token,
+        [FromHeader(Name = "token")] string? token,
         IUsersRepository users,
         IControlWeekReportRepository reports,
         ILogger<Endpoint> logger,

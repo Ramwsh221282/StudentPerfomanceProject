@@ -37,7 +37,7 @@ public static class GetGroupStudentsActiveOnly
     public static async Task<
         Results<UnauthorizedHttpResult, NotFound<string>, Ok<StudentDto[]>>
     > Handler(
-        [FromHeader(Name = "token")] string token,
+        [FromHeader(Name = "token")] string? token,
         [FromQuery(Name = "groupName")] string groupName,
         IQueryDispatcher dispatcher,
         IUsersRepository users,

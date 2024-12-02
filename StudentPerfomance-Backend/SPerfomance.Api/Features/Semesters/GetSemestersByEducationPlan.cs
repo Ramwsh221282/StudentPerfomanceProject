@@ -45,7 +45,7 @@ public static class GetSemestersByEducationPlan
     public static async Task<
         Results<UnauthorizedHttpResult, NotFound<string>, Ok<IEnumerable<SemesterDto>>>
     > Handler(
-        [FromHeader(Name = "token")] string token,
+        [FromHeader(Name = "token")] string? token,
         [FromQuery(Name = "directionName")] string directionName,
         [FromQuery(Name = "directionCode")] string directionCode,
         [FromQuery(Name = "directionType")] string directionType,

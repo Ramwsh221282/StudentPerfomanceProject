@@ -38,7 +38,7 @@ public static class CreateEducationPlan
     public static async Task<
         Results<BadRequest<string>, UnauthorizedHttpResult, NotFound<string>, Ok<EducationPlanDto>>
     > Handler(
-        [FromHeader(Name = "token")] string token,
+        [FromHeader(Name = "token")] string? token,
         Request request,
         IUsersRepository users,
         ICommandDispatcher commandDispatcher,

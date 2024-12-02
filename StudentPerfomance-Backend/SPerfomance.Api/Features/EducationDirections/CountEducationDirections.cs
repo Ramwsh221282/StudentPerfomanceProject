@@ -29,7 +29,7 @@ public static class CountEducationDirections
     }
 
     public static async Task<Results<Ok<int>, UnauthorizedHttpResult>> Handler(
-        [FromHeader(Name = "token")] string token,
+        [FromHeader(Name = "token")] string? token,
         IUsersRepository users,
         IEducationDirectionRepository repository,
         ILogger<Endpoint> logger,
