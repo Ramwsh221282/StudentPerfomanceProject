@@ -25,7 +25,8 @@ public static class FilterEducationPlans
                         )
                         .AppendLine("Результат Ошибки (401): Ошибка авторизации.")
                         .ToString()
-                );
+                )
+                .RequireCors("Frontend");
     }
 
     public static async Task<IResult> Handler(

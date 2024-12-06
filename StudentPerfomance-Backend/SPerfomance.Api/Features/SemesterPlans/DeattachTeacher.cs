@@ -47,7 +47,8 @@ public static class DeattachTeacher
                             "Результат Ошибки (404): Дисциплина или преподаватель не найдены."
                         )
                         .ToString()
-                );
+                )
+                .RequireCors("Frontend");
     }
 
     public static async Task<

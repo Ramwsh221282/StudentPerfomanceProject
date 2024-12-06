@@ -29,7 +29,8 @@ public static class ChangeUserPasswordEndpoint
                 .WithOpenApi()
                 .WithName("UsersPasswordUpdate")
                 .RequireRateLimiting("fixed")
-                .WithDescription(new StringBuilder().AppendLine("Изменение пароля").ToString());
+                .WithDescription(new StringBuilder().AppendLine("Изменение пароля").ToString())
+                .RequireCors("Frontend");
     }
 
     public static async Task<Results<BadRequest<string>, Ok<Response>>> Handler(

@@ -35,7 +35,8 @@ public static class DeattachGroupEducationPlan
                             "Результат Ошибки (404): Студенческая группа или учебный план не найдены"
                         )
                         .ToString()
-                );
+                )
+                .RequireCors("Frontend");
     }
 
     public static async Task<

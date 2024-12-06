@@ -23,7 +23,8 @@ public static class CountTeacherDepartments
                         .AppendLine("Результат ОК (200): Количество кафедр.")
                         .AppendLine("Результат Ошибки (401): Ошибка авторизации.")
                         .ToString()
-                );
+                )
+                .RequireCors("Frontend");
     }
 
     public static async Task<Results<UnauthorizedHttpResult, Ok<int>>> Handler(

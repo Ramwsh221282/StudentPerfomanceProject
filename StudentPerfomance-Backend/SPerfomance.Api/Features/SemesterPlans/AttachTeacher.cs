@@ -54,7 +54,8 @@ public static class AttachTeacher
                             "Результат Ошибки (404): Не найден преподаватель или дисциплина"
                         )
                         .ToString()
-                );
+                )
+                .RequireCors("Frontend");
     }
 
     public static async Task<

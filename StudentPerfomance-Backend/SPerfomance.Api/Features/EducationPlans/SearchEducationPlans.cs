@@ -24,7 +24,8 @@ public static class SearchEducationPlans
                         .AppendLine("Результат ОК (200): Отфильтрованные учебные планы.")
                         .AppendLine("Результат Ошибки (401): Ошибка авторизации.")
                         .ToString()
-                );
+                )
+                .RequireCors("Frontend");
     }
 
     public static async Task<

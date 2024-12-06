@@ -24,7 +24,8 @@ public static class GetEducationPlansByPage
                         .AppendLine("Результат ОК (200): учебные планы постранично.")
                         .AppendLine("Результат Ошибки (401): Ошибка авторизации.")
                         .ToString()
-                );
+                )
+                .RequireCors("Frontend");
     }
 
     public static async Task<

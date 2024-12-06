@@ -29,7 +29,8 @@ public static class ChangeUserEmailEndpoint
                 .WithOpenApi()
                 .WithName("UsersEmailUpdate")
                 .RequireRateLimiting("fixed")
-                .WithDescription(new StringBuilder().AppendLine("Изменение почты").ToString());
+                .WithDescription(new StringBuilder().AppendLine("Изменение почты").ToString())
+                .RequireCors("Frontend");
     }
 
     public static async Task<Results<BadRequest<string>, Ok<Response>>> Handler(

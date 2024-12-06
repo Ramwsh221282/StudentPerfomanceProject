@@ -35,7 +35,8 @@ public static class CloseAssignmentSession
                         .AppendLine("Результат Ошибки (401): Ошибка авторизации.")
                         .AppendLine("Результат Ошибки (404): Сессия контрольной недели не найдена")
                         .ToString()
-                );
+                )
+                .RequireCors("Frontend");
     }
 
     public static async Task<

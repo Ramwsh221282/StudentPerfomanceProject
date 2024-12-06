@@ -26,7 +26,8 @@ public static class GetUsersByPage
                         .AppendLine("Результат ОК (200): Список пользователей.")
                         .AppendLine("Результат Ошибки (401): Ошибка авторизации.")
                         .ToString()
-                );
+                )
+                .RequireCors("Frontend");
     }
 
     public static async Task<Results<UnauthorizedHttpResult, Ok<UserDto[]>>> Handler(

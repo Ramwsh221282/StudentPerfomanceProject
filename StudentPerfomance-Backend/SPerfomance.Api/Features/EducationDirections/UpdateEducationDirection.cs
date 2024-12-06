@@ -31,7 +31,8 @@ public static class UpdateEducationDirection
                         .AppendLine("Результат Ошибки (401): Ошибка авторизации.")
                         .AppendLine("Результат Ошибки (400): Ошибка запроса.")
                         .ToString()
-                );
+                )
+                .RequireCors("Frontend");
     }
 
     public static async Task<

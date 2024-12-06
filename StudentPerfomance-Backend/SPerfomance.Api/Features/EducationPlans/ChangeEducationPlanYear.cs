@@ -40,7 +40,8 @@ public static class ChangeEducationPlanYear
                         .AppendLine("Результат Ошибки (401): Ошибка авторизации.")
                         .AppendLine("Результат Ошибки (404): Не найдено направление подготовки.")
                         .ToString()
-                );
+                )
+                .RequireCors("Frontend");
     }
 
     public static async Task<

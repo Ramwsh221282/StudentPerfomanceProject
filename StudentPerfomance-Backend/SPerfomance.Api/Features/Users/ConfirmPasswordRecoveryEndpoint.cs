@@ -13,7 +13,9 @@ public static class ConfirmPasswordRecoveryEndpoint
     public sealed class Endpoint : IEndpoint
     {
         public void MapEndpoint(IEndpointRouteBuilder app) =>
-            app.MapGet("reset-password", Handler).RequireRateLimiting("fixed");
+            app.MapGet("reset-password", Handler)
+                .RequireRateLimiting("fixed")
+                .RequireCors("Frontend");
     }
 
     public static async Task<Results<BadRequest<string>, Ok<bool>>> Handler(

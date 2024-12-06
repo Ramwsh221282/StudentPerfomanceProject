@@ -13,36 +13,74 @@ using SPerfomance.Domain.Tools;
 
 namespace SPerfomance.Domain.Models.StudentGroups;
 
+/// <summary>
+/// Сущность - студенческая группа.
+/// </summary>
 public class StudentGroup : DomainEntity
 {
+    /// <summary>
+    /// Список студентов.
+    /// </summary>
     private readonly List<Student> _students = [];
 
+    /// <summary>
+    /// Статистика группы в контрольной недели.
+    /// </summary>
     private List<AssignmentWeek> _weeks = [];
 
+    /// <summary>
+    /// Название группы.
+    /// </summary>
     public StudentGroupName Name { get; private set; }
 
+    /// <summary>
+    /// Учебный план группы.
+    /// </summary>
     public EducationPlan? EducationPlan { get; private set; }
 
+    /// <summary>
+    /// Активный семестр группы.
+    /// </summary>
     public Semester? ActiveGroupSemester { get; private set; }
 
+    /// <summary>
+    /// Список студентов группы (только для чтения).
+    /// </summary>
     public IReadOnlyCollection<Student> Students => _students;
 
+    /// <summary>
+    /// Список статистики группы в контрольных неделях.
+    /// </summary>
     public IReadOnlyCollection<AssignmentWeek> Weeks => _weeks;
 
+    /// <summary>
+    /// Закрытый конструктор создания объекта. Нужен для ORM.
+    /// </summary>
     private StudentGroup()
         : base(Guid.Empty)
     {
         Name = StudentGroupName.Empty;
     }
 
+    /// <summary>
+    /// Закрытый конструктор создания объекта.
+    /// </summary>
     private StudentGroup(StudentGroupName name)
         : base(Guid.NewGuid())
     {
         Name = name;
     }
 
+    /// <summary>
+    /// Создание дефолтного объекта (без проинициализированных значений).
+    /// </summary>
     internal static StudentGroup Empty => new StudentGroup();
 
+    /// <summary>
+    /// Статичный фабричный метод создания экземпляра класса StudentGroup
+    /// </summary>
+    /// <param name="name">Название группы</param>
+    /// <returns>Результат создания экземпляра класса студенческой группы. Возаращет Result.Error или Result.Success(Value)</returns>
     public static Result<StudentGroup> Create(string name)
     {
         Result<StudentGroupName> nameCreation = StudentGroupName.Create(name);

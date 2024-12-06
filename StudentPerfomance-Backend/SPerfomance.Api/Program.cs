@@ -35,14 +35,18 @@ builder.Services.AddEndpoints();
 builder.Services.AddCors(options =>
 {
     var origins = builder.Configuration.GetSection("Cors").GetSection("Origins").Get<string[]>()!;
+    Console.WriteLine("Cors configuration");
+    foreach (var origin in origins)
+    {
+        Console.WriteLine(origin);
+    }
     options.AddPolicy(
-        name: "Frontend",
-        policy =>
-        {
-            policy.WithOrigins(origins).AllowAnyHeader().AllowAnyMethod();
-        }
+        "Frontend",
+        builder => builder.WithOrigins(origins).AllowAnyMethod().AllowAnyHeader()
     );
 });
+
+Console.WriteLine($"Database file found: {File.Exists("Database.db")}");
 
 builder.Services.AddLogging(loggingBuilder =>
 {
@@ -65,6 +69,7 @@ app.UseHttpsRedirection();
 app.UseMiddleware<TaskCancellationTokenExtensions>();
 app.UseRateLimiter();
 app.UseResponseCompression();
+
 app.UseCors("Frontend");
 app.MapEndpoints();
 logger.LogInformation("Application started");

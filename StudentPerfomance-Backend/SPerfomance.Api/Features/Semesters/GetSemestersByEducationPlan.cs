@@ -39,7 +39,8 @@ public static class GetSemestersByEducationPlan
                         .AppendLine("Результат Ошибки (401): Ошибка авторизации.")
                         .AppendLine("Результат Ошибки (404): Семестры не найдены.")
                         .ToString()
-                );
+                )
+                .RequireCors("Frontend");
     }
 
     public static async Task<

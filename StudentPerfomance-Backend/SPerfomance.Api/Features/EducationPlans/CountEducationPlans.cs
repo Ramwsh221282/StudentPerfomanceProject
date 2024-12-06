@@ -24,7 +24,8 @@ public static class CountEducationPlans
                         .AppendLine("Результат ОК (200): Количество направлений подготовки.")
                         .AppendLine("Результат Ошибки (401): Ошибка авторизации.")
                         .ToString()
-                );
+                )
+                .RequireCors("Frontend");
     }
 
     public static async Task<IResult> Handler(

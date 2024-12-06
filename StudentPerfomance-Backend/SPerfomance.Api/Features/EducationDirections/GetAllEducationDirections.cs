@@ -25,7 +25,8 @@ public static class GetAllEducationDirections
                         .AppendLine("Результат ОК (200): Коллекция направлений подготовки.")
                         .AppendLine("Результат Ошибки (401): Ошибка авторизации.")
                         .ToString()
-                );
+                )
+                .RequireCors("Frontend");
         }
     }
 

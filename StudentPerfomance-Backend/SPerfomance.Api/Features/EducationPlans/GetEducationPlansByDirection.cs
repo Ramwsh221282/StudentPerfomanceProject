@@ -31,7 +31,8 @@ public static class GetEducationPlansByDirection
                         )
                         .AppendLine("Результат Ошибки (401): Ошибка авторизации.")
                         .ToString()
-                );
+                )
+                .RequireCors("Frontend");
     }
 
     public static async Task<

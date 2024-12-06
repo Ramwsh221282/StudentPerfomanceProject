@@ -18,7 +18,11 @@ public static class VerifyToken
                 .RequireCors("Frontend");
     }
 
-    public static async Task<IResult> Handler(Request request, CancellationToken ct)
+    public static async Task<IResult> Handler(
+        Request request,
+        CancellationToken ct,
+        ILogger<Endpoint> logger
+    )
     {
         return await Task.Run(
             () =>

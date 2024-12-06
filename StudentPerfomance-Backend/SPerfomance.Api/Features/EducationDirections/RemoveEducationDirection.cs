@@ -37,7 +37,8 @@ public static class RemoveEducationDirection
                         )
                         .AppendLine("Результат Ошибки (400): Ошибка запроса.")
                         .ToString()
-                );
+                )
+                .RequireCors("Frontend");
     }
 
     public static async Task<

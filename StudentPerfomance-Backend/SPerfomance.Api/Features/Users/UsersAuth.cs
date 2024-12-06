@@ -27,7 +27,8 @@ public static class UsersAuth
                 .WithOpenApi()
                 .WithName("UsersAuth")
                 .RequireRateLimiting("fixed")
-                .WithDescription(new StringBuilder().AppendLine("Авторизация").ToString());
+                .WithDescription(new StringBuilder().AppendLine("Авторизация").ToString())
+                .RequireCors("Frontend");
         }
     }
 

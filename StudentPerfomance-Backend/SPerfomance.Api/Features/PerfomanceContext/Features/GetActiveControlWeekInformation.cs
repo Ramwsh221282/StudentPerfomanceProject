@@ -26,7 +26,8 @@ public static class GetActiveControlWeekInformation
                         .AppendLine("Результат Ошибки (400): Ошибка запроса.")
                         .AppendLine("Результат Ошибки (401): Ошибка авторизации.")
                         .ToString()
-                );
+                )
+                .RequireCors("Frontend");
     }
 
     public static async Task<

@@ -32,7 +32,8 @@ public static class CreateEducationPlan
                         .AppendLine("Результат Ошибки (401): Ошибка авторизации.")
                         .AppendLine("Результат Ошибки (404): Направление подготовки не найдено.")
                         .ToString()
-                );
+                )
+                .RequireCors("Frontend");
     }
 
     public static async Task<

@@ -24,7 +24,8 @@ public static class GetGroupsByPage
                         .AppendLine("Результат ОК (200): Возврат студенческой группы постранично.")
                         .AppendLine("Результат Ошибки (401): Ошибка авторизации.")
                         .ToString()
-                );
+                )
+                .RequireCors("Frontend");
     }
 
     public static async Task<

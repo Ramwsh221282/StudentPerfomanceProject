@@ -26,7 +26,8 @@ public static class GetStudentsByGroup
                         .AppendLine("Результат ОК (200): Список неактивных студентов.")
                         .AppendLine("Результат Ошибки (401): Ошибка авторизации.")
                         .ToString()
-                );
+                )
+                .RequireCors("Frontend");
     }
 
     public static async Task<

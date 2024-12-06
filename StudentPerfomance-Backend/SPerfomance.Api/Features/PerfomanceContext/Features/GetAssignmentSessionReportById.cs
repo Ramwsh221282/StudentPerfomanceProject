@@ -27,7 +27,8 @@ public static class GetAssignmentSessionReportById
                         .AppendLine("Результат Ошибки (401): Ошибка авторизации.")
                         .AppendLine("Результат Ошибки (404): Отчёт не найден.")
                         .ToString()
-                );
+                )
+                .RequireCors("Frontend");
     }
 
     public static async Task<

@@ -32,7 +32,8 @@ public static class GetAssignmentSessionForTeacher
                         .AppendLine("Результат Ошибки (401): Ошибка авторизации.")
                         .AppendLine("Результат Ошибки (404): Преподаватель не найден")
                         .ToString()
-                );
+                )
+                .RequireCors("Frontend");
     }
 
     public static async Task<

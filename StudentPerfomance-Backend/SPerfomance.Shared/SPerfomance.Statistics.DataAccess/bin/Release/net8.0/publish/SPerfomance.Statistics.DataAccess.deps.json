@@ -508,7 +508,10 @@
           "SPerfomance.Domain": "1.0.0"
         },
         "runtime": {
-          "SPerfomance.Application.dll": {}
+          "SPerfomance.Application.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "SPerfomance.DataAccess/1.0.0": {
@@ -518,12 +521,18 @@
           "SPerfomance.Domain": "1.0.0"
         },
         "runtime": {
-          "SPerfomance.DataAccess.dll": {}
+          "SPerfomance.DataAccess.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "SPerfomance.Domain/1.0.0": {
         "runtime": {
-          "SPerfomance.Domain.dll": {}
+          "SPerfomance.Domain.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }

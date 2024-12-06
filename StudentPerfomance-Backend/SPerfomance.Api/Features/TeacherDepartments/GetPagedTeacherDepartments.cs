@@ -24,7 +24,8 @@ public static class GetPagedTeacherDepartments
                         .AppendLine("Результат ОК (200): Список кафедр постранично.")
                         .AppendLine("Результат Ошибки (401): Ошибка авторизации.")
                         .ToString()
-                );
+                )
+                .RequireCors("Frontend");
     }
 
     public static async Task<Results<UnauthorizedHttpResult, Ok<TeachersDepartmentDto[]>>> Handler(

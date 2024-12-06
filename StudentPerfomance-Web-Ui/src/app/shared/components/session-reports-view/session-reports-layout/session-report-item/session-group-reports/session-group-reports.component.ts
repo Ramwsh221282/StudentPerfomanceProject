@@ -56,6 +56,7 @@ export class SessionGroupReportsComponent implements OnInit {
   }
 
   protected initializeStudentsFromGroup(group: GroupReportInterface): void {
+    if (group.parts[0] == null) return;
     this.students = [];
     for (const student of group.parts[0].parts) {
       this.students.push(student);
@@ -63,6 +64,7 @@ export class SessionGroupReportsComponent implements OnInit {
   }
 
   protected initializeDisciplinesFromGroup(group: GroupReportInterface): void {
+    if (group.parts == null) return;
     this.disciplines = [];
     for (const discipline of group.parts) {
       this.disciplines.push(discipline);

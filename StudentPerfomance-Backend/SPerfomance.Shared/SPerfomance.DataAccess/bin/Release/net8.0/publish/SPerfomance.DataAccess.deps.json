@@ -432,7 +432,10 @@
       "System.Threading.Channels/6.0.0": {},
       "SPerfomance.Domain/1.0.0": {
         "runtime": {
-          "SPerfomance.Domain.dll": {}
+          "SPerfomance.Domain.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }

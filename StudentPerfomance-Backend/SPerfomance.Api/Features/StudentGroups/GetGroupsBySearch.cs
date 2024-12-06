@@ -24,7 +24,8 @@ public static class GetGroupsBySearch
                         .AppendLine("Результат ОК (200): Список отфильтрованных групп по названию.")
                         .AppendLine("Результат Ошибки (401): Ошибка авторизации.")
                         .ToString()
-                );
+                )
+                .RequireCors("Frontend");
     }
 
     public static async Task<

@@ -25,7 +25,8 @@ public static class CountEducationDirections
                         .AppendLine("Результат ОК (200): целое число.")
                         .AppendLine("Результат Ошибки (401): Ошибка авторизации.")
                         .ToString()
-                );
+                )
+                .RequireCors("Frontend");
     }
 
     public static async Task<Results<Ok<int>, UnauthorizedHttpResult>> Handler(

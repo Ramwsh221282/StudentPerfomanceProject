@@ -19,7 +19,8 @@ public class CreatePasswordRecoveryEndpoint
         public void MapEndpoint(IEndpointRouteBuilder app) =>
             app.MapPut($"{UserTags.App}/password-recovery", Handler)
                 .WithTags($"{UserTags.Tag}")
-                .RequireRateLimiting("fixed");
+                .RequireRateLimiting("fixed")
+                .RequireCors("Frontend");
     }
 
     public static async Task<Results<BadRequest<string>, Ok<bool>>> Handler(
@@ -84,8 +85,7 @@ public class CreatePasswordRecoveryEndpoint
             return TypedResults.BadRequest(ticket.Error.Description);
         }
 
-        string recoveryLink =
-            $"{baseUrl}/{frontendRecoveryUrl}/reset-password?token={ticket.Value.Token}";
+        string recoveryLink = $"{frontendRecoveryUrl}/reset-password?token={ticket.Value.Token}";
         StringBuilder messageBuilder = new StringBuilder();
         messageBuilder.AppendLine("Запрос на восстановление пароля принят.");
         messageBuilder.AppendLine("Для восстановления пароля перейдите по ссылке:");
@@ -99,6 +99,7 @@ public class CreatePasswordRecoveryEndpoint
             messageBuilder.ToString()
         );
         var sending = mailing.SendMessage(message);
+        logger.LogInformation("Сформирована ссылка на восстановление пароля: {link}", recoveryLink);
         logger.LogInformation(
             "Отправлен запрос на восстановление пароля {email}",
             request.Command.Email

@@ -44,7 +44,8 @@ public static class AttachGroupEducationPlan
                         .AppendLine("Результат Ошибки (401): Ошибка авторизации.")
                         .AppendLine("Результат Ошибки (404: Учебный план или группа не найдены")
                         .ToString()
-                );
+                )
+                .RequireCors("Frontend");
     }
 
     public static async Task<

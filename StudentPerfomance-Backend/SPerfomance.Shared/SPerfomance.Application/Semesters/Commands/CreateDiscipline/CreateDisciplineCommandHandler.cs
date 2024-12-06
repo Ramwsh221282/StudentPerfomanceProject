@@ -6,6 +6,10 @@ using SPerfomance.Domain.Tools;
 
 namespace SPerfomance.Application.Semesters.Commands.CreateDiscipline;
 
+/// <summary>
+/// Обработчик команды добавления дисциплины в семестр.
+/// </summary>
+/// <param name="repository">Абстракция для работы с таблицей базы данных "дисциплины".</param>
 public class CreateDisciplineCommandHandler(ISemesterPlansRepository repository)
     : ICommandHandler<CreateDisciplineCommand, SemesterPlan>
 {
@@ -14,7 +18,7 @@ public class CreateDisciplineCommandHandler(ISemesterPlansRepository repository)
         CancellationToken ct = default
     )
     {
-        if (command.Semester == null)
+        if (command.Semester == null) // Проверка на пустую ссылку.
             return Result<SemesterPlan>.Failure(SemesterErrors.NotFound());
 
         var discipline = command.Semester.AddDiscipline(command.DisciplineName);

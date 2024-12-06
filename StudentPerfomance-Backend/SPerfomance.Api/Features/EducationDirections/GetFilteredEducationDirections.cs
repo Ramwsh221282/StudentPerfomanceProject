@@ -28,7 +28,8 @@ public static class GetFilteredEducationDirections
                         )
                         .AppendLine("Результат Ошибки (401): Ошибка авторизации.")
                         .ToString()
-                );
+                )
+                .RequireCors("Frontend");
     }
 
     public static async Task<

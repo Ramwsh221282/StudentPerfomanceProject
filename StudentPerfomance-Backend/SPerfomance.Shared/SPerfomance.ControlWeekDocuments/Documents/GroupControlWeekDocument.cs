@@ -6,7 +6,7 @@ namespace SPerfomance.ControlWeekDocuments.Documents;
 
 public class GroupControlWeekDocument : IControlWeekGroupDocument
 {
-    private const string Connection = @"Filename=group_control_week_document.db; Connection-shared";
+    private const string Connection = @"Filename=group_control_week_document.db; Connection=shared";
     private const string Collection = "group_control_week";
 
     public async Task RegisterGroup(StudentGroup group)
