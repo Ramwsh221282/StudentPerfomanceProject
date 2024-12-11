@@ -1,14 +1,15 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { StudentGroupsService } from './student-groups-base-service';
-import { BASE_API_URI } from '../../../../../shared/models/api/api-constants';
+//import { BASE_API_URI } from '../../../../../shared/models/api/api-constants';
 import { AuthService } from '../../../../users/services/auth.service';
 import { HttpHeaders } from '@angular/common/http';
+import { AppConfigService } from '../../../../../app.config.service';
 
 @Injectable({
   providedIn: 'any',
 })
 export class StudentGroupsPaginationService extends StudentGroupsService {
-  private readonly _apiUri: string = `${BASE_API_URI}/api/student-groups/count`;
+  private readonly _apiUri: string;
   private _totalCount: number = 0;
   private _pageSize: number = 10;
   private _pagesCount: number = 0;
@@ -17,6 +18,9 @@ export class StudentGroupsPaginationService extends StudentGroupsService {
 
   constructor(private readonly _authService: AuthService) {
     super();
+    const appConfig = inject(AppConfigService);
+    //this._apiUri = `${BASE_API_URI}/api/student-groups/count`;
+    this._apiUri = `${appConfig.baseApiUri}/api/student-groups/count`;
   }
 
   public get currentPage(): number {

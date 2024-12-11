@@ -37,6 +37,22 @@ public sealed class ControlWeekRepository : IControlWeekReportRepository
     public async Task<int> Count(CancellationToken ct = default) =>
         await _context.ControlWeekReports.CountAsync(cancellationToken: ct);
 
+    public async Task<bool> Remove(string id, CancellationToken ct = default)
+    {
+        Guid comparisonId = Guid.Parse(id);
+        if (
+            !await _context.ControlWeekReports.AnyAsync(
+                r => r.Id == comparisonId,
+                cancellationToken: ct
+            )
+        )
+            return false;
+        await _context
+            .ControlWeekReports.Where(r => r.Id == comparisonId)
+            .ExecuteDeleteAsync(cancellationToken: ct);
+        return true;
+    }
+
     public async Task<IReadOnlyList<ControlWeekReportEntity>> GetPaged(
         int page,
         int pageSize,

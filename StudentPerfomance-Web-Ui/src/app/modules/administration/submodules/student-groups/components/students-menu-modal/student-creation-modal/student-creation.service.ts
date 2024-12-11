@@ -1,10 +1,11 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { BASE_API_URI } from '../../../../../../../shared/models/api/api-constants';
+//import { BASE_API_URI } from '../../../../../../../shared/models/api/api-constants';
 import { Student } from '../../../../students/models/student.interface';
 import { Observable } from 'rxjs';
 import { AuthService } from '../../../../../../users/services/auth.service';
 import { StudentPayloadBuilder } from '../../../../students/models/contracts/student-contracts/student-payload-builder';
+import { AppConfigService } from '../../../../../../../app.config.service';
 
 @Injectable({
   providedIn: 'any',
@@ -13,9 +14,13 @@ export class StudentCreationService {
   private readonly _httpClient: HttpClient;
   private readonly _apiUri: string;
 
-  public constructor(private readonly _authService: AuthService) {
+  public constructor(
+    private readonly _authService: AuthService,
+    private readonly _appConfig: AppConfigService,
+  ) {
     this._httpClient = inject(HttpClient);
-    this._apiUri = `${BASE_API_URI}/api/students`;
+    //this._apiUri = `${BASE_API_URI}/api/students`;
+    this._apiUri = `${this._appConfig.baseApiUri}/api/students`;
   }
 
   public create(student: Student): Observable<Student> {

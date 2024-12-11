@@ -1,9 +1,9 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { BASE_API_URI } from '../../../shared/models/api/api-constants';
 import { catchError, Observable, tap } from 'rxjs';
 import { User } from './user-interface';
 import { CookieService } from 'ngx-cookie-service';
+import { AppConfigService } from '../../../app.config.service';
 
 @Injectable({
   providedIn: 'root',
@@ -14,11 +14,11 @@ export class AuthService {
   private _user: User;
   private _isAuthorized = false;
 
-  public constructor() {
+  public constructor(private readonly _appConfig: AppConfigService) {
     this._httpClient = inject(HttpClient);
     this._cookieService = inject(CookieService);
     this.tryAuthorizeUsingCookie();
-    this.verify();
+    //this.verify();
   }
 
   public get userData(): User {
@@ -37,9 +37,9 @@ export class AuthService {
     this._user = { ...user };
   }
 
-  private tryAuthorizeUsingCookie(): void {
+  public tryAuthorizeUsingCookie(): void {
     const token = this._cookieService.get('token');
-    if (token == '' || token == undefined || token == null) {
+    if (token == '' || token == undefined) {
       this._user = {
         name: ' ',
         surname: ' ',
@@ -59,15 +59,8 @@ export class AuthService {
         token: this._cookieService.get('token'),
         role: this._cookieService.get('role'),
       } as User;
+      this._isAuthorized = true;
       return;
-    }
-  }
-
-  public async verifyAsync() {
-    const updateEveryMS: number = 60000;
-    while (true) {
-      this.verify();
-      await new Promise((resolve) => setTimeout(resolve, updateEveryMS));
     }
   }
 
@@ -76,14 +69,17 @@ export class AuthService {
   }
 
   public login(payload: { email: string; password: string }): Observable<User> {
-    const apiUri: string = `${BASE_API_URI}/app/users/login`;
+    const apiUri: string = `${this._appConfig.baseApiUri}/app/users/login`;
+    //const apiUri: string = `${BASE_API_URI}/app/users/login`;
     return this._httpClient.post<User>(apiUri, payload);
   }
 
   public verify(): void {
+    const apiUri: string = `${this._appConfig.baseApiUri}/api/users/verify`;
+    //const apiUri: string = `${BASE_API_URI}/app/users/verify`;
     const token = this._cookieService.get('token');
     this._httpClient
-      .post(`${BASE_API_URI}/api/users/verify`, { token: token })
+      .post(apiUri, { token: token })
       .pipe(
         tap(() => {
           this._isAuthorized = true;

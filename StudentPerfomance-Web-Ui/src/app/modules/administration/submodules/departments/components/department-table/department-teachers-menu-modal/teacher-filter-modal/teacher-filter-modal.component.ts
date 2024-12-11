@@ -7,6 +7,7 @@ import { TeacherBuilder } from '../../../../../teachers/models/teacher-builder';
 import { TeacherFilterFetchPolicy } from '../../../../../teachers/models/fething-policies/teacher-filter-fetch-policy';
 import { DefaultTeacherFetchPolicy } from '../../../../../teachers/models/fething-policies/default-teachers-fetch-policy';
 import { AuthService } from '../../../../../../../users/services/auth.service';
+import { AppConfigService } from '../../../../../../../../app.config.service';
 
 @Component({
   selector: 'app-teacher-filter-modal',
@@ -22,7 +23,8 @@ export class TeacherFilterModalComponent implements ISubbmittable, OnInit {
 
   public constructor(
     private readonly _dataService: TeacherDataService,
-    private readonly _authService: AuthService
+    private readonly _authService: AuthService,
+    private readonly _appConfig: AppConfigService,
   ) {
     this.teacher = {} as Teacher;
   }
@@ -34,7 +36,10 @@ export class TeacherFilterModalComponent implements ISubbmittable, OnInit {
 
   public submit(): void {
     this.teacher.department = { ...this.department };
-    const fetchPolicy = new TeacherFilterFetchPolicy(this.teacher);
+    const fetchPolicy = new TeacherFilterFetchPolicy(
+      this.teacher,
+      this._appConfig,
+    );
     this._dataService.setPolicy(fetchPolicy);
     this.refreshEmitter.emit();
     this.visibilityEmitter.emit();
@@ -43,7 +48,8 @@ export class TeacherFilterModalComponent implements ISubbmittable, OnInit {
   public cancelFilter(): void {
     const fetchPolicy = new DefaultTeacherFetchPolicy(
       this.department,
-      this._authService
+      this._authService,
+      this._appConfig,
     );
     this._dataService.setPolicy(fetchPolicy);
     this.refreshEmitter.emit();

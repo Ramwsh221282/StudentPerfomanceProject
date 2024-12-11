@@ -33,7 +33,7 @@ public class CourseStatisticsReportEntity
         List<CourseStatisticsReportEntity> reports = [];
         for (int i = 1; i <= 4; i++)
         {
-            CourseStatisticsReportEntity report = new CourseStatisticsReportEntity();
+            var report = new CourseStatisticsReportEntity();
             report.Id = Guid.NewGuid();
             report.RootId = root.Id;
             report.Root = root;
@@ -45,14 +45,25 @@ public class CourseStatisticsReportEntity
                 .Bachelor
                 .Type;
             report.Course = i;
-            report.Average = groupStatisticsReportEntities
-                .Where(g => g.Course == report.Course && g.DirectionType == report.DirectionType)
-                .Select(g => g.Average)
-                .Average();
-            report.Perfomance = groupStatisticsReportEntities
-                .Where(g => g.Course == report.Course && g.DirectionType == report.DirectionType)
-                .Select(g => g.Perfomance)
-                .Average();
+            try // in case course is not found or not exist
+            {
+                report.Average = groupStatisticsReportEntities
+                    .Where(g =>
+                        g.Course == report.Course && g.DirectionType == report.DirectionType
+                    )
+                    .Select(g => g.Average)
+                    .Average();
+                report.Perfomance = groupStatisticsReportEntities
+                    .Where(g =>
+                        g.Course == report.Course && g.DirectionType == report.DirectionType
+                    )
+                    .Select(g => g.Perfomance)
+                    .Average();
+            }
+            catch
+            {
+                continue;
+            }
             reports.Add(report);
         }
 
@@ -79,14 +90,25 @@ public class CourseStatisticsReportEntity
                 .Magister
                 .Type;
             report.Course = i;
-            report.Average = groupStatisticsReportEntities
-                .Where(g => g.Course == report.Course && g.DirectionType == report.DirectionType)
-                .Select(g => g.Average)
-                .Average();
-            report.Perfomance = groupStatisticsReportEntities
-                .Where(g => g.Course == report.Course && g.DirectionType == report.DirectionType)
-                .Select(g => g.Perfomance)
-                .Average();
+            try // in case course not found or not exist
+            {
+                report.Average = groupStatisticsReportEntities
+                    .Where(g =>
+                        g.Course == report.Course && g.DirectionType == report.DirectionType
+                    )
+                    .Select(g => g.Average)
+                    .Average();
+                report.Perfomance = groupStatisticsReportEntities
+                    .Where(g =>
+                        g.Course == report.Course && g.DirectionType == report.DirectionType
+                    )
+                    .Select(g => g.Perfomance)
+                    .Average();
+            }
+            catch
+            {
+                continue;
+            }
             reports.Add(report);
         }
 

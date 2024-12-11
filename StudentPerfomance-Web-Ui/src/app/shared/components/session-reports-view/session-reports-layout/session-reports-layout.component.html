@@ -1,5 +1,7 @@
 <div class="session-reports-layout-container">
   @for (report of reports; track report.id) {
-    <app-session-report-item [report]="report"></app-session-report-item>
+    <app-session-report-item [report]="report" (successEmitter)="successEmitter.emit()"
+                             (failureEmitter)="failureEmitter.emit()"
+                             (refreshEmitter)="refreshEmitter.emit()"></app-session-report-item>
   }
 </div>

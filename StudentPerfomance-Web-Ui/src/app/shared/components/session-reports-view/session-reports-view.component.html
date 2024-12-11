@@ -4,9 +4,19 @@
   </div>
   <app-session-reports-filter-input (emitFilter)="fetchData()"></app-session-reports-filter-input>
   <section>
-    <app-session-reports-layout [reports]="reports"></app-session-reports-layout>
+    <app-session-reports-layout [reports]="reports" (successEmitter)="isSuccess = true"
+                                (failureEmitter)="isFailure = true"
+                                (refreshEmitter)="fetchData()"></app-session-reports-layout>
   </section>
   <section class="pagination-wrapper">
     <app-session-reports-pagination (pageEmitter)="fetchOnPageChanged()"></app-session-reports-pagination>
   </section>
 </section>
+<div id="success-notification-renderer" *ngIf="isSuccess">
+  <app-success-result-notification [message]="notificationService.Message"
+                                   (visibilityEmitter)="isSuccess = false"></app-success-result-notification>
+</div>
+<div id="failure-modal-renderer" *ngIf="isFailure">
+  <app-failure-result-notification [message]="notificationService.Message"
+                                   (visibilityEmitter)="isFailure = false"></app-failure-result-notification>
+</div>

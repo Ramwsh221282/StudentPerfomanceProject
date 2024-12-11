@@ -1,10 +1,11 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AuthService } from '../../../../../../users/services/auth.service';
-import { BASE_API_URI } from '../../../../../../../shared/models/api/api-constants';
+//import { BASE_API_URI } from '../../../../../../../shared/models/api/api-constants';
 import { AssignmentSessionDate } from '../../../models/contracts/assignment-session-contract/assignment-session-date';
 import { Observable } from 'rxjs';
 import { AssignmentSession } from '../../../models/assignment-session-interface';
+import { AppConfigService } from '../../../../../../../app.config.service';
 
 @Injectable({
   providedIn: 'any',
@@ -15,8 +16,10 @@ export class AssignmentSessionCreateService {
   public constructor(
     private readonly _authService: AuthService,
     private readonly _httpClient: HttpClient,
+    private readonly _appConfig: AppConfigService,
   ) {
-    this._apiUri = `${BASE_API_URI}/api/assignment-sessions`;
+    //this._apiUri = `${BASE_API_URI}/api/assignment-sessions`;
+    this._apiUri = `${this._appConfig.baseApiUri}/api/assignment-sessions`;
   }
 
   public create(

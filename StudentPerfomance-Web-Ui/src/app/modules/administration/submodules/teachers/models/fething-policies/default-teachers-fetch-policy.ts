@@ -3,8 +3,9 @@ import { Observable } from 'rxjs';
 import { IFetchPolicy } from '../../../../../../shared/models/fetch-policices/fetch-policy-interface';
 import { Teacher } from '../teacher.interface';
 import { Department } from '../../../departments/models/departments.interface';
-import { BASE_API_URI } from '../../../../../../shared/models/api/api-constants';
+//import { BASE_API_URI } from '../../../../../../shared/models/api/api-constants';
 import { AuthService } from '../../../../../users/services/auth.service';
+import { AppConfigService } from '../../../../../../app.config.service';
 
 export class DefaultTeacherFetchPolicy implements IFetchPolicy<Teacher[]> {
   private readonly _apiUri: string;
@@ -13,8 +14,13 @@ export class DefaultTeacherFetchPolicy implements IFetchPolicy<Teacher[]> {
   private _httpHeaders: HttpHeaders;
   private _httpParams: HttpParams;
 
-  public constructor(department: Department, authService: AuthService) {
-    this._apiUri = `${BASE_API_URI}/api/teachers`;
+  public constructor(
+    department: Department,
+    authService: AuthService,
+    appConfig: AppConfigService,
+  ) {
+    //this._apiUri = `${BASE_API_URI}/api/teachers`;
+    this._apiUri = `${appConfig.baseApiUri}/api/teachers`;
     this._department = department;
     this._authService = authService;
     this.buildHttpHeaders();

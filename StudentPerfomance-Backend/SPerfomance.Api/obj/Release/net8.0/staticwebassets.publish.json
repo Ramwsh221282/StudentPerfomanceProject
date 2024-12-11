@@ -1,11 +1,12 @@
 {
   "Version": 1,
-  "Hash": "CpiFVbSGpiU/JnAZy/zkV0kip3T32FIC/HFVmteSamU=",
+  "Hash": "opWk+Vewl2SNV8L5ghHo3+8ibru7VgzJFcXc8Db6U5Y=",
   "Source": "SPerfomance.Api",
   "BasePath": "_content/SPerfomance.Api",
   "Mode": "Default",
   "ManifestType": "Publish",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [],
-  "Assets": []
+  "Assets": [],
+  "Endpoints": []
 }

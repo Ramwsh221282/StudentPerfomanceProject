@@ -1,18 +1,25 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { BASE_API_URI } from '../../../../../../shared/models/api/api-constants';
+//import { BASE_API_URI } from '../../../../../../shared/models/api/api-constants';
 import { IFetchPolicy } from '../../../../../../shared/models/fetch-policices/fetch-policy-interface';
 import { EducationPlan } from '../education-plan-interface';
 import { Observable } from 'rxjs';
 import { AuthService } from '../../../../../users/services/auth.service';
+import { AppConfigService } from '../../../../../../app.config.service';
 
 export class FilterFetchPolicy implements IFetchPolicy<EducationPlan[]> {
-  private readonly _baseApiUri = `${BASE_API_URI}/api/education-plans/filter`;
+  private readonly _baseApiUri;
   private readonly _authService: AuthService;
   private readonly _plan: EducationPlan;
   private _headers: HttpHeaders;
   private _params: HttpParams;
 
-  public constructor(plan: EducationPlan, authService: AuthService) {
+  public constructor(
+    plan: EducationPlan,
+    authService: AuthService,
+    private readonly _appConfig: AppConfigService,
+  ) {
+    //this._baseApiUri = `${BASE_API_URI}/api/education-plans/filter`;
+    this._baseApiUri = `${this._appConfig.baseApiUri}/api/education-plans/filter`;
     this._authService = authService;
     this._plan = plan;
     this.buildHeaders();

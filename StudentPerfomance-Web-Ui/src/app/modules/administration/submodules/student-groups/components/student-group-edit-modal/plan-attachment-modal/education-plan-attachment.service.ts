@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { BASE_API_URI } from '../../../../../../../shared/models/api/api-constants';
+//import { BASE_API_URI } from '../../../../../../../shared/models/api/api-constants';
 import { StudentGroup } from '../../../services/studentsGroup.interface';
 import { EducationPlan } from '../../../../education-plans/models/education-plan-interface';
 import { Observable } from 'rxjs';
@@ -9,6 +9,7 @@ import { DirectionPayloadBuilder } from '../../../../education-directions/models
 import { EducationPlanPayloadBuilder } from '../../../../education-plans/models/contracts/education-plan-contract/education-plan-payload-builder';
 import { AuthService } from '../../../../../../users/services/auth.service';
 import { TokenPayloadBuilder } from '../../../../../../../shared/models/common/token-contract/token-payload-builder';
+import { AppConfigService } from '../../../../../../../app.config.service';
 
 @Injectable({
   providedIn: 'any',
@@ -18,10 +19,15 @@ export class EducationPlanAttachmentService {
   private readonly _deattachmentApiUri: string;
   private readonly _httpClient: HttpClient;
 
-  public constructor(private readonly _authService: AuthService) {
+  public constructor(
+    private readonly _authService: AuthService,
+    private readonly _appConfig: AppConfigService,
+  ) {
     this._httpClient = inject(HttpClient);
-    this._attachmentApiUri = `${BASE_API_URI}/api/student-groups/attach-education-plan`;
-    this._deattachmentApiUri = `${BASE_API_URI}/api/student-groups/deattach-education-plan`;
+    //this._attachmentApiUri = `${BASE_API_URI}/api/student-groups/attach-education-plan`;
+    //this._deattachmentApiUri = `${BASE_API_URI}/api/student-groups/deattach-education-plan`;
+    this._attachmentApiUri = `${this._appConfig.baseApiUri}/api/student-groups/attach-education-plan`;
+    this._deattachmentApiUri = `${this._appConfig.baseApiUri}/api/student-groups/deattach-education-plan`;
   }
 
   public attachPlan(

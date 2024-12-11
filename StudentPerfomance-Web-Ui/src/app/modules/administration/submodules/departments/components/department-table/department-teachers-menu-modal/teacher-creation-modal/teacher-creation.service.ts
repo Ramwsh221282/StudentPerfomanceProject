@@ -1,12 +1,13 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { BASE_API_URI } from '../../../../../../../../shared/models/api/api-constants';
+//import { BASE_API_URI } from '../../../../../../../../shared/models/api/api-constants';
 import { Teacher } from '../../../../../teachers/models/teacher.interface';
 import { Observable } from 'rxjs';
 import { AuthService } from '../../../../../../../users/services/auth.service';
 import { DepartmentPayloadBuilder } from '../../../../models/contracts/department-contract/department-payload-builder';
 import { TeacherPayloadBuilder } from '../../../../../teachers/contracts/teacher-contract/teacher-payload-builder';
 import { TokenPayloadBuilder } from '../../../../../../../../shared/models/common/token-contract/token-payload-builder';
+import { AppConfigService } from '../../../../../../../../app.config.service';
 
 @Injectable({
   providedIn: 'any',
@@ -16,9 +17,13 @@ export class TeacherCreationService {
   private readonly _apiUri: string;
   private _httpHeaders: HttpHeaders;
 
-  public constructor(private readonly _authService: AuthService) {
+  public constructor(
+    private readonly _authService: AuthService,
+    private readonly _appConfig: AppConfigService,
+  ) {
     this._httpClient = inject(HttpClient);
-    this._apiUri = `${BASE_API_URI}/api/teachers`;
+    //this._apiUri = `${BASE_API_URI}/api/teachers`;
+    this._apiUri = `${this._appConfig.baseApiUri}/api/teachers`;
     this.buildHttpHeaders();
   }
 

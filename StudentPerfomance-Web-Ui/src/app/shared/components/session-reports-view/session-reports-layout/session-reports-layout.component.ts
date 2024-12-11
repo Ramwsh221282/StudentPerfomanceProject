@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { SessionReportItemComponent } from './session-report-item/session-report-item.component';
 import { ControlWeekReportInterface } from '../Models/Data/control-week-report-interface';
 
@@ -11,4 +11,7 @@ import { ControlWeekReportInterface } from '../Models/Data/control-week-report-i
 })
 export class SessionReportsLayoutComponent {
   @Input({ required: true }) reports: ControlWeekReportInterface[];
+  @Output() refreshEmitter: EventEmitter<void> = new EventEmitter();
+  @Output() successEmitter: EventEmitter<void> = new EventEmitter();
+  @Output() failureEmitter: EventEmitter<void> = new EventEmitter();
 }

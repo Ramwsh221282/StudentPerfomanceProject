@@ -14,4 +14,12 @@
       Ведомость по направлениям
     </button>
   </div>
+  <button class="danger-button" (click)="isRemovingVisible = true">Удалить отчёт</button>
+</div>
+<div id="remove-modal-renderer" *ngIf="isRemovingVisible">
+  <app-session-report-item-remove-modal [reportToDelete]="report"
+                                        (visibility)="isRemovingVisible = false"
+                                        (successEmitter)="successEmitter.emit()"
+                                        (failureEmitter)="failureEmitter.emit()"
+                                        (refresh)="refreshEmitter.emit()"></app-session-report-item-remove-modal>
 </div>

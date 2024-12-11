@@ -32,6 +32,7 @@ C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backe
 C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api\bin\Release\net8.0\publish\Microsoft.IdentityModel.Tokens.dll
 C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api\bin\Release\net8.0\publish\Microsoft.OpenApi.dll
 C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api\bin\Release\net8.0\publish\NReco.Logging.File.dll
+C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api\bin\Release\net8.0\publish\Scalar.AspNetCore.dll
 C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api\bin\Release\net8.0\publish\SQLitePCLRaw.batteries_v2.dll
 C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api\bin\Release\net8.0\publish\SQLitePCLRaw.core.dll
 C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api\bin\Release\net8.0\publish\SQLitePCLRaw.provider.e_sqlite3.dll

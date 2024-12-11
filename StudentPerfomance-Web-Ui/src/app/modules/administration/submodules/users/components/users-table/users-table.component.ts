@@ -7,6 +7,7 @@ import { DatePipe } from '@angular/common';
 import { UsersPaginationService } from './users-table-pagination/users-pagination.servce';
 import { DefaultFetchPolicy } from '../../models/users-fetch-policies/users-default-fetch-policy';
 import { AuthService } from '../../../../../users/services/auth.service';
+import { AppConfigService } from '../../../../../../app.config.service';
 
 @Component({
   selector: 'app-users-table',
@@ -36,6 +37,7 @@ export class UsersTableComponent implements OnInit {
     protected readonly _notificationService: UserOperationNotificationService,
     private readonly _authService: AuthService,
     private readonly _paginationService: UsersPaginationService,
+    private readonly _appConfig: AppConfigService,
   ) {
     this.userRecords = [];
     this.isSuccess = false;
@@ -46,7 +48,10 @@ export class UsersTableComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    const policy = new DefaultFetchPolicy(this._authService.userData);
+    const policy = new DefaultFetchPolicy(
+      this._authService.userData,
+      this._appConfig,
+    );
     policy.addPages(
       this._paginationService.currentPage,
       this._paginationService.pageSize,

@@ -2,8 +2,9 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IFetchPolicy } from '../../../../../../shared/models/fetch-policices/fetch-policy-interface';
 import { Department } from '../departments.interface';
-import { BASE_API_URI } from '../../../../../../shared/models/api/api-constants';
+//import { BASE_API_URI } from '../../../../../../shared/models/api/api-constants';
 import { AuthService } from '../../../../../users/services/auth.service';
+import { AppConfigService } from '../../../../../../app.config.service';
 
 export class DepartmentFilterFetchPolicy implements IFetchPolicy<Department[]> {
   private readonly _department: Department;
@@ -12,9 +13,14 @@ export class DepartmentFilterFetchPolicy implements IFetchPolicy<Department[]> {
   private _httpHeaders: HttpHeaders;
   private _httpParams: HttpParams;
 
-  public constructor(department: Department, authService: AuthService) {
+  public constructor(
+    department: Department,
+    authService: AuthService,
+    private readonly _appConfig: AppConfigService,
+  ) {
     this._authService = authService;
-    this._apiUri = `${BASE_API_URI}/api/teacher-departments/filter`;
+    //this._apiUri = `${BASE_API_URI}/api/teacher-departments/filter`;
+    this._apiUri = `${this._appConfig.baseApiUri}/api/teacher-departments/filter`;
     this._department = { ...department };
     this.buildHttpHeaders();
   }

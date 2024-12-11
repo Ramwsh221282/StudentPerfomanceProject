@@ -6,6 +6,7 @@ import { ActiveOnlyFetchPolicy } from './services/fetch-policies/active-only-fet
 import { NotActiveFetchPolicy } from './services/fetch-policies/notactive-only-fetch-policy';
 import { DefaultFetchPolicy } from './services/fetch-policies/default-fetch-policy';
 import { AuthService } from '../../../../../users/services/auth.service';
+import { AppConfigService } from '../../../../../../app.config.service';
 
 @Component({
   selector: 'app-students-menu-modal',
@@ -27,7 +28,8 @@ export class StudentsMenuModalComponent implements OnInit {
 
   public constructor(
     private readonly _dataService: groupStudentsDataService,
-    private readonly _authService: AuthService
+    private readonly _authService: AuthService,
+    private readonly _appConfigService: AppConfigService,
   ) {
     this.students = [];
     this.creationModalVisibility = false;
@@ -54,21 +56,33 @@ export class StudentsMenuModalComponent implements OnInit {
 
   protected setActiveOnlyPolicy(): void {
     this._dataService.setPolicy(
-      new ActiveOnlyFetchPolicy(this.group, this._authService)
+      new ActiveOnlyFetchPolicy(
+        this.group,
+        this._authService,
+        this._appConfigService,
+      ),
     );
     this.fetchData();
   }
 
   protected setNotActiveOnly(): void {
     this._dataService.setPolicy(
-      new NotActiveFetchPolicy(this.group, this._authService)
+      new NotActiveFetchPolicy(
+        this.group,
+        this._authService,
+        this._appConfigService,
+      ),
     );
     this.fetchData();
   }
 
   protected setDefaultPolicy(): void {
     this._dataService.setPolicy(
-      new DefaultFetchPolicy(this.group, this._authService)
+      new DefaultFetchPolicy(
+        this.group,
+        this._authService,
+        this._appConfigService,
+      ),
     );
     this.fetchData();
   }

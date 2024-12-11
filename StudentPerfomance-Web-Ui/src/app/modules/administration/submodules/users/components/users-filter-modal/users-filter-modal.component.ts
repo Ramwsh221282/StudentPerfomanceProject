@@ -6,6 +6,7 @@ import { UsersPaginationService } from '../users-table/users-table-pagination/us
 import { AuthService } from '../../../../../users/services/auth.service';
 import { UsersFilterFetchPolicy } from '../../models/users-fetch-policies/users-filter-fetch-policy';
 import { DefaultFetchPolicy } from '../../models/users-fetch-policies/users-default-fetch-policy';
+import { AppConfigService } from '../../../../../../app.config.service';
 
 @Component({
   selector: 'app-users-filter-modal',
@@ -21,6 +22,7 @@ export class UsersFilterModalComponent implements ISubbmittable {
     private readonly _dataService: UsersDataService,
     private readonly _paginationService: UsersPaginationService,
     private readonly _authService: AuthService,
+    private readonly _appConfig: AppConfigService,
   ) {
     this.user = {} as User;
     this.user.name = '';
@@ -32,7 +34,7 @@ export class UsersFilterModalComponent implements ISubbmittable {
 
   public submit(): void {
     this._dataService.setPolicy(
-      new UsersFilterFetchPolicy(this.user, this._authService),
+      new UsersFilterFetchPolicy(this.user, this._appConfig),
     );
     this._dataService.addPages(
       this._paginationService.currentPage,
@@ -44,7 +46,7 @@ export class UsersFilterModalComponent implements ISubbmittable {
 
   protected cancelFilter(): void {
     this._dataService.setPolicy(
-      new DefaultFetchPolicy(this._authService.userData),
+      new DefaultFetchPolicy(this._authService.userData, this._appConfig),
     );
     this._dataService.addPages(
       this._paginationService.currentPage,

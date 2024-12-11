@@ -6,6 +6,7 @@ import { AssignmentSession } from '../../../models/assignment-session-interface'
 import { PaginationService } from '../../../../education-directions/services/pagination.service';
 import { AssignmentSessionDefaultFetchPolicy } from '../../../models/fetch-policies/assignment-session-default-fetch-policy';
 import { AuthService } from '../../../../../../users/services/auth.service';
+import { AppConfigService } from '../../../../../../../app.config.service';
 
 @Component({
   selector: 'app-assignment-session-table',
@@ -29,12 +30,16 @@ export class AssignmentSessionTableComponent implements OnInit {
     private readonly _paginationService: PaginationService,
     private readonly _dataService: AssignmentSessionDataService,
     private readonly _authService: AuthService,
+    private readonly _appConfig: AppConfigService,
   ) {
     this.sessions = [];
   }
 
   public ngOnInit(): void {
-    const policy = new AssignmentSessionDefaultFetchPolicy(this._authService);
+    const policy = new AssignmentSessionDefaultFetchPolicy(
+      this._authService,
+      this._appConfig,
+    );
     policy.addPages(
       this._paginationService.currentPage,
       this._paginationService.pageSize,

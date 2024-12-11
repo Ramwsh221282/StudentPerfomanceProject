@@ -11,6 +11,7 @@ import { AuthService } from '../../../../../../users/services/auth.service';
 import { UserOperationNotificationService } from '../../../../../../../shared/services/user-notifications/user-operation-notification-service.service';
 import { UserCreationHandler } from '../users-create-handler';
 import { catchError, tap } from 'rxjs';
+import { AppConfigService } from '../../../../../../../app.config.service';
 
 @Component({
   selector: 'app-users-create-teacher-modal',
@@ -34,6 +35,7 @@ export class UsersCreateTeacherModalComponent implements OnInit, ISubbmittable {
     private readonly _teacherFetchService: TeacherDataService,
     private readonly _authService: AuthService,
     private readonly _notificationService: UserOperationNotificationService,
+    private readonly _appConfig: AppConfigService,
   ) {
     this.departments = [];
     this.teachers = [];
@@ -83,7 +85,11 @@ export class UsersCreateTeacherModalComponent implements OnInit, ISubbmittable {
   protected fetchTeachers(departmentName: string): void {
     const department = {} as Department;
     department.name = departmentName;
-    const policy = new DefaultTeacherFetchPolicy(department, this._authService);
+    const policy = new DefaultTeacherFetchPolicy(
+      department,
+      this._authService,
+      this._appConfig,
+    );
     this._teacherFetchService.setPolicy(policy);
     this._teacherFetchService.fetch().subscribe((response) => {
       this.teachers = response;

@@ -6,6 +6,7 @@ import { DefaultFetchPolicy } from '../models/fetch-policies/default-fetch-polic
 import { IObservableFetchable } from '../../../../../shared/models/fetch-policices/iobservable-fetchable.interface';
 import { Observable } from 'rxjs';
 import { AuthService } from '../../../../users/services/auth.service';
+import { AppConfigService } from '../../../../../app.config.service';
 
 @Injectable({
   providedIn: 'any',
@@ -17,10 +18,13 @@ export class FetchService
   private _currentPolicy: IFetchPolicy<EducationDirection[]>;
   private readonly _authService: AuthService;
 
-  public constructor() {
+  public constructor(private readonly _appConfig: AppConfigService) {
     super();
     this._authService = inject(AuthService);
-    this._currentPolicy = new DefaultFetchPolicy(this._authService);
+    this._currentPolicy = new DefaultFetchPolicy(
+      this._authService,
+      this._appConfig,
+    );
   }
 
   public addPages(page: number, pageSize: number): void {

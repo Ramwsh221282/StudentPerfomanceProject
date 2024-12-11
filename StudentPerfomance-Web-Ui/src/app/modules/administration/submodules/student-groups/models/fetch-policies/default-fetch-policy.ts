@@ -2,16 +2,22 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IFetchPolicy } from '../../../../../../shared/models/fetch-policices/fetch-policy-interface';
 import { StudentGroup } from '../../services/studentsGroup.interface';
-import { BASE_API_URI } from '../../../../../../shared/models/api/api-constants';
+//import { BASE_API_URI } from '../../../../../../shared/models/api/api-constants';
 import { AuthService } from '../../../../../users/services/auth.service';
+import { AppConfigService } from '../../../../../../app.config.service';
 
 export class DefaultFetchPolicy implements IFetchPolicy<StudentGroup[]> {
-  private readonly _apiUri: string = `${BASE_API_URI}/api/student-groups`;
+  private readonly _apiUri: string;
   private _httpHeaders: HttpHeaders;
   private _httpParams: HttpParams;
 
-  public constructor(private readonly _authService: AuthService) {
+  public constructor(
+    private readonly _authService: AuthService,
+    private readonly _appConfig: AppConfigService,
+  ) {
     this.buildHttpHeaders();
+    //this._apiUri = `${BASE_API_URI}/api/student-groups`;
+    this._apiUri = `${this._appConfig.baseApiUri}/api/student-groups`;
   }
 
   public executeFetchPolicy(

@@ -10,4 +10,5 @@ public interface IControlWeekReportRepository
         CancellationToken ct = default
     );
     Task<int> Count(CancellationToken ct = default);
+    Task<bool> Remove(string id, CancellationToken ct = default);
 }

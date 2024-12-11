@@ -6,6 +6,7 @@ import { DefaultFetchPolicy } from '../models/fetch-policies/default-fetch-polic
 import { IObservableFetchable } from '../../../../../shared/models/fetch-policices/iobservable-fetchable.interface';
 import { AuthService } from '../../../../users/services/auth.service';
 import { Observable } from 'rxjs';
+import { AppConfigService } from '../../../../../app.config.service';
 
 @Injectable({
   providedIn: 'any',
@@ -16,9 +17,12 @@ export class FetchService
 {
   private _policy: IFetchPolicy<EducationPlan[]>;
 
-  public constructor(private readonly _authService: AuthService) {
+  public constructor(
+    private readonly _authService: AuthService,
+    private readonly _appConfig: AppConfigService,
+  ) {
     super();
-    this._policy = new DefaultFetchPolicy(this._authService);
+    this._policy = new DefaultFetchPolicy(this._authService, this._appConfig);
   }
 
   public setPolicy(policy: IFetchPolicy<EducationPlan[]>): void {

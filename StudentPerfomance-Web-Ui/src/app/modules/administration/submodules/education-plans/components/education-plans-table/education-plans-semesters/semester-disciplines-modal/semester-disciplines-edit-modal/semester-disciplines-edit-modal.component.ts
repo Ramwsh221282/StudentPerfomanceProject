@@ -12,6 +12,7 @@ import { ISubbmittable } from '../../../../../../../../../shared/models/interfac
 import { catchError, Observable, tap } from 'rxjs';
 import { UserOperationNotificationService } from '../../../../../../../../../shared/services/user-notifications/user-operation-notification-service.service';
 import { AuthService } from '../../../../../../../../users/services/auth.service';
+import { AppConfigService } from '../../../../../../../../../app.config.service';
 
 @Component({
   selector: 'app-semester-disciplines-edit-modal',
@@ -44,6 +45,7 @@ export class SemesterDisciplinesEditModalComponent
     private readonly _editService: SemesterDisciplinesEditService,
     private readonly _notificationService: UserOperationNotificationService,
     private readonly _authService: AuthService,
+    private readonly _appConfig: AppConfigService,
   ) {
     this.activePlan = {} as SemesterPlan;
     this.departments = [];
@@ -154,6 +156,7 @@ export class SemesterDisciplinesEditModalComponent
         new DefaultTeacherFetchPolicy(
           this.selectedDepartment,
           this._authService,
+          this._appConfig,
         ),
       );
       this._teacherDataService.fetch().subscribe((response) => {

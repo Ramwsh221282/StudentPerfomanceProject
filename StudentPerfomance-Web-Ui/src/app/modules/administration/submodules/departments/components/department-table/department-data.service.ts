@@ -4,9 +4,10 @@ import { Department } from '../../models/departments.interface';
 import { inject, Injectable } from '@angular/core';
 import { DepartmentDefaultFetchPolicy } from '../../models/fetch-policies/default-fetch-policy';
 import { Observable } from 'rxjs';
-import { BASE_API_URI } from '../../../../../../shared/models/api/api-constants';
+//import { BASE_API_URI } from '../../../../../../shared/models/api/api-constants';
 import { IObservableFetchable } from '../../../../../../shared/models/fetch-policices/iobservable-fetchable.interface';
 import { AuthService } from '../../../../../users/services/auth.service';
+import { AppConfigService } from '../../../../../../app.config.service';
 
 @Injectable({
   providedIn: 'any',
@@ -18,10 +19,13 @@ export class DepartmentDataService
   private readonly _httpClient: HttpClient;
   private _currentPolicy: IFetchPolicy<Department[]>;
 
-  public constructor() {
+  public constructor(private readonly _appConfig: AppConfigService) {
     this._httpClient = inject(HttpClient);
     this._authService = inject(AuthService);
-    this._currentPolicy = new DepartmentDefaultFetchPolicy(this._authService);
+    this._currentPolicy = new DepartmentDefaultFetchPolicy(
+      this._authService,
+      this._appConfig,
+    );
   }
 
   public setPolicy(policy: IFetchPolicy<Department[]>): void {
@@ -37,7 +41,8 @@ export class DepartmentDataService
   }
 
   public getAllDepartments(): Observable<Department[]> {
-    const apiUri: string = `${BASE_API_URI}/api/teacher-departments/all`;
+    //const apiUri: string = `${BASE_API_URI}/api/teacher-departments/all`;
+    const apiUri: string = `${this._appConfig.baseApiUri}/api/teacher-departments/all`;
     const headers = this.buildHttpHeaders();
     return this._httpClient.get<Department[]>(apiUri, { headers: headers });
   }

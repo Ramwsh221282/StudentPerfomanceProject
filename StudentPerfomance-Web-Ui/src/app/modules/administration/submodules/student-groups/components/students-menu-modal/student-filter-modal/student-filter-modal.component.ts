@@ -7,6 +7,7 @@ import { FilterFetchPolicy } from '../services/fetch-policies/filter-fetch-polic
 import { Student } from '../../../../students/models/student.interface';
 import { AuthService } from '../../../../../../users/services/auth.service';
 import { DefaultFetchPolicy } from '../services/fetch-policies/default-fetch-policy';
+import { AppConfigService } from '../../../../../../../app.config.service';
 
 @Component({
   selector: 'app-student-filter-modal',
@@ -28,6 +29,7 @@ export class StudentFilterModalComponent
   public constructor(
     private readonly _service: groupStudentsDataService,
     private readonly _authService: AuthService,
+    private readonly _appConfig: AppConfigService,
   ) {
     super();
   }
@@ -43,7 +45,9 @@ export class StudentFilterModalComponent
       this.selectedState = '';
     student.state = this.selectedState;
 
-    this._service.setPolicy(new FilterFetchPolicy(student, this._authService));
+    this._service.setPolicy(
+      new FilterFetchPolicy(student, this._authService, this._appConfig),
+    );
     this._service.fetch().subscribe((response) => {
       this.filterResult.emit(response);
       this.close();
@@ -52,7 +56,7 @@ export class StudentFilterModalComponent
 
   protected cancelFilter(): void {
     this._service.setPolicy(
-      new DefaultFetchPolicy(this.group, this._authService),
+      new DefaultFetchPolicy(this.group, this._authService, this._appConfig),
     );
     this._service.fetch().subscribe((response) => {
       this.filterResult.emit(response);

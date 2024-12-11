@@ -5,6 +5,7 @@ import { TeacherDataService } from './teachers-data.service';
 import { DefaultTeacherFetchPolicy } from '../../../../teachers/models/fething-policies/default-teachers-fetch-policy';
 import { UserOperationNotificationService } from '../../../../../../../shared/services/user-notifications/user-operation-notification-service.service';
 import { AuthService } from '../../../../../../users/services/auth.service';
+import { AppConfigService } from '../../../../../../../app.config.service';
 
 @Component({
   selector: 'app-department-teachers-menu-modal',
@@ -31,7 +32,8 @@ export class DepartmentTeachersMenuModalComponent implements OnInit {
   public constructor(
     protected readonly notificationService: UserOperationNotificationService,
     private readonly _dataService: TeacherDataService,
-    private readonly _authService: AuthService
+    private readonly _authService: AuthService,
+    private readonly _appConfig: AppConfigService,
   ) {
     this.activeTeacher = {} as Teacher;
     this.teachers = [];
@@ -44,7 +46,11 @@ export class DepartmentTeachersMenuModalComponent implements OnInit {
 
   public ngOnInit(): void {
     this._dataService.setPolicy(
-      new DefaultTeacherFetchPolicy(this.department, this._authService)
+      new DefaultTeacherFetchPolicy(
+        this.department,
+        this._authService,
+        this._appConfig,
+      ),
     );
     this.fetchData();
   }

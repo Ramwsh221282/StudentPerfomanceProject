@@ -1,10 +1,11 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { BASE_API_URI } from '../../../../../../../shared/models/api/api-constants';
+//import { BASE_API_URI } from '../../../../../../../shared/models/api/api-constants';
 import { Observable } from 'rxjs';
 import { EducationPlan } from '../../../../education-plans/models/education-plan-interface';
 import { AuthService } from '../../../../../../users/services/auth.service';
 import { EducationDirection } from '../../../../education-directions/models/education-direction-interface';
+import { AppConfigService } from '../../../../../../../app.config.service';
 
 @Injectable({
   providedIn: 'any',
@@ -12,18 +13,16 @@ import { EducationDirection } from '../../../../education-directions/models/educ
 export class EducationPlanSearchService {
   private readonly _httpClient: HttpClient;
 
-  public constructor(private readonly _authService: AuthService) {
+  public constructor(
+    private readonly _authService: AuthService,
+    private readonly _appConfig: AppConfigService,
+  ) {
     this._httpClient = inject(HttpClient);
   }
 
-  public getAll(): Observable<EducationPlan[]> {
-    const headers = this.buildHttpHeaders();
-    const apiUri: string = `${BASE_API_URI}/api/education-plans/all`;
-    return this._httpClient.post<EducationPlan[]>(apiUri, { headers: headers });
-  }
-
   public search(plan: EducationPlan): Observable<EducationPlan[]> {
-    const apiUri: string = `${BASE_API_URI}/api/education-plans/search`;
+    //const apiUri: string = `${BASE_API_URI}/api/education-plans/search`;
+    const apiUri: string = `${this._appConfig.baseApiUri}/api/education-plans/search`;
     const headers = this.buildHttpHeaders();
     const params = new HttpParams()
       .set('searchName', plan.direction.name)
@@ -39,7 +38,8 @@ export class EducationPlanSearchService {
   public getByDirection(
     direction: EducationDirection,
   ): Observable<EducationPlan[]> {
-    const apiUri: string = `${BASE_API_URI}/api/education-plans/by-education-direction`;
+    //const apiUri: string = `${BASE_API_URI}/api/education-plans/by-education-direction`;
+    const apiUri: string = `${this._appConfig.baseApiUri}/api/education-plans/by-education-direction`;
     const headers = this.buildHttpHeaders();
     const params = new HttpParams()
       .set('directionCode', direction.code)

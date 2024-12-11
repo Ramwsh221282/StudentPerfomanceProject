@@ -1,19 +1,23 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject } from '@angular/core';
-import { BASE_API_URI } from '../../../../../shared/models/api/api-constants';
+//import { BASE_API_URI } from '../../../../../shared/models/api/api-constants';
 import { User } from '../../../../users/services/user-interface';
 import { AuthService } from '../../../../users/services/auth.service';
 import { Observable } from 'rxjs';
 import { UserRecord } from './user-table-element-interface';
+import { AppConfigService } from '../../../../../app.config.service';
 
 export class UserCreationService {
   private readonly _httpClient: HttpClient;
   private readonly _apiUri: string;
   private readonly _user: User;
+  private readonly _appConfig: AppConfigService;
 
   public constructor() {
+    this._appConfig = inject(AppConfigService);
     this._httpClient = inject(HttpClient);
-    this._apiUri = `${BASE_API_URI}/api/users`;
+    //this._apiUri = `${BASE_API_URI}/api/users`;
+    this._apiUri = `${this._appConfig.baseApiUri}/api/users`;
     const authService = inject(AuthService);
     this._user = { ...authService.userData };
   }

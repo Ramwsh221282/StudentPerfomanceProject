@@ -93,3 +93,7 @@ C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backe
 C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api\obj\Release\net8.0\SPerfomance.Api.pdb
 C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api\obj\Release\net8.0\SPerfomance.Api.genruntimeconfig.cache
 C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api\obj\Release\net8.0\ref\SPerfomance.Api.dll
+C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api\bin\Release\net8.0\SPerfomance.Api.staticwebassets.endpoints.json
+C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api\obj\Release\net8.0\staticwebassets.build.endpoints.json
+C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api\obj\Release\net8.0\staticwebassets\msbuild.SPerfomance.Api.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+C:\Users\Ramwsh\Desktop\project\StudentPerfomanceProject\StudentPerfomance-Backend\SPerfomance.Api\bin\Release\net8.0\Scalar.AspNetCore.dll

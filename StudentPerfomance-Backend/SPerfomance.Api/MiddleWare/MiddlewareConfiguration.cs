@@ -18,8 +18,8 @@ public static class MiddlewareConfiguration
                     options =>
                     {
                         options.Window = TimeSpan.FromSeconds(5);
-                        options.PermitLimit = 6;
-                        options.QueueLimit = 6;
+                        options.PermitLimit = 50;
+                        options.QueueLimit = 10;
                         options.QueueProcessingOrder = QueueProcessingOrder.NewestFirst;
                     }
                 );

@@ -6,74 +6,137 @@
 <div class="controls-container">
   <button class="accept-button-modal" (click)="saveAsPdf()">Сохранить в .PDF</button>
 </div>
-<section class="course-report-content" id="report">
+<!--<section class="course-report-content" id="report">-->
+<!--  <div class="report-date-container">-->
+<!--    <strong>Контрольная неделя с {{ creationDate | date: 'd.M.YYYY' }}-->
+<!--      по {{ completionDate | date: 'd.M.YYYY' }}</strong>-->
+<!--  </div>-->
+<!--  <table class="report-table-layout">-->
+<!--    <thead>-->
+<!--    <tr>-->
+<!--      <th>Группа</th>-->
+<!--      <th>Процент успеваемости</th>-->
+<!--      <th>Средний балл</th>-->
+<!--    </tr>-->
+<!--    </thead>-->
+<!--    <tbody>-->
+<!--      @for (group of groupReports; track group.groupName) {-->
+<!--        <tr>-->
+<!--          <td>-->
+<!--            {{ group.groupName }}-->
+<!--          </td>-->
+<!--          <td>{{ group.perfomance }}</td>-->
+<!--          <td>{{ group.average }}</td>-->
+<!--        </tr>-->
+<!--      }-->
+<!--    </tbody>-->
+<!--  </table>-->
+<!--  <table class="report-table-layout">-->
+<!--    <thead>-->
+<!--    <tr>-->
+<!--      <th>Направление</th>-->
+<!--      <th>Процент успеваемости</th>-->
+<!--      <th>Средний балл</th>-->
+<!--    </tr>-->
+<!--    </thead>-->
+<!--    <tbody>-->
+<!--      @for (direction of directionCodeReports; track direction.directionCode) {-->
+<!--        <tr>-->
+<!--          <td>-->
+<!--            {{ direction.directionCode }}-->
+<!--          </td>-->
+<!--          <td>{{ direction.perfomance }}</td>-->
+<!--          <td>{{ direction.average }}</td>-->
+<!--        </tr>-->
+<!--      }-->
+<!--    </tbody>-->
+<!--    <div class="results-container">-->
+<!--      <strong>Общее по филиалу:</strong>-->
+<!--      <strong>Успеваемость - {{ perfomance }}</strong>-->
+<!--      <strong>Средний балл - {{ average }}</strong>-->
+<!--    </div>-->
+<!--  </table>-->
+<!--  <table class="report-table-layout">-->
+<!--    <thead>-->
+<!--    <tr>-->
+<!--      <th>Направление</th>-->
+<!--      <th>Процент успеваемости</th>-->
+<!--      <th>Средний балл</th>-->
+<!--    </tr>-->
+<!--    </thead>-->
+<!--    <tbody>-->
+<!--      @for (type of directionTypeReports; track type.directionType) {-->
+<!--        <tr>-->
+<!--          <td>-->
+<!--            {{ type.directionType }}-->
+<!--          </td>-->
+<!--          <td>{{ type.perfomance }}</td>-->
+<!--          <td>{{ type.average }}</td>-->
+<!--        </tr>-->
+<!--      }-->
+<!--    </tbody>-->
+<!--  </table>-->
+<!--</section>-->
+<section class="course-report-content">
   <div class="report-date-container">
-    <strong>Контрольная неделя с {{ creationDate | date: 'd.M.YYYY' }}
-      по {{ completionDate | date: 'd.M.YYYY' }}</strong>
   </div>
-  <table class="report-table-layout">
-    <thead>
+  <table class="report-table-layout" id="report">
     <tr>
-      <th>Группа</th>
-      <th>Процент успеваемости</th>
-      <th>Средний балл</th>
+      <td colspan="3" style="text-align: center; background-color: #f0f0f0; font-weight: bold;">Контрольная неделя
+        с {{ creationDate | date: 'd.M.YYYY' }}
+        по {{ completionDate | date: 'd.M.YYYY' }}
+      </td>
     </tr>
-    </thead>
+    <tr>
+      <th style="width: 30%;">Категория</th>
+      <th style="width: 35%;">Процент успеваемости</th>
+      <th style="width: 35%;">Средний балл</th>
+    </tr>
     <tbody>
+    <tr>
+      <td colspan="3" style="text-align: center; background-color: #f0f0f0; font-weight: bold;">Группы</td>
+    </tr>
       @for (group of groupReports; track group.groupName) {
         <tr>
-          <td>
-            {{ group.groupName }}
-          </td>
+          <td>{{ group.groupName }}</td>
           <td>{{ group.perfomance }}</td>
           <td>{{ group.average }}</td>
         </tr>
       }
-    </tbody>
-  </table>
-  <table class="report-table-layout">
-    <thead>
     <tr>
-      <th>Направление</th>
-      <th>Процент успеваемости</th>
-      <th>Средний балл</th>
+      <td colspan="3">&nbsp;</td>
     </tr>
-    </thead>
-    <tbody>
+    <tr>
+      <td colspan="3" style="text-align: center; background-color: #f0f0f0; font-weight: bold;">Направления</td>
+    </tr>
       @for (direction of directionCodeReports; track direction.directionCode) {
         <tr>
-          <td>
-            {{ direction.directionCode }}
-          </td>
+          <td>{{ direction.directionCode }}</td>
           <td>{{ direction.perfomance }}</td>
           <td>{{ direction.average }}</td>
         </tr>
       }
-    </tbody>
-    <div class="results-container">
-      <strong>Общее по филиалу:</strong>
-      <strong>Успеваемость - {{ perfomance }}</strong>
-      <strong>Средний балл - {{ average }}</strong>
-    </div>
-  </table>
-  <table class="report-table-layout">
-    <thead>
     <tr>
-      <th>Направление</th>
-      <th>Процент успеваемости</th>
-      <th>Средний балл</th>
+      <td colspan="3">&nbsp;</td>
     </tr>
-    </thead>
-    <tbody>
+    <tr>
+      <td colspan="3" style="text-align: center; background-color: #f0f0f0; font-weight: bold;">Типы направлений</td>
+    </tr>
       @for (type of directionTypeReports; track type.directionType) {
         <tr>
-          <td>
-            {{ type.directionType }}
-          </td>
+          <td>{{ type.directionType }}</td>
           <td>{{ type.perfomance }}</td>
           <td>{{ type.average }}</td>
         </tr>
       }
+    <tr>
+      <td colspan="3" style="text-align: center; background-color: #e0e0e0; font-weight: bold;">Общее по филиалу</td>
+    </tr>
+    <tr>
+      <td>Общий результат</td>
+      <td>{{ perfomance }}</td>
+      <td>{{ average }}</td>
+    </tr>
     </tbody>
   </table>
 </section>

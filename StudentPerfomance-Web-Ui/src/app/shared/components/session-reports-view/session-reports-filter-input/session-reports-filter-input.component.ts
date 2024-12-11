@@ -9,6 +9,7 @@ import { IFetchPolicy } from '../../../models/fetch-policices/fetch-policy-inter
 import { ControlWeekReportInterface } from '../Models/Data/control-week-report-interface';
 import { SessionReportPeriodFetchPolicy } from '../Services/data-services/reports-fetch-policies/session-report-period-fetch-policy';
 import { SessionReportDefaultFetchPolicy } from '../Services/data-services/reports-fetch-policies/session-report-default-fetch-policy';
+import { AppConfigService } from '../../../../app.config.service';
 
 @Component({
   selector: 'app-session-reports-filter-input',
@@ -29,6 +30,7 @@ export class SessionReportsFilterInputComponent implements ISubbmittable {
     private readonly _dataService: SessionReportsDataService,
     private readonly _paginationService: SessionReportsPaginationService,
     private readonly _authService: AuthService,
+    private readonly _appConfig: AppConfigService,
   ) {
     this.startDate = {} as SessionReportPeriodContract;
     this.endDate = {} as SessionReportPeriodContract;
@@ -42,6 +44,7 @@ export class SessionReportsFilterInputComponent implements ISubbmittable {
         this._authService,
         this.startDate,
         this.endDate,
+        this._appConfig,
       );
     policy.addPages(
       this._paginationService.currentPage,
@@ -53,7 +56,7 @@ export class SessionReportsFilterInputComponent implements ISubbmittable {
 
   public cancelFilter(): void {
     const policy: IFetchPolicy<ControlWeekReportInterface[]> =
-      new SessionReportDefaultFetchPolicy(this._authService);
+      new SessionReportDefaultFetchPolicy(this._authService, this._appConfig);
     policy.addPages(
       this._paginationService.currentPage,
       this._paginationService.pageSize,

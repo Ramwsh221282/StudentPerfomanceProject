@@ -7,15 +7,15 @@
     </button>
   </strong>
   <div class="report-table-container">
-    <table id="report" class="report-table-layout">
+    <table class="report-table-layout" id="report">
       <thead>
       <tr>
         <th>{{ currentGroup.groupName }}</th>
         @for (discipline of currentGroup.parts; track discipline.id) {
           <th><span class="rotate-sm-90">{{ discipline.disciplineName }}</span></th>
         }
-        <th><span class="rotate-sm-90">Успеваемость</span></th>
         <th><span class="rotate-sm-90">Среднее</span></th>
+        <th><span class="rotate-sm-90">Успеваемость</span></th>
       </tr>
       </thead>
       <tbody>

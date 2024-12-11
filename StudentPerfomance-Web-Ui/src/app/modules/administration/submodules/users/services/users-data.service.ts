@@ -7,6 +7,7 @@ import { AuthService } from '../../../../users/services/auth.service';
 import { DefaultFetchPolicy } from '../models/users-fetch-policies/users-default-fetch-policy';
 import { IObservableFetchable } from '../../../../../shared/models/fetch-policices/iobservable-fetchable.interface';
 import { Observable } from 'rxjs';
+import { AppConfigService } from '../../../../../app.config.service';
 
 @Injectable({
   providedIn: 'any',
@@ -16,11 +17,11 @@ export class UsersDataService implements IObservableFetchable<UserRecord[]> {
   private readonly _user: User;
   private _policy: IFetchPolicy<UserRecord[]>;
 
-  public constructor() {
+  public constructor(private readonly _appConfig: AppConfigService) {
     const authService: AuthService = inject(AuthService);
     this._user = authService.userData;
     this._httpClient = inject(HttpClient);
-    this._policy = new DefaultFetchPolicy(this._user);
+    this._policy = new DefaultFetchPolicy(this._user, this._appConfig);
     this._policy.addPages(1, 10);
   }
 

@@ -2,16 +2,22 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IFetchPolicy } from '../../../../../../shared/models/fetch-policices/fetch-policy-interface';
 import { EducationPlan } from '../education-plan-interface';
-import { BASE_API_URI } from '../../../../../../shared/models/api/api-constants';
+//import { BASE_API_URI } from '../../../../../../shared/models/api/api-constants';
 import { AuthService } from '../../../../../users/services/auth.service';
+import { AppConfigService } from '../../../../../../app.config.service';
 
 export class DefaultFetchPolicy implements IFetchPolicy<EducationPlan[]> {
-  private readonly _baseApiUri = `${BASE_API_URI}/api/education-plans/`;
+  private readonly _baseApiUri;
   private readonly _authService: AuthService;
   private _params: HttpParams;
   private _headers: HttpHeaders;
 
-  public constructor(authService: AuthService) {
+  public constructor(
+    authService: AuthService,
+    private readonly _appConfig: AppConfigService,
+  ) {
+    //this._baseApiUri = `${BASE_API_URI}/api/education-plans/`;
+    this._baseApiUri = `${this._appConfig.baseApiUri}/api/education-plans/`;
     this._authService = authService;
     this.buildHttpParams();
     this.buildHttpHeaders();

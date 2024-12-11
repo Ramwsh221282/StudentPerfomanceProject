@@ -5,6 +5,7 @@ import { ISubbmittable } from '../../../../../../shared/models/interfaces/isubbm
 import { FilterFetchPolicy } from '../../models/fetch-policies/filter-fetch-policy';
 import { AuthService } from '../../../../../users/services/auth.service';
 import { DefaultFetchPolicy } from '../../models/fetch-policies/default-fetch-policy';
+import { AppConfigService } from '../../../../../../app.config.service';
 
 @Component({
   selector: 'app-student-group-filter-modal',
@@ -20,6 +21,7 @@ export class StudentGroupFilterModalComponent
   public constructor(
     private readonly facadeService: StudentGroupsFacadeService,
     private readonly authService: AuthService,
+    private readonly _appConfigService: AppConfigService,
   ) {
     super();
   }
@@ -27,7 +29,7 @@ export class StudentGroupFilterModalComponent
   public submit(): void {
     const group = this.createGroupFromForm();
     this.facadeService.setPolicy(
-      new FilterFetchPolicy(group, this.authService),
+      new FilterFetchPolicy(group, this.authService, this._appConfigService),
     );
     this.facadeService.fetchData();
     this.visibility.emit();
@@ -38,7 +40,9 @@ export class StudentGroupFilterModalComponent
   }
 
   protected cancelFilter(): void {
-    this.facadeService.setPolicy(new DefaultFetchPolicy(this.authService));
+    this.facadeService.setPolicy(
+      new DefaultFetchPolicy(this.authService, this._appConfigService),
+    );
     this.facadeService.fetchData();
     this.visibility.emit();
   }

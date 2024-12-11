@@ -16,69 +16,95 @@
 
 .course-report-content {
   overflow: auto;
-  height: 80vh;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  color: #000000;
-  padding: 10px;
+  //height: auto;
+  //display: flex;
+  //flex-direction: column;
+  //gap: 5px;
+  //color: #000000;
+  //padding: 10px;
+  //background-color: #ffffff;
+  //border-radius: 5px;
+  //border: solid 1px #cccccc;
+  //font-size: 14px;
+  //width: auto;
   background-color: #ffffff;
-  border-radius: 5px;
-  border: solid 1px #cccccc;
-  font-size: 14px;
-  width: auto;
+  border: solid 1px #d9d9d9;
+  border-radius: 10px;
+  height: 87vh;
+  //display: flex;
+  //flex-direction: column;
+  //gap: 10px;
 }
 
 .report-date-container {
   padding: 10px;
-  display: inline-flex;
-  flex-direction: row;
-  gap: 5px;
+  //display: inline-flex;
+  //flex-direction: row;
+  //gap: 5px;
 }
 
 .report-title-layout {
   padding: 10px;
-  display: inline-flex;
-  flex-direction: row;
+  //display: inline-flex;
+  //flex-direction: row;
   font-size: 18px;
-  gap: 10px;
+  //gap: 10px;
   text-align: center;
   border-bottom: 1px solid #cccccc;
 }
 
+
 .report-table-container {
   font-size: 12px;
   color: black;
-  height: 100vh;
-  overflow: auto;
+  height: auto;
 }
 
+//.report-table-layout {
+//  //table-layout: fixed;
+//  //width: 100%;
+//
+//  & thead tr {
+//    border: solid 1px black;
+//    text-align: center;
+//  }
+//
+//  & td,
+//  & th {
+//    //width: 50%;
+//    border: solid 1px black;
+//  }
+//
+//  & tbody tr {
+//    text-align: center;
+//    border: solid 1px black;
+//  }
+//}
+
 .report-table-layout {
-  table-layout: fixed;
-  width: 100%;
+  //width: 100%;
+  border-collapse: collapse;
+}
 
-  & thead tr {
-    border: solid 1px black;
-    text-align: center;
-  }
+.report-table-layout th, .report-table-layout td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
 
-  & td,
-  & th {
-    width: 50%;
-    border: solid 1px black;
-  }
+.report-table-layout tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
 
-  & tbody tr {
-    text-align: center;
-    border: solid 1px black;
-  }
+.report-table-layout tr:hover {
+  background-color: #f5f5f5;
 }
 
 .results-container {
-  width: auto;
+  //width: auto;
   text-decoration: underline;
-  padding: 5px;
-  gap: 5px;
+  //padding: 5px;
+  //gap: 5px;
   display: flex;
   flex-direction: column;
 }

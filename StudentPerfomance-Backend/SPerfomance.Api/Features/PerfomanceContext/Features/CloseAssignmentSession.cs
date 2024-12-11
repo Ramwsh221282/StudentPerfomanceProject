@@ -8,6 +8,8 @@ using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Abstractions;
 using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Commands.CloseAssignmentSession;
 using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Services.AssignmentSessionViewServices.Handlers;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions;
+using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions.Abstractions;
+using SPerfomance.Domain.Models.StudentGroups.Abstractions;
 
 namespace SPerfomance.Api.Features.PerfomanceContext.Features;
 
@@ -47,6 +49,9 @@ public static class CloseAssignmentSession
         IQueryDispatcher queryDispatcher,
         ICommandDispatcher commandDispatcher,
         IControlWeekReportRepository reports,
+        IAssignmentSessionsRepository sessions,
+        IStudentGroupsRepository groups,
+        IControlWeekGroupDocument document,
         ILogger<Endpoint> logger,
         Request request,
         CancellationToken ct
@@ -94,6 +99,13 @@ public static class CloseAssignmentSession
             "Пользователь {id} создаёт отчёт о контрольной неделе",
             jwtToken.UserId
         );
+        var resolver = new AssignmentSessionStudentGroupActiveSemesterResolver(
+            groups,
+            document,
+            session
+        );
+        await resolver.ResolveGroupsActiveSemesters(ct);
+        await sessions.Remove(session, ct);
         return TypedResults.Ok("Closed");
     }
 }

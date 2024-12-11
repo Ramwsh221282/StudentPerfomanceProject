@@ -3,8 +3,8 @@ import { Observable } from 'rxjs';
 import { IFetchPolicy } from '../../../../../../shared/models/fetch-policices/fetch-policy-interface';
 import { UserRecord } from '../../services/user-table-element-interface';
 import { User } from '../../../../../users/services/user-interface';
-import { BASE_API_URI } from '../../../../../../shared/models/api/api-constants';
-import { AuthService } from '../../../../../users/services/auth.service';
+//import { BASE_API_URI } from '../../../../../../shared/models/api/api-constants';
+import { AppConfigService } from '../../../../../../app.config.service';
 
 export class UsersFilterFetchPolicy implements IFetchPolicy<UserRecord[]> {
   private readonly _user: User;
@@ -14,10 +14,11 @@ export class UsersFilterFetchPolicy implements IFetchPolicy<UserRecord[]> {
 
   public constructor(
     user: User,
-    private readonly _authService: AuthService,
+    private readonly _appConfig: AppConfigService,
   ) {
     this._user = { ...user };
-    this._apiUri = `${BASE_API_URI}/api/users/filter`;
+    //this._apiUri = `${BASE_API_URI}/api/users/filter`;
+    this._apiUri = `${this._appConfig.baseApiUri}/api/users/filter`;
     this._httpHeaders = this.buildHttpHeaders();
   }
 

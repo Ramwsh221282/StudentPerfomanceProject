@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { SemesterPlan } from '../../../../../../semester-plans/models/semester-plan.interface';
 import { Observable } from 'rxjs';
-import { BASE_API_URI } from '../../../../../../../../../shared/models/api/api-constants';
+//import { BASE_API_URI } from '../../../../../../../../../shared/models/api/api-constants';
 import { AuthService } from '../../../../../../../../users/services/auth.service';
 import { DirectionPayloadBuilder } from '../../../../../../education-directions/models/contracts/direction-payload-builder';
 import { EducationPlanPayloadBuilder } from '../../../../../models/contracts/education-plan-contract/education-plan-payload-builder';
@@ -11,6 +11,7 @@ import { SemesterPlanPayloadBuilder } from '../models/contracts/semester-plan-co
 import { TokenPayloadBuilder } from '../../../../../../../../../shared/models/common/token-contract/token-payload-builder';
 import { DepartmentPayloadBuilder } from '../../../../../../departments/models/contracts/department-contract/department-payload-builder';
 import { TeacherPayloadBuilder } from '../../../../../../teachers/contracts/teacher-contract/teacher-payload-builder';
+import { AppConfigService } from '../../../../../../../../../app.config.service';
 
 @Injectable({
   providedIn: 'any',
@@ -19,12 +20,14 @@ export class SemesterDisciplinesEditService {
   public constructor(
     private readonly _httpClient: HttpClient,
     private readonly _authService: AuthService,
+    private readonly _appConfig: AppConfigService,
   ) {}
 
   public attachTeacher(semesterPlan: SemesterPlan): Observable<SemesterPlan> {
     if (!semesterPlan.teacher) return new Observable();
 
-    const apiUri: string = `${BASE_API_URI}/api/semester-plans/attach-teacher`;
+    //const apiUri: string = `${BASE_API_URI}/api/semester-plans/attach-teacher`;
+    const apiUri: string = `${this._appConfig.baseApiUri}/api/semester-plans/attach-teacher`;
     const headers = this.buildHttpHeaders();
     const body = {
       direction: DirectionPayloadBuilder(
@@ -43,7 +46,8 @@ export class SemesterDisciplinesEditService {
   }
 
   public deattachTeacher(semesterPlan: SemesterPlan): Observable<SemesterPlan> {
-    const apiUri: string = `${BASE_API_URI}/api/semester-plans/deattach-teacher`;
+    //const apiUri: string = `${BASE_API_URI}/api/semester-plans/deattach-teacher`;
+    const apiUri: string = `${this._appConfig.baseApiUri}/api/semester-plans/deattach-teacher`;
     const headers = this.buildHttpHeaders();
     const body = {
       direction: DirectionPayloadBuilder(
@@ -63,7 +67,8 @@ export class SemesterDisciplinesEditService {
     updated: SemesterPlan,
     initial: SemesterPlan,
   ): Observable<SemesterPlan> {
-    const apiUri: string = `${BASE_API_URI}/api/semester-plans`;
+    //const apiUri: string = `${BASE_API_URI}/api/semester-plans`;
+    const apiUri: string = `${this._appConfig.baseApiUri}/api/semester-plans`;
     const headers = this.buildHttpHeaders();
     const body: object = {
       direction: DirectionPayloadBuilder(

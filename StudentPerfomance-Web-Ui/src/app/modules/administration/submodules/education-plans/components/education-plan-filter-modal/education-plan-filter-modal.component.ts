@@ -6,6 +6,7 @@ import { EducationPlanFilterBaseForm } from './education-plan-filter-base-form';
 import { AuthService } from '../../../../../users/services/auth.service';
 import { EducationPlan } from '../../models/education-plan-interface';
 import { catchError, Observable, tap } from 'rxjs';
+import { AppConfigService } from '../../../../../../app.config.service';
 
 @Component({
   selector: 'app-education-plan-filter-modal',
@@ -22,7 +23,8 @@ export class EducationPlanFilterModalComponent
 
   public constructor(
     private readonly _facadeService: FacadeService,
-    private readonly _authService: AuthService
+    private readonly _authService: AuthService,
+    private readonly _appConfig: AppConfigService,
   ) {
     super();
   }
@@ -33,8 +35,11 @@ export class EducationPlanFilterModalComponent
 
   protected applyFilter(): void {
     const plan = this.createPlanFromForm();
-    console.log(plan);
-    const policy = new FilterFetchPolicy(plan, this._authService);
+    const policy = new FilterFetchPolicy(
+      plan,
+      this._authService,
+      this._appConfig,
+    );
     this._facadeService.setFetchPolicy(policy);
     this._facadeService
       .fetch()
@@ -47,14 +52,14 @@ export class EducationPlanFilterModalComponent
           this.failure.emit();
           this.visibility.emit(false);
           return new Observable();
-        })
+        }),
       )
       .subscribe();
   }
 
   protected cancel(): void {
     this.initForm();
-    const policy = new DefaultFetchPolicy(this._authService);
+    const policy = new DefaultFetchPolicy(this._authService, this._appConfig);
     this._facadeService.setFetchPolicy(policy);
     this._facadeService
       .fetch()
@@ -67,7 +72,7 @@ export class EducationPlanFilterModalComponent
           this.failure.emit();
           this.visibility.emit(false);
           return new Observable();
-        })
+        }),
       )
       .subscribe();
   }

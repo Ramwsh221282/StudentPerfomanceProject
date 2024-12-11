@@ -2,8 +2,9 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IFetchPolicy } from '../../../../../../../../shared/models/fetch-policices/fetch-policy-interface';
 import { Student } from '../../../../../students/models/student.interface';
-import { BASE_API_URI } from '../../../../../../../../shared/models/api/api-constants';
+//import { BASE_API_URI } from '../../../../../../../../shared/models/api/api-constants';
 import { AuthService } from '../../../../../../../users/services/auth.service';
+import { AppConfigService } from '../../../../../../../../app.config.service';
 
 export class FilterFetchPolicy implements IFetchPolicy<Student[]> {
   private readonly _apiUri: string;
@@ -13,8 +14,10 @@ export class FilterFetchPolicy implements IFetchPolicy<Student[]> {
   public constructor(
     student: Student,
     private readonly _authService: AuthService,
+    private readonly _appConfig: AppConfigService,
   ) {
-    this._apiUri = `${BASE_API_URI}/api/students/filter`;
+    //this._apiUri = `${BASE_API_URI}/api/students/filter`;
+    this._apiUri = `${this._appConfig.baseApiUri}/api/students/filter`;
     this.buildHttpHeaders();
     this.buildHttpParams(student);
   }

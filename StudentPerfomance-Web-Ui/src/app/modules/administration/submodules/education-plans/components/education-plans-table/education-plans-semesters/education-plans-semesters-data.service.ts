@@ -1,21 +1,26 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BASE_API_URI } from '../../../../../../../shared/models/api/api-constants';
+//import { BASE_API_URI } from '../../../../../../../shared/models/api/api-constants';
 import { EducationPlan } from '../../../models/education-plan-interface';
 import { Observable } from 'rxjs';
 import { Semester } from '../../../../semesters/models/semester.interface';
 import { AuthService } from '../../../../../../users/services/auth.service';
+import { AppConfigService } from '../../../../../../../app.config.service';
 
 @Injectable({
   providedIn: 'any',
 })
 export class EducationPlanSemestersService {
-  private readonly _apiUri: string = `${BASE_API_URI}/api/semesters`;
+  private readonly _apiUri: string;
 
   public constructor(
     private readonly _httpClient: HttpClient,
     private readonly _authService: AuthService,
-  ) {}
+    private readonly _appConfig: AppConfigService,
+  ) {
+    //this._apiUri = `${BASE_API_URI}/api/semesters`;
+    this._apiUri = `${this._appConfig.baseApiUri}/api/semesters`;
+  }
 
   public getPlanSemesters(plan: EducationPlan): Observable<Semester[]> {
     const headers = this.buildHttpHeaders();

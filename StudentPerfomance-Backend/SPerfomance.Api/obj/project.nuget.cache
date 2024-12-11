@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "gA9RY85kmzk=",
+  "dgSpecHash": "Ge5sBkpVNTU=",
   "success": true,
   "projectFilePath": "C:\\Users\\Ramwsh\\Desktop\\project\\StudentPerfomanceProject\\StudentPerfomance-Backend\\SPerfomance.Api\\SPerfomance.Api.csproj",
   "expectedPackageFiles": [
@@ -39,6 +39,7 @@
     "C:\\Users\\Ramwsh\\.nuget\\packages\\microsoft.identitymodel.tokens\\7.1.2\\microsoft.identitymodel.tokens.7.1.2.nupkg.sha512",
     "C:\\Users\\Ramwsh\\.nuget\\packages\\microsoft.openapi\\1.4.3\\microsoft.openapi.1.4.3.nupkg.sha512",
     "C:\\Users\\Ramwsh\\.nuget\\packages\\nreco.logging.file\\1.2.2\\nreco.logging.file.1.2.2.nupkg.sha512",
+    "C:\\Users\\Ramwsh\\.nuget\\packages\\scalar.aspnetcore\\1.2.51\\scalar.aspnetcore.1.2.51.nupkg.sha512",
     "C:\\Users\\Ramwsh\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.1.6\\sqlitepclraw.bundle_e_sqlite3.2.1.6.nupkg.sha512",
     "C:\\Users\\Ramwsh\\.nuget\\packages\\sqlitepclraw.core\\2.1.6\\sqlitepclraw.core.2.1.6.nupkg.sha512",
     "C:\\Users\\Ramwsh\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.1.6\\sqlitepclraw.lib.e_sqlite3.2.1.6.nupkg.sha512",

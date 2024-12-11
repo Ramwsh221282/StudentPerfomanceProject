@@ -18,7 +18,10 @@ public class MergeWithGroupCommandHandler(IStudentGroupsRepository repository)
             return Result<StudentGroup>.Failure(StudentGroupErrors.NotFound());
 
         var mergedGroup = command.Initial.MergeWithGroup(command.Target);
-        await repository.UpdateMerge(mergedGroup.Value, command.Target, ct);
+        if (mergedGroup.IsFailure)
+            return mergedGroup.Error;
+
+        await repository.UpdateMerge(command.Initial, command.Target, ct);
         return Result<StudentGroup>.Success(mergedGroup.Value);
     }
 }

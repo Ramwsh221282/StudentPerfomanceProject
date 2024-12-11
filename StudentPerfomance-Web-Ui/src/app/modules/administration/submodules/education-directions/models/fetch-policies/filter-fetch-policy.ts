@@ -2,11 +2,12 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IFetchPolicy } from '../../../../../../shared/models/fetch-policices/fetch-policy-interface';
 import { EducationDirection } from '../education-direction-interface';
-import { BASE_API_URI } from '../../../../../../shared/models/api/api-constants';
+//import { BASE_API_URI } from '../../../../../../shared/models/api/api-constants';
 import { AuthService } from '../../../../../users/services/auth.service';
+import { AppConfigService } from '../../../../../../app.config.service';
 
 export class FilterFetchPolicy implements IFetchPolicy<EducationDirection[]> {
-  private readonly _baseApiUri = `${BASE_API_URI}/api/education-direction/filter`;
+  private readonly _baseApiUri: string;
   private readonly _direction: EducationDirection;
   private _headers: HttpHeaders;
   private _params: HttpParams;
@@ -14,7 +15,10 @@ export class FilterFetchPolicy implements IFetchPolicy<EducationDirection[]> {
   public constructor(
     direction: EducationDirection,
     private readonly authService: AuthService,
+    private readonly _appConfig: AppConfigService,
   ) {
+    //this._baseApiUri = `${BASE_API_URI}/api/education-direction/filter`;
+    this._baseApiUri = `${this._appConfig.baseApiUri}/api/education-direction/filter`;
     this._direction = direction;
     this.buildHeaders();
     this.buildParams();

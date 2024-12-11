@@ -3,7 +3,9 @@ import { Observable } from 'rxjs';
 import { IFetchPolicy } from '../../../../../../shared/models/fetch-policices/fetch-policy-interface';
 import { UserRecord } from '../../services/user-table-element-interface';
 import { User } from '../../../../../users/services/user-interface';
-import { BASE_API_URI } from '../../../../../../shared/models/api/api-constants';
+import { AppConfigService } from '../../../../../../app.config.service';
+
+//import { BASE_API_URI } from '../../../../../../shared/models/api/api-constants';
 
 export class DefaultFetchPolicy implements IFetchPolicy<UserRecord[]> {
   private readonly _user: User;
@@ -11,9 +13,13 @@ export class DefaultFetchPolicy implements IFetchPolicy<UserRecord[]> {
   private readonly _httpHeaders: HttpHeaders;
   private _httpParams: HttpParams;
 
-  public constructor(user: User) {
+  public constructor(
+    user: User,
+    private readonly _appCofig: AppConfigService,
+  ) {
     this._user = user;
-    this._apiUri = `${BASE_API_URI}/api/users`;
+    //this._apiUri = `${BASE_API_URI}/api/users`;
+    this._apiUri = `${this._appCofig.baseApiUri}/api/users`;
     this._httpHeaders = this.buildHttpHeaders();
   }
 

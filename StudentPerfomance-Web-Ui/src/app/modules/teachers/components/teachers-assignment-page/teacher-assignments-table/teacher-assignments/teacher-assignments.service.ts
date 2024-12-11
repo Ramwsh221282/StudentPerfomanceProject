@@ -1,11 +1,11 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AuthService } from '../../../../../users/services/auth.service';
-import { BASE_API_URI } from '../../../../../../shared/models/api/api-constants';
 import { TeacherJournalStudent } from '../../../../models/teacher-journal-students';
 import { TokenPayloadBuilder } from '../../../../../../shared/models/common/token-contract/token-payload-builder';
 import { TeacherJournalDiscipline } from '../../../../models/teacher-journal-disciplines';
 import { Observable } from 'rxjs';
+import { AppConfigService } from '../../../../../../app.config.service';
 
 @Injectable({
   providedIn: 'any',
@@ -16,8 +16,10 @@ export class TeacherAssignmentsService {
   public constructor(
     private readonly _httpClient: HttpClient,
     private readonly _authService: AuthService,
+    private readonly _configService: AppConfigService,
   ) {
-    this.apiUri = `${BASE_API_URI}/app/assignment-sessions/make-assignment`;
+    //this.apiUri = `${BASE_API_URI}/app/assignment-sessions/make-assignment`;
+    this.apiUri = `${this._configService.baseApiUri}/app/assignment-sessions/make-assignment`;
   }
 
   public makeAssignment(

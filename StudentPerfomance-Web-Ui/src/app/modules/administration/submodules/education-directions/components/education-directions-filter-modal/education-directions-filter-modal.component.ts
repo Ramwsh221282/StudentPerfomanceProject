@@ -5,6 +5,7 @@ import { FilterFetchPolicy } from '../../models/fetch-policies/filter-fetch-poli
 import { DefaultFetchPolicy } from '../../models/fetch-policies/default-fetch-policy';
 import { AuthService } from '../../../../../users/services/auth.service';
 import { EducationDirection } from '../../models/education-direction-interface';
+import { AppConfigService } from '../../../../../../app.config.service';
 
 @Component({
   selector: 'app-education-directions-filter-modal',
@@ -21,7 +22,8 @@ export class EducationDirectionsFilterModalComponent
 
   public constructor(
     private readonly _facadeService: FacadeService,
-    private readonly _authService: AuthService
+    private readonly _authService: AuthService,
+    private readonly _appConfig: AppConfigService,
   ) {
     super();
   }
@@ -32,7 +34,11 @@ export class EducationDirectionsFilterModalComponent
 
   protected override submit(): void {
     const direction = this.createEducationDirectionFromForm();
-    const policy = new FilterFetchPolicy(direction, this._authService);
+    const policy = new FilterFetchPolicy(
+      direction,
+      this._authService,
+      this._appConfig,
+    );
     this._facadeService.setFetchPolicy(policy);
     this._facadeService.fetch().subscribe((response) => {
       this.filteredData.emit(response);
@@ -41,7 +47,7 @@ export class EducationDirectionsFilterModalComponent
   }
 
   protected cancel(): void {
-    const policy = new DefaultFetchPolicy(this._authService);
+    const policy = new DefaultFetchPolicy(this._authService, this._appConfig);
     this._facadeService.setFetchPolicy(policy);
     this._facadeService.fetch().subscribe((response) => {
       this.filteredData.emit(response);

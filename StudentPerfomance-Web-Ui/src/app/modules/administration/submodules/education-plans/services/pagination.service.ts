@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { BaseService } from './base.service';
 import { AuthService } from '../../../../users/services/auth.service';
-import { BASE_API_URI } from '../../../../../shared/models/api/api-constants';
+//import { BASE_API_URI } from '../../../../../shared/models/api/api-constants';
 import { HttpHeaders } from '@angular/common/http';
+import { AppConfigService } from '../../../../../app.config.service';
 
 @Injectable({
   providedIn: 'any',
@@ -14,7 +15,10 @@ export class PaginationService extends BaseService {
   private _currentPage: number = 1;
   private _displayPages: number[] = [];
 
-  public constructor(private readonly _authService: AuthService) {
+  public constructor(
+    private readonly _authService: AuthService,
+    private readonly _appConfig: AppConfigService,
+  ) {
     super();
   }
 
@@ -61,9 +65,11 @@ export class PaginationService extends BaseService {
   }
 
   public refreshPagination(): void {
+    //const apiUri = `${BASE_API_URI}/api/education-plans/count`;
+    const apiUri = `${this._appConfig.baseApiUri}/api/education-plans/count`;
     const headers = this.buildHttpHeaders();
     this.httpClient
-      .get<number>(`${BASE_API_URI}/api/education-plans/count`, {
+      .get<number>(apiUri, {
         headers: headers,
       })
       .subscribe((response) => {

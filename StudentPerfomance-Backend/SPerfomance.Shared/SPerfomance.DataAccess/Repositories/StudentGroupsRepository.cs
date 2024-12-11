@@ -166,17 +166,17 @@ public class StudentGroupsRepository : IStudentGroupsRepository
             );
 
     public async Task UpdateMerge(
+        StudentGroup initial,
         StudentGroup target,
-        StudentGroup merged,
         CancellationToken ct = default
     )
     {
         const string sql =
-            "UPDATE Students SET AttachedGroupId = @AttachedGroupId WHERE Id = @CurrentGroupId";
+            "UPDATE Students SET AttachedGroupId = @AttachedGroupId WHERE AttachedGroupId = @CurrentGroupId";
         SqliteParameter[] parameters =
         [
-            new SqliteParameter("@AttachedGroupId", target.Id),
-            new SqliteParameter("@CurrentGroupId", merged.Id),
+            new SqliteParameter("@AttachedGroupId", initial.Id),
+            new SqliteParameter("@CurrentGroupId", target.Id),
         ];
         await _context.Database.ExecuteSqlRawAsync(sql, parameters);
     }

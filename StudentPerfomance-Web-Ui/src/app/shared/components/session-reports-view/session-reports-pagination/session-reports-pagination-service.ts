@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from '../../../../modules/users/services/auth.service';
-import { BASE_API_URI } from '../../../models/api/api-constants';
+//import { BASE_API_URI } from '../../../models/api/api-constants';
+import { AppConfigService } from '../../../../app.config.service';
 
 @Injectable({
   providedIn: 'any',
@@ -17,8 +18,10 @@ export class SessionReportsPaginationService {
   constructor(
     private readonly _authService: AuthService,
     private readonly _httpClient: HttpClient,
+    private readonly _appConfig: AppConfigService,
   ) {
-    this._apiUri = `${BASE_API_URI}/app/assignment-sessions/count`;
+    //this._apiUri = `${BASE_API_URI}/app/assignment-sessions/count`;
+    this._apiUri = `${_appConfig.baseApiUri}/app/assignment-sessions/count`;
   }
 
   public get currentPage(): number {
