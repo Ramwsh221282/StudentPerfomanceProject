@@ -12,7 +12,7 @@ public class DepartmentName : DomainValueObject
 
     public string Name { get; private set; }
 
-    private DepartmentName(string name) => Name = name;
+    private DepartmentName(string name) => Name = name.Trim();
 
     private DepartmentName() => Name = string.Empty;
 

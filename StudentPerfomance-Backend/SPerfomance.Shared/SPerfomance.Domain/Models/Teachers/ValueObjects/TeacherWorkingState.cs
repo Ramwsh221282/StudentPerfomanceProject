@@ -9,15 +9,14 @@ public class TeacherWorkingState : DomainValueObject
     private static readonly TeacherWorkingState[] States =
     [
         new("Штатный"),
-        new("Удаленный совместитель"),
-        new("Совместитель"),
+        new("Внешний совместитель"),
     ];
 
     public string State { get; }
 
     private TeacherWorkingState() => State = string.Empty;
 
-    private TeacherWorkingState(string state) => State = state;
+    private TeacherWorkingState(string state) => State = state.Trim();
 
     internal static TeacherWorkingState Empty => new TeacherWorkingState();
 

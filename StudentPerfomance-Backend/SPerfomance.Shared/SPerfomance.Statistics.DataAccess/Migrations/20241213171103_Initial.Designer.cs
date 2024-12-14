@@ -11,8 +11,8 @@ using SPerfomance.Statistics.DataAccess;
 namespace SPerfomance.Statistics.DataAccess.Migrations
 {
     [DbContext(typeof(StatisticsDatabaseContext))]
-    [Migration("20241119200227_FirstStatistics")]
-    partial class FirstStatistics
+    [Migration("20241213171103_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,6 +27,13 @@ namespace SPerfomance.Statistics.DataAccess.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CompletionDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<byte>("ControlWeekNumber")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("ControlWeekSeason")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreationDate")

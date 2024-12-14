@@ -1,3 +1,5 @@
+using SPerfomance.Domain.Models.Teachers.ValueObjects;
+
 namespace SPerfomance.Domain.Models.Teachers.Abstractions;
 
 public interface ITeachersRepository
@@ -9,6 +11,13 @@ public interface ITeachersRepository
     public Task Update(Teacher entity, CancellationToken ct = default);
 
     public Task<int> GenerateEntityNumber(CancellationToken ct = default);
+
+    public Task<bool> TeacherExists(
+        TeacherName name,
+        TeacherJobTitle teacherJobTitle,
+        TeacherWorkingState state,
+        CancellationToken ct = default
+    );
 
     public Task<Teacher?> GetByName(
         string name,

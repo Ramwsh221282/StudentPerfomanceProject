@@ -11,14 +11,9 @@
     <button class="accept-button-modal" type="button" (click)="confirm()">
       Подтвердить
     </button>
-    ><button class="danger-button-modal" type="button" (click)="decline()">
+    >
+    <button class="danger-button-modal" type="button" (click)="decline()">
       Отмена
     </button>
   </div>
-</div>
-<div id="failure-modal-renderer" *ngIf="isFailure">
-  <app-failure-result-notification
-    [message]="notificationService.Message"
-    (visibilityEmitter)="manageFailure($event)"
-  ></app-failure-result-notification>
 </div>

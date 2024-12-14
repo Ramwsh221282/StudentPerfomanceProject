@@ -10,9 +10,9 @@ public class DirectionName : DomainValueObject
 
     private const int NameMinLength = 5;
 
-    public string Name { get; private set; }
+    public string Name { get; }
 
-    private DirectionName(string name) => Name = name;
+    private DirectionName(string name) => Name = name.Trim();
 
     private DirectionName() => Name = string.Empty;
 

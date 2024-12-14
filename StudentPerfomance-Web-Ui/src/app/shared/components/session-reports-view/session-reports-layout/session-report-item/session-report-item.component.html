@@ -2,19 +2,23 @@
   <div class="session-report-period-container">
     <strong>Начало: {{ report.creationDate | date: 'd-M-y' }}</strong>
     <strong>Конец: {{ report.completionDate | date: 'd-M-y' }}</strong>
+    <strong>Сезон: {{ report.season }}</strong>
+    <strong>Номер: {{ report.number }}</strong>
   </div>
   <div class="session-report-menu-container">
     <button class="warning-button-outline" [routerLink]="'/group-reports/:reportId'"
-            [queryParams]="{reportId: report.id, startDate: report.creationDate, endDate: report.completionDate}">
+            [queryParams]="{reportId: report.id, startDate: report.creationDate, endDate: report.completionDate, season: report.season, number: report.number}">
       Ведомость по
       группам
     </button>
-    <button class="warning-button-outline" [routerLink]="'/course-reports/:reportId:startDate:closeDate'"
-            [queryParams]="{reportId: report.id, startDate: report.creationDate, endDate: report.completionDate}">
+    <button class="warning-button-outline" [routerLink]="'/course-reports/:reportId:startDate:closeDate:season:number'"
+            [queryParams]="{reportId: report.id, startDate: report.creationDate, endDate: report.completionDate, season: report.season, number: report.number}">
       Ведомость по направлениям
     </button>
   </div>
-  <button class="danger-button" (click)="isRemovingVisible = true">Удалить отчёт</button>
+  <button class="danger-button" (click)="isRemovingVisible = true"
+          *ngIf="_authService.userData.role == 'Администратор'">Удалить отчёт
+  </button>
 </div>
 <div id="remove-modal-renderer" *ngIf="isRemovingVisible">
   <app-session-report-item-remove-modal [reportToDelete]="report"

@@ -13,7 +13,7 @@ public class UserEmail : DomainValueObject
 
     private UserEmail() => Email = string.Empty;
 
-    private UserEmail(string email) => Email = email;
+    private UserEmail(string email) => Email = email.Trim();
 
     internal static UserEmail Empty => new UserEmail();
 

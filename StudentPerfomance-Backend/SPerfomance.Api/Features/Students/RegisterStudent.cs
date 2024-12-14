@@ -10,6 +10,7 @@ using SPerfomance.Application.StudentGroups.DTO;
 using SPerfomance.Application.StudentGroups.Queries.GetStudentGroupByName;
 using SPerfomance.Domain.Models.StudentGroups;
 using SPerfomance.Domain.Models.Students;
+using SPerfomance.Domain.Models.Students.Errors;
 
 namespace SPerfomance.Api.Features.Students;
 
@@ -55,6 +56,19 @@ public static class RegisterStudent
         {
             logger.LogError("Пользователь не является администратором");
             return TypedResults.Unauthorized();
+        }
+
+        if (request.Student.Recordbook != null)
+        {
+            var studentRecordBookValue = request.Student.Recordbook;
+            var studentRecordBookValueInString = studentRecordBookValue.ToString();
+            var canParseInLong = long.TryParse(studentRecordBookValueInString, out var parsedValue);
+            if (!canParseInLong)
+            {
+                var error = StudentErrors.InvalidRecordBookType();
+                logger.LogError("Не удалось добавить студента. Причина: {text}", error.Description);
+                return TypedResults.BadRequest(error.Description);
+            }
         }
 
         var group = await queryDispatcher.Dispatch<GetStudentGroupQuery, StudentGroup>(

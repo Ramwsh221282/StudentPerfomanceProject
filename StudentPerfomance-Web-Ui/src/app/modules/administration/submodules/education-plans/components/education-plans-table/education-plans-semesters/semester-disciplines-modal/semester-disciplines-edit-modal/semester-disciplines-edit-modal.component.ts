@@ -137,6 +137,7 @@ export class SemesterDisciplinesEditModalComponent
             this.successEmitter.emit();
             this.refreshEmitter.emit();
             this.plan = { ...response };
+            this.fetchDepartments();
           }),
           catchError((error) => {
             this._notificationService.SetMessage = error.error;

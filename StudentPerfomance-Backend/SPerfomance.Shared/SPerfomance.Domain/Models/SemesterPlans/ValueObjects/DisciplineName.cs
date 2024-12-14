@@ -12,7 +12,7 @@ public class DisciplineName : DomainValueObject
 
     internal DisciplineName() => Name = string.Empty;
 
-    internal DisciplineName(string name) => Name = name;
+    internal DisciplineName(string name) => Name = name.Trim();
 
     internal static DisciplineName Empty => new DisciplineName();
 

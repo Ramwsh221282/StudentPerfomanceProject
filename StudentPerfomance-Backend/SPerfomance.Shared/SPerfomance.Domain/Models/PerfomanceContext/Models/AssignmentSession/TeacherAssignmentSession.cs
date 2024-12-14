@@ -13,7 +13,7 @@ public class TeacherAssignmentSession
 
     public TeacherName Teacher { get; init; }
 
-    public TeacherAssignmentSession(Teacher teacher, AssignmentSession session)
+    public TeacherAssignmentSession(Teacher teacher, AssignmentSession.AssignmentSession session)
     {
         Teacher = teacher.Name;
         foreach (AssignmentWeek week in session.Weeks)

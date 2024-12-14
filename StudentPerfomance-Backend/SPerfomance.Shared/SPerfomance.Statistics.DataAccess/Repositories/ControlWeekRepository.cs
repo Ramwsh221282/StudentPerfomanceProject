@@ -53,6 +53,26 @@ public sealed class ControlWeekRepository : IControlWeekReportRepository
         return true;
     }
 
+    public async Task<bool> CanCreateControlWeek(
+        DateTime startDate,
+        string type,
+        byte number,
+        CancellationToken ct = default
+    )
+    {
+        var year = startDate.Year;
+
+        var existingControlWeek = await _context.ControlWeekReports.AnyAsync(
+            r =>
+                r.CreationDate.Year == year
+                && r.ControlWeekSeason == type
+                && r.ControlWeekNumber == number,
+            ct
+        );
+
+        return !existingControlWeek;
+    }
+
     public async Task<IReadOnlyList<ControlWeekReportEntity>> GetPaged(
         int page,
         int pageSize,
@@ -74,17 +94,21 @@ public sealed class ControlWeekRepository : IControlWeekReportRepository
     public async Task<IReadOnlyList<ControlWeekReportEntity>> GetPagedFilteredByPeriod(
         int page,
         int pageSize,
-        DateTime? startDate,
-        DateTime? endDate,
+        int? year,
+        int? number,
+        string? season,
         CancellationToken ct = default
     )
     {
         var query = _context.ControlWeekReports.AsQueryable();
-        if (startDate != null)
-            query = query.Where(r => r.CreationDate >= startDate);
+        if (year != null)
+            query = query.Where(r => r.CreationDate.Year == year);
 
-        if (endDate != null)
-            query = query.Where(r => r.CompletionDate <= endDate);
+        if (number != null)
+            query = query.Where(r => r.ControlWeekNumber == number.Value);
+
+        if (!string.IsNullOrWhiteSpace(season))
+            query = query.Where(r => r.ControlWeekSeason == season);
 
         return await query
             .Skip((page - 1) * pageSize)

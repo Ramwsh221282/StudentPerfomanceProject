@@ -1,20 +1,19 @@
 .session-reports-filter-input-row-container {
   padding: 10px;
   background-color: #ffffff;
-  width: 30%;
+  width: 25%;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 10px;
   border-radius: 5px;
   border: solid 1px #cccccc;
 
-  & strong {
-    border-bottom: solid 1px #cccccc;
-    padding: 5px 0px;
+  & input {
+    width: 50%;
   }
 
-  & input {
-    width: 100%;
+  & select {
+    width: 50%;
   }
 }
 

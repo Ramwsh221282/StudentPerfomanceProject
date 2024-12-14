@@ -20,17 +20,3 @@
     </button>
   </div>
 </div>
-<div id="success-pop-up" *ngIf="isSuccess">
-  <app-success-result-notification
-    [message]="notificationService.Message"
-    (visibilityEmitter)="manageNotification($event)"
-  ></app-success-result-notification>
-</div>
-
-<div id="failure-pop-up" *ngIf="isFailure">
-  <app-failure-result-notification
-    [message]="notificationService.Message"
-    (visibilityEmitter)="manageNotification($event)"
-  >
-  </app-failure-result-notification>
-</div>

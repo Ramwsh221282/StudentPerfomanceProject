@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { SessionReportPeriodContract } from '../Services/data-services/reports-fetch-policies/session-report-period-filter-contract';
 import { SessionReportsDataService } from '../Services/data-services/session-reports-data-service';
 import { AuthService } from '../../../../modules/users/services/auth.service';
 import { SessionReportsPaginationService } from '../session-reports-pagination/session-reports-pagination-service';
@@ -20,30 +19,24 @@ import { AppConfigService } from '../../../../app.config.service';
 })
 export class SessionReportsFilterInputComponent implements ISubbmittable {
   @Output() emitFilter: EventEmitter<void> = new EventEmitter();
-  protected startDate: SessionReportPeriodContract;
-  protected endDate: SessionReportPeriodContract;
-
-  protected startDateStringRepresentation: string;
-  protected endDateStringRepresentation: string;
+  protected year: number;
+  protected sessionNumber: number;
+  protected sessionSeason: string;
 
   public constructor(
     private readonly _dataService: SessionReportsDataService,
     private readonly _paginationService: SessionReportsPaginationService,
     private readonly _authService: AuthService,
     private readonly _appConfig: AppConfigService,
-  ) {
-    this.startDate = {} as SessionReportPeriodContract;
-    this.endDate = {} as SessionReportPeriodContract;
-  }
+  ) {}
 
   public submit(): void {
-    this.tryParseDates(this.startDate, this.startDateStringRepresentation);
-    this.tryParseDates(this.endDate, this.endDateStringRepresentation);
     const policy: IFetchPolicy<ControlWeekReportInterface[]> =
       new SessionReportPeriodFetchPolicy(
         this._authService,
-        this.startDate,
-        this.endDate,
+        this.year,
+        this.sessionNumber,
+        this.sessionSeason,
         this._appConfig,
       );
     policy.addPages(
@@ -61,27 +54,10 @@ export class SessionReportsFilterInputComponent implements ISubbmittable {
       this._paginationService.currentPage,
       this._paginationService.pageSize,
     );
+    this.sessionNumber = null!;
+    this.sessionSeason = '';
+    this.year = null!;
     this._dataService.setPolicy(policy);
     this.emitFilter.emit();
-  }
-
-  protected tryParseDates(
-    contract: SessionReportPeriodContract,
-    stringDate: string,
-  ): void {
-    if (!stringDate) return;
-    try {
-      const parts: string[] = stringDate.split('-');
-      const year: number = Number(parts[0]);
-      const month: number = Number(parts[1]);
-      const day: number = Number(parts[2]);
-      contract.day = day;
-      contract.month = month;
-      contract.year = year;
-    } catch {
-      contract.day = null;
-      contract.month = null;
-      contract.year = null;
-    }
   }
 }

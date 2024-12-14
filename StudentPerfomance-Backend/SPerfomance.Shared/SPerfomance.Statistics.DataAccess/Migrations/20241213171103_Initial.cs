@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SPerfomance.Statistics.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class FirstStatistics : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -18,7 +18,9 @@ namespace SPerfomance.Statistics.DataAccess.Migrations
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
                     RowNumber = table.Column<int>(type: "INTEGER", nullable: false),
                     CreationDate = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    CompletionDate = table.Column<DateTime>(type: "TEXT", nullable: false)
+                    CompletionDate = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    ControlWeekNumber = table.Column<byte>(type: "INTEGER", nullable: false),
+                    ControlWeekSeason = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {

@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { GroupReportInterface } from '../../../../Models/Data/group-report-interface';
-import { NgIf } from '@angular/common';
+import { DatePipe, NgClass, NgIf } from '@angular/common';
 import { StudentReportInterface } from '../../../../Models/Data/student-report-interface';
 import { DisciplineReportInterface } from '../../../../Models/Data/discipline-report-interface';
 import { toPng } from 'html-to-image';
@@ -9,7 +9,7 @@ import jsPDF from 'jspdf';
 @Component({
   selector: 'app-session-group-report-content',
   standalone: true,
-  imports: [NgIf],
+  imports: [NgIf, DatePipe, NgClass],
   templateUrl: './session-group-report-content.component.html',
   styleUrl: './session-group-report-content.component.scss',
 })
@@ -17,6 +17,10 @@ export class SessionGroupReportContentComponent {
   @Input({ required: true }) currentGroup: GroupReportInterface;
   @Input({ required: true }) students: StudentReportInterface[];
   @Input({ required: true }) disciplines: DisciplineReportInterface[];
+  @Input({ required: true }) season: string;
+  @Input({ required: true }) number: number;
+  @Input({ required: true }) startDate: string;
+  @Input({ required: true }) endDate: string;
 
   protected getStudentGrade(
     disciplineId: string,
@@ -29,6 +33,10 @@ export class SessionGroupReportContentComponent {
       (s) => s.recordbook == studentRecordbook,
     )!;
     return grade.grade;
+  }
+
+  protected isBadMark(grade: string): boolean {
+    return grade === '2' || grade === 'НП' || grade === 'НА';
   }
 
   protected saveAsPdf(): void {

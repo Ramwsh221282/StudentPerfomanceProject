@@ -18,7 +18,7 @@ public class TeacherJobTitle : DomainValueObject
 
     private TeacherJobTitle() => JobTitle = string.Empty;
 
-    private TeacherJobTitle(string jobTitle) => JobTitle = jobTitle;
+    private TeacherJobTitle(string jobTitle) => JobTitle = jobTitle.Trim();
 
     internal static TeacherJobTitle Empty => new TeacherJobTitle();
 

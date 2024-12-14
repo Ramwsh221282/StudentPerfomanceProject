@@ -9,7 +9,7 @@ public class PlanYear : DomainValueObject
     private const int MaxLength = 3000;
     private const int MinLength = 2000;
 
-    public int Year { get; private set; }
+    public int Year { get; }
 
     private PlanYear() { }
 

@@ -26,6 +26,8 @@ export class SessionGroupReportsComponent implements OnInit {
   protected groups: GroupReportInterface[];
   protected startDate: string = '';
   protected endDate: string = '';
+  protected season: string = '';
+  protected number: number = 0;
 
   protected currentGroup: GroupReportInterface;
   protected disciplines: DisciplineReportInterface[];
@@ -41,6 +43,8 @@ export class SessionGroupReportsComponent implements OnInit {
       const reportId: string = params['reportId'];
       this.startDate = params['startDate'];
       this.endDate = params['endDate'];
+      this.season = params['season'];
+      this.number = params['number'];
       this.initializeReport(reportId);
     });
   }

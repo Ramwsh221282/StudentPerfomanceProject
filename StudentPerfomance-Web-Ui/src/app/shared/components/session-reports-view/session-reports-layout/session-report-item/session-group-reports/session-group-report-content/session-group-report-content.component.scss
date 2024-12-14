@@ -25,25 +25,6 @@
   overflow: auto;
 }
 
-//.report-table-layout {
-//  & thead tr {
-//    border: solid 1px black;
-//    text-align: center;
-//  }
-//
-//  & td,
-//  & th {
-//    border: solid 1px black;
-//    background-color: #f9f9f9;
-//  }
-//
-//  & tbody tr {
-//    text-align: center;
-//    border: solid 1px black;
-//    background-color: #f9f9f9;
-//  }
-//}
-
 .report-table-layout th, .report-table-layout td {
   border: 1px solid #ddd;
   padding: 8px;
@@ -58,6 +39,9 @@
   background-color: #f5f5f5;
 }
 
+.red-background {
+  background-color: #FEB9B9;
+}
 
 .rotate-sm-90 {
   writing-mode: vertical-rl;

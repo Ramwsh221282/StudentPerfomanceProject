@@ -23,9 +23,9 @@ public class Username : DomainValueObject
 
     private Username(string name, string surname, string patronymic)
     {
-        Name = name;
-        Surname = surname;
-        Patronymic = patronymic;
+        Name = name.Trim();
+        Surname = surname.Trim();
+        Patronymic = string.IsNullOrWhiteSpace(patronymic) ? string.Empty : patronymic.Trim();
     }
 
     internal static Username Empty => new Username();

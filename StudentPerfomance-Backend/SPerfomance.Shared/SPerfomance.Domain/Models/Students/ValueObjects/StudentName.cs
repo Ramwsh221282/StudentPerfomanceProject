@@ -20,9 +20,9 @@ public class StudentName : DomainValueObject
 
     private StudentName(string name, string surname, string thirdname)
     {
-        Name = name;
-        Surname = surname;
-        Patronymic = thirdname;
+        Name = name.Trim();
+        Surname = surname.Trim();
+        Patronymic = string.IsNullOrWhiteSpace(thirdname) ? string.Empty : thirdname.Trim();
     }
 
     internal static StudentName Empty => new StudentName();

@@ -2,6 +2,7 @@ using SPerfomance.Application.Abstractions;
 using SPerfomance.Domain.Models.TeacherDepartments.Errors;
 using SPerfomance.Domain.Models.Teachers;
 using SPerfomance.Domain.Models.Teachers.Abstractions;
+using SPerfomance.Domain.Models.Teachers.Errors;
 using SPerfomance.Domain.Tools;
 
 namespace SPerfomance.Application.Departments.Commands.RegisterTeacher;
@@ -27,6 +28,16 @@ public class RegisterTeacherCommandHandler(ITeachersRepository repository)
 
         if (registeredTeacher.IsFailure)
             return Result<Teacher>.Failure(registeredTeacher.Error);
+
+        if (
+            await repository.TeacherExists(
+                registeredTeacher.Value.Name,
+                registeredTeacher.Value.JobTitle,
+                registeredTeacher.Value.State,
+                ct
+            )
+        )
+            return TeacherErrors.TeacherDuplicate();
 
         await repository.Insert(registeredTeacher.Value, ct);
         return Result<Teacher>.Success(registeredTeacher.Value);

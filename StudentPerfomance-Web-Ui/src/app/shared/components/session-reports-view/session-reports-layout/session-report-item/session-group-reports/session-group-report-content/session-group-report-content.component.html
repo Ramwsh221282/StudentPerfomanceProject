@@ -1,27 +1,33 @@
 <div class="group-content-layout">
   <strong class="report-title-layout">Ведомость
     группы {{ currentGroup.groupName }} Средний балл: {{ currentGroup.average }}
-    Успеваемость: {{ currentGroup.perfomance }}%
+    Успеваемость: {{ currentGroup.perfomance }} %
     <button class="accept-button-modal" (click)="saveAsPdf()">
       Сохранить .PDF
     </button>
   </strong>
   <div class="report-table-container">
     <table class="report-table-layout" id="report">
-      <thead>
       <tr>
-        <th>{{ currentGroup.groupName }}</th>
+        <td colspan="3" style="text-align: center; background-color: #f0f0f0; font-weight: bold;">Контрольная неделя
+          № {{ number }}
+          с {{ startDate | date: 'd.M.YYYY' }}
+          по {{ endDate | date: 'd.M.YYYY' }}
+          {{ season }}
+        </td>
+      </tr>
+      <tr>
+        <th><span style="width: 10%">{{ currentGroup.groupName }}</span></th>
         @for (discipline of currentGroup.parts; track discipline.id) {
           <th><span class="rotate-sm-90">{{ discipline.disciplineName }}</span></th>
         }
         <th><span class="rotate-sm-90">Среднее</span></th>
         <th><span class="rotate-sm-90">Успеваемость</span></th>
       </tr>
-      </thead>
       <tbody>
         @for (student of students; track student.recordbook) {
           <tr>
-            <td style="width: auto">
+            <td style="width: 150px">
               {{ student.studentSurname }} {{ student.studentName[0] }}
               {{
                 student.studentPatronymic == null
@@ -30,16 +36,27 @@
               }}
             </td>
             @for (discipline of currentGroup.parts; track discipline.id) {
-              <td>{{ getStudentGrade(discipline.id, student.recordbook) }}</td>
+              <td
+                [ngClass]="{'red-background': isBadMark(getStudentGrade(discipline.id, student.recordbook))}">{{ getStudentGrade(discipline.id, student.recordbook) }}
+              </td>
             }
             <td>{{ student.average }}</td>
-            <td>{{ student.perfomance }}</td>
+            <td>{{ student.perfomance }} {{ '%' }}</td>
           </tr>
         }
       </tbody>
+      <tr>
+        <td colspan="2" style="text-align: center; background-color: #f0f0f0; font-weight: bold;">Общий результат:
+
+        </td>
+      </tr>
+      <tr>
+        <td>Успеваемость: {{ currentGroup.perfomance }} {{ '%' }}</td>
+        <td>Среднее: {{ currentGroup.average }}</td>
+      </tr>
       <div class="results-container">
-        <strong>Итог успеваемости: {{ currentGroup.perfomance }}</strong>
-        <strong>Итог среднего: {{ currentGroup.average }}</strong>
+        <strong>НА - нет аттестации</strong>
+        <strong>НП - нет проставления</strong>
       </div>
     </table>
   </div>

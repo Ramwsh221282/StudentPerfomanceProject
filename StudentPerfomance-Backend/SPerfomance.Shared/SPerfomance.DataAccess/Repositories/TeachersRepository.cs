@@ -2,6 +2,7 @@ using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using SPerfomance.Domain.Models.Teachers;
 using SPerfomance.Domain.Models.Teachers.Abstractions;
+using SPerfomance.Domain.Models.Teachers.ValueObjects;
 using SPerfomance.Domain.Tools;
 
 namespace SPerfomance.DataAccess.Repositories;
@@ -40,6 +41,24 @@ public class TeachersRepository : ITeachersRepository
             .Teachers.Select(t => t.EntityNumber)
             .ToArrayAsync(cancellationToken: ct);
         return numbers.GetOrderedValue();
+    }
+
+    public async Task<bool> TeacherExists(
+        TeacherName name,
+        TeacherJobTitle teacherJobTitle,
+        TeacherWorkingState state,
+        CancellationToken ct = default
+    )
+    {
+        return await _context.Teachers.AnyAsync(
+            t =>
+                t.Name.Name == name.Name
+                && t.Name.Surname == name.Surname
+                && t.Name.Patronymic == name.Patronymic
+                && t.JobTitle.JobTitle == teacherJobTitle.JobTitle
+                && t.State.State == state.State,
+            cancellationToken: ct
+        );
     }
 
     public async Task<Teacher?> GetByName(

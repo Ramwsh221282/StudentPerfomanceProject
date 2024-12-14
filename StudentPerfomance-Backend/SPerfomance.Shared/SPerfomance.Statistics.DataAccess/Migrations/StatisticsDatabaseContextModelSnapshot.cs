@@ -26,6 +26,13 @@ namespace SPerfomance.Statistics.DataAccess.Migrations
                     b.Property<DateTime>("CompletionDate")
                         .HasColumnType("TEXT");
 
+                    b.Property<byte>("ControlWeekNumber")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("ControlWeekSeason")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("TEXT");
 

@@ -7,7 +7,7 @@ using SPerfomance.Application.Abstractions;
 using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Abstractions;
 using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Commands.CloseAssignmentSession;
 using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Services.AssignmentSessionViewServices.Handlers;
-using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions;
+using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSession;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions.Abstractions;
 using SPerfomance.Domain.Models.StudentGroups.Abstractions;
 

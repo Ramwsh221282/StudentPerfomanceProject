@@ -14,4 +14,6 @@ export interface ControlWeekReportInterface {
   directionCodeReport: DirectionCodeReportInterface[];
   average: number;
   perfomance: number;
+  season: string;
+  number: number;
 }

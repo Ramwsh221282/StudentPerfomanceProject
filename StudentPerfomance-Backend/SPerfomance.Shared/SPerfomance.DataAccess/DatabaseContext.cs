@@ -3,6 +3,7 @@ using SPerfomance.DataAccess.Configurations;
 using SPerfomance.Domain.Models.EducationDirections;
 using SPerfomance.Domain.Models.EducationPlans;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.Assignments;
+using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSession;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentsWeeks;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.StudentAssignments;

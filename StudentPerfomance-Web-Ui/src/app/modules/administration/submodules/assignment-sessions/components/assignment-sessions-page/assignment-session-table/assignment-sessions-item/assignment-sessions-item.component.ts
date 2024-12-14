@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { AssignmentSession } from '../../../../models/assignment-session-interface';
-import { UserOperationNotificationService } from '../../../../../../../../shared/services/user-notifications/user-operation-notification-service.service';
 
 @Component({
   selector: 'app-assignment-sessions-item',
@@ -10,12 +9,10 @@ import { UserOperationNotificationService } from '../../../../../../../../shared
 export class AssignmentSessionsItemComponent {
   @Input({ required: true }) session: AssignmentSession;
   @Output() refresh: EventEmitter<void> = new EventEmitter();
+  @Output() success: EventEmitter<void> = new EventEmitter();
+  @Output() failure: EventEmitter<void> = new EventEmitter();
   protected isInfoVisible: boolean = false;
   protected isClosingModalVisible: boolean = false;
-  protected isSuccess: boolean = false;
-  protected isFailure: boolean = false;
 
-  public constructor(
-    protected readonly notificationService: UserOperationNotificationService,
-  ) {}
+  public constructor() {}
 }

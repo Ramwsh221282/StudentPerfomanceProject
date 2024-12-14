@@ -22,16 +22,8 @@
   <app-assignment-session-close-item-modal
     [session]="session"
     (visibility)="isClosingModalVisible = false"
-    (success)="isSuccess = true"
-    (failure)="isFailure = true"
     (refresh)="refresh.emit()"
+    (success)="success.emit()"
+    (failure)="failure.emit()"
   ></app-assignment-session-close-item-modal>
-</div>
-<div id="success-modal-renderer" *ngIf="isSuccess">
-  <app-success-result-notification [message]="notificationService.Message"
-                                   (visibilityEmitter)="isSuccess = $event"></app-success-result-notification>
-</div>
-<div id="failure-modal-renderer" *ngIf="isFailure">
-  <app-failure-result-notification [message]="notificationService.Message"
-                                   (visibilityEmitter)="isFailure = $event"></app-failure-result-notification>
 </div>

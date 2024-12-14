@@ -18,7 +18,7 @@ public class EducationPlan : AggregateRoot
 
     public PlanYear Year { get; private set; }
 
-    public EducationDirection Direction { get; private set; }
+    public EducationDirection Direction { get; }
 
     public IReadOnlyCollection<StudentGroup> Groups => _groups;
 
@@ -43,11 +43,10 @@ public class EducationPlan : AggregateRoot
 
     internal static Result<EducationPlan> Create(int year, EducationDirection direction)
     {
-        Result<PlanYear> yearCreation = PlanYear.Create(year);
-        if (yearCreation.IsFailure)
-            return Result<EducationPlan>.Failure(yearCreation.Error);
-
-        return Result<EducationPlan>.Success(new EducationPlan(yearCreation.Value, direction));
+        var yearCreation = PlanYear.Create(year);
+        return yearCreation.IsFailure
+            ? Result<EducationPlan>.Failure(yearCreation.Error)
+            : Result<EducationPlan>.Success(new EducationPlan(yearCreation.Value, direction));
     }
 
     public Result<StudentGroup> AddStudentGroup(StudentGroup group, byte activeSemesterNumber)
@@ -57,7 +56,7 @@ public class EducationPlan : AggregateRoot
                 StudentGroupErrors.EducationPlanHasGroupAlreadyError(this, group)
             );
 
-        Result<StudentGroup> attachment = group.SetEducationPlan(this, activeSemesterNumber);
+        var attachment = group.SetEducationPlan(this, activeSemesterNumber);
         if (attachment.IsFailure)
             return attachment;
 
@@ -79,7 +78,7 @@ public class EducationPlan : AggregateRoot
 
     public Result<Semester> FindSemester(byte number)
     {
-        Semester? semester = _semesters.FirstOrDefault(s => s.Number.Number == number);
+        var semester = _semesters.FirstOrDefault(s => s.Number.Number == number);
         return semester == null
             ? Result<Semester>.Failure(SemesterErrors.NotFound())
             : Result<Semester>.Success(semester);

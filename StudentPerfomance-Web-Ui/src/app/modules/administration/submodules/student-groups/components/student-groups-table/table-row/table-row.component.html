@@ -2,14 +2,14 @@
   <strong>{{ group.entityNumber }}</strong>
   <strong>{{ group.name }}</strong>
   <strong>{{
-    group.plan == null ? "Не задан" : group.plan.direction.name
-  }}</strong>
+      group.plan == null ? "Не задан" : group.plan.direction.name
+    }}</strong>
   <strong>{{
-    group.plan == null ? "Не задан" : group.plan.direction.code
-  }}</strong>
+      group.plan == null ? "Не задан" : group.plan.direction.code
+    }}</strong>
   <strong>{{
-    group.plan == null ? "Не задан" : group.plan.direction.type
-  }}</strong>
+      group.plan == null ? "Не задан" : group.plan.direction.type
+    }}</strong>
   <strong>{{ group.plan == null ? "Не задан" : group.plan.year }}</strong>
   <div class="button-items">
     <button class="accept-button-outline" (click)="openStudentsModal()">
@@ -29,6 +29,7 @@
     (visibility)="closeDeletionModal($event)"
     (success)="success.emit()"
     (failure)="failure.emit()"
+    (refreshEmitter)="refreshEmitter.emit()"
   ></app-student-group-remove-modal>
 </div>
 <div id="edit-modal-renderer" *ngIf="editModalState">
@@ -36,6 +37,9 @@
     [group]="group"
     [copy]="group"
     (visibility)="closeEditModal($event)"
+    (successEmitter)="success.emit()"
+    (failureEmitter)="failure.emit()"
+    (refreshEmitter)="refreshEmitter.emit()"
   ></app-student-group-edit-modal>
 </div>
 <div id="students-modal-renderer" *ngIf="studentsModalState">

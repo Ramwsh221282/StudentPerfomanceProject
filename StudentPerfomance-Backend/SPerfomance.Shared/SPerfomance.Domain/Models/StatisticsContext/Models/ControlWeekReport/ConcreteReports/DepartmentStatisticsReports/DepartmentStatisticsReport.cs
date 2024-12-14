@@ -1,5 +1,5 @@
 using SPerfomance.Domain.Abstractions;
-using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions;
+using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSession;
 using SPerfomance.Domain.Models.StatisticsContext.Models.ControlWeekReport.ConcreteReports.DepartmentStatisticsReports.Parts;
 using SPerfomance.Domain.Models.TeacherDepartments.ValueObjects;
 

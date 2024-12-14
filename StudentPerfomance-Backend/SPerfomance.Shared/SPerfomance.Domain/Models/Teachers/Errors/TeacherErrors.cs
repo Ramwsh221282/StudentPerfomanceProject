@@ -35,4 +35,7 @@ public static class TeacherErrors
 
     public static Error DoesntBelongDepartment(TeachersDepartments department) =>
         new Error($"Данный преподаватель не принадлежит кафедре {department.Name.Name}");
+
+    public static Error TeacherDuplicate() =>
+        new("Преподаватель с такими данными уже есть в системе");
 }

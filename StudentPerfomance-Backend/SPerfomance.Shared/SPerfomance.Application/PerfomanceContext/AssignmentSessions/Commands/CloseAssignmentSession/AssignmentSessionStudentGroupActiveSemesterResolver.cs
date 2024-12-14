@@ -1,4 +1,5 @@
 using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Abstractions;
+using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSession;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions;
 using SPerfomance.Domain.Models.StudentGroups.Abstractions;
 

@@ -1,8 +1,9 @@
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
+using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSession;
+using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSession.ValueObject;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions.Abstractions;
-using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions.ValueObject;
 using SPerfomance.Domain.Models.Teachers;
 using SPerfomance.Domain.Tools;
 
@@ -26,16 +27,18 @@ public class AssignmentSessionsRepository : IAssignmentSessionsRepository
 
                 session.SetNumber(await GenerateEntityNumber(ct));
                 const string sessionSql = """
-                    INSERT INTO Sessions(Id, SessionStartDate, SessionCloseDate, State_State, EntityNumber)
+                    INSERT INTO Sessions(Id, SessionStartDate, SessionCloseDate, Number_Number, State_State, Type_Type, EntityNumber)
                     VALUES
-                    (@Id, @StartDate, @EndDate, @State, @EntityNumber)
+                    (@Id, @StartDate, @EndDate, @Number, @State, @Type, @EntityNumber)
                     """;
                 SqliteParameter[] sessionParameters =
                 [
                     new SqliteParameter("@Id", session.Id),
                     new SqliteParameter("@StartDate", session.SessionStartDate),
                     new SqliteParameter("@EndDate", session.SessionCloseDate),
+                    new SqliteParameter("@Number", session.Number.Number),
                     new SqliteParameter("@State", session.State.State),
+                    new SqliteParameter("@Type", session.Type.Type),
                     new SqliteParameter("@EntityNumber", session.EntityNumber),
                 ];
                 await _context.Database.ExecuteSqlRawAsync(sessionSql, sessionParameters, ct);

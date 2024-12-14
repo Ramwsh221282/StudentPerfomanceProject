@@ -1,7 +1,5 @@
 using SPerfomance.Domain.Abstractions;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.Assignments;
-using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions;
-using SPerfomance.Domain.Models.SemesterPlans;
 using SPerfomance.Domain.Models.StudentGroups;
 
 namespace SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentsWeeks;
@@ -10,7 +8,7 @@ public class AssignmentWeek : DomainEntity
 {
     private readonly List<Assignment> _assignments = [];
 
-    public AssignmentSession Session { get; private init; }
+    public AssignmentSession.AssignmentSession Session { get; private init; }
 
     public StudentGroup Group { get; private init; }
 
@@ -18,10 +16,10 @@ public class AssignmentWeek : DomainEntity
         : base(Guid.Empty)
     {
         Group = StudentGroup.Empty;
-        Session = AssignmentSession.Empty;
+        Session = default!;
     }
 
-    internal AssignmentWeek(StudentGroup group, AssignmentSession session)
+    internal AssignmentWeek(StudentGroup group, AssignmentSession.AssignmentSession session)
         : base(Guid.NewGuid())
     {
         Group = group;
@@ -35,11 +33,11 @@ public class AssignmentWeek : DomainEntity
 
     private void FillEmptyAssignments(StudentGroup group)
     {
-        IReadOnlyCollection<SemesterPlan> disciplines = group.ActiveGroupSemester!.Disciplines;
+        var disciplines = group.ActiveGroupSemester!.Disciplines;
 
         foreach (var discipline in disciplines)
         {
-            Assignment assignment = new Assignment(discipline, this, group);
+            var assignment = new Assignment(discipline, this, group);
             _assignments.Add(assignment);
         }
     }
@@ -49,11 +47,11 @@ internal static class AssignmentWeekExtensions
 {
     internal static async Task<double> CalculatePerfomance(this AssignmentWeek week)
     {
-        int totals = week.Assignments.Count;
+        var totals = week.Assignments.Count;
         if (totals == 0)
             return 0.00;
 
-        double sumPerfomances = 0;
+        double sumPerfomances;
         List<Task<double>> calculationTasks = [];
         foreach (var assignment in week.Assignments)
         {
@@ -66,11 +64,11 @@ internal static class AssignmentWeekExtensions
 
     internal static async Task<double> CalculateAverage(this AssignmentWeek week)
     {
-        int totals = week.Assignments.Count;
+        var totals = week.Assignments.Count;
         if (totals == 0)
             return 0.00;
 
-        double sumAverages = 0;
+        double sumAverages;
         List<Task<double>> calculationTasks = [];
         foreach (var assignment in week.Assignments)
         {

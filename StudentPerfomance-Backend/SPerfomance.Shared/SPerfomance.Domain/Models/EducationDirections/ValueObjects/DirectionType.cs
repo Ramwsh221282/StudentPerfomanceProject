@@ -6,15 +6,15 @@ namespace SPerfomance.Domain.Models.EducationDirections.ValueObjects;
 
 public class DirectionType : DomainValueObject
 {
-    public static readonly DirectionType Magister = new DirectionType("Магистратура");
+    public static readonly DirectionType Magister = new("Магистратура");
 
-    public static readonly DirectionType Bachelor = new DirectionType("Бакалавриат");
+    public static readonly DirectionType Bachelor = new("Бакалавриат");
 
-    public string Type { get; private set; }
+    public string Type { get; }
 
     private DirectionType() => Type = string.Empty;
 
-    private DirectionType(string type) => Type = type;
+    private DirectionType(string type) => Type = type.Trim();
 
     public override IEnumerable<object> GetEqualityComponents()
     {

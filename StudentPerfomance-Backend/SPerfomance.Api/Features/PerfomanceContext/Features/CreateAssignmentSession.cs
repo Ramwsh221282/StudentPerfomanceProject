@@ -5,16 +5,18 @@ using SPerfomance.Api.Endpoints;
 using SPerfomance.Api.Features.Common;
 using SPerfomance.Api.Features.Common.Extensions;
 using SPerfomance.Application.Abstractions;
+using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Abstractions;
 using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Commands.Create;
 using SPerfomance.Application.PerfomanceContext.AssignmentSessions.DTO;
-using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions;
+using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSession;
+using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSession.Errors;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentsWeeks.Errors;
 
 namespace SPerfomance.Api.Features.PerfomanceContext.Features;
 
 public static class CreateAssignmentSession
 {
-    public record Request(DateContract DateStart, DateContract DateClose);
+    public record Request(DateContract DateStart, string? Season, byte? Number);
 
     public sealed class Endpoint : IEndpoint
     {
@@ -46,6 +48,7 @@ public static class CreateAssignmentSession
         Request request,
         IUsersRepository users,
         ICommandDispatcher dispatcher,
+        IControlWeekReportRepository controlWeeks,
         ILogger<Endpoint> logger,
         CancellationToken ct
     )
@@ -58,20 +61,33 @@ public static class CreateAssignmentSession
             return TypedResults.Unauthorized();
         }
 
+        if (string.IsNullOrWhiteSpace(request.Season))
+        {
+            var error = AssignmentSessionErrors.AssignmentSessionSemesterTypeEmpty();
+            logger.LogError(
+                "Не удалось создать контрольную неделю. Причина: {text}",
+                error.Description
+            );
+            return TypedResults.BadRequest(error.Description);
+        }
+
+        if (request.Number == null)
+        {
+            var error = AssignmentSessionErrors.AssignmentSessionSemesterNumberEmpty();
+            logger.LogError(
+                "Не удалось создать контрольную неделю. Причина: {text}",
+                error.Description
+            );
+            return TypedResults.BadRequest(error.Description);
+        }
+
         DateTime dateStart;
-        DateTime dateEnd;
         try
         {
             dateStart = new DateTime(
                 request.DateStart.Year.GetValueOrDefault(),
                 request.DateStart.Month.GetValueOrDefault(),
                 request.DateStart.Day.GetValueOrDefault()
-            );
-
-            dateEnd = new DateTime(
-                request.DateClose.Year.GetValueOrDefault(),
-                request.DateClose.Month.GetValueOrDefault(),
-                request.DateClose.Day.GetValueOrDefault()
             );
         }
         catch
@@ -81,7 +97,22 @@ public static class CreateAssignmentSession
             return TypedResults.BadRequest(error);
         }
 
-        var command = new CreateAssignmentSessionCommand(dateStart, dateEnd);
+        if (
+            !await controlWeeks.CanCreateControlWeek(
+                dateStart,
+                request.Season,
+                request.Number.Value,
+                ct
+            )
+        )
+        {
+            var error =
+                $"Нельзя создать контрольную неделю {request.Season} номер {request.Number} в этом году";
+            logger.LogError("Не удалось создать сессию контрольной недели. Причина {text}", error);
+            return TypedResults.BadRequest(error);
+        }
+
+        var command = new CreateAssignmentSessionCommand(dateStart, request.Season, request.Number);
         var session = await dispatcher.Dispatch<CreateAssignmentSessionCommand, AssignmentSession>(
             command,
             ct

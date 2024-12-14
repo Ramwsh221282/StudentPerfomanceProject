@@ -67,7 +67,7 @@ namespace SPerfomance.DataAccess.Migrations
                     b.ToTable("EducationPlans");
                 });
 
-            modelBuilder.Entity("SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions.AssignmentSession", b =>
+            modelBuilder.Entity("SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSession.AssignmentSession", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -82,12 +82,29 @@ namespace SPerfomance.DataAccess.Migrations
                     b.Property<DateTime>("SessionStartDate")
                         .HasColumnType("TEXT");
 
-                    b.ComplexProperty<Dictionary<string, object>>("State", "SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions.AssignmentSession.State#AssignmentSessionState", b1 =>
+                    b.ComplexProperty<Dictionary<string, object>>("Number", "SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSession.AssignmentSession.Number#AssignmentSessionNumber", b1 =>
+                        {
+                            b1.IsRequired();
+
+                            b1.Property<byte>("Number")
+                                .HasColumnType("INTEGER");
+                        });
+
+                    b.ComplexProperty<Dictionary<string, object>>("State", "SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSession.AssignmentSession.State#AssignmentSessionState", b1 =>
                         {
                             b1.IsRequired();
 
                             b1.Property<bool>("State")
                                 .HasColumnType("INTEGER");
+                        });
+
+                    b.ComplexProperty<Dictionary<string, object>>("Type", "SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSession.AssignmentSession.Type#AssignmentSessionSemesterType", b1 =>
+                        {
+                            b1.IsRequired();
+
+                            b1.Property<string>("Type")
+                                .IsRequired()
+                                .HasColumnType("TEXT");
                         });
 
                     b.HasKey("Id");
@@ -489,7 +506,7 @@ namespace SPerfomance.DataAccess.Migrations
                         .OnDelete(DeleteBehavior.SetNull)
                         .IsRequired();
 
-                    b.HasOne("SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions.AssignmentSession", "Session")
+                    b.HasOne("SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSession.AssignmentSession", "Session")
                         .WithMany("Weeks")
                         .HasForeignKey("SessionId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -844,7 +861,7 @@ namespace SPerfomance.DataAccess.Migrations
                     b.Navigation("Semesters");
                 });
 
-            modelBuilder.Entity("SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions.AssignmentSession", b =>
+            modelBuilder.Entity("SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSession.AssignmentSession", b =>
                 {
                     b.Navigation("Weeks");
                 });

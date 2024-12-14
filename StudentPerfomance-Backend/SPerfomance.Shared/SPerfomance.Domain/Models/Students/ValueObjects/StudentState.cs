@@ -16,7 +16,7 @@ public class StudentState : DomainValueObject
 
     private StudentState() => State = string.Empty;
 
-    private StudentState(string state) => State = state;
+    private StudentState(string state) => State = state.Trim();
 
     internal static StudentState Empty => new StudentState();
 

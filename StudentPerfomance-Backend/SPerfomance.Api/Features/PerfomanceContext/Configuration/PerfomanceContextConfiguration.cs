@@ -8,6 +8,7 @@ using SPerfomance.Application.PerfomanceContext.AssignmentSessions.DTO;
 using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Queries.GetInfo;
 using SPerfomance.ControlWeekDocuments.Documents;
 using SPerfomance.DataAccess.Repositories;
+using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSession;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions.Abstractions;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.StudentAssignments;

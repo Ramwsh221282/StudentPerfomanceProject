@@ -12,13 +12,14 @@ export class TableRowComponent {
   @Output() visibility: EventEmitter<boolean> = new EventEmitter();
   @Output() success: EventEmitter<void> = new EventEmitter();
   @Output() failure: EventEmitter<void> = new EventEmitter();
+  @Output() refreshEmitter: EventEmitter<void> = new EventEmitter();
 
   protected deletionModalState: boolean;
   protected editModalState: boolean;
   protected studentsModalState: boolean;
 
   public constructor(
-    protected notificationService: UserOperationNotificationService
+    protected notificationService: UserOperationNotificationService,
   ) {
     this.deletionModalState = false;
     this.editModalState = false;

@@ -20,6 +20,8 @@
         <app-assignment-sessions-item
           [session]="session"
           (refresh)="fetchData()"
+          (success)="_isSuccess = true"
+          (failure)="_isFailure = true"
         ></app-assignment-sessions-item>
       }
     </div>

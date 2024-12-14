@@ -19,6 +19,7 @@ export class SemesterNumberSelectionModalComponent
   @Output() visibility: EventEmitter<void> = new EventEmitter();
   @Output() success: EventEmitter<void> = new EventEmitter();
   @Output() failure: EventEmitter<void> = new EventEmitter();
+  @Output() refreshEmitter: EventEmitter<void> = new EventEmitter();
   @Input({ required: true }) educationPlan: EducationPlan;
   @Input({ required: true }) group: StudentGroup;
 
@@ -35,6 +36,7 @@ export class SemesterNumberSelectionModalComponent
       this.notificationService,
       this.success,
       this.failure,
+      this.refreshEmitter,
       this.visibility,
     );
     this._attachmentService

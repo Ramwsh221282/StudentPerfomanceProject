@@ -36,4 +36,6 @@ public static class StudentErrors
 
     public static Error RecordbookDublicate(ulong recordBook) =>
         new Error($"Зачетная книжка {recordBook} уже занята");
+
+    public static Error InvalidRecordBookType() => new("Зачётная книжка была введена некорректно.");
 }

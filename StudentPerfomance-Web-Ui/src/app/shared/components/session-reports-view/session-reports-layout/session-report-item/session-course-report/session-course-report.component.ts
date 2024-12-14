@@ -19,6 +19,8 @@ import jsPDF from 'jspdf';
 export class SessionCourseReportComponent implements OnInit {
   protected creationDate: string = '';
   protected completionDate: string = '';
+  protected season: string = '';
+  protected number: number = 0;
   protected courseReports: CourseReportInterface[] = [];
   protected directionCodeReports: DirectionCodeReportInterface[] = [];
   protected directionTypeReports: DirectionTypeReportInterface[] = [];
@@ -36,6 +38,8 @@ export class SessionCourseReportComponent implements OnInit {
       const id = params['reportId'];
       this.creationDate = params['startDate'];
       this.completionDate = params['endDate'];
+      this.season = params['season'];
+      this.number = params['number'];
       this.initializeReports(id);
     });
   }

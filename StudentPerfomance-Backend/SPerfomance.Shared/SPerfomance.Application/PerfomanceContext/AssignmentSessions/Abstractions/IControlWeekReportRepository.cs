@@ -11,4 +11,10 @@ public interface IControlWeekReportRepository
     );
     Task<int> Count(CancellationToken ct = default);
     Task<bool> Remove(string id, CancellationToken ct = default);
+    Task<bool> CanCreateControlWeek(
+        DateTime startDate,
+        string type,
+        byte number,
+        CancellationToken ct = default
+    );
 }

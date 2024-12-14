@@ -13,6 +13,8 @@ internal sealed class ControlWeekReportEntityConfiguration
         builder.Property(r => r.RowNumber).ValueGeneratedOnAdd();
         builder.Property(r => r.CreationDate).IsRequired();
         builder.Property(r => r.CompletionDate).IsRequired();
+        builder.Property(r => r.ControlWeekNumber).IsRequired();
+        builder.Property(r => r.ControlWeekSeason).IsRequired();
 
         builder
             .HasMany(r => r.GroupParts)

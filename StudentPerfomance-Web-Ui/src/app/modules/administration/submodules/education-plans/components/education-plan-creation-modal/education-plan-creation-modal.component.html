@@ -12,34 +12,6 @@
       <strong class="font-white">Выберите направление подготовки</strong>
     </form>
     <div class="search-container">
-      <div class="search-inputs">
-        <input
-          class="default-input"
-          [(ngModel)]="direction.name"
-          placeholder="Название"
-        />
-        <input
-          class="default-input"
-          [(ngModel)]="direction.code"
-          placeholder="Код"
-        />
-        <select class="default-select" [(ngModel)]="direction.type">
-          <option disabled selected>Направление</option>
-          <option [defaultSelected]="true" [value]="'Тип направления'">
-            Тип направления
-          </option>
-          <option value="Бакалавриат">Бакалавриат</option>
-          <option value="Бакалавриат">Магистратура</option>
-        </select>
-      </div>
-      <div class="search-controls">
-        <button class="accept-button-modal" (click)="searchDirections()">
-          Отфильтровать
-        </button>
-        <button class="danger-button-modal" (click)="getAllDirections()">
-          Отменить фильтр
-        </button>
-      </div>
       <div class="search-table-wrapper">
         <table class="search-table">
           <thead>
@@ -69,10 +41,16 @@
           </tbody>
         </table>
       </div>
+      <div *ngIf="direction">
+        <p class="font-white">Направление:</p>
+        <p class="font-white">{{ direction.name }}</p>
+        <p class="font-white">{{ direction.code }}</p>
+        <p class="font-white">{{ direction.type }}</p>
+      </div>
     </div>
   </div>
   <div id="controls">
-    <button class="accept-button-modal" type="button" (click)="submit()">
+    <button class="accept-button-modal" type="button" (click)="submit()" *ngIf="direction">
       Добавить
     </button>
     <button

@@ -27,7 +27,7 @@ export const routes: Routes = [
       ).then((mod) => mod.RecoveryConfirmationComponent),
   },
   {
-    path: 'group-reports/:reportId:startDate:closeDate',
+    path: 'group-reports/:reportId:startDate:closeDate:season:number',
     loadComponent: () =>
       import(
         './shared/components/session-reports-view/session-reports-layout/session-report-item/session-group-reports/session-group-reports.component'
@@ -35,7 +35,7 @@ export const routes: Routes = [
     canActivate: [CanActivateUserPage],
   },
   {
-    path: 'course-reports/:reportId:startDate:closeDate',
+    path: 'course-reports/:reportId:startDate:closeDate:season:number',
     loadComponent: () =>
       import(
         './shared/components/session-reports-view/session-reports-layout/session-report-item/session-course-report/session-course-report.component'

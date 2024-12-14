@@ -33,7 +33,11 @@ export class AssignmentSessionItemAssignmentsComponent implements OnInit {
     const studentAssignment = assignment.students.find(
       (s) => s.recordbook.recordbook == recordBook,
     )!;
-    console.log(studentAssignment);
+
+    if (studentAssignment.value == 'Не проставлена') return 'НП';
+
+    if (studentAssignment.value == 'Нет аттестации') return 'НА';
+
     return studentAssignment.value;
   }
 }

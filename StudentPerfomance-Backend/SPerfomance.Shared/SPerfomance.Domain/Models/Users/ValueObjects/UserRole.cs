@@ -16,7 +16,7 @@ public class UserRole : DomainValueObject
 
     private UserRole() => Role = string.Empty;
 
-    private UserRole(string role) => Role = role;
+    private UserRole(string role) => Role = role.Trim();
 
     internal static UserRole Empty => new UserRole();
 

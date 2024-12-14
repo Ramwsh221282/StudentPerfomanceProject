@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SPerfomance.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class PerfomanceContext : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -47,7 +47,9 @@ namespace SPerfomance.DataAccess.Migrations
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
                     SessionStartDate = table.Column<DateTime>(type: "TEXT", nullable: false),
                     SessionCloseDate = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    Number_Number = table.Column<byte>(type: "INTEGER", nullable: false),
                     State_State = table.Column<bool>(type: "INTEGER", nullable: false),
+                    Type_Type = table.Column<string>(type: "TEXT", nullable: false),
                     EntityNumber = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
@@ -224,7 +226,7 @@ namespace SPerfomance.DataAccess.Migrations
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
                     SessionId = table.Column<Guid>(type: "TEXT", nullable: false),
-                    GroupId = table.Column<Guid>(type: "TEXT", nullable: true),
+                    GroupId = table.Column<Guid>(type: "TEXT", nullable: false),
                     EntityNumber = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
@@ -250,25 +252,18 @@ namespace SPerfomance.DataAccess.Migrations
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
                     WeekId = table.Column<Guid>(type: "TEXT", nullable: false),
-                    AssignmentOpenDate = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    AssignmentCloseDate = table.Column<DateTime>(type: "TEXT", nullable: true),
-                    Assigner_Name = table.Column<string>(type: "TEXT", nullable: true),
-                    Assigner_Surname = table.Column<string>(type: "TEXT", nullable: true),
-                    Assigner_Patronymic = table.Column<string>(type: "TEXT", nullable: true),
-                    AssignerDepartment_Name = table.Column<string>(type: "TEXT", nullable: true),
-                    Value_Value = table.Column<byte>(type: "INTEGER", nullable: true),
-                    AssignedTo_Name = table.Column<string>(type: "TEXT", nullable: false),
-                    AssignedTo_Patronymic = table.Column<string>(type: "TEXT", nullable: true),
-                    AssignedTo_Surname = table.Column<string>(type: "TEXT", nullable: false),
-                    AssignedToRecordBook_Recordbook = table.Column<ulong>(type: "INTEGER", nullable: false),
-                    AssignetToGroup_Name = table.Column<string>(type: "TEXT", nullable: false),
-                    Discipline_Name = table.Column<string>(type: "TEXT", nullable: false),
-                    State_State = table.Column<bool>(type: "INTEGER", nullable: false),
+                    DisciplineId = table.Column<Guid>(type: "TEXT", nullable: false),
                     EntityNumber = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Assignments", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Assignments_SemesterPlans_DisciplineId",
+                        column: x => x.DisciplineId,
+                        principalTable: "SemesterPlans",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Assignments_Weeks_WeekId",
                         column: x => x.WeekId,
@@ -276,6 +271,38 @@ namespace SPerfomance.DataAccess.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "StudentAssignments",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    AssignmentId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    StudentId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Value_Value = table.Column<byte>(type: "INTEGER", nullable: false),
+                    EntityNumber = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_StudentAssignments", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_StudentAssignments_Assignments_AssignmentId",
+                        column: x => x.AssignmentId,
+                        principalTable: "Assignments",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_StudentAssignments_Students_StudentId",
+                        column: x => x.StudentId,
+                        principalTable: "Students",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Assignments_DisciplineId",
+                table: "Assignments",
+                column: "DisciplineId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Assignments_EntityNumber",
@@ -373,6 +400,16 @@ namespace SPerfomance.DataAccess.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_StudentAssignments_AssignmentId",
+                table: "StudentAssignments",
+                column: "AssignmentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_StudentAssignments_StudentId",
+                table: "StudentAssignments",
+                column: "StudentId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Students_AttachedGroupId",
                 table: "Students",
                 column: "AttachedGroupId");
@@ -427,16 +464,19 @@ namespace SPerfomance.DataAccess.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Assignments");
+                name: "StudentAssignments");
 
             migrationBuilder.DropTable(
-                name: "SemesterPlans");
+                name: "Users");
+
+            migrationBuilder.DropTable(
+                name: "Assignments");
 
             migrationBuilder.DropTable(
                 name: "Students");
 
             migrationBuilder.DropTable(
-                name: "Users");
+                name: "SemesterPlans");
 
             migrationBuilder.DropTable(
                 name: "Weeks");

@@ -1,6 +1,6 @@
 using SPerfomance.Domain.Abstractions;
 using SPerfomance.Domain.Models.EducationDirections.ValueObjects;
-using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions;
+using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSession;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentsWeeks;
 using SPerfomance.Domain.Models.StatisticsContext.Models.ControlWeekReport.ConcreteReports.DirectionTypeReports.Parts;
 

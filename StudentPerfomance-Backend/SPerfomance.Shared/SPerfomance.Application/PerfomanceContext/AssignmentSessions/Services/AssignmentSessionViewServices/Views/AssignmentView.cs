@@ -1,7 +1,7 @@
 using SPerfomance.Domain.Models.EducationDirections.ValueObjects;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.Assignments;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.Assignments.ValueObjects;
-using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions;
+using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSession;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentsWeeks;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.StudentAssignments;
 using SPerfomance.Domain.Models.SemesterPlans.ValueObjects;
@@ -19,6 +19,8 @@ public sealed class AssignmentSessionView(AssignmentSession session)
     public int Number { get; init; } = session.EntityNumber;
     public string StartDate { get; init; } = session.SessionStartDate.ToString("dd/MM/yyyy");
     public string EndDate { get; init; } = session.SessionCloseDate.ToString("dd/MM/yyyy");
+    public byte SessionNumber { get; init; } = session.Number.Number;
+    public string SessionSeason { get; init; } = session.Type.Type;
     public string State { get; init; } =
         session.State.State switch
         {

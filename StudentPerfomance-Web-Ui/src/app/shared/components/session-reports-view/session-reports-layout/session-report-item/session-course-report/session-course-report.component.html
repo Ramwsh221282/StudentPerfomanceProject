@@ -83,12 +83,14 @@
   <table class="report-table-layout" id="report">
     <tr>
       <td colspan="3" style="text-align: center; background-color: #f0f0f0; font-weight: bold;">Контрольная неделя
+        № {{ number }}
         с {{ creationDate | date: 'd.M.YYYY' }}
         по {{ completionDate | date: 'd.M.YYYY' }}
+        {{ season }}
       </td>
     </tr>
     <tr>
-      <th style="width: 30%;">Категория</th>
+      <th style="width: 30%;"></th>
       <th style="width: 35%;">Процент успеваемости</th>
       <th style="width: 35%;">Средний балл</th>
     </tr>
@@ -99,7 +101,7 @@
       @for (group of groupReports; track group.groupName) {
         <tr>
           <td>{{ group.groupName }}</td>
-          <td>{{ group.perfomance }}</td>
+          <td>{{ group.perfomance }} {{ '%' }}</td>
           <td>{{ group.average }}</td>
         </tr>
       }
@@ -112,7 +114,7 @@
       @for (direction of directionCodeReports; track direction.directionCode) {
         <tr>
           <td>{{ direction.directionCode }}</td>
-          <td>{{ direction.perfomance }}</td>
+          <td>{{ direction.perfomance }} {{ '%' }}</td>
           <td>{{ direction.average }}</td>
         </tr>
       }
@@ -125,7 +127,7 @@
       @for (type of directionTypeReports; track type.directionType) {
         <tr>
           <td>{{ type.directionType }}</td>
-          <td>{{ type.perfomance }}</td>
+          <td>{{ type.perfomance }} {{ '%' }}</td>
           <td>{{ type.average }}</td>
         </tr>
       }
@@ -134,7 +136,7 @@
     </tr>
     <tr>
       <td>Общий результат</td>
-      <td>{{ perfomance }}</td>
+      <td>{{ perfomance }} {{ '%' }}</td>
       <td>{{ average }}</td>
     </tr>
     </tbody>

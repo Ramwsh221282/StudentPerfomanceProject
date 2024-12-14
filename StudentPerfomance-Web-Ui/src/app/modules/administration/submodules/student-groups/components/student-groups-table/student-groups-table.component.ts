@@ -16,7 +16,7 @@ export class StudentGroupsTableComponent implements OnInit {
 
   public constructor(
     protected readonly facadeService: StudentGroupsFacadeService,
-    protected readonly notificationService: UserOperationNotificationService
+    protected readonly notificationService: UserOperationNotificationService,
   ) {}
 
   public ngOnInit(): void {
@@ -33,9 +33,5 @@ export class StudentGroupsTableComponent implements OnInit {
 
   protected openFilterModal(): void {
     this.filterModalVisibility = true;
-  }
-
-  protected closeFilterModal(value: boolean): void {
-    this.filterModalVisibility = value;
   }
 }

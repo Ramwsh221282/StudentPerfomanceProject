@@ -26,6 +26,7 @@
           [group]="group"
           (success)="isSuccess = true"
           (failure)="isFailure = true"
+          (refreshEmitter)="this.facadeService.refreshPagination(); this.facadeService.fetchData()"
         ></app-table-row>
       }
     </div>
@@ -37,6 +38,9 @@
 <div id="creation-modal-renderer" *ngIf="creationModalVisibility">
   <app-student-group-create-modal
     (visibility)="closeCreationModal($event)"
+    (successEmitter)="isSuccess = true"
+    (failureEmitter)="isFailure = true"
+    (refreshRequested)="facadeService.refreshPagination(); facadeService.fetchData()"
   ></app-student-group-create-modal>
 </div>
 <div id="filter-modal-renderer" *ngIf="filterModalVisibility">

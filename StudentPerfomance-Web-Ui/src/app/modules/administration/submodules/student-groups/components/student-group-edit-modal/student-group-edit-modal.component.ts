@@ -12,6 +12,9 @@ export class StudentGroupEditModalComponent {
   @Input({ required: true }) group: StudentGroup;
   @Input({ required: true }) copy: StudentGroup;
   @Output() visibility: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() refreshEmitter: EventEmitter<void> = new EventEmitter();
+  @Output() successEmitter: EventEmitter<void> = new EventEmitter();
+  @Output() failureEmitter: EventEmitter<void> = new EventEmitter();
 
   protected nameUpdateModalVisibility: boolean;
   protected planAttachmentModalVisibility: boolean;
@@ -19,7 +22,7 @@ export class StudentGroupEditModalComponent {
 
   public constructor(
     private readonly _facadeService: StudentGroupsFacadeService,
-    protected readonly notificationService: UserOperationNotificationService
+    protected readonly notificationService: UserOperationNotificationService,
   ) {}
 
   protected openNameChangeModal(): void {

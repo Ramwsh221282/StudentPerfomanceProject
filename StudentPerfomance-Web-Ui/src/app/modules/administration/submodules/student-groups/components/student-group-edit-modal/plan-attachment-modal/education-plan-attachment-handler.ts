@@ -10,16 +10,16 @@ type HandlerDependencies = {
   notificationService: UserOperationNotificationService;
   success: EventEmitter<void>;
   failure: EventEmitter<void>;
+  refreshEmitter: EventEmitter<void>;
   visibility: EventEmitter<void>;
 };
 
 const createHandler =
   (dependencies: HandlerDependencies) =>
   (parameter: StudentGroup): void => {
-    const message = new EducationPlanAttachmentNotification().buildMessage(
-      parameter
-    );
-    dependencies.notificationService.SetMessage = message;
+    dependencies.notificationService.SetMessage =
+      new EducationPlanAttachmentNotification().buildMessage(parameter);
+    dependencies.refreshEmitter.emit();
     dependencies.success.emit();
     dependencies.visibility.emit();
   };
@@ -37,12 +37,14 @@ export const EducationPlanAttachmentHandler = (
   notificationService: UserOperationNotificationService,
   success: EventEmitter<void>,
   failure: EventEmitter<void>,
-  visibility: EventEmitter<void>
+  refreshEmitter: EventEmitter<void>,
+  visibility: EventEmitter<void>,
 ): IOperationHandler<StudentGroup> => {
   const dependencies: HandlerDependencies = {
     notificationService: notificationService,
     success: success,
     failure: failure,
+    refreshEmitter: refreshEmitter,
     visibility: visibility,
   };
   const handle = createHandler(dependencies);

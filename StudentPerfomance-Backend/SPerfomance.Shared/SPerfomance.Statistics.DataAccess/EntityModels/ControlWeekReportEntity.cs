@@ -12,17 +12,21 @@ public class ControlWeekReportEntity
     public List<CourseStatisticsReportEntity> CourseParts { get; set; } = [];
     public List<DirectionTypeStatisticsReportEntity> DirectionTypeReport { get; set; } = [];
     public List<DirectionCodeStatisticsReportEntity> DirectionCodeReport { get; set; } = [];
+    public byte ControlWeekNumber { get; set; }
+    public string ControlWeekSeason { get; set; } = string.Empty;
 
     public void SetEntityNumber(int number) => RowNumber = number;
 
     public static ControlWeekReportEntity CreateReport(AssignmentSessionView view)
     {
-        ControlWeekReportEntity entity = new ControlWeekReportEntity
+        var entity = new ControlWeekReportEntity
         {
             Id = view.Id,
             RowNumber = view.Number,
             CreationDate = DateTime.Parse(view.StartDate),
             CompletionDate = DateTime.Parse(view.EndDate),
+            ControlWeekNumber = view.SessionNumber,
+            ControlWeekSeason = view.SessionSeason,
         };
 
         entity.GroupParts = GroupStatisticsReportEntity.CreateReport(entity, view.Weeks);

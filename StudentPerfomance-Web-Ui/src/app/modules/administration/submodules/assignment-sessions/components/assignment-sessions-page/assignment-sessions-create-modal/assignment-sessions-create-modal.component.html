@@ -4,9 +4,17 @@
   </div>
   <div id="content">
     <strong class="font-white">Укажите дату начала</strong>
-    <input [(ngModel)]="startDateValue" type="date" />
-    <strong class="font-white">Укажите дату закрытия</strong>
-    <input [(ngModel)]="endDateValue" type="date" />
+    <input [(ngModel)]="startDateValue" type="date"/>
+    <strong class="font-white">Выберите сезон контрольной недели:</strong>
+    <select class="default-select" [(ngModel)]="season">
+      <option>{{ 'Весна' }}</option>
+      <option>{{ 'Осень' }}</option>
+    </select>
+    <strong class="font-white">Выберите номер контрольной недели:</strong>
+    <select class="default-select" [(ngModel)]="number">
+      <option>{{ 1 }}</option>
+      <option>{{ 2 }}</option>
+    </select>
   </div>
   <div id="controls">
     <button type="button" class="accept-button-modal" (click)="submit()">

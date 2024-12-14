@@ -12,25 +12,20 @@
       />
     </section>
     <strong class="font-white">Информация о преподавателе</strong>
-    <section class="creation-form" *ngIf="activePlan.teacher != null">
+    <section class="creation-form" *ngIf="plan.teacher">
       <strong class="font-white">{{
-          activePlan.teacher.surname == null ? "" : activePlan.teacher.surname
+          plan.teacher?.name
         }}</strong>
       <strong class="font-white">{{
-          activePlan.teacher.name == null ? "" : activePlan.teacher.name
+          plan.teacher?.surname
         }}</strong>
       <strong class="font-white">{{
-          activePlan.teacher.patronymic == null
+          plan.teacher?.patronymic == null
             ? ""
-            : activePlan.teacher.patronymic
-        }}</strong>
-      <strong class="font-white">{{
-          activePlan.teacher == null
-            ? ""
-            : activePlan.teacher.department.acronymus
+            : plan.teacher.patronymic
         }}</strong>
       <div>
-        <button class="danger-button-modal" (click)="deattachTeacher()">
+        <button class="danger-button-modal" (click)="deattachTeacher()" *ngIf="plan.teacher">
           Открепить преподавателя
         </button>
       </div>
@@ -42,7 +37,7 @@
     >
     <section
       class="creation-form"
-      *ngIf="activePlan.teacher == null && departments.length > 0"
+      *ngIf="!plan.teacher && departments.length > 0"
     >
       <strong class="font-white">Назначение преподавателя</strong>
       <strong class="font-white">Выбрать кафедру</strong>

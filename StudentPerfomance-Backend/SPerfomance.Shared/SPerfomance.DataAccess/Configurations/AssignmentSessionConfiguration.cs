@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions;
+using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSession;
 
 namespace SPerfomance.DataAccess.Configurations;
 
@@ -20,6 +20,22 @@ internal sealed class AssignmentSessionConfiguration : IEntityTypeConfiguration<
             cpb =>
             {
                 cpb.Property(v => v.State).IsRequired();
+            }
+        );
+
+        builder.ComplexProperty(
+            s => s.Number,
+            cpb =>
+            {
+                cpb.Property(n => n.Number).IsRequired();
+            }
+        );
+
+        builder.ComplexProperty(
+            s => s.Type,
+            cpb =>
+            {
+                cpb.Property(t => t.Type).IsRequired();
             }
         );
 

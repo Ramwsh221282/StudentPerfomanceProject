@@ -1,11 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ISubbmittable } from '../../../../../../../shared/models/interfaces/isubbmitable';
-import { IFailureNotificatable } from '../../../../../../../shared/models/interfaces/ifailure-notificatable';
-import { ISuccessNotificatable } from '../../../../../../../shared/models/interfaces/isuccess-notificatable';
 import { StudentGroup } from '../../../services/studentsGroup.interface';
 import { EducationPlan } from '../../../../education-plans/models/education-plan-interface';
 import { EducationPlanSearchService } from './education-plan-search.service';
-import { EducationPlanAttachmentHandler } from './education-plan-attachment-handler';
 import { EducationPlanAttachmentService } from './education-plan-attachment.service';
 import { UserOperationNotificationService } from '../../../../../../../shared/services/user-notifications/user-operation-notification-service.service';
 import { catchError, tap } from 'rxjs';
@@ -20,69 +17,46 @@ import { SearchDirectionsService } from '../../../../education-directions/servic
   styleUrl: './plan-attachment-modal.component.scss',
   providers: [EducationPlanSearchService, EducationPlanAttachmentService],
 })
-export class PlanAttachmentModalComponent
-  implements
-    OnInit,
-    ISubbmittable,
-    IFailureNotificatable,
-    ISuccessNotificatable
-{
+export class PlanAttachmentModalComponent implements OnInit, ISubbmittable {
   @Input({ required: true }) group: StudentGroup;
   @Output() visibility: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() returnGroup: EventEmitter<StudentGroup> =
     new EventEmitter<StudentGroup>();
+  @Output() refreshEmitter: EventEmitter<void> = new EventEmitter();
+  @Output() successEmitter: EventEmitter<void> = new EventEmitter();
+  @Output() failureEmitter: EventEmitter<void> = new EventEmitter();
 
   protected plans: EducationPlan[];
   protected directions: EducationDirection[];
 
-  protected isSuccess: boolean;
-  protected isFailure: boolean;
   protected isSemesterSelectionVisible: boolean;
 
-  protected selectedPlan: EducationPlan;
+  protected selectedPlan: EducationPlan | null;
 
   public constructor(
     private readonly _directionsFetchService: SearchDirectionsService,
     private readonly _plansFetchService: EducationPlanSearchService,
     private readonly _attachmentService: EducationPlanAttachmentService,
-    protected readonly notificationService: UserOperationNotificationService
+    protected readonly notificationService: UserOperationNotificationService,
   ) {
     this.isSemesterSelectionVisible = false;
     this.directions = [];
     this.plans = [];
-    this.selectedPlan = {} as EducationPlan;
-  }
-
-  public notifySuccess(): void {
-    this.isSuccess = true;
-  }
-
-  public manageSuccess(value: boolean): void {
-    this.isSuccess = value;
-  }
-
-  public notifyFailure(): void {
-    this.isFailure = true;
-  }
-
-  public manageFailure(value: boolean): void {
-    this.isFailure = value;
+    this.selectedPlan = null;
   }
 
   public submit(): void {
-    if (this.selectedPlan.year == undefined) {
-      this.notificationService.SetMessage = 'Необходимо выбрать учебный план';
-      this.notifyFailure();
-      return;
+    if (this.selectedPlan) {
+      this.isSemesterSelectionVisible = true;
     }
-    this.isSemesterSelectionVisible = true;
   }
 
   public submitDeattachment(): void {
     const handler = EducationPlanDeattachmentHandler(
       this.notificationService,
-      this,
-      this
+      this.successEmitter,
+      this.failureEmitter,
+      this.refreshEmitter,
     );
 
     this._attachmentService
@@ -91,8 +65,10 @@ export class PlanAttachmentModalComponent
         tap((response) => {
           handler.handle(response);
           this.group = response;
+          this.selectedPlan = null;
+          this.fetchDirections();
         }),
-        catchError((error: HttpErrorResponse) => handler.handleError(error))
+        catchError((error: HttpErrorResponse) => handler.handleError(error)),
       )
       .subscribe();
   }

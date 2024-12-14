@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using SPerfomance.Api.Endpoints;
 using SPerfomance.Api.Features.Common;
 using SPerfomance.Api.Features.Common.Extensions;
-using SPerfomance.Api.Features.PerfomanceContext.Contracts;
 using SPerfomance.Api.Features.PerfomanceContext.Responses;
 using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Abstractions;
 using SPerfomance.Statistics.DataAccess.Repositories;
@@ -15,7 +14,9 @@ public static class GetPagedFilteredReports
     public record Request(
         TokenContract Token,
         PaginationContract Pagination,
-        ReportPeriodFilterContract Period
+        int? Year,
+        int? Number,
+        string? Season
     );
 
     public sealed class Endpoint : IEndpoint
@@ -68,8 +69,9 @@ public static class GetPagedFilteredReports
         var list = await repository.GetPagedFilteredByPeriod(
             request.Pagination.Page,
             request.Pagination.PageSize,
-            ConvertToDate(request.Period.StartPeriod),
-            ConvertToDate(request.Period.EndPeriod),
+            request.Year,
+            request.Number,
+            request.Season,
             ct
         );
 
@@ -79,20 +81,5 @@ public static class GetPagedFilteredReports
             list.Count
         );
         return TypedResults.Ok(list.Select(r => new ControlWeekReportDTO(r)));
-    }
-
-    private static DateTime? ConvertToDate(DatePeriod? period)
-    {
-        if (period?.Day == null || period.Month == null || period.Year == null)
-            return null;
-
-        try
-        {
-            return new DateTime(period.Year.Value, period.Month.Value, period.Day.Value);
-        }
-        catch
-        {
-            return null;
-        }
     }
 }

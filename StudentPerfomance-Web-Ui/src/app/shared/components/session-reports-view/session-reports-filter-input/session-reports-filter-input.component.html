@@ -1,7 +1,23 @@
 <div class="session-reports-filter-input-row-container">
-  <strong>Фильтр по периоду</strong>
-  <input type="date" [(ngModel)]="startDateStringRepresentation" placeholder="Введите дату начала контрольной недели">
-  <input type="date" [(ngModel)]="endDateStringRepresentation" placeholder="Введите дату окончания контрольной недели">
+  <strong>Фильтр</strong>
+  <div>
+    <input type="date" [(ngModel)]="year" placeholder="Введите дату начала контрольной недели">
+    <strong style="margin-left: 10px">Период</strong>
+  </div>
+  <div>
+    <select [(ngModel)]="sessionNumber">
+      <option>{{ 1 }}</option>
+      <option>{{ 2 }}</option>
+    </select>
+    <strong style="margin-left: 10px">Номер</strong>
+  </div>
+  <div>
+    <select [(ngModel)]="sessionSeason">
+      <option>{{ 'Осень' }}</option>
+      <option>{{ 'Весна' }}</option>
+    </select>
+    <strong style="margin-left: 10px">Сезон</strong>
+  </div>
   <div class="session-reports-controls-container">
     <button (click)="submit()" class="accept-button">Применить</button>
     <button (click)="cancelFilter()" class="danger-button">Отменить</button>

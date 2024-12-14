@@ -3,6 +3,7 @@ import { ControlWeekReportInterface } from '../../Models/Data/control-week-repor
 import { DatePipe, NgIf } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { SessionReportItemRemoveModalComponent } from './session-report-item-remove-modal/session-report-item-remove-modal.component';
+import { AuthService } from '../../../../../modules/users/services/auth.service';
 
 @Component({
   selector: 'app-session-report-item',
@@ -19,5 +20,8 @@ export class SessionReportItemComponent {
 
   protected isRemovingVisible: boolean = false;
 
-  public constructor(protected readonly date: DatePipe) {}
+  public constructor(
+    protected readonly date: DatePipe,
+    protected readonly _authService: AuthService,
+  ) {}
 }

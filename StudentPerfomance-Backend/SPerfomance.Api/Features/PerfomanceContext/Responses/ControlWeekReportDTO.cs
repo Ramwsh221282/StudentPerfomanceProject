@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using SPerfomance.Statistics.DataAccess.EntityModels;
 
 namespace SPerfomance.Api.Features.PerfomanceContext.Responses;
@@ -15,12 +16,20 @@ public sealed record ControlWeekReportDTO
     public double Average { get; init; }
     public double Perfomance { get; init; }
 
+    [JsonInclude]
+    public string Season { get; init; }
+
+    [JsonInclude]
+    public int Number { get; init; }
+
     public ControlWeekReportDTO(ControlWeekReportEntity report)
     {
         RowNumber = report.RowNumber;
         Id = report.Id;
         CreationDate = report.CreationDate;
         CompletionDate = report.CompletionDate;
+        Season = report.ControlWeekSeason;
+        Number = report.ControlWeekNumber;
         var groupTask = Task.Run(() => InitializeGroupReportArray(report.GroupParts));
         var courseTask = Task.Run(() => InitializeCourseReportArray(report.CourseParts));
         var directionTypeTask = Task.Run(

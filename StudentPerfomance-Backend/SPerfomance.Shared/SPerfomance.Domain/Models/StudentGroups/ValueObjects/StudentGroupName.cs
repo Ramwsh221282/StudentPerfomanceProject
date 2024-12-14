@@ -1,4 +1,3 @@
-using System.Text.RegularExpressions;
 using SPerfomance.Domain.Abstractions;
 using SPerfomance.Domain.Models.StudentGroups.Errors;
 using SPerfomance.Domain.Tools;
@@ -11,15 +10,13 @@ public class StudentGroupName : DomainValueObject
 
     private const int MaxNameLength = 15;
 
-    private static readonly Regex Pattern = new Regex(@"^[А-Я]+ \d{2}-\d{2}$");
-
     public string Name { get; }
 
     internal StudentGroupName() => Name = string.Empty;
 
-    internal StudentGroupName(string name) => Name = name;
+    internal StudentGroupName(string name) => Name = name.Trim();
 
-    internal static StudentGroupName Empty => new StudentGroupName();
+    internal static StudentGroupName Empty => new();
 
     internal static Result<StudentGroupName> Create(string name)
     {
@@ -34,9 +31,7 @@ public class StudentGroupName : DomainValueObject
             < MinNameLength => Result<StudentGroupName>.Failure(
                 StudentGroupErrors.NameLess(MinNameLength)
             ),
-            _ => !Pattern.Match(name).Success
-                ? Result<StudentGroupName>.Failure(StudentGroupErrors.NameInvalid(name))
-                : Result<StudentGroupName>.Success(new StudentGroupName(name)),
+            _ => Result<StudentGroupName>.Success(new StudentGroupName(name)),
         };
     }
 

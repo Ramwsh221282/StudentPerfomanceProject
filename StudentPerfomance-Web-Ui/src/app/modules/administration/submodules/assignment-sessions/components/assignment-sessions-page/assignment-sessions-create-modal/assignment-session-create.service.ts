@@ -24,9 +24,10 @@ export class AssignmentSessionCreateService {
 
   public create(
     startDate: AssignmentSessionDate,
-    endDate: AssignmentSessionDate,
+    season: string,
+    number: number,
   ): Observable<AssignmentSession> {
-    const payload = this.buildPayload(startDate, endDate);
+    const payload = this.buildPayload(startDate, season, number);
     const headers = this.buildHttpHeaders();
     return this._httpClient.post<AssignmentSession>(this._apiUri, payload, {
       headers: headers,
@@ -35,7 +36,8 @@ export class AssignmentSessionCreateService {
 
   private buildPayload(
     startDate: AssignmentSessionDate,
-    endDate: AssignmentSessionDate,
+    season: string,
+    number: number,
   ): object {
     return {
       dateStart: {
@@ -43,11 +45,8 @@ export class AssignmentSessionCreateService {
         month: startDate.month,
         year: startDate.year,
       },
-      dateClose: {
-        day: endDate.day,
-        month: endDate.month,
-        year: endDate.year,
-      },
+      season: season,
+      number: number,
     };
   }
 

@@ -1,7 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ISubbmittable } from '../../../../../../shared/models/interfaces/isubbmitable';
-import { ISuccessNotificatable } from '../../../../../../shared/models/interfaces/isuccess-notificatable';
-import { IFailureNotificatable } from '../../../../../../shared/models/interfaces/ifailure-notificatable';
 import { BaseStudentGroupForm } from '../../models/base-student-group-form';
 import { StudentGroupsFacadeService } from '../../services/student-groups-facade.service';
 import { UserOperationNotificationService } from '../../../../../../shared/services/user-notifications/user-operation-notification-service.service';
@@ -16,24 +14,18 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class StudentGroupCreateModalComponent
   extends BaseStudentGroupForm
-  implements
-    OnInit,
-    ISubbmittable,
-    ISuccessNotificatable,
-    IFailureNotificatable
+  implements OnInit, ISubbmittable
 {
   @Output() visibility: EventEmitter<boolean> = new EventEmitter<boolean>();
-
-  protected isSuccess: boolean;
-  protected isFailure: boolean;
+  @Output() refreshRequested: EventEmitter<void> = new EventEmitter();
+  @Output() successEmitter: EventEmitter<void> = new EventEmitter();
+  @Output() failureEmitter: EventEmitter<void> = new EventEmitter();
 
   public constructor(
     private readonly _facadeService: StudentGroupsFacadeService,
-    protected readonly notificationService: UserOperationNotificationService
+    protected readonly notificationService: UserOperationNotificationService,
   ) {
     super();
-    this.isFailure = false;
-    this.isSuccess = false;
   }
 
   public submit(): void {
@@ -41,30 +33,24 @@ export class StudentGroupCreateModalComponent
     const handler = StudentGroupCreationHandler(
       this._facadeService,
       this.notificationService,
-      this,
-      this
+      this.refreshRequested,
+      this.successEmitter,
+      this.failureEmitter,
     );
 
     this._facadeService
       .create(group)
       .pipe(
-        tap((response) => handler.handle(response)),
-        catchError((error: HttpErrorResponse) => handler.handleError(error))
+        tap((response) => {
+          handler.handle(response);
+          this.close();
+        }),
+        catchError((error: HttpErrorResponse) => {
+          this.close();
+          return handler.handleError(error);
+        }),
       )
       .subscribe();
-  }
-
-  public notifyFailure(): void {
-    this.isFailure = true;
-  }
-
-  public notifySuccess(): void {
-    this.isSuccess = true;
-  }
-
-  public manageNotification(value: boolean): void {
-    this.isSuccess = value;
-    this.isFailure = value;
   }
 
   public ngOnInit(): void {

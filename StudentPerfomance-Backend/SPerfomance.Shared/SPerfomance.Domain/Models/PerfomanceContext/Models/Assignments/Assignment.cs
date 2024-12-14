@@ -4,6 +4,7 @@ using SPerfomance.Domain.Models.PerfomanceContext.Models.StudentAssignments;
 using SPerfomance.Domain.Models.SemesterPlans;
 using SPerfomance.Domain.Models.StudentGroups;
 using SPerfomance.Domain.Models.Students;
+using SPerfomance.Domain.Models.Students.ValueObjects;
 
 namespace SPerfomance.Domain.Models.PerfomanceContext.Models.Assignments;
 
@@ -36,6 +37,9 @@ public class Assignment : DomainEntity
     {
         foreach (Student student in group.Students)
         {
+            if (student.State == StudentState.NotActive)
+                continue;
+
             StudentAssignment studentAssignment = new StudentAssignment(this, student);
             _studentAssignments.Add(studentAssignment);
         }
