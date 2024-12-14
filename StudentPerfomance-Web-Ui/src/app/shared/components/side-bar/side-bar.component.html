@@ -1,33 +1,27 @@
 <div class="side-bar">
   <div class="side-bar-title-container">
-    <strong class="side-bar-title">SPerfomance</strong>
+    <strong class="side-bar-title">Портал контрольных недель ЛФ СибГУ</strong>
   </div>
   <strong class="menu-header">Основное меню:</strong>
   <div class="menu-content-container">
     <button
-      #menuButton
       class="side-bar-menu-button"
-      (click)="selectMenu($event, this.menuButton)"
       [routerLink]="['/login']"
     >
       • Авторизация
     </button>
     <button
       *ngIf="authService.isAuthorized"
-      #menuButton
       class="side-bar-menu-button"
-      (click)="selectMenu($event, this.menuButton)"
       [routerLink]="['/user']"
     >
       • Личный кабинет
     </button>
     <button
-      #menuButton
       *ngIf="
         authService.isAuthorized && authService.userData.role == 'Администратор'
       "
       class="side-bar-menu-button"
-      (click)="selectMenu($event, this.menuButton)"
       [routerLink]="['/administration']"
     >
       • Администрирование
@@ -36,9 +30,7 @@
       *ngIf="
         authService.isAuthorized && authService.userData.role == 'Преподаватель'
       "
-      #menuButton
       class="side-bar-menu-button"
-      (click)="selectMenu($event, this.menuButton)"
       [routerLink]="['/teacher-assignments']"
     >
       • Преподавателям

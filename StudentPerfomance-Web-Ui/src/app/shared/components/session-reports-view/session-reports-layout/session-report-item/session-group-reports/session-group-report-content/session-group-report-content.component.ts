@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { GroupReportInterface } from '../../../../Models/Data/group-report-interface';
-import { DatePipe, NgClass, NgIf } from '@angular/common';
+import { DatePipe, NgClass, NgIf, NgOptimizedImage } from '@angular/common';
 import { StudentReportInterface } from '../../../../Models/Data/student-report-interface';
 import { DisciplineReportInterface } from '../../../../Models/Data/discipline-report-interface';
 import { toPng } from 'html-to-image';
@@ -9,7 +9,7 @@ import jsPDF from 'jspdf';
 @Component({
   selector: 'app-session-group-report-content',
   standalone: true,
-  imports: [NgIf, DatePipe, NgClass],
+  imports: [NgIf, DatePipe, NgClass, NgOptimizedImage],
   templateUrl: './session-group-report-content.component.html',
   styleUrl: './session-group-report-content.component.scss',
 })
@@ -55,7 +55,10 @@ export class SessionGroupReportContentComponent {
       img.onload = () => {
         const pdf = new jsPDF('p', 'mm', 'a4');
         pdf.addImage(img, 'PNG', 0, 0, pageWidth, pageHeight);
-        pdf.save(`${this.currentGroup.groupName}_ОТЧЁТ.pdf`);
+        const splittedDate = this.startDate.split('-');
+        pdf.save(
+          `${this.currentGroup.groupName}_${splittedDate[0]}_${this.season}_${this.number}_ОТЧЁТ.pdf`,
+        );
       };
     });
   }

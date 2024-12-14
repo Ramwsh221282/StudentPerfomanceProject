@@ -4,7 +4,7 @@ import { SessionReportsDataService } from '../../../Services/data-services/sessi
 import { CourseReportInterface } from '../../../Models/Data/course-report-interface';
 import { DirectionCodeReportInterface } from '../../../Models/Data/direction-code-report-interface';
 import { DirectionTypeReportInterface } from '../../../Models/Data/direction-type-report-interface';
-import { DatePipe } from '@angular/common';
+import { DatePipe, NgOptimizedImage } from '@angular/common';
 import { GroupReportInterface } from '../../../Models/Data/group-report-interface';
 import { toPng } from 'html-to-image';
 import jsPDF from 'jspdf';
@@ -12,7 +12,7 @@ import jsPDF from 'jspdf';
 @Component({
   selector: 'app-session-course-report',
   standalone: true,
-  imports: [DatePipe, RouterLink],
+  imports: [DatePipe, RouterLink, NgOptimizedImage],
   templateUrl: './session-course-report.component.html',
   styleUrl: './session-course-report.component.scss',
 })
@@ -71,7 +71,8 @@ export class SessionCourseReportComponent implements OnInit {
       img.onload = () => {
         const pdf = new jsPDF('p', 'mm', 'a4');
         pdf.addImage(img, 'PNG', 0, 0, pageWidth, pageHeight);
-        pdf.save(`${this.creationDate}_${this.completionDate}_ОТЧЁТ.pdf`);
+        const splittedDate = this.creationDate.split('-');
+        pdf.save(`${splittedDate[0]}_${this.number}_${this.season}_ОТЧЁТ.pdf`);
       };
     });
   }

@@ -6,7 +6,7 @@ namespace SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSession.V
 
 public sealed class AssignmentSessionNumber : DomainValueObject
 {
-    private static readonly byte[] AllowedNumbers = [1, 2];
+    private static readonly byte[] AllowedNumbers = [1, 2, 3, 4];
 
     public byte Number { get; init; }
 
