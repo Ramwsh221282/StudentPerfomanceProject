@@ -8,4 +8,5 @@ import { Component, Input } from '@angular/core';
 export class AdministrationMenuComponent {
   @Input({ required: true }) public title!: string;
   @Input({ required: true }) public routerLink!: string[];
+  @Input({ required: true }) public descriptions: string[];
 }

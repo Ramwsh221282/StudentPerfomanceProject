@@ -26,11 +26,7 @@ export class UserPasswordUpdateFormComponent implements ISubbmittable {
   ) {}
 
   public submit(): void {
-    const handler = UserPasswordUpdateHandler(
-      this.successEmitter,
-      this.failureEmitter,
-      this._notificationService,
-    );
+    const handler = UserPasswordUpdateHandler(this._notificationService);
     this._passwordService
       .requestPasswordUpdate(this.currentPassword, this.updatedPassword)
       .pipe(

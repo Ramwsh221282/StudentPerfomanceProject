@@ -1,12 +1,56 @@
-<div class="user-card-wrapper">
-  <div class="user-card-header-wrapper">
-    <strong class="user-card-form-header">Информация учетной записи:</strong>
+<div class="tab-form">
+  <ul class="tab-form-ul">
+    <li class="tab-form-li" *ngFor="let tab of tabs"
+        [ngClass]="{'tab-form-li-active': tab.id === activeTab}" (click)="activeTab = tab.id">{{ tab.label }}
+    </li>
+  </ul>
+  <div class="tab-form-content">
+    @switch (activeTab) {
+      @case (tabs[0].id) {
+        <ng-container>
+          <div class="user-card-content-container">
+            <strong>Имя: {{ user.name }}</strong>
+            <strong>Фамилия: {{ user.surname }}</strong>
+            <strong>Отчество: {{ user.patronymic }}</strong>
+            <strong>Почта: {{ user.email }}</strong>
+            <strong>Права: {{ user.role }}</strong>
+          </div>
+        </ng-container>
+      }
+      @case (tabs[1].id) {
+        <ng-container>
+          <div class="user-card-content-container">
+            <app-floating-label-input [value]="currentPassword" [id]="'CurrentPassword'" [label]="'Текущий пароль'"
+                                      [type]="'password'"
+                                      (inputChange)="currentPassword = $event"></app-floating-label-input>
+            <app-floating-label-input [value]="newPassword" [id]="'NewPassword'" [label]="'Новый пароль'"
+                                      [type]="'password'"
+                                      (inputChange)="newPassword = $event"></app-floating-label-input>
+            <app-green-outline-button [label]="'Сменить'"
+                                      (onClicked)="onPasswordUpdateClick()"></app-green-outline-button>
+          </div>
+        </ng-container>
+      }
+      @case (tabs[2].id) {
+        <ng-container>
+          <div class="user-card-content-container">
+            <app-floating-label-input [value]="currentPassword" [id]="'CurrentPassword'" [label]="'Текущий пароль'"
+                                      [type]="'password'"
+                                      (inputChange)="currentPassword = $event"></app-floating-label-input>
+            <app-floating-label-input [value]="newEmail" [id]="'NewEmail'" [label]="'Новая почта'"
+                                      (inputChange)="newEmail = $event"></app-floating-label-input>
+            <app-green-outline-button [label]="'Сменить'" (onClicked)="onEmailUpdateClick()"></app-green-outline-button>
+          </div>
+        </ng-container>
+      }
+    }
   </div>
-  <div class="user-card-content-container">
-    <strong>Имя: {{ user.name }}</strong>
-    <strong>Фамилия: {{ user.surname }}</strong>
-    <strong>Отчество: {{ user.patronymic }}</strong>
-    <strong>Почта: {{ user.email }}</strong>
-    <strong>Права: {{ user.role }}</strong>
-  </div>
+</div>
+<div *ngIf="notificationService.isSuccess">
+  <app-success-result-notification [message]="notificationService.Message"
+                                   (visibilityEmitter)="notificationService.reset()"></app-success-result-notification>
+</div>
+<div *ngIf="notificationService.isFailure">
+  <app-failure-result-notification [message]="notificationService.Message"
+                                   (visibilityEmitter)="notificationService.reset()"></app-failure-result-notification>
 </div>

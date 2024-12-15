@@ -28,11 +28,7 @@ export class UserEmailUpdateFormComponent implements ISubbmittable {
   ) {}
 
   public submit(): void {
-    const handler = UserEmailUpdateHandler(
-      this.successEmitter,
-      this.failureEmitter,
-      this._notificationService,
-    );
+    const handler = UserEmailUpdateHandler(this._notificationService);
     this._emailService
       .requestEmailUpdate(this.currentPassword, this.Email)
       .pipe(

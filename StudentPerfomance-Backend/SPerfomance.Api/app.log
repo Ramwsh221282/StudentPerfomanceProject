@@ -6455,3 +6455,175 @@ token: '[PII of type 'System.IdentityModel.Tokens.Jwt.JwtSecurityToken' is hidde
 2024-12-14T19:08:49.2592755+07:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Запрос на получение сессий контрольных недель постранично
 2024-12-14T19:08:49.2746703+07:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество контрольных недель 0
 2024-12-14T19:08:49.5031076+07:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает сессии контрольных недель постранично
+2024-12-15T14:24:46.7339828+07:00	INFO	[Program]	[0]	Application starting...
+2024-12-15T14:24:46.8218120+07:00	INFO	[Program]	[0]	Application started
+2024-12-15T17:07:34.8622468+07:00	INFO	[Program]	[0]	Application starting...
+2024-12-15T17:07:34.9461932+07:00	INFO	[Program]	[0]	Application started
+2024-12-15T17:08:22.3120253+07:00	WARN	[Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware]	[FailedToDeterminePort]	Failed to determine the https port for redirect.
+2024-12-15T17:08:22.9158286+07:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизация пользователя
+2024-12-15T17:08:26.1677236+07:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизован пользователь admin@mail.com admin admin Администратор
+2024-12-15T20:14:11.7515939+07:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизация пользователя
+2024-12-15T20:14:11.7935438+07:00	FAIL	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Ошибка авторизации. Пользователь не найден
+2024-12-15T20:15:24.4160034+07:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизация пользователя
+2024-12-15T20:15:24.4448544+07:00	FAIL	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Ошибка авторизации. Пользователь не найден
+2024-12-15T20:15:41.3059074+07:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизация пользователя
+2024-12-15T20:15:41.3097145+07:00	FAIL	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Ошибка авторизации. Пользователь не найден
+2024-12-15T20:15:43.7821394+07:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизация пользователя
+2024-12-15T20:15:43.7859928+07:00	FAIL	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Ошибка авторизации. Пользователь не найден
+2024-12-15T20:15:47.6632694+07:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизация пользователя
+2024-12-15T20:15:47.6660567+07:00	FAIL	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Ошибка авторизации. Пользователь не найден
+2024-12-15T20:15:53.5327703+07:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизация пользователя
+2024-12-15T20:15:53.5365898+07:00	FAIL	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Ошибка авторизации. Пользователь не найден
+2024-12-15T20:15:57.1876731+07:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизация пользователя
+2024-12-15T20:15:57.1916206+07:00	FAIL	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Ошибка авторизации. Пользователь не найден
+2024-12-15T20:16:21.5386437+07:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизация пользователя
+2024-12-15T20:16:21.5416223+07:00	FAIL	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Ошибка авторизации. Пользователь не найден
+2024-12-15T20:16:24.2902576+07:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизация пользователя
+2024-12-15T20:16:24.2933174+07:00	FAIL	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Ошибка авторизации. Пользователь не найден
+2024-12-15T20:16:28.2779360+07:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизация пользователя
+2024-12-15T20:16:28.2805481+07:00	FAIL	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Ошибка авторизации. Пользователь не найден
+2024-12-15T20:16:49.9545767+07:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизация пользователя
+2024-12-15T20:16:49.9577852+07:00	FAIL	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Ошибка авторизации. Пользователь не найден
+2024-12-15T20:16:52.7850155+07:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизация пользователя
+2024-12-15T20:16:52.7875366+07:00	FAIL	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Ошибка авторизации. Пользователь не найден
+2024-12-15T20:16:54.5914602+07:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизация пользователя
+2024-12-15T20:16:54.5944277+07:00	FAIL	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Ошибка авторизации. Пользователь не найден
+2024-12-15T20:16:56.9214596+07:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизация пользователя
+2024-12-15T20:16:56.9245653+07:00	FAIL	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Ошибка авторизации. Пользователь не найден
+2024-12-15T20:17:11.9152382+07:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизация пользователя
+2024-12-15T20:17:12.3859144+07:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизован пользователь admin@mail.com admin admin Администратор
+2024-12-15T20:17:49.0645139+07:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизация пользователя
+2024-12-15T20:17:49.5337455+07:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизован пользователь admin@mail.com admin admin Администратор
+2024-12-15T20:18:14.3111398+07:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизация пользователя
+2024-12-15T20:18:14.7831420+07:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизован пользователь admin@mail.com admin admin Администратор
+2024-12-15T20:18:26.1216550+07:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизация пользователя
+2024-12-15T20:18:26.1240311+07:00	FAIL	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Ошибка авторизации. Пользователь не найден
+2024-12-15T20:20:40.2072966+07:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизация пользователя
+2024-12-15T20:20:40.6804654+07:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизован пользователь admin@mail.com admin admin Администратор
+2024-12-15T20:22:30.3358386+07:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизация пользователя
+2024-12-15T20:22:30.8170701+07:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизован пользователь admin@mail.com admin admin Администратор
+2024-12-15T20:35:27.4318476+07:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизация пользователя
+2024-12-15T20:35:27.4363666+07:00	FAIL	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Ошибка авторизации. Пользователь не найден
+2024-12-15T20:38:50.7756898+07:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизация пользователя
+2024-12-15T20:38:51.2561699+07:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизован пользователь admin@mail.com admin admin Администратор
+2024-12-15T20:38:57.7163374+07:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизация пользователя
+2024-12-15T20:38:57.7191868+07:00	FAIL	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Ошибка авторизации. Пользователь не найден
+2024-12-15T20:39:24.2008625+07:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизация пользователя
+2024-12-15T20:39:24.2039450+07:00	FAIL	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Ошибка авторизации. Пользователь не найден
+2024-12-15T20:39:32.6371493+07:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизация пользователя
+2024-12-15T20:39:32.6407838+07:00	FAIL	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Ошибка авторизации. Пользователь не найден
+2024-12-15T20:39:47.2001257+07:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизация пользователя
+2024-12-15T20:39:47.2035973+07:00	FAIL	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Ошибка авторизации. Пользователь не найден
+2024-12-15T20:39:48.5228170+07:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизация пользователя
+2024-12-15T20:39:48.5257282+07:00	FAIL	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Ошибка авторизации. Пользователь не найден
+2024-12-15T20:40:02.2007217+07:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизация пользователя
+2024-12-15T20:40:02.2033104+07:00	FAIL	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Ошибка авторизации. Пользователь не найден
+2024-12-15T20:43:16.3994906+07:00	INFO	[SPerfomance.Api.Features.Users.ChangeUserEmailEndpoint.Endpoint]	[0]	Запрос на изменение почты пользователя
+2024-12-15T20:43:16.9961386+07:00	INFO	[SPerfomance.Api.Features.Users.ChangeUserEmailEndpoint.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 admin поменял почту с admin@mail.com на jimkrauz@gmail.com
+2024-12-15T20:43:21.6558868+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-15T20:43:21.6653229+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-15T20:43:21.7248807+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-15T20:43:21.7367147+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-15T20:43:21.7427509+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-15T20:43:21.8431819+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-15T20:43:31.4185141+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-15T20:43:31.4206230+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-15T20:43:31.4275706+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-15T20:43:31.4317154+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-15T20:43:31.4381665+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-15T20:43:31.5808106+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-15T20:43:43.0638473+07:00	INFO	[SPerfomance.Api.Features.Users.CreatePasswordRecoveryEndpoint.Endpoint]	[0]	Запрос на восстановление пароля
+2024-12-15T20:43:43.5059662+07:00	INFO	[SPerfomance.Api.Features.Users.CreatePasswordRecoveryEndpoint.Endpoint]	[0]	Сформирована ссылка на восстановление пароля: http://localhost:4200/reset-password?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI0MDViMWEzNi05ZmUxLTRjN2EtYjQ0ZS0yOWY0Zjc4OTBjZDIiLCJ1c2VyRW1haWwiOiJqaW1rcmF1ekBnbWFpbC5jb20iLCJleHAiOjE3MzQyNzM4MjN9.y2FOFQsxzYgPJeLm9s28scixusuunth4TbcttH7aD7U
+2024-12-15T20:43:43.5085379+07:00	INFO	[SPerfomance.Api.Features.Users.CreatePasswordRecoveryEndpoint.Endpoint]	[0]	Отправлен запрос на восстановление пароля jimkrauz@gmail.com
+2024-12-15T20:44:17.7064014+07:00	INFO	[SPerfomance.Api.Features.Users.ConfirmPasswordRecoveryEndpoint.Endpoint]	[0]	Подтверждение восстановления пароля пользователя
+2024-12-15T20:44:18.3665330+07:00	INFO	[SPerfomance.Api.Features.Users.ConfirmPasswordRecoveryEndpoint.Endpoint]	[0]	Восстановления пароля подтверждено jimkrauz@gmail.com
+2024-12-15T20:53:36.9665678+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Запрос на получение списка направлений подготовки постранично
+2024-12-15T20:53:36.9686270+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-12-15T20:53:36.9871724+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 2
+2024-12-15T20:53:37.2814214+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Получен список направлений подготовок в количестве: 2
+2024-12-15T20:54:39.4120030+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-12-15T20:54:39.4195363+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 2
+2024-12-15T20:54:39.4254205+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Запрос на получение списка направлений подготовки постранично
+2024-12-15T20:54:39.4374951+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Получен список направлений подготовок в количестве: 2
+2024-12-15T20:56:04.8902110+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-12-15T20:56:04.8928285+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Запрос на получение списка направлений подготовки постранично
+2024-12-15T20:56:04.9027065+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 2
+2024-12-15T20:56:05.0658374+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Получен список направлений подготовок в количестве: 2
+2024-12-15T20:56:07.8025129+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-12-15T20:56:07.8069872+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Запрос на получение списка направлений подготовки постранично
+2024-12-15T20:56:07.8119649+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 2
+2024-12-15T20:56:07.8223381+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Получен список направлений подготовок в количестве: 2
+2024-12-15T20:56:14.6658465+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-12-15T20:56:14.6678847+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Запрос на получение списка направлений подготовки постранично
+2024-12-15T20:56:14.6789880+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Получен список направлений подготовок в количестве: 2
+2024-12-15T20:56:14.8310747+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 2
+2024-12-15T20:56:17.3530010+07:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Запрос на получение учебных планов постранично
+2024-12-15T20:56:17.3632441+07:00	INFO	[SPerfomance.Api.Features.EducationPlans.CountEducationPlans.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество учебных планов 2
+2024-12-15T20:56:17.5351236+07:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает учебные планы постранично 2
+2024-12-15T21:01:47.8920722+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-12-15T21:01:47.8956138+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Запрос на получение списка направлений подготовки постранично
+2024-12-15T21:01:47.9153959+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Получен список направлений подготовок в количестве: 2
+2024-12-15T21:01:48.0651965+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 2
+2024-12-15T21:04:42.0935662+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-15T21:04:42.0952629+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-15T21:04:42.1650540+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-15T21:04:42.2659665+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-15T21:04:44.1672118+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-15T21:04:44.1692969+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-15T21:04:44.1762958+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-15T21:04:44.3346724+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-15T21:04:46.7316308+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-12-15T21:04:46.7334399+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Запрос на получение списка направлений подготовки постранично
+2024-12-15T21:04:46.7413030+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 2
+2024-12-15T21:04:46.9081630+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Получен список направлений подготовок в количестве: 2
+2024-12-15T21:04:48.3380101+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-12-15T21:04:48.3749850+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Запрос на получение списка направлений подготовки постранично
+2024-12-15T21:04:48.3818489+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 2
+2024-12-15T21:04:48.5354253+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Получен список направлений подготовок в количестве: 2
+2024-12-15T21:23:22.3086472+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Запрос на получение списка направлений подготовки постранично
+2024-12-15T21:23:22.3141619+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-12-15T21:23:22.3272167+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 2
+2024-12-15T21:23:22.3303056+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Получен список направлений подготовок в количестве: 2
+2024-12-15T21:23:24.9663981+07:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Запрос на получение учебных планов постранично
+2024-12-15T21:23:24.9693997+07:00	INFO	[SPerfomance.Api.Features.EducationPlans.CountEducationPlans.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество учебных планов 2
+2024-12-15T21:23:24.9775676+07:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает учебные планы постранично 2
+2024-12-15T21:23:29.0216864+07:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Запрос на получение количества сессий контрольных недель
+2024-12-15T21:23:29.0242131+07:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Запрос на получение сессий контрольных недель постранично
+2024-12-15T21:23:29.0372433+07:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество контрольных недель 0
+2024-12-15T21:23:29.1282773+07:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает сессии контрольных недель постранично
+2024-12-15T21:23:31.7048755+07:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Запрос на получение учебных планов постранично
+2024-12-15T21:23:31.7108724+07:00	INFO	[SPerfomance.Api.Features.EducationPlans.CountEducationPlans.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество учебных планов 2
+2024-12-15T21:23:31.7175177+07:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает учебные планы постранично 2
+2024-12-15T21:23:34.4232030+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-12-15T21:23:34.4260092+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Запрос на получение списка направлений подготовки постранично
+2024-12-15T21:23:34.4319247+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 2
+2024-12-15T21:23:34.6038442+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Получен список направлений подготовок в количестве: 2
+2024-12-15T21:23:37.2171299+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-15T21:23:37.2269367+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-15T21:23:37.2327057+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-15T21:23:37.2367749+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-15T21:23:40.2057694+07:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.GetPagedTeacherDepartments.Endpoint]	[0]	Запрос на получение кафедр постранично
+2024-12-15T21:23:40.2222086+07:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.CountTeacherDepartments.Endpoint]	[0]	Запрос на получение количества кафедр
+2024-12-15T21:23:40.2328416+07:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.CountTeacherDepartments.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество кафедр 2
+2024-12-15T21:23:40.2612650+07:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.GetPagedTeacherDepartments.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает кафедры постранично: 2
+2024-12-15T21:23:42.0917144+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-15T21:23:42.0939232+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-15T21:23:42.1009737+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-15T21:23:42.2610951+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-15T21:23:42.2650547+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-15T21:23:42.2707174+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-15T21:23:47.9127776+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-12-15T21:23:47.9203066+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 2
+2024-12-15T21:23:47.9325166+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Запрос на получение списка направлений подготовки постранично
+2024-12-15T21:23:47.9431938+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Получен список направлений подготовок в количестве: 2
+2024-12-15T21:24:09.7474188+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-12-15T21:24:09.7499189+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Запрос на получение списка направлений подготовки постранично
+2024-12-15T21:24:09.7560315+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 2
+2024-12-15T21:24:09.9150116+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Получен список направлений подготовок в количестве: 2
+2024-12-15T21:55:22.7811061+07:00	INFO	[SPerfomance.Api.Features.Users.ChangeUserPasswordEndpoint.Endpoint]	[0]	Запрос на изменения пароля пользователя
+2024-12-15T21:55:23.2507915+07:00	FAIL	[SPerfomance.Api.Features.Users.ChangeUserPasswordEndpoint.Endpoint]	[0]	Запрос на изменением пароля отменён. Причина: Пароль авторизации неверный
+2024-12-15T21:55:43.8652725+07:00	INFO	[SPerfomance.Api.Features.Users.ChangeUserPasswordEndpoint.Endpoint]	[0]	Запрос на изменения пароля пользователя
+2024-12-15T21:55:44.3441787+07:00	FAIL	[SPerfomance.Api.Features.Users.ChangeUserPasswordEndpoint.Endpoint]	[0]	Запрос на изменением пароля отменён. Причина: Пароль авторизации неверный
+2024-12-15T21:56:46.7034358+07:00	INFO	[SPerfomance.Api.Features.Users.ChangeUserPasswordEndpoint.Endpoint]	[0]	Запрос на изменения пароля пользователя
+2024-12-15T22:00:00.2702656+07:00	INFO	[SPerfomance.Api.Features.Users.ChangeUserEmailEndpoint.Endpoint]	[0]	Запрос на изменение почты пользователя
+2024-12-15T22:00:00.2748492+07:00	FAIL	[SPerfomance.Api.Features.Users.ChangeUserEmailEndpoint.Endpoint]	[0]	Ошибка изменения почты пользователя. Пользователь не найден

@@ -1,22 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import {
-  FormControl,
-  FormGroup,
-  FormsModule,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../../../../modules/users/services/auth.service';
-import { ISubbmittable } from '../../../models/interfaces/isubbmitable';
 import { UserOperationNotificationService } from '../../../services/user-notifications/user-operation-notification-service.service';
-import { ISuccessNotificatable } from '../../../models/interfaces/isuccess-notificatable';
-import { IFailureNotificatable } from '../../../models/interfaces/ifailure-notificatable';
-import { catchError, tap } from 'rxjs';
-import { LoginHandler } from './login-handler';
-import { NgIf } from '@angular/common';
+import { NgClass, NgForOf, NgIf } from '@angular/common';
 import { SuccessResultNotificationComponent } from '../../success-result-notification/success-result-notification.component';
 import { FailureResultNotificationComponent } from '../../failure-result-notification/failure-result-notification.component';
 import { PasswordRecoveryModalComponent } from './password-recovery-modal/password-recovery-modal.component';
+import { FloatingLabelInputComponent } from '../../../../building-blocks/floating-label-input/floating-label-input.component';
+import { GreenOutlineButtonComponent } from '../../../../building-blocks/buttons/green-outline-button/green-outline-button.component';
+import { YellowOutlineButtonComponent } from '../../../../building-blocks/buttons/yellow-outline-button/yellow-outline-button.component';
+import { LoginHandler } from './login-handler';
+import { catchError, Observable, tap } from 'rxjs';
+import { PasswordRecoveryService } from './password-recovery-modal/password-recovery.service';
 
 @Component({
   selector: 'app-login-form',
@@ -28,67 +23,98 @@ import { PasswordRecoveryModalComponent } from './password-recovery-modal/passwo
     SuccessResultNotificationComponent,
     FailureResultNotificationComponent,
     PasswordRecoveryModalComponent,
+    NgForOf,
+    NgClass,
+    FloatingLabelInputComponent,
+    GreenOutlineButtonComponent,
+    YellowOutlineButtonComponent,
   ],
   templateUrl: './login-form.component.html',
   styleUrl: './login-form.component.scss',
   providers: [UserOperationNotificationService],
 })
-export class LoginFormComponent
-  implements
-    ISubbmittable,
-    ISuccessNotificatable,
-    IFailureNotificatable,
-    OnInit
-{
-  protected form: FormGroup;
-  public isSuccess: boolean;
-  public isFailure: boolean;
-
-  protected isRecoveryModalVisible: boolean = false;
+export class LoginFormComponent {
+  protected activeTab = 1;
+  protected email: string = '';
+  protected password: string = '';
+  protected tabs: any = [
+    {
+      id: 1,
+      label: 'Авторизация',
+    },
+    {
+      id: 2,
+      label: 'Восстановление пароля',
+    },
+  ];
 
   public constructor(
     private readonly _authService: AuthService,
+    private readonly _recoveryService: PasswordRecoveryService,
     protected readonly notificationService: UserOperationNotificationService,
-  ) {
-    this.isSuccess = false;
-    this.isFailure = false;
-  }
+  ) {}
 
-  public notifyFailure(): void {
-    this.isFailure = true;
-  }
-
-  public notifySuccess(): void {
-    this.isSuccess = true;
-  }
-
-  public ngOnInit(): void {
-    this.form = new FormGroup({
-      email: new FormControl(null, [Validators.required]),
-      password: new FormControl(null, [Validators.required]),
-    });
-  }
-
-  public submit(): void {
-    if (!this.form.valid) {
-      this.isFailure = true;
-      this.notificationService.SetMessage =
-        'Некорректно заполнена форма авторизации';
+  protected loginClicked(): void {
+    if (this.isEmailEmpty() || this.isPasswordEmpty()) {
+      this.throwError();
       return;
     }
-    const email: string = this.form.value['email'];
-    const password: string = this.form.value['password'];
-    const handler = LoginHandler(this.notificationService, this, this);
+    const handler = LoginHandler(this.notificationService);
     this._authService
-      .login({ email: email, password: password })
+      .login({ email: this.email, password: this.password })
       .pipe(
         tap((response) => {
           handler.handle(response);
-          this._authService.authorize(response);
+          this.cleanInputs();
         }),
-        catchError((error) => handler.handleError(error)),
+        catchError((error) => {
+          this.cleanInputs();
+          return handler.handleError(error);
+        }),
       )
       .subscribe();
-    this.ngOnInit();
+  }
+
+  protected restoreClicked(): void {
+    if (this.isEmailEmpty()) {
+      this.throwError();
+      return;
+    }
+    this._recoveryService
+      .requestPasswordRecovery(this.email)
+      .pipe(
+        tap((response) => {
+          this.notificationService.SetMessage =
+            'Инструкции были отправлены на указанную почту';
+          this.notificationService.success();
+          this.cleanInputs();
+        }),
+        catchError((error) => {
+          this.notificationService.SetMessage = error.error;
+          this.notificationService.failure();
+          this.cleanInputs();
+          return new Observable();
+        }),
+      )
+      .subscribe();
+  }
+
+  private isEmailEmpty(): boolean {
+    return this.email.length == 0;
+  }
+
+  private isPasswordEmpty(): boolean {
+    return this.password.length == 0;
+  }
+
+  private throwError(): void {
+    this.notificationService.SetMessage =
+      'Форма авторизации не заполнена полносьтю';
+    this.notificationService.failure();
+  }
+
+  private cleanInputs(): void {
+    this.email = '';
+    this.password = '';
   }
 }

@@ -1,28 +1,35 @@
 .menu-element-form-wrapper {
   background-color: #ffffff;
   border: solid 1px #d9d9d9;
-  height: 150px;
+  height: auto;
   width: 300px;
+  min-height: 275px;
   border-radius: 10px;
+  display: grid;
+  grid-template-rows: 1fr auto 45px;
+  grid-gap: 22.5px;
+}
+
+.description-container {
+  padding: 5px;
+  font-weight: bold;
+  font-size: 1em;
+  display: flex;
+  flex-direction: column;
+  text-decoration: underline;
+  cursor: default;
 }
 
 .menu-element-header-wrapper {
-  border-radius: 10px 10px 0px 0px;
+  border-radius: 10px 10px 0 0;
   padding: 15px;
   border-bottom: solid 1px #d9d9d9;
+  background-color: #5ce600;
 }
 
 .menu-element-form-header {
-  color: #1c172e;
+  color: #fff;
   font-weight: 800;
   font-size: 18px;
-}
-
-.button-container {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-  padding: 5px;
-  position: relative;
-  bottom: -40px;
+  cursor: default;
 }

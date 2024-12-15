@@ -1,41 +1,46 @@
-<section class="login-form-wrapper">
-  <form [formGroup]="form" class="login-form-container">
-    <div class="login-form-controls-container">
-      <input
-        formControlName="email"
-        class="general-input"
-        placeholder="Email"
-      />
-    </div>
-    <div class="login-form-controls-container">
-      <input
-        formControlName="password"
-        type="password"
-        class="general-input"
-        placeholder="Пароль"
-      />
-    </div>
-    <div class="login-form-controls-container">
-      <button type="button" (click)="submit()" class="accept-button-modal">
-        Авторизоваться
-      </button>
-      <button class="warning-button-outline" (click)="isRecoveryModalVisible = true">Восстановить пароль</button>
-    </div>
-  </form>
-</section>
-<div id="recovery-modal-renderer" *ngIf="isRecoveryModalVisible">
-  <app-password-recovery-modal (visibilityEmitter)="isRecoveryModalVisible = false" (successEmitter)="isSuccess = true"
-                               (failureEmitter)="isFailure = true"></app-password-recovery-modal>
+<div class="tab-form">
+  <ul class="tab-form-ul">
+    <li [ngClass]="{'tab-form-li-active': activeTab === tab.id}" class="tab-form-li" *ngFor="let tab of tabs"
+        (click)="activeTab = tab.id">{{ tab.label }}
+    </li>
+  </ul>
+  <div class="tab-form-content">
+    @switch (activeTab) {
+      @case (tabs[0].id) {
+        <ng-container>
+          <div class="inputs-layout">
+            <app-floating-label-input [value]="email" [id]="'Email'" [label]="'Почта'"
+                                      (inputChange)="email = $event">
+
+            </app-floating-label-input>
+            <app-floating-label-input [value]="password" [id]="'Password'" [label]="'Пароль'"
+                                      [type]="'password'" (inputChange)="password = $event">
+            </app-floating-label-input>
+            <app-green-outline-button [label]="'Авторизоваться'" (onClicked)="loginClicked()">
+
+            </app-green-outline-button>
+          </div>
+        </ng-container>
+      }
+      @case (tabs[1].id) {
+        <ng-container>
+          <div class="inputs-layout">
+            <app-floating-label-input [value]="email" [id]="'Email'" [label]="'Почта'" (inputChange)="email = $event">
+
+            </app-floating-label-input>
+            <app-yellow-outline-button [label]="'Отправить заявку'" (onClicked)="restoreClicked()">
+            </app-yellow-outline-button>
+          </div>
+        </ng-container>
+      }
+    }
+  </div>
 </div>
-<div id="success-modal-renderer" *ngIf="isSuccess">
-  <app-success-result-notification
-    [message]="notificationService.Message"
-    (visibilityEmitter)="isSuccess = $event"
-  ></app-success-result-notification>
+<div id="success-modal-renderer" *ngIf="notificationService.isSuccess">
+  <app-success-result-notification [message]="notificationService.Message"
+                                   (visibilityEmitter)="notificationService.reset()"></app-success-result-notification>
 </div>
-<div id="failure-modal-renderer" *ngIf="isFailure">
-  <app-failure-result-notification
-    [message]="notificationService.Message"
-    (visibilityEmitter)="isFailure = $event"
-  ></app-failure-result-notification>
+<div id="failure-modal-renderer" *ngIf="notificationService.isFailure">
+  <app-failure-result-notification [message]="notificationService.Message"
+                                   (visibilityEmitter)="notificationService.reset()"></app-failure-result-notification>
 </div>

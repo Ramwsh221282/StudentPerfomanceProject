@@ -2,16 +2,19 @@
   <strong class="group-header">Организационные структуры</strong>
   <div class="group-structures">
     <app-administration-menu
+      [descriptions]="['• Создание направлений', '• Удаление направление', '• Редактирование направлений']"
       [title]="'Направления подготовки'"
       [routerLink]="['/education-directions']"
     >
     </app-administration-menu>
     <app-administration-menu
+      [descriptions]="['• Создание учебных планов', '• Удаление учебных планами', '• Управление дисциплинами семестров']"
       [title]="'Учебные планы'"
       [routerLink]="['/education-plans']"
     >
     </app-administration-menu>
     <app-administration-menu
+      [descriptions]="['• Создание активной контрольной недели', '• Закрытие активной контрольной недели']"
       [title]="'Контрольные недели'"
       [routerLink]="['/assignment-sessions']"
     >
@@ -22,14 +25,17 @@
   <strong class="group-header">Субъекты</strong>
   <div class="group-structures">
     <app-administration-menu
+      [descriptions]="['• Создание студенческих групп', '• Удаление студенческих групп', '• Закрепление учебного плана', '• Управление студентами']"
       [title]="'Студенческие группы'"
       [routerLink]="['/groups']"
     ></app-administration-menu>
     <app-administration-menu
+      [descriptions]="['• Создание кафедр', '• Удаление кафедр', '• Управление преподавателями']"
       [title]="'Кафедры'"
       [routerLink]="['/departments']"
     ></app-administration-menu>
     <app-administration-menu
+      [descriptions]="['• Регистрация администраторов', '• Регистрация преподавателей', '• Удаление пользователей']"
       [title]="'Пользователи'"
       [routerLink]="['/users']"
     ></app-administration-menu>

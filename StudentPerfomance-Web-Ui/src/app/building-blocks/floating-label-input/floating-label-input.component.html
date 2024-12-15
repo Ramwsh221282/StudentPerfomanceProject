@@ -1,0 +1,6 @@
+<div class="floating-input-container">
+  <input class="floating-input" [value]="value" [type]="type" [id]="id" [autocomplete]="autocomplete"
+         [required]="required"
+         [placeholder]="placeholder" (input)="onInputChange($event)">
+  <label [for]="id" class="floating-input-label-line">{{ label }}</label>
+</div>

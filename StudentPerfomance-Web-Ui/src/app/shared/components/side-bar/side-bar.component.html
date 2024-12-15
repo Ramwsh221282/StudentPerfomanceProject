@@ -5,36 +5,47 @@
   <strong class="menu-header">Основное меню:</strong>
   <div class="menu-content-container">
     <button
+      [ngClass]="{'focused': activeButton === menuButtons[0].id }"
+      (click)="activeButton = menuButtons[0].id"
       class="side-bar-menu-button"
       [routerLink]="['/login']"
     >
-      • Авторизация
+      {{ menuButtons[0].label }}
     </button>
     <button
+      [ngClass]="{'focused': activeButton === menuButtons[1].id }"
+      (click)="activeButton = menuButtons[1].id"
       *ngIf="authService.isAuthorized"
       class="side-bar-menu-button"
       [routerLink]="['/user']"
     >
-      • Личный кабинет
+      {{ menuButtons[1].label }}
     </button>
     <button
+      [ngClass]="{'focused': activeButton === menuButtons[2].id }"
+      (click)="activeButton = menuButtons[2].id"
       *ngIf="
         authService.isAuthorized && authService.userData.role == 'Администратор'
       "
       class="side-bar-menu-button"
       [routerLink]="['/administration']"
     >
-      • Администрирование
+      {{ menuButtons[2].label }}
     </button>
     <button
+      [ngClass]="{'focused': activeButton === menuButtons[4].id }"
+      (click)="activeButton = menuButtons[4].id"
       *ngIf="
         authService.isAuthorized && authService.userData.role == 'Преподаватель'
       "
       class="side-bar-menu-button"
       [routerLink]="['/teacher-assignments']"
     >
-      • Преподавателям
+      {{ menuButtons[4].label }}
     </button>
-    <button class="side-bar-menu-button" [routerLink]="['/reports']">• Отчёты контрольных недель</button>
+    <button class="side-bar-menu-button" [routerLink]="['/reports']"
+            [ngClass]="{'focused': activeButton === menuButtons[3].id }"
+            (click)="activeButton = menuButtons[3].id">{{ menuButtons[3].label }}
+    </button>
   </div>
 </div>
