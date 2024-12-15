@@ -1,0 +1,26 @@
+.items-container {
+  width: 100%;
+  height: auto;
+  border: 1px solid #e1e5ee;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  outline: none;
+  transition: all 160ms ease;
+  color: #000;
+  font-weight: bold;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.item {
+  padding: 5px;
+  border-radius: 0.5rem;
+  border: 1px solid #ccc;
+  font-weight: bold;
+  cursor: pointer;
+
+  &:hover {
+    border: 1px solid #66ff00;
+  }
+}

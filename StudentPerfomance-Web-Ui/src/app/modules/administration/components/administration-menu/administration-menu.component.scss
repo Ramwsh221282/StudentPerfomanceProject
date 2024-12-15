@@ -3,11 +3,11 @@
   border: solid 1px #d9d9d9;
   height: auto;
   width: 300px;
-  min-height: 275px;
+  min-height: 285px;
   border-radius: 10px;
   display: grid;
-  grid-template-rows: 1fr auto 45px;
-  grid-gap: 22.5px;
+  grid-template-rows: 50px auto 45px;
+  grid-gap: 10px;
 }
 
 .description-container {

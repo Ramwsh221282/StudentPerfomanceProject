@@ -12,7 +12,7 @@ import { AppConfigService } from '../../../../../app.config.service';
 })
 export class PaginationService extends BaseService {
   private _totalCount: number = 0;
-  private _pageSize: number = 10;
+  private _pageSize: number = 9;
   private _pagesCount: number = 0;
   private _currentPage: number = 1;
   private _displayPages: number[] = [];

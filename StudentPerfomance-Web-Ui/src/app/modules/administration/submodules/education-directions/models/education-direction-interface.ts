@@ -3,4 +3,5 @@ export interface EducationDirection {
   code: string;
   name: string;
   type: string;
+  educationPlansCount: number;
 }

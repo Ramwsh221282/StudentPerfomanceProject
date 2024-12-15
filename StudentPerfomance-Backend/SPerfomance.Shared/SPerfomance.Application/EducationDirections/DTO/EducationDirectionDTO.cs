@@ -5,14 +5,11 @@ namespace SPerfomance.Application.EducationDirections.DTO;
 public sealed class EducationDirectionDto
 {
     public Guid Id { get; set; }
-
     public int? EntityNumber { get; set; }
-
     public string? Name { get; set; }
-
     public string? Type { get; set; }
-
     public string? Code { get; set; }
+    public int? EducationPlansCount { get; set; }
 }
 
 public static class EducationDirectionDtoExtensions
@@ -25,5 +22,6 @@ public static class EducationDirectionDtoExtensions
             Type = direction.Type.Type,
             Code = direction.Code.Code,
             EntityNumber = direction.EntityNumber,
+            EducationPlansCount = direction.Plans.Count,
         };
 }

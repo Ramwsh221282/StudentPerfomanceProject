@@ -1,62 +1,40 @@
 <div class="education-direction-table-wrapper">
   <div class="education-direction-controls-container">
-    <button class="accept-button" (click)="startCreation()">
-      Добавить направление
-    </button>
-    <button class="accept-button" (click)="startFilter()">
-      Отфильтровать список
-    </button>
-    <button class="accept-button-outline" [routerLink]="['/education-directions-info']">
-      Документация
-    </button>
-  </div>
-  <div class="education-direction-table-container">
-    <div class="education-direction-table-grid">
-      <div class="education-direction-table-header">
-        <strong>Номер</strong>
-        <strong>Название направления</strong>
-        <strong>Код направления</strong>
-        <strong>Тип направления</strong>
-        <strong>Действия</strong>
-      </div>
-
-      @for (direction of directions; track direction.code) {
-        <app-education-directions-table-row
-          [Direction]="direction"
-          (failureEmitter)="isFailure = true"
-          (successEmitter)="isSuccess = true"
-          (refreshEmitter)="ngOnInit()"
-        ></app-education-directions-table-row>
-      }
+    <div class="dropdown-container">
+      <app-blue-button [label]="'Добавить направление'" (onClicked)="creationModalVisibility = true"></app-blue-button>
+      <app-education-direction-create-dropdown
+        *ngIf="creationModalVisibility"
+        [visibility]="creationModalVisibility"
+        (refreshEmitter)="facadeService.refreshPagination(); ngOnInit()"
+        (visibilityChange)="creationModalVisibility = $event"></app-education-direction-create-dropdown>
     </div>
+    <div class="dropdown-container">
+      <app-blue-button [label]="'Фильтр направлений'" (onClicked)="filterModalVisibility = true"></app-blue-button>
+      <app-education-direction-filter-dropdown *ngIf="filterModalVisibility" [visibility]="filterModalVisibility"
+                                               (refreshEmitter)="ngOnInit()"
+                                               (visibilityChange)="filterModalVisibility = $event">
+      </app-education-direction-filter-dropdown>
+    </div>
+    <app-blue-outline-button [routerLink]="['/education-directions-info']"
+                             [label]="'Документация'"></app-blue-outline-button>
   </div>
-  <div class="pagination-wrapper">
-    <app-education-directions-pagination></app-education-directions-pagination>
+  <div class="items-container">
+    <app-education-direction-item *ngFor="let item of directions" [direction]="item"
+                                  (directionRemoveRequested)="directionToRemove = $event"></app-education-direction-item>
   </div>
+  <app-education-directions-pagination></app-education-directions-pagination>
 </div>
-<div id="creation-modal-renderer" *ngIf="creationModalVisibility">
-  <app-education-directions-create-modal
-    (visibility)="stopCreation($event)"
-    (successEmitter)="isSuccess = true"
-    (failureEmitter)="isFailure = true"
-    (refreshEmitter)="ngOnInit()"
-  ></app-education-directions-create-modal>
-</div>
-<div id="filter-modal-renderer" *ngIf="filterModalVisibility">
-  <app-education-directions-filter-modal
-    (visibility)="stopFilter($event)"
-    (filteredData)="directions = $event"
-  ></app-education-directions-filter-modal>
-</div>
-<div id="failure-modal-renderer" *ngIf="isFailure">
-  <app-failure-result-notification
-    [message]="notificationService.Message"
-    (visibilityEmitter)="isFailure = $event"
-  ></app-failure-result-notification>
-</div>
-<div id="success-modal-renderer" *ngIf="isSuccess">
-  <app-success-result-notification
-    [message]="notificationService.Message"
-    (visibilityEmitter)="isSuccess = $event"
-  ></app-success-result-notification>
-</div>
+<app-education-direction-delete-modal [direction]="directionToRemove"
+                                      *ngIf="directionToRemove"
+                                      (visibility)="directionToRemove = null"
+                                      (refreshEmitter)="ngOnInit(); directionToRemove = null"></app-education-direction-delete-modal>
+<app-failure-result-notification
+  *ngIf="notificationService.isFailure"
+  [message]="notificationService.Message"
+  (visibilityEmitter)="notificationService.reset()"
+></app-failure-result-notification>
+<app-success-result-notification
+  *ngIf="notificationService.isSuccess"
+  [message]="notificationService.Message"
+  (visibilityEmitter)="notificationService.reset()"
+></app-success-result-notification>

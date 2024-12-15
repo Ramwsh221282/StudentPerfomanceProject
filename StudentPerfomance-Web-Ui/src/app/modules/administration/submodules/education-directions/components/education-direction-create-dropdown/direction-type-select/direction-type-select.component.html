@@ -1,0 +1,5 @@
+<div class="direction-type-select-container">
+  <app-dropdown-list [items]="['Бакалавриат', 'Магистратура']"
+                     (visibilityChanged)="visibilityChange.emit(false)"
+                     (itemSelected)="itemSelected.emit($event); visibilityChange.emit(false)"></app-dropdown-list>
+</div>

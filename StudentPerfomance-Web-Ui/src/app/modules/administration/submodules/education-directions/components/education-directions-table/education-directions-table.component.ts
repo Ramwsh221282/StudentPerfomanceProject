@@ -12,21 +12,17 @@ import { UserOperationNotificationService } from '../../../../../../shared/servi
 export class EducationDirectionsTableComponent implements OnInit {
   protected creationModalVisibility = false;
   protected filterModalVisibility = false;
+  protected directionToRemove: EducationDirection | null;
   protected directions: EducationDirection[];
-
-  protected isFailure: boolean;
-  protected isSuccess: boolean;
 
   protected activeDirection: EducationDirection;
 
   public constructor(
     protected readonly facadeService: FacadeService,
-    protected readonly notificationService: UserOperationNotificationService
+    protected readonly notificationService: UserOperationNotificationService,
   ) {
     this.activeDirection = {} as EducationDirection;
     this.directions = [];
-    this.isFailure = false;
-    this.isSuccess = false;
   }
 
   public ngOnInit(): void {
@@ -38,30 +34,13 @@ export class EducationDirectionsTableComponent implements OnInit {
         }),
         catchError((error) => {
           this.notificationService.SetMessage = error.error;
-          this.isFailure = true;
           return new Observable();
-        })
+        }),
       )
       .subscribe();
   }
 
-  protected refreshActiveDirection(): void {
-    this.activeDirection = {} as EducationDirection;
-  }
-
-  protected startCreation(): void {
-    this.creationModalVisibility = true;
-  }
-
-  protected stopCreation(value: boolean): void {
-    this.creationModalVisibility = value;
-  }
-
   protected startFilter(): void {
     this.filterModalVisibility = true;
-  }
-
-  protected stopFilter(value: boolean): void {
-    this.filterModalVisibility = value;
   }
 }

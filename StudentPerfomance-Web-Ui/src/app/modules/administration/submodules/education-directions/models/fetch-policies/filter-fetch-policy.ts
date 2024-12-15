@@ -40,7 +40,12 @@ export class FilterFetchPolicy implements IFetchPolicy<EducationDirection[]> {
   }
 
   private appendPages(page: number, pageSize: number): void {
-    this._params = new HttpParams().set('page', page).set('pageSize', pageSize);
+    this._params = new HttpParams()
+      .set('page', page)
+      .set('pageSize', pageSize)
+      .set('filterCode', this._direction.code)
+      .set('filterName', this._direction.name)
+      .set('filterType', this._direction.type);
   }
 
   private buildParams(): void {

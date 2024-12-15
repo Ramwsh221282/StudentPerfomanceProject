@@ -65,6 +65,7 @@ export class LoginFormComponent {
       .pipe(
         tap((response) => {
           handler.handle(response);
+          this._authService.authorize(response);
           this.cleanInputs();
         }),
         catchError((error) => {

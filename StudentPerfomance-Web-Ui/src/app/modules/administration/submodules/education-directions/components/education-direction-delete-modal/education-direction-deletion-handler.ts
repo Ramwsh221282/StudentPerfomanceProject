@@ -1,6 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { EducationDirection } from '../../models/education-direction-interface';
-import { FacadeService } from '../../services/facade.service';
 import { Observable } from 'rxjs';
 import { IOperationHandler } from '../../../../../../shared/models/ihandable-component-interface/Ioperation-handler-interface';
 import { EventEmitter } from '@angular/core';
@@ -8,52 +7,36 @@ import { UserOperationNotificationService } from '../../../../../../shared/servi
 import { EducationDirectionDeleteNotification } from './education-direction-delete-notification';
 
 type HandlerDependencies = {
-  facadeService: FacadeService;
   notificationService: UserOperationNotificationService;
-  success: EventEmitter<void>;
-  failure: EventEmitter<void>;
-  visibility: EventEmitter<boolean>;
   refresh: EventEmitter<void>;
 };
 
 const createHandler =
   (dependencies: HandlerDependencies) =>
   (parameter: EducationDirection): void => {
-    const message = new EducationDirectionDeleteNotification().buildMessage(
-      parameter
-    );
-    dependencies.notificationService.SetMessage = message;
-    dependencies.success.emit();
+    dependencies.notificationService.SetMessage =
+      new EducationDirectionDeleteNotification().buildMessage(parameter);
+    dependencies.notificationService.success();
     dependencies.refresh.emit();
-    dependencies.visibility.emit(false);
   };
 
 const createErrorHandler =
   (dependencies: HandlerDependencies) =>
   (error: HttpErrorResponse): Observable<never> => {
     dependencies.notificationService.SetMessage = error.error;
-    dependencies.failure.emit();
-    dependencies.visibility.emit(false);
+    dependencies.notificationService.failure();
     return new Observable();
   };
 
 export const EducationDirectionDeletionHandler = (
-  facadeService: FacadeService,
   notificationService: UserOperationNotificationService,
-  success: EventEmitter<void>,
-  failure: EventEmitter<void>,
-  visibility: EventEmitter<boolean>,
-  refresh: EventEmitter<void>
+  refresh: EventEmitter<void>,
 ): IOperationHandler<EducationDirection> => {
-  const dependecies: HandlerDependencies = {
-    facadeService: facadeService,
+  const dependencies: HandlerDependencies = {
     notificationService: notificationService,
-    success: success,
-    failure: failure,
-    visibility: visibility,
     refresh: refresh,
   };
-  const handle = createHandler(dependecies);
-  const handleError = createErrorHandler(dependecies);
+  const handle = createHandler(dependencies);
+  const handleError = createErrorHandler(dependencies);
   return { handle, handleError };
 };

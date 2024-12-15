@@ -1,0 +1,20 @@
+<div class="direction-edit-container">
+  <app-floating-label-input [value]="direction.name" [label]="'Название'"
+                            [id]="'DirectionNameInput'"
+                            (inputChange)="direction.name = $event"></app-floating-label-input>
+  <app-floating-label-input [value]="direction.code" [label]="'Код'"
+                            [id]="'DirectionCodeInput'"
+                            (inputChange)="direction.code = $event"></app-floating-label-input>
+  <div class="dropdown-container">
+    <app-floating-label-input [value]="direction.type" [label]="'Тип'" [isReadonly]="true"
+                              [id]="'DirectionTypeInput'" (click)="isSelectingType = true"
+                              (inputChange)="direction.type = $event"></app-floating-label-input>
+    <app-direction-type-select *ngIf="isSelectingType" [visibility]="isSelectingType"
+                               (visibilityChange)="isSelectingType=$event"
+                               (itemSelected)="direction.type = $event"></app-direction-type-select>
+  </div>
+  <div class="direction-creation-controls">
+    <app-yellow-outline-button [label]="'Изменить'" (onClicked)="submit()"></app-yellow-outline-button>
+    <app-red-outline-button [label]="'Закрыть окно'" (onClicked)="closeDropdown()"></app-red-outline-button>
+  </div>
+</div>

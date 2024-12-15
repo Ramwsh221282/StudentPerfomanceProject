@@ -1,0 +1,50 @@
+.education-direction-item-container {
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 265px auto;
+
+  &:hover .education-direction-name-container {
+    transition: 1s ease-in-out;
+    background-color: #47b300;
+  }
+}
+
+.education-direction-name-container {
+  padding: 5px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1rem;
+  background-color: #5ce600;
+  align-content: center;
+  color: #fff;
+  display: grid;
+  grid-template-rows: 50px auto;
+  grid-gap: 40px;
+}
+
+.education-direction-attributes-grid {
+  padding: 5px;
+  display: grid;
+  grid-template-columns: auto auto;
+  color: #000;
+  border: 1px solid #cccccc;
+  font-weight: bold;
+  font-size: 1rem;
+  grid-gap: 10px;
+}
+
+.attribute-name {
+  border-bottom: solid 2px black;
+}
+
+.attribute-value {
+  border-bottom: solid 2px black;
+}
+
+.education-direction-controls-container {
+  display: inline-flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
+

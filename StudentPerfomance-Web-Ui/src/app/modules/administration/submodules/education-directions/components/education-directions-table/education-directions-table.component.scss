@@ -3,10 +3,13 @@
   background-color: #ffffff;
   border: solid 1px #d9d9d9;
   border-radius: 10px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .education-direction-controls-container {
-  padding: 15px;
+  padding: 10px;
   color: #ffffff;
   border-radius: 10px 10px 0px 0px;
   height: 45px;
@@ -41,4 +44,10 @@
   position: inherit;
   bottom: 0;
   align-self: center;
+}
+
+.items-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 10px;
 }

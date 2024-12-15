@@ -1,9 +1,10 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-floating-label-input',
   standalone: true,
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './floating-label-input.component.html',
   styleUrl: './floating-label-input.component.scss',
 })
@@ -14,6 +15,7 @@ export class FloatingLabelInputComponent {
   @Input() required: boolean = false;
   @Input() autocomplete: string = 'off';
   @Input() type: string = 'text';
+  @Input() isReadonly: boolean = false;
   @Input({ required: true }) value: string;
   @Output() inputChange = new EventEmitter<string>();
 

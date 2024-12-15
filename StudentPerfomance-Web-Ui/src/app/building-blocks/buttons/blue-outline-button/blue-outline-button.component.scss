@@ -1,0 +1,33 @@
+.button-container {
+  display: inline-block;
+  padding: 0.4rem;
+  border-radius: 0.5rem;
+  outline: none;
+  background-color: transparent;
+  text-align: center;
+  border: solid 1px #1a88ff;
+  color: #0074F2;
+  transition: all 1s ease;
+  cursor: pointer;
+  user-select: none;
+  font-size: 1rem !important;
+  font-weight: bold;
+}
+
+.button-container:hover {
+  color: #0056b3;
+}
+
+.button-container:hover .button-label {
+  text-decoration: underline;
+}
+
+.button-container:active .button-label {
+  transform: scale(0.96);
+}
+
+.button-label {
+  padding: 0.20rem;
+  font-weight: bold;
+  cursor: pointer;
+}
