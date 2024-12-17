@@ -8,8 +8,6 @@ import { EducationPlanDeletionNotification } from './educaiton-plan-deletion-not
 
 type HandlerDependencies = {
   service: UserOperationNotificationService;
-  success: EventEmitter<void>;
-  failure: EventEmitter<void>;
   refresh: EventEmitter<void>;
   visibility: EventEmitter<boolean>;
 };
@@ -17,12 +15,10 @@ type HandlerDependencies = {
 const createHandler =
   (dependencies: HandlerDependencies) =>
   (parameter: EducationPlan): void => {
-    const message = new EducationPlanDeletionNotification().buildMessage(
-      parameter
-    );
-    dependencies.service.SetMessage = message;
-    dependencies.success.emit();
     dependencies.refresh.emit();
+    dependencies.service.SetMessage =
+      new EducationPlanDeletionNotification().buildMessage(parameter);
+    dependencies.service.success();
     dependencies.visibility.emit(false);
   };
 
@@ -30,22 +26,18 @@ const createErrorHandler =
   (dependencies: HandlerDependencies) =>
   (error: HttpErrorResponse): Observable<never> => {
     dependencies.service.SetMessage = error.error;
-    dependencies.failure.emit();
+    dependencies.service.failure();
     dependencies.visibility.emit(false);
     return new Observable();
   };
 
 export const EducationPlanDeletionHandler = (
   service: UserOperationNotificationService,
-  success: EventEmitter<void>,
-  failure: EventEmitter<void>,
   refresh: EventEmitter<void>,
-  visibility: EventEmitter<boolean>
+  visibility: EventEmitter<boolean>,
 ): IOperationHandler<EducationPlan> => {
   const dependencies: HandlerDependencies = {
     service: service,
-    success: success,
-    failure: failure,
     refresh: refresh,
     visibility: visibility,
   };

@@ -1,6 +1,7 @@
 .button-container {
   display: inline-block;
-  padding: 0.4rem;
+  padding: 0.2rem;
+  font-size: 0.9rem !important;
   border-radius: 0.5rem;
   outline: none;
   background-color: #0074F2;
@@ -10,7 +11,6 @@
   transition: all 1s ease;
   cursor: pointer;
   user-select: none;
-  font-size: 1rem !important;
   font-weight: bold;
 }
 

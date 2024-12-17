@@ -19,7 +19,7 @@ export class StudentGroupsFacadeService {
     private readonly _fetchService: StudentGroupsFetchDataService,
     private readonly _mergeService: StudentGroupsMergeDataService,
     private readonly _paginationService: StudentGroupsPaginationService,
-    private readonly _updateService: StudentGroupsUpdateDataService
+    private readonly _updateService: StudentGroupsUpdateDataService,
   ) {}
 
   public create(group: StudentGroup): Observable<StudentGroup> {
@@ -30,9 +30,9 @@ export class StudentGroupsFacadeService {
     return this._deleteService.delete(group);
   }
 
-  public fetchData(): void {
+  public fetchData(): Observable<StudentGroup[]> {
     this._fetchService.addPages(this.currentPage, this.pageSize);
-    this._fetchService.fetch();
+    return this._fetchService.fetch();
   }
 
   public setPolicy(policy: IFetchPolicy<StudentGroup[]>): void {
@@ -45,14 +45,14 @@ export class StudentGroupsFacadeService {
 
   public merge(
     groupA: StudentGroup,
-    groupB: StudentGroup
+    groupB: StudentGroup,
   ): Observable<StudentGroup> {
     return this._mergeService.merge(groupA, groupB);
   }
 
   public update(
     initial: StudentGroup,
-    newGroup: StudentGroup
+    newGroup: StudentGroup,
   ): Observable<StudentGroup> {
     return this._updateService.update(initial, newGroup);
   }
@@ -75,14 +75,6 @@ export class StudentGroupsFacadeService {
   public moveInitialPage(): void {
     this._paginationService.moveInitialPage();
     this.fetchData();
-  }
-
-  public get groups(): StudentGroup[] {
-    return this._fetchService.groups;
-  }
-
-  public get count(): number {
-    return this._paginationService.totalCount;
   }
 
   public get currentPage(): number {

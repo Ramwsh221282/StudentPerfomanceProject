@@ -2,6 +2,8 @@
   <div class="item" *ngFor="let item of items" (click)="itemSelected.emit(item); visibilityChanged.emit(false)">
     {{ item }}
   </div>
+</div>
+<div style="padding: 0.5rem 0">
   <app-red-outline-button [label]="'Закрыть список'"
                           (onClicked)="visibilityChanged.emit(false)"></app-red-outline-button>
 </div>

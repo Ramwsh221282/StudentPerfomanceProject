@@ -28,4 +28,16 @@ public static class StudentDtoExtensions
             Group = student.AttachedGroup.MapFromDomain(),
             EntityNumber = student.EntityNumber,
         };
+
+    public static StudentDto MapFromDomainWithoutGroup(this Student student) =>
+        new()
+        {
+            Id = student.Id,
+            Name = student.Name.Name,
+            Surname = student.Name.Surname,
+            Patronymic = student.Name.Patronymic,
+            State = student.State.State,
+            Recordbook = student.Recordbook.Recordbook,
+            EntityNumber = student.EntityNumber,
+        };
 }

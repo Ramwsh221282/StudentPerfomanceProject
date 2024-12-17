@@ -12,6 +12,9 @@ public class StudentGroupDto(StudentGroup group)
         group.EducationPlan == null ? null : group.EducationPlan.MapFromDomain();
     public byte? ActiveSemesterNumber { get; init; } =
         group.ActiveGroupSemester == null ? null : group.ActiveGroupSemester.Number.Number;
+
+    public List<StudentDto> Students { get; init; } =
+        group.Students.Select(s => s.MapFromDomainWithoutGroup()).OrderBy(s => s.Surname).ToList();
 }
 
 public static class StudentGroupDtoExtensions

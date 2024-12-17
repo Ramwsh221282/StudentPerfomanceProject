@@ -14,29 +14,25 @@ import { UserOperationNotificationService } from '../../../../../../shared/servi
 })
 export class EducationPlanDeletionModalComponent implements ISubbmittable {
   @Input({ required: true }) plan: EducationPlan;
-  @Output() successEmitter: EventEmitter<void> = new EventEmitter();
-  @Output() failureEmitter: EventEmitter<void> = new EventEmitter();
   @Output() refreshEmiiter: EventEmitter<void> = new EventEmitter();
   @Output() visibility: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   public constructor(
     private readonly _facadeService: FacadeService,
-    private readonly _notificationService: UserOperationNotificationService
+    private readonly _notificationService: UserOperationNotificationService,
   ) {}
 
   public submit(): void {
     const handler = EducationPlanDeletionHandler(
       this._notificationService,
-      this.successEmitter,
-      this.failureEmitter,
       this.refreshEmiiter,
-      this.visibility
+      this.visibility,
     );
     this._facadeService
       .delete(this.plan)
       .pipe(
         tap((response) => handler.handle(response)),
-        catchError((error: HttpErrorResponse) => handler.handleError(error))
+        catchError((error: HttpErrorResponse) => handler.handleError(error)),
       )
       .subscribe();
   }

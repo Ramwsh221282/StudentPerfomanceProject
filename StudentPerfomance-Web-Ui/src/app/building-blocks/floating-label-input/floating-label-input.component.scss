@@ -41,3 +41,10 @@
   left: 0.8rem;
   text-decoration: underline;
 }
+
+.content-margin {
+  display: inline-flex;
+  flex-direction: row;
+  gap: 0.2rem;
+  margin-top: 0.2rem;
+}

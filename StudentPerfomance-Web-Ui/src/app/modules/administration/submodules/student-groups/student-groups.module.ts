@@ -22,6 +22,22 @@ import { StudentCreationModalComponent } from './components/students-menu-modal/
 import { StudentFilterModalComponent } from './components/students-menu-modal/student-filter-modal/student-filter-modal.component';
 import { StudentSwitchGroupModalComponent } from './components/students-menu-modal/student-edit-modal/student-switch-group-modal/student-switch-group-modal.component';
 import { SemesterNumberSelectionModalComponent } from './components/student-group-edit-modal/plan-attachment-modal/semester-number-selection-modal/semester-number-selection-modal.component';
+import { BlueOutlineButtonComponent } from '../../../../building-blocks/buttons/blue-outline-button/blue-outline-button.component';
+import { BlueButtonComponent } from '../../../../building-blocks/buttons/blue-button/blue-button.component';
+import { StudentGroupItemComponent } from './components/student-group-item/student-group-item.component';
+import { RedButtonComponent } from '../../../../building-blocks/buttons/red-button/red-button.component';
+import { StudentGroupMenuComponent } from './components/student-group-menu/student-group-menu.component';
+import { StudentsListComponent } from './components/students-list/students-list.component';
+import { GroupEducationPlanMenuComponent } from './components/group-education-plan-menu/group-education-plan-menu.component';
+import { StudentItemComponent } from './components/students-list/student-item/student-item.component';
+import { YellowButtonComponent } from '../../../../building-blocks/buttons/yellow-button/yellow-button.component';
+import { CreateStudentDropdownComponent } from './components/students-list/create-student-dropdown/create-student-dropdown.component';
+import { EducationDirectionsSelectComponent } from '../education-plans/components/create-education-plan-dropdown/education-directions-select/education-directions-select.component';
+import { FloatingLabelInputComponent } from '../../../../building-blocks/floating-label-input/floating-label-input.component';
+import { GreenOutlineButtonComponent } from '../../../../building-blocks/buttons/green-outline-button/green-outline-button.component';
+import { RedOutlineButtonComponent } from '../../../../building-blocks/buttons/red-outline-button/red-outline-button.component';
+import { StudentStatusDropdownComponent } from './components/students-list/create-student-dropdown/student-status-dropdown/student-status-dropdown.component';
+import { EditStudentDropdownComponent } from './components/students-list/edit-student-dropdown/edit-student-dropdown.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +59,13 @@ import { SemesterNumberSelectionModalComponent } from './components/student-grou
     StudentFilterModalComponent,
     StudentSwitchGroupModalComponent,
     SemesterNumberSelectionModalComponent,
+    StudentGroupItemComponent,
+    StudentGroupMenuComponent,
+    StudentsListComponent,
+    GroupEducationPlanMenuComponent,
+    StudentItemComponent,
+    CreateStudentDropdownComponent,
+    EditStudentDropdownComponent,
   ],
   imports: [
     CommonModule,
@@ -51,6 +74,15 @@ import { SemesterNumberSelectionModalComponent } from './components/student-grou
     FormsModule,
     FailureResultNotificationComponent,
     SuccessResultNotificationComponent,
+    BlueOutlineButtonComponent,
+    BlueButtonComponent,
+    RedButtonComponent,
+    YellowButtonComponent,
+    EducationDirectionsSelectComponent,
+    FloatingLabelInputComponent,
+    GreenOutlineButtonComponent,
+    RedOutlineButtonComponent,
+    StudentStatusDropdownComponent,
   ],
   exports: [StudentGroupsPageComponent],
 })

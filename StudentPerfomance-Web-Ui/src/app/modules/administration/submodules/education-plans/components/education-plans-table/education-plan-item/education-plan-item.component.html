@@ -1,0 +1,26 @@
+<div class="education-plan-item-container">
+  <div
+    [ngClass]="{
+      'education-plan-name-container-selected': currentSelected && plan.id == currentSelected.id,
+      'education-plan-name-container': !currentSelected || plan.id != currentSelected.id
+    }"
+    class="education-plan-name-container"
+    (click)="itemSelectionChanged.emit(plan)">
+    <label>Год: {{ plan.year }}</label>
+    <div class="education-direction-controls-container">
+      <app-red-button [label]="'Удалить'" (onClicked)="itemDeletionRequested.emit(plan)"></app-red-button>
+    </div>
+  </div>
+  <div class="education-plan-attributes-grid">
+    <span class="attribute">Номер:</span>
+    <span class="attribute">{{ plan.entityNumber }}</span>
+    <span class="attribute">Направление:</span>
+    <span class="attribute">{{ plan.direction.name }}</span>
+    <span class="attribute">Код направления:</span>
+    <span class="attribute">{{ plan.direction.code }}</span>
+    <span class="attribute">Тип направления:</span>
+    <span class="attribute">{{ plan.direction.type }}</span>
+    <span class="attribute">Кол-во семестров:</span>
+    <span class="attribute">{{ plan.semesters.length }}</span>
+  </div>
+</div>

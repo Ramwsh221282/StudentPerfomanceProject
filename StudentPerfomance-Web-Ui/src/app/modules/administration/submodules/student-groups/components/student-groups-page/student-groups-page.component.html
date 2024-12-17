@@ -2,6 +2,12 @@
   <a [routerLink]="'/administration'">Администрирование</a>
   <a>Студенческие группы</a>
 </div>
-<section>
-  <app-student-groups-table></app-student-groups-table>
+<section class="content-container">
+  <app-student-groups-table [groups]="groups"
+                            (studentGroupSelected)="selectedGroup = $event"></app-student-groups-table>
+  <app-student-group-menu *ngIf="selectedGroup" [group]="selectedGroup"></app-student-group-menu>
 </section>
+<app-success-result-notification *ngIf="notificationService.isSuccess" [message]="notificationService.Message"
+                                 (visibilityEmitter)="notificationService.reset()"></app-success-result-notification>
+<app-failure-result-notification *ngIf="notificationService.isFailure" [message]="notificationService.Message"
+                                 (visibilityEmitter)="notificationService.reset()"></app-failure-result-notification>

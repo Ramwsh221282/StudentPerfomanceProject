@@ -1,0 +1,18 @@
+<div class="tab-form">
+  <ul class="tab-form-ul">
+    <li class="tab-form-li" *ngFor="let tab of tabs" [ngClass]="{'tab-form-li-active': activeTabId === tab.id }"
+        (click)="activeTabId = tab.id">
+      {{ tab.label }}
+    </li>
+  </ul>
+  <div class="tab-form-content">
+    @switch (activeTabId) {
+      @case (tabs[0].id) {
+        <app-students-list [group]="group"></app-students-list>
+      }
+      @case (tabs[1].id) {
+
+      }
+    }
+  </div>
+</div>

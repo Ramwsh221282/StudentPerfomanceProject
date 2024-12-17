@@ -1,0 +1,31 @@
+<div class="dropdown-content">
+  <app-floating-label-input [value]="surname" [label]="'Фамилия'"
+                            [id]="'Surname'"
+                            (inputChange)="surname = $event">
+  </app-floating-label-input>
+  <app-floating-label-input [value]="name" [label]="'Имя'"
+                            [id]="'Name'"
+                            (inputChange)="name = $event">
+  </app-floating-label-input>
+  <app-floating-label-input [value]="patronymic" [label]="'Отчество (необязательно)'"
+                            [id]="'Patronymic'"
+                            (inputChange)="patronymic = $event">
+  </app-floating-label-input>
+  <app-floating-label-input [value]="recordbook" [label]="'Зачётная книжка'"
+                            [id]="'Recordbook'"
+                            (inputChange)="recordbook = $event">
+  </app-floating-label-input>
+  <div class="dropdown-container">
+    <app-floating-label-input [value]="state" [label]="'Статус'" [isReadonly]="true"
+                              [id]="'DirectionInput'" (inputChange)="state = $event" (click)="isSelectingStatus = true">
+    </app-floating-label-input>
+    <app-student-status-dropdown *ngIf="isSelectingStatus" [visibility]="isSelectingStatus"
+                                 (visibilityChange)="isSelectingStatus = $event"
+                                 (statusSelected)="state = $event">
+    </app-student-status-dropdown>
+  </div>
+  <div class="dropdown-controls">
+    <app-green-outline-button [label]="'Добавить'" (onClicked)="submit()"></app-green-outline-button>
+    <app-red-outline-button [label]="'Закрыть окно'" (onClicked)="closeDropdown()"></app-red-outline-button>
+  </div>
+</div>

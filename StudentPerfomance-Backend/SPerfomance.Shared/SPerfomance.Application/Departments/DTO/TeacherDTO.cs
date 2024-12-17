@@ -11,7 +11,6 @@ public class TeacherDto
     public string? JobTitle { get; set; }
     public string? State { get; set; }
     public int? EntityNumber { get; set; }
-    public TeachersDepartmentDto? Department { get; set; }
 }
 
 public static class TeacherDtoExtensions
@@ -25,7 +24,6 @@ public static class TeacherDtoExtensions
             Patronymic = teacher.Name.Patronymic,
             JobTitle = teacher.JobTitle.JobTitle,
             State = teacher.State.State,
-            Department = teacher.Department.MapFromDomain(),
             EntityNumber = teacher.EntityNumber,
         };
 }

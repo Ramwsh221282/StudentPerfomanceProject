@@ -40,7 +40,7 @@ export class EducationDirectionsTableComponent implements OnInit {
       .subscribe();
   }
 
-  protected startFilter(): void {
-    this.filterModalVisibility = true;
+  protected test(direction: EducationDirection) {
+    console.log(direction);
   }
 }

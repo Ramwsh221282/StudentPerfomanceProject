@@ -1,0 +1,34 @@
+<div id="container">
+  <div id="header">
+    <strong>Закрепление преподавателя</strong>
+  </div>
+  <div id="content">
+    <div class="dropdown-container">
+      <app-floating-label-input [value]="departmentData" [label]="'Выберите кафедру'" [isReadonly]="true"
+                                [id]="'DepartmentSelect'" (inputChange)="departmentData = $event"
+                                (click)="isSelectingDepartment = true">
+      </app-floating-label-input>
+
+      <app-attach-teacher-select *ngIf="isSelectingDepartment"
+                                 [departmentNames]="getDepartmentNames()"
+                                 (selectedDepartmentName)="onDepartmentNameSelected($event)"
+                                 (visibilityChanged)="isSelectingDepartment = false"></app-attach-teacher-select>
+
+    </div>
+    <div class="dropdown-container">
+      <app-floating-label-input *ngIf="teachersOfSelectedDepartment.length > 0" [value]="teacherData"
+                                [label]="'Выберите преподавателя'" [isReadonly]="true"
+                                [id]="'TeacherSelect'" (inputChange)="teacherData = $event"
+                                (click)="isSelectingTeacher = true"></app-floating-label-input>
+      <app-attach-teacher-select-teachers *ngIf="isSelectingTeacher" [teacherNames]="getTeacherNames()"
+                                          (selectedTeacherName)="onTeacherNameSelected($event)"
+                                          (visibilityChanged)="isSelectingTeacher = false"></app-attach-teacher-select-teachers>
+    </div>
+  </div>
+  <div id="controls">
+    <app-green-outline-button *ngIf="selectedTeacher"
+                              (onClicked)="selectedTeacherForAttachment.emit(selectedTeacher!); visibilityChanged.emit()"
+                              [label]="'Закрепить преподавателя'"></app-green-outline-button>
+    <app-red-outline-button [label]="'Закрыть диалог'" (onClicked)="visibilityChanged.emit()"></app-red-outline-button>
+  </div>
+</div>

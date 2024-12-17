@@ -8,6 +8,7 @@ public class TeachersDepartmentDto
     public string? Name { get; set; }
     public string? Acronymus { get; set; }
     public int? EntityNumber { get; set; }
+    public List<TeacherDto> Teachers { get; set; } = [];
 }
 
 public static class TeachersDepartmentDtoExtensions
@@ -19,5 +20,6 @@ public static class TeachersDepartmentDtoExtensions
             Name = department.Name.Name,
             Acronymus = department.Acronymus,
             EntityNumber = department.EntityNumber,
+            Teachers = department.Teachers.Select(t => t.MapFromDomain()).ToList(),
         };
 }

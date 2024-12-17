@@ -9,6 +9,7 @@ public class EducationPlanDto
     public EducationDirectionDto? Direction { get; set; }
     public int? Year { get; set; }
     public int? EntityNumber { get; set; }
+    public List<SemesterDto> Semesters { get; set; } = [];
 }
 
 public static class EducationPlanDtoExtensions
@@ -20,5 +21,9 @@ public static class EducationPlanDtoExtensions
             Direction = plan.Direction.MapFromDomain(),
             Year = plan.Year.Year,
             EntityNumber = plan.EntityNumber,
+            Semesters = plan
+                .Semesters.Select(s => s.MapFromDomain())
+                .OrderBy(s => s.Number)
+                .ToList(),
         };
 }

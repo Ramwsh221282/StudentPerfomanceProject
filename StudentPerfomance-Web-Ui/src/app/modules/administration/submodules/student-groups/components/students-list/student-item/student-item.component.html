@@ -1,0 +1,19 @@
+<div class="student-item-container">
+  <div
+    [ngClass]="{'student-name-container-inactive': student.state == 'Неактивен', 'student-name-container': student.state == 'Активен'}">
+    <label>{{ student.recordbook }}</label>
+    <label>{{ student.state }}</label>
+    <div class="student-controls-container">
+      <app-yellow-button [label]="'Редактировать'" (onClicked)="editingStudent.emit(student)"></app-yellow-button>
+      <app-red-button [label]="'Удалить'"></app-red-button>
+    </div>
+  </div>
+  <div class="student-attributes-grid">
+    <span class="attribute">Фамилия:</span>
+    <span class="attribute">{{ student.surname }}</span>
+    <span class="attribute">Имя:</span>
+    <span class="attribute">{{ student.name }}</span>
+    <span class="attribute">Отчество:</span>
+    <span class="attribute">{{ student.patronymic == null ? '-' : student.patronymic }}</span>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+<div class="semester-button-wrapper" (click)="semesterSelectionChanged.emit(semester)">
+  <button
+    [ngClass]="{'semester-button': !selectedSemester || semester.id != selectedSemester.id, 'semester-button-selected': selectedSemester && semester.id == selectedSemester.id}"
+    class="semester-button">{{ semester.number }}
+  </button>
+  <label class="semester-label">Семестр {{ semester.disciplines.length }} дисциплин</label>
+</div>

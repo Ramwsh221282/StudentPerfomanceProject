@@ -79,6 +79,7 @@ public class EducationPlansRepository : IEducationPlansRepository
             .Include(p => p.Semesters)
             .ThenInclude(s => s.Disciplines)
             .ThenInclude(c => c.Teacher)
+            .ThenInclude(t => t!.Department)
             .AsNoTracking()
             .AsSplitQuery()
             .ToListAsync(cancellationToken: ct);
@@ -133,6 +134,7 @@ public class EducationPlansRepository : IEducationPlansRepository
             .Include(p => p.Semesters)
             .ThenInclude(s => s.Disciplines)
             .ThenInclude(c => c.Teacher)
+            .ThenInclude(t => t!.Department)
             .Where(p =>
                 !string.IsNullOrWhiteSpace(directionName)
                     && p.Direction.Name.Name.Contains(directionName)
@@ -154,27 +156,28 @@ public class EducationPlansRepository : IEducationPlansRepository
         int page,
         int pageSize,
         CancellationToken ct = default
-    ) =>
-        await _context
-            .EducationPlans.Include(p => p.Direction)
+    )
+    {
+        var plansQuery = _context.EducationPlans.AsQueryable();
+        if (year != null && year.Value != 0)
+            plansQuery = plansQuery.Where(p => p.Year.Year == year.Value);
+        if (!string.IsNullOrWhiteSpace(directionName))
+            plansQuery = plansQuery.Where(p => p.Direction.Name.Name == directionName);
+        if (!string.IsNullOrWhiteSpace(directionCode))
+            plansQuery = plansQuery.Where(p => p.Direction.Code.Code == directionCode);
+        if (!string.IsNullOrWhiteSpace(directionType))
+            plansQuery = plansQuery.Where(p => p.Direction.Type.Type == directionType);
+        plansQuery = plansQuery.OrderBy(p => p.EntityNumber);
+        plansQuery = plansQuery.Skip((page - 1) * pageSize);
+        plansQuery = plansQuery.Take(pageSize);
+        plansQuery = plansQuery
+            .Include(p => p.Direction)
             .Include(p => p.Semesters)
             .ThenInclude(s => s.Disciplines)
-            .ThenInclude(c => c.Teacher)
-            .OrderBy(p => p.EntityNumber)
-            .Where(p =>
-                !string.IsNullOrWhiteSpace(directionName)
-                    && p.Direction.Name.Name.Contains(directionName)
-                || !string.IsNullOrWhiteSpace(directionCode)
-                    && p.Direction.Code.Code.Contains(directionCode)
-                || !string.IsNullOrWhiteSpace(directionType)
-                    && p.Direction.Type.Type.Contains(directionType)
-                || year == p.Year.Year
-            )
-            .Skip((page - 1) * pageSize)
-            .Take(pageSize)
-            .AsNoTracking()
-            .AsSplitQuery()
-            .ToListAsync(cancellationToken: ct);
+            .ThenInclude(d => d.Teacher)
+            .ThenInclude(t => t!.Department);
+        return await plansQuery.AsNoTracking().AsSplitQuery().ToListAsync(ct);
+    }
 
     public async Task<IReadOnlyCollection<EducationPlan>> GetPaged(
         int page,
@@ -186,6 +189,7 @@ public class EducationPlansRepository : IEducationPlansRepository
             .Include(p => p.Semesters)
             .ThenInclude(s => s.Disciplines)
             .ThenInclude(c => c.Teacher)
+            .ThenInclude(t => t!.Department)
             .OrderBy(p => p.EntityNumber)
             .Skip((page - 1) * pageSize)
             .Take(pageSize)

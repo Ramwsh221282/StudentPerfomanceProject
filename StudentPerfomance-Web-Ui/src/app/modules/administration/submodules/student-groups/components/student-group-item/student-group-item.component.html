@@ -1,0 +1,19 @@
+<div class="student-group-item-container">
+  <div
+    [ngClass]="{'student-group-name-container': !isCurrentlySelected, 'student-group-name-container-selected': isCurrentlySelected}"
+    (click)="selected.emit(group)">
+    <label>{{ group.name }}</label>
+    <label *ngIf="group.plan != null">{{ group.plan.direction.type }}</label>
+    <div class="student-group-controls-container">
+      <app-red-button [label]="'Удалить'"></app-red-button>
+    </div>
+  </div>
+  <div class="student-group-attributes-grid">
+    <span class="attribute">Номер:</span>
+    <span class="attribute">{{ group.entityNumber }}</span>
+    <span class="attribute">Учебный план:</span>
+    <span class="attribute">{{ group.plan.year }} {{ group.plan.direction.code }}</span>
+    <span class="attribute">Текущий семестр:</span>
+    <span class="attribute">{{ group.activeSemesterNumber }}</span>
+  </div>
+</div>

@@ -6,6 +6,7 @@ import { IFetchPolicy } from '../../../../../shared/models/fetch-policices/fetch
 import { DefaultFetchPolicy } from '../models/fetch-policies/default-fetch-policy';
 import { AuthService } from '../../../../users/services/auth.service';
 import { AppConfigService } from '../../../../../app.config.service';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'any',
@@ -15,14 +16,12 @@ export class StudentGroupsFetchDataService
   implements IFetchable<StudentGroup[]>
 {
   private _currentPolicy: IFetchPolicy<StudentGroup[]>;
-  private _groups: StudentGroup[];
 
   public constructor(
     private readonly _authService: AuthService,
     private readonly _appConfig: AppConfigService,
   ) {
     super();
-    this._groups = [];
     this._currentPolicy = new DefaultFetchPolicy(
       this._authService,
       this._appConfig,
@@ -33,19 +32,11 @@ export class StudentGroupsFetchDataService
     this._currentPolicy = policy;
   }
 
-  public fetch(): void {
-    this._currentPolicy
-      .executeFetchPolicy(this.httpClient)
-      .subscribe((response) => {
-        this._groups = response;
-      });
+  public fetch(): Observable<StudentGroup[]> {
+    return this._currentPolicy.executeFetchPolicy(this.httpClient);
   }
 
   public addPages(page: number, pageSize: number): void {
     this._currentPolicy.addPages(page, pageSize);
-  }
-
-  public get groups(): StudentGroup[] {
-    return this._groups;
   }
 }

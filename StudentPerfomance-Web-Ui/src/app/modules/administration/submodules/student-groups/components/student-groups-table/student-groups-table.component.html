@@ -1,60 +1,13 @@
 <div class="student-groups-table-wrapper">
   <div class="student-groups-controls-container">
-    <button class="accept-button" (click)="openCreationModal()">
-      Добавить студенческую группу
-    </button>
-    <button class="accept-button" (click)="openFilterModal()">
-      Отфильтровать список
-    </button>
-    <button class="accept-button-outline" [routerLink]="['/groups-info']">
-      Документация
-    </button>
+    <app-blue-button [label]="'Добавить'"></app-blue-button>
+    <app-blue-button [label]="'Фильтр'"></app-blue-button>
+    <app-blue-outline-button [label]="'Документация'" [routerLink]="['/groups-info']"></app-blue-outline-button>
   </div>
-  <div class="student-groups-table-container">
-    <div class="student-groups-table-grid">
-      <div class="student-groups-table-header">
-        <strong>Номер</strong>
-        <strong>Название группы</strong>
-        <strong>Название направления</strong>
-        <strong>Код направления</strong>
-        <strong>Тип направления</strong>
-        <strong>Учебный план (год)</strong>
-        <strong>Действия</strong>
-      </div>
-      @for (group of facadeService.groups; track group.name) {
-        <app-table-row
-          [group]="group"
-          (success)="isSuccess = true"
-          (failure)="isFailure = true"
-          (refreshEmitter)="this.facadeService.refreshPagination(); this.facadeService.fetchData()"
-        ></app-table-row>
-      }
-    </div>
-  </div>
-  <div class="pagination-wrapper">
-    <app-table-pagination></app-table-pagination>
-  </div>
-</div>
-<div id="creation-modal-renderer" *ngIf="creationModalVisibility">
-  <app-student-group-create-modal
-    (visibility)="closeCreationModal($event)"
-    (successEmitter)="isSuccess = true"
-    (failureEmitter)="isFailure = true"
-    (refreshRequested)="facadeService.refreshPagination(); facadeService.fetchData()"
-  ></app-student-group-create-modal>
-</div>
-<div id="filter-modal-renderer" *ngIf="filterModalVisibility">
-  <app-student-group-filter-modal (visibility)="filterModalVisibility = false"></app-student-group-filter-modal>
-</div>
-<div id="success-modal-renderer" *ngIf="isSuccess">
-  <app-success-result-notification
-    [message]="notificationService.Message"
-    (visibilityEmitter)="isSuccess = $event"
-  ></app-success-result-notification>
-</div>
-<div id="failure-modal-renderer" *ngIf="isFailure">
-  <app-failure-result-notification
-    [message]="notificationService.Message"
-    (visibilityEmitter)="isFailure = $event"
-  ></app-failure-result-notification>
+  @for (group of groups; track group.name) {
+    <app-student-group-item [isCurrentlySelected]="handleGroupSelection(group)"
+                            (selected)="currentlySelectedGroup = $event; studentGroupSelected.emit($event)"
+                            [group]="group"></app-student-group-item>
+  }
+  <app-table-pagination></app-table-pagination>
 </div>

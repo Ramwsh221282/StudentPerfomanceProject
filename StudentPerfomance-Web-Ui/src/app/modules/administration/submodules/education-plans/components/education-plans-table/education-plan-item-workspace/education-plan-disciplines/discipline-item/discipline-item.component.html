@@ -1,0 +1,21 @@
+<div class="discipline-item-container">
+  <app-floating-label-input [value]="discipline.disciplineName" [id]="'Discipline'"
+                            [isReadonly]="true" [label]="buildTeacherInfo()">
+
+    <app-yellow-button [label]="'Изменить название'" (onClicked)="disciplineNameUpdateRequested.emit(discipline)">
+    </app-yellow-button>
+
+    <app-red-button *ngIf="discipline.teacher" [label]="'Открепить преподавателя'"
+                    (onClicked)="teacherDeattachmentRequested.emit(discipline)">
+    </app-red-button>
+
+    <app-blue-button *ngIf="!discipline.teacher" [label]="'Закрепить преподавателя'"
+                     (onClicked)="teacherAttachmentRequested.emit(discipline)">
+    </app-blue-button>
+
+    <app-red-button [label]="'Удалить дисциплину'"
+                    (onClicked)="disciplineDeletionRequested.emit(discipline)">
+    </app-red-button>
+
+  </app-floating-label-input>
+</div>

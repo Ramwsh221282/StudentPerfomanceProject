@@ -9,45 +9,16 @@
 }
 
 .education-direction-controls-container {
-  padding: 10px;
+  padding: 5px;
   color: #ffffff;
-  border-radius: 10px 10px 0px 0px;
   height: 45px;
   font-size: 24px;
   display: flex;
   gap: 10px;
 }
 
-.education-direction-table-container {
-  padding: 50px;
-}
-
-.education-direction-table-grid {
-  align-items: center;
-  justify-content: center;
-  display: grid;
-  grid-template-columns: auto;
-  grid-gap: 10px 10px;
-  font-size: 14px;
-  font-weight: 600px;
-  width: 100%;
-}
-
-.education-direction-table-header {
-  display: grid;
-  grid-template-columns: 100px 450px 200px 150px auto;
-  grid-gap: 30px;
-  text-align: center;
-}
-
-.pagination-wrapper {
-  position: inherit;
-  bottom: 0;
-  align-self: center;
-}
-
 .items-container {
   display: grid;
   grid-template-columns: auto auto;
-  grid-gap: 10px;
+  grid-gap: 0.2rem;
 }

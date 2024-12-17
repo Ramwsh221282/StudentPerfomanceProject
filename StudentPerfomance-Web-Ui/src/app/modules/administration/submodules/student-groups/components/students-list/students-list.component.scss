@@ -1,0 +1,9 @@
+.students-list-container {
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 0.2em;
+  max-height: 725px;
+  overflow: auto;
+}

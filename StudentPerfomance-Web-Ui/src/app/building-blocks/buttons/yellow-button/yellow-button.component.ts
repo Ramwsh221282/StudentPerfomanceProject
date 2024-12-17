@@ -11,7 +11,8 @@ export class YellowButtonComponent {
   @Input() label: string = '';
   @Output() onClicked = new EventEmitter<void>();
 
-  public onClick(): void {
+  public onClick($event: Event): void {
+    $event.stopPropagation();
     this.onClicked.emit();
   }
 }

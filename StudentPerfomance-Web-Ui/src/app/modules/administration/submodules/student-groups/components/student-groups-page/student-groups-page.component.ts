@@ -7,6 +7,7 @@ import { StudentGroupsPaginationService } from '../../services/student-groups-pa
 import { StudentGroupsUpdateDataService } from '../../services/student-groups-update-data.service';
 import { StudentGroupsFacadeService } from '../../services/student-groups-facade.service';
 import { UserOperationNotificationService } from '../../../../../../shared/services/user-notifications/user-operation-notification-service.service';
+import { StudentGroup } from '../../services/studentsGroup.interface';
 
 @Component({
   selector: 'app-student-groups-page',
@@ -23,4 +24,18 @@ import { UserOperationNotificationService } from '../../../../../../shared/servi
     UserOperationNotificationService,
   ],
 })
-export class StudentGroupsPageComponent {}
+export class StudentGroupsPageComponent implements OnInit {
+  protected groups: StudentGroup[] = [];
+  protected selectedGroup: StudentGroup | null;
+
+  public constructor(
+    protected readonly facadeService: StudentGroupsFacadeService,
+    protected readonly notificationService: UserOperationNotificationService,
+  ) {}
+
+  public ngOnInit(): void {
+    this.facadeService.fetchData().subscribe((response) => {
+      this.groups = response;
+    });
+  }
+}

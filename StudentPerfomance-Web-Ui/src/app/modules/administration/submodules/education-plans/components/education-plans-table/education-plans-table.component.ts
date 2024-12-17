@@ -12,18 +12,15 @@ import { UserOperationNotificationService } from '../../../../../../shared/servi
 export class EducationPlansTableComponent implements OnInit {
   protected creationModalVisibility = false;
   protected filterModalVisibility = false;
-  protected isSuccess: boolean;
-  protected isFailure: boolean;
-
   protected plans: EducationPlan[];
+  protected selectedPlan: EducationPlan | null = null;
+  protected selectedPlanForDeletion: EducationPlan | null = null;
 
   public constructor(
     protected readonly facadeService: FacadeService,
-    protected readonly notificationService: UserOperationNotificationService
+    protected readonly notificationService: UserOperationNotificationService,
   ) {
     this.plans = [];
-    this.isSuccess = false;
-    this.isFailure = false;
   }
 
   public ngOnInit(): void {
@@ -34,10 +31,8 @@ export class EducationPlansTableComponent implements OnInit {
           this.plans = response;
         }),
         catchError((error) => {
-          this.notificationService.SetMessage = error;
-          this.isFailure = true;
           return new Observable();
-        })
+        }),
       )
       .subscribe();
   }
