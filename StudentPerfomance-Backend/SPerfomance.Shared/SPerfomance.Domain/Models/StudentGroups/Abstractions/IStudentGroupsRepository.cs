@@ -14,6 +14,8 @@ public interface IStudentGroupsRepository
 
     public Task SetNextSemester(StudentGroup group, CancellationToken ct = default);
 
+    public Task<StudentGroup?> GetById(Guid id, CancellationToken ct = default);
+
     public Task UpdateMerge(
         StudentGroup target,
         StudentGroup merged,

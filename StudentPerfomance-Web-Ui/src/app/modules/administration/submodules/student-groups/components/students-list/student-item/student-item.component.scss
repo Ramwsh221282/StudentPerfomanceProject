@@ -64,7 +64,11 @@
   padding: 2px 0;
   border-top: solid 2px black;
   display: inline-flex;
+  flex-direction: column;
   gap: 5px;
 }
 
-
+.controls-group {
+  display: inline-flex;
+  gap: 0.5rem;
+}

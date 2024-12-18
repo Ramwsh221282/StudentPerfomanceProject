@@ -4,10 +4,15 @@
 </div>
 <section class="content-container">
   <app-student-groups-table [groups]="groups"
-                            (studentGroupSelected)="selectedGroup = $event"></app-student-groups-table>
-  <app-student-group-menu *ngIf="selectedGroup" [group]="selectedGroup"></app-student-group-menu>
+                            (studentGroupSelected)="selectedGroup = $event">
+  </app-student-groups-table>
+  <app-student-group-menu *ngIf="selectedGroup" (moveStudentToOtherGroup)="handleStudentGroupSwitch($event)"
+                          [group]="selectedGroup">
+  </app-student-group-menu>
 </section>
 <app-success-result-notification *ngIf="notificationService.isSuccess" [message]="notificationService.Message"
-                                 (visibilityEmitter)="notificationService.reset()"></app-success-result-notification>
+                                 (visibilityEmitter)="notificationService.reset()">
+</app-success-result-notification>
 <app-failure-result-notification *ngIf="notificationService.isFailure" [message]="notificationService.Message"
-                                 (visibilityEmitter)="notificationService.reset()"></app-failure-result-notification>
+                                 (visibilityEmitter)="notificationService.reset()">
+</app-failure-result-notification>

@@ -1,5 +1,6 @@
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
+using SPerfomance.Domain.Models.StudentGroups;
 using SPerfomance.Domain.Models.Students;
 using SPerfomance.Domain.Models.Students.Abstractions;
 using SPerfomance.Domain.Tools;
@@ -77,6 +78,23 @@ public class StudentsRepository : IStudentsRepository
             new SqliteParameter("@State", entity.State.State),
             new SqliteParameter("@Recordbook", entity.Recordbook.Recordbook),
             new SqliteParameter("@GroupId", entity.AttachedGroup.Id),
+        ];
+        await _context.Database.ExecuteSqlRawAsync(sql, parameters, ct);
+    }
+
+    public async Task ChangeStudentGroupId(
+        Student student,
+        StudentGroup group,
+        CancellationToken ct = default
+    )
+    {
+        const string sql = """
+            UPDATE Students SET AttachedGroupId = @AttachedGroupId WHERE Id = @StudentId   
+            """;
+        SqliteParameter[] parameters =
+        [
+            new SqliteParameter("@StudentId", student.Id),
+            new SqliteParameter("@AttachedGroupId", group.Id),
         ];
         await _context.Database.ExecuteSqlRawAsync(sql, parameters, ct);
     }

@@ -4,8 +4,14 @@
     <label>{{ student.recordbook }}</label>
     <label>{{ student.state }}</label>
     <div class="student-controls-container">
-      <app-yellow-button [label]="'Редактировать'" (onClicked)="editingStudent.emit(student)"></app-yellow-button>
-      <app-red-button [label]="'Удалить'"></app-red-button>
+      <div class="controls-group">
+        <app-yellow-button [label]="'Редактировать'" (onClicked)="editingStudent.emit(student)"></app-yellow-button>
+        <app-red-button [label]="'Удалить'" (onClicked)="removingStudent.emit(student)"></app-red-button>
+      </div>
+      <div class="controls-group">
+        <app-blue-button [label]="'Перевод в другую группу'"
+                         (onClicked)="movingStudentToOtherGroup.emit(student)"></app-blue-button>
+      </div>
     </div>
   </div>
   <div class="student-attributes-grid">

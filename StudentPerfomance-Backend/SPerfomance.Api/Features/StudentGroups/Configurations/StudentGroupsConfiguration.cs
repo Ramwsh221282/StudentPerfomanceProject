@@ -5,6 +5,7 @@ using SPerfomance.Application.StudentGroups.Commands.ChangeGroupName;
 using SPerfomance.Application.StudentGroups.Commands.CreateStudentGroup;
 using SPerfomance.Application.StudentGroups.Commands.DeattachEducationPlan;
 using SPerfomance.Application.StudentGroups.Commands.MergeWithGroup;
+using SPerfomance.Application.StudentGroups.Commands.MoveStudentToOtherGroup;
 using SPerfomance.Application.StudentGroups.Commands.RemoveStudent;
 using SPerfomance.Application.StudentGroups.Commands.RemoveStudentGroup;
 using SPerfomance.Application.StudentGroups.Commands.UpdateStudent;
@@ -69,6 +70,10 @@ public static class StudentGroupsConfiguration
             .AddTransient<
                 ICommandHandler<UpdateStudentCommand, Student>,
                 UpdateStudentCommandHandler
+            >()
+            .AddTransient<
+                ICommandHandler<MoveStudentToOtherGroupCommand, Student>,
+                MoveStudentToOtherGroupCommandHandler
             >();
         return services;
     }

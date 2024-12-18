@@ -7,4 +7,5 @@ export interface Student {
   recordbook: number;
   state: string;
   group: StudentGroup;
+  id: string;
 }

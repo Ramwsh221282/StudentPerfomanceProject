@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { StudentGroup } from '../../services/studentsGroup.interface';
 import { Student } from '../../../students/models/student.interface';
 import { StudentCreationService } from '../students-menu-modal/student-creation-modal/student-creation.service';
@@ -13,10 +13,22 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class StudentsListComponent {
   @Input({ required: true }) group: StudentGroup;
+  @Output() studentMovedToOtherGroup: EventEmitter<Student> =
+    new EventEmitter();
   protected createVisibility: boolean = false;
 
+  // for student attributes editing
   protected isEditing: boolean = false;
   protected studentToEdit: Student | null;
+
+  // for changing group of student
+  protected isMoveToOtherGroup: boolean = false;
+  protected studentToMoveInOtherGroup: Student | null;
+  protected studentThatMovedInOtherGroup: Student | null;
+
+  // for removing student from his group
+  protected isRemovingStudent: boolean = false;
+  protected studentToRemove: Student | null;
 
   public constructor(
     private readonly _notificationService: UserOperationNotificationService,
@@ -41,6 +53,38 @@ export class StudentsListComponent {
         }),
       )
       .subscribe();
+  }
+
+  protected handleStudentGroupSwitch(group: StudentGroup): void {
+    if (!this.studentThatMovedInOtherGroup) {
+      this._notificationService.SetMessage =
+        'Не выбран студент для перевода в другую группу или не выбрана группа';
+      this._notificationService.failure();
+      return;
+    }
+    this.studentThatMovedInOtherGroup.group = { ...group };
+    this.studentMovedToOtherGroup.emit(this.studentThatMovedInOtherGroup);
+    this.studentThatMovedInOtherGroup = null;
+    this.studentToMoveInOtherGroup = null;
+  }
+
+  protected handleStudentDeletion(student: Student): void {
+    const index = this.findStudentIndexInGroup(student);
+    if (index == -1) {
+      this._notificationService.SetMessage = 'Студент не найден';
+      this._notificationService.failure();
+      return;
+    }
+    this.group.students.splice(index, 1);
+    this.isRemovingStudent = false;
+    this.studentToRemove = null;
+  }
+
+  private findStudentIndexInGroup(student: Student): number {
+    for (let i = 0; i < this.group.students.length; i++) {
+      if (this.group.students[i].id == student.id) return i;
+    }
+    return -1;
   }
 
   private addStudentInGroup(student: Student): Student {

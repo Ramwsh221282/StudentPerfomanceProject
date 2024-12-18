@@ -1,0 +1,30 @@
+<div class="dropdown-content">
+  <app-floating-label-input [value]="student.surname" [label]="'Фамилия'"
+                            [id]="'Surname'" [isReadonly]="true">
+  </app-floating-label-input>
+  <app-floating-label-input [value]="student.name" [label]="'Имя'"
+                            [id]="'Name'" [isReadonly]="true">
+  </app-floating-label-input>
+  <app-floating-label-input [value]="student.patronymic" [label]="'Отчество (необязательно)'"
+                            [id]="'Patronymic'" [isReadonly]="true">
+  </app-floating-label-input>
+  <app-floating-label-input [value]="String(student.recordbook)" [label]="'Зачётная книжка'"
+                            [id]="'Recordbook'" [isReadonly]="true">
+  </app-floating-label-input>
+  <app-floating-label-input [value]="currentStudentGroup.name" [label]="'Текущая группа'"
+                            [id]="'CurrentGroup'" [isReadonly]="true">
+  </app-floating-label-input>
+  <div class="dropdown-container">
+    <app-floating-label-input [value]="chooseOtherGroupLabel" [label]="'Другая группа'" [isReadonly]="true"
+                              [id]="'OtherGroupInput'" (inputChange)="chooseOtherGroupLabel = $event"
+                              (click)="isSelectingNewGroup = true">
+    </app-floating-label-input>
+    <app-dropdown-list *ngIf="isSelectingNewGroup" [items]="groupNames"
+                       (visibilityChanged)="isSelectingNewGroup = false" (itemSelected)="handleGroupSelection($event)">
+    </app-dropdown-list>
+  </div>
+  <div class="dropdown-controls">
+    <app-green-outline-button [label]="'Перевести'" (onClicked)="submit()"></app-green-outline-button>
+    <app-red-outline-button [label]="'Закрыть окно'" (onClicked)="closeDropdown()"></app-red-outline-button>
+  </div>
+</div>

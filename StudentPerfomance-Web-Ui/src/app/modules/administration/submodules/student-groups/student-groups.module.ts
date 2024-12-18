@@ -38,6 +38,11 @@ import { GreenOutlineButtonComponent } from '../../../../building-blocks/buttons
 import { RedOutlineButtonComponent } from '../../../../building-blocks/buttons/red-outline-button/red-outline-button.component';
 import { StudentStatusDropdownComponent } from './components/students-list/create-student-dropdown/student-status-dropdown/student-status-dropdown.component';
 import { EditStudentDropdownComponent } from './components/students-list/edit-student-dropdown/edit-student-dropdown.component';
+import { SwitchStudentGroupDropdownComponent } from './components/students-list/switch-student-group-dropdown/switch-student-group-dropdown.component';
+import { DropdownListComponent } from '../../../../building-blocks/dropdown-list/dropdown-list.component';
+import { StudentRemovePopupComponent } from './components/students-list/student-remove-popup/student-remove-popup.component';
+import { GroupEducationPlanInfoComponent } from './components/student-group-menu/group-education-plan-info/group-education-plan-info.component';
+import { ChangeGroupEducationPlanPopupComponent } from './components/student-group-menu/group-education-plan-info/change-group-education-plan-popup/change-group-education-plan-popup.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +71,9 @@ import { EditStudentDropdownComponent } from './components/students-list/edit-st
     StudentItemComponent,
     CreateStudentDropdownComponent,
     EditStudentDropdownComponent,
+    SwitchStudentGroupDropdownComponent,
+    StudentRemovePopupComponent,
+    GroupEducationPlanInfoComponent,
   ],
   imports: [
     CommonModule,
@@ -83,6 +91,8 @@ import { EditStudentDropdownComponent } from './components/students-list/edit-st
     GreenOutlineButtonComponent,
     RedOutlineButtonComponent,
     StudentStatusDropdownComponent,
+    DropdownListComponent,
+    ChangeGroupEducationPlanPopupComponent,
   ],
   exports: [StudentGroupsPageComponent],
 })

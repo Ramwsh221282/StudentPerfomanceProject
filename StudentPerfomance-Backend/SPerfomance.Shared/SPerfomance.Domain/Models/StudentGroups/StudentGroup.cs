@@ -197,6 +197,22 @@ public class StudentGroup : DomainEntity
         return Result<Student>.Success(student);
     }
 
+    public Result<Student> AddStudent(Student student)
+    {
+        if (
+            _students.Any(s =>
+                s.Name.Name == student.Name.Name
+                && s.Name.Surname == student.Name.Surname
+                && s.Name.Patronymic == student.Name.Patronymic
+                && s.Recordbook.Recordbook == student.Recordbook.Recordbook
+                && s.State.State == student.State.State
+            )
+        )
+            return Result<Student>.Failure(StudentErrors.StudentDublicateError(this));
+        _students.Add(student);
+        return student;
+    }
+
     public Result<Student> RemoveStudent(Student student)
     {
         if (_students.Any(s => s.Id == student.Id) == false)
@@ -225,6 +241,12 @@ public class StudentGroup : DomainEntity
         return student == null
             ? Result<Student>.Failure(StudentErrors.NotFound())
             : Result<Student>.Success(student);
+    }
+
+    public Result<Student> GetStudent(Func<Student, bool> predicate)
+    {
+        Student? student = _students.FirstOrDefault(predicate);
+        return student == null ? StudentErrors.NotFound() : student;
     }
 
     public Result<StudentGroup> MergeWithGroup(StudentGroup group)

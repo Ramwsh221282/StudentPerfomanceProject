@@ -3,6 +3,8 @@ import { Student } from '../../../../students/models/student.interface';
 import { ISubbmittable } from '../../../../../../../shared/models/interfaces/isubbmitable';
 import { UserOperationNotificationService } from '../../../../../../../shared/services/user-notifications/user-operation-notification-service.service';
 import { StudentEditService } from '../../students-menu-modal/student-edit-modal/student-edit.service';
+import { catchError, Observable, tap } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-edit-student-dropdown',
@@ -31,9 +33,29 @@ export class EditStudentDropdownComponent implements OnInit, ISubbmittable {
     if (this.isNewRecordbookEmpty()) return;
     if (this.isNewRecordbookNotCorrect()) return;
     if (this.isNewStateEmpty()) return;
+    const oldStudentMessage = this.buildOldStudentMessage();
     const updatedStudent = this.createUpdatedStudent();
-    this.updateCurrentStudent(updatedStudent);
-    this.closeDropdown();
+    const updateStudentMessage =
+      this.buildUpdatedStudentMessage(updatedStudent);
+    const successNotificationMessage =
+      oldStudentMessage + ' ' + updateStudentMessage;
+    this._editService
+      .update(this.student, updatedStudent)
+      .pipe(
+        tap((response) => {
+          this._notificationService.SetMessage = successNotificationMessage;
+          this._notificationService.success();
+          this.updateCurrentStudent(updatedStudent);
+          this.closeDropdown();
+        }),
+        catchError((error: HttpErrorResponse) => {
+          this._notificationService.SetMessage = error.error;
+          this._notificationService.failure();
+          this.closeDropdown();
+          return new Observable<never>();
+        }),
+      )
+      .subscribe();
   }
 
   public ngOnInit(): void {
@@ -55,6 +77,14 @@ export class EditStudentDropdownComponent implements OnInit, ISubbmittable {
     this.student.recordbook = newStudent.recordbook;
     this.student.patronymic = newStudent.patronymic;
     this.student.state = newStudent.state;
+  }
+
+  private buildOldStudentMessage(): string {
+    return `Изменена информация о студенте ${this.student.surname}, ${this.student.name[0]}, ${this.student.patronymic == null ? '' : this.student.patronymic[0]} ${this.student.recordbook} ${this.student.state}`;
+  }
+
+  private buildUpdatedStudentMessage(student: Student): string {
+    return `На ${student.surname}, ${student.name[0]}, ${student.patronymic == null ? '' : student.patronymic[0]} ${student.recordbook} ${student.state}`;
   }
 
   private createUpdatedStudent(): Student {

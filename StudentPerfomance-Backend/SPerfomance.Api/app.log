@@ -12111,3 +12111,897 @@ token: '[PII of type 'System.IdentityModel.Tokens.Jwt.JwtSecurityToken' is hidde
 2024-12-17T23:16:33.9748295+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
 2024-12-17T23:16:33.9870908+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
 2024-12-17T23:16:34.1467662+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T15:01:44.6215410+07:00	INFO	[Program]	[0]	Application starting...
+2024-12-18T15:01:44.7098481+07:00	INFO	[Program]	[0]	Application started
+2024-12-18T15:04:46.9491436+07:00	WARN	[Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware]	[FailedToDeterminePort]	Failed to determine the https port for redirect.
+2024-12-18T15:04:47.2808291+07:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизация пользователя
+2024-12-18T15:04:49.9182213+07:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизован пользователь jimkrauz@gmail.com admin admin Администратор
+2024-12-18T15:04:56.9766887+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T15:04:57.0258218+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T15:04:57.1712947+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T15:04:57.3907013+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T15:05:21.4680193+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T15:05:21.4697541+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T15:05:21.4771978+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T15:05:21.6363492+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T15:09:55.3507482+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T15:09:55.3531094+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T15:09:55.3930986+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T15:09:55.5389103+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T15:09:55.8224525+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T15:09:55.8241814+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T15:09:55.8343447+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T15:09:56.0208344+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T15:12:59.2291479+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T15:12:59.2305308+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T15:12:59.2395815+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T15:12:59.4005510+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T15:14:49.6099091+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T15:14:49.6211275+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T15:14:49.6251588+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T15:14:49.6311244+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T15:15:01.5069240+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T15:15:01.5403315+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T15:15:01.5493488+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T15:15:01.6988221+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T15:16:18.3891207+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T15:16:18.4049612+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T15:16:18.8031980+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T15:16:18.8061616+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T15:17:04.7354239+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T15:17:04.7461891+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T15:17:04.7542796+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T15:17:04.7633786+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T15:17:43.9592489+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T15:17:43.9612333+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T15:17:43.9734327+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T15:17:44.1370608+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T15:17:57.4372044+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T15:17:57.4397975+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T15:17:57.4510551+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T15:17:57.6019114+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T15:18:37.9972302+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T15:18:38.0063091+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T15:18:38.0147639+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T15:18:38.0172171+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T15:18:52.9941262+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T15:18:53.0073244+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T15:18:53.0104643+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T15:18:53.0181169+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T15:19:07.8961399+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T15:19:07.9197448+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T15:19:07.9217698+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T15:19:07.9300356+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T15:19:45.9193972+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T15:19:45.9207023+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T15:19:45.9322413+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T15:19:46.0913254+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T15:20:49.7466692+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T15:20:49.7515498+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T15:20:49.7656644+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T15:20:49.9198382+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T15:21:18.5889851+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T15:21:18.5964075+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T15:21:18.6159973+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T15:21:18.7625961+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T15:22:13.9152442+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T15:22:13.9250640+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T15:22:13.9296596+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T15:22:13.9337701+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T15:22:20.1857529+07:00	INFO	[SPerfomance.Api.Features.Students.UpdateStudent.Endpoint]	[0]	Запрос на обновление данных студента
+2024-12-18T15:22:20.2398543+07:00	INFO	[SPerfomance.Api.Features.Students.UpdateStudent.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 обновляет данные студента 8ccd0ffe-e457-43b4-969a-e3b7fcdf7e31
+2024-12-18T15:22:54.4168086+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T15:22:54.4516245+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T15:22:54.4710574+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T15:22:54.6101811+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T15:23:06.9782775+07:00	INFO	[SPerfomance.Api.Features.Students.UpdateStudent.Endpoint]	[0]	Запрос на обновление данных студента
+2024-12-18T15:23:06.9895833+07:00	INFO	[SPerfomance.Api.Features.Students.UpdateStudent.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 обновляет данные студента 8ccd0ffe-e457-43b4-969a-e3b7fcdf7e31
+2024-12-18T15:34:13.2824413+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T15:34:13.2848315+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T15:34:13.2991997+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T15:34:13.4554378+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T15:34:34.4195881+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T15:34:34.4215038+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T15:34:34.4304097+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T15:34:34.4366712+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T15:34:42.2551430+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T15:34:42.2605793+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T15:34:42.2656358+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T15:34:42.2683886+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T15:35:10.4073065+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T15:35:10.4083962+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T15:35:10.4126607+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T15:35:10.5802203+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T15:35:56.7259800+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T15:35:56.7273849+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T15:35:56.7375253+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T15:35:56.8940134+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T15:36:57.7356701+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T15:36:57.7384511+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T15:36:57.7495341+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T15:36:57.7533266+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T15:37:30.4061930+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T15:37:30.4075175+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T15:37:30.4170581+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T15:37:30.5775327+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T15:37:54.2143752+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T15:37:54.2157381+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T15:37:54.2236813+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T15:37:54.3868795+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T15:38:17.4165006+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T15:38:17.4175141+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T15:38:17.4245561+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T15:38:17.5754162+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T15:38:29.4676757+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T15:38:29.4690615+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T15:38:29.4754769+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T15:38:29.6435663+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T15:38:49.4060251+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T15:38:49.4072374+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T15:38:49.4143136+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T15:38:49.5739347+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T15:39:45.7759333+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T15:39:45.7793049+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T15:39:45.7887334+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T15:39:45.9347652+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T15:39:56.4103019+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T15:39:56.4116581+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T15:39:56.4156628+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T15:39:56.5777663+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T15:42:50.7117109+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T15:42:50.7128620+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T15:42:50.7265766+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T15:42:50.8768905+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T15:45:42.7948170+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T15:45:42.7963377+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T15:45:42.8053077+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T15:45:42.9620612+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T15:46:36.7474936+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T15:46:36.7489242+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T15:46:36.7579516+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T15:46:36.9073388+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T15:47:30.7289414+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T15:47:30.7300312+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T15:47:30.7360262+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T15:47:30.8925935+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T15:47:44.7438657+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T15:47:44.7454616+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T15:47:44.7504976+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T15:47:44.9181720+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T15:55:02.4107312+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T15:55:02.4142624+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T15:55:02.4241591+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T15:55:02.4328680+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T15:55:40.3504066+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T15:55:40.3521578+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T15:55:40.3614613+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T15:55:40.5112229+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T15:56:44.6970827+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T15:56:44.7044218+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T15:56:44.7063787+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T15:56:44.7135943+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T15:59:16.8062754+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T15:59:16.8075552+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T15:59:16.8158362+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T15:59:16.9714276+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T15:59:54.3577153+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T15:59:54.3589171+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T15:59:54.3710193+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T15:59:54.5187082+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T16:01:06.4950602+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T16:01:06.4986962+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T16:01:06.5057181+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T16:01:06.6573052+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T16:01:24.4098935+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T16:01:24.4116814+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T16:01:24.4176687+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T16:01:24.5755523+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T16:02:35.9579718+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T16:02:35.9645678+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T16:02:35.9701248+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T16:02:35.9740789+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T16:26:14.4591006+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T16:26:14.4609513+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T16:26:14.4762981+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T16:26:14.6269818+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T20:16:00.3349563+07:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизация пользователя
+2024-12-18T20:16:00.9088056+07:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизован пользователь jimkrauz@gmail.com admin admin Администратор
+2024-12-18T20:16:05.1131508+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T20:16:05.1145699+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T20:16:05.1224500+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T20:16:05.2775703+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T20:16:07.2091151+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Запрос на получение всех студенческих групп
+2024-12-18T20:16:07.2415887+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает все студенческие группы 2
+2024-12-18T20:16:15.5414445+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Запрос на получение всех студенческих групп
+2024-12-18T20:16:15.5495688+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает все студенческие группы 2
+2024-12-18T20:18:22.1444721+07:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Запрос на получение учебных планов постранично
+2024-12-18T20:18:22.1535241+07:00	INFO	[SPerfomance.Api.Features.EducationPlans.CountEducationPlans.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество учебных планов 2
+2024-12-18T20:18:22.3424793+07:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает учебные планы постранично 2
+2024-12-18T20:18:28.8179752+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T20:18:28.8195453+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T20:18:28.8289286+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T20:18:28.9804911+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T20:18:35.8865274+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Запрос на получение всех студенческих групп
+2024-12-18T20:18:35.8953945+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает все студенческие группы 2
+2024-12-18T20:20:45.7678217+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T20:20:45.7944553+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T20:20:45.8060356+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T20:20:45.9513502+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T20:21:30.7725342+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T20:21:30.7740244+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T20:21:30.7822274+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T20:21:30.9352722+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T20:21:37.5423906+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Запрос на получение всех студенческих групп
+2024-12-18T20:21:37.5496395+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает все студенческие группы 2
+2024-12-18T20:21:51.5153085+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T20:21:51.5168259+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T20:21:51.5280035+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T20:21:51.6815641+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T20:21:53.2273060+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Запрос на получение всех студенческих групп
+2024-12-18T20:21:53.2342835+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает все студенческие группы 2
+2024-12-18T20:22:33.7172439+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T20:22:33.7191997+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T20:22:33.7295794+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T20:22:33.8894223+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T20:22:48.1878032+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Запрос на получение всех студенческих групп
+2024-12-18T20:22:48.1950501+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает все студенческие группы 2
+2024-12-18T20:23:49.6752297+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T20:23:49.6768303+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T20:23:49.6875636+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T20:23:49.8483241+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T20:24:13.1665227+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T20:24:13.1775986+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T20:24:13.1806163+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T20:24:13.1877679+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T20:24:44.2554778+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Запрос на получение всех студенческих групп
+2024-12-18T20:24:44.2624789+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает все студенческие группы 2
+2024-12-18T20:24:57.6173350+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T20:24:57.6189328+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T20:24:57.6312388+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T20:24:57.7773802+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T20:25:07.0240633+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Запрос на получение всех студенческих групп
+2024-12-18T20:25:07.0342897+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает все студенческие группы 2
+2024-12-18T20:25:25.1271436+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T20:25:25.1295013+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T20:25:25.1362708+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T20:25:25.2951832+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T20:25:29.7308909+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Запрос на получение всех студенческих групп
+2024-12-18T20:25:29.7404374+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает все студенческие группы 2
+2024-12-18T20:27:10.4278366+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T20:27:10.4333172+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T20:27:10.4469409+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T20:27:10.6050460+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T20:27:11.7645207+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Запрос на получение всех студенческих групп
+2024-12-18T20:27:11.7732885+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает все студенческие группы 2
+2024-12-18T20:28:41.8317968+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T20:28:41.8373717+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T20:28:41.8521117+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T20:28:42.0093347+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T20:28:50.1935552+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T20:28:50.2058787+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T20:28:50.2101272+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T20:28:50.2166188+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T20:29:01.3907206+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T20:29:01.3930478+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T20:29:01.4058091+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T20:29:01.5571249+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T20:29:04.9928697+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Запрос на получение всех студенческих групп
+2024-12-18T20:29:05.0021700+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает все студенческие группы 2
+2024-12-18T20:33:27.1934452+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T20:33:27.2068891+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T20:33:27.2165684+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T20:33:27.2226755+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T20:34:07.1564167+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T20:34:07.1607096+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T20:34:07.1730078+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T20:34:07.1789270+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T20:42:07.3960362+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T20:42:07.4020964+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T20:42:07.4157462+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T20:42:07.5843043+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T20:42:10.6674419+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Запрос на получение всех студенческих групп
+2024-12-18T20:42:10.6747449+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает все студенческие группы 2
+2024-12-18T20:43:16.3693246+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T20:43:16.3772848+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T20:43:16.3833283+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T20:43:16.3877726+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T20:45:17.5655408+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T20:45:17.5801240+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T20:45:17.5823954+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T20:45:17.5930878+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T20:55:10.4635866+07:00	INFO	[Program]	[0]	Application starting...
+2024-12-18T20:55:10.5502510+07:00	INFO	[Program]	[0]	Application started
+2024-12-18T20:56:40.8115041+07:00	WARN	[Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware]	[FailedToDeterminePort]	Failed to determine the https port for redirect.
+2024-12-18T20:56:41.0576772+07:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизация пользователя
+2024-12-18T20:56:43.7255311+07:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизован пользователь jimkrauz@gmail.com admin admin Администратор
+2024-12-18T20:56:54.6452558+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T20:56:54.6867580+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T20:56:54.9169086+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T20:56:54.9534784+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T20:56:56.4719474+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Запрос на получение всех студенческих групп
+2024-12-18T20:56:56.4983208+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает все студенческие группы 2
+2024-12-18T20:57:38.8043050+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T20:57:38.8078240+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T20:57:38.8143171+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T20:57:38.8195604+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T21:01:16.8103281+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T21:01:16.8119874+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T21:01:16.8240191+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T21:01:16.9872140+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T21:01:18.2609503+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Запрос на получение всех студенческих групп
+2024-12-18T21:01:18.2686462+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает все студенческие группы 2
+2024-12-18T21:01:48.9960490+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T21:01:48.9972443+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T21:01:49.0056487+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T21:01:49.1729936+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T21:01:50.7955398+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Запрос на получение всех студенческих групп
+2024-12-18T21:01:50.8030976+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает все студенческие группы 2
+2024-12-18T21:02:02.6075910+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T21:02:02.6105816+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T21:02:02.6168504+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T21:02:02.7810420+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T21:02:04.2713506+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Запрос на получение всех студенческих групп
+2024-12-18T21:02:04.2810128+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает все студенческие группы 2
+2024-12-18T21:02:37.7421202+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T21:02:37.7491954+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T21:02:37.7519981+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T21:02:37.7585711+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T21:02:41.4516578+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Запрос на получение всех студенческих групп
+2024-12-18T21:02:41.4604474+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает все студенческие группы 2
+2024-12-18T21:04:00.8266968+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T21:04:00.8683139+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T21:04:00.8770445+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T21:04:00.8796254+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T21:04:03.4880815+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Запрос на получение всех студенческих групп
+2024-12-18T21:04:03.4962677+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает все студенческие группы 2
+2024-12-18T21:04:40.0767124+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T21:04:40.0784535+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T21:04:40.1083511+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T21:04:40.2365407+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T21:04:42.1816784+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Запрос на получение всех студенческих групп
+2024-12-18T21:04:42.1888040+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает все студенческие группы 2
+2024-12-18T21:06:21.4084885+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T21:06:21.4108494+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T21:06:21.4207719+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T21:06:21.5727689+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T21:06:32.5998687+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Запрос на получение всех студенческих групп
+2024-12-18T21:06:32.6076095+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает все студенческие группы 2
+2024-12-18T21:06:50.8195386+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T21:06:50.8281460+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T21:06:50.8314939+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T21:06:50.8374052+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T21:07:15.9499615+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T21:07:15.9608461+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T21:07:15.9644313+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T21:07:15.9706671+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T21:07:16.9457953+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Запрос на получение всех студенческих групп
+2024-12-18T21:07:16.9549102+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает все студенческие группы 2
+2024-12-18T21:07:25.8025199+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T21:07:25.8038048+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T21:07:25.8118796+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T21:07:25.9662572+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T21:07:29.2299561+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Запрос на получение всех студенческих групп
+2024-12-18T21:07:29.2373112+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает все студенческие группы 2
+2024-12-18T21:14:55.8696345+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T21:14:55.8729521+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T21:14:55.8822390+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T21:14:55.8937728+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T21:15:14.7641300+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T21:15:14.7655651+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T21:15:14.7717057+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T21:15:14.9336119+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T21:22:37.1050332+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T21:22:37.1124809+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T21:22:37.1177461+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T21:22:37.1210574+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T21:22:47.8385308+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T21:22:47.8403603+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T21:22:47.8500616+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T21:22:47.9983895+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T21:22:57.9435124+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T21:22:57.9450725+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T21:22:57.9509138+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T21:22:58.1058010+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T21:23:00.1547467+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T21:23:00.1628484+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T21:23:00.1680868+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T21:23:00.1711783+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T21:23:19.4703229+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T21:23:19.4716380+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T21:23:19.4769631+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T21:23:19.6374287+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T21:23:36.4865961+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Запрос на получение всех студенческих групп
+2024-12-18T21:23:36.4929542+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает все студенческие группы 2
+2024-12-18T21:23:53.9239519+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T21:23:53.9256075+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T21:23:53.9315139+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T21:23:54.0937313+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T21:23:55.7030925+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Запрос на получение всех студенческих групп
+2024-12-18T21:23:55.7104273+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает все студенческие группы 2
+2024-12-18T21:25:56.2574547+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T21:25:56.2656902+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T21:25:56.2900582+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T21:25:56.2972305+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T21:28:15.0192634+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T21:28:15.0270136+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T21:28:15.0306798+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T21:28:15.0364653+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T21:29:11.0884161+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T21:29:11.0897877+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T21:29:11.1055627+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T21:29:11.2641204+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T21:29:24.4725189+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T21:29:24.4756794+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T21:29:24.4844991+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T21:29:24.6360776+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T21:30:31.4681546+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T21:30:31.5023269+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T21:30:31.5120580+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T21:30:31.5143906+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T21:30:43.6392367+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T21:30:43.6556237+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T21:30:43.6573862+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T21:30:43.6642910+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T21:30:59.9513068+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Запрос на получение всех студенческих групп
+2024-12-18T21:30:59.9595355+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает все студенческие группы 2
+2024-12-18T21:31:11.0644777+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Запрос на получение всех студенческих групп
+2024-12-18T21:31:11.0738591+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает все студенческие группы 2
+2024-12-18T21:35:13.8997994+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T21:35:13.9095702+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T21:35:13.9115389+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T21:35:13.9217017+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T21:35:19.1357883+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Запрос на получение всех студенческих групп
+2024-12-18T21:35:19.1425836+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает все студенческие группы 2
+2024-12-18T21:36:02.0944094+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T21:36:02.0983517+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T21:36:02.1105661+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T21:36:02.2681593+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T21:36:28.8011054+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T21:36:28.8121851+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T21:36:28.8146249+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T21:36:28.8569587+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T21:36:32.3939443+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T21:36:32.4050323+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T21:36:32.4077117+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T21:36:32.4139458+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T21:36:37.2368511+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Запрос на получение всех студенческих групп
+2024-12-18T21:36:37.2446624+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает все студенческие группы 2
+2024-12-18T21:37:19.2616777+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T21:37:19.2646839+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T21:37:19.2721722+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T21:37:19.4227967+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T21:37:24.1160482+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Запрос на получение всех студенческих групп
+2024-12-18T21:37:24.1237703+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает все студенческие группы 2
+2024-12-18T21:37:47.7421964+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T21:37:47.7527368+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T21:37:47.7560536+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T21:37:47.7917463+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T21:37:50.9563896+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Запрос на получение всех студенческих групп
+2024-12-18T21:37:50.9636395+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает все студенческие группы 2
+2024-12-18T21:37:52.9218029+07:00	INFO	[SPerfomance.Api.Features.Students.MoveStudentToOtherGroup.Endpoint]	[0]	Запрос на получение только активных студентов группы
+2024-12-18T21:37:52.9240081+07:00	FAIL	[SPerfomance.Api.Features.Students.MoveStudentToOtherGroup.Endpoint]	[0]	Пользователь не является администратором
+2024-12-18T21:38:15.2207634+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Запрос на получение всех студенческих групп
+2024-12-18T21:38:15.2271159+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает все студенческие группы 2
+2024-12-18T21:38:33.1311676+07:00	INFO	[SPerfomance.Api.Features.Students.MoveStudentToOtherGroup.Endpoint]	[0]	Запрос на получение только активных студентов группы
+2024-12-18T21:38:33.1320981+07:00	FAIL	[SPerfomance.Api.Features.Students.MoveStudentToOtherGroup.Endpoint]	[0]	Пользователь не является администратором
+2024-12-18T21:40:04.2317760+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T21:40:04.2411596+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T21:40:04.2505410+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T21:40:04.2743173+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T21:40:15.1435777+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Запрос на получение всех студенческих групп
+2024-12-18T21:40:15.1513156+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает все студенческие группы 2
+2024-12-18T21:40:26.8241575+07:00	INFO	[SPerfomance.Api.Features.Students.MoveStudentToOtherGroup.Endpoint]	[0]	Запрос на получение только активных студентов группы
+2024-12-18T21:40:32.7378066+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T21:40:32.7398483+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T21:40:32.7496801+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T21:40:32.8993849+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T21:41:42.6530554+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T21:41:42.6546014+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T21:41:42.6644862+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T21:41:42.8241792+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T21:41:46.4130656+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Запрос на получение всех студенческих групп
+2024-12-18T21:41:46.4193775+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает все студенческие группы 2
+2024-12-18T21:41:48.3217436+07:00	INFO	[SPerfomance.Api.Features.Students.MoveStudentToOtherGroup.Endpoint]	[0]	Запрос на получение только активных студентов группы
+2024-12-18T21:44:14.7846280+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T21:44:14.7870839+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T21:44:14.8003072+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T21:44:14.9497519+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T21:52:27.1743887+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T21:52:27.1754401+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T21:52:27.1907449+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T21:52:27.3451926+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T21:52:39.4220706+07:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Запрос на получение учебных планов постранично
+2024-12-18T21:52:39.4294777+07:00	INFO	[SPerfomance.Api.Features.EducationPlans.CountEducationPlans.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество учебных планов 2
+2024-12-18T21:52:39.6148588+07:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает учебные планы постранично 2
+2024-12-18T21:53:56.6594708+07:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Запрос на получение учебных планов постранично
+2024-12-18T21:53:56.6708401+07:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает учебные планы постранично 2
+2024-12-18T21:53:56.8267189+07:00	INFO	[SPerfomance.Api.Features.EducationPlans.CountEducationPlans.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество учебных планов 2
+2024-12-18T21:55:05.5059660+07:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Запрос на получение учебных планов постранично
+2024-12-18T21:55:05.5170039+07:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает учебные планы постранично 2
+2024-12-18T21:55:05.6739158+07:00	INFO	[SPerfomance.Api.Features.EducationPlans.CountEducationPlans.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество учебных планов 2
+2024-12-18T21:55:24.0338887+07:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Запрос на получение учебных планов постранично
+2024-12-18T21:55:24.0384395+07:00	INFO	[SPerfomance.Api.Features.EducationPlans.CountEducationPlans.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество учебных планов 2
+2024-12-18T21:55:24.1927336+07:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает учебные планы постранично 2
+2024-12-18T21:55:42.9667087+07:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Запрос на получение учебных планов постранично
+2024-12-18T21:55:42.9733121+07:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает учебные планы постранично 2
+2024-12-18T21:55:43.1246036+07:00	INFO	[SPerfomance.Api.Features.EducationPlans.CountEducationPlans.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество учебных планов 2
+2024-12-18T21:56:31.4177034+07:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Запрос на получение учебных планов постранично
+2024-12-18T21:56:31.4272540+07:00	INFO	[SPerfomance.Api.Features.EducationPlans.CountEducationPlans.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество учебных планов 2
+2024-12-18T21:56:31.5800503+07:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает учебные планы постранично 2
+2024-12-18T21:56:46.9099931+07:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Запрос на получение учебных планов постранично
+2024-12-18T21:56:46.9143287+07:00	INFO	[SPerfomance.Api.Features.EducationPlans.CountEducationPlans.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество учебных планов 2
+2024-12-18T21:56:47.0769107+07:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает учебные планы постранично 2
+2024-12-18T21:57:13.8226585+07:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Запрос на получение учебных планов постранично
+2024-12-18T21:57:13.8310292+07:00	INFO	[SPerfomance.Api.Features.EducationPlans.CountEducationPlans.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество учебных планов 2
+2024-12-18T21:57:13.9826315+07:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает учебные планы постранично 2
+2024-12-18T21:57:26.8513464+07:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Запрос на получение учебных планов постранично
+2024-12-18T21:57:26.8555424+07:00	INFO	[SPerfomance.Api.Features.EducationPlans.CountEducationPlans.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество учебных планов 2
+2024-12-18T21:57:27.0129573+07:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает учебные планы постранично 2
+2024-12-18T21:58:20.2488967+07:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Запрос на получение учебных планов постранично
+2024-12-18T21:58:20.2588631+07:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает учебные планы постранично 2
+2024-12-18T21:58:20.4163606+07:00	INFO	[SPerfomance.Api.Features.EducationPlans.CountEducationPlans.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество учебных планов 2
+2024-12-18T21:58:23.1018689+07:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Запрос на получение учебных планов постранично
+2024-12-18T21:58:23.1070274+07:00	INFO	[SPerfomance.Api.Features.EducationPlans.CountEducationPlans.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество учебных планов 2
+2024-12-18T21:58:23.2637037+07:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает учебные планы постранично 2
+2024-12-18T21:58:31.0357009+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T21:58:31.0367593+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T21:58:31.0417250+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T21:58:31.1974246+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T21:58:45.6061007+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T21:58:45.6070479+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T21:58:45.6141820+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T21:58:45.7652038+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T21:58:58.0893188+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T21:58:58.0911911+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T21:58:58.0976711+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T21:58:58.2466722+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T21:59:03.8774531+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T21:59:03.8785628+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T21:59:03.8840927+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T21:59:04.0383674+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T22:09:38.6768648+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T22:09:38.6780690+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T22:09:38.6915603+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T22:09:38.8442820+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T22:10:38.1996252+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T22:10:38.2062803+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T22:10:38.2079832+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T22:10:38.2149939+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T22:12:44.8009993+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T22:12:44.8060387+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T22:12:44.8718212+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T22:12:44.8754739+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T22:14:54.6579642+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T22:14:54.6606935+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T22:14:54.7069834+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T22:14:54.8599034+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T22:17:31.9892929+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T22:17:31.9911796+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T22:17:32.0021670+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T22:17:32.1554139+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T22:17:47.4821984+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T22:17:47.4847398+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T22:17:47.4936357+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T22:17:47.6527635+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T22:17:58.6724745+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T22:17:58.6736970+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T22:17:58.6790904+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T22:17:58.8409078+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T22:18:06.9514491+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T22:18:06.9531513+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T22:18:06.9630890+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T22:18:07.1192481+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T22:31:05.2722476+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T22:31:05.2742701+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T22:31:05.2847430+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T22:31:05.4514642+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T22:31:12.1044606+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T22:31:12.1055925+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T22:31:12.1117450+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T22:31:12.2797696+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T22:31:26.2047982+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T22:31:26.2118665+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T22:31:26.2168881+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T22:31:26.2186016+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T22:31:31.1792449+07:00	INFO	[SPerfomance.Api.Features.Students.FireStudent.Endpoint]	[0]	Запрос на удаление студента из группы
+2024-12-18T22:31:31.2243813+07:00	INFO	[SPerfomance.Api.Features.Students.FireStudent.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 удаляет студента Д Докторов 32132131321 из группы БИТ21-11
+2024-12-18T22:31:33.0686437+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T22:31:33.0705490+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T22:31:33.0792037+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T22:31:33.2356609+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T22:33:33.7340321+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T22:33:33.7412720+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T22:33:33.7514165+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T22:33:33.7540400+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T22:33:52.0591823+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T22:33:52.0612343+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T22:33:52.0683099+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T22:33:52.2164373+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T22:34:09.4303820+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T22:34:09.4322055+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T22:34:09.4391344+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T22:34:09.6017383+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T22:34:23.5683144+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T22:34:23.5699639+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T22:34:23.5783474+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T22:34:23.7350778+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T22:35:54.8669657+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T22:35:54.8679364+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T22:35:54.8761764+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T22:35:55.0414073+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T22:35:56.8314847+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T22:35:56.8396568+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T22:35:56.8425257+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T22:35:56.8463673+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T22:36:24.4267961+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T22:36:24.4339003+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T22:36:24.4370617+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T22:36:24.4478692+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T22:37:02.8389259+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T22:37:02.8479948+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T22:37:02.8835854+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T22:37:02.8903178+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T22:37:35.9191296+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T22:37:35.9345366+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T22:37:35.9412253+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T22:37:35.9496346+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T22:38:06.9253997+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T22:38:06.9383350+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T22:38:06.9441503+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T22:38:06.9545105+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T22:38:19.4575833+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T22:38:19.4713880+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T22:38:19.4734453+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T22:38:19.4789514+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T22:38:48.4648365+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T22:38:48.4670822+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T22:38:48.4769259+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T22:38:48.6278733+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T22:38:56.9053721+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T22:38:56.9065107+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T22:38:56.9128962+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T22:38:57.0786277+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T22:39:12.6937476+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T22:39:12.7015850+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T22:39:12.7113953+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T22:39:12.7172893+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T22:39:18.6360725+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T22:39:18.6373004+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T22:39:18.6428705+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T22:39:18.8092502+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T22:39:23.9431794+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T22:39:23.9444180+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T22:39:23.9529631+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T22:39:24.1026526+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T22:40:04.1438418+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T22:40:04.1674948+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T22:40:04.2060611+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T22:40:04.3274664+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T22:40:07.5529322+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T22:40:07.5541465+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T22:40:07.5625484+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T22:40:07.7250320+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T22:40:57.7030389+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T22:40:57.7070213+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T22:40:57.7189399+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T22:40:57.8697335+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T22:41:03.7732795+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T22:41:03.7747922+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T22:41:03.7825184+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T22:41:03.9395225+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T22:41:09.7256296+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T22:41:09.7350007+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T22:41:09.7394973+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T22:41:09.7451692+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T22:41:50.5329692+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T22:41:50.5355640+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T22:41:50.5445351+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T22:41:50.6964881+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T22:42:51.4563773+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T22:42:51.4652685+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T22:42:51.4682003+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T22:42:51.4759393+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T22:42:57.9963592+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T22:42:57.9984362+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T22:42:58.0042357+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T22:42:58.1721240+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T22:43:46.1529343+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T22:43:46.1773360+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T22:43:46.1866409+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T22:43:46.3393673+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T22:44:38.8635973+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T22:44:38.8796936+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T22:44:38.8813488+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T22:44:38.8903263+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T22:58:35.7334553+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T22:58:35.7449822+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T22:58:35.7511413+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T22:58:35.7547731+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T22:58:49.1626982+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T22:58:49.1705222+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T22:58:49.1746124+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T22:58:49.1802620+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T22:58:53.7103923+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T22:58:53.7195590+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T22:58:53.7211608+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T22:58:53.7266322+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T23:01:25.6226444+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T23:01:25.6314188+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T23:01:25.6331045+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T23:01:25.6414817+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T23:01:27.0562954+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T23:01:27.0579501+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T23:01:27.0673116+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T23:01:27.2235492+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T23:02:32.8680415+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T23:02:32.8859310+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T23:02:32.8958630+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T23:02:32.9225441+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T23:02:36.2468059+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T23:02:36.2550821+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T23:02:36.2593027+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T23:02:36.2639785+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T23:02:38.6896359+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetAllEducationDirections.Endpoint]	[0]	Запрос на получение всех направлений подготовки
+2024-12-18T23:02:38.7163153+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetAllEducationDirections.Endpoint]	[0]	Получены все направления подготовки в количестве 2
+2024-12-18T23:03:20.5104256+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T23:03:20.5121663+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T23:03:20.5222221+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T23:03:20.6849362+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T23:03:22.9645292+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetAllEducationDirections.Endpoint]	[0]	Запрос на получение всех направлений подготовки
+2024-12-18T23:03:22.9698248+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetAllEducationDirections.Endpoint]	[0]	Получены все направления подготовки в количестве 2
+2024-12-18T23:03:31.7669385+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetAllEducationDirections.Endpoint]	[0]	Запрос на получение всех направлений подготовки
+2024-12-18T23:03:31.7728093+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetAllEducationDirections.Endpoint]	[0]	Получены все направления подготовки в количестве 2
+2024-12-18T23:05:40.5836910+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T23:05:40.5858635+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T23:05:40.5959905+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T23:05:40.7438921+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T23:06:51.3364707+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T23:06:51.3380154+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T23:06:51.3463927+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T23:06:51.5002018+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T23:06:56.6689308+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Запрос на получение всех студенческих групп
+2024-12-18T23:06:56.6747529+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает все студенческие группы 2
+2024-12-18T23:07:00.0718989+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetAllEducationDirections.Endpoint]	[0]	Запрос на получение всех направлений подготовки
+2024-12-18T23:07:00.0780780+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetAllEducationDirections.Endpoint]	[0]	Получены все направления подготовки в количестве 2
+2024-12-18T23:07:10.3356519+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T23:07:10.3605551+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T23:07:10.3647473+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T23:07:10.5225972+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T23:07:24.0737296+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T23:07:24.0764399+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T23:07:24.0810049+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T23:07:24.2435194+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T23:08:10.4142174+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T23:08:10.4158921+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T23:08:10.4525396+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T23:08:10.5742970+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T23:08:27.0074824+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T23:08:27.0090218+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T23:08:27.0137450+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T23:08:27.1718373+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T23:08:43.3480397+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T23:08:43.3491203+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T23:08:43.3560963+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T23:08:43.5123726+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T23:15:23.5498133+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T23:15:23.5509699+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T23:15:23.5627650+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T23:15:23.5699775+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T23:15:25.3201240+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Запрос на получение всех студенческих групп
+2024-12-18T23:15:25.3264499+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetAllStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает все студенческие группы 2
+2024-12-18T23:15:27.0797505+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetAllEducationDirections.Endpoint]	[0]	Запрос на получение всех направлений подготовки
+2024-12-18T23:15:27.0860397+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetAllEducationDirections.Endpoint]	[0]	Получены все направления подготовки в количестве 2
+2024-12-18T23:15:27.8768761+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetAllEducationDirections.Endpoint]	[0]	Запрос на получение всех направлений подготовки
+2024-12-18T23:15:27.8823291+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetAllEducationDirections.Endpoint]	[0]	Получены все направления подготовки в количестве 2
+2024-12-18T23:15:54.8063297+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T23:15:54.8088630+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T23:15:54.8188619+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T23:15:54.9645099+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T23:16:12.4913178+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T23:16:12.4924143+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T23:16:12.4976960+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T23:16:12.6610419+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T23:18:44.2898088+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T23:18:44.2924992+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T23:18:44.3024046+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T23:18:44.4592993+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T23:18:54.6136936+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T23:18:54.6150451+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T23:18:54.6236286+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T23:18:54.7794077+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T23:18:58.4701760+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T23:18:58.4963316+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T23:18:58.5031484+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T23:18:58.6568342+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T23:20:01.7672396+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T23:20:01.7688814+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T23:20:01.7783757+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T23:20:01.9409545+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T23:22:19.9586499+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T23:22:19.9606393+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T23:22:19.9695861+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T23:22:20.1283733+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T23:23:39.7928017+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T23:23:39.7948920+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T23:23:39.8060602+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T23:23:39.9626607+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T23:23:46.1241768+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetAllEducationDirections.Endpoint]	[0]	Запрос на получение всех направлений подготовки
+2024-12-18T23:23:46.1319448+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetAllEducationDirections.Endpoint]	[0]	Получены все направления подготовки в количестве 2
+2024-12-18T23:23:46.8539976+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetAllEducationDirections.Endpoint]	[0]	Запрос на получение всех направлений подготовки
+2024-12-18T23:23:46.8595418+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetAllEducationDirections.Endpoint]	[0]	Получены все направления подготовки в количестве 2
+2024-12-18T23:23:57.9251126+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T23:23:57.9266594+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T23:23:57.9326808+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T23:23:58.1000498+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T23:24:51.6690420+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T23:24:51.6702672+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T23:24:51.6805816+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T23:24:51.8436886+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T23:25:06.8127842+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T23:25:06.8210783+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T23:25:06.8234204+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T23:25:06.8299635+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T23:25:18.2053432+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T23:25:18.2156441+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T23:25:18.2186557+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T23:25:18.2245218+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T23:25:23.9576194+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T23:25:23.9620966+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T23:25:23.9662257+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T23:25:23.9678872+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T23:25:27.4531691+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetAllEducationDirections.Endpoint]	[0]	Запрос на получение всех направлений подготовки
+2024-12-18T23:25:27.4593006+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetAllEducationDirections.Endpoint]	[0]	Получены все направления подготовки в количестве 2
+2024-12-18T23:25:27.9263048+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetAllEducationDirections.Endpoint]	[0]	Запрос на получение всех направлений подготовки
+2024-12-18T23:25:27.9315710+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetAllEducationDirections.Endpoint]	[0]	Получены все направления подготовки в количестве 2
+2024-12-18T23:25:29.6223030+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetAllEducationDirections.Endpoint]	[0]	Запрос на получение всех направлений подготовки
+2024-12-18T23:25:29.6276596+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetAllEducationDirections.Endpoint]	[0]	Получены все направления подготовки в количестве 2
+2024-12-18T23:25:33.4886310+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetAllEducationDirections.Endpoint]	[0]	Запрос на получение всех направлений подготовки
+2024-12-18T23:25:33.4949450+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetAllEducationDirections.Endpoint]	[0]	Получены все направления подготовки в количестве 2
+2024-12-18T23:25:37.2911454+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetAllEducationDirections.Endpoint]	[0]	Запрос на получение всех направлений подготовки
+2024-12-18T23:25:37.2977444+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetAllEducationDirections.Endpoint]	[0]	Получены все направления подготовки в количестве 2
+2024-12-18T23:25:38.2048316+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetAllEducationDirections.Endpoint]	[0]	Запрос на получение всех направлений подготовки
+2024-12-18T23:25:38.2101929+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetAllEducationDirections.Endpoint]	[0]	Получены все направления подготовки в количестве 2
+2024-12-18T23:27:19.9489782+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T23:27:19.9499120+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T23:27:19.9573344+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T23:27:20.1150087+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T23:27:25.7855755+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetAllEducationDirections.Endpoint]	[0]	Запрос на получение всех направлений подготовки
+2024-12-18T23:27:25.7916501+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetAllEducationDirections.Endpoint]	[0]	Получены все направления подготовки в количестве 2
+2024-12-18T23:27:26.3819479+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetAllEducationDirections.Endpoint]	[0]	Запрос на получение всех направлений подготовки
+2024-12-18T23:27:26.3873862+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetAllEducationDirections.Endpoint]	[0]	Получены все направления подготовки в количестве 2
+2024-12-18T23:27:29.8384341+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetAllEducationDirections.Endpoint]	[0]	Запрос на получение всех направлений подготовки
+2024-12-18T23:27:29.8439159+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetAllEducationDirections.Endpoint]	[0]	Получены все направления подготовки в количестве 2
+2024-12-18T23:27:32.1880757+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetAllEducationDirections.Endpoint]	[0]	Запрос на получение всех направлений подготовки
+2024-12-18T23:27:32.1939903+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetAllEducationDirections.Endpoint]	[0]	Получены все направления подготовки в количестве 2
+2024-12-18T23:28:06.6094370+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T23:28:06.6117182+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T23:28:06.6164972+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T23:28:06.7760408+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T23:28:09.3358736+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetAllEducationDirections.Endpoint]	[0]	Запрос на получение всех направлений подготовки
+2024-12-18T23:28:09.3419290+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetAllEducationDirections.Endpoint]	[0]	Получены все направления подготовки в количестве 2
+2024-12-18T23:28:10.0573808+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetAllEducationDirections.Endpoint]	[0]	Запрос на получение всех направлений подготовки
+2024-12-18T23:28:10.0626594+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetAllEducationDirections.Endpoint]	[0]	Получены все направления подготовки в количестве 2
+2024-12-18T23:30:00.4064218+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T23:30:00.4124084+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T23:30:00.4168915+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T23:30:00.4179423+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T23:30:25.1522692+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T23:30:25.1533829+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T23:30:25.1622856+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T23:30:25.3248372+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T23:30:44.4821677+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T23:30:44.4832991+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T23:30:44.4920242+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T23:30:44.6518643+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T23:30:53.9219478+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetAllEducationDirections.Endpoint]	[0]	Запрос на получение всех направлений подготовки
+2024-12-18T23:30:53.9276204+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetAllEducationDirections.Endpoint]	[0]	Получены все направления подготовки в количестве 2
+2024-12-18T23:31:29.0790679+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Запрос на получение студенческих групп постранично.
+2024-12-18T23:31:29.0840240+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Запрос на получение количества студенческих групп
+2024-12-18T23:31:29.0917417+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.CountStudentGroups.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество студенческих групп 2
+2024-12-18T23:31:29.0933337+07:00	INFO	[SPerfomance.Api.Features.StudentGroups.GetGroupsByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает студенческие группы постранично 2
+2024-12-18T23:31:32.9364524+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetAllEducationDirections.Endpoint]	[0]	Запрос на получение всех направлений подготовки
+2024-12-18T23:31:32.9423796+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetAllEducationDirections.Endpoint]	[0]	Получены все направления подготовки в количестве 2
+2024-12-18T23:31:33.7350220+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetAllEducationDirections.Endpoint]	[0]	Запрос на получение всех направлений подготовки
+2024-12-18T23:31:33.7399430+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetAllEducationDirections.Endpoint]	[0]	Получены все направления подготовки в количестве 2
+2024-12-18T23:31:36.2503691+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetAllEducationDirections.Endpoint]	[0]	Запрос на получение всех направлений подготовки
+2024-12-18T23:31:36.2556768+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetAllEducationDirections.Endpoint]	[0]	Получены все направления подготовки в количестве 2

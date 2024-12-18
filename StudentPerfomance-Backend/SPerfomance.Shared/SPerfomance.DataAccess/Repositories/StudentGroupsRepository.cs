@@ -109,6 +109,24 @@ public class StudentGroupsRepository : IStudentGroupsRepository
             .AsSplitQuery()
             .FirstOrDefaultAsync(g => g.Name.Name == name, cancellationToken: ct);
 
+    public async Task<StudentGroup?> GetById(Guid id, CancellationToken ct = default)
+    {
+        StudentGroup? group = await _context
+            .Groups.Include(g => g.ActiveGroupSemester)
+            .ThenInclude(a => a!.Disciplines)
+            .ThenInclude(d => d.Teacher)
+            .ThenInclude(t => t!.Department)
+            .Include(g => g.Students)
+            .Include(g => g.EducationPlan)
+            .ThenInclude(p => p!.Semesters)
+            .ThenInclude(s => s.Disciplines)
+            .ThenInclude(d => d.Teacher)
+            .AsNoTracking()
+            .AsSplitQuery()
+            .FirstOrDefaultAsync(g => g.Id == id, cancellationToken: ct);
+        return group;
+    }
+
     public async Task<IReadOnlyCollection<StudentGroup>> GetAll(CancellationToken ct = default) =>
         await _context
             .Groups.Include(g => g.ActiveGroupSemester)

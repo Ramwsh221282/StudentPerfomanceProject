@@ -8,6 +8,7 @@ import { StudentGroupsUpdateDataService } from '../../services/student-groups-up
 import { StudentGroupsFacadeService } from '../../services/student-groups-facade.service';
 import { UserOperationNotificationService } from '../../../../../../shared/services/user-notifications/user-operation-notification-service.service';
 import { StudentGroup } from '../../services/studentsGroup.interface';
+import { Student } from '../../../students/models/student.interface';
 
 @Component({
   selector: 'app-student-groups-page',
@@ -37,5 +38,36 @@ export class StudentGroupsPageComponent implements OnInit {
     this.facadeService.fetchData().subscribe((response) => {
       this.groups = response;
     });
+  }
+
+  protected handleStudentGroupSwitch(student: Student): void {
+    this.excludeStudentFromPreviousGroup(student);
+    this.appendStudentInNewGroup(student);
+    this.notificationService.SetMessage = `Студент ${student.surname} ${student.name[0]} ${student.patronymic == null ? '' : student.patronymic[0]} переведён в группу ${student.group.name}`;
+    this.notificationService.success();
+  }
+
+  private excludeStudentFromPreviousGroup(updatedStudent: Student): void {
+    for (const group of this.groups) {
+      for (const student of group.students) {
+        if (student.recordbook === updatedStudent.recordbook) {
+          const index = group.students.indexOf(student);
+          if (index !== -1) {
+            group.students.splice(index, 1);
+          }
+        }
+      }
+    }
+  }
+
+  private appendStudentInNewGroup(updatedStudent: Student) {
+    for (const group of this.groups) {
+      if (group.name == updatedStudent.group.name) {
+        group.students.push(updatedStudent);
+        group.students.sort((a, b) =>
+          a.surname > b.surname ? 1 : a.surname < b.surname ? -1 : 0,
+        );
+      }
+    }
   }
 }

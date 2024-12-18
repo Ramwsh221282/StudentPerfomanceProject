@@ -1,0 +1,16 @@
+<div id="container">
+  <div id="header">
+    <strong>Удаление студента из группы</strong>
+  </div>
+  <div id="content">
+    <strong>
+      Удалить
+      студента {{ student.surname }} {{ student.name[0] }} {{ student.patronymic == null ? '' : student.patronymic[0] }}
+    </strong>
+    <strong>Из группы {{ group.name }}</strong>
+  </div>
+  <div id="controls">
+    <app-green-outline-button [label]="'Удалить'" (onClicked)="submit()"></app-green-outline-button>
+    <app-red-outline-button [label]="'Закрыть диалог'" (onClicked)="close()"></app-red-outline-button>
+  </div>
+</div>

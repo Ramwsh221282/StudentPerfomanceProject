@@ -7,4 +7,5 @@ export interface StudentGroup {
   plan: EducationPlan;
   activeSemesterNumber: number;
   students: Student[];
+  id: string;
 }

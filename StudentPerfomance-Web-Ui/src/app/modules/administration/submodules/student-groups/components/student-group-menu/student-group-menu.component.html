@@ -8,11 +8,19 @@
   <div class="tab-form-content">
     @switch (activeTabId) {
       @case (tabs[0].id) {
-        <app-students-list [group]="group"></app-students-list>
+        <app-students-list (studentMovedToOtherGroup)="moveStudentToOtherGroup.emit($event)"
+                           [group]="group"></app-students-list>
       }
       @case (tabs[1].id) {
-
+        <app-group-education-plan-info [group]="group"
+                                       (educationPlanChangeRequest)="studentGroupChangePlanListener = $event; isChangingStudentGroupPlan = true">
+        </app-group-education-plan-info>
       }
     }
   </div>
 </div>
+<app-change-group-education-plan-popup *ngIf="studentGroupChangePlanListener && isChangingStudentGroupPlan"
+                                       [group]="studentGroupChangePlanListener"
+                                       [visibility]="isChangingStudentGroupPlan"
+                                       (visibilityChanged)="isChangingStudentGroupPlan = $event; studentGroupChangePlanListener = null">
+</app-change-group-education-plan-popup>

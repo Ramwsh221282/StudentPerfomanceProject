@@ -12,7 +12,8 @@ import { DropdownListComponent } from '../../../../../../../building-blocks/drop
 })
 export class EducationDirectionsSelectComponent implements OnInit {
   @Input({ required: true }) isSelecting: boolean;
-  @Output() itemSelected = new EventEmitter<string>();
+  @Output() itemSelected = new EventEmitter<string>(); // outdated
+  @Output() directionSelected = new EventEmitter<EducationDirection>();
   @Output() visibilityChanged = new EventEmitter<boolean>();
   protected directions: EducationDirection[] = [];
 
@@ -35,4 +36,29 @@ export class EducationDirectionsSelectComponent implements OnInit {
   private createDirectionDataByMask(direction: EducationDirection): string {
     return `${direction.name} ${direction.code} ${direction.type}`;
   }
+
+  protected handleDirectionSelected(info: string): void {
+    const parsedData = this.parseData(info);
+    const direction = this.directions.find(
+      (direction) =>
+        direction.name == parsedData.name &&
+        direction.code == parsedData.code &&
+        direction.type == parsedData.type,
+    )!;
+    this.directionSelected.emit(direction);
+  }
+
+  private parseData(data: string): ParsedDirectionData {
+    const nameMatch = data.match(/^\D+/);
+    const name = nameMatch![0].trim();
+    const remaining = data.substring(name.length).trim();
+    const [code, type] = remaining.split(/\s+/);
+    return { name, code, type };
+  }
 }
+
+type ParsedDirectionData = {
+  name: string;
+  code: string;
+  type: string;
+};

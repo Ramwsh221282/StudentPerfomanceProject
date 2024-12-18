@@ -1,3 +1,5 @@
+using SPerfomance.Domain.Models.StudentGroups;
+
 namespace SPerfomance.Domain.Models.Students.Abstractions;
 
 public interface IStudentsRepository
@@ -13,4 +15,10 @@ public interface IStudentsRepository
     public Task<bool> HasWithRecordbook(ulong recordbook, CancellationToken ct = default);
 
     public Task<int> GenerateEntityNumber(CancellationToken ct = default);
+
+    public Task ChangeStudentGroupId(
+        Student student,
+        StudentGroup group,
+        CancellationToken ct = default
+    );
 }

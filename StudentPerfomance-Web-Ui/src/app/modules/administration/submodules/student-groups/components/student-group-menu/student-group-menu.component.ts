@@ -1,5 +1,13 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import { StudentGroup } from '../../services/studentsGroup.interface';
+import { Student } from '../../../students/models/student.interface';
 
 @Component({
   selector: 'app-student-group-menu',
@@ -8,11 +16,15 @@ import { StudentGroup } from '../../services/studentsGroup.interface';
 })
 export class StudentGroupMenuComponent implements OnChanges {
   @Input({ required: true }) group: StudentGroup;
+  @Output() moveStudentToOtherGroup: EventEmitter<Student> = new EventEmitter();
 
   protected tabs: any = [];
   protected activeTabId: number = 1;
 
-  ngOnChanges(changes: SimpleChanges): void {
+  protected studentGroupChangePlanListener: StudentGroup | null;
+  protected isChangingStudentGroupPlan: boolean = false;
+
+  public ngOnChanges(changes: SimpleChanges): void {
     if (changes['group']) {
       this.updateTabs();
     }
