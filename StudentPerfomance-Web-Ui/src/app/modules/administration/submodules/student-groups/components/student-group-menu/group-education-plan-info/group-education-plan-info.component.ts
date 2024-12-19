@@ -10,6 +10,7 @@ export class GroupEducationPlanInfoComponent {
   @Input({ required: true }) group: StudentGroup;
   @Output() educationPlanChangeRequest: EventEmitter<StudentGroup> =
     new EventEmitter();
-  protected planAttachment: string = 'Выберите учебный план';
+  @Output() educationPlanDeattachmentRequest: EventEmitter<StudentGroup> =
+    new EventEmitter();
   protected readonly String = String;
 }

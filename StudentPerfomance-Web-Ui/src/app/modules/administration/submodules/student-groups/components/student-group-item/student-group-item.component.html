@@ -5,15 +5,18 @@
     <label>{{ group.name }}</label>
     <label *ngIf="group.plan != null">{{ group.plan.direction.type }}</label>
     <div class="student-group-controls-container">
-      <app-red-button [label]="'Удалить'"></app-red-button>
+      <app-red-button [label]="'Удалить'" (onClicked)="removeRequested.emit(group)"></app-red-button>
     </div>
   </div>
   <div class="student-group-attributes-grid">
     <span class="attribute">Номер:</span>
     <span class="attribute">{{ group.entityNumber }}</span>
+
     <span class="attribute">Учебный план:</span>
-    <span class="attribute">{{ group.plan.year }} {{ group.plan.direction.code }}</span>
+    <span
+      class="attribute">{{ group.plan == null ? 'Не задан' : group.plan.year }} {{ group.plan == null ? '' : group.plan.direction.code }}</span>
+
     <span class="attribute">Текущий семестр:</span>
-    <span class="attribute">{{ group.activeSemesterNumber }}</span>
+    <span class="attribute">{{ group.activeSemesterNumber == null ? 'Не задан' : group.activeSemesterNumber }}</span>
   </div>
 </div>

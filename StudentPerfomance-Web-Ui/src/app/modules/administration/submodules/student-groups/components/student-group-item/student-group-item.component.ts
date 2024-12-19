@@ -10,4 +10,5 @@ export class StudentGroupItemComponent {
   @Input({ required: true }) isCurrentlySelected: boolean = false;
   @Input({ required: true }) group: StudentGroup;
   @Output() selected: EventEmitter<StudentGroup> = new EventEmitter();
+  @Output() removeRequested: EventEmitter<StudentGroup> = new EventEmitter();
 }

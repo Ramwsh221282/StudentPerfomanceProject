@@ -1,0 +1,12 @@
+<div id="container">
+  <div id="header">
+    <strong>Удаление группы</strong>
+  </div>
+  <div id="content">
+    <strong>Удалить группу {{ group.name }}</strong>
+  </div>
+  <div id="controls">
+    <app-green-outline-button [label]="'Удалить'" (onClicked)="submit()"></app-green-outline-button>
+    <app-red-outline-button [label]="'Закрыть диалог'" (onClicked)="close()"></app-red-outline-button>
+  </div>
+</div>

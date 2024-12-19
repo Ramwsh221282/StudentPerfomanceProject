@@ -14,10 +14,12 @@
   <app-floating-label-input [value]="String(group.activeSemesterNumber)" [label]="'Текущий семестр группы'"
                             [id]="'ActiveGroupSemester'" [isReadonly]="true">
   </app-floating-label-input>
-  <app-blue-button [label]="'Сменить учебный план группы'"
-                   (onClicked)="educationPlanChangeRequest.emit(group)">
-  </app-blue-button>
+  <app-red-button [label]="'Открепить учебный план'"
+                  (onClicked)="educationPlanDeattachmentRequest.emit(group)">
+  </app-red-button>
 </section>
 <section class="group-education-plan-info-container" *ngIf="group.plan == null">
-  <app-blue-button [label]="'Задать учебный план'"></app-blue-button>
+  <app-blue-button [label]="'Задать учебный план'"
+                   (onClicked)="educationPlanChangeRequest.emit(group)">
+  </app-blue-button>
 </section>

@@ -13,12 +13,19 @@
       }
       @case (tabs[1].id) {
         <app-group-education-plan-info [group]="group"
-                                       (educationPlanChangeRequest)="studentGroupChangePlanListener = $event; isChangingStudentGroupPlan = true">
+                                       (educationPlanChangeRequest)="studentGroupChangePlanListener = $event; isChangingStudentGroupPlan = true"
+                                       (educationPlanDeattachmentRequest)="isDeattachingPlan = true; groupToDeattachPlanFrom = $event">
         </app-group-education-plan-info>
       }
     }
   </div>
 </div>
+<app-deattach-education-plan-popup *ngIf="groupToDeattachPlanFrom && isDeattachingPlan"
+                                   [group]="groupToDeattachPlanFrom"
+                                   [visibility]="isDeattachingPlan"
+                                   (visibilityChanged)="groupToDeattachPlanFrom = null; isDeattachingPlan = $event"
+                                   (planDeattached)="handlePlanDeattachment($event)">
+</app-deattach-education-plan-popup>
 <app-change-group-education-plan-popup *ngIf="studentGroupChangePlanListener && isChangingStudentGroupPlan"
                                        [group]="studentGroupChangePlanListener"
                                        [visibility]="isChangingStudentGroupPlan"

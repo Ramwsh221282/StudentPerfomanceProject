@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import { StudentGroup } from '../../services/studentsGroup.interface';
 import { Student } from '../../../students/models/student.interface';
+import { UserOperationNotificationService } from '../../../../../../shared/services/user-notifications/user-operation-notification-service.service';
 
 @Component({
   selector: 'app-student-group-menu',
@@ -24,10 +25,26 @@ export class StudentGroupMenuComponent implements OnChanges {
   protected studentGroupChangePlanListener: StudentGroup | null;
   protected isChangingStudentGroupPlan: boolean = false;
 
+  protected groupToDeattachPlanFrom: StudentGroup | null;
+  protected isDeattachingPlan: boolean = false;
+
+  public constructor(
+    private readonly _notificationService: UserOperationNotificationService,
+  ) {}
+
   public ngOnChanges(changes: SimpleChanges): void {
     if (changes['group']) {
       this.updateTabs();
     }
+  }
+
+  protected handlePlanDeattachment(group: StudentGroup) {
+    group.plan = null!;
+    group.activeSemesterNumber = null!;
+    this.groupToDeattachPlanFrom = null;
+    this.isDeattachingPlan = false;
+    this._notificationService.SetMessage = `Откреплён учебный план у группы ${group.name}`;
+    this._notificationService.success();
   }
 
   private updateTabs(): void {

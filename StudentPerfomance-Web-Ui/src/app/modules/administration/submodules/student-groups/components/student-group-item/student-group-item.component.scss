@@ -1,7 +1,7 @@
 .student-group-item-container {
   padding: 0.2rem;
   display: grid;
-  grid-template-columns: 203px auto;
+  grid-template-columns: 203px 275px;
 
   &:hover .student-group-name-container {
     transition: 0.5s ease-in-out;

@@ -1,6 +1,6 @@
 <div id="container">
   <div id="header">
-    <strong>Смена учебного плана для группы {{ group.name }}</strong>
+    <strong>Задача учебного плана группе {{ group.name }}</strong>
   </div>
   <div id="content">
     <div class="dropdown-container">
@@ -14,9 +14,28 @@
                                        (directionSelected)="handleDirectionSelect($event)">
       </app-education-directions-select>
     </div>
+    <div class="dropdown-container" *ngIf="selectedDirection">
+      <app-floating-label-input [value]="selectEducationPlanLabel" [isReadonly]="true" [id]="'EducationPlanSelection'"
+                                (click)="isSelectingEducationPlan = true" [label]="'Учебный план'">
+      </app-floating-label-input>
+      <app-dropdown-list *ngIf="isSelectingEducationPlan" [items]="getPlanYearsAsStringArray()"
+                         (visibilityChanged)="isSelectingEducationPlan = $event"
+                         (itemSelected)="handlePlanSelect($event)">
+      </app-dropdown-list>
+    </div>
+    <div *ngIf="selectedEducationPlan" class="dropdown-container">
+      <app-floating-label-input [value]="selectSemesterLabel" [label]="'Текущий семестр'" [isReadonly]="true"
+                                [id]="'SemesterSelectionInput'"
+                                (click)="isSelectingActiveSemester = true">
+      </app-floating-label-input>
+      <app-dropdown-list *ngIf="isSelectingActiveSemester" [items]="getSemesterNumbersAsStringArray()"
+                         (visibilityChanged)="isSelectingActiveSemester = false"
+                         (itemSelected)="handleSemesterSelect($event)">
+      </app-dropdown-list>
+    </div>
   </div>
   <div id="controls">
-    <app-green-outline-button *ngIf="selectedDirection" [label]="'Изменить'"
+    <app-green-outline-button *ngIf="selectedDirection && selectedSemester && selectedEducationPlan" [label]="'Задать'"
                               (onClicked)="submit()"></app-green-outline-button>
     <app-red-outline-button [label]="'Закрыть диалог'" (onClicked)="close()"></app-red-outline-button>
   </div>

@@ -26,4 +26,16 @@ public static class EducationPlanDtoExtensions
                 .OrderBy(s => s.Number)
                 .ToList(),
         };
+
+    public static EducationPlanDto MapWithoutDirection(this EducationPlan plan) =>
+        new()
+        {
+            Id = plan.Id,
+            Year = plan.Year.Year,
+            EntityNumber = plan.EntityNumber,
+            Semesters = plan
+                .Semesters.Select(s => s.MapFromDomain())
+                .OrderBy(s => s.Number)
+                .ToList(),
+        };
 }

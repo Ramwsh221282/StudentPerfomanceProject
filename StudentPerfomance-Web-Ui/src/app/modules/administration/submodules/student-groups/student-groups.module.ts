@@ -4,24 +4,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StudentGroupsRoutingModule } from './student-groups-routing.module';
 import { StudentGroupsPageComponent } from './components/student-groups-page/student-groups-page.component';
 import { StudentGroupsTableComponent } from './components/student-groups-table/student-groups-table.component';
-import { TableRowComponent } from './components/student-groups-table/table-row/table-row.component';
 import { TablePaginationComponent } from './components/student-groups-table/table-pagination/table-pagination.component';
-import { StudentGroupCreateModalComponent } from './components/student-group-create-modal/student-group-create-modal.component';
-import { StudentGroupFilterModalComponent } from './components/student-group-filter-modal/student-group-filter-modal.component';
-import { StudentGroupRemoveModalComponent } from './components/student-group-remove-modal/student-group-remove-modal.component';
 import { FailureResultNotificationComponent } from '../../../../shared/components/failure-result-notification/failure-result-notification.component';
 import { SuccessResultNotificationComponent } from '../../../../shared/components/success-result-notification/success-result-notification.component';
-import { StudentGroupEditModalComponent } from './components/student-group-edit-modal/student-group-edit-modal.component';
-import { NameChangeModalComponent } from './components/student-group-edit-modal/name-change-modal/name-change-modal.component';
-import { PlanAttachmentModalComponent } from './components/student-group-edit-modal/plan-attachment-modal/plan-attachment-modal.component';
-import { MergeGroupModalComponent } from './components/student-group-edit-modal/merge-group-modal/merge-group-modal.component';
-import { StudentsMenuModalComponent } from './components/students-menu-modal/students-menu-modal.component';
-import { StudentEditModalComponent } from './components/students-menu-modal/student-edit-modal/student-edit-modal.component';
-import { StudentDeletionModalComponent } from './components/students-menu-modal/student-deletion-modal/student-deletion-modal.component';
-import { StudentCreationModalComponent } from './components/students-menu-modal/student-creation-modal/student-creation-modal.component';
-import { StudentFilterModalComponent } from './components/students-menu-modal/student-filter-modal/student-filter-modal.component';
-import { StudentSwitchGroupModalComponent } from './components/students-menu-modal/student-edit-modal/student-switch-group-modal/student-switch-group-modal.component';
-import { SemesterNumberSelectionModalComponent } from './components/student-group-edit-modal/plan-attachment-modal/semester-number-selection-modal/semester-number-selection-modal.component';
 import { BlueOutlineButtonComponent } from '../../../../building-blocks/buttons/blue-outline-button/blue-outline-button.component';
 import { BlueButtonComponent } from '../../../../building-blocks/buttons/blue-button/blue-button.component';
 import { StudentGroupItemComponent } from './components/student-group-item/student-group-item.component';
@@ -43,27 +28,18 @@ import { DropdownListComponent } from '../../../../building-blocks/dropdown-list
 import { StudentRemovePopupComponent } from './components/students-list/student-remove-popup/student-remove-popup.component';
 import { GroupEducationPlanInfoComponent } from './components/student-group-menu/group-education-plan-info/group-education-plan-info.component';
 import { ChangeGroupEducationPlanPopupComponent } from './components/student-group-menu/group-education-plan-info/change-group-education-plan-popup/change-group-education-plan-popup.component';
+import { DeattachEducationPlanPopupComponent } from './components/student-group-menu/group-education-plan-info/deattach-education-plan-popup/deattach-education-plan-popup.component';
+import { CreateGroupDropdownComponent } from './components/create-group-dropdown/create-group-dropdown.component';
+import { FilterGroupDropdownComponent } from './components/filter-group-dropdown/filter-group-dropdown.component';
+import { RemoveGroupPopupComponent } from './components/remove-group-popup/remove-group-popup.component';
+import { MergeGroupDropdownComponent } from './components/merge-group-dropdown/merge-group-dropdown.component';
+import { YellowOutlineButtonComponent } from '../../../../building-blocks/buttons/yellow-outline-button/yellow-outline-button.component';
 
 @NgModule({
   declarations: [
     StudentGroupsPageComponent,
     StudentGroupsTableComponent,
-    TableRowComponent,
     TablePaginationComponent,
-    StudentGroupCreateModalComponent,
-    StudentGroupFilterModalComponent,
-    StudentGroupRemoveModalComponent,
-    StudentGroupEditModalComponent,
-    NameChangeModalComponent,
-    PlanAttachmentModalComponent,
-    MergeGroupModalComponent,
-    StudentsMenuModalComponent,
-    StudentEditModalComponent,
-    StudentDeletionModalComponent,
-    StudentCreationModalComponent,
-    StudentFilterModalComponent,
-    StudentSwitchGroupModalComponent,
-    SemesterNumberSelectionModalComponent,
     StudentGroupItemComponent,
     StudentGroupMenuComponent,
     StudentsListComponent,
@@ -74,6 +50,11 @@ import { ChangeGroupEducationPlanPopupComponent } from './components/student-gro
     SwitchStudentGroupDropdownComponent,
     StudentRemovePopupComponent,
     GroupEducationPlanInfoComponent,
+    DeattachEducationPlanPopupComponent,
+    CreateGroupDropdownComponent,
+    FilterGroupDropdownComponent,
+    RemoveGroupPopupComponent,
+    MergeGroupDropdownComponent,
   ],
   imports: [
     CommonModule,
@@ -93,6 +74,7 @@ import { ChangeGroupEducationPlanPopupComponent } from './components/student-gro
     StudentStatusDropdownComponent,
     DropdownListComponent,
     ChangeGroupEducationPlanPopupComponent,
+    YellowOutlineButtonComponent,
   ],
   exports: [StudentGroupsPageComponent],
 })

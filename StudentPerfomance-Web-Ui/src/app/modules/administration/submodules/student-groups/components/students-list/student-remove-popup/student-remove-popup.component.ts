@@ -3,7 +3,7 @@ import { Student } from '../../../../students/models/student.interface';
 import { StudentGroup } from '../../../services/studentsGroup.interface';
 import { ISubbmittable } from '../../../../../../../shared/models/interfaces/isubbmitable';
 import { UserOperationNotificationService } from '../../../../../../../shared/services/user-notifications/user-operation-notification-service.service';
-import { StudentDeletionService } from '../../students-menu-modal/student-deletion-modal/student-deletion.service';
+import { StudentDeletionService } from '../../../services/student-deletion.service';
 import { catchError, Observable, tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 

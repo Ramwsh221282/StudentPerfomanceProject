@@ -52,6 +52,8 @@ public static class GetAllEducationDirections
             "Получены все направления подготовки в количестве {count}",
             directions.Count
         );
-        return TypedResults.Ok(directions.Select(d => d.MapFromDomain()));
+
+        var dtos = directions.Select(d => d.MapFromDomain());
+        return TypedResults.Ok(dtos);
     }
 }

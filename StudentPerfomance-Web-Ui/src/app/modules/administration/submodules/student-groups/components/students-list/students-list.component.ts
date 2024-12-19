@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { StudentGroup } from '../../services/studentsGroup.interface';
 import { Student } from '../../../students/models/student.interface';
-import { StudentCreationService } from '../students-menu-modal/student-creation-modal/student-creation.service';
+import { StudentCreationService } from '../../services/student-creation.service';
 import { catchError, Observable, tap } from 'rxjs';
 import { UserOperationNotificationService } from '../../../../../../shared/services/user-notifications/user-operation-notification-service.service';
 import { HttpErrorResponse } from '@angular/common/http';

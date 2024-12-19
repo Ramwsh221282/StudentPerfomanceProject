@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Student } from '../../../../students/models/student.interface';
 import { ISubbmittable } from '../../../../../../../shared/models/interfaces/isubbmitable';
 import { UserOperationNotificationService } from '../../../../../../../shared/services/user-notifications/user-operation-notification-service.service';
-import { StudentEditService } from '../../students-menu-modal/student-edit-modal/student-edit.service';
+import { StudentEditService } from '../../../services/student-edit.service';
 import { catchError, Observable, tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 
