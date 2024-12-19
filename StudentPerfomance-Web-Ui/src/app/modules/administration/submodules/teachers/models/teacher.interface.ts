@@ -7,4 +7,5 @@ export interface Teacher {
   state: string;
   jobTitle: string;
   department: Department;
+  id: string;
 }

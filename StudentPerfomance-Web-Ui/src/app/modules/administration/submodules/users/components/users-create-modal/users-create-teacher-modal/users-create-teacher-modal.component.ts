@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { UserCreationService } from '../../../services/user-create.service';
 import { DepartmentDataService } from '../../../../departments/components/department-table/department-data.service';
-import { TeacherDataService } from '../../../../departments/components/department-table/department-teachers-menu-modal/teachers-data.service';
+import { TeacherDataService } from '../../../../departments/services/teachers-data.service';
 import { Department } from '../../../../departments/models/departments.interface';
 import { Teacher } from '../../../../teachers/models/teacher.interface';
 import { User } from '../../../../../../users/services/user-interface';

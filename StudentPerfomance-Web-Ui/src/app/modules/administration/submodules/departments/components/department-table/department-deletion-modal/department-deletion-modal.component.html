@@ -1,23 +1,12 @@
 <div id="container">
   <div id="header">
-    <strong>Подтверждение</strong>
+    <strong>Удалить кафедру</strong>
   </div>
   <div id="content">
-    <a>Вы уверены, что Вы хотите удалить запись кафедры?</a>
-    <a>При удалении кафедры удалятся связанные с ним записи:</a>
-    <a>Преподаватели</a>
-    <a>Пользователи с ролью преподаватель</a>
+    <a>Удалить кафедру {{ department.name }}</a>
   </div>
   <div id="controls">
-    <button class="accept-button-modal" type="button" (click)="submit()">
-      Подтвердить
-    </button>
-    ><button
-      class="danger-button-modal"
-      type="button"
-      (click)="visibility.emit(false)"
-    >
-      Отмена
-    </button>
+    <app-green-outline-button [label]="'Удалить'" (onClicked)="submit()"></app-green-outline-button>
+    <app-red-outline-button [label]="'Закрыть диалог'" (onClicked)="close()"></app-red-outline-button>
   </div>
 </div>

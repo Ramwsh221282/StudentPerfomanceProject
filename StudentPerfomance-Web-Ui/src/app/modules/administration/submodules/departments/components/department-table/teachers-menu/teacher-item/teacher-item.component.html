@@ -1,0 +1,15 @@
+<div class="teacher-item-container">
+  <div class="teacher-name-container">
+    <label>{{ teacher.surname }} {{ teacher.name[0] }} {{ teacher.patronymic == null ? '' : teacher.patronymic[0] }}</label>
+    <div class="teacher-controls-container">
+      <app-red-button [label]="'Удалить'" (onClicked)="teacherDeleteClicked.emit(teacher)"></app-red-button>
+      <app-yellow-button [label]="'Редактировать'" (onClicked)="teacherEditClicked.emit(teacher)"></app-yellow-button>
+    </div>
+  </div>
+  <div class="teacher-attributes-grid">
+    <span class="attribute">Должность:</span>
+    <span class="attribute">{{ teacher.jobTitle }}</span>
+    <span class="attribute">Условия работы:</span>
+    <span class="attribute">{{ teacher.state }}</span>
+  </div>
+</div>

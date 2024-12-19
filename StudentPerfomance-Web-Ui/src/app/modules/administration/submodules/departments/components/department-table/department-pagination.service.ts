@@ -10,7 +10,7 @@ import { AppConfigService } from '../../../../../../app.config.service';
 export class DepartmentPaginationService {
   private readonly _apiUri: string;
   private _totalCount: number = 0;
-  private _pageSize: number = 10;
+  private _pageSize: number = 6;
   private _pagesCount: number = 0;
   private _currentPage: number = 1;
   private _displayPages: number[] = [];

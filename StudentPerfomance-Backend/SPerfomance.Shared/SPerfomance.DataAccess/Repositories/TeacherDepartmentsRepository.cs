@@ -22,7 +22,7 @@ public class TeacherDepartmentsRepository : ITeacherDepartmentsRepository
 
     public async Task<TeachersDepartments?> Get(string name, CancellationToken ct = default) =>
         await _context
-            .Departments.Include(d => d.Teachers)
+            .Departments.Include(d => d.Teachers.OrderBy(t => t.Name.Surname))
             .ThenInclude(t => t.Disciplines)
             .ThenInclude(t => t.Semester)
             .ThenInclude(s => s.Plan)
@@ -36,7 +36,7 @@ public class TeacherDepartmentsRepository : ITeacherDepartmentsRepository
     ) =>
         await _context
             .Departments.OrderBy(d => d.EntityNumber)
-            .Include(d => d.Teachers)
+            .Include(d => d.Teachers.OrderBy(t => t.Name.Surname))
             .ThenInclude(t => t.Disciplines)
             .ThenInclude(d => d.Semester)
             .ThenInclude(s => s.Plan)
@@ -51,7 +51,8 @@ public class TeacherDepartmentsRepository : ITeacherDepartmentsRepository
     ) =>
         await _context
             .Departments.Where(d => !string.IsNullOrWhiteSpace(name) && d.Name.Name.Contains(name))
-            .Include(d => d.Teachers)
+            .OrderBy(d => d.EntityNumber)
+            .Include(d => d.Teachers.OrderBy(t => t.Name.Surname))
             .ThenInclude(t => t.Disciplines)
             .ThenInclude(d => d.Semester)
             .ThenInclude(s => s.Plan)
@@ -69,7 +70,7 @@ public class TeacherDepartmentsRepository : ITeacherDepartmentsRepository
             .Departments.Skip((page - 1) * pageSize)
             .Take(pageSize)
             .OrderBy(d => d.EntityNumber)
-            .Include(d => d.Teachers)
+            .Include(d => d.Teachers.OrderBy(t => t.Name.Surname))
             .ThenInclude(t => t.Disciplines)
             .ThenInclude(d => d.Semester)
             .ThenInclude(s => s.Plan)
@@ -89,7 +90,7 @@ public class TeacherDepartmentsRepository : ITeacherDepartmentsRepository
             .Skip((page - 1) * pageSize)
             .Take(pageSize)
             .OrderBy(d => d.EntityNumber)
-            .Include(d => d.Teachers)
+            .Include(d => d.Teachers.OrderBy(t => t.Name.Surname))
             .ThenInclude(t => t.Disciplines)
             .ThenInclude(d => d.Semester)
             .ThenInclude(s => s.Plan)

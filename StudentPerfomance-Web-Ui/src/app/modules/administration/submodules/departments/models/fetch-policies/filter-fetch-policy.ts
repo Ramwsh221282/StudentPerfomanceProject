@@ -41,7 +41,8 @@ export class DepartmentFilterFetchPolicy implements IFetchPolicy<Department[]> {
   private buildHttpParams(page: number, pageSize: number): void {
     this._httpParams = new HttpParams()
       .set('page', page)
-      .set('pageSize', pageSize);
+      .set('pageSize', pageSize)
+      .set('filterName', this._department.name);
   }
 
   private buildHttpHeaders(): void {

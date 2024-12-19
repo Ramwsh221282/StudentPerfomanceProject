@@ -2,6 +2,21 @@
   <a [routerLink]="'/administration'">Администрирование</a>
   <a>Кафедры</a>
 </div>
-<section>
-  <app-department-table></app-department-table>
+<section class="content-container">
+  <app-department-table [departments]="departments"
+                        (departmentSelected)="selectedDepartment = $event"
+                        (departmentAdded)="ngOnInit()"
+                        (departmentRemoved)="ngOnInit()"
+                        (filtered)="ngOnInit()">
+  </app-department-table>
+  <app-teachers-menu *ngIf="selectedDepartment" [department]="selectedDepartment">
+  </app-teachers-menu>
 </section>
+<app-success-result-notification *ngIf="notificationService.isSuccess"
+                                 [message]="notificationService.Message"
+                                 (visibilityEmitter)="notificationService.reset()">
+</app-success-result-notification>
+<app-failure-result-notification *ngIf="notificationService.isFailure"
+                                 [message]="notificationService.Message"
+                                 (visibilityEmitter)="notificationService.reset()">
+</app-failure-result-notification>

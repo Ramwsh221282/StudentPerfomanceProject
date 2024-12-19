@@ -1,48 +1,48 @@
-import { Component, OnInit } from '@angular/core';
-import { DepartmentDataService } from './department-data.service';
-import { DepartmentPaginationService } from './department-pagination.service';
-import { UserOperationNotificationService } from '../../../../../../shared/services/user-notifications/user-operation-notification-service.service';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Department } from '../../models/departments.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-department-table',
   templateUrl: './department-table.component.html',
   styleUrl: './department-table.component.scss',
-  providers: [
-    DepartmentPaginationService,
-    DepartmentDataService,
-    UserOperationNotificationService,
-    DepartmentPaginationService,
-  ],
 })
-export class DepartmentTableComponent implements OnInit {
-  protected creationModalVisibility: boolean;
-  protected filterModalVisibility: boolean;
+export class DepartmentTableComponent {
+  @Input({ required: true }) departments: Department[];
+  @Output() departmentSelected: EventEmitter<Department> = new EventEmitter();
+  @Output() departmentAdded: EventEmitter<Department> = new EventEmitter();
+  @Output() departmentRemoved: EventEmitter<Department> = new EventEmitter();
+  @Output() filtered: EventEmitter<void> = new EventEmitter();
 
-  protected isSuccess: boolean;
-  protected isFailure: boolean;
+  protected currentlySelectedDepartment: Department | null;
+  protected isCreatingDepartment: boolean = false;
 
-  protected departments: Department[];
+  protected departmentToRemove: Department | null = null;
+  protected isDeletingDepartment: boolean = false;
 
-  public constructor(
-    protected readonly paginationService: DepartmentPaginationService,
-    protected readonly dataService: DepartmentDataService,
-    protected readonly notificationService: UserOperationNotificationService,
-  ) {
-    this.isSuccess = false;
-    this.isFailure = false;
-    this.creationModalVisibility = false;
-    this.filterModalVisibility = false;
-    this.departments = [];
+  protected isFiltering: boolean = false;
+
+  public constructor(private readonly _router: Router) {}
+
+  protected navigateToDocumentation(): void {
+    const path = ['/departments-info'];
+    this._router.navigate(path);
   }
 
-  public ngOnInit(): void {
-    this.dataService.addPages(
-      this.paginationService.currentPage,
-      this.paginationService.pageSize,
-    );
-    this.dataService.fetch().subscribe((response) => {
-      this.departments = response;
-    });
+  protected manageSelectedDepartment(department: Department): boolean {
+    if (!this.currentlySelectedDepartment) return false;
+    return department.name == this.currentlySelectedDepartment.name;
+  }
+
+  protected handleCreatedDepartment(department: Department): void {
+    this.departmentAdded.emit(department);
+  }
+
+  protected handleDeletedDepartment(department: Department): void {
+    this.departmentRemoved.emit(department);
+  }
+
+  protected handleFilter(): void {
+    this.filtered.emit();
   }
 }

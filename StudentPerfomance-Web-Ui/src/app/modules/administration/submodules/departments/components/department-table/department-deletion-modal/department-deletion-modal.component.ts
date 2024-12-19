@@ -1,10 +1,9 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Department } from '../../../models/departments.interface';
 import { UserOperationNotificationService } from '../../../../../../../shared/services/user-notifications/user-operation-notification-service.service';
-import { DepartmentDeletionService } from './department-deletion.service';
+import { DepartmentDeletionService } from '../../../services/department-deletion.service';
 import { ISubbmittable } from '../../../../../../../shared/models/interfaces/isubbmitable';
-import { DepartmentDeletionHandler } from './department-deletion-handler';
-import { catchError, tap } from 'rxjs';
+import { catchError, Observable, tap } from 'rxjs';
 
 @Component({
   selector: 'app-department-deletion-modal',
@@ -14,32 +13,37 @@ import { catchError, tap } from 'rxjs';
 })
 export class DepartmentDeletionModalComponent implements ISubbmittable {
   @Input({ required: true }) department: Department;
-  @Output() visibility: EventEmitter<boolean> = new EventEmitter<boolean>();
-  @Output() successEmitter: EventEmitter<void> = new EventEmitter<void>();
-  @Output() failureEmitter: EventEmitter<void> = new EventEmitter<void>();
-  @Output() refreshEmitter: EventEmitter<void> = new EventEmitter();
+  @Input({ required: true }) visibility: boolean = false;
+  @Output() visibilityChange: EventEmitter<boolean> =
+    new EventEmitter<boolean>();
+  @Output() deleteCommited: EventEmitter<Department> =
+    new EventEmitter<Department>();
 
   public constructor(
-    protected notificationService: UserOperationNotificationService,
-    private readonly _deletionService: DepartmentDeletionService
+    private readonly _notificationService: UserOperationNotificationService,
+    private readonly _deletionService: DepartmentDeletionService,
   ) {}
 
   public submit(): void {
-    const handler = DepartmentDeletionHandler(this.notificationService);
-
     this._deletionService
       .remove(this.department)
       .pipe(
         tap((response) => {
-          this.refreshEmitter.emit();
-          this.successEmitter.emit();
-          handler.handle(response);
+          this._notificationService.SetMessage = `Удалена кафедра ${this.department.name}`;
+          this._notificationService.success();
+          this.deleteCommited.emit(this.department);
         }),
         catchError((error) => {
-          this.failureEmitter.emit();
-          return handler.handleError(error);
-        })
+          this._notificationService.SetMessage = error.error;
+          this._notificationService.failure();
+          return new Observable<never>();
+        }),
       )
       .subscribe();
+  }
+
+  protected close(): void {
+    this.visibility = false;
+    this.visibilityChange.emit(this.visibility);
   }
 }

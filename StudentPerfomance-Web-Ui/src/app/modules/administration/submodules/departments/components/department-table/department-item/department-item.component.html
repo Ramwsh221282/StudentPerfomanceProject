@@ -1,0 +1,25 @@
+<div class="department-item-container">
+  <div
+    [ngClass]="{'department-name-container': !isCurrentlySelected, 'department-container-selected': isCurrentlySelected}"
+    (click)="selected.emit(department)">
+    <label>{{ department.name }}</label>
+    <div class="department-controls-container">
+      <app-red-button [label]="'Удалить'"
+                      (onClicked)="removeRequested.emit(department)">
+      </app-red-button>
+      <div class="dropdown-container">
+        <app-yellow-button [label]="'Редактировать'" (onClicked)="isEditing = true"></app-yellow-button>
+        <app-department-edit-dropdown *ngIf="isEditing" [department]="department"
+                                      [visibility]="isEditing"
+                                      (visibilityChange)="isEditing = false">
+        </app-department-edit-dropdown>
+      </div>
+    </div>
+  </div>
+  <div class="department-attributes-grid">
+    <span class="attribute">Номер:</span>
+    <span class="attribute">{{ department.entityNumber }}</span>
+    <span class="attribute">Кол-во преподавателей:</span>
+    <span class="attribute">{{ department.teachers.length }}</span>
+  </div>
+</div>
