@@ -1,0 +1,7 @@
+<section class="attributes-container">
+  <a>Дата начала: {{ session.startDate }}</a>
+  <a>Дата окончания: {{ session.endDate }}</a>
+  <a>Текущее состояние: {{ session.state }}</a>
+  <app-green-outline-button [label]="'Закрыть и сформировать отчёт'"
+                            (onClicked)="sessionCloseRequested.emit(session)"></app-green-outline-button>
+</section>

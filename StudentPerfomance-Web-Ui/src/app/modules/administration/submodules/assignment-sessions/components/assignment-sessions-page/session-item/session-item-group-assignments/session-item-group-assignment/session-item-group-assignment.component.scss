@@ -1,0 +1,54 @@
+.group-assignment-container {
+  overflow: auto;
+  max-height: 600px;
+}
+
+.week-assignment-layout {
+  background-color: #ffffff;
+  border: solid 1px #d9d9d9;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.week-assignment-table-container {
+  font-size: 12px;
+  color: black;
+  overflow: auto;
+}
+
+.report-table-layout th, .report-table-layout td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.report-table-layout tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.report-table-layout tr:hover {
+  background-color: #f5f5f5;
+}
+
+.red-background {
+  background-color: #FEB9B9;
+}
+
+.rotate-sm-90 {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  max-height: 150px;
+  text-align: left;
+  min-width: 60px;
+}
+
+.results-container {
+  width: auto;
+  text-decoration: underline;
+  padding: 5px;
+  gap: 5px;
+  display: flex;
+  flex-direction: column;
+}

@@ -1,60 +1,25 @@
-import { Component, OnInit } from '@angular/core';
-import { UserOperationNotificationService } from '../../../../../../../shared/services/user-notifications/user-operation-notification-service.service';
-import { AssignmentSessionPaginationService } from './assignment-session-pagination.service';
-import { AssignmentSessionDataService } from './assignment-session-data.service';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { AssignmentSession } from '../../../models/assignment-session-interface';
-import { PaginationService } from '../../../../education-directions/services/pagination.service';
-import { AssignmentSessionDefaultFetchPolicy } from '../../../models/fetch-policies/assignment-session-default-fetch-policy';
-import { AuthService } from '../../../../../../users/services/auth.service';
-import { AppConfigService } from '../../../../../../../app.config.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-assignment-session-table',
   templateUrl: './assignment-session-table.component.html',
   styleUrl: './assignment-session-table.component.scss',
-  providers: [
-    UserOperationNotificationService,
-    AssignmentSessionPaginationService,
-    AssignmentSessionDataService,
-  ],
 })
-export class AssignmentSessionTableComponent implements OnInit {
-  protected _isCreationVisible: boolean;
-  protected _isSuccess: boolean;
-  protected _isFailure: boolean;
+export class AssignmentSessionTableComponent {
+  @Input({ required: true }) activeAssignmentSession: AssignmentSession | null;
+  @Output() sessionCloseRequested: EventEmitter<AssignmentSession> =
+    new EventEmitter();
+  @Output() sessionCreated: EventEmitter<AssignmentSession> =
+    new EventEmitter();
 
-  protected sessions: AssignmentSession[];
+  protected isCreatingSession: boolean = false;
 
-  public constructor(
-    protected readonly notificationService: UserOperationNotificationService,
-    private readonly _paginationService: PaginationService,
-    private readonly _dataService: AssignmentSessionDataService,
-    private readonly _authService: AuthService,
-    private readonly _appConfig: AppConfigService,
-  ) {
-    this.sessions = [];
-  }
+  public constructor(private readonly _router: Router) {}
 
-  public ngOnInit(): void {
-    const policy = new AssignmentSessionDefaultFetchPolicy(
-      this._authService,
-      this._appConfig,
-    );
-    policy.addPages(
-      this._paginationService.currentPage,
-      this._paginationService.pageSize,
-    );
-    this._dataService.setPolicy(policy);
-    this.fetchData();
-  }
-
-  protected refreshPagination(): void {
-    this._paginationService.refreshPagination();
-  }
-
-  protected fetchData(): void {
-    this._dataService.fetch().subscribe((response) => {
-      this.sessions = response;
-    });
+  protected navigateToDocumentation(): void {
+    const path = ['/assignment-sessions-info'];
+    this._router.navigate(path);
   }
 }

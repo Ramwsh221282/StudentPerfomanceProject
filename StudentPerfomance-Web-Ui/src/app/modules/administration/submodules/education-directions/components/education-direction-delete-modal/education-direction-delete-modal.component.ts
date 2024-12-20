@@ -29,9 +29,19 @@ export class EducationDirectionDeleteModalComponent {
     this._facadeService
       .delete(this.direction)
       .pipe(
-        tap((response) => handler.handle(response)),
-        catchError((error: HttpErrorResponse) => handler.handleError(error)),
+        tap((response) => {
+          handler.handle(response);
+          this.close();
+        }),
+        catchError((error: HttpErrorResponse) => {
+          this.close();
+          return handler.handleError(error);
+        }),
       )
       .subscribe();
+  }
+
+  protected close(): void {
+    this.visibility.emit(false);
   }
 }

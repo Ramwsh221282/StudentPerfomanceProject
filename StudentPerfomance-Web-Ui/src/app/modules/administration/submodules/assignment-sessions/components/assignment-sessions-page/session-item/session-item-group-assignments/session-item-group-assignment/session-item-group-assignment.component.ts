@@ -1,20 +1,15 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { AssignmentSessionWeek } from '../../../../../models/assignment-session-week';
 import { StudentAssignments } from '../../../../../models/assignment-session-student-assignments';
 import { AssignmentSessionAssignment } from '../../../../../models/assignment-session-assignment';
 
 @Component({
-  selector: 'app-assignment-session-item-assignments',
-  templateUrl: './assignment-session-item-assignments.component.html',
-  styleUrl: './assignment-session-item-assignments.component.scss',
+  selector: 'app-session-item-group-assignment',
+  templateUrl: './session-item-group-assignment.component.html',
+  styleUrl: './session-item-group-assignment.component.scss',
 })
-export class AssignmentSessionItemAssignmentsComponent implements OnInit {
+export class SessionItemGroupAssignmentComponent {
   @Input({ required: true }) week: AssignmentSessionWeek;
-  @Output() visibility: EventEmitter<void> = new EventEmitter();
-
-  public constructor() {}
-
-  public ngOnInit(): void {}
 
   protected getStudents(): StudentAssignments[] {
     const students: StudentAssignments[] = [];
@@ -39,5 +34,9 @@ export class AssignmentSessionItemAssignmentsComponent implements OnInit {
     if (studentAssignment.value == 'Нет аттестации') return 'НА';
 
     return studentAssignment.value;
+  }
+
+  protected isBadMark(grade: string): boolean {
+    return grade === '2' || grade === 'НП' || grade === 'НА';
   }
 }

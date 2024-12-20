@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { IObservableFetchable } from '../../../../../../../shared/models/fetch-policices/iobservable-fetchable.interface';
-import { AssignmentSession } from '../../../models/assignment-session-interface';
+import { IObservableFetchable } from '../../../../../shared/models/fetch-policices/iobservable-fetchable.interface';
+import { AssignmentSession } from '../models/assignment-session-interface';
 import { Observable } from 'rxjs';
-import { IFetchPolicy } from '../../../../../../../shared/models/fetch-policices/fetch-policy-interface';
+import { IFetchPolicy } from '../../../../../shared/models/fetch-policices/fetch-policy-interface';
 
 @Injectable({
   providedIn: 'any',

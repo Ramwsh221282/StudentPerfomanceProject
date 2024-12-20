@@ -39,8 +39,4 @@ export class EducationDirectionsTableComponent implements OnInit {
       )
       .subscribe();
   }
-
-  protected test(direction: EducationDirection) {
-    console.log(direction);
-  }
 }

@@ -2,6 +2,22 @@
   <a [routerLink]="'/administration'">Администрирование</a>
   <a>Контрольные недели</a>
 </div>
-<section>
-  <app-assignment-session-table></app-assignment-session-table>
-</section>
+<app-assignment-session-table
+  [activeAssignmentSession]="currentAssignmentSession"
+  (sessionCloseRequested)="assignmentSessionToClose = $event; isClosingAssignmentSession = true"
+  (sessionCreated)="ngOnInit();">
+</app-assignment-session-table>
+<app-assignment-session-close-item-modal *ngIf="isClosingAssignmentSession && assignmentSessionToClose"
+                                         [session]="assignmentSessionToClose"
+                                         (visibilityChange)="isClosingAssignmentSession = $event"
+                                         [visibility]="isClosingAssignmentSession"
+                                         (closeCommited)="handleSessionClose($event)">
+</app-assignment-session-close-item-modal>
+<app-success-result-notification *ngIf="notificationService.isSuccess"
+                                 [message]="notificationService.Message"
+                                 (visibilityEmitter)="notificationService.reset()">
+</app-success-result-notification>
+<app-failure-result-notification *ngIf="notificationService.isFailure"
+                                 [message]="notificationService.Message"
+                                 (visibilityEmitter)="notificationService.reset()">
+</app-failure-result-notification>

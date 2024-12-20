@@ -1,4 +1,4 @@
-import { INotificationMessageBuilder } from '../../../../../../../../../shared/models/inotificated-component-interface/inotification-message-builder';
+import { INotificationMessageBuilder } from '../../../../../../shared/models/inotificated-component-interface/inotification-message-builder';
 
 export class AssignmentSessionClosedNotification
   implements INotificationMessageBuilder<any>

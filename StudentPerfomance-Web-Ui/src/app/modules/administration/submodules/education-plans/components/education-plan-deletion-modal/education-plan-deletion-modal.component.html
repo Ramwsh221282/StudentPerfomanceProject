@@ -1,24 +1,14 @@
 <div id="container">
   <div id="header">
-    <strong>Подтверждение</strong>
+    <strong>Удалить учебный план</strong>
   </div>
   <div id="content">
-    <a>Вы уверены, что Вы хотите удалить запись учебного плана?</a>
-    <a>При удалении учебного плана удалятся связанные с ним записи:</a>
-    <a>Семестры</a>
-    <a>Дисциплины</a>
-    <a>Оценки</a>
+    <a>Удалить учебный план {{ plan.year }} года направления</a>
+    <a>{{ plan.direction.name }} {{ plan.direction.code }} {{ plan.direction.type }}</a>
+    <a>При удалении учебного плана удаляются его семестры и дисциплины</a>
   </div>
   <div id="controls">
-    <button class="accept-button-modal" type="button" (click)="submit()">
-      Подтвердить
-    </button>
-    <button
-      class="danger-button-modal"
-      type="button"
-      (click)="this.visibility.emit(false)"
-    >
-      Отмена
-    </button>
+    <app-green-outline-button [label]="'Удалить'" (onClicked)="submit()"></app-green-outline-button>
+    <app-red-outline-button [label]="'Закрыть диалог'" (onClicked)="close()"></app-red-outline-button>
   </div>
 </div>

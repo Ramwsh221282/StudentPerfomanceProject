@@ -1,51 +1,17 @@
 <div class="assignment-sessions-table-wrapper">
   <div class="assignment-sessions-controls-container">
-    <button class="accept-button" (click)="_isCreationVisible = true">
-      Создать новую контрольную неделю
-    </button>
-    <button class="accept-button-outline" [routerLink]="['/assignment-sessions-info']">
-      Документация
-    </button>
-  </div>
-  <div class="assignment-sessions-table-container">
-    <div class="assignment-sessions-table-grid">
-      <div class="assignment-sessions-table-header">
-        <strong>Номер</strong>
-        <strong>Дата начала контрольной недели</strong>
-        <strong>Дата закрытия контрольной недели</strong>
-        <strong>Состояние контрольной недели</strong>
-        <strong>Действия</strong>
-      </div>
-      @for (session of sessions; track session.number) {
-        <app-assignment-sessions-item
-          [session]="session"
-          (refresh)="fetchData()"
-          (success)="_isSuccess = true"
-          (failure)="_isFailure = true"
-        ></app-assignment-sessions-item>
-      }
+    <div class="dropdown-container">
+      <app-blue-button [label]="'Начать новую контрольную неделю'"
+                       (onClicked)="isCreatingSession = true">
+      </app-blue-button>
+      <app-create-session-item-dropdown *ngIf="isCreatingSession" [visibility]="isCreatingSession"
+                                        (visibilityChange)="isCreatingSession = $event"
+                                        (sessionCreated)="sessionCreated.emit($event)">
+      </app-create-session-item-dropdown>
     </div>
+    <app-blue-outline-button [label]="'Документация'" (onClicked)="navigateToDocumentation()"></app-blue-outline-button>
   </div>
-  <div class="pagination-wrapper">
-    <app-assignment-sessions-pagination></app-assignment-sessions-pagination>
-  </div>
-</div>
-<div id="creation-modal-visibility" *ngIf="_isCreationVisible">
-  <app-assignment-sessions-create-modal
-    (emitClose)="-(_isCreationVisible = false)"
-    (success)="_isSuccess = true; refreshPagination(); fetchData()"
-    (failure)="_isFailure = true"
-  ></app-assignment-sessions-create-modal>
-</div>
-<div id="success-modal-renderer" *ngIf="_isSuccess">
-  <app-success-result-notification
-    [message]="notificationService.Message"
-    (visibilityEmitter)="_isSuccess = false"
-  ></app-success-result-notification>
-</div>
-<div id="failure-modal-renderer" *ngIf="_isFailure">
-  <app-failure-result-notification
-    [message]="notificationService.Message"
-    (visibilityEmitter)="_isFailure = false"
-  ></app-failure-result-notification>
+  <strong style="padding: 1rem" *ngIf="!activeAssignmentSession">Нет активных контрольных недель</strong>
+  <app-session-item *ngIf="activeAssignmentSession" [session]="activeAssignmentSession"
+                    (sessionCloseRequested)="sessionCloseRequested.emit($event)"></app-session-item>
 </div>

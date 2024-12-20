@@ -8,17 +8,7 @@
     <strong class="font-white">Завершить контрольную неделю?</strong>
   </div>
   <div id="controls">
-    <button
-      class="accept-button-modal"
-      type="button"
-      (click)="submit()">
-      Завершить
-    </button>
-    <button
-      class="danger-button-modal"
-      type="button"
-      (click)="visibility.emit()">
-      Закрыть окно
-    </button>
+    <app-green-outline-button [label]="'Закрыть контрольную неделю'" (onClicked)="submit()"></app-green-outline-button>
+    <app-red-outline-button [label]="'Закрыть окно'" (onClicked)="close()"></app-red-outline-button>
   </div>
 </div>

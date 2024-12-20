@@ -14,6 +14,7 @@ export class StudentGroupsTableComponent {
   @Output() filtered: EventEmitter<void> = new EventEmitter();
   @Output() groupDeleted: EventEmitter<void> = new EventEmitter();
   @Output() groupMerged: EventEmitter<void> = new EventEmitter();
+  @Output() groupCreated: EventEmitter<void> = new EventEmitter();
   protected currentlySelectedGroup: StudentGroup | null;
 
   protected isCreatingGroup: boolean = false;
@@ -32,8 +33,7 @@ export class StudentGroupsTableComponent {
   }
 
   protected handleGroupCreation(group: StudentGroup): void {
-    this.groups.push(group);
-    this.groups.sort((a, b) => a.entityNumber - b.entityNumber);
+    this.groupCreated.emit();
   }
 
   protected moveToDocumentation(): void {
