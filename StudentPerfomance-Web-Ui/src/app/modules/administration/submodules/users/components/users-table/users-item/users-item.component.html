@@ -1,0 +1,20 @@
+<div class="user-item-container">
+  <div
+    [ngClass]="{'user-name-container': !isCurrentlySelected, 'user-container-selected': isCurrentlySelected}"
+    (click)="selectUser.emit(user)">
+    <label>{{ user.surname }} {{ user.name[0] }} {{ user.patronymic == null ? '' : user.patronymic[0] }}</label>
+    <div class="user-controls-container">
+      <app-red-button [label]="'Удалить'"
+                      (onClicked)="requestRemove.emit(user)">
+      </app-red-button>
+    </div>
+  </div>
+  <div class="user-attributes-grid">
+    <span class="attribute">Роль:</span>
+    <span class="attribute">{{ user.role }}</span>
+    <span class="attribute">Почта:</span>
+    <span class="attribute">{{ user.email }}</span>
+    <span class="attribute">Последний раз в сети:</span>
+    <span class="attribute">{{ user.lastTimeOnline }}</span>
+  </div>
+</div>

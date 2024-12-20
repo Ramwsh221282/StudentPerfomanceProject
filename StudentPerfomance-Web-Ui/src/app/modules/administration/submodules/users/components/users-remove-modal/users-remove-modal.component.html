@@ -1,20 +1,14 @@
 <div id="container">
   <div id="header">
-    <strong>Подтверждение</strong>
+    <strong>Удаление пользователя</strong>
   </div>
   <div id="content">
-    <a>Вы уверены, что Вы хотите удалить учетную запись пользователя?</a>
+    <a>Удалить учетную запись пользователя</a>
+    <a>{{ user.name }} {{ user.surname }} {{ user.patronymic }}</a>
+    <a>{{ user.email }} {{ user.role }}</a>
   </div>
   <div id="controls">
-    <button class="accept-button-modal" type="button" (click)="submit()">
-      Подтвердить
-    </button>
-    ><button
-      class="danger-button-modal"
-      type="button"
-      (click)="visibilityEmitter.emit(false)"
-    >
-      Отмена
-    </button>
+    <app-green-outline-button [label]="'Удалить'" (onClicked)="submit()"></app-green-outline-button>
+    <app-red-outline-button [label]="'Закрыть диалог'" (onClicked)="close()"></app-red-outline-button>
   </div>
 </div>

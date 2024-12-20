@@ -5,6 +5,7 @@ import { UserRecord } from '../../services/user-table-element-interface';
 import { User } from '../../../../../users/services/user-interface';
 //import { BASE_API_URI } from '../../../../../../shared/models/api/api-constants';
 import { AppConfigService } from '../../../../../../app.config.service';
+import { AuthService } from '../../../../../users/services/auth.service';
 
 export class UsersFilterFetchPolicy implements IFetchPolicy<UserRecord[]> {
   private readonly _user: User;
@@ -14,12 +15,13 @@ export class UsersFilterFetchPolicy implements IFetchPolicy<UserRecord[]> {
 
   public constructor(
     user: User,
+    private readonly _authService: AuthService,
     private readonly _appConfig: AppConfigService,
   ) {
     this._user = { ...user };
     //this._apiUri = `${BASE_API_URI}/api/users/filter`;
-    this._apiUri = `${this._appConfig.baseApiUri}/api/users/filter`;
     this._httpHeaders = this.buildHttpHeaders();
+    this._apiUri = `${this._appConfig.baseApiUri}/api/users/filter`;
   }
 
   public executeFetchPolicy(httpClient: HttpClient): Observable<UserRecord[]> {
@@ -32,7 +34,7 @@ export class UsersFilterFetchPolicy implements IFetchPolicy<UserRecord[]> {
   }
 
   public addPages(page: number, pageSize: number): void {
-    this.buildHttpParams(page, pageSize);
+    this._httpParams = this.buildHttpParams(page, pageSize);
   }
 
   private buildHttpParams(page: number, pageSize: number) {
@@ -47,6 +49,6 @@ export class UsersFilterFetchPolicy implements IFetchPolicy<UserRecord[]> {
   }
 
   private buildHttpHeaders(): HttpHeaders {
-    return new HttpHeaders().set('token', this._user.token);
+    return new HttpHeaders().set('token', this._authService.userData.token);
   }
 }

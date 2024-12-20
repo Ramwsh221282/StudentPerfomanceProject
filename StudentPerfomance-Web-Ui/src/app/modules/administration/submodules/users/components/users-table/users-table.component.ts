@@ -1,118 +1,42 @@
-import { Component, OnInit } from '@angular/core';
-import { UsersDataService } from '../../services/users-data.service';
-import { UserOperationNotificationService } from '../../../../../../shared/services/user-notifications/user-operation-notification-service.service';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { UserRecord } from '../../services/user-table-element-interface';
-import { catchError, Observable, tap } from 'rxjs';
-import { DatePipe } from '@angular/common';
-import { UsersPaginationService } from './users-table-pagination/users-pagination.servce';
-import { DefaultFetchPolicy } from '../../models/users-fetch-policies/users-default-fetch-policy';
-import { AuthService } from '../../../../../users/services/auth.service';
-import { AppConfigService } from '../../../../../../app.config.service';
+import { Router } from '@angular/router';
+import { User } from '../../../../../users/services/user-interface';
 
 @Component({
   selector: 'app-users-table',
   templateUrl: './users-table.component.html',
   styleUrl: './users-table.component.scss',
-  providers: [
-    UsersPaginationService,
-    UsersDataService,
-    UserOperationNotificationService,
-    DatePipe,
-  ],
 })
-export class UsersTableComponent implements OnInit {
-  protected userRecords: UserRecord[];
+export class UsersTableComponent {
+  @Input({ required: true }) users: UserRecord[];
+  @Output() refreshOnUserCreated: EventEmitter<void> = new EventEmitter();
+  @Output() filtered: EventEmitter<void> = new EventEmitter();
+  @Output() removed: EventEmitter<void> = new EventEmitter();
 
-  protected activeUser: UserRecord;
-  protected isSuccess: boolean;
-  protected isFailure: boolean;
+  protected currentlySelectedUser: UserRecord | null = null;
+  protected isCreatingAdmin: boolean = false;
 
-  protected isCreationModalVisible: boolean;
-  protected isDeletionModalVisible: boolean;
-  protected isFilterModalVisible: boolean;
+  protected isCreatingTeacher: boolean = false;
 
-  public constructor(
-    private readonly _datePipe: DatePipe,
-    protected readonly _dataService: UsersDataService,
-    protected readonly _notificationService: UserOperationNotificationService,
-    private readonly _authService: AuthService,
-    private readonly _paginationService: UsersPaginationService,
-    private readonly _appConfig: AppConfigService,
-  ) {
-    this.userRecords = [];
-    this.isSuccess = false;
-    this.isFailure = false;
-    this.isCreationModalVisible = false;
-    this.isDeletionModalVisible = false;
-    this.activeUser = {} as UserRecord;
+  protected isFilteringUsers: boolean = false;
+
+  protected isDeletingUser: boolean = false;
+  protected userToRemove: UserRecord | null = null;
+
+  public constructor(private readonly _router: Router) {}
+
+  protected navigateToDocumentation(): void {
+    const path = ['/users-info'];
+    this._router.navigate(path);
   }
 
-  public ngOnInit(): void {
-    const policy = new DefaultFetchPolicy(
-      this._authService.userData,
-      this._appConfig,
-    );
-    policy.addPages(
-      this._paginationService.currentPage,
-      this._paginationService.pageSize,
-    );
-    this.fetchUsers();
+  protected manageCurrentlySelectedUser(user: UserRecord): boolean {
+    if (!this.currentlySelectedUser) return false;
+    return user == this.currentlySelectedUser;
   }
 
-  protected refreshActiveUser(): void {
-    this.activeUser = {} as UserRecord;
-  }
-
-  protected fetchUsers(): void {
-    this._dataService
-      .fetch()
-      .pipe(
-        tap((response) => {
-          this.userRecords = response;
-          for (let user of this.userRecords) {
-            user.lastTimeOnline = this._datePipe.transform(
-              user.lastTimeOnline,
-              'dd-MM-yyyy',
-            );
-            user.registeredDate = this._datePipe.transform(
-              user.registeredDate,
-              'dd-MM-yyyy',
-            );
-          }
-        }),
-        catchError((error) => {
-          this._notificationService.SetMessage = error.error;
-          this.isFailure = true;
-          return new Observable();
-        }),
-      )
-      .subscribe();
-    this._paginationService.refreshPagination();
-  }
-
-  protected fetchOnPageChanged(): void {
-    this._dataService
-      .fetch()
-      .pipe(
-        tap((response) => {
-          this.userRecords = response;
-          for (let user of this.userRecords) {
-            user.lastTimeOnline = this._datePipe.transform(
-              user.lastTimeOnline,
-              'dd-MM-yyyy',
-            );
-            user.registeredDate = this._datePipe.transform(
-              user.registeredDate,
-              'dd-MM-yyyy',
-            );
-          }
-        }),
-        catchError((error) => {
-          this._notificationService.SetMessage = error.error;
-          this.isFailure = true;
-          return new Observable();
-        }),
-      )
-      .subscribe();
+  protected handleUserCreated(user: User): void {
+    this.refreshOnUserCreated.emit();
   }
 }

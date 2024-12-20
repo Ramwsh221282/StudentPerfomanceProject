@@ -3,8 +3,8 @@ import { UserRecord } from '../../services/user-table-element-interface';
 import { ISubbmittable } from '../../../../../../shared/models/interfaces/isubbmitable';
 import { UserRemoveService } from './user-remove.service';
 import { UserOperationNotificationService } from '../../../../../../shared/services/user-notifications/user-operation-notification-service.service';
-import { UserRemoveHandler } from './user-remove-handler';
-import { catchError, tap } from 'rxjs';
+import { catchError, Observable, tap } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-users-remove-modal',
@@ -14,30 +14,38 @@ import { catchError, tap } from 'rxjs';
 })
 export class UsersRemoveModalComponent implements ISubbmittable {
   @Input({ required: true }) user: UserRecord;
+  @Input({ required: true }) visibility: boolean = false;
   @Output() visibilityEmitter: EventEmitter<boolean> = new EventEmitter();
-  @Output() successEmitter: EventEmitter<void> = new EventEmitter();
-  @Output() failureEmitter: EventEmitter<void> = new EventEmitter();
-  @Output() refreshEmitter: EventEmitter<void> = new EventEmitter();
+  @Output() removeCommited: EventEmitter<void> = new EventEmitter();
 
   public constructor(
     private readonly _removeService: UserRemoveService,
-    private readonly _notificationService: UserOperationNotificationService
+    private readonly _notificationService: UserOperationNotificationService,
   ) {}
 
   public submit(): void {
-    const handler = UserRemoveHandler(
-      this._notificationService,
-      this.successEmitter,
-      this.failureEmitter,
-      this.refreshEmitter,
-      this.visibilityEmitter
-    );
+    const message = `Удален пользователь ${this.user.surname} ${this.user.name} ${this.user.patronymic} ${this.user.role}`;
     this._removeService
       .remove(this.user)
       .pipe(
-        tap((response) => handler.handle(response)),
-        catchError((error) => handler.handleError(error))
+        tap((response) => {
+          this._notificationService.SetMessage = message;
+          this._notificationService.success();
+          this.removeCommited.emit();
+          this.close();
+        }),
+        catchError((error: HttpErrorResponse) => {
+          this._notificationService.SetMessage = error.error;
+          this._notificationService.failure();
+          this.close();
+          return new Observable<never>();
+        }),
       )
       .subscribe();
+  }
+
+  protected close(): void {
+    this.visibility = false;
+    this.visibilityEmitter.emit(this.visibility);
   }
 }

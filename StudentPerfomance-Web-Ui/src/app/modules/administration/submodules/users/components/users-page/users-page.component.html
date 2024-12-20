@@ -2,4 +2,16 @@
   <a [routerLink]="'/administration'">Администрирование</a>
   <a>Пользователи</a>
 </div>
-<app-users-table> </app-users-table>
+<app-users-table [users]="users"
+                 (refreshOnUserCreated)="handleUserCreation()"
+                 (removed)="handleUserRemove()"
+                 (filtered)="handleFilter()">
+</app-users-table>
+<app-success-result-notification *ngIf="notificationService.isSuccess"
+                                 [message]="notificationService.Message"
+                                 (visibilityEmitter)="notificationService.reset()">
+</app-success-result-notification>
+<app-failure-result-notification *ngIf="notificationService.isFailure"
+                                 [message]="notificationService.Message"
+                                 (visibilityEmitter)="notificationService.reset()">
+</app-failure-result-notification>

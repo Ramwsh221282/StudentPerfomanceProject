@@ -15272,3 +15272,995 @@ token: '[PII of type 'System.IdentityModel.Tokens.Jwt.JwtSecurityToken' is hidde
 2024-12-20T01:39:06.8025214+07:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Запрос на получение количества сессий контрольных недель
 2024-12-20T01:39:06.8698656+07:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает сессии контрольных недель постранично
 2024-12-20T01:39:06.9633214+07:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество контрольных недель 0
+2024-12-20T12:53:13.6349197+07:00	INFO	[Program]	[0]	Application starting...
+2024-12-20T12:53:13.7817179+07:00	INFO	[Program]	[0]	Application started
+2024-12-20T12:55:15.8808794+07:00	WARN	[Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware]	[FailedToDeterminePort]	Failed to determine the https port for redirect.
+2024-12-20T12:55:16.1131928+07:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизация пользователя
+2024-12-20T12:55:19.0259720+07:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизован пользователь jimkrauz@gmail.com admin admin Администратор
+2024-12-20T12:55:26.4899801+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T12:55:26.4946739+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T12:55:26.6560842+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T12:55:26.6668436+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T12:55:26.6907238+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T12:55:26.7820275+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T12:57:48.0995774+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T12:57:48.1036394+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T12:57:48.1158181+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T12:57:48.2640033+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T12:57:48.2673203+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T12:57:48.2721137+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T12:58:19.2113222+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T12:58:19.2128225+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T12:58:19.2214789+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T12:58:19.2255781+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T12:58:19.2309842+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T12:58:19.3824918+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T12:59:16.7422948+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T12:59:16.7451856+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T12:59:16.7542056+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T12:59:16.7581200+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T12:59:16.7641577+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T12:59:16.9131525+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T12:59:22.2700816+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Запрос на получение количества направлений подготовки
+2024-12-20T12:59:22.2715594+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Запрос на получение списка направлений подготовки постранично
+2024-12-20T12:59:22.2800572+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.CountEducationDirections.Endpoint]	[0]	Количество направлений подготовки: 2
+2024-12-20T12:59:22.5670262+07:00	INFO	[SPerfomance.Api.Features.EducationDirections.GetPagedEducationDirections.Endpoint]	[0]	Получен список направлений подготовок в количестве: 2
+2024-12-20T12:59:23.9491241+07:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Запрос на получение учебных планов постранично
+2024-12-20T12:59:23.9874460+07:00	INFO	[SPerfomance.Api.Features.EducationPlans.GetEducationPlansByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает учебные планы постранично 2
+2024-12-20T12:59:24.1092773+07:00	INFO	[SPerfomance.Api.Features.EducationPlans.CountEducationPlans.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество учебных планов 2
+2024-12-20T12:59:26.6009481+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T12:59:26.6026728+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T12:59:26.6080767+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T12:59:26.6113313+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T12:59:26.6171986+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T12:59:26.7602850+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T12:59:45.6248657+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T12:59:45.6262862+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T12:59:45.6312599+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T12:59:45.7842517+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T12:59:45.7869441+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T12:59:45.7915344+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T13:00:24.5723040+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T13:00:24.5737795+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T13:00:24.5831670+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T13:00:24.5871824+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T13:00:24.5930849+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T13:00:24.7349387+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T13:02:43.7201289+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T13:02:43.7225576+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T13:02:43.7302897+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T13:02:43.7334110+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T13:02:43.7386748+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T13:02:43.8820833+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T13:02:56.8566933+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T13:02:56.8581378+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T13:02:56.8625133+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T13:02:56.8658745+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T13:02:56.8725115+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T13:02:57.0208164+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T13:03:00.5456777+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T13:03:00.5468315+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T13:03:00.5515530+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T13:03:00.7153516+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T13:03:00.7184574+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T13:03:00.7229967+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T13:04:09.8044294+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T13:04:09.8060249+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T13:04:09.8136082+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T13:04:09.9616783+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T13:04:09.9645876+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T13:04:09.9690921+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T13:05:56.4516483+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T13:05:56.4546685+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T13:05:56.4622351+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T13:05:56.4654936+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T13:05:56.4702725+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T13:05:56.6109690+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T13:08:49.6040316+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T13:08:49.6055286+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T13:08:49.6491148+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T13:08:49.6571587+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T13:08:49.6617074+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T13:08:49.8024493+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T13:08:49.8055176+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T13:08:49.8098751+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T13:10:21.0139097+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T13:10:21.0166226+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T13:10:21.0211795+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T13:10:21.0242291+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T13:10:21.0293692+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T13:10:21.1824239+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T13:10:21.1900774+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T13:10:21.1956176+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T13:11:42.5446566+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T13:11:42.5464260+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T13:11:42.5544585+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T13:11:42.5606974+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T13:11:42.5662977+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T13:11:42.7158517+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T13:11:42.7186535+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T13:11:42.7232426+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T13:11:53.0641586+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T13:11:53.0690020+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T13:11:53.1037952+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T13:11:53.1079394+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T13:11:53.1114621+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T13:11:53.1140563+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T13:11:53.1185687+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T13:11:53.2784153+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T13:12:48.7011481+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T13:12:48.7050574+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T13:12:48.7121630+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T13:12:48.7180473+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T13:12:48.7235042+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T13:12:48.8607186+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T13:12:48.8637374+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T13:12:48.8685909+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T16:19:55.9662201+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T16:19:55.9684942+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T16:19:55.9799793+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T16:19:55.9849736+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T16:19:55.9882946+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T16:19:55.9896087+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T16:19:55.9946654+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T16:19:56.1473860+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T16:24:08.7365382+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T16:24:08.7395598+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T16:24:08.7434940+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T16:24:08.7462882+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T16:24:08.7503422+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T16:24:08.9013720+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T16:24:08.9066242+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T16:24:08.9106421+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T16:24:17.7243735+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T16:24:17.7293812+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T16:24:17.7317324+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T16:24:17.7362857+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T16:24:17.7394749+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T16:24:17.7631554+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T16:24:17.7670530+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T16:24:17.9232127+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T16:24:50.7243207+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T16:24:50.7530713+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T16:24:50.7564617+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T16:24:50.7617300+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T16:24:50.7658069+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T16:24:50.9078598+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T16:24:50.9101590+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T16:24:50.9136798+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T16:39:19.3675235+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T16:39:19.3716476+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T16:39:19.3801966+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T16:39:19.3832155+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T16:39:19.3881549+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T16:39:19.5308426+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T16:39:19.5376124+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T16:39:19.5418680+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T16:40:09.7373275+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T16:40:09.7389232+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T16:40:09.7476197+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T16:40:09.7548364+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T16:40:09.7598540+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T16:40:09.9093606+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T16:40:09.9133785+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T16:40:09.9182994+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T16:40:21.1760837+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T16:40:21.1776040+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T16:40:21.1826779+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T16:40:21.1895855+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T16:40:21.1948265+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T16:40:21.3403663+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T16:40:21.3434516+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T16:40:21.3480958+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T16:40:38.4704612+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T16:40:38.4756913+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T16:40:38.4786637+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T16:40:38.4837291+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T16:40:38.4857317+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T16:40:38.4893095+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T16:40:38.4915980+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T16:40:38.4955790+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T16:40:40.8989908+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T16:40:40.9001824+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T16:40:40.9051778+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T16:40:40.9081949+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T16:40:40.9126929+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T16:40:41.0636321+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T16:40:41.0703326+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T16:40:41.0770033+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T16:40:43.6993258+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T16:40:43.7006295+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T16:40:43.7058598+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T16:40:43.7134139+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T16:40:43.7192512+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T16:40:43.8594976+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T16:40:43.8627002+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T16:40:43.8669221+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T16:40:49.9992776+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T16:40:50.0216310+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T16:40:50.0264721+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T16:40:50.0295745+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T16:40:50.0357081+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T16:40:50.1805237+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T16:40:50.1867800+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T16:40:50.1923917+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T16:41:16.1785761+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T16:41:16.2110087+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T16:41:16.2156667+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T16:41:16.2188501+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T16:41:16.2232083+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T16:41:16.3698251+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T16:41:16.3756590+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T16:41:16.3802092+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T16:42:54.5275276+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T16:42:54.5358703+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T16:42:54.5415432+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T16:42:54.5765720+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T16:42:54.5805213+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T16:42:54.7362665+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T16:42:54.7396767+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T16:42:54.7440421+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T16:43:13.8969506+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T16:43:13.9025382+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T16:43:13.9100448+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T16:43:13.9162665+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T16:43:13.9184350+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T16:43:13.9236351+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T16:43:13.9272285+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T16:43:13.9336624+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T16:44:27.0054084+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T16:44:27.0076049+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T16:44:27.0174667+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T16:44:27.0259824+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T16:44:27.0323389+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T16:44:27.1737279+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T16:44:27.1770312+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T16:44:27.1815028+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T16:45:17.5932533+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T16:45:17.5944922+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T16:45:17.6013163+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T16:45:17.6039891+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T16:45:17.6084313+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T16:45:17.7508901+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T16:45:17.7566105+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T16:45:17.7612028+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T16:45:47.5600636+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T16:45:47.5619297+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T16:45:47.5671314+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T16:45:47.5709982+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T16:45:47.5759940+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T16:45:47.7182745+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T16:45:47.7249171+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T16:45:47.7319845+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T16:45:52.9472751+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T16:45:52.9491798+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T16:45:52.9551737+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T16:45:52.9610232+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T16:45:52.9661215+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T16:45:53.1134020+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T16:45:53.1174425+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T16:45:53.1221994+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T16:49:05.1567571+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T16:49:05.1590320+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T16:49:05.2001288+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T16:49:05.2073289+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T16:49:05.2132026+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T16:49:05.3765753+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T16:49:05.3847499+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T16:49:05.3906796+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T16:49:24.3379389+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T16:49:24.3396118+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T16:49:24.3443825+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T16:49:24.3508642+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T16:49:24.3561759+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T16:49:24.5025590+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T16:49:24.5051383+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T16:49:24.5092826+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T16:51:25.1635706+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T16:51:25.1652939+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T16:51:25.1737693+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T16:51:25.1820233+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T16:51:25.1875152+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T16:51:25.3354792+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T16:51:25.3386747+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T16:51:25.3437276+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T16:51:45.9636484+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T16:51:45.9656386+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T16:51:45.9704294+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T16:51:45.9734241+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T16:51:45.9791767+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T16:51:46.1302756+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T16:51:46.1373156+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T16:51:46.1432839+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T16:53:04.5294146+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T16:53:04.5308349+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T16:53:04.5381888+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T16:53:04.5439873+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T16:53:04.5495967+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T16:53:04.6918928+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T16:53:04.6946345+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T16:53:04.6987327+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T16:56:09.4581134+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T16:56:09.4667857+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T16:56:09.4719863+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T16:56:09.4812697+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T16:56:09.4877956+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T16:56:09.6286374+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T16:56:09.6324178+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T16:56:09.6377805+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T16:56:32.1739840+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T16:56:32.1762534+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T16:56:32.1827255+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T16:56:32.1871206+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T16:56:32.1930922+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T16:56:32.3483454+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T16:56:32.3546255+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T16:56:32.3599982+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T16:58:39.1529114+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T16:58:39.1642263+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T16:58:39.1697734+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T16:58:39.1722823+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T16:58:39.1758677+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T16:58:39.1799797+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T16:58:39.1830740+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T16:58:39.1891405+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T16:59:27.3107122+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T16:59:27.3142986+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T16:59:27.3199393+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T16:59:27.3265975+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T16:59:27.3321908+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T16:59:27.4716030+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T16:59:27.4749879+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T16:59:27.4798085+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T17:00:12.1565750+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T17:00:12.1580857+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T17:00:12.1659350+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T17:00:12.1692067+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T17:00:12.1752588+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T17:00:12.3188720+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T17:00:12.3276276+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T17:00:12.3340197+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T17:00:19.8128518+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T17:00:19.8174823+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T17:00:19.8216067+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T17:00:19.8239899+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T17:00:19.8301628+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T17:00:19.8531016+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T17:00:19.8554644+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T17:00:19.8612965+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T17:01:04.0135168+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T17:01:04.0354937+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T17:01:04.0435774+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T17:01:04.0499488+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T17:01:04.0551460+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T17:01:04.1945336+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T17:01:04.1974434+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T17:01:04.2024073+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T17:01:48.1984937+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T17:01:48.2022946+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T17:01:48.2044410+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T17:01:48.2076295+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T17:01:48.2107113+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T17:01:48.2122760+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T17:01:48.2172651+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T17:01:48.3824034+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T17:01:55.9297110+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T17:01:55.9355670+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T17:01:55.9375676+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T17:01:55.9515684+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T17:01:55.9540313+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T17:01:55.9557258+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T17:01:55.9614381+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T17:01:56.1251087+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T17:02:34.3807672+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T17:02:34.3840833+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T17:02:34.3886803+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T17:02:34.3952782+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T17:02:34.4002732+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T17:02:34.5528124+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T17:02:34.5558552+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T17:02:34.5607085+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T17:03:06.2829121+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T17:03:06.2844127+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T17:03:06.2916759+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T17:03:06.2983871+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T17:03:06.3031566+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T17:03:06.4392465+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T17:03:06.4426502+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T17:03:06.4472055+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T17:03:57.1485380+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T17:03:57.1524609+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T17:03:57.1630123+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T17:03:57.1716855+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T17:03:57.1793485+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T17:03:57.3083735+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T17:03:57.3113258+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T17:03:57.3159465+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T17:04:50.0631640+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T17:04:50.0644522+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T17:04:50.0687350+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T17:04:50.0717239+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T17:04:50.0765185+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T17:04:50.2233356+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T17:04:50.2294844+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T17:04:50.2346525+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T17:05:24.0669080+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T17:05:24.0726615+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T17:05:24.0740148+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T17:05:24.0830304+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T17:05:24.0845745+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T17:05:24.0878064+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T17:05:24.0931757+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T17:05:24.2500440+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T17:12:42.4520037+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T17:12:42.4533554+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T17:12:42.4647733+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T17:12:42.4684123+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T17:12:47.0637817+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T17:12:47.0652122+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T17:12:47.0712007+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T17:12:47.2288760+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T17:12:53.5265912+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T17:12:53.5278825+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T17:12:53.5332412+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T17:12:53.6930037+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T17:13:22.0404650+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T17:13:22.0423742+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T17:13:22.0507250+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T17:13:22.2045638+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T17:17:34.3626458+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T17:17:34.3640136+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T17:17:34.3778340+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T17:17:34.3803913+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T17:22:46.8608853+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T17:22:46.8630904+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T17:22:46.8747770+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T17:22:47.0320198+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T17:23:22.5087532+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T17:23:22.5145378+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T17:23:22.5257155+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T17:23:22.5307361+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T17:24:02.5231741+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T17:24:02.5277493+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T17:24:02.5326630+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T17:24:02.6915650+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T17:25:48.0231045+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T17:25:48.0256896+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T17:25:48.0351643+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T17:25:48.1896788+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T17:25:58.9369204+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T17:25:58.9386769+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T17:25:58.9435249+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T17:25:59.1009011+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T17:26:14.0956453+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T17:26:14.0975592+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T17:26:14.1035553+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T17:26:14.2531283+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T17:26:31.5781185+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T17:26:31.5800854+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T17:26:31.5861626+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T17:26:31.7394322+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T17:26:40.2098088+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T17:26:40.2121651+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T17:26:40.2173403+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T17:26:40.3698799+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T17:26:52.8602194+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T17:26:52.8650076+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T17:26:52.8675205+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T17:26:52.8716835+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T17:27:03.2771829+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T17:27:03.2783475+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T17:27:03.2834115+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T17:27:03.4377923+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T17:27:31.0532362+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T17:27:31.0554675+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T17:27:31.0635236+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T17:27:31.2216836+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T17:27:41.6590290+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T17:27:41.6605418+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T17:27:41.6647251+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T17:27:41.8193027+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T17:28:03.8790158+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T17:28:03.8804296+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T17:28:03.8881494+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T17:28:04.0469752+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T17:28:13.9299041+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T17:28:13.9313639+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T17:28:13.9368360+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T17:28:14.0976883+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T17:28:47.0696866+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T17:28:47.0752118+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T17:28:47.0768284+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T17:28:47.0805574+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T17:28:49.6345527+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T17:28:49.6358944+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T17:28:49.6405100+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T17:28:49.7923826+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T17:28:53.5276180+07:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.GetAllTeacherDepartments.Endpoint]	[0]	Запрос на получение всех преподавателей
+2024-12-20T17:28:53.5634780+07:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.GetAllTeacherDepartments.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает все кафедры 2
+2024-12-20T17:29:43.9451441+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T17:29:43.9469181+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T17:29:43.9553979+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T17:29:44.1064421+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T17:29:47.3547881+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T17:29:47.3563889+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T17:29:47.3617698+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T17:29:47.5158615+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T17:38:40.0477053+07:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.GetAllTeacherDepartments.Endpoint]	[0]	Запрос на получение всех преподавателей
+2024-12-20T17:38:40.0591782+07:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.GetAllTeacherDepartments.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает все кафедры 2
+2024-12-20T17:41:58.0553586+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T17:41:58.0681991+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T17:41:58.0702040+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T17:41:58.0787818+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T17:42:38.9967736+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T17:42:39.0302021+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T17:42:39.0367233+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T17:42:39.0405572+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T17:43:18.9498836+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T17:43:18.9519839+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T17:43:18.9603765+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T17:43:19.1332216+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T17:44:04.1844331+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T17:44:04.1881726+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T17:44:04.1968594+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T17:44:04.3513896+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T17:44:07.6153466+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T17:44:07.6177025+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T17:44:07.6233137+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T17:44:07.7746385+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T17:54:31.9953591+07:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.GetAllTeacherDepartments.Endpoint]	[0]	Запрос на получение всех преподавателей
+2024-12-20T17:54:32.0145077+07:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.GetAllTeacherDepartments.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает все кафедры 2
+2024-12-20T17:56:43.0912998+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T17:56:43.0928337+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T17:56:43.0988154+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T17:56:43.0999943+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T17:57:06.4589923+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T17:57:06.4614931+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T17:57:06.4733358+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T17:57:06.6276129+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T17:57:07.8087061+07:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.GetAllTeacherDepartments.Endpoint]	[0]	Запрос на получение всех преподавателей
+2024-12-20T17:57:07.8147673+07:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.GetAllTeacherDepartments.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает все кафедры 2
+2024-12-20T17:57:21.9464140+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T17:57:21.9527062+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T17:57:21.9712259+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T17:57:21.9776374+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T17:57:23.1468524+07:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.GetAllTeacherDepartments.Endpoint]	[0]	Запрос на получение всех преподавателей
+2024-12-20T17:57:23.1543576+07:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.GetAllTeacherDepartments.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает все кафедры 2
+2024-12-20T17:58:43.6314399+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T17:58:43.6390760+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T17:58:43.6409969+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T17:58:43.6494981+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T17:59:01.4196798+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T17:59:01.4216356+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T17:59:01.4260746+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T17:59:01.5828485+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T17:59:04.3990154+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T17:59:04.4015005+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T17:59:04.4060808+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T17:59:04.5684571+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T17:59:05.5458249+07:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.GetAllTeacherDepartments.Endpoint]	[0]	Запрос на получение всех преподавателей
+2024-12-20T17:59:05.5520643+07:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.GetAllTeacherDepartments.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает все кафедры 2
+2024-12-20T17:59:26.4308617+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T17:59:26.4331620+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T17:59:26.4412647+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T17:59:26.5965710+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T17:59:45.5702154+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T17:59:45.5718208+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T17:59:45.5779591+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T17:59:45.7315783+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T18:00:05.9354098+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T18:00:05.9445718+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T18:00:05.9499691+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T18:00:05.9559002+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T18:00:08.5592451+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T18:00:08.5613081+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T18:00:08.5666146+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T18:00:08.7255836+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T18:00:12.6910366+07:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.GetAllTeacherDepartments.Endpoint]	[0]	Запрос на получение всех преподавателей
+2024-12-20T18:00:12.6972966+07:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.GetAllTeacherDepartments.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает все кафедры 2
+2024-12-20T18:00:22.6907655+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T18:00:22.6990669+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T18:00:22.7010382+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T18:00:22.7073306+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T18:01:06.4996699+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T18:01:06.5059692+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T18:01:06.5139456+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T18:01:06.5185209+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T18:03:28.4279131+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T18:03:28.4353921+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T18:03:28.4385661+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T18:03:28.4474770+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T18:04:57.9988023+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T18:04:58.0067448+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T18:04:58.0134637+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T18:04:58.0180851+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T18:07:20.4207851+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T18:07:20.4241339+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T18:07:20.4286441+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T18:07:20.5935263+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T18:07:53.9693123+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T18:07:53.9712592+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T18:07:53.9891114+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T18:07:54.1427524+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T18:07:56.3000455+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T18:07:56.3023576+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T18:07:56.3073652+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T18:07:56.4606296+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T18:07:59.2293593+07:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.GetAllTeacherDepartments.Endpoint]	[0]	Запрос на получение всех преподавателей
+2024-12-20T18:07:59.2352578+07:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.GetAllTeacherDepartments.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает все кафедры 2
+2024-12-20T18:08:29.6347551+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T18:08:29.6438978+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T18:08:29.6458413+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T18:08:29.6546667+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T18:08:49.4635464+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T18:08:49.4663360+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T18:08:49.4715271+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T18:08:49.6317295+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T18:08:51.6534467+07:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.GetAllTeacherDepartments.Endpoint]	[0]	Запрос на получение всех преподавателей
+2024-12-20T18:08:51.6596711+07:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.GetAllTeacherDepartments.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает все кафедры 2
+2024-12-20T18:09:09.9640740+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T18:09:09.9701589+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T18:09:09.9875306+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T18:09:09.9938105+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T18:11:14.2548304+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T18:11:14.2639404+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T18:11:14.2768201+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T18:11:14.2823232+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T18:11:31.1160022+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T18:11:31.1180759+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T18:11:31.1226071+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T18:11:31.2834506+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T18:12:18.3429395+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T18:12:18.3529433+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T18:12:18.3609257+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T18:12:18.3629023+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T18:12:39.7501098+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T18:12:39.7514557+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T18:12:39.7574802+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T18:12:39.9176412+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T18:13:20.5175923+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T18:13:20.5470853+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T18:13:20.5563612+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T18:13:20.7071425+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T18:13:56.1606650+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T18:13:56.1653205+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T18:13:56.1728965+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T18:13:56.1765040+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T18:14:18.6763083+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T18:14:18.6782138+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T18:14:18.6835072+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T18:14:18.8339362+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T18:14:26.6943939+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T18:14:26.6966998+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T18:14:26.7014360+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T18:14:26.8565705+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T18:15:12.5080942+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T18:15:12.5176248+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T18:15:12.5200779+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T18:15:12.5292374+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T18:15:53.1444222+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T18:15:53.1470280+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T18:15:53.1583282+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T18:15:53.3120964+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T18:17:46.6363139+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T18:17:46.6446380+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T18:17:46.6498804+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T18:17:46.6555352+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T18:18:33.5996285+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T18:18:33.6025916+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T18:18:33.6112272+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T18:18:33.6146252+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T18:18:45.6385540+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T18:18:45.6524961+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T18:18:45.6551121+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T18:18:45.6602697+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T18:19:47.8188315+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T18:19:47.8243562+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T18:19:47.8304850+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T18:19:47.9874363+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T18:20:01.5685704+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T18:20:01.5704200+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T18:20:01.5773966+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T18:20:01.7366929+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T18:21:05.7333786+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T18:21:05.7351422+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T18:21:05.7458725+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T18:21:05.8957271+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T18:21:11.5910186+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T18:21:11.5949827+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T18:21:11.6004438+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T18:21:11.7536140+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T18:21:15.7049480+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T18:21:15.7065880+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T18:21:15.7117634+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T18:21:15.8692259+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T18:21:28.5577619+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T18:21:28.5647227+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T18:21:28.5784456+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T18:21:28.5842039+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T18:21:40.4003908+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T18:21:40.4019041+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T18:21:40.4066898+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T18:21:40.5719865+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T18:22:40.5017280+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T18:22:40.5029011+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T18:22:40.5122310+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T18:22:40.6692734+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T18:22:55.4142010+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T18:22:55.4198257+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T18:22:55.4225525+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T18:22:55.4277494+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T18:23:10.8181676+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T18:23:10.8193534+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T18:23:10.8249354+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T18:23:10.9836731+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T18:23:20.2864571+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T18:23:20.2877762+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T18:23:20.2920692+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T18:23:20.4533604+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T18:25:15.2099573+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T18:25:15.2140046+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T18:25:15.2208916+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T18:25:15.3772877+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T18:30:31.5165652+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T18:30:31.5189562+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T18:30:31.5482506+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T18:30:31.6911004+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T18:36:10.9154721+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T18:36:10.9184355+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T18:36:10.9289974+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T18:36:11.0873417+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T18:36:25.2078644+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T18:36:25.2153060+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T18:36:25.2187453+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T18:36:25.2254347+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T18:36:54.2957096+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T18:36:54.3314787+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T18:36:54.3421247+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T18:36:54.3447131+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T18:47:32.3238440+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T18:47:32.3277169+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T18:47:32.3401537+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T18:47:32.4985103+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T18:49:34.4376840+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T18:49:34.4395701+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T18:49:34.4502016+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T18:49:34.6020384+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T18:50:02.0375884+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T18:50:02.0391997+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T18:50:02.0467957+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T18:50:02.1959369+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T18:50:38.6949114+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T18:50:38.7236933+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T18:50:38.7330819+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T18:50:38.8832420+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T18:50:42.5118860+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T18:50:42.5187845+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T18:50:42.5208716+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T18:50:42.5269783+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T18:55:22.5282021+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T18:55:22.5337727+07:00	FAIL	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь не является администратором
+2024-12-20T18:55:22.5494169+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T18:55:22.5513780+07:00	FAIL	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь не является администратором
+2024-12-20T18:55:47.2150841+07:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизация пользователя
+2024-12-20T18:55:47.6474718+07:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизован пользователь jimkrauz@gmail.com admin admin Администратор
+2024-12-20T18:58:24.9384756+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T18:58:24.9469573+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T18:58:24.9514389+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T18:58:24.9562249+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T19:03:33.3584712+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T19:03:33.3597755+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T19:03:33.3690598+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T19:03:33.3731621+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T19:06:43.9664999+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T19:06:43.9962528+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T19:06:44.0029086+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T19:06:44.1552111+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T19:07:29.7159981+07:00	INFO	[SPerfomance.Api.Features.Users.ChangeUserEmailEndpoint.Endpoint]	[0]	Запрос на изменение почты пользователя
+2024-12-20T19:07:30.1656101+07:00	INFO	[SPerfomance.Api.Features.Users.ChangeUserEmailEndpoint.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 admin поменял почту с jimkrauz@gmail.com на admin@mail.com
+2024-12-20T19:07:35.2455662+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T19:07:35.2468562+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T19:07:35.2512754+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T19:07:35.4059378+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T19:10:39.3601283+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T19:10:39.3615732+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T19:10:39.3717694+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T19:10:39.5226617+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T19:10:57.5092399+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T19:10:57.5105569+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T19:10:57.5150775+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T19:10:57.6738948+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T19:11:11.2961522+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T19:11:11.3015317+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T19:11:11.3028861+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T19:11:11.3081626+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T19:11:50.9672636+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T19:11:50.9687740+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T19:11:50.9772177+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T19:11:51.1285276+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T19:12:22.4041423+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T19:12:22.4054517+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T19:12:22.4132619+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 9
+2024-12-20T19:12:22.5657830+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 9
+2024-12-20T19:12:29.1735020+07:00	INFO	[SPerfomance.Api.Features.Users.RemoveUser.Endpoint]	[0]	Запрос на удаление пользователя из системы
+2024-12-20T19:12:29.3090593+07:00	INFO	[SPerfomance.Api.Features.Users.RemoveUser.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 удаляет пользователя cc9d4d75-61ca-4765-a790-700baa091b10 veis@mail.com Преподаватель
+2024-12-20T19:12:29.3167882+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T19:12:29.3177869+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T19:12:29.3213363+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 8
+2024-12-20T19:12:29.4739287+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 8
+2024-12-20T19:12:32.1180795+07:00	INFO	[SPerfomance.Api.Features.Users.RemoveUser.Endpoint]	[0]	Запрос на удаление пользователя из системы
+2024-12-20T19:12:32.1241407+07:00	INFO	[SPerfomance.Api.Features.Users.RemoveUser.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 удаляет пользователя a23709d2-0857-46e4-b463-3c3466e9c5b3 gerasimova@mail.com Преподаватель
+2024-12-20T19:12:32.1295234+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T19:12:32.1305818+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T19:12:32.1345340+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 7
+2024-12-20T19:12:32.2989384+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 7
+2024-12-20T19:12:34.4224872+07:00	INFO	[SPerfomance.Api.Features.Users.RemoveUser.Endpoint]	[0]	Запрос на удаление пользователя из системы
+2024-12-20T19:12:34.4286325+07:00	INFO	[SPerfomance.Api.Features.Users.RemoveUser.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 удаляет пользователя e4d593c7-bff3-4e71-8263-c8b07bb00ff7 ahmatshin@mail.com Преподаватель
+2024-12-20T19:12:34.4602961+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T19:12:34.4618761+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T19:12:34.4658870+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 6
+2024-12-20T19:12:34.6303396+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 6
+2024-12-20T19:12:36.6241744+07:00	INFO	[SPerfomance.Api.Features.Users.RemoveUser.Endpoint]	[0]	Запрос на удаление пользователя из системы
+2024-12-20T19:12:36.6296646+07:00	INFO	[SPerfomance.Api.Features.Users.RemoveUser.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 удаляет пользователя ee9736cd-9f3e-4b3a-9c45-4f33ab3d8bb2 egarmin@mail.com Преподаватель
+2024-12-20T19:12:36.6357622+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T19:12:36.6370564+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T19:12:36.6410401+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 5
+2024-12-20T19:12:36.7982752+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 5
+2024-12-20T19:12:38.4854075+07:00	INFO	[SPerfomance.Api.Features.Users.RemoveUser.Endpoint]	[0]	Запрос на удаление пользователя из системы
+2024-12-20T19:12:38.4919950+07:00	INFO	[SPerfomance.Api.Features.Users.RemoveUser.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 удаляет пользователя 0ec5e155-c8c8-4d9d-8db5-c5a9fffa4a57 danilchenko@mail.com Преподаватель
+2024-12-20T19:12:38.4972193+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T19:12:38.4983812+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T19:12:38.5024361+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 4
+2024-12-20T19:12:38.6608070+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 4
+2024-12-20T19:12:40.2795059+07:00	INFO	[SPerfomance.Api.Features.Users.RemoveUser.Endpoint]	[0]	Запрос на удаление пользователя из системы
+2024-12-20T19:12:40.2849771+07:00	INFO	[SPerfomance.Api.Features.Users.RemoveUser.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 удаляет пользователя 53bd7a82-6b0c-41cf-97bb-2a92f6ec204a zvyaginceva@mail.com Преподаватель
+2024-12-20T19:12:40.2913917+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T19:12:40.2925470+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T19:12:40.2965201+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 3
+2024-12-20T19:12:40.4543743+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 3
+2024-12-20T19:12:41.9924222+07:00	INFO	[SPerfomance.Api.Features.Users.RemoveUser.Endpoint]	[0]	Запрос на удаление пользователя из системы
+2024-12-20T19:12:41.9978665+07:00	INFO	[SPerfomance.Api.Features.Users.RemoveUser.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 удаляет пользователя 90d36c06-9598-4855-ba3d-d4ebff0af2b8 medvedev@mail.com Преподаватель
+2024-12-20T19:12:42.0040737+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T19:12:42.0054670+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T19:12:42.0092836+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 2
+2024-12-20T19:12:42.1621184+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 2
+2024-12-20T19:12:44.0230854+07:00	INFO	[SPerfomance.Api.Features.Users.RemoveUser.Endpoint]	[0]	Запрос на удаление пользователя из системы
+2024-12-20T19:12:44.0289786+07:00	INFO	[SPerfomance.Api.Features.Users.RemoveUser.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 удаляет пользователя 7b987126-ca23-436f-9b8a-b381a436c193 ryabova@mail.com Преподаватель
+2024-12-20T19:12:44.0336848+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T19:12:44.0348394+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T19:12:44.0387891+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 1
+2024-12-20T19:12:44.1920377+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 1
+2024-12-20T19:12:57.4017436+07:00	INFO	[SPerfomance.Api.Features.Users.UsersRegistration.Endpoint]	[0]	Запрос на регистрацию пользователя в системе
+2024-12-20T19:12:58.0432623+07:00	INFO	[SPerfomance.Api.Features.Users.UsersRegistration.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 добавил пользователя 86a34fdc-56c0-4899-bb55-7a5fbcad1284 Тест Тестов jimkrauz@gmail.com Администратор в систему
+2024-12-20T19:12:58.0499893+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T19:12:58.0512375+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T19:12:58.0551571+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 2
+2024-12-20T19:12:58.2061637+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 2
+2024-12-20T19:13:22.6137896+07:00	INFO	[SPerfomance.Api.Features.Users.RemoveUser.Endpoint]	[0]	Запрос на удаление пользователя из системы
+2024-12-20T19:13:22.6197173+07:00	INFO	[SPerfomance.Api.Features.Users.RemoveUser.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 удаляет пользователя 86a34fdc-56c0-4899-bb55-7a5fbcad1284 jimkrauz@gmail.com Администратор
+2024-12-20T19:13:22.6283568+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T19:13:22.6300184+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T19:13:22.6340493+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 1
+2024-12-20T19:13:22.7983210+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 1
+2024-12-20T19:13:24.2013340+07:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.GetAllTeacherDepartments.Endpoint]	[0]	Запрос на получение всех преподавателей
+2024-12-20T19:13:24.2077120+07:00	INFO	[SPerfomance.Api.Features.TeacherDepartments.GetAllTeacherDepartments.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает все кафедры 2
+2024-12-20T19:13:31.7886626+07:00	INFO	[SPerfomance.Api.Features.Users.UsersRegistration.Endpoint]	[0]	Запрос на регистрацию пользователя в системе
+2024-12-20T19:13:32.2300214+07:00	INFO	[SPerfomance.Api.Features.Users.UsersRegistration.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 добавил пользователя b45a3e67-2cac-4446-b41a-ab7b48c432de Фарид Ахматшин jimkrauz@gmail.com Преподаватель в систему
+2024-12-20T19:13:32.2361039+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T19:13:32.2378423+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T19:13:32.2411156+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 2
+2024-12-20T19:13:32.3960117+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 2
+2024-12-20T19:14:50.0985729+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T19:14:50.1063480+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 2
+2024-12-20T19:14:50.1077248+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T19:14:50.1124547+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 2
+2024-12-20T19:15:03.2949648+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T19:15:03.2966434+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T19:15:03.3045691+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 2
+2024-12-20T19:15:03.4588841+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 2
+2024-12-20T19:16:45.9671167+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T19:16:45.9740757+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 2
+2024-12-20T19:16:45.9808503+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T19:16:45.9857508+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 2
+2024-12-20T19:17:05.3609897+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T19:17:05.3695685+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 2
+2024-12-20T19:17:05.3942750+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T19:17:05.4088928+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 2
+2024-12-20T19:17:13.0804677+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T19:17:13.0826876+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T19:17:13.1079351+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 2
+2024-12-20T19:17:13.2534937+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 2
+2024-12-20T19:17:31.6897452+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T19:17:31.6914661+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T19:17:31.6968783+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 2
+2024-12-20T19:17:31.8498948+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 2
+2024-12-20T19:18:21.0602445+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T19:18:21.0623042+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T19:18:21.0710286+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 2
+2024-12-20T19:18:21.2278570+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 2
+2024-12-20T19:19:01.0318010+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T19:19:01.0650027+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T19:19:01.0671738+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 2
+2024-12-20T19:19:01.0753783+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 2
+2024-12-20T19:20:02.4969038+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T19:20:02.5002216+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T19:20:02.5095043+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 2
+2024-12-20T19:20:02.6608506+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 2
+2024-12-20T19:20:05.5083872+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T19:20:05.5099222+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T19:20:05.5157828+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 2
+2024-12-20T19:20:05.6672122+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 2
+2024-12-20T19:20:29.0797423+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T19:20:29.0827118+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T19:20:29.0902703+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 2
+2024-12-20T19:20:29.2413178+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 2
+2024-12-20T19:20:43.6504826+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T19:20:43.6529415+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T19:20:43.6589369+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 2
+2024-12-20T19:20:43.8115936+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 2
+2024-12-20T19:20:55.0741550+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T19:20:55.0815969+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 2
+2024-12-20T19:20:55.0913163+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T19:20:55.2027053+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 2
+2024-12-20T19:21:02.1806983+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T19:21:02.1862781+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 2
+2024-12-20T19:21:02.2030930+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T19:21:02.2088073+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 2
+2024-12-20T19:21:11.2234001+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T19:21:11.2251963+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T19:21:11.2291728+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 2
+2024-12-20T19:21:11.3913520+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 2
+2024-12-20T19:21:22.8552736+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T19:21:22.8573500+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T19:21:22.8625413+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 2
+2024-12-20T19:21:23.0239149+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 2
+2024-12-20T19:23:15.9286186+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T19:23:15.9315655+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T19:23:15.9384631+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 2
+2024-12-20T19:23:16.0932665+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 2
+2024-12-20T19:24:18.9258604+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T19:24:18.9283915+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T19:24:18.9379209+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 2
+2024-12-20T19:24:19.0976336+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 2
+2024-12-20T19:25:26.1912926+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T19:25:26.1946759+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T19:25:26.2006693+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 2
+2024-12-20T19:25:26.2040014+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 2
+2024-12-20T19:26:12.6987181+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T19:26:12.7003419+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T19:26:12.7128449+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 2
+2024-12-20T19:26:12.8608377+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 2
+2024-12-20T19:26:18.5165944+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T19:26:18.5225500+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 2
+2024-12-20T19:26:18.5441717+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T19:26:18.5501922+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 2
+2024-12-20T19:26:37.5441945+07:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизация пользователя
+2024-12-20T19:26:37.9797641+07:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Ошибка авторизации. Пароль неверный
+2024-12-20T19:26:46.6921357+07:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизация пользователя
+2024-12-20T19:26:47.1259132+07:00	INFO	[SPerfomance.Api.Features.Users.UsersAuth.Endpoint]	[0]	Авторизован пользователь admin@mail.com admin admin Администратор
+2024-12-20T19:27:05.8533254+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T19:27:05.8591890+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 2
+2024-12-20T19:27:05.8706131+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T19:27:05.8756429+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 2
+2024-12-20T19:29:34.9881033+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T19:29:34.9940278+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 2
+2024-12-20T19:29:35.0019842+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T19:29:35.0070116+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 2
+2024-12-20T19:30:12.5241472+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByFilter.Endpoint]	[0]	Запрос на получение пользователей системы постранично по фильтру
+2024-12-20T19:30:12.5416845+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByFilter.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает пользователей системы постранично по фильтру 1
+2024-12-20T19:30:15.4086422+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByFilter.Endpoint]	[0]	Запрос на получение пользователей системы постранично по фильтру
+2024-12-20T19:30:15.4129337+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByFilter.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает пользователей системы постранично по фильтру 1
+2024-12-20T19:30:16.8417503+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T19:30:16.8460645+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 2
+2024-12-20T19:34:33.7199369+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Получение пользователей системы постранично
+2024-12-20T19:34:33.7251429+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Получение количества пользователей в системе
+2024-12-20T19:34:33.7283956+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersByPage.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает список пользователей системы постранично 2
+2024-12-20T19:34:33.7328009+07:00	INFO	[SPerfomance.Api.Features.Users.GetUsersCount.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество пользователей в системе 2
+2024-12-20T19:34:40.4530122+07:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Запрос на получение сессий контрольных недель постранично
+2024-12-20T19:34:40.4701673+07:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Запрос на получение количества сессий контрольных недель
+2024-12-20T19:34:40.4778753+07:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество контрольных недель 0
+2024-12-20T19:34:40.5240048+07:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает сессии контрольных недель постранично
+2024-12-20T19:34:44.4738282+07:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Запрос на получение количества сессий контрольных недель
+2024-12-20T19:34:44.4754258+07:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Запрос на получение сессий контрольных недель постранично
+2024-12-20T19:34:44.4806489+07:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.CountAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает количество контрольных недель 0
+2024-12-20T19:34:44.4850413+07:00	INFO	[SPerfomance.Api.Features.PerfomanceContext.Features.GetPagedAssignmentSessions.Endpoint]	[0]	Пользователь 405b1a36-9fe1-4c7a-b44e-29f4f7890cd2 получает сессии контрольных недель постранично

@@ -1,66 +1,44 @@
 <div class="users-table-wrapper">
   <div class="users-controls-container">
-    <button class="accept-button" (click)="isCreationModalVisible = true">
-      Добавить пользователя
-    </button>
-    <button class="accept-button" (click)="isFilterModalVisible = true">Отфильтровать список</button>
-    <button class="accept-button-outline" [routerLink]="['/users-info']">Документация</button>
+    <div class="dropdown-container">
+      <app-blue-button [label]="'Добавить администратора'" (onClicked)="isCreatingAdmin = true"></app-blue-button>
+      <app-create-admin-dropdown *ngIf="isCreatingAdmin"
+                                 [visibility]="isCreatingAdmin"
+                                 (visibilityChange)="isCreatingAdmin = $event"
+                                 (userCreated)="handleUserCreated($event)">
+      </app-create-admin-dropdown>
+    </div>
+    <div class="dropdown-container">
+      <app-blue-button [label]="'Добавить преподавателя'" (onClicked)="isCreatingTeacher = true"></app-blue-button>
+      <app-create-teacher-user-dropdown *ngIf="isCreatingTeacher"
+                                        [visibility]="isCreatingTeacher"
+                                        (visibilityChange)="isCreatingTeacher = $event"
+                                        (userCreated)="handleUserCreated($event)">
+      </app-create-teacher-user-dropdown>
+    </div>
+    <div class="dropdown-container">
+      <app-blue-button [label]="'Фильтр'" (onClicked)="isFilteringUsers = true"></app-blue-button>
+      <app-filter-user-dropdown *ngIf="isFilteringUsers"
+                                [visibility]="isFilteringUsers"
+                                (visibilityChange)="isFilteringUsers = $event"
+                                (filtered)="filtered.emit()">
+      </app-filter-user-dropdown>
+    </div>
+    <app-blue-outline-button [label]="'Документация'" (onClicked)="navigateToDocumentation()"></app-blue-outline-button>
   </div>
   <div class="users-table-container">
-    <div class="users-table-grid">
-      <div class="users-table-header">
-        <strong>Номер</strong>
-        <strong>Фамилия</strong>
-        <strong>Имя</strong>
-        <strong>Отчество</strong>
-        <strong>Роль</strong>
-        <strong>Почта</strong>
-        <strong>Был онлайн</strong>
-        <strong>Зарегистрирован</strong>
-        <strong>Действия</strong>
-      </div>
-      @for (user of userRecords; track user.email) {
-        <app-users-table-row
-          [user]="user"
-          (deletionEmitter)="activeUser = user; isDeletionModalVisible = true"
-        ></app-users-table-row>
-      }
-    </div>
+    <app-users-item *ngFor="let user of users"
+                    [user]="user"
+                    [isCurrentlySelected]="manageCurrentlySelectedUser(user)"
+                    (selectUser)="currentlySelectedUser = $event"
+                    (requestRemove)="userToRemove = $event; isDeletingUser = true">
+    </app-users-item>
   </div>
-  <div class="pagination-wrapper">
-    <app-users-table-pagination (paginationRefresh)="fetchOnPageChanged()"></app-users-table-pagination>
-  </div>
+  <app-users-table-pagination></app-users-table-pagination>
 </div>
-<div id="success-modal-renderer" *ngIf="isSuccess">
-  <app-success-result-notification
-    [message]="_notificationService.Message"
-    (visibilityEmitter)="isSuccess = $event"
-  ></app-success-result-notification>
-</div>
-<div id="failure-modal-renderer" *ngIf="isFailure">
-  <app-failure-result-notification
-    [message]="_notificationService.Message"
-    (visibilityEmitter)="isFailure = $event"
-  ></app-failure-result-notification>
-</div>
-<div id="creation-modal-renderer" *ngIf="isCreationModalVisible">
-  <app-users-create-modal
-    (failureEmitter)="isFailure = true"
-    (successEmitter)="isSuccess = true"
-    (refreshEmitter)="fetchUsers()"
-    (visibilityEmitter)="isCreationModalVisible = $event"
-  ></app-users-create-modal>
-</div>
-<div id="deletion-modal-renderer" *ngIf="isDeletionModalVisible">
-  <app-users-remove-modal
-    [user]="activeUser"
-    (visibilityEmitter)="isDeletionModalVisible = $event"
-    (refreshEmitter)="refreshActiveUser(); fetchUsers()"
-    (successEmitter)="this.isSuccess = true"
-    (failureEmitter)="this.isFailure = true"
-  ></app-users-remove-modal>
-</div>
-<div id="filter-modal-renderer" *ngIf="isFilterModalVisible">
-  <app-users-filter-modal (visibility)="isFilterModalVisible = false"
-                          (filteredEmitter)="fetchUsers();"></app-users-filter-modal>
-</div>
+<app-users-remove-modal *ngIf="isDeletingUser && userToRemove"
+                        [user]="userToRemove"
+                        [visibility]="isDeletingUser"
+                        (visibilityEmitter)="isDeletingUser = false"
+                        (removeCommited)="removed.emit()">
+</app-users-remove-modal>
