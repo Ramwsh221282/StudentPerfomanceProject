@@ -1,14 +1,13 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { TeacherJournalStudent } from '../../../../../models/teacher-journal-students';
 import { TeacherJournalDiscipline } from '../../../../../models/teacher-journal-disciplines';
-import { ISubbmittable } from '../../../../../../../shared/models/interfaces/isubbmitable';
 
 @Component({
   selector: 'app-marks-modal',
   templateUrl: './marks-modal.component.html',
   styleUrl: './marks-modal.component.scss',
 })
-export class MarksModalComponent implements ISubbmittable {
+export class MarksModalComponent {
   @Input({ required: true }) student: TeacherJournalStudent;
   @Input({ required: true }) discipline: TeacherJournalDiscipline;
   @Output() visibility: EventEmitter<void> = new EventEmitter();
@@ -17,6 +16,17 @@ export class MarksModalComponent implements ISubbmittable {
 
   protected marks: Mark[];
   protected selectedMark: Mark;
+  protected selectMarkLabel: string = 'Выбрать оценку';
+  protected isSelectingMark: boolean = false;
+
+  protected stringMarks: string[] = [
+    'Нет аттестации',
+    'Нет проставления',
+    '2',
+    '3',
+    '4',
+    '5',
+  ];
 
   public constructor() {
     this.marks = [
@@ -30,16 +40,11 @@ export class MarksModalComponent implements ISubbmittable {
     this.selectedMark = {} as Mark;
   }
 
-  public submit(): void {
+  protected handleMarkSelection(stringMark: string): void {
+    this.selectedMark = this.marks.find((m) => m.name == stringMark)!;
     this.student.assignment.value = this.selectedMark.value;
     this.markSelected.emit(this.student);
     this.visibility.emit();
-  }
-
-  protected selectMark(value: any): void {
-    const markValue = value.target.value;
-    const selectedMark = this.marks.find((m) => m.value == markValue);
-    this.selectedMark = selectedMark!;
   }
 }
 

@@ -9,6 +9,11 @@ import { TeacherAssignmentSessionInfoComponent } from '../components/teachers-as
 import { TeacherAssignmentsTableComponent } from '../components/teachers-assignment-page/teacher-assignments-table/teacher-assignments-table.component';
 import { TeacherAssignmentsComponent } from '../components/teachers-assignment-page/teacher-assignments-table/teacher-assignments/teacher-assignments.component';
 import { MarksModalComponent } from '../components/teachers-assignment-page/teacher-assignments-table/teacher-assignments/marks-modal/marks-modal.component';
+import { TeacherAssignmentsGroupTabsComponent } from '../components/teachers-assignment-page/teacher-assignments-table/teacher-assignments-group-tabs/teacher-assignments-group-tabs.component';
+import { TeacherAssignmentGroupMenuComponent } from '../components/teachers-assignment-page/teacher-assignments-table/teacher-assignments-group-tabs/teacher-assignment-group-menu/teacher-assignment-group-menu.component';
+import { DropdownListComponent } from '../../../building-blocks/dropdown-list/dropdown-list.component';
+import { RedOutlineButtonComponent } from '../../../building-blocks/buttons/red-outline-button/red-outline-button.component';
+import { FloatingLabelInputComponent } from '../../../building-blocks/floating-label-input/floating-label-input.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +30,12 @@ import { MarksModalComponent } from '../components/teachers-assignment-page/teac
     FormsModule,
     SuccessResultNotificationComponent,
     FailureResultNotificationComponent,
+    TeacherAssignmentsGroupTabsComponent,
+    TeacherAssignmentGroupMenuComponent,
+    DropdownListComponent,
+    RedOutlineButtonComponent,
+    FloatingLabelInputComponent,
   ],
-  exports: [TeachersAssignmentPageComponent],
+  exports: [TeachersAssignmentPageComponent, TeacherAssignmentsComponent],
 })
 export class TeachersModule {}

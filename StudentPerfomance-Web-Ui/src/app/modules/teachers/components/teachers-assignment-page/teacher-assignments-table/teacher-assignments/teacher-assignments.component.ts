@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { TeacherJournalStudent } from '../../../../models/teacher-journal-students';
 import { TeacherJournalDiscipline } from '../../../../models/teacher-journal-disciplines';
 import { TeacherAssignmentsService } from './teacher-assignments.service';
@@ -12,12 +12,9 @@ import { TeacherAssignmentsService } from './teacher-assignments.service';
 export class TeacherAssignmentsComponent {
   @Input({ required: true }) student: TeacherJournalStudent;
   @Input({ required: true }) discipline: TeacherJournalDiscipline;
+  protected isSelectingMark: boolean = false;
 
-  protected _isMarksModalVisible: boolean;
-
-  public constructor(private readonly _service: TeacherAssignmentsService) {
-    this._isMarksModalVisible = false;
-  }
+  public constructor(private readonly _service: TeacherAssignmentsService) {}
 
   protected teacherMarkSelectionUpdate(student: TeacherJournalStudent): void {
     this.student = { ...student };

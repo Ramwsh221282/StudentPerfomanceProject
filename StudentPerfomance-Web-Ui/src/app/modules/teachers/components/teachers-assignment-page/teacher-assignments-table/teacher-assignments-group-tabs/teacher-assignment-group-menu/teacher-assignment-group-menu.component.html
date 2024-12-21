@@ -1,0 +1,8 @@
+<div class="tab-form">
+  <ul class="tab-form-ul" style="max-width: 600px; overflow: auto; font-size: 14px;">
+    <li [ngClass]="{'tab-form-li-active': activeDiscipline == discipline.name.name}" class="tab-form-li"
+        *ngFor="let discipline of journal.disciplines"
+        (click)="handleSelectedDiscipline(discipline)">{{ discipline.name.name }}
+    </li>
+  </ul>
+</div>
