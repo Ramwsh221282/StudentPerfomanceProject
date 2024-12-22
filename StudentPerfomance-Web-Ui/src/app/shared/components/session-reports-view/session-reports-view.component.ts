@@ -71,6 +71,10 @@ export class SessionReportsViewComponent implements OnInit {
     this.fetchData();
   }
 
+  protected refreshPagination(): void {
+    this._paginationService.refreshPagination();
+  }
+
   protected fetchData(): void {
     this._dataService.fetch().subscribe((response) => {
       this.reports = response;

@@ -1,0 +1,40 @@
+<div class="dropdown-content">
+  <app-floating-label-input [value]="year"
+                            [label]="'Год'"
+                            [id]="'YearInput'"
+                            (inputChange)="year = $event">
+  </app-floating-label-input>
+  <div class="dropdown-container">
+    <app-floating-label-input [value]="season"
+                              [label]="'Сезон'"
+                              [id]="'SeasonInput'"
+                              [isReadonly]="true"
+                              (click)="isSelectingSeason = true"
+                              (inputChange)="selectSeasonLabel = $event">
+    </app-floating-label-input>
+    <app-dropdown-list *ngIf="isSelectingSeason"
+                       [items]="seasons"
+                       (itemSelected)="handleSeasonSelection($event)"
+                       (visibilityChanged)="isSelectingSeason = $event">
+    </app-dropdown-list>
+  </div>
+  <div class="dropdown-container">
+    <app-floating-label-input [value]="number"
+                              [label]="'Номер'"
+                              [id]="'NumberInput'"
+                              [isReadonly]="true"
+                              (click)="isSelectingNumber = true"
+                              (inputChange)="selectNumberLabel = $event">
+    </app-floating-label-input>
+    <app-dropdown-list *ngIf="isSelectingNumber"
+                       [items]="numbers"
+                       (itemSelected)="handleNumberSelection($event)"
+                       (visibilityChanged)="isSelectingNumber = $event">
+    </app-dropdown-list>
+  </div>
+  <div class="dropdown-controls">
+    <app-green-outline-button [label]="'Применить'" (onClicked)="submit()"></app-green-outline-button>
+    <app-red-outline-button [label]="'Отменить'" (onClicked)="cancel()"></app-red-outline-button>
+    <app-red-outline-button [label]="'Закрыть'" (onClicked)="close()"></app-red-outline-button>
+  </div>
+</div>

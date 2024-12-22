@@ -40,6 +40,7 @@ export class SessionGroupReportsComponent implements OnInit {
 
   public ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
+      console.log(params);
       const reportId: string = params['reportId'];
       this.startDate = params['startDate'];
       this.endDate = params['endDate'];

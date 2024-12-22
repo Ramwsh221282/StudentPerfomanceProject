@@ -1,32 +1,45 @@
 .session-report-item-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 60%;
-  height: 30vh;
-  background-color: #e7debe;
-  border-radius: 0px 50px 0px 0px;
-  border: solid 1px #cccccc;
-  font-size: 16px;
-  gap: 5px
+  border: solid 1px #ccc;
+  padding: 0.2rem;
+  display: grid;
+  grid-template-columns: 100px auto;
+
+  &:hover .department-name-container {
+    transition: 0.5s ease-in-out;
+    background-color: #47b300;
+  }
 }
 
-.session-report-period-container {
-  font-size: 14px;
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  border-bottom: 2px solid #cccccc;
-  width: 100%;
+.session-report-item-name-container {
+  padding: 0.2rem;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1rem;
+  background-color: #5ce600;
+  color: #fff;
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-gap: 1px;
 }
 
-.session-report-menu-container {
-  background-color: #ECF4FF;
+.session-report-item-attributes-grid {
+  padding: 0.2rem;
+  display: grid;
+  grid-template-columns: 125px 100px;
+  color: #000;
   border: 1px solid #cccccc;
-  border-radius: 5px;
-  padding: 5px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  grid-gap: 10px;
+}
+
+.attribute {
+  border-bottom: solid 2px black;
+}
+
+.session-report-item-controls-container {
+  padding: 2px 0;
+  border-top: solid 2px black;
+  display: inline-flex;
+  gap: 5px;
 }

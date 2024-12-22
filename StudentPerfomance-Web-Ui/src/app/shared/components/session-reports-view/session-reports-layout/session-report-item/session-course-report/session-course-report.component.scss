@@ -19,40 +19,25 @@
 }
 
 .course-report-content {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: auto;
   overflow: auto;
-  //height: auto;
-  //display: flex;
-  //flex-direction: column;
-  //gap: 5px;
-  //color: #000000;
-  //padding: 10px;
-  //background-color: #ffffff;
-  //border-radius: 5px;
-  //border: solid 1px #cccccc;
-  //font-size: 14px;
-  //width: auto;
   background-color: #ffffff;
   border: solid 1px #d9d9d9;
   border-radius: 10px;
-  height: 87vh;
-  //display: flex;
-  //flex-direction: column;
-  //gap: 10px;
+  height: auto;
+  max-height: 80vh;
 }
 
 .report-date-container {
   padding: 10px;
-  //display: inline-flex;
-  //flex-direction: row;
-  //gap: 5px;
 }
 
 .report-title-layout {
   padding: 10px;
-  //display: inline-flex;
-  //flex-direction: row;
   font-size: 18px;
-  //gap: 10px;
   text-align: center;
   border-bottom: 1px solid #cccccc;
 }
@@ -64,29 +49,7 @@
   height: auto;
 }
 
-//.report-table-layout {
-//  //table-layout: fixed;
-//  //width: 100%;
-//
-//  & thead tr {
-//    border: solid 1px black;
-//    text-align: center;
-//  }
-//
-//  & td,
-//  & th {
-//    //width: 50%;
-//    border: solid 1px black;
-//  }
-//
-//  & tbody tr {
-//    text-align: center;
-//    border: solid 1px black;
-//  }
-//}
-
 .report-table-layout {
-  //width: 100%;
   border-collapse: collapse;
 }
 
@@ -105,10 +68,7 @@
 }
 
 .results-container {
-  //width: auto;
   text-decoration: underline;
-  //padding: 5px;
-  //gap: 5px;
   display: flex;
   flex-direction: column;
 }

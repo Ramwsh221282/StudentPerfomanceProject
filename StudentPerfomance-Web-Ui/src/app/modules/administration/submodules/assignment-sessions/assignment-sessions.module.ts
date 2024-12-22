@@ -45,6 +45,6 @@ import { DropdownListComponent } from '../../../../building-blocks/dropdown-list
     FloatingLabelInputComponent,
     DropdownListComponent,
   ],
-  exports: [AssignmentSessionsPageComponent],
+  exports: [AssignmentSessionsPageComponent, SessionItemComponent],
 })
 export class AssignmentSessionsModule {}

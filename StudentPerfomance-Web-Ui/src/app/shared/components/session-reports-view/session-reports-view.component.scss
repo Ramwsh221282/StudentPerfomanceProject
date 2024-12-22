@@ -1,8 +1,18 @@
-.session-reports-page-contrainer {
-  display: flex;
+.session-reports-page-container {
+  display: inline-flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0.2rem;
+  border-radius: 10px;
 }
+
+//.session-reports-page-container {
+//  display: inline-flex;
+//  flex-direction: column;
+//  gap: 0.2rem;
+//  background-color: #ffffff;
+//  border: solid 1px #d9d9d9;
+//  border-radius: 10px;
+//}
 
 .navigation-links {
   display: inline-flex;

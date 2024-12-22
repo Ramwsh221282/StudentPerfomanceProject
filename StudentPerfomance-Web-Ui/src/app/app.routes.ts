@@ -67,6 +67,14 @@ export const routes: Routes = [
     canActivate: [canActivateAuthAdmin],
   },
   {
+    path: 'administration-instructions',
+    loadComponent: () =>
+      import(
+        './modules/administration/submodules/instructions-module/instructions-page/instructions-page.component'
+      ).then((mod) => mod.InstructionsPageComponent),
+    canActivate: [canActivateAuthAdmin],
+  },
+  {
     path: 'education-directions',
     loadChildren: () =>
       import(

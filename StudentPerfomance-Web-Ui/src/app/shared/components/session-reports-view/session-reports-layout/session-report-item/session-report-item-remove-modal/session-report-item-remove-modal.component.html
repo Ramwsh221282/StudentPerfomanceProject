@@ -1,20 +1,16 @@
 <div id="container">
   <div id="header">
-    <strong>Подтверждение</strong>
+    <strong>Удаление отчёта контрольной недели</strong>
   </div>
   <div id="content">
-    <a>Вы уверены, что Вы хотите удалить отчёт о контрольной неделе?</a>
+    <a>Удалить отчёт о контрольной неделе</a>
+    <a>Сезон: {{ reportToDelete.season }}</a>
+    <a>Номер: {{ reportToDelete.number }}</a>
+    <a>Дата начала: {{ reportToDelete.creationDate | date: 'd-M-y' }}</a>
+    <a>Дата окончания: {{ reportToDelete.completionDate | date: 'd-M-y' }}</a>
   </div>
   <div id="controls">
-    <button class="accept-button-modal" type="button" (click)="submit()">
-      Подтвердить
-    </button>
-    >
-    <button
-      class="danger-button-modal"
-      type="button"
-      (click)="visibility.emit()">
-      Отмена
-    </button>
+    <app-green-outline-button [label]="'Удалить'" (onClicked)="submit()"></app-green-outline-button>
+    <app-red-outline-button [label]="'Закрыть окно'" (onClicked)="close()"></app-red-outline-button>
   </div>
 </div>

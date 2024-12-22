@@ -1,7 +1,23 @@
 <div class="session-reports-layout-container">
-  @for (report of reports; track report.id) {
-    <app-session-report-item [report]="report" (successEmitter)="successEmitter.emit()"
-                             (failureEmitter)="failureEmitter.emit()"
-                             (refreshEmitter)="refreshEmitter.emit()"></app-session-report-item>
-  }
+  <div class="controls-container">
+    <div class="dropdown-container">
+      <app-blue-button [label]="'Фильтр'" (onClicked)="isFiltering = true"></app-blue-button>
+      <app-session-reports-filter-dropdown *ngIf="isFiltering"
+                                           [visibility]="isFiltering"
+                                           (visibilityChange)="isFiltering = $event"
+                                           (filterCommited)="filterAccepted.emit()">
+      </app-session-reports-filter-dropdown>
+    </div>
+  </div>
+  <section class="items-container">
+    <app-session-report-item *ngFor="let item of reports" [report]="item"
+                             (removeRequested)="reportToRemove = $event; isRemovingReport = true">
+    </app-session-report-item>
+  </section>
 </div>
+<app-session-report-item-remove-modal *ngIf="isRemovingReport && reportToRemove"
+                                      [reportToDelete]="reportToRemove"
+                                      [visibility]="isRemovingReport"
+                                      (visibilityChange)="isRemovingReport = $event"
+                                      (reportDeleted)="removeAccepted.emit($event)">
+</app-session-report-item-remove-modal>

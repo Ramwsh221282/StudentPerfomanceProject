@@ -1,5 +1,4 @@
 <section class="group-elements-wrapper">
-  <strong class="group-header">Организационные структуры</strong>
   <div class="group-structures">
     <app-administration-menu
       [descriptions]="['• Создание направлений', '• Удаление направлений', '• Редактирование направлений']"
@@ -16,13 +15,16 @@
     <app-administration-menu
       [descriptions]="['• Создание активной контрольной недели', '• Закрытие активной контрольной недели']"
       [title]="'Контрольные недели'"
-      [routerLinkPath]="['/assignment-sessions']"
-    >
+      [routerLinkPath]="['/assignment-sessions']">
+    </app-administration-menu>
+    <app-administration-menu
+      [descriptions]="['• Инструкции по администрированию']"
+      [title]="'Руководства (FAQ)'"
+      [routerLinkPath]="['/administration-instructions']">
     </app-administration-menu>
   </div>
 </section>
 <section class="group-elements-wrapper">
-  <strong class="group-header">Субъекты</strong>
   <div class="group-structures">
     <app-administration-menu
       [descriptions]="['• Создание студенческих групп', '• Удаление студенческих групп', '• Закрепление учебного плана', '• Управление студентами']"
@@ -41,16 +43,3 @@
     ></app-administration-menu>
   </div>
 </section>
-<!--<section class="group-elements-wrapper">-->
-<!--  <strong class="group-header">Технические службы</strong>-->
-<!--  <div class="group-structures">-->
-<!--    <app-administration-menu-->
-<!--      [title]="'Резерв базы данных'"-->
-<!--      [routerLink]="['123']"-->
-<!--    ></app-administration-menu>-->
-<!--    <app-administration-menu-->
-<!--      [title]="'Импорт данных'"-->
-<!--      [routerLink]="['123']"-->
-<!--    ></app-administration-menu>-->
-<!--  </div>-->
-<!--</section>-->

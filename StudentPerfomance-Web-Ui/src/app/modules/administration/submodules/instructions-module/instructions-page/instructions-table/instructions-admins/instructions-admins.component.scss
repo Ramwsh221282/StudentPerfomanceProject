@@ -1,0 +1,15 @@
+.text-container {
+  padding: 1rem;
+  font-size: 14px;
+  font-weight: 400;
+  display: inline-flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.text-row {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 0.2rem;
+}

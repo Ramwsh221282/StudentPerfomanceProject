@@ -1,0 +1,26 @@
+<div class="text-container">
+  <div class="text-row">
+    <span style="font-weight: bold">Кафедры</span>
+    <span>- элементы, которые содержат информацию о преподавателях.</span>
+  </div>
+  <span>Преподавателей внутри кафедр можно закреплять за дисциплинами учебных планов.</span>
+  <div class="text-row">
+    <span>Закрепление преподавателей происходит на странице:</span>
+    <a style="font-weight: bold; text-decoration: underline; color: #1a88ff" [routerLink]="['/education-plans']">Учебные
+      планы.</a>
+    <span>В выбранном семестре, выбранной дисциплине.</span>
+  </div>
+  <span>Преподавателей можно так же зарегистрировать как пользователей.</span>
+  <span style="font-weight: bold">Чтобы преподаватели могли проставлять оценки в контрольных неделях, их необходимо зарегистрировать.</span>
+  <div class="text-row">
+    <span>Регистрация преподавателя как пользователя происходит на странице:</span>
+    <a style="font-weight: bold; text-decoration: underline; color: #1a88ff" [routerLink]="['/users']">Пользователи.</a>
+  </div>
+  <span style="font-weight: bold">Для регистрации необходимо знать реальный email преподавателя.</span>
+  <span style="font-weight: bold">Поскольку после регистрации на этот email отправляется сгенерированный пароль.</span>
+  <div class="text-row">
+    <span>Работа с кафедрами (преподавателями) осуществляется на странице:</span>
+    <a style="font-weight: bold; text-decoration: underline; color: #1a88ff"
+       [routerLink]="['/departments']">Кафедры.</a>
+  </div>
+</div>

@@ -1,29 +1,18 @@
 <div class="session-report-item-container">
-  <div class="session-report-period-container">
-    <strong>Начало: {{ report.creationDate | date: 'd-M-y' }}</strong>
-    <strong>Конец: {{ report.completionDate | date: 'd-M-y' }}</strong>
-    <strong>Сезон: {{ report.season }}</strong>
-    <strong>Номер: {{ report.number }}</strong>
+  <div class="session-report-item-name-container">
+    <strong>{{ report.creationDate | date: 'y' }}</strong>
+    <strong>{{ report.season }}</strong>
+    <strong>{{ report.number }}</strong>
   </div>
-  <div class="session-report-menu-container">
-    <button class="warning-button-outline" [routerLink]="'/group-reports/:reportId'"
-            [queryParams]="{reportId: report.id, startDate: report.creationDate, endDate: report.completionDate, season: report.season, number: report.number}">
-      Ведомость по
-      группам
-    </button>
-    <button class="warning-button-outline" [routerLink]="'/course-reports/:reportId:startDate:closeDate:season:number'"
-            [queryParams]="{reportId: report.id, startDate: report.creationDate, endDate: report.completionDate, season: report.season, number: report.number}">
-      Ведомость по направлениям
-    </button>
+  <div class="session-report-item-attributes-grid">
+    <span class="attribute">Дата начала:</span>
+    <span class="attribute">{{ report.creationDate | date: 'd-M-y' }}</span>
+    <span class="attribute">Дата окончания:</span>
+    <span class="attribute">{{ report.completionDate | date: 'd-M-y' }}</span>
   </div>
-  <button class="danger-button" (click)="isRemovingVisible = true"
-          *ngIf="_authService.userData.role == 'Администратор'">Удалить отчёт
-  </button>
-</div>
-<div id="remove-modal-renderer" *ngIf="isRemovingVisible">
-  <app-session-report-item-remove-modal [reportToDelete]="report"
-                                        (visibility)="isRemovingVisible = false"
-                                        (successEmitter)="successEmitter.emit()"
-                                        (failureEmitter)="failureEmitter.emit()"
-                                        (refresh)="refreshEmitter.emit()"></app-session-report-item-remove-modal>
+  <div class="session-report-item-controls-container">
+    <app-blue-button [label]="'Статистика групп'" (onClicked)="navigateToGroupStatistics()"></app-blue-button>
+    <app-blue-button [label]="'Статистика направлений'" (onClicked)="navigateToCourseStatistics()"></app-blue-button>
+    <app-red-button [label]="'Удалить'" (onClicked)="removeRequested.emit(report)"></app-red-button>
+  </div>
 </div>

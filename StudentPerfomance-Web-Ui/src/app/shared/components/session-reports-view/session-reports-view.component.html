@@ -1,22 +1,14 @@
-<section class="session-reports-page-contrainer">
+<section class="session-reports-page-container">
   <div class="navigation-links">
     <a>Отчёты контрольных недель</a>
   </div>
-  <app-session-reports-filter-input (emitFilter)="fetchData()"></app-session-reports-filter-input>
   <section>
-    <app-session-reports-layout [reports]="reports" (successEmitter)="isSuccess = true"
-                                (failureEmitter)="isFailure = true"
-                                (refreshEmitter)="fetchData()"></app-session-reports-layout>
+    <app-session-reports-layout [reports]="reports" (filterAccepted)="fetchData()"
+                                (removeAccepted)="refreshPagination(); fetchOnPageChanged()"></app-session-reports-layout>
   </section>
-  <section class="pagination-wrapper">
-    <app-session-reports-pagination (pageEmitter)="fetchOnPageChanged()"></app-session-reports-pagination>
-  </section>
+  <app-session-reports-pagination (pageEmitter)="fetchOnPageChanged()"></app-session-reports-pagination>
 </section>
-<div id="success-notification-renderer" *ngIf="isSuccess">
-  <app-success-result-notification [message]="notificationService.Message"
-                                   (visibilityEmitter)="isSuccess = false"></app-success-result-notification>
-</div>
-<div id="failure-modal-renderer" *ngIf="isFailure">
-  <app-failure-result-notification [message]="notificationService.Message"
-                                   (visibilityEmitter)="isFailure = false"></app-failure-result-notification>
-</div>
+<app-success-result-notification *ngIf="notificationService.isSuccess" [message]="notificationService.Message"
+                                 (visibilityEmitter)="notificationService.reset()"></app-success-result-notification>
+<app-failure-result-notification *ngIf="notificationService.isFailure" [message]="notificationService.Message"
+                                 (visibilityEmitter)="notificationService.reset()"></app-failure-result-notification>

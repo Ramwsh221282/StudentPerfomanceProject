@@ -5,7 +5,6 @@ global using SPerfomance.Domain.Models.Users.Abstractions;
 global using SPerfomance.Domain.Models.Users.ValueObjects;
 using Microsoft.AspNetCore.HttpOverrides;
 using NReco.Logging.File;
-using Scalar.AspNetCore;
 using SPerfomance.Api.Endpoints;
 using SPerfomance.Api.Features.Common.Configuration;
 using SPerfomance.Api.Features.EducationDirections.Configuration;
