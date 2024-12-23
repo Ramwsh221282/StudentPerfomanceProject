@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { StudentGroupsFacadeService } from '../../../services/student-groups-facade.service';
 
 @Component({
@@ -7,9 +7,12 @@ import { StudentGroupsFacadeService } from '../../../services/student-groups-fac
   styleUrl: './table-pagination.component.scss',
 })
 export class TablePaginationComponent implements OnInit {
+  @Output() pageChange: EventEmitter<void> = new EventEmitter();
+
   public constructor(
-    protected readonly facadeService: StudentGroupsFacadeService
+    protected readonly facadeService: StudentGroupsFacadeService,
   ) {}
+
   public ngOnInit(): void {
     this.facadeService.refreshPagination();
   }

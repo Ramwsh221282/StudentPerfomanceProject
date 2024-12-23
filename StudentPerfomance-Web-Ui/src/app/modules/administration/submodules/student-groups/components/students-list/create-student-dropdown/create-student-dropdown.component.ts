@@ -30,21 +30,13 @@ export class CreateStudentDropdownComponent implements ISubbmittable {
     if (this.isRecordBookNotCorrect()) return;
     if (this.isStateEmpty()) return;
     const student = this.createStudent();
-    this.cleanInputs();
     this.studentAdded.emit(student);
+    this.closeDropdown();
   }
 
   protected closeDropdown(): void {
     this.visibility = false;
     this.visibilityChange.emit(this.visibility);
-  }
-
-  private cleanInputs(): void {
-    this.name = '';
-    this.surname = '';
-    this.patronymic = '';
-    this.state = '';
-    this.recordbook = '';
   }
 
   private createStudent(): Student {

@@ -15,6 +15,7 @@
   <div class="dropdown-controls">
     <app-green-outline-button [label]="'Добавить'" (onClicked)="submit()"></app-green-outline-button>
     <app-red-outline-button [label]="'Закрыть окно'"
-                            (onClicked)="visibilityChanged.emit(false)"></app-red-outline-button>
+                            (onClicked)="close()">
+    </app-red-outline-button>
   </div>
 </div>

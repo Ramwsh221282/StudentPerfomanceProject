@@ -5,7 +5,8 @@
 <app-users-table [users]="users"
                  (refreshOnUserCreated)="handleUserCreation()"
                  (removed)="handleUserRemove()"
-                 (filtered)="handleFilter()">
+                 (filtered)="handleFilter()"
+                 (pageChanged)="fetchUsers()">
 </app-users-table>
 <app-success-result-notification *ngIf="notificationService.isSuccess"
                                  [message]="notificationService.Message"

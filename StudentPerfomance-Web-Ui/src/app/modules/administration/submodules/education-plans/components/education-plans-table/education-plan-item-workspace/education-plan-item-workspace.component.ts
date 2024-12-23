@@ -71,16 +71,11 @@ export class EducationPlanItemWorkspaceComponent {
     deletedDiscipline: SemesterDiscipline,
   ): void {
     if (!this.selectedSemester) return;
-    const name = deletedDiscipline.disciplineName;
-    for (const discipline of this.selectedSemester.disciplines) {
-      if (discipline.disciplineName == deletedDiscipline.disciplineName) {
-        const index = this.selectedSemester.disciplines.indexOf(discipline);
-        if (index > -1) {
-          this.selectedSemester.disciplines.splice(index, 1);
-          this._notificationService.SetMessage = `Дисциплина ${name} удалена из ${this.selectedSemester.number} семестра учебного плана ${this.selectedEducationPlan.year} года направления ${this.selectedEducationPlan.direction.name}`;
-          this._notificationService.success();
-        }
-      }
-    }
+    this._notificationService.SetMessage = `Дисциплина ${deletedDiscipline.disciplineName} удалена из ${this.selectedSemester.number} семестра учебного плана ${this.selectedEducationPlan.year} года направления ${this.selectedEducationPlan.direction.name}`;
+    this._notificationService.success();
+    this.selectedSemester.disciplines =
+      this.selectedSemester.disciplines.filter(
+        (d) => d.disciplineName != deletedDiscipline.disciplineName,
+      );
   }
 }

@@ -44,8 +44,8 @@ export class StudentGroupsPageComponent implements OnInit {
   protected handleStudentGroupSwitch(student: Student): void {
     this.excludeStudentFromPreviousGroup(student);
     this.appendStudentInNewGroup(student);
-    this.notificationService.SetMessage = `Студент ${student.surname} ${student.name[0]} ${student.patronymic == null ? '' : student.patronymic[0]} переведён в группу ${student.group.name}`;
-    this.notificationService.success();
+    // this.notificationService.SetMessage = `Студент ${student.surname} ${student.name[0]} ${student.patronymic == null ? '' : student.patronymic[0]} переведён в группу ${student.group.name}`;
+    // this.notificationService.success();
   }
 
   protected handleGroupMerge(): void {

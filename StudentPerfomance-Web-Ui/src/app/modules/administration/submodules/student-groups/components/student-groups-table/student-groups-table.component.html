@@ -32,7 +32,7 @@
                             (removeRequested)="isRemovingGroup = true; groupToRemove = $event">
     </app-student-group-item>
   }
-  <app-table-pagination></app-table-pagination>
+  <app-table-pagination (pageChange)="handlePageChange()"></app-table-pagination>
 </div>
 <app-remove-group-popup *ngIf="isRemovingGroup && groupToRemove" [group]="groupToRemove" [visibility]="isRemovingGroup"
                         (visibilityChange)="isRemovingGroup = false; groupToRemove = null"

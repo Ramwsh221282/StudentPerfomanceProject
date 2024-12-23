@@ -7,7 +7,8 @@
                             (studentGroupSelected)="selectedGroup = $event" (filtered)="ngOnInit()"
                             (groupDeleted)="facadeService.refreshPagination(); ngOnInit()"
                             (groupMerged)="handleGroupMerge()"
-                            (groupCreated)=" facadeService.refreshPagination(); ngOnInit()">
+                            (groupCreated)=" facadeService.refreshPagination(); ngOnInit()"
+                            (pageChanged)="ngOnInit();">
   </app-student-groups-table>
   <app-student-group-menu *ngIf="selectedGroup" (moveStudentToOtherGroup)="handleStudentGroupSwitch($event)"
                           [group]="selectedGroup">

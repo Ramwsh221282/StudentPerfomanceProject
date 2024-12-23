@@ -13,6 +13,7 @@ export class UsersTableComponent {
   @Output() refreshOnUserCreated: EventEmitter<void> = new EventEmitter();
   @Output() filtered: EventEmitter<void> = new EventEmitter();
   @Output() removed: EventEmitter<void> = new EventEmitter();
+  @Output() pageChanged: EventEmitter<void> = new EventEmitter();
 
   protected currentlySelectedUser: UserRecord | null = null;
   protected isCreatingAdmin: boolean = false;
@@ -38,5 +39,9 @@ export class UsersTableComponent {
 
   protected handleUserCreated(user: User): void {
     this.refreshOnUserCreated.emit();
+  }
+
+  protected handlePageChanged(): void {
+    this.pageChanged.emit();
   }
 }

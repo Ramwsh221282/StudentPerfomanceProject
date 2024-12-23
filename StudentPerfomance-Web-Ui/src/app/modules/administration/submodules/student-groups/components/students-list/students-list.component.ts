@@ -41,7 +41,11 @@ export class StudentsListComponent {
       .create(student)
       .pipe(
         tap((response) => {
-          this._notificationService.SetMessage = `Студент ${response.surname} ${response.name[0]} ${response.patronymic == null ? '' : response.patronymic[0]} добавлен в группу ${this.group.name}`;
+          const surname: string = response.surname;
+          const name = response.name[0];
+          const patronymic =
+            response.patronymic.length == 0 ? ' ' : response.patronymic[0];
+          this._notificationService.SetMessage = `Студент ${surname} ${name} ${patronymic == undefined ? ' ' : patronymic[0]} добавлен в группу ${this.group.name}`;
           this._notificationService.success();
           this.sortStudentsBySurname();
         }),
@@ -69,22 +73,12 @@ export class StudentsListComponent {
   }
 
   protected handleStudentDeletion(student: Student): void {
-    const index = this.findStudentIndexInGroup(student);
-    if (index == -1) {
-      this._notificationService.SetMessage = 'Студент не найден';
-      this._notificationService.failure();
-      return;
-    }
-    this.group.students.splice(index, 1);
+    this.group.students = this.group.students.filter(
+      (s) => s.recordbook != student.recordbook,
+    );
+    this.sortStudentsBySurname();
     this.isRemovingStudent = false;
     this.studentToRemove = null;
-  }
-
-  private findStudentIndexInGroup(student: Student): number {
-    for (let i = 0; i < this.group.students.length; i++) {
-      if (this.group.students[i].id == student.id) return i;
-    }
-    return -1;
   }
 
   private addStudentInGroup(student: Student): Student {

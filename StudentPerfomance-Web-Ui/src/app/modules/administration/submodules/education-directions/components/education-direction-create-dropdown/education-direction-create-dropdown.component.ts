@@ -47,10 +47,10 @@ export class EducationDirectionCreateDropdownComponent
       .pipe(
         tap((response) => {
           handler.handle(response);
-          this.cleanInputs();
+          this.closeDropdown();
         }),
         catchError((error: HttpErrorResponse) => {
-          this.cleanInputs();
+          this.closeDropdown();
           return handler.handleError(error);
         }),
       )
@@ -93,11 +93,5 @@ export class EducationDirectionCreateDropdownComponent
       return true;
     }
     return false;
-  }
-
-  private cleanInputs(): void {
-    this.directionType = '';
-    this.directionName = '';
-    this.directionCode = '';
   }
 }

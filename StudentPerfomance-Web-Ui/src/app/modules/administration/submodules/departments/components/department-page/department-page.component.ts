@@ -22,13 +22,13 @@ export class DepartmentPageComponent implements OnInit {
   public constructor(
     protected readonly notificationService: UserOperationNotificationService,
     private readonly _dataService: DepartmentDataService,
-    private readonly _paginationService: DepartmentPaginationService,
+    protected readonly paginationService: DepartmentPaginationService,
   ) {}
 
   public ngOnInit(): void {
     this._dataService.addPages(
-      this._paginationService.currentPage,
-      this._paginationService.pageSize,
+      this.paginationService.currentPage,
+      this.paginationService.pageSize,
     );
     this._dataService.fetch().subscribe((response) => {
       this.departments = response;

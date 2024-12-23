@@ -80,11 +80,11 @@ export class EditStudentDropdownComponent implements OnInit, ISubbmittable {
   }
 
   private buildOldStudentMessage(): string {
-    return `Изменена информация о студенте ${this.student.surname}, ${this.student.name[0]}, ${this.student.patronymic == null ? '' : this.student.patronymic[0]} ${this.student.recordbook} ${this.student.state}`;
+    return `Изменена информация о студенте ${this.student.surname}, ${this.student.name[0]}, ${this.student.patronymic.length == 0 ? ' ' : this.student.patronymic[0]} ${this.student.recordbook} ${this.student.state}`;
   }
 
   private buildUpdatedStudentMessage(student: Student): string {
-    return `На ${student.surname}, ${student.name[0]}, ${student.patronymic == null ? '' : student.patronymic[0]} ${student.recordbook} ${student.state}`;
+    return `На ${student.surname}, ${student.name[0]}, ${student.patronymic == null || this.student.patronymic.length == 0 ? ' ' : student.patronymic[0]} ${student.recordbook} ${student.state}`;
   }
 
   private createUpdatedStudent(): Student {

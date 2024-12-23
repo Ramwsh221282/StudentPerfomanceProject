@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FacadeService } from '../../../services/facade.service';
 
 @Component({
@@ -7,6 +7,8 @@ import { FacadeService } from '../../../services/facade.service';
   styleUrl: './education-plans-pagination.component.scss',
 })
 export class EducationPlansPaginationComponent implements OnInit {
+  @Output() pageChange: EventEmitter<void> = new EventEmitter();
+
   public constructor(protected readonly facadeService: FacadeService) {}
 
   ngOnInit(): void {}

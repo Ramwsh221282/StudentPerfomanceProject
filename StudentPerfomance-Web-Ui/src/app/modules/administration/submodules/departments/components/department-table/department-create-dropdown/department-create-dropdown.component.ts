@@ -34,12 +34,13 @@ export class DepartmentCreateDropdownComponent implements ISubbmittable {
         tap((response) => {
           this._notificationService.SetMessage = message;
           this._notificationService.success();
-          this.cleanInputs();
           this.departmentAdded.emit(department);
+          this.close();
         }),
         catchError((error: HttpErrorResponse) => {
           this._notificationService.SetMessage = error.error;
           this._notificationService.failure();
+          this.close();
           return new Observable<never>();
         }),
       )
@@ -58,10 +59,6 @@ export class DepartmentCreateDropdownComponent implements ISubbmittable {
       return true;
     }
     return false;
-  }
-
-  private cleanInputs(): void {
-    this.name = '';
   }
 
   private createNewDepartment(): Department {

@@ -42,14 +42,19 @@ export class CreateEducationPlanDropdownComponent implements ISubbmittable {
       .pipe(
         tap((response) => {
           handler.handle(response);
-          this.cleanInputs();
+          this.close();
         }),
         catchError((error: HttpErrorResponse) => {
-          this.cleanInputs();
+          this.close();
           return handler.handleError(error);
         }),
       )
       .subscribe();
+  }
+
+  protected close(): void {
+    this.visibility = false;
+    this.visibilityChanged.emit(this.visibility);
   }
 
   private isDirectionEmpty(): boolean {
@@ -88,12 +93,6 @@ export class CreateEducationPlanDropdownComponent implements ISubbmittable {
     const remaining = data.substring(name.length).trim();
     const [code, type] = remaining.split(/\s+/);
     return { name, code, type };
-  }
-
-  private cleanInputs(): void {
-    this.direction = null;
-    this.directionData = 'Выбрать направление подготовки';
-    this.number = '';
   }
 }
 

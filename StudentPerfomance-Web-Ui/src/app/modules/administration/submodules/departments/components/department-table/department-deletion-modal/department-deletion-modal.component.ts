@@ -32,10 +32,12 @@ export class DepartmentDeletionModalComponent implements ISubbmittable {
           this._notificationService.SetMessage = `Удалена кафедра ${this.department.name}`;
           this._notificationService.success();
           this.deleteCommited.emit(this.department);
+          this.close();
         }),
         catchError((error) => {
           this._notificationService.SetMessage = error.error;
           this._notificationService.failure();
+          this.close();
           return new Observable<never>();
         }),
       )

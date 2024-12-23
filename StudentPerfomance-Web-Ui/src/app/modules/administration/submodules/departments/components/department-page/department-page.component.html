@@ -5,9 +5,10 @@
 <section class="content-container">
   <app-department-table [departments]="departments"
                         (departmentSelected)="selectedDepartment = $event"
-                        (departmentAdded)="ngOnInit()"
-                        (departmentRemoved)="ngOnInit()"
-                        (filtered)="ngOnInit()">
+                        (departmentAdded)="paginationService.refreshPagination(); ngOnInit()"
+                        (departmentRemoved)="paginationService.refreshPagination(); ngOnInit()"
+                        (filtered)="ngOnInit()"
+                        (pageChanged)="ngOnInit()">
   </app-department-table>
   <app-teachers-menu *ngIf="selectedDepartment" [department]="selectedDepartment">
   </app-teachers-menu>

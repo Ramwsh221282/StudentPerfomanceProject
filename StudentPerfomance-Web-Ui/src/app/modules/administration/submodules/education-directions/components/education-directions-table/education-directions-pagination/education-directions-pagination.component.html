@@ -1,26 +1,26 @@
 <div class="education-direction-pagination-wrapper">
   <div class="education-direction-pages-list">
     <strong>Страницы: </strong>
-    <div class="accept-button" (click)="facadeService.moveInitialPage()">
+    <div class="accept-button" (click)="facadeService.moveInitialPage(); pageChange.emit()">
       Начальная
     </div>
-    <div class="accept-button" (click)="facadeService.movePreviousPage()">
+    <div class="accept-button" (click)="facadeService.movePreviousPage(); pageChange.emit()">
       <
     </div>
     @for (page of facadeService.displayPages; track page) {
-    <button
-      (click)="facadeService.setPage = page"
-      [ngClass]="[
+      <button
+        (click)="facadeService.setPage = page; pageChange.emit()"
+        [ngClass]="[
         page == facadeService.currentPage
           ? 'accept-button-outline'
           : 'accept-button-outline'
       ]"
-    >
-      {{ page }}
-    </button>
+      >
+        {{ page }}
+      </button>
     }
-    <div class="accept-button" (click)="facadeService.moveNextPage()">></div>
-    <div class="accept-button" (click)="facadeService.moveLastPage()">
+    <div class="accept-button" (click)="facadeService.moveNextPage(); pageChange.emit()">></div>
+    <div class="accept-button" (click)="facadeService.moveLastPage(); pageChange.emit()">
       Конечная
     </div>
   </div>

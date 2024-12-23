@@ -13,6 +13,7 @@ export class DepartmentTableComponent {
   @Output() departmentAdded: EventEmitter<Department> = new EventEmitter();
   @Output() departmentRemoved: EventEmitter<Department> = new EventEmitter();
   @Output() filtered: EventEmitter<void> = new EventEmitter();
+  @Output() pageChanged: EventEmitter<void> = new EventEmitter();
 
   protected currentlySelectedDepartment: Department | null;
   protected isCreatingDepartment: boolean = false;
@@ -40,6 +41,10 @@ export class DepartmentTableComponent {
 
   protected handleDeletedDepartment(department: Department): void {
     this.departmentRemoved.emit(department);
+  }
+
+  protected handlePageChanged(): void {
+    this.pageChanged.emit();
   }
 
   protected handleFilter(): void {

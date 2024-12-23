@@ -38,11 +38,12 @@ export class CreateGroupDropdownComponent implements ISubbmittable {
           this.groupCreated.emit(group);
           this._notificationService.SetMessage = `Добавлена новая группа ${group.name}`;
           this._notificationService.success();
-          this.cleanInputs();
+          this.close();
         }),
         catchError((error: HttpErrorResponse) => {
           this._notificationService.SetMessage = error.error;
           this._notificationService.failure();
+          this.close();
           return new Observable<never>();
         }),
       )
@@ -58,13 +59,9 @@ export class CreateGroupDropdownComponent implements ISubbmittable {
   private isGroupNameEmpty(): boolean {
     if (this.groupName.length == 0 || this.groupName.trim().length == 0) {
       this._notificationService.SetMessage = 'Название группы не указано';
-      this._notificationService.success();
+      this._notificationService.failure();
       return true;
     }
     return false;
-  }
-
-  private cleanInputs(): void {
-    this.groupName = '';
   }
 }

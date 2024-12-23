@@ -55,11 +55,12 @@ export class TeacherCreateDropdownComponent implements ISubbmittable {
           this._notificationService.SetMessage = message;
           this._notificationService.success();
           this.teacherCreated.emit(teacher);
-          this.cleanInputs();
+          this.close();
         }),
         catchError((error: HttpErrorResponse) => {
           this._notificationService.SetMessage = error.error;
           this._notificationService.failure();
+          this.close();
           return new Observable<never>();
         }),
       )
@@ -69,14 +70,6 @@ export class TeacherCreateDropdownComponent implements ISubbmittable {
   protected close(): void {
     this.visibility = false;
     this.visibilityChange.emit(this.visibility);
-  }
-
-  private cleanInputs(): void {
-    this.teacherName = '';
-    this.teacherSurname = '';
-    this.teacherPatronymic = '';
-    this.teacherState = '';
-    this.teacherJobTitle = '';
   }
 
   private isNameEmpty(): boolean {

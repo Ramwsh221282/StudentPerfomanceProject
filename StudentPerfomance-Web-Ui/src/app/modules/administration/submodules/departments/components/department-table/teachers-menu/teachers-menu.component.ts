@@ -24,22 +24,12 @@ export class TeachersMenuComponent {
   }
 
   protected handleTeacherDeletion(teacher: Teacher): void {
-    const index = this.findTeacherIndexById(teacher.id);
-    if (index == -1) return;
-    this.department.teachers.splice(index, 1);
+    this.department.teachers = this.department.teachers.filter(
+      (t) => t.id != teacher.id,
+    );
+    this.sortDepartmentTeachersBySurname();
     this.teacherToRemove = null;
     this.isDeletingTeacher = false;
-  }
-
-  private findTeacherIndexById(id: string): number {
-    let teacherIndex = -1;
-    for (let i = 0; i < this.department.teachers.length; i++) {
-      if (this.department.teachers[i].id == id) {
-        teacherIndex = i;
-        break;
-      }
-    }
-    return teacherIndex;
   }
 
   private sortDepartmentTeachersBySurname(): void {

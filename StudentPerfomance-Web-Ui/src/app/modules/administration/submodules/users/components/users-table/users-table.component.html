@@ -34,7 +34,7 @@
                     (requestRemove)="userToRemove = $event; isDeletingUser = true">
     </app-users-item>
   </div>
-  <app-users-table-pagination></app-users-table-pagination>
+  <app-users-table-pagination (paginationRefresh)="handlePageChanged()"></app-users-table-pagination>
 </div>
 <app-users-remove-modal *ngIf="isDeletingUser && userToRemove"
                         [user]="userToRemove"

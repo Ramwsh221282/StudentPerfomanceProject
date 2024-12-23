@@ -22,7 +22,7 @@
     <app-education-direction-item *ngFor="let item of directions" [direction]="item"
                                   (directionRemoveRequested)="directionToRemove = $event"></app-education-direction-item>
   </div>
-  <app-education-directions-pagination></app-education-directions-pagination>
+  <app-education-directions-pagination (pageChange)="ngOnInit();"></app-education-directions-pagination>
 </div>
 <app-education-direction-delete-modal [direction]="directionToRemove"
                                       *ngIf="directionToRemove"

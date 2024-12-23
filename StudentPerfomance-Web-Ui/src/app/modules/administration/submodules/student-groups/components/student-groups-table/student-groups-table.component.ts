@@ -15,6 +15,8 @@ export class StudentGroupsTableComponent {
   @Output() groupDeleted: EventEmitter<void> = new EventEmitter();
   @Output() groupMerged: EventEmitter<void> = new EventEmitter();
   @Output() groupCreated: EventEmitter<void> = new EventEmitter();
+  @Output() pageChanged: EventEmitter<void> = new EventEmitter();
+
   protected currentlySelectedGroup: StudentGroup | null;
 
   protected isCreatingGroup: boolean = false;
@@ -44,5 +46,9 @@ export class StudentGroupsTableComponent {
   protected handleGroupMerge(): void {
     this.currentlySelectedGroup = null;
     this.groupMerged.emit();
+  }
+
+  protected handlePageChange(): void {
+    this.pageChanged.emit();
   }
 }

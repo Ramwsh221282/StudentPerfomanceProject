@@ -23,7 +23,7 @@
                        (selected)="currentlySelectedDepartment = $event; departmentSelected.emit($event)"
                        (removeRequested)="departmentToRemove = $event; isDeletingDepartment = true">
   </app-department-item>
-  <app-department-pagination></app-department-pagination>
+  <app-department-pagination (pageEmitter)="handlePageChanged()"></app-department-pagination>
 </div>
 <app-department-deletion-modal *ngIf="isDeletingDepartment && departmentToRemove"
                                [department]="departmentToRemove"
