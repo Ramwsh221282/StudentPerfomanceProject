@@ -34,4 +34,6 @@ public interface ITeachersRepository
         string workingState,
         CancellationToken ct = default
     );
+
+    public Task<Teacher?> GetById(string id, CancellationToken ct = default);
 }

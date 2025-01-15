@@ -1,0 +1,39 @@
+<div id="container">
+  <div id="header">
+    <strong>Разрешение доступа</strong>
+  </div>
+  <div id="content">
+    <div *ngIf="!isDescriptionRead" class="resolve-description">
+      <a>Поскольку Вы пытаетесь получить доступ к проставлению оценок</a>
+      <a>Вам необходимо выбрать в качестве какого преподавателя Вы собираетесь работать</a>
+      <app-yellow-button [label]="'Далее'"
+                         (onClicked)="isDescriptionRead = true; isSelectingDepartmentStep = true">
+      </app-yellow-button>
+    </div>
+    <div *ngIf="isSelectingDepartmentStep" class="resolve-description">
+      <a>Выберите кафедру</a>
+      <div *ngFor="let department of departments" class="resolve-department-item"
+           (click)="resolveDepartment($event, department); isSelectingTeacherStep = true; isSelectingDepartmentStep = false">
+        <label>{{ department.name }}</label>
+      </div>
+    </div>
+    <div *ngIf="isSelectingTeacherStep && selectedDepartment" class="resolve-description">
+      <a>Выберите преподавателя</a>
+      <div class="resolve-department-item" *ngFor="let teacher of selectedDepartment.teachers"
+           (click)="resolveTeacher($event, teacher); isSelectingTeacherStep = false; isConfirmationStep = true">
+        <label>{{ teacher.surname }} {{ teacher.name[0] }} {{ teacher.patronymic == null ? '' : teacher.patronymic[0] }}</label>
+      </div>
+    </div>
+    <div class="resolve-description" *ngIf="selectedTeacher && isConfirmationStep">
+      <label>Разрешение на доступ:</label>
+      <label>{{ selectedTeacher.surname }} {{ selectedTeacher.name[0] }} {{ selectedTeacher.patronymic == null ? '' : selectedTeacher.patronymic[0] }}</label>
+      <app-yellow-button [label]="'Получить доступ'" (onClicked)="tryGetAccess()"></app-yellow-button>
+      <label *ngIf="successText.trim().length > 0">{{ successText }}</label>
+      <label *ngIf="errorText.trim().length > 0">{{ errorText }}</label>
+    </div>
+  </div>
+  <div id="controls">
+    <app-green-outline-button [label]="'Подтвердить'"></app-green-outline-button>
+    <app-red-outline-button [label]="'Закрыть диалог'" (onClicked)="closeWindow()"></app-red-outline-button>
+  </div>
+</div>

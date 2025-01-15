@@ -36,7 +36,7 @@
       [ngClass]="{'focused': activeButton === menuButtons[4].id }"
       (click)="activeButton = menuButtons[4].id"
       *ngIf="
-        authService.isAuthorized && authService.userData.role == 'Преподаватель'
+        authService.isAuthorized && authService.userData.role == 'Преподаватель' || authService.userData.role == 'Администратор'
       "
       class="side-bar-menu-button"
       [routerLink]="['/teacher-assignments']"

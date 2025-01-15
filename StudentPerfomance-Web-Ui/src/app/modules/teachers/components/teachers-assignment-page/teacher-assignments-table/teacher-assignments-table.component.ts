@@ -3,6 +3,9 @@ import { TeacherAssignmentsDataService } from './teacher-assignments-data.servic
 import { TeacherAssignmentInfo } from '../../../models/teacher-assignment-info';
 import { TeacherJournal } from '../../../models/teacher-journal';
 import { TeacherJournalDiscipline } from '../../../models/teacher-journal-disciplines';
+import { catchError, Observable, tap } from 'rxjs';
+import { AuthService } from '../../../../users/services/auth.service';
+import { AdminAccessResponse } from '../admin-assignments-access-resolver-dialog/admin-assignments-access.service';
 
 @Component({
   selector: 'app-teacher-assignments-table',
@@ -15,32 +18,30 @@ export class TeacherAssignmentsTableComponent implements OnInit {
   protected selectedTeacherJournal: TeacherJournal | null = null;
   protected selectedTeacherDiscipline: TeacherJournalDiscipline | null = null;
   protected activeDisciplineName: string = '';
+  protected isAdminAccess: boolean = false;
+  protected adminAccess: AdminAccessResponse | null = null;
 
-  protected readonly marks: string[] = [
-    'Нет аттестации',
-    'Нет проставления',
-    '2',
-    '3',
-    '4',
-    '5',
-  ];
-
-  // protected _teacherJournal: TeacherJournal;
-  // protected _teacherDiscipline: TeacherJournalDiscipline;
-  // protected _teacherDisciplineCopy: TeacherJournalDiscipline;
-
-  // @Output() selectedDisciplineEmitter: EventEmitter<string> =
-  //   new EventEmitter();
-  // @Output() selectedGroupEmitter: EventEmitter<string> = new EventEmitter();
-
-  public constructor(private readonly _service: TeacherAssignmentsDataService) {
+  public constructor(
+    private readonly _service: TeacherAssignmentsDataService,
+    private readonly _authService: AuthService,
+  ) {
     this._teacherAssignments = {} as TeacherAssignmentInfo;
   }
 
   public ngOnInit(): void {
-    this._service.getTeacherAssignmentsInfo().subscribe((response) => {
-      this._teacherAssignments = response;
-    });
+    this._service
+      .getTeacherAssignmentsInfo()
+      .pipe(
+        tap((response) => {
+          this._teacherAssignments = response;
+        }),
+        catchError(() => {
+          if (this._authService.userData.role == 'Администратор')
+            this.isAdminAccess = true;
+          return new Observable();
+        }),
+      )
+      .subscribe();
   }
 
   protected handleSelectedJournal(journal: TeacherJournal): void {
@@ -49,31 +50,18 @@ export class TeacherAssignmentsTableComponent implements OnInit {
     this.activeDisciplineName = this.selectedTeacherDiscipline.name.name;
   }
 
-  // protected selectGroup(journal: TeacherJournal): void {
-  //   this._teacherJournal = journal;
-  //   this.selectedGroupEmitter.emit(this._teacherJournal.groupName.name);
-  //   this._teacherDiscipline = {} as TeacherJournalDiscipline;
-  // }
-  //
-  // protected selectDiscipline(discipline: TeacherJournalDiscipline) {
-  //   this._teacherDiscipline = discipline;
-  //   this._teacherDisciplineCopy = { ...discipline };
-  //   this.selectedDisciplineEmitter.emit(this._teacherDiscipline.name.name);
-  // }
-  //
-  // protected filter(input: any) {
-  //   if (this._teacherDiscipline.students == undefined) {
-  //     return;
-  //   }
-  //   const value = input.target.value;
-  //   if (value == undefined || value == '') {
-  //     this._teacherDiscipline.students = this._teacherDisciplineCopy.students;
-  //   }
-  //   this._teacherDiscipline.students = this._teacherDiscipline.students.filter(
-  //     (s) =>
-  //       s.name.startsWith(value) ||
-  //       s.surname.startsWith(value) ||
-  //       s.patronymic?.startsWith(value),
-  //   );
-  // }
+  protected handleAdminAccessReceived(adminAccess: AdminAccessResponse): void {
+    this._service
+      .getTeacherAssignmentsInfo(adminAccess)
+      .pipe(
+        tap((response) => {
+          this._teacherAssignments = response;
+          this.adminAccess = adminAccess;
+        }),
+        catchError(() => {
+          return new Observable<never>();
+        }),
+      )
+      .subscribe();
+  }
 }

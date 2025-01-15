@@ -90,6 +90,7 @@ export class CreateTeacherUserDropdownComponent
     )!;
     this.teachers = this.selectedDepartment.teachers;
     this.initTeacherNames();
+    console.log(this.selectedDepartment);
   }
 
   private initTeacherNames(): void {
@@ -109,22 +110,17 @@ export class CreateTeacherUserDropdownComponent
   protected handleSelectedTeacher(teacherData: string): void {
     this.selectTeacherLabel = teacherData;
     this.selectedTeacher = this.parseSelectedTeacherData(teacherData);
+    console.log(this.selectedTeacher);
   }
 
   private parseSelectedTeacherData(teacherData: string): Teacher {
-    const array = teacherData.split(' ');
-    const surname = array[0];
-    const name = array[1];
-    const patronymic = array[2];
-    const jobTitle = array[3];
-    const state = array[4];
     return this.teachers.find(
       (teacher) =>
-        teacher.surname == surname &&
-        teacher.name == name &&
-        teacher.patronymic == patronymic &&
-        teacher.jobTitle == jobTitle &&
-        teacher.state == state,
+        teacherData.includes(teacher.surname) &&
+        teacherData.includes(teacher.name) &&
+        teacherData.includes(teacher.patronymic) &&
+        teacherData.includes(teacher.jobTitle) &&
+        teacherData.includes(teacher.state),
     )!;
   }
 

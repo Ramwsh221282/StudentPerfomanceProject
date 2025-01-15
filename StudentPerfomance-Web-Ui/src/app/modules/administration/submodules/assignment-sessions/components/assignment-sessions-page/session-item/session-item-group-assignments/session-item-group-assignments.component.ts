@@ -14,7 +14,6 @@ export class SessionItemGroupAssignmentsComponent implements OnInit {
     for (const week of this.weeks) {
       this.tabs.push({ group: week.groupName });
     }
-    console.log(this.tabs);
   }
 
   protected currentTabName: string = '';

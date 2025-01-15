@@ -128,4 +128,16 @@ public class TeachersRepository : ITeachersRepository
                     && t.State.State == workingState,
                 cancellationToken: ct
             );
+
+    public async Task<Teacher?> GetById(string id, CancellationToken ct) =>
+        await _context
+            .Teachers.Include(t => t.Department)
+            .Include(t => t.Disciplines)
+            .ThenInclude(d => d.Semester)
+            .ThenInclude(s => s.Plan)
+            .ThenInclude(p => p.Groups)
+            .ThenInclude(g => g.Students)
+            .AsNoTracking()
+            .AsSplitQuery()
+            .FirstOrDefaultAsync(t => t.Id.ToString() == id.ToUpper(), cancellationToken: ct);
 }

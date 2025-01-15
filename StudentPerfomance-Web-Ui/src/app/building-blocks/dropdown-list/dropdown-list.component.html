@@ -1,5 +1,5 @@
 <div class="items-container">
-  <div class="item" *ngFor="let item of items" (click)="itemSelected.emit(item); visibilityChanged.emit(false)">
+  <div class="item" *ngFor="let item of items" (click)="handleItemSelection($event, item)">
     {{ item }}
   </div>
 </div>

@@ -48,9 +48,12 @@ public static class MakeAssignmentByTeacher
     {
         logger.LogInformation("Запрос на проставление оценки за контрольную неделю");
         var jwtToken = new Token(request.Token.Token);
-        if (!await jwtToken.IsVerifiedTeacher(users, ct))
+        if (
+            !await jwtToken.IsVerifiedTeacher(users, ct)
+            && !await jwtToken.IsVerifiedAdmin(users, ct)
+        )
         {
-            logger.LogError("Пользователь не является преподавателем");
+            logger.LogError("Пользователь не является ни преподавателем, ни администратором");
             return TypedResults.Unauthorized();
         }
 

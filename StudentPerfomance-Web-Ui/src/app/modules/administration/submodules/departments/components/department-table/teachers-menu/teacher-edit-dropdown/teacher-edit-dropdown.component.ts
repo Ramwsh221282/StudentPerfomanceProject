@@ -39,7 +39,7 @@ export class TeacherEditDropdownComponent implements OnInit {
 
   public ngOnInit(): void {
     this.teacherName = this.teacher.name;
-    this.teacherSurname = this.teacher.patronymic;
+    this.teacherSurname = this.teacher.surname;
     this.teacherPatronymic =
       this.teacher.patronymic == null ? '' : this.teacher.patronymic;
     this.teacherState = this.teacher.state;

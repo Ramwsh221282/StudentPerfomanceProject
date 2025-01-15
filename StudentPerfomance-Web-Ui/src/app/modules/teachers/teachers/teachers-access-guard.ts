@@ -6,7 +6,10 @@ export const CanActivateAuthTeacher = () => {
   const authService = inject(AuthService);
   if (authService.isAuthorized) {
     if (authService.userData.role != ' ' && authService.userData != null) {
-      if (authService.userData.role == 'Преподаватель') {
+      if (
+        authService.userData.role == 'Преподаватель' ||
+        authService.userData.role == 'Администратор'
+      ) {
         return true;
       }
     }

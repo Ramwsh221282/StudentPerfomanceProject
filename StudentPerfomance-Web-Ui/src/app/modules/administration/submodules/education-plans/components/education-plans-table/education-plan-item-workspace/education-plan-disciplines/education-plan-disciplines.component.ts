@@ -69,6 +69,7 @@ export class EducationPlanDisciplinesComponent implements ISubbmittable {
           const addedDiscipline = {} as SemesterDiscipline;
           addedDiscipline.disciplineName = this.disciplineName;
           this.disciplineAdded.emit(addedDiscipline);
+          this.disciplineName = '';
         }),
         catchError((error: HttpErrorResponse) => {
           return handler.handleError(error);

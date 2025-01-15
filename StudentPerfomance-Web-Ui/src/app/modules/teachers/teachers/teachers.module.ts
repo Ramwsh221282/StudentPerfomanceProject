@@ -14,6 +14,9 @@ import { TeacherAssignmentGroupMenuComponent } from '../components/teachers-assi
 import { DropdownListComponent } from '../../../building-blocks/dropdown-list/dropdown-list.component';
 import { RedOutlineButtonComponent } from '../../../building-blocks/buttons/red-outline-button/red-outline-button.component';
 import { FloatingLabelInputComponent } from '../../../building-blocks/floating-label-input/floating-label-input.component';
+import { AdminAssignmentsAccessResolverDialogComponent } from '../components/teachers-assignment-page/admin-assignments-access-resolver-dialog/admin-assignments-access-resolver-dialog.component';
+import { GreenOutlineButtonComponent } from '../../../building-blocks/buttons/green-outline-button/green-outline-button.component';
+import { YellowButtonComponent } from '../../../building-blocks/buttons/yellow-button/yellow-button.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +25,7 @@ import { FloatingLabelInputComponent } from '../../../building-blocks/floating-l
     TeacherAssignmentsTableComponent,
     TeacherAssignmentsComponent,
     MarksModalComponent,
+    AdminAssignmentsAccessResolverDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -35,6 +39,8 @@ import { FloatingLabelInputComponent } from '../../../building-blocks/floating-l
     DropdownListComponent,
     RedOutlineButtonComponent,
     FloatingLabelInputComponent,
+    GreenOutlineButtonComponent,
+    YellowButtonComponent,
   ],
   exports: [TeachersAssignmentPageComponent, TeacherAssignmentsComponent],
 })

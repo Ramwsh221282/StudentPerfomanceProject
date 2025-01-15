@@ -74,10 +74,12 @@ export class CreateSessionItemDropdownComponent {
 
   protected handleNumberSelected(number: string): void {
     this.selectedSessionNumber = Number(number);
+    this.selectSessionNumberLabel = number;
   }
 
   protected handleSeasonSelected(season: string): void {
     this.selectedSessionSeason = season;
+    this.selectSessionSeasonLabel = season;
   }
 
   private isDateEmpty(): boolean {

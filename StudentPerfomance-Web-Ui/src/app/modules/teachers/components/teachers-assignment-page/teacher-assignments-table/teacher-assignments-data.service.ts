@@ -4,6 +4,7 @@ import { AuthService } from '../../../../users/services/auth.service';
 import { Observable } from 'rxjs';
 import { TeacherAssignmentInfo } from '../../../models/teacher-assignment-info';
 import { AppConfigService } from '../../../../../app.config.service';
+import { AdminAccessResponse } from '../admin-assignments-access-resolver-dialog/admin-assignments-access.service';
 
 @Injectable({
   providedIn: 'any',
@@ -20,8 +21,13 @@ export class TeacherAssignmentsDataService {
     this._apiUri = `${this._appConfig.baseApiUri}/app/assignment-sessions/teacher-assignments-info`;
   }
 
-  public getTeacherAssignmentsInfo(): Observable<TeacherAssignmentInfo> {
-    const headers = this.buildHttpHeaders();
+  public getTeacherAssignmentsInfo(
+    adminAccess: AdminAccessResponse | null = null,
+  ): Observable<TeacherAssignmentInfo> {
+    const headers =
+      adminAccess == null
+        ? this.buildHttpHeaders()
+        : this.buildHttpHeadersWithAdminAccess(adminAccess);
     return this._httpClient.get<TeacherAssignmentInfo>(this._apiUri, {
       headers: headers,
     });
@@ -29,5 +35,14 @@ export class TeacherAssignmentsDataService {
 
   private buildHttpHeaders(): HttpHeaders {
     return new HttpHeaders().set('token', this._authService.userData.token);
+  }
+
+  private buildHttpHeadersWithAdminAccess(
+    adminAccess: AdminAccessResponse,
+  ): HttpHeaders {
+    const access = `${adminAccess.adminId}#${adminAccess.teacherId}`;
+    return new HttpHeaders()
+      .set('token', this._authService.userData.token)
+      .set('adminAssignmentsAccess', access);
   }
 }
