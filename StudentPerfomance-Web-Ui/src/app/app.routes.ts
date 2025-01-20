@@ -5,6 +5,13 @@ import { CanActivateUserPage } from './shared/components/user-page/user-page-gua
 
 export const routes: Routes = [
   {
+    path: '',
+    loadComponent: () =>
+      import('./shared/components/greeting-page/greeting-page.component').then(
+        (component) => component.GreetingPageComponent,
+      ),
+  },
+  {
     path: 'login',
     loadComponent: () =>
       import('./shared/components/login-page/login-page.component').then(

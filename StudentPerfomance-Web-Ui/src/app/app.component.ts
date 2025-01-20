@@ -10,6 +10,7 @@ import { SuccessResultNotificationComponent } from './shared/components/success-
 import { FailureResultNotificationComponent } from './shared/components/failure-result-notification/failure-result-notification.component';
 import { AppConfigService } from './app.config.service';
 import { AuthService } from './modules/users/services/auth.service';
+import { GreetingPageComponent } from './shared/components/greeting-page/greeting-page.component';
 
 @Component({
   selector: 'app-root',
@@ -20,6 +21,7 @@ import { AuthService } from './modules/users/services/auth.service';
     RouterLink,
     SuccessResultNotificationComponent,
     FailureResultNotificationComponent,
+    GreetingPageComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',

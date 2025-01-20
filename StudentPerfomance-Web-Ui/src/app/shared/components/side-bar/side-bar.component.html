@@ -43,7 +43,7 @@
     >
       {{ menuButtons[4].label }}
     </button>
-    <button class="side-bar-menu-button" [routerLink]="['/reports']"
+    <button class="side-bar-menu-button" *ngIf="authService.isAuthorized" [routerLink]="['/reports']"
             [ngClass]="{'focused': activeButton === menuButtons[3].id }"
             (click)="activeButton = menuButtons[3].id">{{ menuButtons[3].label }}
     </button>

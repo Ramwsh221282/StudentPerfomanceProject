@@ -1,0 +1,83 @@
+.admin-direction-item-container {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-height: 40vh;
+  overflow: auto;
+  width: 100%;
+}
+
+.admin-user-direction-wrapper {
+  padding: 0.5rem;
+  display: inline-flex;
+  flex-direction: row;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  border: solid 1px #d9d9d9;
+  width: 100%;
+  gap: 1rem;
+  user-select: none;
+  transition: 0.3s ease-in-out;
+  text-shadow: 1px 1px #d9d9d9;
+  box-shadow: 1px 1px #d9d9d9;
+}
+
+.no-plans-label {
+  padding: 0.5rem;
+  font-weight: bold;
+  font-size: 14px;
+  color: #d63f20;
+}
+
+.admin-user-direction-label {
+  display: block;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.education-plans-subtitle {
+  font-weight: bold;
+  color: #1c172e;
+  font-size: 14px;
+}
+
+.education-plans-container {
+  margin-left: 2rem;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.triangle_down {
+  position: relative;
+  content: "";
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border-right: 0.2em solid #1a88ff;
+  border-top: 0.2em solid #1a88ff;
+  transform: rotate(135deg);
+  top: -1px;
+
+  &:hover {
+    border-right: 0.2em solid #5ce600;
+    border-top: 0.2em solid #5ce600;
+  }
+}
+
+.triangle_up {
+  position: relative;
+  content: "";
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border-right: 0.2em solid #1a88ff;
+  border-top: 0.2em solid #1a88ff;
+  transform: rotate(-45deg);
+  top: 7px;
+
+  &:hover {
+    border-right: 0.2em solid #5ce600;
+    border-top: 0.2em solid #5ce600;
+  }
+}

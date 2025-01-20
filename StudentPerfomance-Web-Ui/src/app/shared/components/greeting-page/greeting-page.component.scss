@@ -1,0 +1,12 @@
+.greeting-page-layout {
+  width: 100%;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.greeting-page-blocks-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+}

@@ -36,6 +36,12 @@ public class EducationDirectionRepository : IEducationDirectionRepository
             .ThenInclude(p => p.Semesters)
             .ThenInclude(s => s.Disciplines)
             .ThenInclude(d => d.Teacher)
+            .Include(d => d.Plans)
+            .ThenInclude(p => p.Groups)
+            .ThenInclude(g => g.Students)
+            .Include(d => d.Plans)
+            .ThenInclude(p => p.Groups)
+            .ThenInclude(g => g.ActiveGroupSemester)
             .AsNoTracking()
             .AsSplitQuery()
             .ToListAsync(ct);

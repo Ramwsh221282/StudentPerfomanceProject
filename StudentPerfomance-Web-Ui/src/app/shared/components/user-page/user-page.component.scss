@@ -10,7 +10,7 @@
 }
 
 .user-page-layout {
-  display: flex;
-  gap: 10px;
-  flex-direction: column;
+  gap: 1rem;
+  display: inline-flex;
+  flex-direction: row;
 }

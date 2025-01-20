@@ -3,5 +3,5 @@
 </div>
 <section class="user-page-layout">
   <app-user-card [user]="authService.userData"></app-user-card>
-  <!--  <app-user-card-options></app-user-card-options>-->
+  <app-admin-user-short-info *ngIf="authService.userData.role == 'Администратор'"></app-admin-user-short-info>
 </section>
