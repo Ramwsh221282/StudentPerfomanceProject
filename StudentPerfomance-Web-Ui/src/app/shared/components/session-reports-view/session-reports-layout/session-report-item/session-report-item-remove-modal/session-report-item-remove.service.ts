@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AppConfigService } from '../../../../../../app.config.service';
-import { AuthService } from '../../../../../../modules/users/services/auth.service';
+import { AuthService } from '../../../../../../pages/user-page/services/auth.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ControlWeekReportInterface } from '../../../Models/Data/control-week-report-interface';

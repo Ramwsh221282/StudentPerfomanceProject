@@ -4,7 +4,7 @@ import { EducationPlan } from '../models/education-plan-interface';
 import { IFetchPolicy } from '../../../../../shared/models/fetch-policices/fetch-policy-interface';
 import { DefaultFetchPolicy } from '../models/fetch-policies/default-fetch-policy';
 import { IObservableFetchable } from '../../../../../shared/models/fetch-policices/iobservable-fetchable.interface';
-import { AuthService } from '../../../../users/services/auth.service';
+import { AuthService } from '../../../../../pages/user-page/services/auth.service';
 import { Observable } from 'rxjs';
 import { AppConfigService } from '../../../../../app.config.service';
 

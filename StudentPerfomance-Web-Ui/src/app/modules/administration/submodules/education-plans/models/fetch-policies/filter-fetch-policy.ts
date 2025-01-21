@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { IFetchPolicy } from '../../../../../../shared/models/fetch-policices/fetch-policy-interface';
 import { EducationPlan } from '../education-plan-interface';
 import { Observable } from 'rxjs';
-import { AuthService } from '../../../../../users/services/auth.service';
+import { AuthService } from '../../../../../../pages/user-page/services/auth.service';
 import { AppConfigService } from '../../../../../../app.config.service';
 
 export class FilterFetchPolicy implements IFetchPolicy<EducationPlan[]> {

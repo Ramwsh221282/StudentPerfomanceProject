@@ -1,7 +1,7 @@
 import { IFetchPolicy } from '../../../../../models/fetch-policices/fetch-policy-interface';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { AuthService } from '../../../../../../modules/users/services/auth.service';
+import { AuthService } from '../../../../../../pages/user-page/services/auth.service';
 //import { BASE_API_URI } from '../../../../../models/api/api-constants';
 import { ControlWeekReportInterface } from '../../../Models/Data/control-week-report-interface';
 import { AppConfigService } from '../../../../../../app.config.service';

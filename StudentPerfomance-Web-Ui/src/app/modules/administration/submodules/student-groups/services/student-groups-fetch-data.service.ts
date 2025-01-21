@@ -4,7 +4,7 @@ import { StudentGroup } from './studentsGroup.interface';
 import { IFetchable } from '../../../../../shared/models/fetch-policices/ifetchable-interface';
 import { IFetchPolicy } from '../../../../../shared/models/fetch-policices/fetch-policy-interface';
 import { DefaultFetchPolicy } from '../models/fetch-policies/default-fetch-policy';
-import { AuthService } from '../../../../users/services/auth.service';
+import { AuthService } from '../../../../../pages/user-page/services/auth.service';
 import { AppConfigService } from '../../../../../app.config.service';
 import { Observable } from 'rxjs';
 

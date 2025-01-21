@@ -5,7 +5,7 @@ import { SessionReportsFilterInputComponent } from './session-reports-filter-inp
 import { SessionReportsDataService } from './Services/data-services/session-reports-data-service';
 import { ControlWeekReportInterface } from './Models/Data/control-week-report-interface';
 import { SessionReportDefaultFetchPolicy } from './Services/data-services/reports-fetch-policies/session-report-default-fetch-policy';
-import { AuthService } from '../../../modules/users/services/auth.service';
+import { AuthService } from '../../../pages/user-page/services/auth.service';
 import { IFetchPolicy } from '../../models/fetch-policices/fetch-policy-interface';
 import { DatePipe, NgIf } from '@angular/common';
 import { SessionReportsPaginationService } from './session-reports-pagination/session-reports-pagination-service';

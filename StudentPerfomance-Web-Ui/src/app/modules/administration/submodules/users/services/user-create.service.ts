@@ -1,8 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject } from '@angular/core';
 //import { BASE_API_URI } from '../../../../../shared/models/api/api-constants';
-import { User } from '../../../../users/services/user-interface';
-import { AuthService } from '../../../../users/services/auth.service';
+import { User } from '../../../../../pages/user-page/services/user-interface';
+import { AuthService } from '../../../../../pages/user-page/services/auth.service';
 import { Observable } from 'rxjs';
 import { UserRecord } from './user-table-element-interface';
 import { AppConfigService } from '../../../../../app.config.service';

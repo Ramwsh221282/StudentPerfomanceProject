@@ -3,7 +3,7 @@ import { EducationDirection } from '../../../education-directions/models/educati
 import { ISubbmittable } from '../../../../../../shared/models/interfaces/isubbmitable';
 import { FacadeService } from '../../services/facade.service';
 import { AppConfigService } from '../../../../../../app.config.service';
-import { AuthService } from '../../../../../users/services/auth.service';
+import { AuthService } from '../../../../../../pages/user-page/services/auth.service';
 import { EducationPlan } from '../../models/education-plan-interface';
 import { FilterFetchPolicy } from '../../models/fetch-policies/filter-fetch-policy';
 import { DefaultFetchPolicy } from '../../models/fetch-policies/default-fetch-policy';

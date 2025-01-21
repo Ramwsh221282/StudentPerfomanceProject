@@ -5,7 +5,7 @@ import { Department } from '../models/departments.interface';
 import { Observable } from 'rxjs';
 import { DepartmentPayloadBuilder } from '../models/contracts/department-contract/department-payload-builder';
 import { TokenPayloadBuilder } from '../../../../../shared/models/common/token-contract/token-payload-builder';
-import { AuthService } from '../../../../users/services/auth.service';
+import { AuthService } from '../../../../../pages/user-page/services/auth.service';
 import { AppConfigService } from '../../../../../app.config.service';
 
 @Injectable({

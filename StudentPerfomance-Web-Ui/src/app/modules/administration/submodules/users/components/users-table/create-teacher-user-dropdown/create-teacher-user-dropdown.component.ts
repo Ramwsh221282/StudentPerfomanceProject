@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { User } from '../../../../../../users/services/user-interface';
+import { User } from '../../../../../../../pages/user-page/services/user-interface';
 import { ISubbmittable } from '../../../../../../../shared/models/interfaces/isubbmitable';
 import { UserCreationService } from '../../../services/user-create.service';
 import { DepartmentDataService } from '../../../../departments/components/department-table/department-data.service';

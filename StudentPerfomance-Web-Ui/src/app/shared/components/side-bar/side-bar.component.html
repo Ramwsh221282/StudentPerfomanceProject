@@ -1,8 +1,11 @@
 <div class="side-bar">
   <div class="side-bar-title-container">
-    <strong class="side-bar-title">Портал контрольных недель ЛФ СибГУ</strong>
+    <strong *ngIf="!isHidden" class="side-bar-title">Портал контрольных недель ЛФ СибГУ</strong>
   </div>
-  <strong class="menu-header">Основное меню:</strong>
+  <div class="menu-header" (click)="hideMenu()">
+    <img class="side-bar-menu-button-icon" [ngSrc]="'assets/menu_icon.svg'" [alt]="'image'" [width]="50" height="50">
+    <label style="margin-left: 7px; cursor:pointer;">Меню</label>
+  </div>
   <div class="menu-content-container">
     <button
       [ngClass]="{'focused': activeButton === menuButtons[0].id }"
@@ -10,7 +13,10 @@
       class="side-bar-menu-button"
       [routerLink]="['/login']"
     >
-      {{ menuButtons[0].label }}
+      <img [ngClass]="{'side-bar-menu-button-icon-focused': activeButton === menuButtons[0].id}"
+           class="side-bar-menu-button-icon" [ngSrc]="'assets/sign_in_icon.svg'" [alt]="'image'" [width]="50"
+           [height]="50">
+      <label class="menu-button-label">{{ menuButtons[0].label }}</label>
     </button>
     <button
       [ngClass]="{'focused': activeButton === menuButtons[1].id }"
@@ -19,7 +25,10 @@
       class="side-bar-menu-button"
       [routerLink]="['/user']"
     >
-      {{ menuButtons[1].label }}
+      <img [ngClass]="{'side-bar-menu-button-icon-focused': activeButton === menuButtons[1].id}"
+           class="side-bar-menu-button-icon" [ngSrc]="'assets/user_icon.svg'" [alt]="'image'" [width]="50"
+           [height]="50">
+      <label class="menu-button-label">{{ menuButtons[1].label }}</label>
     </button>
     <button
       [ngClass]="{'focused': activeButton === menuButtons[2].id }"
@@ -30,7 +39,10 @@
       class="side-bar-menu-button"
       [routerLink]="['/administration']"
     >
-      {{ menuButtons[2].label }}
+      <img [ngClass]="{'side-bar-menu-button-icon-focused': activeButton === menuButtons[2].id}"
+           class="side-bar-menu-button-icon" [ngSrc]="'assets/admin_management_icon.svg'" [alt]="'image'" [width]="50"
+           [height]="50">
+      <label class="menu-button-label">{{ menuButtons[2].label }}</label>
     </button>
     <button
       [ngClass]="{'focused': activeButton === menuButtons[4].id }"
@@ -41,11 +53,18 @@
       class="side-bar-menu-button"
       [routerLink]="['/teacher-assignments']"
     >
-      {{ menuButtons[4].label }}
+      <img [ngClass]="{'side-bar-menu-button-icon-focused': activeButton === menuButtons[4].id}"
+           class="side-bar-menu-button-icon" [ngSrc]="'assets/teacher_icon.svg'" [alt]="'image'" [width]="50"
+           [height]="50">
+      <label class="menu-button-label">{{ menuButtons[4].label }}</label>
     </button>
     <button class="side-bar-menu-button" *ngIf="authService.isAuthorized" [routerLink]="['/reports']"
             [ngClass]="{'focused': activeButton === menuButtons[3].id }"
-            (click)="activeButton = menuButtons[3].id">{{ menuButtons[3].label }}
+            (click)="activeButton = menuButtons[3].id">
+      <img [ngClass]="{'side-bar-menu-button-icon-focused': activeButton === menuButtons[3].id}"
+           class="side-bar-menu-button-icon" [ngSrc]="'assets/assignment_reports.svg'" [alt]="'image'" [width]="50"
+           [height]="50">
+      <label class="menu-button-label">{{ menuButtons[3].label }}</label>
     </button>
   </div>
 </div>

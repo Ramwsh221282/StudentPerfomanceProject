@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { AuthService } from '../../../modules/users/services/auth.service';
+import { AuthService } from '../../../pages/user-page/services/auth.service';
 import { NgClass, NgIf, NgOptimizedImage } from '@angular/common';
 
 @Component({
@@ -11,29 +11,37 @@ import { NgClass, NgIf, NgOptimizedImage } from '@angular/common';
   styleUrl: './side-bar.component.scss',
 })
 export class SideBarComponent {
+  @Output() menuHide: EventEmitter<boolean> = new EventEmitter();
+  public isHidden: boolean = false;
+
   protected readonly menuButtons: any = [
     {
       id: 1,
-      label: '• Авторизация',
+      label: 'Авторизация',
     },
     {
       id: 2,
-      label: '• Личный кабинет',
+      label: 'Личный кабинет',
     },
     {
       id: 3,
-      label: '• Администрирование',
+      label: 'Администрирование',
     },
     {
       id: 4,
-      label: '• Отчёты контрольных недель',
+      label: 'Отчёты контрольных недель',
     },
     {
       id: 5,
-      label: '• Преподавателям',
+      label: 'Преподавателям',
     },
   ];
   protected activeButton: number = 0;
 
   public constructor(protected readonly authService: AuthService) {}
+
+  public hideMenu(): void {
+    this.isHidden = !this.isHidden;
+    this.menuHide.emit(this.isHidden);
+  }
 }

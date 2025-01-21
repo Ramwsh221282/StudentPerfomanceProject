@@ -3,8 +3,8 @@ import { Observable } from 'rxjs';
 import { IFetchPolicy } from '../../../../../../shared/models/fetch-policices/fetch-policy-interface';
 import { EducationDirection } from '../education-direction-interface';
 //import { BASE_API_URI } from '../../../../../../shared/models/api/api-constants';
-import { User } from '../../../../../users/services/user-interface';
-import { AuthService } from '../../../../../users/services/auth.service';
+import { User } from '../../../../../../pages/user-page/services/user-interface';
+import { AuthService } from '../../../../../../pages/user-page/services/auth.service';
 import { AppConfigService } from '../../../../../../app.config.service';
 
 export class DefaultFetchPolicy implements IFetchPolicy<EducationDirection[]> {

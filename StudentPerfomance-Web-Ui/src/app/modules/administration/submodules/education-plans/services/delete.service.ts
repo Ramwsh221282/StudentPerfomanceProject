@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BaseService } from './base.service';
 import { EducationPlan } from '../models/education-plan-interface';
 import { Observable } from 'rxjs';
-import { AuthService } from '../../../../users/services/auth.service';
+import { AuthService } from '../../../../../pages/user-page/services/auth.service';
 //import { BASE_API_URI } from '../../../../../shared/models/api/api-constants';
 import { DirectionPayloadBuilder } from '../../education-directions/models/contracts/direction-payload-builder';
 import { EducationPlanPayloadBuilder } from '../models/contracts/education-plan-contract/education-plan-payload-builder';

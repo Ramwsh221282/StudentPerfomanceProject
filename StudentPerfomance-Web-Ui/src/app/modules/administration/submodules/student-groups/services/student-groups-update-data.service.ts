@@ -4,7 +4,7 @@ import { StudentGroup } from './studentsGroup.interface';
 //import { BASE_API_URI } from '../../../../../shared/models/api/api-constants';
 import { StudentGroupPayloadBuilder } from '../models/contracts/student-group-contract/student-group-payload-builder';
 import { TokenPayloadBuilder } from '../../../../../shared/models/common/token-contract/token-payload-builder';
-import { AuthService } from '../../../../users/services/auth.service';
+import { AuthService } from '../../../../../pages/user-page/services/auth.service';
 import { HttpHeaders } from '@angular/common/http';
 import { AppConfigService } from '../../../../../app.config.service';
 

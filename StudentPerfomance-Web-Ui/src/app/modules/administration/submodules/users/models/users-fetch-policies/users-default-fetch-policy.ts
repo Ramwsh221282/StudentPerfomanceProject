@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IFetchPolicy } from '../../../../../../shared/models/fetch-policices/fetch-policy-interface';
 import { UserRecord } from '../../services/user-table-element-interface';
-import { User } from '../../../../../users/services/user-interface';
+import { User } from '../../../../../../pages/user-page/services/user-interface';
 import { AppConfigService } from '../../../../../../app.config.service';
 
 //import { BASE_API_URI } from '../../../../../../shared/models/api/api-constants';

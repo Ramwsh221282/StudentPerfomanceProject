@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { BaseService } from './base.service';
-import { User } from '../../../../users/services/user-interface';
-import { AuthService } from '../../../../users/services/auth.service';
+import { User } from '../../../../../pages/user-page/services/user-interface';
+import { AuthService } from '../../../../../pages/user-page/services/auth.service';
 import { HttpHeaders } from '@angular/common/http';
 import { AppConfigService } from '../../../../../app.config.service';
 

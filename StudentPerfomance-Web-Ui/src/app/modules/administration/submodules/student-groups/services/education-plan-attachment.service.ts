@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 import { StudentGroupPayloadBuilder } from '../models/contracts/student-group-contract/student-group-payload-builder';
 import { DirectionPayloadBuilder } from '../../education-directions/models/contracts/direction-payload-builder';
 import { EducationPlanPayloadBuilder } from '../../education-plans/models/contracts/education-plan-contract/education-plan-payload-builder';
-import { AuthService } from '../../../../users/services/auth.service';
+import { AuthService } from '../../../../../pages/user-page/services/auth.service';
 import { TokenPayloadBuilder } from '../../../../../shared/models/common/token-contract/token-payload-builder';
 import { AppConfigService } from '../../../../../app.config.service';
 

@@ -6,7 +6,7 @@ import { DepartmentDefaultFetchPolicy } from '../../models/fetch-policies/defaul
 import { Observable } from 'rxjs';
 //import { BASE_API_URI } from '../../../../../../shared/models/api/api-constants';
 import { IObservableFetchable } from '../../../../../../shared/models/fetch-policices/iobservable-fetchable.interface';
-import { AuthService } from '../../../../../users/services/auth.service';
+import { AuthService } from '../../../../../../pages/user-page/services/auth.service';
 import { AppConfigService } from '../../../../../../app.config.service';
 
 @Injectable({

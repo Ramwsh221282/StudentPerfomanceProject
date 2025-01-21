@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AuthService } from '../../../../users/services/auth.service';
+import { AuthService } from '../../../../../pages/user-page/services/auth.service';
 import { Observable } from 'rxjs';
 import { TeacherAssignmentInfo } from '../../../models/teacher-assignment-info';
 import { AppConfigService } from '../../../../../app.config.service';

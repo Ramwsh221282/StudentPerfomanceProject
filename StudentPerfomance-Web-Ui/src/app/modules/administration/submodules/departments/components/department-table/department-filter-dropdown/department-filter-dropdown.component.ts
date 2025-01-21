@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { UserOperationNotificationService } from '../../../../../../../shared/services/user-notifications/user-operation-notification-service.service';
 import { AppConfigService } from '../../../../../../../app.config.service';
-import { AuthService } from '../../../../../../users/services/auth.service';
+import { AuthService } from '../../../../../../../pages/user-page/services/auth.service';
 import { IsNullOrWhiteSpace } from '../../../../../../../shared/utils/string-helper';
 import { ISubbmittable } from '../../../../../../../shared/models/interfaces/isubbmitable';
 import { DepartmentDataService } from '../department-data.service';

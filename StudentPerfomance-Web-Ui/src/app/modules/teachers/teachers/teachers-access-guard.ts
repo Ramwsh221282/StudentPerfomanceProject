@@ -1,5 +1,5 @@
 import { inject } from '@angular/core';
-import { AuthService } from '../../users/services/auth.service';
+import { AuthService } from '../../../pages/user-page/services/auth.service';
 import { Router } from '@angular/router';
 
 export const CanActivateAuthTeacher = () => {

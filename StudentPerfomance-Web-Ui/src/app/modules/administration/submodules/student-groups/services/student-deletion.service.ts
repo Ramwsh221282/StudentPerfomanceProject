@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Student } from '../../students/models/student.interface';
 import { Observable } from 'rxjs';
-import { AuthService } from '../../../../users/services/auth.service';
+import { AuthService } from '../../../../../pages/user-page/services/auth.service';
 import { AppConfigService } from '../../../../../app.config.service';
 
 @Injectable({

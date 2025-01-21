@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { UsersDataService } from '../../../services/users-data.service';
 import { UsersPaginationService } from '../users-table-pagination/users-pagination.servce';
-import { AuthService } from '../../../../../../users/services/auth.service';
+import { AuthService } from '../../../../../../../pages/user-page/services/auth.service';
 import { AppConfigService } from '../../../../../../../app.config.service';
-import { User } from '../../../../../../users/services/user-interface';
+import { User } from '../../../../../../../pages/user-page/services/user-interface';
 import { UsersFilterFetchPolicy } from '../../../models/users-fetch-policies/users-filter-fetch-policy';
 import { DefaultFetchPolicy } from '../../../models/users-fetch-policies/users-default-fetch-policy';
 

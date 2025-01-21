@@ -5,7 +5,7 @@ import { ControlWeekReportInterface } from '../../Models/Data/control-week-repor
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 //import { BASE_API_URI } from '../../../../models/api/api-constants';
-import { AuthService } from '../../../../../modules/users/services/auth.service';
+import { AuthService } from '../../../../../pages/user-page/services/auth.service';
 import { GroupReportInterface } from '../../Models/Data/group-report-interface';
 import { AppConfigService } from '../../../../../app.config.service';
 

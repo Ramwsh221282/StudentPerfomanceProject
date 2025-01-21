@@ -4,7 +4,7 @@ import { AssignmentSessionDataService } from '../../services/assignment-session-
 import { AssignmentSession } from '../../models/assignment-session-interface';
 import { AssignmentSessionPaginationService } from '../../services/assignment-session-pagination.service';
 import { AssignmentSessionDefaultFetchPolicy } from '../../models/fetch-policies/assignment-session-default-fetch-policy';
-import { AuthService } from '../../../../../users/services/auth.service';
+import { AuthService } from '../../../../../../pages/user-page/services/auth.service';
 import { AppConfigService } from '../../../../../../app.config.service';
 import { AssignmentSessionCloseService } from '../../services/assignment-session-close.service';
 import { catchError, Observable, tap } from 'rxjs';

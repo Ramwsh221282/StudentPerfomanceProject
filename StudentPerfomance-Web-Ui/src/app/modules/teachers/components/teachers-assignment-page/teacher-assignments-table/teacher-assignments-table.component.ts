@@ -4,7 +4,7 @@ import { TeacherAssignmentInfo } from '../../../models/teacher-assignment-info';
 import { TeacherJournal } from '../../../models/teacher-journal';
 import { TeacherJournalDiscipline } from '../../../models/teacher-journal-disciplines';
 import { catchError, Observable, tap } from 'rxjs';
-import { AuthService } from '../../../../users/services/auth.service';
+import { AuthService } from '../../../../../pages/user-page/services/auth.service';
 import { AdminAccessResponse } from '../admin-assignments-access-resolver-dialog/admin-assignments-access.service';
 
 @Component({

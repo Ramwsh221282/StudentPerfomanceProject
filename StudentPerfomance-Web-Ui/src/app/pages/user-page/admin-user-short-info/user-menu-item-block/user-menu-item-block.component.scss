@@ -1,0 +1,49 @@
+.user-menu-item-block-layout {
+  display: inline-flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  border: solid 1px #d9d9d9;
+  border-radius: 10px;
+  max-width: 400px;
+  min-width: 400px;
+  max-height: 240px;
+  min-height: 240px;
+  user-select: none;
+}
+
+.user-menu-content-container {
+  padding: 1rem;
+  display: inline-flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+
+.user-menu-text-content-container {
+  max-height: 80px;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+
+.user-menu-item-title {
+  text-decoration: underline;
+  color: #1c172e;
+  font-weight: 800;
+  font-size: 22px;
+}
+
+.user-menu-item-label {
+  padding: 5px;
+  color: #1c172e;
+  font-weight: 800;
+  font-size: 18px;
+}
+
+.user-menu-controls-container {
+  align-self: flex-end;
+  display: inline-flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  padding: 0.5rem;
+}

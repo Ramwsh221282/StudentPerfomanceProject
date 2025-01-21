@@ -1,6 +1,6 @@
-<div class="ui-grid">
+<div [ngClass]="{'ui-grid-side-bar-hidden': isMenuHidden}" class="ui-grid">
   <div class="grid-left-side">
-    <app-side-bar></app-side-bar>
+    <app-side-bar (menuHide)="isMenuHidden = $event"></app-side-bar>
   </div>
   <div class="grid-right-side">
     <router-outlet></router-outlet>

@@ -1,0 +1,13 @@
+<section class="user-menu-item-block-layout">
+  <div class="user-menu-content-container">
+    <img [ngSrc]="icon" [width]="150" height="150" [alt]="'image'">
+    <div class="user-menu-text-content-container">
+      <label class="user-menu-item-title">{{ title }}</label>
+      <label class="user-menu-item-label" *ngFor="let label of labels">{{ label }}</label>
+    </div>
+  </div>
+  <div class="user-menu-controls-container">
+    <img [ngSrc]="'assets/go_in.svg'" [alt]="'image'" [width]="35" height="35">
+    <app-blue-button [label]="'Перейти'"></app-blue-button>
+  </div>
+</section>

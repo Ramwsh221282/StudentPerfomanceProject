@@ -5,7 +5,7 @@ import { IFetchPolicy } from '../../../../../shared/models/fetch-policices/fetch
 import { DefaultFetchPolicy } from '../models/fetch-policies/default-fetch-policy';
 import { IObservableFetchable } from '../../../../../shared/models/fetch-policices/iobservable-fetchable.interface';
 import { Observable } from 'rxjs';
-import { AuthService } from '../../../../users/services/auth.service';
+import { AuthService } from '../../../../../pages/user-page/services/auth.service';
 import { AppConfigService } from '../../../../../app.config.service';
 
 @Injectable({

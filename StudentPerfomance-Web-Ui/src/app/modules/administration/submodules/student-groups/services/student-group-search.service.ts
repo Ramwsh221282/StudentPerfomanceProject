@@ -2,7 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { StudentGroupsService } from './student-groups-base-service';
 import { StudentGroup } from './studentsGroup.interface';
 import { Observable } from 'rxjs';
-import { AuthService } from '../../../../users/services/auth.service';
+import { AuthService } from '../../../../../pages/user-page/services/auth.service';
 //import { BASE_API_URI } from '../../../../../shared/models/api/api-constants';
 import { HttpHeaders, HttpParams } from '@angular/common/http';
 import { AppConfigService } from '../../../../../app.config.service';

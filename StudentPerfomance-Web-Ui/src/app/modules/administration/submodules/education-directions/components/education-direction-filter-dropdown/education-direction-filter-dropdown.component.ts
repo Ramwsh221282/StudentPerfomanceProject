@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FacadeService } from '../../services/facade.service';
 import { EducationDirection } from '../../models/education-direction-interface';
-import { AuthService } from '../../../../../users/services/auth.service';
+import { AuthService } from '../../../../../../pages/user-page/services/auth.service';
 import { AppConfigService } from '../../../../../../app.config.service';
 import { FilterFetchPolicy } from '../../models/fetch-policies/filter-fetch-policy';
 import { DefaultFetchPolicy } from '../../models/fetch-policies/default-fetch-policy';

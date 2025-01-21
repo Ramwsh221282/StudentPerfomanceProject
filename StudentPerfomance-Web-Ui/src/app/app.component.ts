@@ -9,8 +9,9 @@ import { SideBarComponent } from './shared/components/side-bar/side-bar.componen
 import { SuccessResultNotificationComponent } from './shared/components/success-result-notification/success-result-notification.component';
 import { FailureResultNotificationComponent } from './shared/components/failure-result-notification/failure-result-notification.component';
 import { AppConfigService } from './app.config.service';
-import { AuthService } from './modules/users/services/auth.service';
+import { AuthService } from './pages/user-page/services/auth.service';
 import { GreetingPageComponent } from './shared/components/greeting-page/greeting-page.component';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -22,6 +23,7 @@ import { GreetingPageComponent } from './shared/components/greeting-page/greetin
     SuccessResultNotificationComponent,
     FailureResultNotificationComponent,
     GreetingPageComponent,
+    NgClass,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
@@ -39,6 +41,8 @@ import { GreetingPageComponent } from './shared/components/greeting-page/greetin
   ],
 })
 export class AppComponent implements AfterViewInit, OnInit {
+  public isMenuHidden: boolean = false;
+
   public constructor(
     private readonly auth: AuthService,
     private readonly _configService: AppConfigService,

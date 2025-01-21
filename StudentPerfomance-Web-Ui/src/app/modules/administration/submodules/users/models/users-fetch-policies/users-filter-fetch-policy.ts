@@ -2,10 +2,10 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IFetchPolicy } from '../../../../../../shared/models/fetch-policices/fetch-policy-interface';
 import { UserRecord } from '../../services/user-table-element-interface';
-import { User } from '../../../../../users/services/user-interface';
+import { User } from '../../../../../../pages/user-page/services/user-interface';
 //import { BASE_API_URI } from '../../../../../../shared/models/api/api-constants';
 import { AppConfigService } from '../../../../../../app.config.service';
-import { AuthService } from '../../../../../users/services/auth.service';
+import { AuthService } from '../../../../../../pages/user-page/services/auth.service';
 
 export class UsersFilterFetchPolicy implements IFetchPolicy<UserRecord[]> {
   private readonly _user: User;

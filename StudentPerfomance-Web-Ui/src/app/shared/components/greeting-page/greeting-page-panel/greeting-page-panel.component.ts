@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { BlueOutlineButtonComponent } from '../../../../building-blocks/buttons/blue-outline-button/blue-outline-button.component';
 import { GreenOutlineButtonComponent } from '../../../../building-blocks/buttons/green-outline-button/green-outline-button.component';
 import { Router } from '@angular/router';
-import { AuthService } from '../../../../modules/users/services/auth.service';
+import { AuthService } from '../../../../pages/user-page/services/auth.service';
 
 @Component({
   selector: 'app-greeting-page-panel',

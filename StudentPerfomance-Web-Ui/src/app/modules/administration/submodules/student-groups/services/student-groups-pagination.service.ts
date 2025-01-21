@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { StudentGroupsService } from './student-groups-base-service';
 //import { BASE_API_URI } from '../../../../../shared/models/api/api-constants';
-import { AuthService } from '../../../../users/services/auth.service';
+import { AuthService } from '../../../../../pages/user-page/services/auth.service';
 import { HttpHeaders } from '@angular/common/http';
 import { AppConfigService } from '../../../../../app.config.service';
 

@@ -3,7 +3,7 @@ import { ISubbmittable } from '../../../../../../../shared/models/interfaces/isu
 import { UserOperationNotificationService } from '../../../../../../../shared/services/user-notifications/user-operation-notification-service.service';
 import { UserCreationService } from '../../../services/user-create.service';
 import { IsNullOrWhiteSpace } from '../../../../../../../shared/utils/string-helper';
-import { User } from '../../../../../../users/services/user-interface';
+import { User } from '../../../../../../../pages/user-page/services/user-interface';
 import { catchError, Observable, tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 

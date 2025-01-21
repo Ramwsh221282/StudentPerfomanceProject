@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { SemesterPlan } from '../../../../semester-plans/models/semester-plan.interface';
 import { Observable } from 'rxjs';
 //import { BASE_API_URI } from '../../../../../../../../../shared/models/api/api-constants';
-import { AuthService } from '../../../../../../users/services/auth.service';
+import { AuthService } from '../../../../../../../pages/user-page/services/auth.service';
 import { DirectionPayloadBuilder } from '../../../../education-directions/models/contracts/direction-payload-builder';
 import { EducationPlanPayloadBuilder } from '../../../models/contracts/education-plan-contract/education-plan-payload-builder';
 import { SemesterPayloadBuilder } from '../../../models/contracts/semester-contract/semester-payload-builder';

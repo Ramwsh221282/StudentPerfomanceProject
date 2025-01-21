@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IFetchPolicy } from '../../../../../models/fetch-policices/fetch-policy-interface';
 import { ControlWeekReportInterface } from '../../../Models/Data/control-week-report-interface';
-import { AuthService } from '../../../../../../modules/users/services/auth.service';
+import { AuthService } from '../../../../../../pages/user-page/services/auth.service';
 //import { BASE_API_URI } from '../../../../../models/api/api-constants';
 import { TokenPayloadBuilder } from '../../../../../models/common/token-contract/token-payload-builder';
 import { PaginationPayloadBuilder } from '../../../../../models/common/pagination-contract/pagination-payload-builder';

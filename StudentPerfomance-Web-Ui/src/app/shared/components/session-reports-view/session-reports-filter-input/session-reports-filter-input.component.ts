@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { SessionReportsDataService } from '../Services/data-services/session-reports-data-service';
-import { AuthService } from '../../../../modules/users/services/auth.service';
+import { AuthService } from '../../../../pages/user-page/services/auth.service';
 import { SessionReportsPaginationService } from '../session-reports-pagination/session-reports-pagination-service';
 import { ISubbmittable } from '../../../models/interfaces/isubbmitable';
 import { FormsModule } from '@angular/forms';

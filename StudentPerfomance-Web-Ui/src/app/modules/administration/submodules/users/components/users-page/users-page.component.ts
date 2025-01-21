@@ -5,7 +5,7 @@ import { UsersDataService } from '../../services/users-data.service';
 import { DatePipe } from '@angular/common';
 import { UserRecord } from '../../services/user-table-element-interface';
 import { DefaultFetchPolicy } from '../../models/users-fetch-policies/users-default-fetch-policy';
-import { AuthService } from '../../../../../users/services/auth.service';
+import { AuthService } from '../../../../../../pages/user-page/services/auth.service';
 import { AppConfigService } from '../../../../../../app.config.service';
 
 @Component({

@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AuthService } from '../../../../../users/services/auth.service';
+import { AuthService } from '../../../../../../pages/user-page/services/auth.service';
 import { TeacherJournalStudent } from '../../../../models/teacher-journal-students';
 import { TokenPayloadBuilder } from '../../../../../../shared/models/common/token-contract/token-payload-builder';
 import { TeacherJournalDiscipline } from '../../../../models/teacher-journal-disciplines';

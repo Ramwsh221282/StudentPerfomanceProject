@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 //import { BASE_API_URI } from '../../../../../../../shared/models/api/api-constants';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { AuthService } from '../../../../../../users/services/auth.service';
+import { AuthService } from '../../../../../../../pages/user-page/services/auth.service';
 import { AppConfigService } from '../../../../../../../app.config.service';
 
 @Injectable({

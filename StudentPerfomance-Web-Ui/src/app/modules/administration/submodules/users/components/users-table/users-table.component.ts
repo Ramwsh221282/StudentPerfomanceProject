@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { UserRecord } from '../../services/user-table-element-interface';
 import { Router } from '@angular/router';
-import { User } from '../../../../../users/services/user-interface';
+import { User } from '../../../../../../pages/user-page/services/user-interface';
 
 @Component({
   selector: 'app-users-table',

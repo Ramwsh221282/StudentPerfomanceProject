@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AuthService } from '../../../../modules/users/services/auth.service';
+import { AuthService } from '../../../../pages/user-page/services/auth.service';
 import { UserOperationNotificationService } from '../../../services/user-notifications/user-operation-notification-service.service';
 import { NgClass, NgForOf, NgIf } from '@angular/common';
 import { SuccessResultNotificationComponent } from '../../success-result-notification/success-result-notification.component';

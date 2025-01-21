@@ -2,7 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { StudentGroupsService } from './student-groups-base-service';
 import { StudentGroup } from './studentsGroup.interface';
 //import { BASE_API_URI } from '../../../../../shared/models/api/api-constants';
-import { AuthService } from '../../../../users/services/auth.service';
+import { AuthService } from '../../../../../pages/user-page/services/auth.service';
 import { TokenPayloadBuilder } from '../../../../../shared/models/common/token-contract/token-payload-builder';
 import { HttpHeaders } from '@angular/common/http';
 import { AppConfigService } from '../../../../../app.config.service';

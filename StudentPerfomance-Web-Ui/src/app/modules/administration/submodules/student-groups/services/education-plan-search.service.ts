@@ -3,7 +3,7 @@ import { inject, Injectable } from '@angular/core';
 //import { BASE_API_URI } from '../../../../../../../shared/models/api/api-constants';
 import { Observable } from 'rxjs';
 import { EducationPlan } from '../../education-plans/models/education-plan-interface';
-import { AuthService } from '../../../../users/services/auth.service';
+import { AuthService } from '../../../../../pages/user-page/services/auth.service';
 import { EducationDirection } from '../../education-directions/models/education-direction-interface';
 import { AppConfigService } from '../../../../../app.config.service';
 

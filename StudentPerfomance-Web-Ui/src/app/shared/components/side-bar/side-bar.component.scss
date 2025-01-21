@@ -12,10 +12,13 @@
       rgba(2, 0, 36, 1) 100%
   );
   box-shadow: #1b274b 10px 10px 20px -10px;
+  user-select: none;
 }
 
 .side-bar-title-container {
   padding: 20px;
+  min-height: 120px;
+  max-height: 120px;
 }
 
 .side-bar-title {
@@ -26,10 +29,26 @@
 }
 
 .menu-header {
-  padding: 0px 40px;
+  text-decoration: underline;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 10px 55px;
   font-size: 24px;
   font-weight: 800;
-  cursor: default;
+  cursor: pointer;
+  height: 70px;
+
+  &:hover {
+    border-radius: 9999px 0 0 9999px;
+    background-color: #ecf4ff;
+    color: #007aff;
+
+    .side-bar-menu-button-icon {
+      filter: invert(33%) sepia(35%) saturate(4250%) hue-rotate(199deg) brightness(100%) contrast(110%);
+    }
+  }
 }
 
 .menu-content-container {
@@ -37,6 +56,14 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+.side-bar-control-container {
+  display: inline-flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
 }
 
 .side-bar-menu-button {
@@ -50,16 +77,40 @@
   outline: none;
   transition: 0.1s;
   height: 45px;
+  display: inline-flex;
+  padding: 0.5rem;
+  align-items: center;
+  gap: 1rem;
 
   &:hover {
-    border-radius: 9999px 0px 0px 9999px;
+    border-radius: 9999px 0 0 9999px;
     background-color: #ecf4ff;
     color: #007aff;
+
+    .side-bar-menu-button-icon {
+      filter: invert(33%) sepia(35%) saturate(4250%) hue-rotate(199deg) brightness(100%) contrast(110%);
+    }
   }
 }
 
+.menu-button-label {
+  cursor: pointer;
+}
+
 .focused {
-  border-radius: 9999px 0px 0px 9999px;
+  cursor: pointer;
+  border-radius: 9999px 0 0 9999px;
   background-color: #ecf4ff;
   color: #007aff;
+}
+
+.side-bar-menu-button-icon {
+  cursor: pointer;
+  filter: invert(99%) sepia(33%) saturate(7083%) hue-rotate(178deg) brightness(107%) contrast(108%);
+  transition: 0.1s;
+}
+
+.side-bar-menu-button-icon-focused {
+  cursor: pointer;
+  filter: invert(33%) sepia(35%) saturate(4250%) hue-rotate(199deg) brightness(100%) contrast(110%);
 }

@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
-import { canActivateAuthAdmin } from './modules/users/services/admin-access-guard';
+import { canActivateAuthAdmin } from './pages/user-page/services/admin-access-guard';
 import { CanActivateAuthTeacher } from './modules/teachers/teachers/teachers-access-guard';
-import { CanActivateUserPage } from './shared/components/user-page/user-page-guard-access';
+import { CanActivateUserPage } from './pages/user-page/user-page-guard-access';
 
 export const routes: Routes = [
   {
@@ -17,6 +17,14 @@ export const routes: Routes = [
       import('./shared/components/login-page/login-page.component').then(
         (mod) => mod.LoginPageComponent,
       ),
+  },
+  {
+    path: 'education-objects',
+    loadComponent: () =>
+      import(
+        './pages/education-objects-page/education-objects-page.component'
+      ).then((component) => component.EducationObjectsPageComponent),
+    canActivate: [canActivateAuthAdmin],
   },
   {
     path: 'reports',
@@ -52,7 +60,7 @@ export const routes: Routes = [
   {
     path: 'user',
     loadComponent: () =>
-      import('./shared/components/user-page/user-page.component').then(
+      import('./pages/user-page/user-page.component').then(
         (mod) => mod.UserPageComponent,
       ),
     canActivate: [CanActivateUserPage],

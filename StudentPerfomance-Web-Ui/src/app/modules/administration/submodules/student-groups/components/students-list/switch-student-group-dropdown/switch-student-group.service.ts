@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AppConfigService } from '../../../../../../../app.config.service';
-import { AuthService } from '../../../../../../users/services/auth.service';
+import { AuthService } from '../../../../../../../pages/user-page/services/auth.service';
 import { Student } from '../../../../students/models/student.interface';
 import { Observable } from 'rxjs';
 
