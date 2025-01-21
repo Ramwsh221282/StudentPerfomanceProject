@@ -7,18 +7,17 @@ import { SessionReportsFilterDropdownComponent } from './session-reports-filter-
 import { SessionReportItemRemoveModalComponent } from './session-report-item/session-report-item-remove-modal/session-report-item-remove-modal.component';
 
 @Component({
-  selector: 'app-session-reports-layout',
-  standalone: true,
-  imports: [
-    SessionReportItemComponent,
-    BlueButtonComponent,
-    NgForOf,
-    SessionReportsFilterDropdownComponent,
-    NgIf,
-    SessionReportItemRemoveModalComponent,
-  ],
-  templateUrl: './session-reports-layout.component.html',
-  styleUrl: './session-reports-layout.component.scss',
+    selector: 'app-session-reports-layout',
+    imports: [
+        SessionReportItemComponent,
+        BlueButtonComponent,
+        NgForOf,
+        SessionReportsFilterDropdownComponent,
+        NgIf,
+        SessionReportItemRemoveModalComponent,
+    ],
+    templateUrl: './session-reports-layout.component.html',
+    styleUrl: './session-reports-layout.component.scss'
 })
 export class SessionReportsLayoutComponent {
   @Input({ required: true }) reports: ControlWeekReportInterface[];

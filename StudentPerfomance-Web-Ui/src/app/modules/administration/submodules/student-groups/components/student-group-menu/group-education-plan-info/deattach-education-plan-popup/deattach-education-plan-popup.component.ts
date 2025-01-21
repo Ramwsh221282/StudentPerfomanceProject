@@ -7,9 +7,10 @@ import { catchError, Observable, tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
-  selector: 'app-deattach-education-plan-popup',
-  templateUrl: './deattach-education-plan-popup.component.html',
-  styleUrl: './deattach-education-plan-popup.component.scss',
+    selector: 'app-deattach-education-plan-popup',
+    templateUrl: './deattach-education-plan-popup.component.html',
+    styleUrl: './deattach-education-plan-popup.component.scss',
+    standalone: false
 })
 export class DeattachEducationPlanPopupComponent implements ISubbmittable {
   @Input({ required: true }) group: StudentGroup;

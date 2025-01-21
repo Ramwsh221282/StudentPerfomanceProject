@@ -8,9 +8,10 @@ import { catchError, Observable, tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
-  selector: 'app-department-create-dropdown',
-  templateUrl: './department-create-dropdown.component.html',
-  styleUrl: './department-create-dropdown.component.scss',
+    selector: 'app-department-create-dropdown',
+    templateUrl: './department-create-dropdown.component.html',
+    styleUrl: './department-create-dropdown.component.scss',
+    standalone: false
 })
 export class DepartmentCreateDropdownComponent implements ISubbmittable {
   @Input({ required: true }) visibility: boolean;

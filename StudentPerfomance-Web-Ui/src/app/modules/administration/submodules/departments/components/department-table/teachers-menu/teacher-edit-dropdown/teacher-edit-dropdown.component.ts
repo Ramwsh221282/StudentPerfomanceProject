@@ -8,9 +8,10 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Department } from '../../../../models/departments.interface';
 
 @Component({
-  selector: 'app-teacher-edit-dropdown',
-  templateUrl: './teacher-edit-dropdown.component.html',
-  styleUrl: './teacher-edit-dropdown.component.scss',
+    selector: 'app-teacher-edit-dropdown',
+    templateUrl: './teacher-edit-dropdown.component.html',
+    styleUrl: './teacher-edit-dropdown.component.scss',
+    standalone: false
 })
 export class TeacherEditDropdownComponent implements OnInit {
   @Input({ required: true }) department: Department;

@@ -16,17 +16,6 @@ public sealed class EducationDirectionDto
 
 public static class EducationDirectionDtoExtensions
 {
-    // public static EducationDirectionDto MapFromDomain(this EducationDirection direction) =>
-    //     new()
-    //     {
-    //         Id = direction.Id,
-    //         Name = direction.Name.Name,
-    //         Type = direction.Type.Type,
-    //         Code = direction.Code.Code,
-    //         EntityNumber = direction.EntityNumber,
-    //         EducationPlansCount = direction.Plans.Count,
-    //     };
-
     public static EducationDirectionDto MapFromDomain(this EducationDirection direction)
     {
         EducationDirectionDto dto =

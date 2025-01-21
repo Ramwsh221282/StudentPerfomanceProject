@@ -18,18 +18,17 @@ import { catchError, Observable, tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
-  selector: 'app-change-group-education-plan-popup',
-  standalone: true,
-  imports: [
-    GreenOutlineButtonComponent,
-    RedOutlineButtonComponent,
-    FloatingLabelInputComponent,
-    DropdownListComponent,
-    NgIf,
-    EducationDirectionsSelectComponent,
-  ],
-  templateUrl: './change-group-education-plan-popup.component.html',
-  styleUrl: './change-group-education-plan-popup.component.scss',
+    selector: 'app-change-group-education-plan-popup',
+    imports: [
+        GreenOutlineButtonComponent,
+        RedOutlineButtonComponent,
+        FloatingLabelInputComponent,
+        DropdownListComponent,
+        NgIf,
+        EducationDirectionsSelectComponent,
+    ],
+    templateUrl: './change-group-education-plan-popup.component.html',
+    styleUrl: './change-group-education-plan-popup.component.scss'
 })
 export class ChangeGroupEducationPlanPopupComponent implements ISubbmittable {
   @Input({ required: true }) group: StudentGroup;

@@ -5,10 +5,10 @@ import { NgClass, NgIf, NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-side-bar',
-  standalone: true,
   imports: [RouterLink, NgIf, NgOptimizedImage, NgClass],
   templateUrl: './side-bar.component.html',
   styleUrl: './side-bar.component.scss',
+  standalone: true,
 })
 export class SideBarComponent {
   @Output() menuHide: EventEmitter<boolean> = new EventEmitter();

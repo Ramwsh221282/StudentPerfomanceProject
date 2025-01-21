@@ -5,14 +5,15 @@ import { DepartmentDataService } from '../department-table/department-data.servi
 import { Department } from '../../models/departments.interface';
 
 @Component({
-  selector: 'app-department-page',
-  templateUrl: './department-page.component.html',
-  styleUrl: './department-page.component.scss',
-  providers: [
-    UserOperationNotificationService,
-    DepartmentPaginationService,
-    DepartmentDataService,
-  ],
+    selector: 'app-department-page',
+    templateUrl: './department-page.component.html',
+    styleUrl: './department-page.component.scss',
+    providers: [
+        UserOperationNotificationService,
+        DepartmentPaginationService,
+        DepartmentDataService,
+    ],
+    standalone: false
 })
 export class DepartmentPageComponent implements OnInit {
   @Input() departments: Department[];

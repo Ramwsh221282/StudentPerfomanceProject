@@ -3,9 +3,10 @@ import { SemesterDiscipline } from '../../../../../../models/education-plan-inte
 import { ISubbmittable } from '../../../../../../../../../../shared/models/interfaces/isubbmitable';
 
 @Component({
-  selector: 'app-delete-discipline-popup',
-  templateUrl: './delete-discipline-popup.component.html',
-  styleUrl: './delete-discipline-popup.component.scss',
+    selector: 'app-delete-discipline-popup',
+    templateUrl: './delete-discipline-popup.component.html',
+    styleUrl: './delete-discipline-popup.component.scss',
+    standalone: false
 })
 export class DeleteDisciplinePopupComponent implements ISubbmittable {
   @Input({ required: true }) discipline: SemesterDiscipline;

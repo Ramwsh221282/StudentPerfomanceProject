@@ -4,11 +4,10 @@ import { NgIf } from '@angular/common';
 import { SessionGroupReportContentComponent } from '../session-group-report-content/session-group-report-content.component';
 
 @Component({
-  selector: 'app-session-group-report-control-bar',
-  standalone: true,
-  imports: [NgIf, SessionGroupReportContentComponent],
-  templateUrl: './session-group-report-control-bar.component.html',
-  styleUrl: './session-group-report-control-bar.component.scss',
+    selector: 'app-session-group-report-control-bar',
+    imports: [NgIf, SessionGroupReportContentComponent],
+    templateUrl: './session-group-report-control-bar.component.html',
+    styleUrl: './session-group-report-control-bar.component.scss'
 })
 export class SessionGroupReportControlBarComponent {
   @Input({ required: true }) groups: GroupReportInterface[];

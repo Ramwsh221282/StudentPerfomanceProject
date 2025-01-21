@@ -7,7 +7,8 @@
   background-color: transparent;
   text-align: center;
   border: solid 1px #66ff00;
-  color: #5ce600;
+  color: #52cc00;
+  box-shadow: 1px 1px #52cc00;
   transition: all 1s ease;
   cursor: pointer;
   user-select: none;
@@ -15,7 +16,7 @@
 }
 
 .button-container:hover {
-  color: #52cc00;
+  color: #66ff00;
 }
 
 .button-container:hover .button-label {

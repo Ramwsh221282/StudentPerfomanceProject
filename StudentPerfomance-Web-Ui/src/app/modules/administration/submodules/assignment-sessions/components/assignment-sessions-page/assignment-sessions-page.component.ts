@@ -11,15 +11,16 @@ import { catchError, Observable, tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
-  selector: 'app-assignment-sessions-page',
-  templateUrl: './assignment-sessions-page.component.html',
-  styleUrl: './assignment-sessions-page.component.scss',
-  providers: [
-    UserOperationNotificationService,
-    AssignmentSessionDataService,
-    AssignmentSessionPaginationService,
-    AssignmentSessionCloseService,
-  ],
+    selector: 'app-assignment-sessions-page',
+    templateUrl: './assignment-sessions-page.component.html',
+    styleUrl: './assignment-sessions-page.component.scss',
+    providers: [
+        UserOperationNotificationService,
+        AssignmentSessionDataService,
+        AssignmentSessionPaginationService,
+        AssignmentSessionCloseService,
+    ],
+    standalone: false
 })
 export class AssignmentSessionsPageComponent implements OnInit {
   protected currentAssignmentSession: AssignmentSession | null;

@@ -4,11 +4,10 @@ import { SearchDirectionsService } from '../../../../education-directions/servic
 import { DropdownListComponent } from '../../../../../../../building-blocks/dropdown-list/dropdown-list.component';
 
 @Component({
-  selector: 'app-education-directions-select',
-  standalone: true,
-  imports: [DropdownListComponent],
-  templateUrl: './education-directions-select.component.html',
-  styleUrl: './education-directions-select.component.scss',
+    selector: 'app-education-directions-select',
+    imports: [DropdownListComponent],
+    templateUrl: './education-directions-select.component.html',
+    styleUrl: './education-directions-select.component.scss'
 })
 export class EducationDirectionsSelectComponent implements OnInit {
   @Input({ required: true }) isSelecting: boolean;

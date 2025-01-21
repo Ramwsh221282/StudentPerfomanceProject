@@ -1,0 +1,9 @@
+<div [ngClass]="{'current-semester': isSelectedSemester}" class="semester-data-item-wrapper"
+     (click)="selectSemester.emit(semester)">
+  <div class="semester-data-label-container">
+    <img [ngSrc]="'assets/semester_icon.svg'" [width]="40" [height]="40" [alt]="'image'">
+    <label>Номер: {{ semester.number }}</label>
+    <label>Дисциплин: {{ semester.disciplines.length }}</label>
+    <label>Без преподавателя: {{ countOfDisciplinesWithoutTeacher }}</label>
+  </div>
+</div>

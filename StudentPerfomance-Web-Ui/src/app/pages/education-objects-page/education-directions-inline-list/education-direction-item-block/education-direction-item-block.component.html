@@ -1,0 +1,16 @@
+<section [ngClass]="{'selected': isSelected}" class="education-direction-item-block-wrapper"
+         (click)="selectedDirection.emit(direction)">
+  <div class="education-direction-icon-container">
+    <img [ngSrc]="'assets/education_direction_icon.svg'" [alt]="'image'" [width]="80" [height]="80">
+    <div class="education-direction-controls-container">
+      <app-edit-icon-button [paramWidth]="40" [paramHeight]="40"></app-edit-icon-button>
+      <app-remove-icon-button [paramHeight]="40" [paramWidth]="40"></app-remove-icon-button>
+    </div>
+  </div>
+  <div class="education-direction-data-container">
+    <label class="education-direction-data-label">{{ direction.name }}</label>
+    <label class="education-direction-data-label">{{ direction.code }}</label>
+    <label class="education-direction-data-label">{{ direction.type }}</label>
+    <label class="education-direction-data-label">Число учебных планов: {{ direction.plans.length }}</label>
+  </div>
+</section>

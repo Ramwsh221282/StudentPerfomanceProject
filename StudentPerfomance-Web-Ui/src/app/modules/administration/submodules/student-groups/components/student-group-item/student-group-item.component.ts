@@ -2,9 +2,10 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { StudentGroup } from '../../services/studentsGroup.interface';
 
 @Component({
-  selector: 'app-student-group-item',
-  templateUrl: './student-group-item.component.html',
-  styleUrl: './student-group-item.component.scss',
+    selector: 'app-student-group-item',
+    templateUrl: './student-group-item.component.html',
+    styleUrl: './student-group-item.component.scss',
+    standalone: false
 })
 export class StudentGroupItemComponent {
   @Input({ required: true }) isCurrentlySelected: boolean = false;

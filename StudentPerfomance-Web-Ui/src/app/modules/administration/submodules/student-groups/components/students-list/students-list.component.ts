@@ -7,9 +7,10 @@ import { UserOperationNotificationService } from '../../../../../../shared/servi
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
-  selector: 'app-students-list',
-  templateUrl: './students-list.component.html',
-  styleUrl: './students-list.component.scss',
+    selector: 'app-students-list',
+    templateUrl: './students-list.component.html',
+    styleUrl: './students-list.component.scss',
+    standalone: false
 })
 export class StudentsListComponent {
   @Input({ required: true }) group: StudentGroup;

@@ -9,9 +9,10 @@ import { catchError, Observable, tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
-  selector: 'app-teacher-create-dropdown',
-  templateUrl: './teacher-create-dropdown.component.html',
-  styleUrl: './teacher-create-dropdown.component.scss',
+    selector: 'app-teacher-create-dropdown',
+    templateUrl: './teacher-create-dropdown.component.html',
+    styleUrl: './teacher-create-dropdown.component.scss',
+    standalone: false
 })
 export class TeacherCreateDropdownComponent implements ISubbmittable {
   @Input({ required: true }) department: Department;

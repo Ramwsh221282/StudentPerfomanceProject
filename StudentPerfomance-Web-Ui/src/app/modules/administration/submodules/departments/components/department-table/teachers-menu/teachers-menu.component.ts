@@ -3,9 +3,10 @@ import { Department } from '../../../models/departments.interface';
 import { Teacher } from '../../../../teachers/models/teacher.interface';
 
 @Component({
-  selector: 'app-teachers-menu',
-  templateUrl: './teachers-menu.component.html',
-  styleUrl: './teachers-menu.component.scss',
+    selector: 'app-teachers-menu',
+    templateUrl: './teachers-menu.component.html',
+    styleUrl: './teachers-menu.component.scss',
+    standalone: false
 })
 export class TeachersMenuComponent {
   @Input({ required: true }) department: Department;

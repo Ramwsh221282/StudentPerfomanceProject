@@ -9,9 +9,10 @@ import { FilterFetchPolicy } from '../../models/fetch-policies/filter-fetch-poli
 import { DefaultFetchPolicy } from '../../models/fetch-policies/default-fetch-policy';
 
 @Component({
-  selector: 'app-filter-education-plan-dropdown',
-  templateUrl: './filter-education-plan-dropdown.component.html',
-  styleUrl: './filter-education-plan-dropdown.component.scss',
+    selector: 'app-filter-education-plan-dropdown',
+    templateUrl: './filter-education-plan-dropdown.component.html',
+    styleUrl: './filter-education-plan-dropdown.component.scss',
+    standalone: false
 })
 export class FilterEducationPlanDropdownComponent implements ISubbmittable {
   public number: string = '';

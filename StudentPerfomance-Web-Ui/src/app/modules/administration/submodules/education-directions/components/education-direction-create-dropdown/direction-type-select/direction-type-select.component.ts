@@ -2,11 +2,10 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { DropdownListComponent } from '../../../../../../../building-blocks/dropdown-list/dropdown-list.component';
 
 @Component({
-  selector: 'app-direction-type-select',
-  standalone: true,
-  templateUrl: './direction-type-select.component.html',
-  styleUrl: './direction-type-select.component.scss',
-  imports: [DropdownListComponent],
+    selector: 'app-direction-type-select',
+    templateUrl: './direction-type-select.component.html',
+    styleUrl: './direction-type-select.component.scss',
+    imports: [DropdownListComponent]
 })
 export class DirectionTypeSelectComponent {
   @Input({ required: true }) visibility: boolean;

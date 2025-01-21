@@ -8,9 +8,10 @@ import { ISubbmittable } from '../../../../../../shared/models/interfaces/isubbm
 import { UserOperationNotificationService } from '../../../../../../shared/services/user-notifications/user-operation-notification-service.service';
 
 @Component({
-  selector: 'app-education-plan-deletion-modal',
-  templateUrl: './education-plan-deletion-modal.component.html',
-  styleUrl: './education-plan-deletion-modal.component.scss',
+    selector: 'app-education-plan-deletion-modal',
+    templateUrl: './education-plan-deletion-modal.component.html',
+    styleUrl: './education-plan-deletion-modal.component.scss',
+    standalone: false
 })
 export class EducationPlanDeletionModalComponent implements ISubbmittable {
   @Input({ required: true }) plan: EducationPlan;

@@ -2,9 +2,10 @@ import { Component, Input, OnInit } from '@angular/core';
 import { AssignmentSessionWeek } from '../../../../models/assignment-session-week';
 
 @Component({
-  selector: 'app-session-item-group-assignments',
-  templateUrl: './session-item-group-assignments.component.html',
-  styleUrl: './session-item-group-assignments.component.scss',
+    selector: 'app-session-item-group-assignments',
+    templateUrl: './session-item-group-assignments.component.html',
+    styleUrl: './session-item-group-assignments.component.scss',
+    standalone: false
 })
 export class SessionItemGroupAssignmentsComponent implements OnInit {
   @Input({ required: true }) weeks: AssignmentSessionWeek[];

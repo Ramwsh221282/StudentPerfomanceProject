@@ -4,9 +4,10 @@ import { Student } from '../../../../students/models/student.interface';
 import { UserOperationNotificationService } from '../../../../../../../shared/services/user-notifications/user-operation-notification-service.service';
 
 @Component({
-  selector: 'app-create-student-dropdown',
-  templateUrl: './create-student-dropdown.component.html',
-  styleUrl: './create-student-dropdown.component.scss',
+    selector: 'app-create-student-dropdown',
+    templateUrl: './create-student-dropdown.component.html',
+    styleUrl: './create-student-dropdown.component.scss',
+    standalone: false
 })
 export class CreateStudentDropdownComponent implements ISubbmittable {
   @Input({ required: true }) visibility: boolean = false;

@@ -1,5 +1,21 @@
 .education-objects-page-layout {
+  display: inline-flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+
+.education-objects-page-title {
+  color: #1c172e;
+  font-size: 24px;
+  display: inline-flex;
+  flex-direction: row;
+  text-decoration: underline;
+}
+
+.education-objects-page-workspace {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 1rem;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 0.5rem;
 }

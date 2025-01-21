@@ -3,10 +3,10 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-floating-label-input',
-  standalone: true,
   imports: [FormsModule],
   templateUrl: './floating-label-input.component.html',
   styleUrl: './floating-label-input.component.scss',
+  standalone: true,
 })
 export class FloatingLabelInputComponent {
   @Input() id: string = '';

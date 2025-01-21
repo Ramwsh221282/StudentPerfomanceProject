@@ -3,9 +3,10 @@ import { AssignmentSession } from '../../models/assignment-session-interface';
 import { ISubbmittable } from '../../../../../../shared/models/interfaces/isubbmitable';
 
 @Component({
-  selector: 'app-assignment-session-close-item-modal',
-  templateUrl: './assignment-session-close-item-modal.component.html',
-  styleUrl: './assignment-session-close-item-modal.component.scss',
+    selector: 'app-assignment-session-close-item-modal',
+    templateUrl: './assignment-session-close-item-modal.component.html',
+    styleUrl: './assignment-session-close-item-modal.component.scss',
+    standalone: false
 })
 export class AssignmentSessionCloseItemModalComponent implements ISubbmittable {
   @Input({ required: true }) session: AssignmentSession;

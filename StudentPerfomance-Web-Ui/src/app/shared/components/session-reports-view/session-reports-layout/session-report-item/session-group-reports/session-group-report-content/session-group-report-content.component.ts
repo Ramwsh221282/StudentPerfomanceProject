@@ -7,11 +7,10 @@ import { toPng } from 'html-to-image';
 import jsPDF from 'jspdf';
 
 @Component({
-  selector: 'app-session-group-report-content',
-  standalone: true,
-  imports: [NgIf, DatePipe, NgClass, NgOptimizedImage],
-  templateUrl: './session-group-report-content.component.html',
-  styleUrl: './session-group-report-content.component.scss',
+    selector: 'app-session-group-report-content',
+    imports: [NgIf, DatePipe, NgClass, NgOptimizedImage],
+    templateUrl: './session-group-report-content.component.html',
+    styleUrl: './session-group-report-content.component.scss'
 })
 export class SessionGroupReportContentComponent {
   @Input({ required: true }) currentGroup: GroupReportInterface;

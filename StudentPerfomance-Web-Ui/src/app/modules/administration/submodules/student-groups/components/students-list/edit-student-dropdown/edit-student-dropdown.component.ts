@@ -7,9 +7,10 @@ import { catchError, Observable, tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
-  selector: 'app-edit-student-dropdown',
-  templateUrl: './edit-student-dropdown.component.html',
-  styleUrl: './edit-student-dropdown.component.scss',
+    selector: 'app-edit-student-dropdown',
+    templateUrl: './edit-student-dropdown.component.html',
+    styleUrl: './edit-student-dropdown.component.scss',
+    standalone: false
 })
 export class EditStudentDropdownComponent implements OnInit, ISubbmittable {
   @Input({ required: true }) student: Student;

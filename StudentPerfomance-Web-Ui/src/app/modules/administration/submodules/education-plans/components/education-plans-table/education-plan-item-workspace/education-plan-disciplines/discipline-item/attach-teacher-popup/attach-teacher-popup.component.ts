@@ -4,9 +4,10 @@ import { DepartmentDataService } from '../../../../../../../departments/componen
 import { Teacher } from '../../../../../../../teachers/models/teacher.interface';
 
 @Component({
-  selector: 'app-attach-teacher-popup',
-  templateUrl: './attach-teacher-popup.component.html',
-  styleUrl: './attach-teacher-popup.component.scss',
+    selector: 'app-attach-teacher-popup',
+    templateUrl: './attach-teacher-popup.component.html',
+    styleUrl: './attach-teacher-popup.component.scss',
+    standalone: false
 })
 export class AttachTeacherPopupComponent implements OnInit {
   protected departments: Department[];

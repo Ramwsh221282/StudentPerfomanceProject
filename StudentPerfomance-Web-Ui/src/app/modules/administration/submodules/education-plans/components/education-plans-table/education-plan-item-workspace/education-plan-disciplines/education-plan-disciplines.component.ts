@@ -23,10 +23,11 @@ import { SemesterDisciplinesEditService } from '../semester-disciplines-edit.ser
 import { SemesterDisciplinesRemoveService } from '../semester-disciplines-remove.service';
 
 @Component({
-  selector: 'app-education-plan-disciplines',
-  templateUrl: './education-plan-disciplines.component.html',
-  styleUrl: './education-plan-disciplines.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-education-plan-disciplines',
+    templateUrl: './education-plan-disciplines.component.html',
+    styleUrl: './education-plan-disciplines.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class EducationPlanDisciplinesComponent implements ISubbmittable {
   @Input({ required: true }) plan: EducationPlan;

@@ -4,9 +4,10 @@ import { Router } from '@angular/router';
 import { User } from '../../../../../../pages/user-page/services/user-interface';
 
 @Component({
-  selector: 'app-users-table',
-  templateUrl: './users-table.component.html',
-  styleUrl: './users-table.component.scss',
+    selector: 'app-users-table',
+    templateUrl: './users-table.component.html',
+    styleUrl: './users-table.component.scss',
+    standalone: false
 })
 export class UsersTableComponent {
   @Input({ required: true }) users: UserRecord[];

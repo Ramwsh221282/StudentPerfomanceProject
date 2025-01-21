@@ -3,9 +3,10 @@ import { UserRecord } from '../../../services/user-table-element-interface';
 import { DatePipe } from '@angular/common';
 
 @Component({
-  selector: 'app-users-item',
-  templateUrl: './users-item.component.html',
-  styleUrl: './users-item.component.scss',
+    selector: 'app-users-item',
+    templateUrl: './users-item.component.html',
+    styleUrl: './users-item.component.scss',
+    standalone: false
 })
 export class UsersItemComponent implements OnInit {
   @Input({ required: true }) user: UserRecord;

@@ -4,10 +4,11 @@ import { TeacherJournalDiscipline } from '../../../../models/teacher-journal-dis
 import { TeacherAssignmentsService } from './teacher-assignments.service';
 
 @Component({
-  selector: 'app-teacher-assignments',
-  templateUrl: './teacher-assignments.component.html',
-  styleUrl: './teacher-assignments.component.scss',
-  providers: [TeacherAssignmentsService],
+    selector: 'app-teacher-assignments',
+    templateUrl: './teacher-assignments.component.html',
+    styleUrl: './teacher-assignments.component.scss',
+    providers: [TeacherAssignmentsService],
+    standalone: false
 })
 export class TeacherAssignmentsComponent {
   @Input({ required: true }) student: TeacherJournalStudent;

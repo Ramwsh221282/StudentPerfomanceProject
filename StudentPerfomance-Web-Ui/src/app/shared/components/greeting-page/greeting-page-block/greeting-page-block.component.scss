@@ -8,12 +8,12 @@
   color: #fff;
   font-weight: bold;
   font-size: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 4.0px 8.0px 8.0px hsl(0deg 0% 0% / 0.38);
   transition: box-shadow 0.3s ease;
 
   &:hover {
     transition: box-shadow 0.3s ease;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 4.0px 8.0px 8.0px hsl(0deg 0% 0% / 0.38);
   }
 }
 
@@ -27,7 +27,7 @@
 
   &:hover {
     transition: box-shadow 0.3s ease;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 4.0px 8.0px 8.0px hsl(0deg 0% 0% / 0.38);
   }
 }
 
@@ -35,7 +35,7 @@
   max-width: 300px;
   max-height: 275px;
   border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 4.0px 8.0px 8.0px hsl(0deg 0% 0% / 0.38);
 }
 
 .block-text-section {
@@ -52,7 +52,7 @@
 
   &:hover {
     transition: box-shadow 0.3s ease;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 4.0px 8.0px 8.0px hsl(0deg 0% 0% / 0.38);
   }
 }
 

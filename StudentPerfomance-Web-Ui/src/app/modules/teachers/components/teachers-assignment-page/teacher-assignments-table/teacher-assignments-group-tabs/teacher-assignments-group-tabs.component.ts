@@ -4,11 +4,10 @@ import { NgClass, NgForOf, NgIf } from '@angular/common';
 import { TeacherAssignmentGroupMenuComponent } from './teacher-assignment-group-menu/teacher-assignment-group-menu.component';
 
 @Component({
-  selector: 'app-teacher-assignments-group-tabs',
-  standalone: true,
-  imports: [NgForOf, NgClass, NgIf, TeacherAssignmentGroupMenuComponent],
-  templateUrl: './teacher-assignments-group-tabs.component.html',
-  styleUrl: './teacher-assignments-group-tabs.component.scss',
+    selector: 'app-teacher-assignments-group-tabs',
+    imports: [NgForOf, NgClass, NgIf, TeacherAssignmentGroupMenuComponent],
+    templateUrl: './teacher-assignments-group-tabs.component.html',
+    styleUrl: './teacher-assignments-group-tabs.component.scss'
 })
 export class TeacherAssignmentsGroupTabsComponent {
   @Input({ required: true }) teacherJournals: TeacherJournal[];

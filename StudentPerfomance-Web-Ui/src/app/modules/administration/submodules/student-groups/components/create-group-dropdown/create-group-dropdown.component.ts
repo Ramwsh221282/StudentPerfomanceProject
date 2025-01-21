@@ -7,9 +7,10 @@ import { catchError, Observable, tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
-  selector: 'app-create-group-dropdown',
-  templateUrl: './create-group-dropdown.component.html',
-  styleUrl: './create-group-dropdown.component.scss',
+    selector: 'app-create-group-dropdown',
+    templateUrl: './create-group-dropdown.component.html',
+    styleUrl: './create-group-dropdown.component.scss',
+    standalone: false
 })
 export class CreateGroupDropdownComponent implements ISubbmittable {
   @Input({ required: true }) visibility: boolean = false;

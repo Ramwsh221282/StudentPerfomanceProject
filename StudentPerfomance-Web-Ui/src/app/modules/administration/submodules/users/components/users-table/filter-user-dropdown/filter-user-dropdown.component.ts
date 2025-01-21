@@ -8,9 +8,10 @@ import { UsersFilterFetchPolicy } from '../../../models/users-fetch-policies/use
 import { DefaultFetchPolicy } from '../../../models/users-fetch-policies/users-default-fetch-policy';
 
 @Component({
-  selector: 'app-filter-user-dropdown',
-  templateUrl: './filter-user-dropdown.component.html',
-  styleUrl: './filter-user-dropdown.component.scss',
+    selector: 'app-filter-user-dropdown',
+    templateUrl: './filter-user-dropdown.component.html',
+    styleUrl: './filter-user-dropdown.component.scss',
+    standalone: false
 })
 export class FilterUserDropdownComponent {
   @Input({ required: true }) visibility: boolean = false;

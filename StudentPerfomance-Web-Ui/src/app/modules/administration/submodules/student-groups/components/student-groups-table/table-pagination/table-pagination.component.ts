@@ -2,9 +2,10 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { StudentGroupsFacadeService } from '../../../services/student-groups-facade.service';
 
 @Component({
-  selector: 'app-table-pagination',
-  templateUrl: './table-pagination.component.html',
-  styleUrl: './table-pagination.component.scss',
+    selector: 'app-table-pagination',
+    templateUrl: './table-pagination.component.html',
+    styleUrl: './table-pagination.component.scss',
+    standalone: false
 })
 export class TablePaginationComponent implements OnInit {
   @Output() pageChange: EventEmitter<void> = new EventEmitter();

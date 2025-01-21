@@ -10,14 +10,6 @@
   <component name="OptimizeOnSaveOptions">
     <option name="myRunOnSave" value="true" />
   </component>
-  <component name="PrettierConfiguration">
-    <option name="myConfigurationMode" value="AUTOMATIC" />
-    <option name="myRunOnSave" value="true" />
-    <option name="myFilesPattern" value="**/*.{js,ts,jsx,tsx,vue,astro,scss,css,sass,json}" />
-  </component>
-  <component name="ProjectDictionaryState">
-    <dictionary name="max" />
-  </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
       <profile-state>

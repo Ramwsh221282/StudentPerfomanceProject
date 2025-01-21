@@ -2,9 +2,10 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { EducationPlanSemester } from '../../../../models/education-plan-interface';
 
 @Component({
-  selector: 'app-education-plan-semester-button',
-  templateUrl: './education-plan-semester-button.component.html',
-  styleUrl: './education-plan-semester-button.component.scss',
+    selector: 'app-education-plan-semester-button',
+    templateUrl: './education-plan-semester-button.component.html',
+    styleUrl: './education-plan-semester-button.component.scss',
+    standalone: false
 })
 export class EducationPlanSemesterButtonComponent {
   @Input({ required: true }) semester: EducationPlanSemester;

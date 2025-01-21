@@ -4,12 +4,11 @@ import { ActivatedRoute } from '@angular/router';
 import { catchError, Observable, tap } from 'rxjs';
 
 @Component({
-  selector: 'app-recovery-confirmation',
-  standalone: true,
-  imports: [],
-  templateUrl: './recovery-confirmation.component.html',
-  styleUrl: './recovery-confirmation.component.scss',
-  providers: [RecoveryConfirmationService],
+    selector: 'app-recovery-confirmation',
+    imports: [],
+    templateUrl: './recovery-confirmation.component.html',
+    styleUrl: './recovery-confirmation.component.scss',
+    providers: [RecoveryConfirmationService]
 })
 export class RecoveryConfirmationComponent implements OnInit {
   protected text: string = '';

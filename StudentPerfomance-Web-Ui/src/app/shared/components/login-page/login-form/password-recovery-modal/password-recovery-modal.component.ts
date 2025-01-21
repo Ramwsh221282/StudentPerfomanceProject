@@ -6,12 +6,11 @@ import { PasswordRecoveryService } from './password-recovery.service';
 import { catchError, Observable, tap } from 'rxjs';
 
 @Component({
-  selector: 'app-password-recovery-modal',
-  standalone: true,
-  imports: [ReactiveFormsModule, FormsModule],
-  templateUrl: './password-recovery-modal.component.html',
-  styleUrl: './password-recovery-modal.component.scss',
-  providers: [PasswordRecoveryService],
+    selector: 'app-password-recovery-modal',
+    imports: [ReactiveFormsModule, FormsModule],
+    templateUrl: './password-recovery-modal.component.html',
+    styleUrl: './password-recovery-modal.component.scss',
+    providers: [PasswordRecoveryService]
 })
 export class PasswordRecoveryModalComponent implements ISubbmittable {
   @Output() visibilityEmitter: EventEmitter<void> = new EventEmitter();

@@ -12,10 +12,11 @@ import { catchError, Observable, tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
-  selector: 'app-create-teacher-user-dropdown',
-  templateUrl: './create-teacher-user-dropdown.component.html',
-  styleUrl: './create-teacher-user-dropdown.component.scss',
-  providers: [UserCreationService, DepartmentDataService, TeacherDataService],
+    selector: 'app-create-teacher-user-dropdown',
+    templateUrl: './create-teacher-user-dropdown.component.html',
+    styleUrl: './create-teacher-user-dropdown.component.scss',
+    providers: [UserCreationService, DepartmentDataService, TeacherDataService],
+    standalone: false
 })
 export class CreateTeacherUserDropdownComponent
   implements ISubbmittable, OnInit

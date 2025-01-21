@@ -8,10 +8,11 @@ import { AuthService } from '../../../../../pages/user-page/services/auth.servic
 import { AdminAccessResponse } from '../admin-assignments-access-resolver-dialog/admin-assignments-access.service';
 
 @Component({
-  selector: 'app-teacher-assignments-table',
-  templateUrl: './teacher-assignments-table.component.html',
-  styleUrl: './teacher-assignments-table.component.scss',
-  providers: [TeacherAssignmentsDataService],
+    selector: 'app-teacher-assignments-table',
+    templateUrl: './teacher-assignments-table.component.html',
+    styleUrl: './teacher-assignments-table.component.scss',
+    providers: [TeacherAssignmentsDataService],
+    standalone: false
 })
 export class TeacherAssignmentsTableComponent implements OnInit {
   protected _teacherAssignments: TeacherAssignmentInfo;

@@ -2,9 +2,10 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { SemesterDiscipline } from '../../../../../models/education-plan-interface';
 
 @Component({
-  selector: 'app-discipline-item',
-  templateUrl: './discipline-item.component.html',
-  styleUrl: './discipline-item.component.scss',
+    selector: 'app-discipline-item',
+    templateUrl: './discipline-item.component.html',
+    styleUrl: './discipline-item.component.scss',
+    standalone: false
 })
 export class DisciplineItemComponent {
   @Input({ required: true }) discipline: SemesterDiscipline;

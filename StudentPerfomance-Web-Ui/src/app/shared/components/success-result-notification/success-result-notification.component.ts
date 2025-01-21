@@ -1,11 +1,10 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-success-result-notification',
-  standalone: true,
-  imports: [],
-  templateUrl: './success-result-notification.component.html',
-  styleUrl: './success-result-notification.component.scss',
+    selector: 'app-success-result-notification',
+    imports: [],
+    templateUrl: './success-result-notification.component.html',
+    styleUrl: './success-result-notification.component.scss'
 })
 export class SuccessResultNotificationComponent {
   @Input({ required: true }) message: string;

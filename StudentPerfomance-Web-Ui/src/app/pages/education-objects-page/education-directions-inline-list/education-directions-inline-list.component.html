@@ -1,0 +1,16 @@
+<section class="education-directions-inline-list-wrapper">
+  <div class="education-directions-list-controls-container">
+    <label class="education-list-title">Направления подготовки</label>
+    <div class="education-directions-inline-list-control-panel">
+      <app-add-icon-button [paramHeight]="40" [paramWidth]="40"></app-add-icon-button>
+      <app-green-outline-button [label]="'Создать новое направление подготовки'"></app-green-outline-button>
+    </div>
+  </div>
+  <div class="education-directions-inline-list">
+    <app-education-direction-item-block *ngFor="let direction of educationDirections"
+                                        [direction]="direction"
+                                        (selectedDirection)="currentDirection = $event; selectedEducationDirection.emit(currentDirection)"
+                                        [isSelected]="currentDirection != null && currentDirection.id == direction.id">
+    </app-education-direction-item-block>
+  </div>
+</section>

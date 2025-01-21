@@ -2,9 +2,10 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { DepartmentPaginationService } from '../department-pagination.service';
 
 @Component({
-  selector: 'app-department-pagination',
-  templateUrl: './department-pagination.component.html',
-  styleUrl: './department-pagination.component.scss',
+    selector: 'app-department-pagination',
+    templateUrl: './department-pagination.component.html',
+    styleUrl: './department-pagination.component.scss',
+    standalone: false
 })
 export class DepartmentPaginationComponent implements OnInit {
   @Output() pageEmitter: EventEmitter<void> = new EventEmitter();

@@ -7,9 +7,10 @@ import { catchError, Observable, tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
-  selector: 'app-remove-group-popup',
-  templateUrl: './remove-group-popup.component.html',
-  styleUrl: './remove-group-popup.component.scss',
+    selector: 'app-remove-group-popup',
+    templateUrl: './remove-group-popup.component.html',
+    styleUrl: './remove-group-popup.component.scss',
+    standalone: false
 })
 export class RemoveGroupPopupComponent implements ISubbmittable {
   @Input({ required: true }) visibility: boolean = false;

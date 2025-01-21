@@ -2,9 +2,10 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { AssignmentSession } from '../../../models/assignment-session-interface';
 
 @Component({
-  selector: 'app-session-item',
-  templateUrl: './session-item.component.html',
-  styleUrl: './session-item.component.scss',
+    selector: 'app-session-item',
+    templateUrl: './session-item.component.html',
+    styleUrl: './session-item.component.scss',
+    standalone: false
 })
 export class SessionItemComponent {
   @Input({ required: true }) session: AssignmentSession;

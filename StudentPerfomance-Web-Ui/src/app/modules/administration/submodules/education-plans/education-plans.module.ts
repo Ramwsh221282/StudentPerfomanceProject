@@ -71,6 +71,6 @@ import { AttachTeacherSelectTeachersComponent } from './components/education-pla
     AttachTeacherSelectComponent,
     AttachTeacherSelectTeachersComponent,
   ],
-  exports: [EducationPlansPageComponent],
+  exports: [EducationPlansPageComponent, DisciplineItemComponent],
 })
 export class EducationPlansModule {}

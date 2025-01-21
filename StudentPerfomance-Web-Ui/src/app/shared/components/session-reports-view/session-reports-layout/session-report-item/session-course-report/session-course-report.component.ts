@@ -10,11 +10,10 @@ import { toPng } from 'html-to-image';
 import jsPDF from 'jspdf';
 
 @Component({
-  selector: 'app-session-course-report',
-  standalone: true,
-  imports: [DatePipe, RouterLink, NgOptimizedImage],
-  templateUrl: './session-course-report.component.html',
-  styleUrl: './session-course-report.component.scss',
+    selector: 'app-session-course-report',
+    imports: [DatePipe, RouterLink, NgOptimizedImage],
+    templateUrl: './session-course-report.component.html',
+    styleUrl: './session-course-report.component.scss'
 })
 export class SessionCourseReportComponent implements OnInit {
   protected creationDate: string = '';

@@ -1,0 +1,19 @@
+.remove-icon-button-container {
+  display: block;
+  border: solid 2px #b1341b;
+  border-radius: 5px;
+  cursor: pointer;
+
+  &:hover {
+    border: solid 2px #d63f20;
+  }
+}
+
+.remove-icon-button-layout {
+  padding: 2px;
+  filter: invert(24%) sepia(62%) saturate(2108%) hue-rotate(347deg) brightness(93%) contrast(96%);
+
+  &:hover {
+    filter: invert(27%) sepia(55%) saturate(3565%) hue-rotate(355deg) brightness(90%) contrast(84%);
+  }
+}

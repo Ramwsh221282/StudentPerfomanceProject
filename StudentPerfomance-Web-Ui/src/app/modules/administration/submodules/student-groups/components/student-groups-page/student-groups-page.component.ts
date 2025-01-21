@@ -11,19 +11,20 @@ import { StudentGroup } from '../../services/studentsGroup.interface';
 import { Student } from '../../../students/models/student.interface';
 
 @Component({
-  selector: 'app-student-groups-page',
-  templateUrl: './student-groups-page.component.html',
-  styleUrl: './student-groups-page.component.scss',
-  providers: [
-    StudentGroupsCreateDataService,
-    StudentGroupsDeleteDataService,
-    StudentGroupsFetchDataService,
-    StudentGroupsMergeDataService,
-    StudentGroupsPaginationService,
-    StudentGroupsUpdateDataService,
-    StudentGroupsFacadeService,
-    UserOperationNotificationService,
-  ],
+    selector: 'app-student-groups-page',
+    templateUrl: './student-groups-page.component.html',
+    styleUrl: './student-groups-page.component.scss',
+    providers: [
+        StudentGroupsCreateDataService,
+        StudentGroupsDeleteDataService,
+        StudentGroupsFetchDataService,
+        StudentGroupsMergeDataService,
+        StudentGroupsPaginationService,
+        StudentGroupsUpdateDataService,
+        StudentGroupsFacadeService,
+        UserOperationNotificationService,
+    ],
+    standalone: false
 })
 export class StudentGroupsPageComponent implements OnInit {
   protected groups: StudentGroup[] = [];

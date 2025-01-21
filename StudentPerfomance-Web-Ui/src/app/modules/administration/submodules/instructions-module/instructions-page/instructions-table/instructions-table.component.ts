@@ -8,20 +8,19 @@ import { InstructionsAdminsComponent } from './instructions-admins/instructions-
 import { InstructionsControlWeeksComponent } from './instructions-control-weeks/instructions-control-weeks.component';
 
 @Component({
-  selector: 'app-instructions-table',
-  standalone: true,
-  imports: [
-    NgForOf,
-    NgClass,
-    InstructionsDirectionsComponent,
-    InstructionsEduplansComponent,
-    InstructionsDepartmentsComponent,
-    InstructionsStudentsComponent,
-    InstructionsAdminsComponent,
-    InstructionsControlWeeksComponent,
-  ],
-  templateUrl: './instructions-table.component.html',
-  styleUrl: './instructions-table.component.scss',
+    selector: 'app-instructions-table',
+    imports: [
+        NgForOf,
+        NgClass,
+        InstructionsDirectionsComponent,
+        InstructionsEduplansComponent,
+        InstructionsDepartmentsComponent,
+        InstructionsStudentsComponent,
+        InstructionsAdminsComponent,
+        InstructionsControlWeeksComponent,
+    ],
+    templateUrl: './instructions-table.component.html',
+    styleUrl: './instructions-table.component.scss'
 })
 export class InstructionsTableComponent {
   protected readonly tabs: any = [

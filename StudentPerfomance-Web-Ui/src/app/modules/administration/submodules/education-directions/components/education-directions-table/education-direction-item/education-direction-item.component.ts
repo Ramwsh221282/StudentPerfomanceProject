@@ -2,9 +2,10 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { EducationDirection } from '../../../models/education-direction-interface';
 
 @Component({
-  selector: 'app-education-direction-item',
-  templateUrl: './education-direction-item.component.html',
-  styleUrl: './education-direction-item.component.scss',
+    selector: 'app-education-direction-item',
+    templateUrl: './education-direction-item.component.html',
+    styleUrl: './education-direction-item.component.scss',
+    standalone: false
 })
 export class EducationDirectionItemComponent {
   @Input({ required: true }) public direction: EducationDirection;

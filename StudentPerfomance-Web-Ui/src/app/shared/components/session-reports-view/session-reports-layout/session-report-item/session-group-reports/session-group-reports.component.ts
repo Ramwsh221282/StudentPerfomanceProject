@@ -9,17 +9,16 @@ import { DisciplineReportInterface } from '../../../Models/Data/discipline-repor
 import { StudentReportInterface } from '../../../Models/Data/student-report-interface';
 
 @Component({
-  selector: 'app-session-group-reports',
-  standalone: true,
-  imports: [
-    DatePipe,
-    RouterLink,
-    SessionGroupReportControlBarComponent,
-    SessionGroupReportContentComponent,
-    NgIf,
-  ],
-  templateUrl: './session-group-reports.component.html',
-  styleUrl: './session-group-reports.component.scss',
+    selector: 'app-session-group-reports',
+    imports: [
+        DatePipe,
+        RouterLink,
+        SessionGroupReportControlBarComponent,
+        SessionGroupReportContentComponent,
+        NgIf,
+    ],
+    templateUrl: './session-group-reports.component.html',
+    styleUrl: './session-group-reports.component.scss'
 })
 export class SessionGroupReportsComponent implements OnInit {
   protected isInited: boolean = false;

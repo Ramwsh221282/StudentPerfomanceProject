@@ -11,11 +11,10 @@ import { SessionReportDefaultFetchPolicy } from '../Services/data-services/repor
 import { AppConfigService } from '../../../../app.config.service';
 
 @Component({
-  selector: 'app-session-reports-filter-input',
-  standalone: true,
-  imports: [FormsModule],
-  templateUrl: './session-reports-filter-input.component.html',
-  styleUrl: './session-reports-filter-input.component.scss',
+    selector: 'app-session-reports-filter-input',
+    imports: [FormsModule],
+    templateUrl: './session-reports-filter-input.component.html',
+    styleUrl: './session-reports-filter-input.component.scss'
 })
 export class SessionReportsFilterInputComponent implements ISubbmittable {
   @Output() emitFilter: EventEmitter<void> = new EventEmitter();

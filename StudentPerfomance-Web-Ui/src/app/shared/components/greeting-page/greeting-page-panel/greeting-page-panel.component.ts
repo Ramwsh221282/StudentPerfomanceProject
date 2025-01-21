@@ -5,11 +5,10 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../../../pages/user-page/services/auth.service';
 
 @Component({
-  selector: 'app-greeting-page-panel',
-  standalone: true,
-  imports: [BlueOutlineButtonComponent, GreenOutlineButtonComponent],
-  templateUrl: './greeting-page-panel.component.html',
-  styleUrl: './greeting-page-panel.component.scss',
+    selector: 'app-greeting-page-panel',
+    imports: [BlueOutlineButtonComponent, GreenOutlineButtonComponent],
+    templateUrl: './greeting-page-panel.component.html',
+    styleUrl: './greeting-page-panel.component.scss'
 })
 export class GreetingPagePanelComponent {
   public constructor(

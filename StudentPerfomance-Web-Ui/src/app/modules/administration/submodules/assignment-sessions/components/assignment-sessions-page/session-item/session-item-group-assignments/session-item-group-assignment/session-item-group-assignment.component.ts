@@ -4,9 +4,10 @@ import { StudentAssignments } from '../../../../../models/assignment-session-stu
 import { AssignmentSessionAssignment } from '../../../../../models/assignment-session-assignment';
 
 @Component({
-  selector: 'app-session-item-group-assignment',
-  templateUrl: './session-item-group-assignment.component.html',
-  styleUrl: './session-item-group-assignment.component.scss',
+    selector: 'app-session-item-group-assignment',
+    templateUrl: './session-item-group-assignment.component.html',
+    styleUrl: './session-item-group-assignment.component.scss',
+    standalone: false
 })
 export class SessionItemGroupAssignmentComponent {
   @Input({ required: true }) week: AssignmentSessionWeek;

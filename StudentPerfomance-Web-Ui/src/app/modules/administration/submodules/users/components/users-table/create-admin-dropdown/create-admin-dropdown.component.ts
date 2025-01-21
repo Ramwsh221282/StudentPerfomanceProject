@@ -8,10 +8,11 @@ import { catchError, Observable, tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
-  selector: 'app-create-admin-dropdown',
-  templateUrl: './create-admin-dropdown.component.html',
-  styleUrl: './create-admin-dropdown.component.scss',
-  providers: [UserCreationService],
+    selector: 'app-create-admin-dropdown',
+    templateUrl: './create-admin-dropdown.component.html',
+    styleUrl: './create-admin-dropdown.component.scss',
+    providers: [UserCreationService],
+    standalone: false
 })
 export class CreateAdminDropdownComponent implements ISubbmittable {
   @Input({ required: true }) visibility: boolean = false;

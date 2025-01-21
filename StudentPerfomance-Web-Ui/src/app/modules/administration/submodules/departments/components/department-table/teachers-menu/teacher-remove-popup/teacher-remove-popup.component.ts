@@ -7,9 +7,10 @@ import { catchError, Observable, tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
-  selector: 'app-teacher-remove-popup',
-  templateUrl: './teacher-remove-popup.component.html',
-  styleUrl: './teacher-remove-popup.component.scss',
+    selector: 'app-teacher-remove-popup',
+    templateUrl: './teacher-remove-popup.component.html',
+    styleUrl: './teacher-remove-popup.component.scss',
+    standalone: false
 })
 export class TeacherRemovePopupComponent {
   @Input({ required: true }) department: Department;

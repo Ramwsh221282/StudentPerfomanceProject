@@ -1,0 +1,49 @@
+.education-directions-inline-list-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 0.2rem;
+  gap: 0.2rem;
+  background: #0074F0;
+  border-radius: 20px;
+  border: solid 1px #99caff;
+  min-width: 76vw;
+  max-width: 76vw;
+  align-items: flex-start;
+  box-shadow: 4.0px 8.0px 8.0px hsl(0deg 0% 0% / 0.38);
+}
+
+.education-list-title {
+  font-weight: bold;
+  color: #1c172e;
+}
+
+.education-directions-list-controls-container {
+  margin-left: -5px;
+  margin-top: -5px;
+  display: inline-flex;
+  flex-direction: column;
+  background: #fff;
+  border: solid 1px #d9d9d9;
+  border-radius: 20px 0 0 0;
+  padding: 0.5rem;
+}
+
+.education-directions-inline-list-control-panel {
+  align-items: center;
+  display: inline-flex;
+  flex-direction: row;
+  color: #1c172e;
+  font-weight: bold;
+  gap: 1rem;
+}
+
+
+.education-directions-inline-list {
+  overflow: auto;
+  display: inline-flex;
+  flex-direction: row;
+  gap: 1rem;
+  padding: 1rem;
+  min-width: 75vw;
+  max-width: 75vw;
+}

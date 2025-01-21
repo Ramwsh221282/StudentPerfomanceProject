@@ -1,0 +1,49 @@
+* {
+  cursor: pointer;
+  user-select: none;
+}
+
+.education-direction-item-block-wrapper {
+  display: inline-flex;
+  flex-direction: row;
+  background: #5CE600;
+  border-radius: 20px;
+  border: solid 1px #b3ff80;
+  min-width: 350px;
+  max-width: 350px;
+  box-shadow: 4.0px 8.0px 8.0px hsl(0deg 0% 0% / 0.38);
+}
+
+.selected {
+  background: #47b300;
+}
+
+.education-direction-icon-container {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.5rem;
+}
+
+.education-direction-controls-container {
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  display: inline-flex;
+  flex-direction: row;
+  gap: 0.2rem;
+  padding: 0.5rem;
+}
+
+.education-direction-data-container {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.5rem;
+}
+
+.education-direction-data-label {
+  font-size: 16px;
+  color: #FFFFFF;
+  text-shadow: 1px 1px black;
+  font-weight: bold;
+}

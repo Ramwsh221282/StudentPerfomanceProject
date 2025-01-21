@@ -2,10 +2,10 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-yellow-outline-button',
-  standalone: true,
   imports: [],
   templateUrl: './yellow-outline-button.component.html',
   styleUrl: './yellow-outline-button.component.scss',
+  standalone: true,
 })
 export class YellowOutlineButtonComponent {
   @Input() label: string = '';

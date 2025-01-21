@@ -1,0 +1,36 @@
+* {
+  cursor: pointer;
+}
+
+.semester-data-item-wrapper {
+  width: 100%;
+  user-select: none;
+  display: inline-flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: #e6e6e6;
+  border: solid 1px #CCCCCC;
+  border-radius: 5px;
+  transition: 0.3s;
+
+  &:hover {
+    transition: 0.3s;
+    background: #e6f7ff;
+  }
+}
+
+.current-semester {
+  background: #e6f7ff;
+}
+
+.semester-data-label-container {
+  color: #1c172e;
+  font-weight: bold;
+  font-size: 14px;
+  display: inline-flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: center;
+}

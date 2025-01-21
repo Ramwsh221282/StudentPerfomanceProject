@@ -14,24 +14,23 @@ import { catchError, Observable, tap } from 'rxjs';
 import { PasswordRecoveryService } from './password-recovery-modal/password-recovery.service';
 
 @Component({
-  selector: 'app-login-form',
-  standalone: true,
-  imports: [
-    ReactiveFormsModule,
-    FormsModule,
-    NgIf,
-    SuccessResultNotificationComponent,
-    FailureResultNotificationComponent,
-    PasswordRecoveryModalComponent,
-    NgForOf,
-    NgClass,
-    FloatingLabelInputComponent,
-    GreenOutlineButtonComponent,
-    YellowOutlineButtonComponent,
-  ],
-  templateUrl: './login-form.component.html',
-  styleUrl: './login-form.component.scss',
-  providers: [UserOperationNotificationService],
+    selector: 'app-login-form',
+    imports: [
+        ReactiveFormsModule,
+        FormsModule,
+        NgIf,
+        SuccessResultNotificationComponent,
+        FailureResultNotificationComponent,
+        PasswordRecoveryModalComponent,
+        NgForOf,
+        NgClass,
+        FloatingLabelInputComponent,
+        GreenOutlineButtonComponent,
+        YellowOutlineButtonComponent,
+    ],
+    templateUrl: './login-form.component.html',
+    styleUrl: './login-form.component.scss',
+    providers: [UserOperationNotificationService]
 })
 export class LoginFormComponent {
   protected activeTab = 1;

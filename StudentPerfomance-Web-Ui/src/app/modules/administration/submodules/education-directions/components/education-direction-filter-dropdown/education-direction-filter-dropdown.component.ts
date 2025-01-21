@@ -7,9 +7,10 @@ import { FilterFetchPolicy } from '../../models/fetch-policies/filter-fetch-poli
 import { DefaultFetchPolicy } from '../../models/fetch-policies/default-fetch-policy';
 
 @Component({
-  selector: 'app-education-direction-filter-dropdown',
-  templateUrl: './education-direction-filter-dropdown.component.html',
-  styleUrl: './education-direction-filter-dropdown.component.scss',
+    selector: 'app-education-direction-filter-dropdown',
+    templateUrl: './education-direction-filter-dropdown.component.html',
+    styleUrl: './education-direction-filter-dropdown.component.scss',
+    standalone: false
 })
 export class EducationDirectionFilterDropdownComponent {
   @Input() visibility: boolean = false;

@@ -1,0 +1,16 @@
+<section class="education-plan-data-list-layout">
+  <div class="education-plan-data-list-title">
+    <label>Учебные планы направления</label>
+  </div>
+  <div class="education-plan-data-list-container">
+    <div class="education-plan-data-list-controls">
+      <app-add-icon-button [paramWidth]="40" [paramHeight]="40"></app-add-icon-button>
+      <app-green-outline-button [label]="'Создать новый учебный план'"></app-green-outline-button>
+    </div>
+    <app-education-plan-data-item *ngFor="let plan of direction.plans"
+                                  [isCurrentPlan]="currentEducationPlan != null && currentEducationPlan.id == plan.id"
+                                  [educationPlan]="plan"
+                                  (selectedPlan)="currentEducationPlan = $event; selectedEducationPlan.emit(currentEducationPlan)">
+    </app-education-plan-data-item>
+  </div>
+</section>

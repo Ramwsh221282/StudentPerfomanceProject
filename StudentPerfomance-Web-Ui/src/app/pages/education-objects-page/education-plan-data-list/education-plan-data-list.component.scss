@@ -1,0 +1,50 @@
+* {
+  user-select: none;
+}
+
+.education-plan-data-list-layout {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background-color: #0074F0;
+  width: 25vw;
+  height: 52vh;
+  border-radius: 10px;
+  box-shadow: 4.0px 8.0px 8.0px hsl(0deg 0% 0% / 0.38);
+}
+
+.education-plan-data-list-title {
+  padding: 0.5rem;
+  align-self: center;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  color: #FFFFFF;
+  font-weight: bold;
+  text-shadow: 1px 1px black;
+  font-size: 18px;
+}
+
+.education-plan-data-list-container {
+  align-self: center;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: #f0f0f0;
+  border-radius: 10px;
+  border: 1px solid #d9d9d9;
+  overflow: auto;
+  min-height: 45vh;
+  width: 95%;
+}
+
+.education-plan-data-list-controls {
+  align-items: center;
+  display: inline-flex;
+  flex-direction: row;
+  gap: 0.2rem;
+  padding: 0.5rem;
+  width: 100%;
+  border-bottom: 2px solid #CCCCCC;
+}

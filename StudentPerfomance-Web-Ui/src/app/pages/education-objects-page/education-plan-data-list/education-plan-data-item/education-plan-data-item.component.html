@@ -1,0 +1,12 @@
+<section [ngClass]="{'current-plan': isCurrentPlan}" class="education-plan-data-item-wrapper"
+         (click)="selectedPlan.emit(educationPlan)">
+  <div class="education-plan-data-label-container">
+    <img [ngSrc]="'assets/education-plan-icon.svg'" [alt]="'image'" [width]="40" [height]="40">
+    <label>Год: {{ educationPlan.year }}</label>
+    <label>Число семестров: {{ educationPlan.semesters.length }}</label>
+  </div>
+  <div class="education-plans-controls-container">
+    <app-edit-icon-button [paramHeight]="40" [paramWidth]="40"></app-edit-icon-button>
+    <app-remove-icon-button [paramHeight]="40" [paramWidth]="40"></app-remove-icon-button>
+  </div>
+</section>

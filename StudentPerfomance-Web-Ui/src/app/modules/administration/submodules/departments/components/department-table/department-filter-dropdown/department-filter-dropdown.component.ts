@@ -10,9 +10,10 @@ import { Department } from '../../../models/departments.interface';
 import { DepartmentDefaultFetchPolicy } from '../../../models/fetch-policies/default-fetch-policy';
 
 @Component({
-  selector: 'app-department-filter-dropdown',
-  templateUrl: './department-filter-dropdown.component.html',
-  styleUrl: './department-filter-dropdown.component.scss',
+    selector: 'app-department-filter-dropdown',
+    templateUrl: './department-filter-dropdown.component.html',
+    styleUrl: './department-filter-dropdown.component.scss',
+    standalone: false
 })
 export class DepartmentFilterDropdownComponent implements ISubbmittable {
   @Input({ required: true }) visibility: boolean = false;

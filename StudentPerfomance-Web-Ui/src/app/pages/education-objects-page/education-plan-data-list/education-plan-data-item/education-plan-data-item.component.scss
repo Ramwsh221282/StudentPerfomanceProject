@@ -1,0 +1,41 @@
+* {
+  cursor: pointer;
+}
+
+.education-plan-data-item-wrapper {
+  user-select: none;
+  display: grid;
+  grid-template-columns: 1fr 90px;
+  grid-gap: 1rem;
+  padding: 0.5rem;
+  background: #e6e6e6;
+  border: solid 1px #CCCCCC;
+  border-radius: 5px;
+  transition: 0.3s;
+
+  &:hover {
+    transition: 0.3s;
+    background: #e6f7ff;
+  }
+}
+
+.current-plan {
+  background: #e6f7ff;
+}
+
+.education-plan-data-label-container {
+  color: #1c172e;
+  font-weight: bold;
+  font-size: 14px;
+  display: inline-flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: center;
+}
+
+.education-plans-controls-container {
+  align-items: center;
+  display: inline-flex;
+  flex-direction: row;
+  gap: 0.2rem;
+}

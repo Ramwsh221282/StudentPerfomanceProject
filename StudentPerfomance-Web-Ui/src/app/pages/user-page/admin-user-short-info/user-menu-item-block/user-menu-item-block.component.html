@@ -8,6 +8,6 @@
   </div>
   <div class="user-menu-controls-container">
     <img [ngSrc]="'assets/go_in.svg'" [alt]="'image'" [width]="35" height="35">
-    <app-blue-button [label]="'Перейти'"></app-blue-button>
+    <app-blue-button [label]="'Перейти'" (onClicked)="navigate()"></app-blue-button>
   </div>
 </section>

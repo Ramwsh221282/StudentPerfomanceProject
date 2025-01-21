@@ -7,10 +7,11 @@ import {
 import { UserOperationNotificationService } from '../../../../../../../shared/services/user-notifications/user-operation-notification-service.service';
 
 @Component({
-  selector: 'app-education-plan-item-workspace',
-  templateUrl: './education-plan-item-workspace.component.html',
-  styleUrl: './education-plan-item-workspace.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-education-plan-item-workspace',
+    templateUrl: './education-plan-item-workspace.component.html',
+    styleUrl: './education-plan-item-workspace.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class EducationPlanItemWorkspaceComponent {
   @Input() selectedEducationPlan: EducationPlan;

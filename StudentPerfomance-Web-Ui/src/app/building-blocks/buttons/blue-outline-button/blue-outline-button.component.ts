@@ -1,11 +1,10 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-blue-outline-button',
-  standalone: true,
-  imports: [],
-  templateUrl: './blue-outline-button.component.html',
-  styleUrl: './blue-outline-button.component.scss',
+    selector: 'app-blue-outline-button',
+    imports: [],
+    templateUrl: './blue-outline-button.component.html',
+    styleUrl: './blue-outline-button.component.scss'
 })
 export class BlueOutlineButtonComponent {
   @Input() label: string = '';

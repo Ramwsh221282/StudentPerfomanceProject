@@ -7,10 +7,11 @@ import { catchError, Observable, tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
-  selector: 'app-users-remove-modal',
-  templateUrl: './users-remove-modal.component.html',
-  styleUrl: './users-remove-modal.component.scss',
-  providers: [UserRemoveService],
+    selector: 'app-users-remove-modal',
+    templateUrl: './users-remove-modal.component.html',
+    styleUrl: './users-remove-modal.component.scss',
+    providers: [UserRemoveService],
+    standalone: false
 })
 export class UsersRemoveModalComponent implements ISubbmittable {
   @Input({ required: true }) user: UserRecord;

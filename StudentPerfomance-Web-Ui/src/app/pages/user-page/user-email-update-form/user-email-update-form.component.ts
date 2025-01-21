@@ -8,12 +8,11 @@ import { FormsModule } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 
 @Component({
-  selector: 'app-user-email-update-form',
-  standalone: true,
-  imports: [FormsModule],
-  templateUrl: './user-email-update-form.component.html',
-  styleUrl: './user-email-update-form.component.scss',
-  providers: [UserEmailUpdateService],
+    selector: 'app-user-email-update-form',
+    imports: [FormsModule],
+    templateUrl: './user-email-update-form.component.html',
+    styleUrl: './user-email-update-form.component.scss',
+    providers: [UserEmailUpdateService]
 })
 export class UserEmailUpdateFormComponent implements ISubbmittable {
   @Output() successEmitter: EventEmitter<void> = new EventEmitter();

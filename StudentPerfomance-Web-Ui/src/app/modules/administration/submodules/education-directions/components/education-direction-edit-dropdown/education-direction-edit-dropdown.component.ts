@@ -7,9 +7,10 @@ import { catchError, Observable, tap } from 'rxjs';
 import { EducationDirectionEditNotificationBulder } from './education-direction-edit-notification';
 
 @Component({
-  selector: 'app-education-direction-edit-dropdown',
-  templateUrl: './education-direction-edit-dropdown.component.html',
-  styleUrl: './education-direction-edit-dropdown.component.scss',
+    selector: 'app-education-direction-edit-dropdown',
+    templateUrl: './education-direction-edit-dropdown.component.html',
+    styleUrl: './education-direction-edit-dropdown.component.scss',
+    standalone: false
 })
 export class EducationDirectionEditDropdownComponent
   implements OnInit, ISubbmittable

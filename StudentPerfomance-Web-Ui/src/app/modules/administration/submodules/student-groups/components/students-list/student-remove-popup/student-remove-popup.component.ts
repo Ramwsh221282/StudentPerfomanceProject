@@ -8,9 +8,10 @@ import { catchError, Observable, tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
-  selector: 'app-student-remove-popup',
-  templateUrl: './student-remove-popup.component.html',
-  styleUrl: './student-remove-popup.component.scss',
+    selector: 'app-student-remove-popup',
+    templateUrl: './student-remove-popup.component.html',
+    styleUrl: './student-remove-popup.component.scss',
+    standalone: false
 })
 export class StudentRemovePopupComponent implements ISubbmittable {
   @Input({ required: true }) student: Student;

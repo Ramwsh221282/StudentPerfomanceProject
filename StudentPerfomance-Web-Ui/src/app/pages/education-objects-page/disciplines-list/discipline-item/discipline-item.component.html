@@ -1,0 +1,13 @@
+<section class="discipline-data-item-wrapper">
+  <div class="discipline-data-label-container">
+    <img [ngSrc]="'assets/discipline_icon.svg'" [alt]="'image'" [width]="40" [height]="40">
+    <label>{{ discipline.disciplineName }}</label>
+    <label
+      *ngIf="discipline.teacher">{{ discipline.teacher.surname }} {{ discipline.teacher.name[0] + '.' }} {{ discipline.teacher.patronymic[0] + '.' }}</label>
+    <label *ngIf="!discipline.teacher">Без преподавателя</label>
+    <div class="discipline-controls-container">
+      <app-edit-icon-button [paramHeight]="30" [paramWidth]="30"></app-edit-icon-button>
+      <app-remove-icon-button [paramHeight]="30" [paramWidth]="30"></app-remove-icon-button>
+    </div>
+  </div>
+</section>

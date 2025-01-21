@@ -16,17 +16,16 @@ import { AppConfigService } from '../../../../../app.config.service';
 import { SessionReportDefaultFetchPolicy } from '../../Services/data-services/reports-fetch-policies/session-report-default-fetch-policy';
 
 @Component({
-  selector: 'app-session-reports-filter-dropdown',
-  standalone: true,
-  imports: [
-    FloatingLabelInputComponent,
-    GreenOutlineButtonComponent,
-    RedOutlineButtonComponent,
-    DropdownListComponent,
-    NgIf,
-  ],
-  templateUrl: './session-reports-filter-dropdown.component.html',
-  styleUrl: './session-reports-filter-dropdown.component.scss',
+    selector: 'app-session-reports-filter-dropdown',
+    imports: [
+        FloatingLabelInputComponent,
+        GreenOutlineButtonComponent,
+        RedOutlineButtonComponent,
+        DropdownListComponent,
+        NgIf,
+    ],
+    templateUrl: './session-reports-filter-dropdown.component.html',
+    styleUrl: './session-reports-filter-dropdown.component.scss'
 })
 export class SessionReportsFilterDropdownComponent {
   @Input({ required: true }) visibility: boolean = false;

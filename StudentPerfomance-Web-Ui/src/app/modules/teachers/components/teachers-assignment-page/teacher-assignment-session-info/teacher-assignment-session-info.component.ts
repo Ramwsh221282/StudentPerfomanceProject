@@ -3,10 +3,11 @@ import { TeacherAssignmentInfoSessionService } from './teacher-assignment-sessio
 import { AssignmentSessionInfo } from './assignment-session-into';
 
 @Component({
-  selector: 'app-teacher-assignment-session-info',
-  templateUrl: './teacher-assignment-session-info.component.html',
-  styleUrl: './teacher-assignment-session-info.component.scss',
-  providers: [TeacherAssignmentSessionInfoComponent],
+    selector: 'app-teacher-assignment-session-info',
+    templateUrl: './teacher-assignment-session-info.component.html',
+    styleUrl: './teacher-assignment-session-info.component.scss',
+    providers: [TeacherAssignmentSessionInfoComponent],
+    standalone: false
 })
 export class TeacherAssignmentSessionInfoComponent implements OnInit {
   protected info: AssignmentSessionInfo;

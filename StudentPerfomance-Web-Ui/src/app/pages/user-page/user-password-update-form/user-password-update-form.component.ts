@@ -7,12 +7,11 @@ import { catchError, tap } from 'rxjs';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-user-password-update-form',
-  standalone: true,
-  imports: [FormsModule],
-  templateUrl: './user-password-update-form.component.html',
-  styleUrl: './user-password-update-form.component.scss',
-  providers: [UserPasswordUpdateService],
+    selector: 'app-user-password-update-form',
+    imports: [FormsModule],
+    templateUrl: './user-password-update-form.component.html',
+    styleUrl: './user-password-update-form.component.scss',
+    providers: [UserPasswordUpdateService]
 })
 export class UserPasswordUpdateFormComponent implements ISubbmittable {
   @Output() successEmitter: EventEmitter<void> = new EventEmitter();

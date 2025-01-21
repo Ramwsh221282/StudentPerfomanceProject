@@ -7,18 +7,17 @@ import { BlueButtonComponent } from '../../../../../building-blocks/buttons/blue
 import { RedButtonComponent } from '../../../../../building-blocks/buttons/red-button/red-button.component';
 
 @Component({
-  selector: 'app-session-report-item',
-  standalone: true,
-  imports: [
-    DatePipe,
-    RouterLink,
-    SessionReportItemRemoveModalComponent,
-    NgIf,
-    BlueButtonComponent,
-    RedButtonComponent,
-  ],
-  templateUrl: './session-report-item.component.html',
-  styleUrl: './session-report-item.component.scss',
+    selector: 'app-session-report-item',
+    imports: [
+        DatePipe,
+        RouterLink,
+        SessionReportItemRemoveModalComponent,
+        NgIf,
+        BlueButtonComponent,
+        RedButtonComponent,
+    ],
+    templateUrl: './session-report-item.component.html',
+    styleUrl: './session-report-item.component.scss'
 })
 export class SessionReportItemComponent {
   @Input({ required: true }) report: ControlWeekReportInterface;

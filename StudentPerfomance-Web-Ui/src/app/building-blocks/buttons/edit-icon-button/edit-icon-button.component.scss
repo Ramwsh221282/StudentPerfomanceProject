@@ -1,0 +1,23 @@
+:host {
+  position: relative;
+}
+
+.edit-icon-button-container {
+  display: block;
+  border: solid 2px #cca300;
+  border-radius: 5px;
+  cursor: pointer;
+
+  &:hover {
+    border: solid 2px #ffcc00;
+  }
+}
+
+.edit-icon-button-layout {
+  padding: 2px;
+  filter: invert(50%) sepia(91%) saturate(493%) hue-rotate(12deg) brightness(103%) contrast(101%);
+
+  &:hover {
+    filter: invert(79%) sepia(72%) saturate(1844%) hue-rotate(358deg) brightness(99%) contrast(112%);
+  }
+}

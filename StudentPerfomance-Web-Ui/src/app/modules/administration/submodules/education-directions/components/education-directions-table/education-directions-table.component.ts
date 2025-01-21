@@ -5,9 +5,10 @@ import { catchError, Observable, tap } from 'rxjs';
 import { UserOperationNotificationService } from '../../../../../../shared/services/user-notifications/user-operation-notification-service.service';
 
 @Component({
-  selector: 'app-education-directions-table',
-  templateUrl: './education-directions-table.component.html',
-  styleUrl: './education-directions-table.component.scss',
+    selector: 'app-education-directions-table',
+    templateUrl: './education-directions-table.component.html',
+    styleUrl: './education-directions-table.component.scss',
+    standalone: false
 })
 export class EducationDirectionsTableComponent implements OnInit {
   protected creationModalVisibility = false;

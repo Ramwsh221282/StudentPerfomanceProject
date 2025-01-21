@@ -9,15 +9,16 @@ import { AuthService } from '../../../../../../pages/user-page/services/auth.ser
 import { AppConfigService } from '../../../../../../app.config.service';
 
 @Component({
-  selector: 'app-users-page',
-  templateUrl: './users-page.component.html',
-  styleUrl: './users-page.component.scss',
-  providers: [
-    UserOperationNotificationService,
-    UsersPaginationService,
-    UsersDataService,
-    DatePipe,
-  ],
+    selector: 'app-users-page',
+    templateUrl: './users-page.component.html',
+    styleUrl: './users-page.component.scss',
+    providers: [
+        UserOperationNotificationService,
+        UsersPaginationService,
+        UsersDataService,
+        DatePipe,
+    ],
+    standalone: false
 })
 export class UsersPageComponent implements OnInit {
   protected users: UserRecord[];

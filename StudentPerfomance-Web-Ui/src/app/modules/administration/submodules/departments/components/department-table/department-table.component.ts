@@ -3,9 +3,10 @@ import { Department } from '../../models/departments.interface';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-department-table',
-  templateUrl: './department-table.component.html',
-  styleUrl: './department-table.component.scss',
+    selector: 'app-department-table',
+    templateUrl: './department-table.component.html',
+    styleUrl: './department-table.component.scss',
+    standalone: false
 })
 export class DepartmentTableComponent {
   @Input({ required: true }) departments: Department[];

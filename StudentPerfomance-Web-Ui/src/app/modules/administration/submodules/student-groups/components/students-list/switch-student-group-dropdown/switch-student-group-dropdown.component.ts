@@ -9,9 +9,10 @@ import { catchError, Observable, tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
-  selector: 'app-switch-student-group-dropdown',
-  templateUrl: './switch-student-group-dropdown.component.html',
-  styleUrl: './switch-student-group-dropdown.component.scss',
+    selector: 'app-switch-student-group-dropdown',
+    templateUrl: './switch-student-group-dropdown.component.html',
+    styleUrl: './switch-student-group-dropdown.component.scss',
+    standalone: false
 })
 export class SwitchStudentGroupDropdownComponent
   implements OnInit, ISubbmittable

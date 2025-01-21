@@ -9,10 +9,11 @@ import { catchError, Observable, tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
-  selector: 'app-create-session-item-dropdown',
-  templateUrl: './create-session-item-dropdown.component.html',
-  styleUrl: './create-session-item-dropdown.component.scss',
-  providers: [AssignmentSessionCreateService],
+    selector: 'app-create-session-item-dropdown',
+    templateUrl: './create-session-item-dropdown.component.html',
+    styleUrl: './create-session-item-dropdown.component.scss',
+    providers: [AssignmentSessionCreateService],
+    standalone: false
 })
 export class CreateSessionItemDropdownComponent {
   @Input({ required: true }) visibility: boolean = false;

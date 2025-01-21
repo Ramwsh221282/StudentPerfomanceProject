@@ -8,9 +8,10 @@ import { FilterFetchPolicy } from '../../models/fetch-policies/filter-fetch-poli
 import { DefaultFetchPolicy } from '../../models/fetch-policies/default-fetch-policy';
 
 @Component({
-  selector: 'app-filter-group-dropdown',
-  templateUrl: './filter-group-dropdown.component.html',
-  styleUrl: './filter-group-dropdown.component.scss',
+    selector: 'app-filter-group-dropdown',
+    templateUrl: './filter-group-dropdown.component.html',
+    styleUrl: './filter-group-dropdown.component.scss',
+    standalone: false
 })
 export class FilterGroupDropdownComponent {
   @Input({ required: true }) visibility: boolean = false;

@@ -3,9 +3,10 @@ import { AssignmentSession } from '../../../models/assignment-session-interface'
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-assignment-session-table',
-  templateUrl: './assignment-session-table.component.html',
-  styleUrl: './assignment-session-table.component.scss',
+    selector: 'app-assignment-session-table',
+    templateUrl: './assignment-session-table.component.html',
+    styleUrl: './assignment-session-table.component.scss',
+    standalone: false
 })
 export class AssignmentSessionTableComponent {
   @Input({ required: true }) activeAssignmentSession: AssignmentSession | null;

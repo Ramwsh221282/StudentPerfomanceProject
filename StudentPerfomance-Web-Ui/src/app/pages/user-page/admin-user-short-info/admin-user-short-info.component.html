@@ -1,22 +1,27 @@
 <section class="admin-card-container">
   <app-user-menu-item-block [icon]="'assets/university_icon.svg'"
                             [title]="'Учебные объекты'"
-                            [labels]="['Учебные планы', 'Семестры', 'Дисциплины']">
+                            [labels]="['Учебные планы', 'Семестры', 'Дисциплины']"
+                            [route]="'education-objects'">
   </app-user-menu-item-block>
   <app-user-menu-item-block [icon]="'assets/teacher_menu-item.svg'"
                             [title]="'Преподаватели'"
-                            [labels]="['Кафедры', 'Преподаватели']">
+                            [labels]="['Кафедры', 'Преподаватели']"
+                            [route]="''">
   </app-user-menu-item-block>
   <app-user-menu-item-block [icon]="'assets/student-menu-item.svg'"
                             [title]="'Студенты'"
-                            [labels]="['Студенческие группы', 'Студенты']">
+                            [labels]="['Студенческие группы', 'Студенты']"
+                            [route]="''">
   </app-user-menu-item-block>
   <app-user-menu-item-block [icon]="'assets/system-users_icon.svg'"
                             [title]="'Пользователи'"
-                            [labels]="['Администраторы', 'Преподаватели']">
+                            [labels]="['Администраторы', 'Преподаватели']"
+                            [route]="''">
   </app-user-menu-item-block>
   <app-user-menu-item-block [icon]="'assets/control_weeks_icon.svg'"
                             [title]="'Контрольные недели'"
-                            [labels]="['Создание', 'Закрытие']">
+                            [labels]="['Создание', 'Закрытие']"
+                            [route]="''">
   </app-user-menu-item-block>
 </section>

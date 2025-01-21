@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { UserCardComponent } from './user-card/user-card.component';
 import { AuthService } from './services/auth.service';
 import { UserCardOptionsComponent } from './user-card-options/user-card-options.component';
 import { UserOperationNotificationService } from '../../shared/services/user-notifications/user-operation-notification-service.service';
-import { AdminShortInfoService } from './services/admin-short-info.service';
 import { AdminUserShortInfoComponent } from './admin-user-short-info/admin-user-short-info.component';
 import { NgIf } from '@angular/common';
 
@@ -20,16 +19,9 @@ import { NgIf } from '@angular/common';
   styleUrl: './user-page.component.scss',
   providers: [UserOperationNotificationService],
 })
-export class UserPageComponent implements OnInit {
+export class UserPageComponent {
   protected isEmailUpdateRequested: boolean = false;
   protected isPasswordUpdateRequested: boolean = false;
 
-  public constructor(
-    protected readonly authService: AuthService,
-    private readonly _adminShortInfo: AdminShortInfoService,
-  ) {}
-
-  public ngOnInit() {
-    this._adminShortInfo.invokeGetInfo();
-  }
+  public constructor(protected readonly authService: AuthService) {}
 }

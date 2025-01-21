@@ -7,9 +7,10 @@ import { catchError, tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
-  selector: 'app-education-direction-delete-modal',
-  templateUrl: './education-direction-delete-modal.component.html',
-  styleUrl: './education-direction-delete-modal.component.scss',
+    selector: 'app-education-direction-delete-modal',
+    templateUrl: './education-direction-delete-modal.component.html',
+    styleUrl: './education-direction-delete-modal.component.scss',
+    standalone: false
 })
 export class EducationDirectionDeleteModalComponent {
   @Input({ required: true }) direction: EducationDirection;

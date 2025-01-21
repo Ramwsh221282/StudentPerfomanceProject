@@ -11,9 +11,10 @@ import { Student } from '../../../students/models/student.interface';
 import { UserOperationNotificationService } from '../../../../../../shared/services/user-notifications/user-operation-notification-service.service';
 
 @Component({
-  selector: 'app-student-group-menu',
-  templateUrl: './student-group-menu.component.html',
-  styleUrl: './student-group-menu.component.scss',
+    selector: 'app-student-group-menu',
+    templateUrl: './student-group-menu.component.html',
+    styleUrl: './student-group-menu.component.scss',
+    standalone: false
 })
 export class StudentGroupMenuComponent implements OnChanges {
   @Input({ required: true }) group: StudentGroup;

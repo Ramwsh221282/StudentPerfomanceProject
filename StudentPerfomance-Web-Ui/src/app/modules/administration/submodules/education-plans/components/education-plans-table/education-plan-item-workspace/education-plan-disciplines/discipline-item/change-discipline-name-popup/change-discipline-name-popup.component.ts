@@ -4,9 +4,10 @@ import { ISubbmittable } from '../../../../../../../../../../shared/models/inter
 import { UserOperationNotificationService } from '../../../../../../../../../../shared/services/user-notifications/user-operation-notification-service.service';
 
 @Component({
-  selector: 'app-change-discipline-name-popup',
-  templateUrl: './change-discipline-name-popup.component.html',
-  styleUrl: './change-discipline-name-popup.component.scss',
+    selector: 'app-change-discipline-name-popup',
+    templateUrl: './change-discipline-name-popup.component.html',
+    styleUrl: './change-discipline-name-popup.component.scss',
+    standalone: false
 })
 export class ChangeDisciplineNamePopupComponent
   implements OnInit, ISubbmittable

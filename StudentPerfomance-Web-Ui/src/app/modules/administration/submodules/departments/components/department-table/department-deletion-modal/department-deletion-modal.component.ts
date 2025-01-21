@@ -6,10 +6,11 @@ import { ISubbmittable } from '../../../../../../../shared/models/interfaces/isu
 import { catchError, Observable, tap } from 'rxjs';
 
 @Component({
-  selector: 'app-department-deletion-modal',
-  templateUrl: './department-deletion-modal.component.html',
-  styleUrl: './department-deletion-modal.component.scss',
-  providers: [DepartmentDeletionService],
+    selector: 'app-department-deletion-modal',
+    templateUrl: './department-deletion-modal.component.html',
+    styleUrl: './department-deletion-modal.component.scss',
+    providers: [DepartmentDeletionService],
+    standalone: false
 })
 export class DepartmentDeletionModalComponent implements ISubbmittable {
   @Input({ required: true }) department: Department;

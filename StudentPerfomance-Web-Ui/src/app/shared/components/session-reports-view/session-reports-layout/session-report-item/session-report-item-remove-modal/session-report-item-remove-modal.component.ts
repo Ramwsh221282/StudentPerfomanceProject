@@ -10,11 +10,10 @@ import { RedOutlineButtonComponent } from '../../../../../../building-blocks/but
 import { DatePipe } from '@angular/common';
 
 @Component({
-  selector: 'app-session-report-item-remove-modal',
-  standalone: true,
-  imports: [GreenOutlineButtonComponent, RedOutlineButtonComponent, DatePipe],
-  templateUrl: './session-report-item-remove-modal.component.html',
-  styleUrl: './session-report-item-remove-modal.component.scss',
+    selector: 'app-session-report-item-remove-modal',
+    imports: [GreenOutlineButtonComponent, RedOutlineButtonComponent, DatePipe],
+    templateUrl: './session-report-item-remove-modal.component.html',
+    styleUrl: './session-report-item-remove-modal.component.scss'
 })
 export class SessionReportItemRemoveModalComponent implements ISubbmittable {
   @Input({ required: true }) visibility: boolean = false;

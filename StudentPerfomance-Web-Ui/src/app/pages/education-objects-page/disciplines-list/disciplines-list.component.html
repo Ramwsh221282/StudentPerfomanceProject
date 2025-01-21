@@ -1,0 +1,13 @@
+<section class="disciplines-data-list-layout">
+  <div class="disciplines-data-list-title">
+    <label>Дисциплины {{ semester.number }} семестра</label>
+  </div>
+  <div class="disciplines-data-list-container">
+    <div class="disciplines-data-list-controls">
+      <app-add-icon-button [paramWidth]="40" [paramHeight]="40"></app-add-icon-button>
+      <app-green-outline-button [label]="'Добавить новую дисциплину'"></app-green-outline-button>
+    </div>
+    <app-discipline-item *ngFor="let discipline of semester.disciplines"
+                         [discipline]="discipline"></app-discipline-item>
+  </div>
+</section>

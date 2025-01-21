@@ -10,9 +10,10 @@ import { catchError, Observable, tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
-  selector: 'app-admin-assignments-access-resolver-dialog',
-  templateUrl: './admin-assignments-access-resolver-dialog.component.html',
-  styleUrl: './admin-assignments-access-resolver-dialog.component.scss',
+    selector: 'app-admin-assignments-access-resolver-dialog',
+    templateUrl: './admin-assignments-access-resolver-dialog.component.html',
+    styleUrl: './admin-assignments-access-resolver-dialog.component.scss',
+    standalone: false
 })
 export class AdminAssignmentsAccessResolverDialogComponent implements OnInit {
   @Input({ required: true }) isAdminAccess: boolean = false;

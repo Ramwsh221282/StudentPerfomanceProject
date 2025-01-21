@@ -4,15 +4,14 @@ import { GreenOutlineButtonComponent } from '../../../../../../../../building-bl
 import { RedOutlineButtonComponent } from '../../../../../../../../building-blocks/buttons/red-outline-button/red-outline-button.component';
 
 @Component({
-  selector: 'app-student-status-dropdown',
-  standalone: true,
-  imports: [
-    FloatingLabelInputComponent,
-    GreenOutlineButtonComponent,
-    RedOutlineButtonComponent,
-  ],
-  templateUrl: './student-status-dropdown.component.html',
-  styleUrl: './student-status-dropdown.component.scss',
+    selector: 'app-student-status-dropdown',
+    imports: [
+        FloatingLabelInputComponent,
+        GreenOutlineButtonComponent,
+        RedOutlineButtonComponent,
+    ],
+    templateUrl: './student-status-dropdown.component.html',
+    styleUrl: './student-status-dropdown.component.scss'
 })
 export class StudentStatusDropdownComponent {
   @Input({ required: true }) visibility: boolean = false;

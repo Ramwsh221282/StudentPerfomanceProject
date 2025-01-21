@@ -50,6 +50,6 @@ import { YellowOutlineButtonComponent } from '../../../../building-blocks/button
     BlueOutlineButtonComponent,
     YellowOutlineButtonComponent,
   ],
-  exports: [EducationDirectionsPageComponent],
+  exports: [EducationDirectionsPageComponent, EducationDirectionItemComponent],
 })
 export class EducationDirectionsModule {}

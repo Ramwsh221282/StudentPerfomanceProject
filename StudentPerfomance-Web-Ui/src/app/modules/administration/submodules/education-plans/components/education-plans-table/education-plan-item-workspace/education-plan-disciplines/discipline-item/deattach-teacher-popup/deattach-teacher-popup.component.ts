@@ -2,9 +2,10 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { SemesterDiscipline } from '../../../../../../models/education-plan-interface';
 
 @Component({
-  selector: 'app-deattach-teacher-popup',
-  templateUrl: './deattach-teacher-popup.component.html',
-  styleUrl: './deattach-teacher-popup.component.scss',
+    selector: 'app-deattach-teacher-popup',
+    templateUrl: './deattach-teacher-popup.component.html',
+    styleUrl: './deattach-teacher-popup.component.scss',
+    standalone: false
 })
 export class DeattachTeacherPopupComponent {
   @Input({ required: true }) discipline: SemesterDiscipline;

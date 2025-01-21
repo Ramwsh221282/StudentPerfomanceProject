@@ -4,14 +4,13 @@ import { GreetingPageBlockComponent } from './greeting-page-block/greeting-page-
 import { GreetingPagePanelComponent } from './greeting-page-panel/greeting-page-panel.component';
 
 @Component({
-  selector: 'app-greeting-page',
-  standalone: true,
-  imports: [
-    GreetingPageHeaderComponent,
-    GreetingPageBlockComponent,
-    GreetingPagePanelComponent,
-  ],
-  templateUrl: './greeting-page.component.html',
-  styleUrl: './greeting-page.component.scss',
+    selector: 'app-greeting-page',
+    imports: [
+        GreetingPageHeaderComponent,
+        GreetingPageBlockComponent,
+        GreetingPagePanelComponent,
+    ],
+    templateUrl: './greeting-page.component.html',
+    styleUrl: './greeting-page.component.scss'
 })
 export class GreetingPageComponent {}

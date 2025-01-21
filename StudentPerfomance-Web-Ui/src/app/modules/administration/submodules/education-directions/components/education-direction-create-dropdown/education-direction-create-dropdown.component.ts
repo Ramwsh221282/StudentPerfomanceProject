@@ -8,9 +8,10 @@ import { catchError, tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
-  selector: 'app-education-direction-create-dropdown',
-  templateUrl: './education-direction-create-dropdown.component.html',
-  styleUrl: './education-direction-create-dropdown.component.scss',
+    selector: 'app-education-direction-create-dropdown',
+    templateUrl: './education-direction-create-dropdown.component.html',
+    styleUrl: './education-direction-create-dropdown.component.scss',
+    standalone: false
 })
 export class EducationDirectionCreateDropdownComponent
   implements ISubbmittable

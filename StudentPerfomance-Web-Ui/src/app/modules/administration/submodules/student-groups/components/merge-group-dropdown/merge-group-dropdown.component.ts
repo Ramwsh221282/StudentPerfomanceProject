@@ -8,9 +8,10 @@ import { catchError, Observable, tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
-  selector: 'app-merge-group-dropdown',
-  templateUrl: './merge-group-dropdown.component.html',
-  styleUrl: './merge-group-dropdown.component.scss',
+    selector: 'app-merge-group-dropdown',
+    templateUrl: './merge-group-dropdown.component.html',
+    styleUrl: './merge-group-dropdown.component.scss',
+    standalone: false
 })
 export class MergeGroupDropdownComponent implements ISubbmittable, OnInit {
   @Input({ required: true }) visibility: boolean = false;

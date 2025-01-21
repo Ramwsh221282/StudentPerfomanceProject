@@ -3,9 +3,10 @@ import { TeacherJournalStudent } from '../../../../../models/teacher-journal-stu
 import { TeacherJournalDiscipline } from '../../../../../models/teacher-journal-disciplines';
 
 @Component({
-  selector: 'app-marks-modal',
-  templateUrl: './marks-modal.component.html',
-  styleUrl: './marks-modal.component.scss',
+    selector: 'app-marks-modal',
+    templateUrl: './marks-modal.component.html',
+    styleUrl: './marks-modal.component.scss',
+    standalone: false
 })
 export class MarksModalComponent {
   @Input({ required: true }) student: TeacherJournalStudent;

@@ -3,9 +3,10 @@ import { StudentGroup } from '../../services/studentsGroup.interface';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-student-groups-table',
-  templateUrl: './student-groups-table.component.html',
-  styleUrl: './student-groups-table.component.scss',
+    selector: 'app-student-groups-table',
+    templateUrl: './student-groups-table.component.html',
+    styleUrl: './student-groups-table.component.scss',
+    standalone: false
 })
 export class StudentGroupsTableComponent {
   @Input({ required: true }) groups: StudentGroup[];

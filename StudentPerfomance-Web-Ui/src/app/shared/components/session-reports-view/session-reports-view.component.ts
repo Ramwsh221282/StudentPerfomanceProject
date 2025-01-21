@@ -16,25 +16,24 @@ import { SuccessResultNotificationComponent } from '../success-result-notificati
 import { FailureResultNotificationComponent } from '../failure-result-notification/failure-result-notification.component';
 
 @Component({
-  selector: 'app-session-reports-view',
-  standalone: true,
-  imports: [
-    RouterLink,
-    SessionReportsLayoutComponent,
-    SessionReportsFilterInputComponent,
-    SessionReportsPaginationComponent,
-    NgIf,
-    SuccessResultNotificationComponent,
-    FailureResultNotificationComponent,
-  ],
-  templateUrl: './session-reports-view.component.html',
-  styleUrl: './session-reports-view.component.scss',
-  providers: [
-    SessionReportsPaginationService,
-    SessionReportsDataService,
-    DatePipe,
-    UserOperationNotificationService,
-  ],
+    selector: 'app-session-reports-view',
+    imports: [
+        RouterLink,
+        SessionReportsLayoutComponent,
+        SessionReportsFilterInputComponent,
+        SessionReportsPaginationComponent,
+        NgIf,
+        SuccessResultNotificationComponent,
+        FailureResultNotificationComponent,
+    ],
+    templateUrl: './session-reports-view.component.html',
+    styleUrl: './session-reports-view.component.scss',
+    providers: [
+        SessionReportsPaginationService,
+        SessionReportsDataService,
+        DatePipe,
+        UserOperationNotificationService,
+    ]
 })
 export class SessionReportsViewComponent implements OnInit {
   protected reports: ControlWeekReportInterface[];

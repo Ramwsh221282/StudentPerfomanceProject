@@ -3,9 +3,10 @@ import { Student } from '../../../../students/models/student.interface';
 import { StudentGroup } from '../../../services/studentsGroup.interface';
 
 @Component({
-  selector: 'app-student-item',
-  templateUrl: './student-item.component.html',
-  styleUrl: './student-item.component.scss',
+    selector: 'app-student-item',
+    templateUrl: './student-item.component.html',
+    styleUrl: './student-item.component.scss',
+    standalone: false
 })
 export class StudentItemComponent implements OnInit {
   @Input({ required: true }) student: Student;

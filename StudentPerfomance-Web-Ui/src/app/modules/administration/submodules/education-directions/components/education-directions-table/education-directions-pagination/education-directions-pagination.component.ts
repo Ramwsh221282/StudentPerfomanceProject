@@ -2,9 +2,10 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FacadeService } from '../../../services/facade.service';
 
 @Component({
-  selector: 'app-education-directions-pagination',
-  templateUrl: './education-directions-pagination.component.html',
-  styleUrl: './education-directions-pagination.component.scss',
+    selector: 'app-education-directions-pagination',
+    templateUrl: './education-directions-pagination.component.html',
+    styleUrl: './education-directions-pagination.component.scss',
+    standalone: false
 })
 export class EducationDirectionsPaginationComponent implements OnInit {
   @Output() pageChange: EventEmitter<void> = new EventEmitter();

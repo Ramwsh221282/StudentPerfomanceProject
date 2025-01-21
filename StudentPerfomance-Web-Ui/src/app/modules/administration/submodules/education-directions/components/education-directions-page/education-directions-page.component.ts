@@ -8,17 +8,18 @@ import { FacadeService } from '../../services/facade.service';
 import { UserOperationNotificationService } from '../../../../../../shared/services/user-notifications/user-operation-notification-service.service';
 
 @Component({
-  selector: 'app-education-directions-page',
-  templateUrl: './education-directions-page.component.html',
-  styleUrl: './education-directions-page.component.scss',
-  providers: [
-    CreateService,
-    DeleteService,
-    PaginationService,
-    FetchService,
-    UpdateService,
-    FacadeService,
-    UserOperationNotificationService,
-  ],
+    selector: 'app-education-directions-page',
+    templateUrl: './education-directions-page.component.html',
+    styleUrl: './education-directions-page.component.scss',
+    providers: [
+        CreateService,
+        DeleteService,
+        PaginationService,
+        FetchService,
+        UpdateService,
+        FacadeService,
+        UserOperationNotificationService,
+    ],
+    standalone: false
 })
 export class EducationDirectionsPageComponent {}

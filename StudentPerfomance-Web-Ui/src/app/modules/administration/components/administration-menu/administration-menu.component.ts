@@ -2,9 +2,10 @@ import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-administration-menu',
-  templateUrl: './administration-menu.component.html',
-  styleUrl: './administration-menu.component.scss',
+    selector: 'app-administration-menu',
+    templateUrl: './administration-menu.component.html',
+    styleUrl: './administration-menu.component.scss',
+    standalone: false
 })
 export class AdministrationMenuComponent {
   @Input({ required: true }) public title!: string;
