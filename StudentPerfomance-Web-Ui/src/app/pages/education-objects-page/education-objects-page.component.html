@@ -15,3 +15,11 @@
     <app-disciplines-list *ngIf="currentSemester" [semester]="currentSemester"></app-disciplines-list>
   </div>
 </section>
+<app-success-notification *ngIf="notifications.isSuccess() && notifications.isVisible()"
+                          [message]="notifications.message()"
+                          (visibilityChange)="notifications.turn()">
+</app-success-notification>
+<app-failure-notification *ngIf="notifications.isFailure() && notifications.isVisible()"
+                          [message]="notifications.message()"
+                          (visibilityChange)="notifications.turn()">
+</app-failure-notification>

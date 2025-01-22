@@ -1,0 +1,29 @@
+<div id="container">
+  <div id="header">
+    <strong>Добавление нового направления подготовки</strong>
+  </div>
+  <div id="content">
+    <app-floating-label-input [label]="'Наименование'"
+                              [value]="directionName"
+                              (inputChange)="directionName = $event">
+    </app-floating-label-input>
+    <app-floating-label-input [label]="'Код'"
+                              [value]="directionCode"
+                              (inputChange)="directionCode = $event">
+    </app-floating-label-input>
+    <app-floating-label-input [label]="'Тип'"
+                              [value]="directionType"
+                              [isReadonly]="true"
+                              [showContent]="isSelectingType"
+                              (click)="isSelectingType = true">
+      <app-select-direction-type-dropdown
+        dropdown
+        (directionTypeSelected)="directionType = $event; isSelectingType = false">
+      </app-select-direction-type-dropdown>
+    </app-floating-label-input>
+    <app-green-outline-button [label]="'Добавить'" (onClicked)="create()"></app-green-outline-button>
+  </div>
+  <div id="controls">
+    <app-red-outline-button [label]="'Закрыть'" (onClicked)="visibilityChange.emit(false)"></app-red-outline-button>
+  </div>
+</div>

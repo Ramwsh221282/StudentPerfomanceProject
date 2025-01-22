@@ -3,14 +3,32 @@
     <label class="education-list-title">Направления подготовки</label>
     <div class="education-directions-inline-list-control-panel">
       <app-add-icon-button [paramHeight]="40" [paramWidth]="40"></app-add-icon-button>
-      <app-green-outline-button [label]="'Создать новое направление подготовки'"></app-green-outline-button>
+      <app-green-outline-button [label]="'Создать новое направление подготовки'"
+                                (onClicked)="createDialogVisbility = true">
+      </app-green-outline-button>
     </div>
   </div>
   <div class="education-directions-inline-list">
     <app-education-direction-item-block *ngFor="let direction of educationDirections"
                                         [direction]="direction"
                                         (selectedDirection)="currentDirection = $event; selectedEducationDirection.emit(currentDirection)"
+                                        (selectDirectionForEdit)="educationDirectionEditRequest = $event"
+                                        (selectDirectionForRemove)="educationDirectionRemoveRequest = $event"
                                         [isSelected]="currentDirection != null && currentDirection.id == direction.id">
     </app-education-direction-item-block>
   </div>
 </section>
+<app-create-education-direction-dialog *ngIf="createDialogVisbility" [visibility]="createDialogVisbility"
+                                       (visibilityChange)="createDialogVisbility = $event"
+                                       (dialogClose)="createDialogVisbility = $event"
+                                       (directionCreated)="handleDirectionCreated($event)">
+</app-create-education-direction-dialog>
+<app-edit-education-direction-dialog *ngIf="educationDirectionEditRequest"
+                                     [educationDirection]="educationDirectionEditRequest"
+                                     (dialogClose)="educationDirectionEditRequest = null">
+</app-edit-education-direction-dialog>
+<app-delete-education-direction-dialog *ngIf="educationDirectionRemoveRequest"
+                                       [educationDirection]="educationDirectionRemoveRequest"
+                                       (visibilityChanged)="educationDirectionRemoveRequest = null"
+                                       (directionRemoved)="handleDirectionRemoved($event)">
+</app-delete-education-direction-dialog>

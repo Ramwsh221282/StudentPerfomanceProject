@@ -1,0 +1,28 @@
+.success-notification-container {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  padding: 0.5rem;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #5CE600;
+  box-shadow: 4.0px 8.0px 8.0px hsl(0deg 0% 0% / 0.38);
+  border-radius: 10px;
+}
+
+.success-notification-title {
+  padding: 0.5rem;
+  font-weight: bold;
+  color: #FFFFFF;
+  font-size: 15px;
+}
+
+.success-notification-body {
+  max-width: 650px;
+  border-top: 2px solid #FFFFFF;
+  padding: 0.5rem;
+  font-weight: bold;
+  color: #FFFFFF;
+  font-size: 15px;
+}

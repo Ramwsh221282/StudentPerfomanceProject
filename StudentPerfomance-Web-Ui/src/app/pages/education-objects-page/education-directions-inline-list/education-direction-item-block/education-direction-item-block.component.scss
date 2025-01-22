@@ -11,6 +11,8 @@
   border: solid 1px #b3ff80;
   min-width: 350px;
   max-width: 350px;
+  min-height: 18vh;
+  max-height: 18vh;
   box-shadow: 4.0px 8.0px 8.0px hsl(0deg 0% 0% / 0.38);
 }
 
@@ -42,7 +44,7 @@
 }
 
 .education-direction-data-label {
-  font-size: 16px;
+  font-size: 15px;
   color: #FFFFFF;
   text-shadow: 1px 1px black;
   font-weight: bold;

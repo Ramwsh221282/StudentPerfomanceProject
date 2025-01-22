@@ -21,4 +21,8 @@ export class EducationDirectionItemBlockComponent {
   @Input({ required: true }) isSelected: boolean = false;
   @Output() selectedDirection: EventEmitter<EducationDirection> =
     new EventEmitter();
+  @Output() selectDirectionForEdit: EventEmitter<EducationDirection> =
+    new EventEmitter();
+  @Output() selectDirectionForRemove: EventEmitter<EducationDirection> =
+    new EventEmitter();
 }

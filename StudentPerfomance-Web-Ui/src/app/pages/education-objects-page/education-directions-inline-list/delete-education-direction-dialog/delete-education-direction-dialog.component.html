@@ -1,0 +1,13 @@
+<div id="container">
+  <div id="header">
+    <strong>Удаление направления подготовки</strong>
+  </div>
+  <div id="content">
+    <label class="label-text">Вы уверены, что вы хотите удалить направление подготовки?</label>
+    <label class="label-text">Удаление направления подготовки удаляет его учебные планы и дисциплины.</label>
+    <app-red-button [label]="'Подтвердить удаление'" (onClicked)="delete()"></app-red-button>
+  </div>
+  <div id="controls">
+    <app-red-outline-button [label]="'Закрыть'" (onClicked)="visibilityChanged.emit()"></app-red-outline-button>
+  </div>
+</div>

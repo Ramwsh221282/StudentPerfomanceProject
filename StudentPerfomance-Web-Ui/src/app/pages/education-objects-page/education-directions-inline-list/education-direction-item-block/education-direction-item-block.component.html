@@ -3,8 +3,12 @@
   <div class="education-direction-icon-container">
     <img [ngSrc]="'assets/education_direction_icon.svg'" [alt]="'image'" [width]="80" [height]="80">
     <div class="education-direction-controls-container">
-      <app-edit-icon-button [paramWidth]="40" [paramHeight]="40"></app-edit-icon-button>
-      <app-remove-icon-button [paramHeight]="40" [paramWidth]="40"></app-remove-icon-button>
+      <app-edit-icon-button [paramWidth]="40" [paramHeight]="40"
+                            (onClicked)="selectDirectionForEdit.emit(direction)">
+      </app-edit-icon-button>
+      <app-remove-icon-button [paramHeight]="40" [paramWidth]="40"
+                              (onClicked)="selectDirectionForRemove.emit(direction)">
+      </app-remove-icon-button>
     </div>
   </div>
   <div class="education-direction-data-container">

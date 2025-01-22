@@ -1,0 +1,32 @@
+<div id="container">
+  <div id="header">
+    <strong>Редактирование направления подготовки</strong>
+  </div>
+  <div id="content">
+    <app-floating-label-input [label]="'Наименование'"
+                              [value]="educationDirectionCopy.name"
+                              (inputChange)="educationDirectionCopy.name = $event">
+    </app-floating-label-input>
+    <app-floating-label-input [label]="'Код'"
+                              [value]="educationDirectionCopy.code"
+                              (inputChange)="educationDirectionCopy.code = $event">
+    </app-floating-label-input>
+    <app-floating-label-input [label]="'Тип'"
+                              [value]="educationDirectionCopy.type"
+                              [isReadonly]="true"
+                              [showContent]="isSelectingType"
+                              (click)="isSelectingType = true">
+      <app-select-direction-type-dropdown
+        dropdown
+        (directionTypeSelected)="educationDirectionCopy.type = $event; isSelectingType = false">
+      </app-select-direction-type-dropdown>
+    </app-floating-label-input>
+    <div class="sub-controls-container">
+      <app-green-outline-button [label]="'Применить изменения'" (onClicked)="edit()"></app-green-outline-button>
+      <app-yellow-button [label]="'Сбросить изменения'"></app-yellow-button>
+    </div>
+  </div>
+  <div id="controls">
+    <app-red-outline-button [label]="'Закрыть'" (onClicked)="dialogClose.emit(false)"></app-red-outline-button>
+  </div>
+</div>

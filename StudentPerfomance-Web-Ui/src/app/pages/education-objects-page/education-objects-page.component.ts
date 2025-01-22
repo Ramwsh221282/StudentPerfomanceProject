@@ -9,6 +9,9 @@ import {
 } from '../../modules/administration/submodules/education-plans/models/education-plan-interface';
 import { EducationPlanSemesterListComponent } from './education-plan-semester-list/education-plan-semester-list.component';
 import { DisciplinesListComponent } from './disciplines-list/disciplines-list.component';
+import { NotificationService } from '../../building-blocks/notifications/notification.service';
+import { SuccessNotificationComponent } from '../../building-blocks/notifications/success-notification/success-notification.component';
+import { FailureNotificationComponent } from '../../building-blocks/notifications/failure-notification/failure-notification.component';
 
 @Component({
   selector: 'app-education-objects-page',
@@ -21,10 +24,15 @@ import { DisciplinesListComponent } from './disciplines-list/disciplines-list.co
     EducationPlanDataListComponent,
     EducationPlanSemesterListComponent,
     DisciplinesListComponent,
+    SuccessNotificationComponent,
+    FailureNotificationComponent,
   ],
+  providers: [NotificationService],
 })
 export class EducationObjectsPageComponent {
   public currentEducationDirection: EducationDirection | null;
   public currentEducationPlan: EducationPlan | null;
   public currentSemester: EducationPlanSemester | null;
+
+  constructor(public notifications: NotificationService) {}
 }

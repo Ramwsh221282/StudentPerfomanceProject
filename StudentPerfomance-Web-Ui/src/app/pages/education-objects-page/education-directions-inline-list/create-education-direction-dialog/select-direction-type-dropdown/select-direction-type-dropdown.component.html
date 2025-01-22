@@ -1,0 +1,4 @@
+<section class="direction-types-dropdown-container">
+  <label class="direction-select-label" *ngFor="let type of directions"
+         (click)="onDirectionTypeSelect(type, $event)">{{ type }}</label>
+</section>
