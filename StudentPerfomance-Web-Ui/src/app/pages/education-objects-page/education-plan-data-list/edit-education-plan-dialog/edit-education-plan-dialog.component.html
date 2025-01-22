@@ -1,0 +1,19 @@
+<div id="container">
+  <div id="header">
+    <strong>Редактирование года учебного плана</strong>
+  </div>
+  <div id="content">
+    <app-floating-label-input [label]="'Год'"
+                              [value]="yearInput"
+                              (inputChange)="yearInput = $event">
+    </app-floating-label-input>
+    <div class="sub-controls-container">
+      <app-green-outline-button [label]="'Применить изменения'" (onClicked)="edit()"></app-green-outline-button>
+      <app-yellow-button [label]="'Сбросить изменения'" (onClicked)="reset()"></app-yellow-button>
+    </div>
+  </div>
+  <div id="controls">
+    <app-red-outline-button [label]="'Закрыть'" (onClicked)="visibilityChange.emit()">
+    </app-red-outline-button>
+  </div>
+</div>

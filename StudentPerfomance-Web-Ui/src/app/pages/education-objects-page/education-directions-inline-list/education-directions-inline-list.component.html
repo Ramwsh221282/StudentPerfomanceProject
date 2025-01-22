@@ -2,7 +2,10 @@
   <div class="education-directions-list-controls-container">
     <label class="education-list-title">Направления подготовки</label>
     <div class="education-directions-inline-list-control-panel">
-      <app-add-icon-button [paramHeight]="40" [paramWidth]="40"></app-add-icon-button>
+      <app-add-icon-button [paramHeight]="40"
+                           [paramWidth]="40"
+                           (onClicked)="createDialogVisbility = true">
+      </app-add-icon-button>
       <app-green-outline-button [label]="'Создать новое направление подготовки'"
                                 (onClicked)="createDialogVisbility = true">
       </app-green-outline-button>

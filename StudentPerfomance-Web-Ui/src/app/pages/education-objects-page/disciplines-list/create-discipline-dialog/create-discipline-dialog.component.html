@@ -1,0 +1,21 @@
+<div id="container">
+  <div id="header">
+    <strong>Добавление дисциплины в семестр</strong>
+  </div>
+  <div id="content">
+    <label class="content-label">Добавление дисциплины в {{ semester.number }} семестр</label>
+    <label class="content-label">Направления</label>
+    <label class="content-label">{{ direction.name }}</label>
+    <label class="content-label">{{ direction.code }}</label>
+    <label class="content-label">{{ direction.type }}</label>
+    <label class="content-label">{{ educationPlan.year }}</label>
+    <app-floating-label-input [label]="'Название дисциплины'"
+                              [value]="discipline"
+                              (inputChange)="discipline = $event">
+    </app-floating-label-input>
+    <app-green-outline-button [label]="'Добавить'" (onClicked)="create()"></app-green-outline-button>
+  </div>
+  <div id="controls">
+    <app-red-outline-button [label]="'Закрыть'" (onClicked)="visibilityChange.emit()"></app-red-outline-button>
+  </div>
+</div>

@@ -34,6 +34,7 @@ export class EducationDirectionsInlineListComponent implements OnInit {
   public educationDirections: EducationDirection[] = [];
   @Output() selectedEducationDirection: EventEmitter<EducationDirection> =
     new EventEmitter();
+  @Output() educationDirectionRemoved: EventEmitter<void> = new EventEmitter();
 
   public currentDirection: EducationDirection | null;
   public educationDirectionEditRequest: EducationDirection | null;

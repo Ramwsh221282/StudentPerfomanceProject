@@ -7,11 +7,11 @@ import {
 import { UserOperationNotificationService } from '../../../../../../../shared/services/user-notifications/user-operation-notification-service.service';
 
 @Component({
-    selector: 'app-education-plan-item-workspace',
-    templateUrl: './education-plan-item-workspace.component.html',
-    styleUrl: './education-plan-item-workspace.component.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  selector: 'app-education-plan-item-workspace',
+  templateUrl: './education-plan-item-workspace.component.html',
+  styleUrl: './education-plan-item-workspace.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class EducationPlanItemWorkspaceComponent {
   @Input() selectedEducationPlan: EducationPlan;
@@ -24,11 +24,12 @@ export class EducationPlanItemWorkspaceComponent {
   protected handleDisciplineTeacherAttachment(
     discipline: SemesterDiscipline,
   ): void {
+    if (discipline.teacher == null) return;
     if (!this.selectedSemester) return;
     for (let semesterDiscipline of this.selectedSemester.disciplines) {
       if (semesterDiscipline.disciplineName == discipline.disciplineName) {
         semesterDiscipline = discipline;
-        this._notificationService.SetMessage = `Дисциплине ${semesterDiscipline.disciplineName} закреплён преподаватель ${semesterDiscipline.teacher.surname} ${semesterDiscipline.teacher.name[0]}. ${semesterDiscipline.teacher.patronymic == null ? '' : semesterDiscipline.teacher.patronymic[0]}`;
+        this._notificationService.SetMessage = `Дисциплине ${semesterDiscipline.disciplineName} закреплён преподаватель ${semesterDiscipline.teacher!.surname} ${semesterDiscipline.teacher!.name[0]}. ${semesterDiscipline.teacher!.patronymic == null ? '' : semesterDiscipline.teacher!.patronymic[0]}`;
         this._notificationService.success();
       }
     }

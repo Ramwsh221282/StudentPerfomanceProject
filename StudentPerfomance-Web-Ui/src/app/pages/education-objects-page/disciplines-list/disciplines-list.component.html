@@ -4,10 +4,40 @@
   </div>
   <div class="disciplines-data-list-container">
     <div class="disciplines-data-list-controls">
-      <app-add-icon-button [paramWidth]="40" [paramHeight]="40"></app-add-icon-button>
-      <app-green-outline-button [label]="'Добавить новую дисциплину'"></app-green-outline-button>
+      <app-add-icon-button [paramWidth]="40"
+                           [paramHeight]="40"
+                           (onClicked)="isCreatingDiscipline = true">
+      </app-add-icon-button>
+      <app-green-outline-button [label]="'Добавить новую дисциплину'"
+                                (onClicked)="isCreatingDiscipline = true">
+      </app-green-outline-button>
     </div>
     <app-discipline-item *ngFor="let discipline of semester.disciplines"
-                         [discipline]="discipline"></app-discipline-item>
+                         [discipline]="discipline"
+                         (selectForEdit)="editDisciplineRequest = $event"
+                         (selectForRemove)="removeDisciplineRequest = $event">
+    </app-discipline-item>
   </div>
 </section>
+<app-create-discipline-dialog *ngIf="isCreatingDiscipline"
+                              [direction]="direction"
+                              [educationPlan]="educationPlan"
+                              [semester]="semester"
+                              (visibilityChange)="isCreatingDiscipline = false"
+                              (disciplineCreated)="handleDisciplineCreated($event)">
+</app-create-discipline-dialog>
+<app-remove-discipline-dialog *ngIf="removeDisciplineRequest"
+                              [discipline]="removeDisciplineRequest"
+                              [semester]="semester"
+                              [direction]="direction"
+                              [educationPlan]="educationPlan"
+                              (visibilityChange)="removeDisciplineRequest = null"
+                              (disciplineRemoved)="handleDisciplineRemoved($event)">
+</app-remove-discipline-dialog>
+<app-edit-discipline-dialog *ngIf="editDisciplineRequest"
+                            [discipline]="editDisciplineRequest"
+                            [semester]="semester"
+                            [educationPlan]="educationPlan"
+                            [direction]="direction"
+                            (visibilityChange)="editDisciplineRequest = null">
+</app-edit-discipline-dialog>

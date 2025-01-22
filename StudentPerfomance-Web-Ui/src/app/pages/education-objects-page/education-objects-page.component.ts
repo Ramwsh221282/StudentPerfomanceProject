@@ -35,4 +35,13 @@ export class EducationObjectsPageComponent {
   public currentSemester: EducationPlanSemester | null;
 
   constructor(public notifications: NotificationService) {}
+
+  public handleDirectionRemoved(): void {
+    if (this.currentEducationPlan) this.currentEducationPlan = null;
+    this.handlePlanRemoved();
+  }
+
+  public handlePlanRemoved(): void {
+    if (this.currentSemester) this.currentSemester = null;
+  }
 }

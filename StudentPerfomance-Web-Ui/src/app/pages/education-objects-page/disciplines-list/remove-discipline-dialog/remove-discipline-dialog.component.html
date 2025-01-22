@@ -1,0 +1,14 @@
+<div id="container">
+  <div id="header">
+    <strong>Удаление дисциплины</strong>
+  </div>
+  <div id="content">
+    <label class="info-label">Вы действительно хотите удалить дисциплину?</label>
+    <label class="info-label">Данная дисциплина будет удалена</label>
+    <label class="info-label">У преподавателя данная дисциплина открепится</label>
+    <app-red-button [label]="'Подтвердить удаление'" (onClicked)="delete()"></app-red-button>
+  </div>
+  <div id="controls">
+    <app-red-outline-button [label]="'Закрыть'" (onClicked)="visibilityChange.emit()"></app-red-outline-button>
+  </div>
+</div>

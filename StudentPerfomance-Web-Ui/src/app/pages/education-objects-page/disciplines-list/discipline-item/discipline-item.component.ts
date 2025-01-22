@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { RemoveIconButtonComponent } from '../../../../building-blocks/buttons/remove-icon-button/remove-icon-button.component';
 import { EditIconButtonComponent } from '../../../../building-blocks/buttons/edit-icon-button/edit-icon-button.component';
 import { NgIf, NgOptimizedImage } from '@angular/common';
@@ -18,4 +18,8 @@ import { SemesterDiscipline } from '../../../../modules/administration/submodule
 })
 export class DisciplineItemComponent {
   @Input({ required: true }) discipline: SemesterDiscipline;
+  @Output() selectForEdit: EventEmitter<SemesterDiscipline> =
+    new EventEmitter();
+  @Output() selectForRemove: EventEmitter<SemesterDiscipline> =
+    new EventEmitter();
 }

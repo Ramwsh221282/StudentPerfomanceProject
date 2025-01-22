@@ -20,4 +20,7 @@ export class EducationPlanDataItemComponent {
   @Input({ required: true }) educationPlan: EducationPlan;
   @Input({ required: true }) isCurrentPlan: boolean = false;
   @Output() selectedPlan: EventEmitter<EducationPlan> = new EventEmitter();
+  @Output() selectPlanForRemove: EventEmitter<EducationPlan> =
+    new EventEmitter();
+  @Output() selectPlanForEdit: EventEmitter<EducationPlan> = new EventEmitter();
 }

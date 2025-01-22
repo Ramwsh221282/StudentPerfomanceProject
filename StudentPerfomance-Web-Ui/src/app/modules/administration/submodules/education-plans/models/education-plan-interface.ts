@@ -18,5 +18,5 @@ export interface EducationPlanSemester {
 export interface SemesterDiscipline {
   id: string;
   disciplineName: string;
-  teacher: Teacher;
+  teacher: Teacher | null;
 }

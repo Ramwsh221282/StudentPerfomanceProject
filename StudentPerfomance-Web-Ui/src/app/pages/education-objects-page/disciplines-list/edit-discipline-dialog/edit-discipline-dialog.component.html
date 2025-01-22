@@ -1,0 +1,33 @@
+<div id="container">
+  <div id="header">
+    <strong>Управление дисциплиной</strong>
+  </div>
+  <div id="content">
+    <label class="info-label">Выберите секцию</label>
+    <div class="tab-form">
+      <ul class="tab-form-ul">
+        <li class="tab-form-li" *ngFor="let item of sections" (click)="selectSection(item)"
+            [ngClass]="{'tab-form-li-active': sectionId === item.id}">
+          {{ item.name }}
+        </li>
+      </ul>
+      <div class="tab-form-content">
+        <app-change-discipline-name-part *ngIf="sectionId == 0"
+                                         [discipline]="discipline"
+                                         [semester]="semester"
+                                         [educationPlan]="educationPlan"
+                                         [direction]="direction">
+        </app-change-discipline-name-part>
+        <app-discipline-teacher-part *ngIf="sectionId == 1"
+                                     [discipline]="discipline"
+                                     [semester]="semester"
+                                     [educationPlan]="educationPlan"
+                                     [direction]="direction">
+        </app-discipline-teacher-part>
+      </div>
+    </div>
+  </div>
+  <div id="controls">
+    <app-red-outline-button [label]="'Закрыть'" (onClicked)="visibilityChange.emit()"></app-red-outline-button>
+  </div>
+</div>

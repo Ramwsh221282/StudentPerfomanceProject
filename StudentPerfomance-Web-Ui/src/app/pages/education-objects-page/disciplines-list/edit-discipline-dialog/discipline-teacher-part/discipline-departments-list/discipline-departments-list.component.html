@@ -1,0 +1,9 @@
+<section class="discipline-departments-list-layout">
+  <strong class="discipline-departments-list-title">Кафедры:</strong>
+  <strong class="discipline-departments-list-title" *ngIf="departments.length == 0">Не найдено ни одной кафедры</strong>
+  <div class="discipline-departments-list">
+    <div class="department-item" *ngFor="let department of departments" (click)="selectDepartment(department, $event)">
+      {{ department.name }}
+    </div>
+  </div>
+</section>

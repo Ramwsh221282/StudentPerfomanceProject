@@ -6,7 +6,13 @@
     <label>Число семестров: {{ educationPlan.semesters.length }}</label>
   </div>
   <div class="education-plans-controls-container">
-    <app-edit-icon-button [paramHeight]="40" [paramWidth]="40"></app-edit-icon-button>
-    <app-remove-icon-button [paramHeight]="40" [paramWidth]="40"></app-remove-icon-button>
+    <app-edit-icon-button [paramHeight]="40"
+                          [paramWidth]="40"
+                          (onClicked)="selectPlanForEdit.emit(educationPlan)">
+    </app-edit-icon-button>
+    <app-remove-icon-button [paramHeight]="40"
+                            [paramWidth]="40"
+                            (onClicked)="selectPlanForRemove.emit(educationPlan)">
+    </app-remove-icon-button>
   </div>
 </section>

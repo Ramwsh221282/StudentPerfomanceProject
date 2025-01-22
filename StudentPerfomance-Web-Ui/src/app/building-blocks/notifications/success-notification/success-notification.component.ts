@@ -25,7 +25,7 @@ export class SuccessNotificationComponent implements OnInit, OnDestroy {
     this.timeOutId = setTimeout(() => {
       this.visibilityChange.emit();
       this.isVisible = false;
-    }, 10000);
+    }, 5000);
   }
 
   public ngOnDestroy() {

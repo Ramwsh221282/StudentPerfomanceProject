@@ -1,0 +1,23 @@
+<section class="discipline-teacher-part-layout">
+  <div class="teacher-info-part-layout" *ngIf="discipline.teacher">
+    <div class="teacher-info-part-data">
+      <label class="teacher-info-part-label">Преподает:</label>
+      <label class="teacher-info-part-label">{{ discipline.teacher.surname }}</label>
+      <label class="teacher-info-part-label">{{ discipline.teacher.name }}</label>
+      <label *ngIf="discipline.teacher.patronymic"
+             class="teacher-info-part-label">{{ discipline.teacher.patronymic }}</label>
+    </div>
+    <app-red-button [label]="'Открепить преподавателя'" (onClicked)="handleTeacherDetachment()">
+    </app-red-button>
+  </div>
+  <label class="teacher-info-part-label" *ngIf="!discipline.teacher">Преподаватель не закреплён</label>
+  <div class="teacher-info-part-layout" *ngIf="!discipline.teacher">
+    <app-discipline-departments-list
+      (departmentSelected)="handleDepartmentSelected($event)">
+    </app-discipline-departments-list>
+    <app-discipline-teachers-list *ngIf="selectedDepartment && teachersOfSelectedDepartment"
+                                  [teachers]="teachersOfSelectedDepartment"
+                                  (teacherSelected)="handleSelectedTeacher($event)">
+    </app-discipline-teachers-list>
+  </div>
+</section>

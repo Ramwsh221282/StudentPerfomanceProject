@@ -1,0 +1,19 @@
+<div id="container">
+  <div id="header">
+    <strong>Добавление учебного плана</strong>
+  </div>
+  <div id="content">
+    <label class="info-label">Добавление учебного плана для направления:</label>
+    <label class="info-label">{{ direction.name }}</label>
+    <label class="info-label">{{ direction.code }}</label>
+    <label class="info-label">{{ direction.type }}</label>
+    <app-floating-label-input [label]="'Год учебного плана'"
+                              [value]="year"
+                              (inputChange)="year = $event">
+    </app-floating-label-input>
+    <app-green-outline-button [label]="'Добавить'" (onClicked)="create()"></app-green-outline-button>
+  </div>
+  <div id="controls">
+    <app-red-outline-button [label]="'Закрыть'" (onClicked)="visibilityChange.emit()"></app-red-outline-button>
+  </div>
+</div>

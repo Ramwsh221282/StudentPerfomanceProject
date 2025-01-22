@@ -1,0 +1,10 @@
+<section class="change-discipline-part-section">
+  <app-floating-label-input [label]="'Название'"
+                            [value]="disciplineCopy.disciplineName"
+                            (inputChange)="disciplineCopy.disciplineName = $event">
+  </app-floating-label-input>
+  <div class="change-discipline-sub-controls">
+    <app-green-outline-button [label]="'Подтвердить изменение'" (onClicked)="edit()"></app-green-outline-button>
+    <app-yellow-button [label]="'Сбросить изменения'" (onClicked)="reset()"></app-yellow-button>
+  </div>
+</section>

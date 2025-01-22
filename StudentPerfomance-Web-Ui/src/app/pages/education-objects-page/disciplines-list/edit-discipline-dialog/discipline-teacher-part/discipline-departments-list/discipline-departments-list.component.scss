@@ -1,0 +1,35 @@
+.discipline-departments-list-layout {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.2rem;
+}
+
+.discipline-departments-list-title {
+  color: #1c172e;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.discipline-departments-list {
+  border-radius: 5px;
+  border: 1px solid #CCCCCC;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.2rem;
+  height: 350px;
+  overflow: auto;
+}
+
+.department-item {
+  font-size: 13px;
+  font-weight: bold;
+  color: #1c172e;
+  padding: 0.2rem;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #E0ECFF;
+  }
+}

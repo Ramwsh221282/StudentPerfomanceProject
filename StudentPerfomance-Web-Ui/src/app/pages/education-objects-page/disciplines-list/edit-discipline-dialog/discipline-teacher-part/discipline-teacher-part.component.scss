@@ -1,0 +1,24 @@
+.discipline-teacher-part-layout {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.5rem;
+}
+
+.teacher-info-part-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 5px;
+}
+
+.teacher-info-part-data {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.5rem;
+}
+
+.teacher-info-part-label {
+  font-weight: bold;
+  color: #1c172e;
+}

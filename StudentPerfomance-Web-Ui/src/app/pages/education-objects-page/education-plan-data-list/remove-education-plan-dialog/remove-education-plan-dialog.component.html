@@ -1,0 +1,13 @@
+<div id="container">
+  <div id="header">
+    <strong>Удаление учебного плана</strong>
+  </div>
+  <div id="content">
+    <label class="info-label">Вы действительно хотите удалить учебный план?</label>
+    <label class="info-label">При удалении учебного плана удаляются его дисциплины</label>
+    <app-red-button [label]="'Подтвердить удаление'" (onClicked)="delete()"></app-red-button>
+  </div>
+  <div id="controls">
+    <app-red-outline-button [label]="'Закрыть'" (onClicked)="visibilityChange.emit()"></app-red-outline-button>
+  </div>
+</div>
