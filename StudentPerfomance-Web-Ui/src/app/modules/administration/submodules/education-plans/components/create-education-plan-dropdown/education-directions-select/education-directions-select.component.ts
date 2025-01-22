@@ -1,13 +1,14 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { EducationDirection } from '../../../../education-directions/models/education-direction-interface';
-import { SearchDirectionsService } from '../../../../education-directions/services/search-directions.service';
+import { SearchDirectionsService } from '../../../../../../../pages/education-objects-page/education-directions-inline-list/search-directions.service';
 import { DropdownListComponent } from '../../../../../../../building-blocks/dropdown-list/dropdown-list.component';
 
 @Component({
-    selector: 'app-education-directions-select',
-    imports: [DropdownListComponent],
-    templateUrl: './education-directions-select.component.html',
-    styleUrl: './education-directions-select.component.scss'
+  selector: 'app-education-directions-select',
+  imports: [DropdownListComponent],
+  templateUrl: './education-directions-select.component.html',
+  styleUrl: './education-directions-select.component.scss',
+  standalone: true,
 })
 export class EducationDirectionsSelectComponent implements OnInit {
   @Input({ required: true }) isSelecting: boolean;

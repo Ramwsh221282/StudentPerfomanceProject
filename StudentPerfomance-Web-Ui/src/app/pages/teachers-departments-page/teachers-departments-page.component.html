@@ -1,0 +1,13 @@
+<strong class="teachers-departments-page-title">Управление кафедрами и преподавателями</strong>
+<section class="teachers-departments-page-layout">
+  <app-departments-list (departmentSelected)="currentDepartment = $event"></app-departments-list>
+  <app-teachers-list *ngIf="currentDepartment" [department]="currentDepartment"></app-teachers-list>
+</section>
+<app-success-notification *ngIf="notifications.isSuccess() && notifications.isVisible()"
+                          [message]="notifications.message()"
+                          (visibilityChange)="notifications.turn()">
+</app-success-notification>
+<app-failure-notification *ngIf="notifications.isFailure() && notifications.isVisible()"
+                          [message]="notifications.message()"
+                          (visibilityChange)="notifications.turn()">
+</app-failure-notification>

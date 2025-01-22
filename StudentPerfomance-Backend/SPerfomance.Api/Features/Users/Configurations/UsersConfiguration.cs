@@ -5,7 +5,9 @@ using SPerfomance.Application.PasswordRecoveryContext.Models;
 using SPerfomance.Application.PasswordRecoveryContext.RepositoryAbstraction;
 using SPerfomance.Application.Users.Commands.ChangeEmail;
 using SPerfomance.Application.Users.Commands.ChangePassword;
+using SPerfomance.Application.Users.Commands.RegisterAsTeacher;
 using SPerfomance.DataAccess.Repositories;
+using SPerfomance.Domain.Models.Teachers;
 using SPerfomance.Domain.Models.Users;
 using SPerfomance.PasswordRecovery.DataAccess.Repository;
 
@@ -34,6 +36,10 @@ public static class UsersConfiguration
             .AddTransient<
                 ICommandHandler<ResolvePasswordRecoveryCommand, PasswordRecoveryTicket>,
                 ResolvePasswordRecoveryCommandHandler
+            >()
+            .AddTransient<
+                ICommandHandler<RegisterAsTeacherRequest, Teacher>,
+                RegisterAsTeacherCommandHandler
             >();
         return services;
     }

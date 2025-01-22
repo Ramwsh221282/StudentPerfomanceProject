@@ -27,6 +27,14 @@ export const routes: Routes = [
     canActivate: [canActivateAuthAdmin],
   },
   {
+    path: 'teachers',
+    loadComponent: () =>
+      import(
+        './pages/teachers-departments-page/teachers-departments-page.component'
+      ).then((component) => component.TeachersDepartmentsPageComponent),
+    canActivate: [canActivateAuthAdmin],
+  },
+  {
     path: 'reports',
     loadComponent: () =>
       import(

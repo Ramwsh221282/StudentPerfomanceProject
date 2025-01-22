@@ -3,6 +3,7 @@ using SPerfomance.Domain.Models.SemesterPlans;
 using SPerfomance.Domain.Models.SemesterPlans.Errors;
 using SPerfomance.Domain.Models.TeacherDepartments;
 using SPerfomance.Domain.Models.Teachers.ValueObjects;
+using SPerfomance.Domain.Models.Users;
 using SPerfomance.Domain.Tools;
 
 namespace SPerfomance.Domain.Models.Teachers;
@@ -18,6 +19,8 @@ public class Teacher : DomainEntity
     public TeacherWorkingState State { get; private set; }
 
     public TeachersDepartments Department { get; init; }
+
+    public UserId? UserId { get; private set; }
 
     public IReadOnlyCollection<SemesterPlan> Disciplines => _disciplines;
 
@@ -107,5 +110,15 @@ public class Teacher : DomainEntity
         _disciplines.Remove(plan);
         plan.DeattachTeacher();
         return Result<SemesterPlan>.Success(plan);
+    }
+
+    public Result<UserId> SetUserId(User user)
+    {
+        if (UserId != null)
+            return new Error("За преподавателем уже есть какой-то пользователь");
+        if (user.Id == Guid.Empty)
+            return new Error("У пользователя был пустой идентификатор");
+        UserId = UserId.FromUserId(user);
+        return UserId;
     }
 }

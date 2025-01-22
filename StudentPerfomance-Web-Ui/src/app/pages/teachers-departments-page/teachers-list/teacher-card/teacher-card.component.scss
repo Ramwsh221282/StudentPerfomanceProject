@@ -1,0 +1,71 @@
+.teacher-card-layout {
+  border-radius: 10px;
+  padding: 0.5rem;
+  display: grid;
+  grid-template-columns: 60px 300px 210px;
+  grid-gap: 5px;
+  border: solid 1px #b3ff80;
+  background: #5CE600;
+  box-shadow: 4.0px 8.0px 8.0px hsl(0deg 0% 0% / 0.38);
+
+  &:hover {
+    transition: 0.3s;
+    background: #47b300;
+  }
+}
+
+.teacher-card-icon-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+}
+
+.teacher-card-icon {
+  filter: invert(99%) sepia(1%) saturate(2%) hue-rotate(269deg) brightness(106%) contrast(100%);
+}
+
+.teacher-card-content-container {
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  border-color: #CCCCCC;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 0.5rem;
+}
+
+.teacher-card-controls-container {
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  border-color: #CCCCCC;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+  padding: 0.5rem;
+}
+
+.teacher-card-control-label {
+  display: inline-flex;
+  flex-direction: row;
+  gap: 0.2rem;
+  padding: 0.2rem;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  border-color: #CCCCCC;
+  align-items: flex-start;
+}
+
+.teacher-card-data-label {
+  align-items: center;
+  color: #1c172e;
+  text-shadow: 1px 1px #CCCCCC;
+  font-weight: bold;
+  font-size: 14px;
+  text-decoration: underline;
+  text-align: left;
+}

@@ -98,7 +98,8 @@ public class TeachersRepository : ITeachersRepository
                         .SetProperty(t => t.Name.Surname, entity.Name.Surname)
                         .SetProperty(t => t.Name.Patronymic, entity.Name.Patronymic)
                         .SetProperty(t => t.JobTitle.JobTitle, entity.JobTitle.JobTitle)
-                        .SetProperty(t => t.State.State, entity.State.State),
+                        .SetProperty(t => t.State.State, entity.State.State)
+                        .SetProperty(t => t.UserId, entity.UserId),
                 cancellationToken: ct
             );
 

@@ -1,0 +1,10 @@
+<section class="teachers-list-layout">
+  <strong class="teachers-list-title">Преподаватели</strong>
+  <div class="teachers-list-controls-wrapper">
+    <app-add-icon-button [paramHeight]="40" [paramWidth]="40"></app-add-icon-button>
+    <app-green-outline-button [label]="'Добавить нового преподавателя'"></app-green-outline-button>
+  </div>
+  <div class="teachers-list-content">
+    <app-teacher-card *ngFor="let teacher of department.teachers" [teacher]="teacher"></app-teacher-card>
+  </div>
+</section>

@@ -4,7 +4,7 @@ import { AddIconButtonComponent } from '../../../building-blocks/buttons/add-ico
 import { GreenOutlineButtonComponent } from '../../../building-blocks/buttons/green-outline-button/green-outline-button.component';
 import { FloatingLabelInputComponent } from '../../../building-blocks/floating-label-input/floating-label-input.component';
 import { EducationDirection } from '../../../modules/administration/submodules/education-directions/models/education-direction-interface';
-import { SearchDirectionsService } from '../../../modules/administration/submodules/education-directions/services/search-directions.service';
+import { SearchDirectionsService } from './search-directions.service';
 import { EducationDirectionItemBlockComponent } from './education-direction-item-block/education-direction-item-block.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { CreateEducationDirectionDialogComponent } from './create-education-direction-dialog/create-education-direction-dialog.component';

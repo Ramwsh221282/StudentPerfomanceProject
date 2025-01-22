@@ -60,6 +60,6 @@ import { DepartmentFilterDropdownComponent } from './components/department-table
     DropdownListComponent,
     YellowOutlineButtonComponent,
   ],
-  exports: [DepartmentPageComponent],
+  exports: [DepartmentPageComponent, DepartmentItemComponent],
 })
 export class DepartmentsModule {}

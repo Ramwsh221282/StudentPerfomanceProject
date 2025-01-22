@@ -31,7 +31,7 @@ export class EducationPlanDataListComponent {
   @Input({ required: true }) direction: EducationDirection;
   @Output() selectedEducationPlan: EventEmitter<EducationPlan> =
     new EventEmitter();
-  @Output() educationPlanRemoved: EventEmitter<void>;
+  @Output() educationPlanRemoved: EventEmitter<void> = new EventEmitter();
   public currentEducationPlan: EducationPlan | null = null;
   public removeEducationPlanRequest: EducationPlan | null;
   public editEducationPlanRequest: EducationPlan | null;

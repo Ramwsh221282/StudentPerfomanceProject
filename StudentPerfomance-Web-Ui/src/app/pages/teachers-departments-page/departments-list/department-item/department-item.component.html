@@ -1,0 +1,22 @@
+<section [ngClass]="{'selected': isSelected}" class="department-item-layout" (click)="selectDepartmentHandle($event)">
+  <strong class="department-item-name-label">{{ department.name }}</strong>
+  <div class="department-item-content-layout">
+    <div class="department-item-icon-container">
+      <label>Число преподавателей: {{ department.teachers.length }}</label>
+      <img class="department-item-icon" [ngSrc]="'assets/department_icon.svg'"
+           [width]="100"
+           [height]="100"
+           [alt]="'image'">
+    </div>
+    <div class="department-controls-label">
+      <div class="department-control-label">
+        <app-edit-icon-button [paramWidth]="40" [paramHeight]="40"></app-edit-icon-button>
+        <app-yellow-outline-button [label]="'Редактировать'"></app-yellow-outline-button>
+      </div>
+      <div class="department-control-label">
+        <app-remove-icon-button [paramHeight]="40" [paramWidth]="40"></app-remove-icon-button>
+        <app-red-outline-button [label]="'Удалить кафедру'"></app-red-outline-button>
+      </div>
+    </div>
+  </div>
+</section>
