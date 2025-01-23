@@ -1,0 +1,19 @@
+<section class="students-page-layout">
+  <strong class="students-page-title">Студенты и студенческие группы</strong>
+  <app-student-groups-list></app-student-groups-list>
+  <strong class="students-page-title"></strong>
+  <div class="students-page-workspace">
+    <app-students-list *ngIf="viewModel.currentGroup" [group]="viewModel.currentGroup"></app-students-list>
+    <app-student-group-plan-info *ngIf="viewModel.currentGroup"
+                                 [group]="viewModel.currentGroup">
+    </app-student-group-plan-info>
+  </div>
+</section>
+<app-success-notification *ngIf="notifications.isSuccess() && notifications.isVisible()"
+                          [message]="notifications.message()"
+                          (visibilityChange)="notifications.turn()">
+</app-success-notification>
+<app-failure-notification *ngIf="notifications.isFailure() && notifications.isVisible()"
+                          [message]="notifications.message()"
+                          (visibilityChange)="notifications.turn()">
+</app-failure-notification>

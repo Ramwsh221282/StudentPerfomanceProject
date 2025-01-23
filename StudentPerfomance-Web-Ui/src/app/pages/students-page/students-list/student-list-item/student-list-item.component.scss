@@ -1,0 +1,30 @@
+.student-list-item-container {
+  display: grid;
+  grid-template-columns: 1fr 75px;
+  align-items: center;
+  justify-content: flex-start;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+.student-list-name-part {
+  display: inline-flex;
+  flex-direction: row;
+  gap: 0.2rem;
+  font-weight: bold;
+  font-size: 13px;
+  color: #1c172e;
+}
+
+.student-list-name-part-inactive {
+  color: #cca300;
+  text-decoration: underline;
+}
+
+.student-list-controls-part {
+  display: inline-flex;
+  flex-direction: row;
+  gap: 0.2rem;
+  align-items: flex-start;
+  justify-content: center;
+}

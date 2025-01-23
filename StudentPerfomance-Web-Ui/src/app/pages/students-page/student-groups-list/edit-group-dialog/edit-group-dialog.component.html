@@ -1,0 +1,22 @@
+<div id="container">
+  <div id="header">
+    <strong>Редактирование группы</strong>
+  </div>
+  <div id="content">
+    <app-floating-label-input [label]="'Наименование группы'"
+                              [value]="groupCopy.name"
+                              (inputChange)="groupCopy.name = $event">
+    </app-floating-label-input>
+    <app-green-outline-button [label]="'Подтвердить изменения'"
+                              (onClicked)="edit()">
+    </app-green-outline-button>
+    <app-red-button [label]="'Сбросить изменения'"
+                    (onClicked)="reset()">
+    </app-red-button>
+  </div>
+  <div id="controls">
+    <app-red-outline-button [label]="'Закрыть'"
+                            (onClicked)="visibilityChanged.emit()">
+    </app-red-outline-button>
+  </div>
+</div>

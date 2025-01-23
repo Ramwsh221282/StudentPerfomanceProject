@@ -1,0 +1,18 @@
+<section class="student-group-plan-info-container">
+  <label class="student-group-education-plan-title">Информация об учебном плане группы:</label>
+  <div class="student-group-content-info-container" *ngIf="group.plan != null">
+    <label class="student-group-info-label">Направление: {{ group.plan.direction.name }}</label>
+    <label class="student-group-info-label">{{ group.plan.direction.code }}</label>
+    <label class="student-group-info-label">{{ group.plan.direction.type }}</label>
+    <label class="student-group-info-label">Семестр: {{ group.activeSemesterNumber }}</label>
+  </div>
+  <div class="student-group-content-info-container" *ngIf="group.plan == null">
+    <label class="student-group-info-label-red">У группы не закреплен учебный план</label>
+  </div>
+  <div class="student-group-content-info-container" *ngIf="group.plan != null">
+    <app-red-outline-button [label]="'Открепить учебный план'"></app-red-outline-button>
+  </div>
+  <div class="student-group-content-info-container" *ngIf="group.plan == null">
+    <app-green-outline-button [label]="'Закрепить учебный план'"></app-green-outline-button>
+  </div>
+</section>

@@ -7,10 +7,10 @@ import { UserOperationNotificationService } from '../../../../../../shared/servi
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
-    selector: 'app-students-list',
-    templateUrl: './students-list.component.html',
-    styleUrl: './students-list.component.scss',
-    standalone: false
+  selector: 'app-students-list',
+  templateUrl: './students-list.component.html',
+  styleUrl: './students-list.component.scss',
+  standalone: false,
 })
 export class StudentsListComponent {
   @Input({ required: true }) group: StudentGroup;
@@ -44,8 +44,7 @@ export class StudentsListComponent {
         tap((response) => {
           const surname: string = response.surname;
           const name = response.name[0];
-          const patronymic =
-            response.patronymic.length == 0 ? ' ' : response.patronymic[0];
+          const patronymic = '123';
           this._notificationService.SetMessage = `Студент ${surname} ${name} ${patronymic == undefined ? ' ' : patronymic[0]} добавлен в группу ${this.group.name}`;
           this._notificationService.success();
           this.sortStudentsBySurname();

@@ -1,0 +1,13 @@
+<div class="student-list-item-container">
+  <div class="student-list-name-part">
+    <label
+      [ngClass]="{'student-list-name-part-inactive': student.state == 'Неактивен'}">{{ student.surname }} {{ student.name[0] + '. ' }} {{ student.patronymic == null ? '' : student.patronymic[0] + '.' }}</label>
+    <label
+      [ngClass]="{'student-list-name-part-inactive': student.state == 'Неактивен'}">{{ student.recordbook }}</label>
+    <label [ngClass]="{'student-list-name-part-inactive': student.state == 'Неактивен'}">{{ student.state }}</label>
+  </div>
+  <div class="student-list-controls-part">
+    <app-edit-icon-button [paramHeight]="30" [paramWidth]="30"></app-edit-icon-button>
+    <app-remove-icon-button [paramWidth]="30" [paramHeight]="30"></app-remove-icon-button>
+  </div>
+</div>

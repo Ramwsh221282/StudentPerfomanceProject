@@ -1,0 +1,35 @@
+<div id="container">
+  <div id="header">
+    <strong>Добавление нового студента</strong>
+  </div>
+  <div id="content">
+    <label class="label-info">Добавление студента в группу: {{ group.name }}</label>
+    <app-floating-label-input [label]="'Фамилия'"
+                              [value]="surname"
+                              (inputChange)="surname = $event">
+    </app-floating-label-input>
+    <app-floating-label-input [label]="'Имя'"
+                              [value]="name"
+                              (inputChange)="name = $event">
+    </app-floating-label-input>
+    <app-floating-label-input [label]="'Отчество (необязательно)'"
+                              [value]="patronymic"
+                              (inputChange)="patronymic = $event">
+    </app-floating-label-input>
+    <app-floating-label-input [label]="'Зачётная книжка'"
+                              [value]="recordBook"
+                              (inputChange)="recordBook = $event">
+    </app-floating-label-input>
+    <app-green-outline-button [label]="'Добавить'"
+                              (onClicked)="create()">
+    </app-green-outline-button>
+    <app-radio-button-list [values]="[{ value: 'Активен', isChecked: true }, { value: 'Неактивен', isChecked: false }]"
+                           (valueChecked)="state = $event">
+    </app-radio-button-list>
+  </div>
+  <div id="controls">
+    <app-red-outline-button [label]="'Закрыть'"
+                            (onClicked)="visibilityChanged.emit()">
+    </app-red-outline-button>
+  </div>
+</div>

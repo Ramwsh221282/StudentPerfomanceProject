@@ -22,7 +22,9 @@ public static class StudentDtoExtensions
             Id = student.Id,
             Name = student.Name.Name,
             Surname = student.Name.Surname,
-            Patronymic = student.Name.Patronymic,
+            Patronymic = string.IsNullOrWhiteSpace(student.Name.Patronymic)
+                ? null
+                : student.Name.Patronymic,
             State = student.State.State,
             Recordbook = student.Recordbook.Recordbook,
             Group = student.AttachedGroup.MapFromDomain(),
@@ -35,7 +37,9 @@ public static class StudentDtoExtensions
             Id = student.Id,
             Name = student.Name.Name,
             Surname = student.Name.Surname,
-            Patronymic = student.Name.Patronymic,
+            Patronymic = string.IsNullOrWhiteSpace(student.Name.Patronymic)
+                ? null
+                : student.Name.Patronymic,
             State = student.State.State,
             Recordbook = student.Recordbook.Recordbook,
             EntityNumber = student.EntityNumber,

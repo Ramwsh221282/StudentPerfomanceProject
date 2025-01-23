@@ -1,0 +1,36 @@
+:host {
+  height: 37.5vh;
+  width: 71wv;
+}
+
+.student-group-controls-container {
+  width: 19.3vw;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: #1a88ff;
+  border-radius: 10px;
+  border: solid 1px #99caff;
+  box-shadow: 4.0px 8.0px 8.0px hsl(0deg 0% 0% / 0.38);
+}
+
+.student-group-controls-content {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.2rem;
+  background: #FFFFFF;
+  justify-content: flex-start;
+  border-radius: 10px;
+}
+
+.student-group-list-container {
+  padding: 0.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 10px;
+  width: 70vw;
+  height: 34.5vh;
+  overflow: auto;
+}

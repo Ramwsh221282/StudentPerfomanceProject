@@ -1,0 +1,21 @@
+.students-page-layout {
+  display: inline-flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+
+.students-page-title {
+  color: #1c172e;
+  font-size: 24px;
+  display: inline-flex;
+  flex-direction: row;
+  text-decoration: underline;
+}
+
+.students-page-workspace {
+  padding: 1rem;
+  display: inline-flex;
+  flex-direction: row;
+}

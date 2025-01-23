@@ -74,6 +74,10 @@ export class AuthService {
     return this._httpClient.post<User>(apiUri, payload);
   }
 
+  public setNotAuthorized(): void {
+    this._isAuthorized = false;
+  }
+
   public verify(): void {
     const apiUri: string = `${this._appConfig.baseApiUri}/api/users/verify`;
     //const apiUri: string = `${BASE_API_URI}/app/users/verify`;

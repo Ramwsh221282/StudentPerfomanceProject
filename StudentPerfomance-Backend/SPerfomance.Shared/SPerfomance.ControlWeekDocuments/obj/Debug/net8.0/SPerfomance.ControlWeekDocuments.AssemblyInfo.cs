@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SPerfomance.ControlWeekDocuments")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+67a0ade7ebc9daf5182cf0eeee2d059abf6d9643")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c24120526030ff55c3ee7b084fc84b36210ca407")]
 [assembly: System.Reflection.AssemblyProductAttribute("SPerfomance.ControlWeekDocuments")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SPerfomance.ControlWeekDocuments")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

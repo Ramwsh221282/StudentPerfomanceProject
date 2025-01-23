@@ -85,7 +85,7 @@ public static class ChangeGroupName
                 jwtToken.UserId,
                 group.Error.Description
             );
-            TypedResults.BadRequest(group.Error.Description);
+            return TypedResults.BadRequest(group.Error.Description);
         }
 
         logger.LogInformation(

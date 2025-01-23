@@ -1,0 +1,13 @@
+<div id="container">
+  <div id="header">
+    <strong>Удаление студенческой группы</strong>
+  </div>
+  <div id="content">
+    <label class="label-info">Вы действительно хотите удалить студенческую группу?</label>
+    <label class="label-info">При удалении студенческой группы удаляются её студенты</label>
+    <app-red-button [label]="'Подтвердить'" (onClicked)="remove()"></app-red-button>
+  </div>
+  <div id="controls">
+    <app-red-outline-button [label]="'Закрыть'" (onClicked)="visibilityChanged.emit()"></app-red-outline-button>
+  </div>
+</div>

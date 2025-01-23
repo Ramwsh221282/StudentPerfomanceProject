@@ -1,0 +1,24 @@
+<section [ngClass]="{'selected': isSelected}" class="group-card-container" (click)="handleSelection($event)">
+  <strong class="group-card-title">{{ group.name }}</strong>
+  <div class="group-card-layout">
+    <div class="group-card-icon-container">
+      <img [ngSrc]="'assets/student_group_icon.svg'" [width]="60" [height]="60" [alt]="'image'">
+      <div class="group-card-sub-controls">
+        <app-edit-icon-button [paramWidth]="30" [paramHeight]="30"
+                              (onClicked)="selectCardForEdit.emit(group)">
+        </app-edit-icon-button>
+        <app-remove-icon-button [paramHeight]="30" [paramWidth]="30"
+                                (onClicked)="selectCardForRemove.emit(group)">
+        </app-remove-icon-button>
+      </div>
+    </div>
+  </div>
+</section>
+<div [ngClass]="{'info-selected': isSelected}" class="group-card-info" (click)="handleSelection($event)">
+  <label class="group-card-info-label">Информация:</label>
+  <label class="group-card-info-label">Число студентов: {{ group.students.length }}</label>
+  <label class="group-card-info-label-red" *ngIf="group.plan == null">Учебный план отсутствует</label>
+  <label class="group-card-info-label"
+         *ngIf="group.plan != null">{{ group.plan.direction.name + ' ' }} {{ group.plan.year }}</label>
+  <label class="group-card-info-label" *ngIf="group.plan != null">Семестр: {{ group.activeSemesterNumber }}</label>
+</div>

@@ -1,0 +1,33 @@
+<div class="student-group-controls-container">
+  <div class="student-group-controls-content">
+    <app-add-icon-button [paramHeight]="30"
+                         [paramWidth]="30"
+                         (onClicked)="isCreatingNewGroup = true">
+    </app-add-icon-button>
+    <app-green-outline-button [label]="'Добавить новую студенческую группу'"
+                              (onClicked)="isCreatingNewGroup = true">
+    </app-green-outline-button>
+  </div>
+</div>
+<div class="student-group-list-container">
+  <app-student-group-card *ngFor="let group of _viewModel.groups"
+                          [isSelected]="_viewModel.isGroupCurrent(group)"
+                          [group]="group"
+                          (selectCard)="handleGroupSelection($event)"
+                          (selectCardForRemove)="removeGroupRequest = $event"
+                          (selectCardForEdit)="editGroupRequest = $event">
+  </app-student-group-card>
+</div>
+<app-create-group-dialog *ngIf="isCreatingNewGroup"
+                         (groupCreated)="handleGroupCreation($event)"
+                         (visibilityChanged)="isCreatingNewGroup = false">
+</app-create-group-dialog>
+<app-remove-group-dialog *ngIf="removeGroupRequest"
+                         [group]="removeGroupRequest"
+                         (visibilityChanged)="removeGroupRequest = null"
+                         (groupRemoved)="handleGroupDeletion($event)">
+</app-remove-group-dialog>
+<app-edit-group-dialog *ngIf="editGroupRequest"
+                       [group]="editGroupRequest"
+                       (visibilityChanged)="editGroupRequest = null">
+</app-edit-group-dialog>

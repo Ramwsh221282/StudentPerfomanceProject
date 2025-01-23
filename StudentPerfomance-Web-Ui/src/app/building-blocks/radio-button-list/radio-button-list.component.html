@@ -1,0 +1,5 @@
+<label class="container" *ngFor="let item of values" (click)="onValueSelect(item, $event)">
+  {{ item.value }}
+  <input type="radio" [checked]="item.isChecked" [name]="'radio'">
+  <span class="checkmark"></span>
+</label>

@@ -7,10 +7,10 @@ import { catchError, Observable, tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
-    selector: 'app-edit-student-dropdown',
-    templateUrl: './edit-student-dropdown.component.html',
-    styleUrl: './edit-student-dropdown.component.scss',
-    standalone: false
+  selector: 'app-edit-student-dropdown',
+  templateUrl: './edit-student-dropdown.component.html',
+  styleUrl: './edit-student-dropdown.component.scss',
+  standalone: false,
 })
 export class EditStudentDropdownComponent implements OnInit, ISubbmittable {
   @Input({ required: true }) student: Student;
@@ -62,7 +62,7 @@ export class EditStudentDropdownComponent implements OnInit, ISubbmittable {
   public ngOnInit(): void {
     this.newName = this.student.name;
     this.newSurname = this.student.surname;
-    this.newPatronymic = this.student.patronymic;
+    this.newPatronymic = this.student.patronymic!;
     this.newState = this.student.state;
     this.newRecordbook = String(this.student.recordbook);
   }
@@ -81,11 +81,11 @@ export class EditStudentDropdownComponent implements OnInit, ISubbmittable {
   }
 
   private buildOldStudentMessage(): string {
-    return `Изменена информация о студенте ${this.student.surname}, ${this.student.name[0]}, ${this.student.patronymic.length == 0 ? ' ' : this.student.patronymic[0]} ${this.student.recordbook} ${this.student.state}`;
+    return `Изменена информация о студенте ${this.student.surname}, ${this.student.name[0]}, ${this.student.patronymic!.length == 0 ? ' ' : this.student.patronymic![0]} ${this.student.recordbook} ${this.student.state}`;
   }
 
   private buildUpdatedStudentMessage(student: Student): string {
-    return `На ${student.surname}, ${student.name[0]}, ${student.patronymic == null || this.student.patronymic.length == 0 ? ' ' : student.patronymic[0]} ${student.recordbook} ${student.state}`;
+    return `На ${student.surname}, ${student.name[0]}, ${student.patronymic == null || this.student.patronymic!.length == 0 ? ' ' : student.patronymic[0]} ${student.recordbook} ${student.state}`;
   }
 
   private createUpdatedStudent(): Student {

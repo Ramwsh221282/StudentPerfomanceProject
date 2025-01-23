@@ -1,0 +1,19 @@
+<div id="container">
+  <div id="header">
+    <strong>Добавление новой группы</strong>
+  </div>
+  <div id="content">
+    <app-floating-label-input [label]="'Наименование группы'"
+                              [value]="name"
+                              (inputChange)="name = $event">
+    </app-floating-label-input>
+    <app-green-outline-button [label]="'Добавить'"
+                              (onClicked)="create()">
+    </app-green-outline-button>
+  </div>
+  <div id="controls">
+    <app-red-outline-button [label]="'Закрыть'"
+                            (onClicked)="visibilityChanged.emit()">
+    </app-red-outline-button>
+  </div>
+</div>

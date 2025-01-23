@@ -42,4 +42,16 @@ export class NotificationService {
   public isFailure(): boolean {
     return this._isFailure;
   }
+
+  public bulkFailure(message: string): void {
+    this.setMessage(message);
+    this.failure();
+    this.turn();
+  }
+
+  public bulkSuccess(message: string): void {
+    this.setMessage(message);
+    this.success();
+    this.turn();
+  }
 }

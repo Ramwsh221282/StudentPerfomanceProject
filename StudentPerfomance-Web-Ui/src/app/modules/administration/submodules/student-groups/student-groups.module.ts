@@ -76,6 +76,6 @@ import { YellowOutlineButtonComponent } from '../../../../building-blocks/button
     ChangeGroupEducationPlanPopupComponent,
     YellowOutlineButtonComponent,
   ],
-  exports: [StudentGroupsPageComponent],
+  exports: [StudentGroupsPageComponent, StudentsListComponent],
 })
 export class StudentGroupsModule {}
