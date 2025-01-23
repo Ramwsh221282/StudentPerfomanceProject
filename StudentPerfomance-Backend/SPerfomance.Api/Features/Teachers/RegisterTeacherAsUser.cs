@@ -46,7 +46,8 @@ public static class RegisterTeacherAsUser
         if (!await jwtToken.IsVerifiedAdmin(users))
             return TypedResults.Unauthorized();
         Result<Teacher> result = await dispatcher.Dispatch<RegisterAsTeacherRequest, Teacher>(
-            request
+            request,
+            ct
         );
         return result.IsFailure
             ? TypedResults.BadRequest(result.Error.Description)
