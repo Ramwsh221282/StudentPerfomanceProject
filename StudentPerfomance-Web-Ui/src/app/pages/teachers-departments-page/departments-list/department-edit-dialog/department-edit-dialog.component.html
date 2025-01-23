@@ -1,0 +1,22 @@
+<div id="container">
+  <div id="header">
+    <strong>Редактирование кафедры</strong>
+  </div>
+  <div id="content">
+    <app-floating-label-input [label]="'Наименование'"
+                              [value]="departmentCopy.name"
+                              (inputChange)="departmentCopy.name = $event">
+    </app-floating-label-input>
+    <div class="sub-controls-container">
+      <app-green-outline-button [label]="'Применить изменения'"
+                                (onClicked)="edit()">
+      </app-green-outline-button>
+      <app-yellow-button [label]="'Сбросить изменения'"
+                         (onClicked)="reset()">
+      </app-yellow-button>
+    </div>
+  </div>
+  <div id="controls">
+    <app-red-outline-button [label]="'Закрыть'" (onClicked)="visibilityChanged.emit()"></app-red-outline-button>
+  </div>
+</div>

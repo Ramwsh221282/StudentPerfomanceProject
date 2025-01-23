@@ -1,0 +1,15 @@
+<div id="container">
+  <div id="header">
+    <strong>Удаление преподавателя</strong>
+  </div>
+  <div id="content">
+    <label class="label-info">Вы уверены, что Вы хотите удалить преподавателя?</label>
+    <label class="label-info">При удалении преподавателя, если он был пользователь, то пользователь удаляется.</label>
+    <label class="label-info">Если преподаватель преподавал дисциплину, то дисциплины больше не привязаны к этому
+      преподавателю.</label>
+    <app-red-button [label]="'Подтвердить удаление'" (onClicked)="remove()"></app-red-button>
+  </div>
+  <div id="controls">
+    <app-red-outline-button [label]="'Закрыть'" (onClicked)="visibilityChanged.emit()"></app-red-outline-button>
+  </div>
+</div>

@@ -11,6 +11,7 @@ public class TeacherDto
     public string? JobTitle { get; set; }
     public string? State { get; set; }
     public int? EntityNumber { get; set; }
+    public Guid? UserId { get; set; }
 }
 
 public static class TeacherDtoExtensions
@@ -25,5 +26,6 @@ public static class TeacherDtoExtensions
             JobTitle = teacher.JobTitle.JobTitle,
             State = teacher.State.State,
             EntityNumber = teacher.EntityNumber,
+            UserId = teacher.UserId == null ? null : teacher.UserId.Id,
         };
 }

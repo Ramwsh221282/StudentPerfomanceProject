@@ -346,6 +346,9 @@ namespace SPerfomance.DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<Guid?>("UserId")
+                        .HasColumnType("TEXT");
+
                     b.ComplexProperty<Dictionary<string, object>>("Name", "SPerfomance.Domain.Models.Teachers.Teacher.Name#TeacherName", b1 =>
                         {
                             b1.IsRequired();

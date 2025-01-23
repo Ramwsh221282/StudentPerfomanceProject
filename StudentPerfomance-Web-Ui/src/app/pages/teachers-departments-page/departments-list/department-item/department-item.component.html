@@ -3,19 +3,30 @@
   <div class="department-item-content-layout">
     <div class="department-item-icon-container">
       <label>Число преподавателей: {{ department.teachers.length }}</label>
-      <img class="department-item-icon" [ngSrc]="'assets/department_icon.svg'"
+      <img class="department-item-icon"
+           [ngSrc]="'assets/department_icon.svg'"
            [width]="100"
            [height]="100"
            [alt]="'image'">
     </div>
     <div class="department-controls-label">
       <div class="department-control-label">
-        <app-edit-icon-button [paramWidth]="40" [paramHeight]="40"></app-edit-icon-button>
-        <app-yellow-outline-button [label]="'Редактировать'"></app-yellow-outline-button>
+        <app-edit-icon-button [paramWidth]="40"
+                              [paramHeight]="40"
+                              (onClicked)="selectedForEdit.emit(department)">
+        </app-edit-icon-button>
+        <app-yellow-outline-button [label]="'Редактировать'"
+                                   (onClicked)="selectedForEdit.emit(department)">
+        </app-yellow-outline-button>
       </div>
       <div class="department-control-label">
-        <app-remove-icon-button [paramHeight]="40" [paramWidth]="40"></app-remove-icon-button>
-        <app-red-outline-button [label]="'Удалить кафедру'"></app-red-outline-button>
+        <app-remove-icon-button [paramHeight]="40"
+                                [paramWidth]="40"
+                                (onClicked)="selectedForRemove.emit(department)">
+        </app-remove-icon-button>
+        <app-red-outline-button [label]="'Удалить кафедру'"
+                                (onClicked)="selectedForRemove.emit(department)">
+        </app-red-outline-button>
       </div>
     </div>
   </div>

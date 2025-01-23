@@ -1,0 +1,16 @@
+<div id="container">
+  <div id="header">
+    <strong>Удаление кафедры</strong>
+  </div>
+  <div id="content">
+    <label class="label-text">Вы уверены, что Вы хотите удалить кафедру?</label>
+    <label class="label-text">При удалении кафедры удаляются преподаватели.</label>
+    <label class="label-text">От дисциплин, удаленные преподавателя открепляются.</label>
+    <label class="label-text">Пользователи, учетные данные (пользователи) зарегистрированных преподавателей
+      удаляются.</label>
+    <app-red-button [label]="'Подтвердить удаление'" (onClicked)="remove()"></app-red-button>
+  </div>
+  <div id="controls">
+    <app-red-outline-button [label]="'Закрыть'" (onClicked)="visibilityChanged.emit()"></app-red-outline-button>
+  </div>
+</div>

@@ -18,4 +18,6 @@ public sealed record UserId
     }
 
     public static UserId NewUserId() => new UserId(Guid.NewGuid());
+
+    public static UserId ConcreteId(Guid id) => new UserId(id);
 }

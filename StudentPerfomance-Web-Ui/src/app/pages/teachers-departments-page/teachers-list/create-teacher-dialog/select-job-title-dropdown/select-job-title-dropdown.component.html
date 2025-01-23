@@ -1,0 +1,4 @@
+<section class="job-title-selection-container">
+  <label class="job-title-select-label" *ngFor="let job of jobTitles"
+         (click)="handleSelection(job, $event)">{{ job }}</label>
+</section>

@@ -8,4 +8,5 @@ export interface Teacher {
   jobTitle: string;
   department: Department;
   id: string;
+  userId: string | null;
 }

@@ -1,0 +1,47 @@
+<div id="container">
+  <div id="header">
+    <strong>Добавление нового преподавателя</strong>
+  </div>
+  <div id="content">
+    <label class="label-info">Добавление преподавателя в кафедру</label>
+    <label class="label-info">{{ department.name }}</label>
+    <app-floating-label-input [label]="'Фамилия'"
+                              [value]="surname"
+                              (inputChange)="surname = $event">
+    </app-floating-label-input>
+    <app-floating-label-input [label]="'Имя'"
+                              [value]="name"
+                              (inputChange)="name = $event">
+    </app-floating-label-input>
+    <app-floating-label-input [label]="'Отчество (необязательно)'"
+                              [value]="patronymic"
+                              (inputChange)="patronymic = $event">
+    </app-floating-label-input>
+    <app-floating-label-input [label]="'Должность'"
+                              [value]="jobTitle"
+                              [isReadonly]="true"
+                              [showContent]="isSelectingJobTitle"
+                              (click)="isSelectingJobTitle = true">
+      <app-select-job-title-dropdown *ngIf="isSelectingJobTitle"
+                                     (jobTitleSelected)="jobTitle = $event; isSelectingJobTitle = false">
+      </app-select-job-title-dropdown>
+    </app-floating-label-input>
+    <app-floating-label-input [label]="'Способ работы'"
+                              [value]="state"
+                              [isReadonly]="true"
+                              [showContent]="isSelectingState"
+                              (click)="isSelectingState = true">
+      <app-select-state-dropdown *ngIf="isSelectingState"
+                                 (workingStateSelected)="state = $event; isSelectingState = false">
+      </app-select-state-dropdown>
+    </app-floating-label-input>
+    <app-green-outline-button [label]="'Добавить'"
+                              (onClicked)="create()">
+    </app-green-outline-button>
+  </div>
+  <div id="controls">
+    <app-red-outline-button [label]="'Закрыть'"
+                            (onClicked)="visibilityChanged.emit()">
+    </app-red-outline-button>
+  </div>
+</div>

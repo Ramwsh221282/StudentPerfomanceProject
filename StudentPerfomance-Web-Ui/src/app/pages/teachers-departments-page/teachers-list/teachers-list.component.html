@@ -1,10 +1,38 @@
 <section class="teachers-list-layout">
   <strong class="teachers-list-title">Преподаватели</strong>
   <div class="teachers-list-controls-wrapper">
-    <app-add-icon-button [paramHeight]="40" [paramWidth]="40"></app-add-icon-button>
-    <app-green-outline-button [label]="'Добавить нового преподавателя'"></app-green-outline-button>
+    <app-add-icon-button [paramHeight]="40" [paramWidth]="40"
+                         (onClicked)="isCreatingTeacher = true">
+    </app-add-icon-button>
+    <app-green-outline-button [label]="'Добавить нового преподавателя'"
+                              (onClicked)="isCreatingTeacher = true">
+    </app-green-outline-button>
   </div>
   <div class="teachers-list-content">
-    <app-teacher-card *ngFor="let teacher of department.teachers" [teacher]="teacher"></app-teacher-card>
+    <app-teacher-card *ngFor="let teacher of department.teachers" [teacher]="teacher"
+                      (selectedForRemove)="removeTeacherRequest = $event"
+                      (selectedForEdit)="editTeacherRequest = $event"
+                      (selectForRegister)="registerTeacherRequest = $event">
+    </app-teacher-card>
   </div>
 </section>
+<app-create-teacher-dialog *ngIf="isCreatingTeacher"
+                           [department]="department"
+                           (visibilityChanged)="isCreatingTeacher = false"
+                           (teacherCreated)="handleTeacherCreated($event)">
+</app-create-teacher-dialog>
+<app-remove-teacher-dialog *ngIf="removeTeacherRequest"
+                           [department]="department"
+                           [teacher]="removeTeacherRequest"
+                           (teacherRemoved)="handleTeacherRemoved($event)"
+                           (visibilityChanged)="removeTeacherRequest = null">
+</app-remove-teacher-dialog>
+<app-edit-teacher-dialog *ngIf="editTeacherRequest"
+                         [department]="department"
+                         [teacher]="editTeacherRequest"
+                         (visibilityChanged)="editTeacherRequest = null">
+</app-edit-teacher-dialog>
+<app-register-teacher-dialog *ngIf="registerTeacherRequest"
+                             [registerTeacher]="registerTeacherRequest"
+                             (visibilityChanged)="registerTeacherRequest = null">
+</app-register-teacher-dialog>

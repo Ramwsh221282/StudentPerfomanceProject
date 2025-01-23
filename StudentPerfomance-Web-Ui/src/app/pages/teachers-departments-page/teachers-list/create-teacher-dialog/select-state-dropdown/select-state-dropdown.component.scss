@@ -1,0 +1,32 @@
+:host {
+  position: absolute;
+  margin-top: -20px;
+  z-index: 3000;
+}
+
+.working-state-selection-container {
+  background: #FFFFFF;
+  border-radius: 5px;
+  border: solid 1px #CCCCCC;
+  padding: 0.5rem;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+}
+
+.working-state-select-label {
+  cursor: pointer;
+  font-size: 14px;
+  padding: 0.5rem;
+  width: 100%;
+  color: #1c172e;
+  font-weight: bold;
+  background-color: #ffffff;
+  border-radius: 5px;
+  border: solid 1px #1a88ff;
+
+  &:hover {
+    border: solid 1px #5CE600;
+  }
+}

@@ -1,14 +1,34 @@
 <section class="department-list-layout">
   <strong class="department-list-title">Кафедры преподавателей</strong>
   <div class="department-list-controls-wrapper">
-    <app-add-icon-button [paramHeight]="40" [paramWidth]="40"></app-add-icon-button>
-    <app-green-outline-button [label]="'Добавить новую кафедру'"></app-green-outline-button>
+    <app-add-icon-button [paramHeight]="40"
+                         [paramWidth]="40"
+                         (onClicked)="isCreatingDepartment = true">
+    </app-add-icon-button>
+    <app-green-outline-button [label]="'Добавить новую кафедру'"
+                              (onClicked)="isCreatingDepartment = true">
+    </app-green-outline-button>
   </div>
   <div class="department-list-content">
     <app-department-item *ngFor="let department of departments"
                          [department]="department"
                          [isSelected]="selectedDepartment != null && selectedDepartment.name == department.name"
-                         (selectDepartment)="handleDepartmentSelection($event)">
+                         (selectDepartment)="handleDepartmentSelection($event)"
+                         (selectedForEdit)="editDepartmentRequest = $event"
+                         (selectedForRemove)="removeDepartmentRequest = $event">
     </app-department-item>
   </div>
 </section>
+<app-department-create-dialog *ngIf="isCreatingDepartment"
+                              (visibilityChanged)="isCreatingDepartment = false"
+                              (departmentCreated)="handleDepartmentCreation($event)">
+</app-department-create-dialog>
+<app-department-remove-dialog *ngIf="removeDepartmentRequest"
+                              [department]="removeDepartmentRequest"
+                              (visibilityChanged)="removeDepartmentRequest = null"
+                              (departmentRemoved)="handleDepartmentRemoved($event)">
+</app-department-remove-dialog>
+<app-department-edit-dialog *ngIf="editDepartmentRequest"
+                            [department]="editDepartmentRequest"
+                            (visibilityChanged)="editDepartmentRequest = null">
+</app-department-edit-dialog>

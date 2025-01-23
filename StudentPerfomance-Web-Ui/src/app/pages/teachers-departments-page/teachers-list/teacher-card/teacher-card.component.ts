@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { NgIf, NgOptimizedImage } from '@angular/common';
 import { Teacher } from '../../../../modules/administration/submodules/teachers/models/teacher.interface';
 import { EditIconButtonComponent } from '../../../../building-blocks/buttons/edit-icon-button/edit-icon-button.component';
@@ -26,4 +26,7 @@ import { AddIconButtonComponent } from '../../../../building-blocks/buttons/add-
 })
 export class TeacherCardComponent {
   @Input({ required: true }) teacher: Teacher;
+  @Output() selectedForRemove: EventEmitter<Teacher> = new EventEmitter();
+  @Output() selectedForEdit: EventEmitter<Teacher> = new EventEmitter();
+  @Output() selectForRegister: EventEmitter<Teacher> = new EventEmitter();
 }

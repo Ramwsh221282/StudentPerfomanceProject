@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using SPerfomance.Domain.Models.Teachers;
+using SPerfomance.Domain.Models.Teachers.ValueObjects;
 
 namespace SPerfomance.DataAccess.Configurations;
 
@@ -10,6 +11,11 @@ internal sealed class TeacherConfiguration : IEntityTypeConfiguration<Teacher>
     {
         builder.HasKey(t => t.Id);
         builder.Property(t => t.EntityNumber).ValueGeneratedOnAdd();
+
+        builder
+            .Property(t => t.UserId)
+            .HasConversion(toDb => toDb!.Id, fromDb => UserId.ConcreteId(fromDb))
+            .IsRequired(false);
 
         builder
             .HasMany(t => t.Disciplines)

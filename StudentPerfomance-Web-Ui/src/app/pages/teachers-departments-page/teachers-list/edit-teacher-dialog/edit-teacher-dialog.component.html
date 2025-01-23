@@ -1,0 +1,50 @@
+<div id="container">
+  <div id="header">
+    <strong>Редактирование преподавателя</strong>
+  </div>
+  <div id="content">
+    <app-floating-label-input [label]="'Фамилия'"
+                              [value]="teacherCopy.surname"
+                              (inputChange)="teacherCopy.surname = $event">
+    </app-floating-label-input>
+    <app-floating-label-input [label]="'Имя'"
+                              [value]="teacherCopy.name"
+                              (inputChange)="teacherCopy.name = $event">
+    </app-floating-label-input>
+    <app-floating-label-input [label]="'Отчество (необязательно)'"
+                              [value]="teacherCopy.patronymic"
+                              (inputChange)="teacherCopy.patronymic = $event">
+    </app-floating-label-input>
+    <app-floating-label-input [label]="'Должность'"
+                              [value]="teacherCopy.jobTitle"
+                              [isReadonly]="true"
+                              [showContent]="isSelectingJobTitle"
+                              (click)="isSelectingJobTitle = true">
+      <app-select-job-title-dropdown *ngIf="isSelectingJobTitle"
+                                     (jobTitleSelected)="teacherCopy.jobTitle = $event; isSelectingJobTitle = false">
+      </app-select-job-title-dropdown>
+    </app-floating-label-input>
+    <app-floating-label-input [label]="'Способ работы'"
+                              [value]="teacherCopy.state"
+                              [isReadonly]="true"
+                              [showContent]="isSelectingState"
+                              (click)="isSelectingState = true">
+      <app-select-state-dropdown *ngIf="isSelectingState"
+                                 (workingStateSelected)="teacherCopy.state = $event; isSelectingState = false">
+      </app-select-state-dropdown>
+    </app-floating-label-input>
+    <div class="sub-controls-label">
+      <app-green-outline-button [label]="'Подтвердить изменения'"
+                                (onClicked)="edit()">
+      </app-green-outline-button>
+      <app-red-button [label]="'Сбросить изменения'"
+                      (onClicked)="reset()">
+      </app-red-button>
+    </div>
+  </div>
+  <div id="controls">
+    <app-red-outline-button [label]="'Закрыть'"
+                            (onClicked)="visibilityChanged.emit()">
+    </app-red-outline-button>
+  </div>
+</div>

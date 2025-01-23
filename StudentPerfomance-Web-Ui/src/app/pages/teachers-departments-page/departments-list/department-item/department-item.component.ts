@@ -24,6 +24,8 @@ export class DepartmentItemComponent {
   @Input({ required: true }) isSelected: boolean = false;
   @Input({ required: true }) department: Department;
   @Output() selectDepartment: EventEmitter<Department> = new EventEmitter();
+  @Output() selectedForRemove: EventEmitter<Department> = new EventEmitter();
+  @Output() selectedForEdit: EventEmitter<Department> = new EventEmitter();
 
   public selectDepartmentHandle($event: MouseEvent): void {
     $event.stopPropagation();
