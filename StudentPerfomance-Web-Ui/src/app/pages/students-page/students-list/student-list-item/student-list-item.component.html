@@ -7,7 +7,11 @@
     <label [ngClass]="{'student-list-name-part-inactive': student.state == 'Неактивен'}">{{ student.state }}</label>
   </div>
   <div class="student-list-controls-part">
-    <app-edit-icon-button [paramHeight]="30" [paramWidth]="30"></app-edit-icon-button>
-    <app-remove-icon-button [paramWidth]="30" [paramHeight]="30"></app-remove-icon-button>
+    <app-edit-icon-button [paramHeight]="30" [paramWidth]="30"
+                          (onClicked)="selectForEdit.emit(student)">
+    </app-edit-icon-button>
+    <app-remove-icon-button [paramWidth]="30" [paramHeight]="30"
+                            (onClicked)="selectForDelete.emit(student)">
+    </app-remove-icon-button>
   </div>
 </div>

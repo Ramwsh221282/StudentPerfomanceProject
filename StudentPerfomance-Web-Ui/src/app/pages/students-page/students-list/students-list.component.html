@@ -10,10 +10,24 @@
   </div>
   <div class="student-list-items-container">
     <label class="no-students-label" *ngIf="group.students.length == 0">У группы нет студентов</label>
-    <app-student-list-item *ngFor="let student of group.students" [student]="student"></app-student-list-item>
+    <app-student-list-item *ngFor="let student of group.students"
+                           [student]="student"
+                           (selectForEdit)="editStudentRequest = $event"
+                           (selectForDelete)="removeStudentRequest = $event">
+    </app-student-list-item>
   </div>
 </section>
 <app-create-student-dialog *ngIf="isCreatingStudent"
                            [group]="group"
                            (visibilityChanged)="isCreatingStudent = false">
 </app-create-student-dialog>
+<app-edit-student-dialog *ngIf="editStudentRequest"
+                         [student]="editStudentRequest"
+                         [group]="group"
+                         (visibilityChanged)="editStudentRequest = null">
+</app-edit-student-dialog>
+<app-remove-student-dialog *ngIf="removeStudentRequest"
+                           [student]="removeStudentRequest"
+                           [group]="group"
+                           (visibilityChanged)="removeStudentRequest = null">
+</app-remove-student-dialog>

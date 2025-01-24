@@ -12,25 +12,26 @@ import { YellowOutlineButtonComponent } from '../../../../building-blocks/button
 import { LoginHandler } from './login-handler';
 import { catchError, Observable, tap } from 'rxjs';
 import { PasswordRecoveryService } from './password-recovery-modal/password-recovery.service';
+import { Router } from '@angular/router';
 
 @Component({
-    selector: 'app-login-form',
-    imports: [
-        ReactiveFormsModule,
-        FormsModule,
-        NgIf,
-        SuccessResultNotificationComponent,
-        FailureResultNotificationComponent,
-        PasswordRecoveryModalComponent,
-        NgForOf,
-        NgClass,
-        FloatingLabelInputComponent,
-        GreenOutlineButtonComponent,
-        YellowOutlineButtonComponent,
-    ],
-    templateUrl: './login-form.component.html',
-    styleUrl: './login-form.component.scss',
-    providers: [UserOperationNotificationService]
+  selector: 'app-login-form',
+  imports: [
+    ReactiveFormsModule,
+    FormsModule,
+    NgIf,
+    SuccessResultNotificationComponent,
+    FailureResultNotificationComponent,
+    PasswordRecoveryModalComponent,
+    NgForOf,
+    NgClass,
+    FloatingLabelInputComponent,
+    GreenOutlineButtonComponent,
+    YellowOutlineButtonComponent,
+  ],
+  templateUrl: './login-form.component.html',
+  styleUrl: './login-form.component.scss',
+  providers: [UserOperationNotificationService],
 })
 export class LoginFormComponent {
   protected activeTab = 1;
@@ -51,6 +52,7 @@ export class LoginFormComponent {
     private readonly _authService: AuthService,
     private readonly _recoveryService: PasswordRecoveryService,
     protected readonly notificationService: UserOperationNotificationService,
+    private readonly _router: Router,
   ) {}
 
   protected loginClicked(): void {
@@ -66,6 +68,7 @@ export class LoginFormComponent {
           handler.handle(response);
           this._authService.authorize(response);
           this.cleanInputs();
+          this._router.navigate(['user']);
         }),
         catchError((error) => {
           this.cleanInputs();

@@ -1,3 +1,5 @@
+using SPerfomance.Domain.Models.Users.ValueObjects;
+
 namespace SPerfomance.Api.Features.Common.Extensions;
 
 public static class TokenVerificationExtensions

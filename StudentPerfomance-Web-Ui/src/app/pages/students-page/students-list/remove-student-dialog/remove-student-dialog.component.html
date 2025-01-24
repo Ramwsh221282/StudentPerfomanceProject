@@ -1,1 +1,12 @@
-<p>remove-student-dialog works!</p>
+<div id="container">
+  <div id="header">
+    <strong>Удаление студента</strong>
+  </div>
+  <div id="content">
+    <label class="label-text">Вы уверены, что Вы хотите удалить студента?</label>
+    <app-red-button [label]="'Подтвердить удаление'" (onClicked)="remove()"></app-red-button>
+  </div>
+  <div id="controls">
+    <app-red-outline-button [label]="'Закрыть'" (onClicked)="visibilityChanged.emit()"></app-red-outline-button>
+  </div>
+</div>

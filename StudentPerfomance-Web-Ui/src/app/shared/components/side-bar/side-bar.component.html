@@ -8,6 +8,7 @@
   </div>
   <div class="menu-content-container">
     <button
+      *ngIf="!authService.isAuthorized"
       [ngClass]="{'focused': activeButton === menuButtons[0].id }"
       (click)="activeButton = menuButtons[0].id"
       class="side-bar-menu-button"

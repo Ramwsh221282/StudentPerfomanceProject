@@ -1,9 +1,8 @@
+global using Microsoft.AspNetCore.HttpOverrides;
 global using SPerfomance.Api.Features.Users;
 global using SPerfomance.Application.Services.Authentication;
 global using SPerfomance.Application.Services.Authentication.Models;
 global using SPerfomance.Domain.Models.Users.Abstractions;
-global using SPerfomance.Domain.Models.Users.ValueObjects;
-using Microsoft.AspNetCore.HttpOverrides;
 using NReco.Logging.File;
 using SPerfomance.Api.Endpoints;
 using SPerfomance.Api.Features.Common.Configuration;
@@ -15,6 +14,7 @@ using SPerfomance.Api.Features.StudentGroups.Configurations;
 using SPerfomance.Api.Features.TeacherDepartments.Configuration;
 using SPerfomance.Api.Features.Users.Configurations;
 using SPerfomance.Api.MiddleWare;
+using SPerfomance.Domain.Models.Users.ValueObjects;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.ConfigureCqrsDispatchers();

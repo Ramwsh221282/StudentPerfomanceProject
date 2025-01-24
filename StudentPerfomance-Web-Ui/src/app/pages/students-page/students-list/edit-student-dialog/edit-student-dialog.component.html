@@ -1,1 +1,39 @@
-<p>edit-student-dialog works!</p>
+<div id="container">
+  <div id="header">
+    <strong>Редактирование студента</strong>
+  </div>
+  <div id="content">
+    <app-floating-label-input [label]="'Фамилия'"
+                              [value]="studentCopy.surname"
+                              (inputChange)="studentCopy.surname = $event">
+    </app-floating-label-input>
+    <app-floating-label-input [label]="'Имя'"
+                              [value]="studentCopy.name"
+                              (inputChange)="studentCopy.name = $event">
+    </app-floating-label-input>
+    <app-floating-label-input [label]="'Отчество'"
+                              [value]="newPatronymic"
+                              (inputChange)="newPatronymic = $event">
+    </app-floating-label-input>
+    <app-floating-label-input [label]="'Зачётная книжка'"
+                              [value]="newRecordbook"
+                              (inputChange)="newRecordbook = $event">
+    </app-floating-label-input>
+    <app-floating-label-input [label]="'Статус'"
+                              [isReadonly]="true"
+                              [value]="studentCopy.state"
+                              (inputChange)="studentCopy.state = $event">
+    </app-floating-label-input>
+    <app-radio-button-list
+      [values]="[{ value: 'Активен', isChecked: this.studentCopy.state == 'Активен' }, { value: 'Неактивен', isChecked: this.studentCopy.state == 'Неактивен' }]"
+      (valueChecked)="studentCopy.state = $event">
+    </app-radio-button-list>
+    <div class="sub-controls-container">
+      <app-green-outline-button [label]="'Применить изменения'" (onClicked)="edit()"></app-green-outline-button>
+      <app-yellow-button [label]="'Сбросить изменения'" (onClicked)="reset()"></app-yellow-button>
+    </div>
+  </div>
+  <div id="controls">
+    <app-red-outline-button [label]="'Закрыть'" (onClicked)="visibilityChanged.emit()"></app-red-outline-button>
+  </div>
+</div>

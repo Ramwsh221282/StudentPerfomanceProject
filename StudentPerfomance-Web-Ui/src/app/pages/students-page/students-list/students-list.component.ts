@@ -6,6 +6,8 @@ import { StudentListItemComponent } from './student-list-item/student-list-item.
 import { NgForOf, NgIf } from '@angular/common';
 import { Student } from '../../../modules/administration/submodules/students/models/student.interface';
 import { CreateStudentDialogComponent } from './create-student-dialog/create-student-dialog.component';
+import { EditStudentDialogComponent } from './edit-student-dialog/edit-student-dialog.component';
+import { RemoveStudentDialogComponent } from './remove-student-dialog/remove-student-dialog.component';
 
 @Component({
   selector: 'app-students-list',
@@ -16,6 +18,8 @@ import { CreateStudentDialogComponent } from './create-student-dialog/create-stu
     NgForOf,
     NgIf,
     CreateStudentDialogComponent,
+    EditStudentDialogComponent,
+    RemoveStudentDialogComponent,
   ],
   templateUrl: './students-list.component.html',
   styleUrl: './students-list.component.scss',
@@ -24,6 +28,8 @@ import { CreateStudentDialogComponent } from './create-student-dialog/create-stu
 export class StudentsListComponent {
   @Input({ required: true }) group: StudentGroup;
   public isCreatingStudent: boolean = false;
+  public editStudentRequest: Student | null = null;
+  public removeStudentRequest: Student | null = null;
 
   public handleStudentCreated(student: Student): void {
     this.group.students.push(student);
