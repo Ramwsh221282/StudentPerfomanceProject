@@ -10,6 +10,7 @@ public static class TokenVerificationExtensions
         CancellationToken ct = default
     )
     {
+        Console.WriteLine();
         var service = new UserVerificationService(usersRepository);
         var isAdmin = await service.IsVerified(token, UserRole.Administrator, ct);
         var isTeacher = await service.IsVerified(token, UserRole.Teacher, ct);
