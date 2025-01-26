@@ -14,6 +14,8 @@ public interface IUsersRepository
 
     public Task<User?> GetById(string id, CancellationToken ct = default);
 
+    public Task<IReadOnlyCollection<User>> GetAll(CancellationToken ct = default);
+
     public Task<bool> HasWithEmail(string? email, CancellationToken ct = default);
 
     public Task<IReadOnlyCollection<User>> GetFiltered(

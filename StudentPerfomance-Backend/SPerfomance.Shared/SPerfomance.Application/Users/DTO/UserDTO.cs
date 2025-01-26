@@ -4,6 +4,7 @@ namespace SPerfomance.Application.Users.DTO;
 
 public class UserDto(User user)
 {
+    public Guid Id { get; init; } = user.Id;
     public int Number { get; init; } = user.EntityNumber;
     public string Name { get; init; } = user.Name.Name;
     public string Surname { get; init; } = user.Name.Surname;

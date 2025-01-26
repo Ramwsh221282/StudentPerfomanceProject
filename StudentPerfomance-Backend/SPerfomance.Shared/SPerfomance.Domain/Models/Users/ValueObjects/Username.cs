@@ -30,7 +30,7 @@ public class Username : DomainValueObject
 
     internal static Username Empty => new Username();
 
-    internal static Result<Username> Create(string name, string surname, string? patronymic)
+    public static Result<Username> Create(string name, string surname, string? patronymic)
     {
         if (string.IsNullOrWhiteSpace(name))
             return Result<Username>.Failure(UserErrors.NameEmpty());

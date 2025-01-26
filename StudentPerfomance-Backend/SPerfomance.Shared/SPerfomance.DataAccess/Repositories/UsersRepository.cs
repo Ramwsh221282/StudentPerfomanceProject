@@ -33,6 +33,13 @@ public class UsersRepository : IUsersRepository
             .Users.AsNoTracking()
             .FirstOrDefaultAsync(u => u.Id.ToString() == id.ToUpper(), cancellationToken: ct);
 
+    public async Task<IReadOnlyCollection<User>> GetAll(CancellationToken ct = default) =>
+        await _context
+            .Users.AsNoTracking()
+            .AsSplitQuery()
+            .OrderBy(u => u.Name.Surname)
+            .ToListAsync();
+
     public async Task<Teacher?> GetTeacherByUser(User user, CancellationToken ct = default) =>
         await _context.Teachers.FirstOrDefaultAsync(
             t =>
