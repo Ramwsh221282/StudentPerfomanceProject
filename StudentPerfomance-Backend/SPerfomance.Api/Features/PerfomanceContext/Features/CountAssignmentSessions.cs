@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using SPerfomance.Api.Endpoints;
 using SPerfomance.Api.Features.Common.Extensions;
-using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions.Abstractions;
+using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSession.Abstractions;
 
 namespace SPerfomance.Api.Features.PerfomanceContext.Features;
 

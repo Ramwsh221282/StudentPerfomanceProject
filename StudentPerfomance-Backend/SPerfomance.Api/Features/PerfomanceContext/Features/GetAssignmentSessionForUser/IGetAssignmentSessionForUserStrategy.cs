@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Http.HttpResults;
-using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions;
+using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSession;
 
 namespace SPerfomance.Api.Features.PerfomanceContext.Features.GetAssignmentSessionForUser;
 

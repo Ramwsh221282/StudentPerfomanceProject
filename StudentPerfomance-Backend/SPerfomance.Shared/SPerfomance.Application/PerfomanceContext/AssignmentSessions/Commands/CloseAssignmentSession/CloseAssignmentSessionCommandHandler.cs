@@ -1,8 +1,7 @@
 using SPerfomance.Application.Abstractions;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSession;
+using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSession.Abstractions;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSession.Errors;
-using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions;
-using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions.Abstractions;
 using SPerfomance.Domain.Tools;
 
 namespace SPerfomance.Application.PerfomanceContext.AssignmentSessions.Commands.CloseAssignmentSession;

@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Http.HttpResults;
-using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions;
-using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions.Abstractions;
+using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSession;
+using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSession.Abstractions;
 using SPerfomance.Domain.Models.Teachers;
 using SPerfomance.Domain.Models.Teachers.Abstractions;
 using SPerfomance.Domain.Models.Users;

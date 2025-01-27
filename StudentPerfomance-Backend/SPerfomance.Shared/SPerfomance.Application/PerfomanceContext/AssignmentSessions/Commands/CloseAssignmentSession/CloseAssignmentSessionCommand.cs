@@ -1,6 +1,5 @@
 using SPerfomance.Application.Abstractions;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSession;
-using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions;
 
 namespace SPerfomance.Application.PerfomanceContext.AssignmentSessions.Commands.CloseAssignmentSession;
 

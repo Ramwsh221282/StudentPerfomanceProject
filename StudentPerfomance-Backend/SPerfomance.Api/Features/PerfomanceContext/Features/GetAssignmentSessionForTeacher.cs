@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using SPerfomance.Api.Endpoints;
 using SPerfomance.Api.Features.PerfomanceContext.Features.GetAssignmentSessionForUser;
-using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions;
-using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions.Abstractions;
+using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSession;
+using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSession.Abstractions;
 using SPerfomance.Domain.Models.Teachers.Abstractions;
 
 namespace SPerfomance.Api.Features.PerfomanceContext.Features;

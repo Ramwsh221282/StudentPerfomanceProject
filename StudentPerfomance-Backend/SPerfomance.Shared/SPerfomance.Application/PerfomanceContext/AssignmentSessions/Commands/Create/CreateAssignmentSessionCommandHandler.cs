@@ -1,8 +1,8 @@
 using SPerfomance.Application.Abstractions;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSession;
+using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSession.Abstractions;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSession.Errors;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSession.ValueObject;
-using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions.Abstractions;
 using SPerfomance.Domain.Models.StudentGroups.Abstractions;
 using SPerfomance.Domain.Tools;
 

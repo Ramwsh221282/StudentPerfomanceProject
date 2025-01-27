@@ -1,6 +1,5 @@
 using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Services;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSession;
-using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions;
 
 namespace SPerfomance.Application.PerfomanceContext.AssignmentSessions.DTO;
 

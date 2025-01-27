@@ -1,9 +1,8 @@
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSession;
+using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSession.Abstractions;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSession.ValueObject;
-using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions;
-using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions.Abstractions;
 using SPerfomance.Domain.Models.Teachers;
 using SPerfomance.Domain.Tools;
 
@@ -157,136 +156,6 @@ public class AssignmentSessionsRepository : IAssignmentSessionsRepository
         await _context
             .Sessions.Where(s => s.Id == session.Id)
             .ExecuteDeleteAsync(cancellationToken: ct);
-
-    public async Task Update(AssignmentSession session, CancellationToken ct = default) =>
-        await _context
-            .Sessions.Where(s => s.Id == session.Id)
-            .ExecuteUpdateAsync(
-                s =>
-                    s.SetProperty(s => s.SessionCloseDate, session.SessionCloseDate)
-                        .SetProperty(s => s.State.State, session.State.State),
-                cancellationToken: ct
-            );
-
-    public async Task<IReadOnlyCollection<AssignmentSession>> GetPaged(
-        int page,
-        int pageSize,
-        CancellationToken ct = default
-    ) =>
-        await _context
-            .Sessions.Skip((page - 1) * pageSize)
-            .Take(pageSize)
-            .OrderBy(s => s.EntityNumber)
-            .Include(s => s.Weeks)
-            .ThenInclude(w => w.Assignments)
-            .ThenInclude(a => a.StudentAssignments)
-            .ThenInclude(sa => sa.Student)
-            .Include(s => s.Weeks)
-            .ThenInclude(w => w.Assignments)
-            .ThenInclude(a => a.Discipline)
-            .ThenInclude(d => d.Teacher)
-            .ThenInclude(t => t!.Department)
-            .Include(s => s.Weeks)
-            .ThenInclude(w => w.Group)
-            .ThenInclude(g => g.ActiveGroupSemester)
-            .ThenInclude(s => s!.Plan)
-            .ThenInclude(p => p.Direction)
-            .Include(s => s.Weeks)
-            .ThenInclude(w => w.Group)
-            .ThenInclude(g => g.EducationPlan)
-            .ThenInclude(p => p!.Direction)
-            .Include(s => s.Weeks)
-            .ThenInclude(w => w.Group)
-            .ThenInclude(g => g.EducationPlan)
-            .ThenInclude(p => p!.Semesters)
-            .AsNoTracking()
-            .AsSplitQuery()
-            .ToListAsync(cancellationToken: ct);
-
-    public async Task<IReadOnlyCollection<AssignmentSession>> GetInPeriodPaged(
-        DateTime startDate,
-        DateTime endDate,
-        int page,
-        int pageSize,
-        CancellationToken ct = default
-    ) =>
-        await _context
-            .Sessions.Where(s =>
-                s.SessionStartDate.Day == startDate.Day
-                && s.SessionStartDate.Month == startDate.Month
-                && s.SessionStartDate.Year == startDate.Year
-                && s.SessionCloseDate.Day == endDate.Day
-                && s.SessionCloseDate.Month == endDate.Month
-                && s.SessionCloseDate.Year == endDate.Year
-            )
-            .Skip((page - 1) * pageSize)
-            .Take(pageSize)
-            .OrderBy(s => s.EntityNumber)
-            .Include(s => s.Weeks)
-            .ThenInclude(w => w.Assignments)
-            .ThenInclude(a => a.StudentAssignments)
-            .ThenInclude(sa => sa.Student)
-            .Include(s => s.Weeks)
-            .ThenInclude(w => w.Assignments)
-            .ThenInclude(a => a.Discipline)
-            .ThenInclude(d => d.Teacher)
-            .ThenInclude(t => t!.Department)
-            .Include(s => s.Weeks)
-            .ThenInclude(w => w.Group)
-            .ThenInclude(g => g.ActiveGroupSemester)
-            .ThenInclude(s => s!.Plan)
-            .ThenInclude(p => p.Direction)
-            .Include(s => s.Weeks)
-            .ThenInclude(w => w.Group)
-            .ThenInclude(g => g.EducationPlan)
-            .ThenInclude(p => p!.Direction)
-            .Include(s => s.Weeks)
-            .ThenInclude(w => w.Group)
-            .ThenInclude(g => g.EducationPlan)
-            .ThenInclude(p => p!.Semesters)
-            .AsNoTracking()
-            .AsSplitQuery()
-            .ToListAsync(cancellationToken: ct);
-
-    public async Task GetByPeriod(
-        DateTime startDate,
-        DateTime endDate,
-        CancellationToken ct = default
-    ) =>
-        await _context
-            .Sessions.Where(s =>
-                s.SessionCloseDate.Day == endDate.Day
-                && s.SessionCloseDate.Month == endDate.Month
-                && s.SessionCloseDate.Year == endDate.Year
-                && s.SessionStartDate.Day == startDate.Day
-                && s.SessionStartDate.Month == startDate.Month
-                && s.SessionStartDate.Year == startDate.Year
-            )
-            .Include(s => s.Weeks)
-            .ThenInclude(w => w.Assignments)
-            .ThenInclude(a => a.StudentAssignments)
-            .ThenInclude(sa => sa.Student)
-            .Include(s => s.Weeks)
-            .ThenInclude(w => w.Assignments)
-            .ThenInclude(a => a.Discipline)
-            .ThenInclude(d => d.Teacher)
-            .ThenInclude(t => t!.Department)
-            .Include(s => s.Weeks)
-            .ThenInclude(w => w.Group)
-            .ThenInclude(g => g.ActiveGroupSemester)
-            .ThenInclude(s => s!.Plan)
-            .ThenInclude(p => p.Direction)
-            .Include(s => s.Weeks)
-            .ThenInclude(w => w.Group)
-            .ThenInclude(g => g.EducationPlan)
-            .ThenInclude(p => p!.Direction)
-            .Include(s => s.Weeks)
-            .ThenInclude(w => w.Group)
-            .ThenInclude(g => g.EducationPlan)
-            .ThenInclude(p => p!.Semesters)
-            .AsNoTracking()
-            .AsSplitQuery()
-            .ToListAsync(cancellationToken: ct);
 
     public async Task<int> GenerateEntityNumber(CancellationToken ct = default)
     {

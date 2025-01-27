@@ -9,8 +9,7 @@ using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Queries.GetIn
 using SPerfomance.ControlWeekDocuments.Documents;
 using SPerfomance.DataAccess.Repositories;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSession;
-using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions;
-using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions.Abstractions;
+using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSession.Abstractions;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.StudentAssignments;
 using SPerfomance.Statistics.DataAccess.Repositories;
 

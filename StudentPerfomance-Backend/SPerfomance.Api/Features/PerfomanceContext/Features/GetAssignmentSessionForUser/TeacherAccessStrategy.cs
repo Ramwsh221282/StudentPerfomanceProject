@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Http.HttpResults;
 using SPerfomance.Api.Features.Common.Extensions;
-using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions;
-using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions.Abstractions;
+using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSession;
+using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSession.Abstractions;
 using SPerfomance.Domain.Models.Teachers.Errors;
 using SPerfomance.Domain.Models.Users.Errors;
 

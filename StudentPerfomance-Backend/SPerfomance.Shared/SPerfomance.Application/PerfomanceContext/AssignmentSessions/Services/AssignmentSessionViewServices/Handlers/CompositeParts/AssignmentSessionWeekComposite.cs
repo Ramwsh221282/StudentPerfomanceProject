@@ -1,7 +1,6 @@
 using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Services.AssignmentSessionViewServices.Views;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.Assignments;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSession;
-using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions;
 
 namespace SPerfomance.Application.PerfomanceContext.AssignmentSessions.Services.AssignmentSessionViewServices.Handlers.CompositeParts;
 

@@ -1,6 +1,5 @@
 using System.Text;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSession;
-using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions;
 using SPerfomance.Domain.Tools;
 
 namespace SPerfomance.Domain.Models.StatisticsContext.Models.ControlWeekReport.Errors;

@@ -5,7 +5,7 @@ using SPerfomance.Domain.Models.PerfomanceContext.Models.TeacherJournals;
 using SPerfomance.Domain.Models.Teachers;
 using SPerfomance.Domain.Models.Teachers.ValueObjects;
 
-namespace SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSessions;
+namespace SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSession;
 
 public class TeacherAssignmentSession
 {
@@ -13,7 +13,10 @@ public class TeacherAssignmentSession
 
     public TeacherName Teacher { get; init; }
 
-    public TeacherAssignmentSession(Teacher teacher, AssignmentSession.AssignmentSession session)
+    public TeacherAssignmentSession(
+        Teacher teacher,
+        Models.AssignmentSession.AssignmentSession session
+    )
     {
         Teacher = teacher.Name;
         foreach (AssignmentWeek week in session.Weeks)
