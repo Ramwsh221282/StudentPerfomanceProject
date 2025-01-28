@@ -1,3 +1,3 @@
-export interface ISubbmittable {
+xport interface ISubbmittable {
   submit(): void;
 }
