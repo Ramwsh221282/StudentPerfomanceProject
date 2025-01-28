@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SPerfomance.PasswordRecovery.DataAccess")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1310221881566802c3c8e4cc01cbe1dcd49c10c2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+70995942b407c1be722bac4e98d1135278b562cf")]
 [assembly: System.Reflection.AssemblyProductAttribute("SPerfomance.PasswordRecovery.DataAccess")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SPerfomance.PasswordRecovery.DataAccess")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

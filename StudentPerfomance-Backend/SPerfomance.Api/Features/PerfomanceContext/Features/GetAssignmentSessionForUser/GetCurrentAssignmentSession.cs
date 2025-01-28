@@ -42,7 +42,10 @@ public static class GetCurrentAssignmentSession
     )
     {
         Token jwtToken = new Token(token);
-        if (!await jwtToken.IsVerifiedAdmin(users, ct))
+        if (
+            !await jwtToken.IsVerifiedAdmin(users, ct)
+            && !await jwtToken.IsVerifiedTeacher(users, ct)
+        )
             return TypedResults.Unauthorized();
         AssignmentSession? session = await sessions.GetActiveSession(ct);
         if (session == null)
