@@ -1,0 +1,21 @@
+<section class="users-management-list-layout">
+  <div class="users-management-list-header-container">
+    <strong class="users-management-list-header">
+      Текущие пользователи системы
+    </strong>
+  </div>
+  <div class="users-management-controls-container">
+    <app-add-icon-button [paramHeight]="40" [paramWidth]="40"
+                         (onClicked)="createUserClicked.emit()"></app-add-icon-button>
+    <app-green-outline-button [label]="'Добавить нового администратора'"
+                              (onClicked)="createUserClicked.emit()"></app-green-outline-button>
+  </div>
+  <div class="users-management-list-content">
+    <strong class="info-label" @fadeIn *ngIf="users.length == 0">Пользователей нет в системе</strong>
+    <app-users-list-item @fadeIn
+                         *ngFor="let user of users" [user]="user"
+                         (selectForEdit)="editUserRequested.emit($event)"
+                         (selectForRemove)="removeUserRequested.emit($event)">
+    </app-users-list-item>
+  </div>
+</section>

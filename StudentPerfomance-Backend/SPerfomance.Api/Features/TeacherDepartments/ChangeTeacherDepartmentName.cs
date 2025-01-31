@@ -8,6 +8,7 @@ using SPerfomance.Application.Abstractions;
 using SPerfomance.Application.Departments.Commands.ChangeTeachersDepartmentName;
 using SPerfomance.Application.Departments.DTO;
 using SPerfomance.Application.Departments.Queries.GetDepartmentByName;
+using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Queries.HasActive;
 using SPerfomance.Domain.Models.TeacherDepartments;
 
 namespace SPerfomance.Api.Features.TeacherDepartments;
@@ -46,6 +47,7 @@ public static class ChangeTeacherDepartmentName
     > Handler(
         [FromHeader(Name = "token")] string? token,
         [FromBody] Request request,
+        HasActiveAssignmentSessionRequestHandler guard,
         IUsersRepository users,
         IQueryDispatcher queryDispatcher,
         ICommandDispatcher commandDispatcher,
@@ -53,6 +55,12 @@ public static class ChangeTeacherDepartmentName
         CancellationToken ct
     )
     {
+        HasActiveAssignmentSessionResponse response = await guard.Handle(
+            new HasActiveAssignmentSessionRequest()
+        );
+        if (response.Has)
+            return TypedResults.BadRequest("Запрос отклонён. Причина: Активная контрольная неделя");
+
         logger.LogInformation("Запрос на изменение названия кафедры");
         var jwtToken = new Token(token);
         if (!await jwtToken.IsVerifiedAdmin(users, ct))

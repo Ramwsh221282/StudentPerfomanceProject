@@ -1,0 +1,28 @@
+* {
+  user-select: none;
+}
+
+.teacher-assignment-info-status-layout {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  gap: 0.5rem;
+  align-items: flex-start;
+  background: #FFFFFF;
+  border: solid 1px #CCCCCC;
+  box-shadow: 4.0px 8.0px 8.0px hsl(0deg 0% 0% / 0.38);
+}
+
+.teacher-assignment-info-status-title {
+  font-weight: bold;
+  font-size: 18px;
+  color: #1b274b;
+  text-decoration: underline;
+}
+
+.teacher-assignment-info-content {
+  display: flex;
+  padding: 1rem;
+  flex-direction: column;
+  gap: 0.5rem;
+}

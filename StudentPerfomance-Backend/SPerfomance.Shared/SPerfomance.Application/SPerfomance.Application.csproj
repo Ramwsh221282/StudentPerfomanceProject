@@ -32,4 +32,8 @@
     <None Remove="Users\Commands\RequestUserPasswordReset\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="PerfomanceContext\AssignmentSessions\Guard\" />
+  </ItemGroup>
+
 </Project>

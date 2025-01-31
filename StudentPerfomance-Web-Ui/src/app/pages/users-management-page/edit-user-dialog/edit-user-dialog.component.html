@@ -1,0 +1,28 @@
+<div id="container">
+  <div id="header">
+    <strong>Добавление добавление нового администратора</strong>
+  </div>
+  <div id="content">
+    <app-floating-label-input [label]="'Фамилия'"
+                              [value]="copy.surname"
+                              (inputChange)="copy.surname = $event">
+    </app-floating-label-input>
+    <app-floating-label-input [label]="'Имя'"
+                              [value]="copy.name"
+                              (inputChange)="copy.name = $event">
+    </app-floating-label-input>
+    <app-floating-label-input [label]="'Отчество (необязательно)'"
+                              [value]="copy.patronymic"
+                              (inputChange)="copy.patronymic = $event">
+    </app-floating-label-input>
+    <div class="sub-controls-container">
+      <app-green-outline-button [label]="'Подтвердить изменения'" (onClicked)="edit()"></app-green-outline-button>
+      <app-red-button [label]="'Сбросить изменения'"></app-red-button>
+    </div>
+  </div>
+  <div id="controls">
+    <app-red-outline-button [label]="'Закрыть'"
+                            (onClicked)="visibilityChanged.emit()">
+    </app-red-outline-button>
+  </div>
+</div>

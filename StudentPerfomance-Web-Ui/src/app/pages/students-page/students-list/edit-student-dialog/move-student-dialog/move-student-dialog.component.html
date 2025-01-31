@@ -1,0 +1,20 @@
+<section class="move-student-dialog-part">
+  <div>
+    <span class="move-student-label-info">Текущая группа:</span>
+    <span class="move-student-label-info"
+          style="text-decoration: underline; margin-left: 5px">{{ currentGroup.name }}</span>
+  </div>
+  <strong class="move-student-label-info">Доступные группы:</strong>
+  <div class="student-groups-list">
+    <p class="student-group-item" *ngFor="let group of availableGroups"
+       (click)="selectGroup(group, $event)">{{ group.name }}</p>
+  </div>
+</section>
+<section *ngIf="selectedGroup" class="move-student-dialog-part">
+  <div>
+    <span class="move-student-label-info">Выбранная группа:</span>
+    <span class="move-student-label-info"
+          style="text-decoration: underline; margin-left: 5px">{{ selectedGroup.name }}</span>
+  </div>
+  <app-green-outline-button [label]="'Перевести студента'" (onClicked)="move()"></app-green-outline-button>
+</section>

@@ -1,0 +1,87 @@
+.status-item-layout {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 30px;
+  align-items: center;
+  color: #1b274b;
+  font-weight: bold;
+  border-bottom: 1px solid #CCCCCC;
+  position: relative;
+}
+
+.full-width-wrapper {
+  grid-column: 1 / -1;
+  width: 100%;
+  padding-left: 15px;
+  background: #FFFFFF;
+  overflow: hidden;
+}
+
+.control-week-description-item {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  min-width: 0;
+}
+
+.discipline-part {
+  flex: 1 1 70%;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 14px;
+}
+
+.teacher-part {
+  flex: 0 0 auto;
+  white-space: nowrap;
+  font-size: 14px;
+  padding-left: 1rem;
+}
+
+.triangle_down {
+  margin-top: 15px;
+  margin-right: 15px;
+  position: relative;
+  top: -5px;
+  content: "";
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border-right: 0.2em solid black;
+  border-top: 0.2em solid black;
+  transform: rotate(135deg);
+  transition: 0.3s;
+  cursor: pointer;
+
+  &:hover {
+    transition: 0.3s;
+    border-right: 0.2em solid #5CE600;
+    border-top: 0.2em solid #5CE600;
+  }
+}
+
+.triangle_up {
+  margin-top: 15px;
+  margin-right: 15px;
+  position: relative;
+  top: -5px;
+  content: "";
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border-right: 0.2em solid black;
+  border-top: 0.2em solid black;
+  transform: rotate(-45deg);
+  transition: 0.3s;
+  cursor: pointer;
+
+  &:hover {
+    transition: 0.3s;
+    border-right: 0.2em solid #5CE600;
+    border-top: 0.2em solid #5CE600;
+  }
+}

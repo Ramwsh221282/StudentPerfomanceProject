@@ -1,0 +1,23 @@
+.users-management-page-layout {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+.users-management-content-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+}
+
+.users-management-page-title-container {
+  width: 100%;
+  display: block;
+}
+
+.users-management-page-title {
+  text-align: left;
+  font-size: 24px;
+  color: #1b274b;
+}

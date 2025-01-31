@@ -4,6 +4,7 @@ using SPerfomance.Api.Endpoints;
 using SPerfomance.Api.Features.Common.Extensions;
 using SPerfomance.Api.Features.Students.Contracts;
 using SPerfomance.Application.Abstractions;
+using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Queries.HasActive;
 using SPerfomance.Application.StudentGroups.Commands.UpdateStudent;
 using SPerfomance.Application.StudentGroups.DTO;
 using SPerfomance.Application.StudentGroups.Queries.GetStudentFromGroup;
@@ -40,6 +41,7 @@ public static class UpdateStudent
     public static async Task<IResult> Handler(
         [FromHeader(Name = "token")] string? token,
         [FromBody] Request request,
+        HasActiveAssignmentSessionRequestHandler guard,
         IUsersRepository users,
         IQueryDispatcher queryDispatcher,
         ICommandDispatcher commandDispatcher,
@@ -47,6 +49,12 @@ public static class UpdateStudent
         CancellationToken ct
     )
     {
+        HasActiveAssignmentSessionResponse response = await guard.Handle(
+            new HasActiveAssignmentSessionRequest()
+        );
+        if (response.Has)
+            return TypedResults.BadRequest("Запрос отклонён. Причина: Активная контрольная неделя");
+
         logger.LogInformation("Запрос на обновление данных студента");
         var jwtToken = new Token(token);
         if (!await jwtToken.IsVerifiedAdmin(users, ct))

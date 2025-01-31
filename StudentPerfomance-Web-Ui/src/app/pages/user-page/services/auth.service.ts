@@ -1,6 +1,6 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { catchError, Observable, tap } from 'rxjs';
+import { Observable } from 'rxjs';
 import { User } from './user-interface';
 import { CookieService } from 'ngx-cookie-service';
 import { AppConfigService } from '../../../app.config.service';
@@ -18,7 +18,6 @@ export class AuthService {
     this._httpClient = inject(HttpClient);
     this._cookieService = inject(CookieService);
     this.tryAuthorizeUsingCookie();
-    //this.verify();
   }
 
   public get userData(): User {
@@ -26,8 +25,8 @@ export class AuthService {
   }
 
   public authorize(user: User): void {
-    this._isAuthorized = true;
     this._cookieService.deleteAll();
+    this._isAuthorized = true;
     this._cookieService.set('token', user.token);
     this._cookieService.set('name', user.name);
     this._cookieService.set('surname', user.surname);
@@ -70,29 +69,17 @@ export class AuthService {
 
   public login(payload: { email: string; password: string }): Observable<User> {
     const apiUri: string = `${this._appConfig.baseApiUri}/app/users/login`;
-    //const apiUri: string = `${BASE_API_URI}/app/users/login`;
     return this._httpClient.post<User>(apiUri, payload);
   }
 
   public setNotAuthorized(): void {
     this._isAuthorized = false;
-  }
-
-  public verify(): void {
-    const apiUri: string = `${this._appConfig.baseApiUri}/api/users/verify`;
-    //const apiUri: string = `${BASE_API_URI}/app/users/verify`;
-    const token = this._cookieService.get('token');
-    this._httpClient
-      .post(apiUri, { token: token })
-      .pipe(
-        tap(() => {
-          this._isAuthorized = true;
-        }),
-        catchError((error: HttpErrorResponse) => {
-          this._isAuthorized = false;
-          return new Observable();
-        }),
-      )
-      .subscribe();
+    this._cookieService.deleteAll();
+    this._user.name = ' ';
+    this._user.surname = ' ';
+    this._user.patronymic = ' ';
+    this._user.email = ' ';
+    this._user.token = ' ';
+    this._user.role = ' ';
   }
 }

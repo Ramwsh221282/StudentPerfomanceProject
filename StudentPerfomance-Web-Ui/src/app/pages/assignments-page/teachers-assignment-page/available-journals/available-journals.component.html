@@ -1,0 +1,7 @@
+<strong class="available-journals-label">Выберите группу</strong>
+<strong class="available-journals-label" *ngIf="journals.length == 0">Нет доступных групп</strong>
+<section class="available-journals-layout">
+  <app-available-journal-item *ngFor="let journal of journals"
+                              [journal]="journal">
+  </app-available-journal-item>
+</section>

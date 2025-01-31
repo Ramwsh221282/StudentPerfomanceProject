@@ -9,6 +9,7 @@ import { EditEducationDirectionService } from './edit-education-direction.servic
 import { NotificationService } from '../../../../building-blocks/notifications/notification.service';
 import { catchError, Observable, tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
+import { UnauthorizedErrorHandler } from '../../../../shared/models/common/401-error-handler/401-error-handler.service';
 
 @Component({
   selector: 'app-edit-education-direction-dialog',
@@ -32,6 +33,7 @@ export class EditEducationDirectionDialogComponent implements OnInit {
   constructor(
     private readonly _service: EditEducationDirectionService,
     private readonly _notifications: NotificationService,
+    private readonly _handler: UnauthorizedErrorHandler,
   ) {}
 
   public ngOnInit() {
@@ -46,17 +48,14 @@ export class EditEducationDirectionDialogComponent implements OnInit {
           this.educationDirection.name = this.educationDirectionCopy.name;
           this.educationDirection.code = this.educationDirectionCopy.code;
           this.educationDirection.type = this.educationDirectionCopy.type;
-          this._notifications.setMessage(
+          this._notifications.bulkSuccess(
             'Данные направления подготовки изменены',
           );
-          this._notifications.success();
-          this._notifications.turn();
           this.dialogClose.emit(false);
         }),
         catchError((error: HttpErrorResponse) => {
-          this._notifications.setMessage(error.error);
-          this._notifications.failure();
-          this._notifications.turn();
+          this._handler.tryHandle(error);
+          this._notifications.bulkFailure(error.error);
           return new Observable<never>();
         }),
       )

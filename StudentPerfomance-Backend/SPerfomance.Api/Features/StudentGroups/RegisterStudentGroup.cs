@@ -5,6 +5,7 @@ using SPerfomance.Api.Endpoints;
 using SPerfomance.Api.Features.Common.Extensions;
 using SPerfomance.Api.Features.StudentGroups.Contracts;
 using SPerfomance.Application.Abstractions;
+using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Queries.HasActive;
 using SPerfomance.Application.StudentGroups.Commands.CreateStudentGroup;
 using SPerfomance.Application.StudentGroups.DTO;
 using SPerfomance.Domain.Models.StudentGroups;
@@ -38,6 +39,7 @@ public static class RegisterStudentGroup
         Results<UnauthorizedHttpResult, NotFound<string>, BadRequest<string>, Ok<StudentGroupDto>>
     > Handler(
         [FromHeader(Name = "token")] string? token,
+        HasActiveAssignmentSessionRequestHandler guard,
         Request request,
         ICommandDispatcher dispatcher,
         IUsersRepository users,
@@ -45,6 +47,12 @@ public static class RegisterStudentGroup
         CancellationToken ct
     )
     {
+        HasActiveAssignmentSessionResponse response = await guard.Handle(
+            new HasActiveAssignmentSessionRequest()
+        );
+        if (response.Has)
+            return TypedResults.BadRequest("Запрос отклонён. Причина: Активная контрольная неделя");
+
         logger.LogInformation("Запрос на создание студенческой группы");
         var jwtToken = new Token(token);
         if (!await jwtToken.IsVerifiedAdmin(users, ct))

@@ -1,0 +1,11 @@
+.control-week-status-items-list-layout {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: #E0ECFF;
+  border-radius: 5px;
+  overflow: auto;
+  max-height: 40vh;
+}

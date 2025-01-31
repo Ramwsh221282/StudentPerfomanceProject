@@ -3,34 +3,33 @@
     <strong>Редактирование студента</strong>
   </div>
   <div id="content">
-    <app-floating-label-input [label]="'Фамилия'"
-                              [value]="studentCopy.surname"
-                              (inputChange)="studentCopy.surname = $event">
-    </app-floating-label-input>
-    <app-floating-label-input [label]="'Имя'"
-                              [value]="studentCopy.name"
-                              (inputChange)="studentCopy.name = $event">
-    </app-floating-label-input>
-    <app-floating-label-input [label]="'Отчество'"
-                              [value]="newPatronymic"
-                              (inputChange)="newPatronymic = $event">
-    </app-floating-label-input>
-    <app-floating-label-input [label]="'Зачётная книжка'"
-                              [value]="newRecordbook"
-                              (inputChange)="newRecordbook = $event">
-    </app-floating-label-input>
-    <app-floating-label-input [label]="'Статус'"
-                              [isReadonly]="true"
-                              [value]="studentCopy.state"
-                              (inputChange)="studentCopy.state = $event">
-    </app-floating-label-input>
-    <app-radio-button-list
-      [values]="[{ value: 'Активен', isChecked: this.studentCopy.state == 'Активен' }, { value: 'Неактивен', isChecked: this.studentCopy.state == 'Неактивен' }]"
-      (valueChecked)="studentCopy.state = $event">
-    </app-radio-button-list>
-    <div class="sub-controls-container">
-      <app-green-outline-button [label]="'Применить изменения'" (onClicked)="edit()"></app-green-outline-button>
-      <app-yellow-button [label]="'Сбросить изменения'" (onClicked)="reset()"></app-yellow-button>
+    <p class="info-label">
+      Выберите секцию
+    </p>
+    <div class="tab-form">
+      <ul class="tab-form-ul">
+        <li (click)="selectSection(section, $event)"
+            *ngFor="let section of sections"
+            [ngClass]="{'tab-form-li-active': sectionId === section.id}"
+            class="tab-form-li"
+        >
+          {{ section.name }}
+        </li>
+      </ul>
+      <div class="tab-form-content">
+        <app-change-student-data-dialog
+          @fadeIn
+          *ngIf="sectionId == 0"
+          [group]="studentGroup"
+          [student]="student">
+        </app-change-student-data-dialog>
+        <app-move-student-dialog
+          @fadeIn
+          *ngIf="sectionId == 1"
+          [currentGroup]="studentGroup"
+          [student]="student">
+        </app-move-student-dialog>
+      </div>
     </div>
   </div>
   <div id="controls">

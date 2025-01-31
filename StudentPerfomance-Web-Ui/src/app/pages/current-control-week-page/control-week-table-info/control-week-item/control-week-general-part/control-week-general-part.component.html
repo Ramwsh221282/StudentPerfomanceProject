@@ -1,0 +1,8 @@
+<section class="general-info-container">
+  <a>Дата начала: {{ session.startDate }}</a>
+  <a>Дата окончания: {{ session.endDate }}</a>
+  <a>Текущее состояние: {{ session.state }}</a>
+  <app-green-outline-button *ngIf="_auth.isAuthorized && _auth.userData.role == 'Администратор'"
+                            [label]="'Закрыть и сформировать отчёт'"
+                            (onClicked)="assignmentSessionCloseClicked.emit(session)"></app-green-outline-button>
+</section>

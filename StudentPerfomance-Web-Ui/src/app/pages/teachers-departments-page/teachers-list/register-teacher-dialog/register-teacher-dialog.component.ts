@@ -9,8 +9,7 @@ import { FloatingLabelInputComponent } from '../../../../building-blocks/floatin
 import { GreenOutlineButtonComponent } from '../../../../building-blocks/buttons/green-outline-button/green-outline-button.component';
 import { NgIf } from '@angular/common';
 import { RedOutlineButtonComponent } from '../../../../building-blocks/buttons/red-outline-button/red-outline-button.component';
-import { SelectJobTitleDropdownComponent } from '../create-teacher-dialog/select-job-title-dropdown/select-job-title-dropdown.component';
-import { SelectStateDropdownComponent } from '../create-teacher-dialog/select-state-dropdown/select-state-dropdown.component';
+import { animate, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-register-teacher-dialog',
@@ -19,12 +18,27 @@ import { SelectStateDropdownComponent } from '../create-teacher-dialog/select-st
     GreenOutlineButtonComponent,
     NgIf,
     RedOutlineButtonComponent,
-    SelectJobTitleDropdownComponent,
-    SelectStateDropdownComponent,
   ],
   templateUrl: './register-teacher-dialog.component.html',
   styleUrl: './register-teacher-dialog.component.scss',
   standalone: true,
+  animations: [
+    trigger('fadeIn', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateY(-10px)' }),
+        animate(
+          '300ms ease-out',
+          style({ opacity: 1, transform: 'translateY(0)' }),
+        ),
+      ]),
+      transition(':leave', [
+        animate(
+          '300ms ease-in',
+          style({ opacity: 0, transform: 'translateY(-10px)' }),
+        ),
+      ]),
+    ]),
+  ],
 })
 export class RegisterTeacherDialogComponent {
   @Input({ required: true }) registerTeacher: Teacher;
@@ -61,9 +75,5 @@ export class RegisterTeacherDialogComponent {
         }),
       )
       .subscribe();
-  }
-
-  private updateInputs(): void {
-    this.email = '';
   }
 }

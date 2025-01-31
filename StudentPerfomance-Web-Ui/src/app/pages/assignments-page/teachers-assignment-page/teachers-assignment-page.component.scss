@@ -1,0 +1,26 @@
+.navigation-links {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  padding: 5px;
+  font-size: 20px;
+  font-weight: 800;
+  text-decoration: underline;
+}
+
+.page-layout {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.workspace-container {
+  align-self: flex-start;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  padding: 0.5rem;
+}

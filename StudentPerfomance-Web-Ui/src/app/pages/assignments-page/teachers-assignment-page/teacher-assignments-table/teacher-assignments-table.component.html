@@ -1,0 +1,21 @@
+<div class="teacher-assignment-session-table-wrapper">
+  <strong *ngIf="!_teacherAssignments">Вам нечего проставлять в текущей контрольной неделе</strong>
+  <app-teacher-assignments-group-tabs *ngIf="_teacherAssignments && _teacherAssignments.journals"
+                                      [teacherJournals]="_teacherAssignments.journals"
+                                      (journalSelected)="handleSelectedJournal($event)">
+  </app-teacher-assignments-group-tabs>
+  <app-teacher-assignment-group-menu *ngIf="selectedTeacherJournal"
+                                     [journal]="selectedTeacherJournal"
+                                     [activeDiscipline]="activeDisciplineName"
+                                     (disciplineSelected)="selectedTeacherDiscipline = $event">
+  </app-teacher-assignment-group-menu>
+  <div *ngIf="selectedTeacherDiscipline">
+    <app-teacher-assignments *ngFor="let item of selectedTeacherDiscipline.students" [student]="item"
+                             [discipline]="selectedTeacherDiscipline"></app-teacher-assignments>
+  </div>
+</div>
+<app-admin-assignments-access-resolver-dialog *ngIf="isAdminAccess"
+                                              [isAdminAccess]="isAdminAccess"
+                                              (visibilityChange)="isAdminAccess = $event"
+                                              (accessGiven)="handleAdminAccessReceived($event)">
+</app-admin-assignments-access-resolver-dialog>

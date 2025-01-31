@@ -5,6 +5,7 @@ using SPerfomance.Api.Endpoints;
 using SPerfomance.Api.Features.Common.Extensions;
 using SPerfomance.Application.Abstractions;
 using SPerfomance.Application.Departments.DTO;
+using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Queries.HasActive;
 using SPerfomance.Application.Users.Commands.RegisterAsTeacher;
 using SPerfomance.Domain.Models.Teachers;
 using SPerfomance.Domain.Tools;
@@ -37,11 +38,18 @@ public static class RegisterTeacherAsUser
     > Handler(
         [FromHeader(Name = "token")] string? token,
         [FromBody] RegisterAsTeacherRequest request,
+        HasActiveAssignmentSessionRequestHandler guard,
         IUsersRepository users,
         ICommandDispatcher dispatcher,
         CancellationToken ct = default
     )
     {
+        HasActiveAssignmentSessionResponse response = await guard.Handle(
+            new HasActiveAssignmentSessionRequest()
+        );
+        if (response.Has)
+            return TypedResults.BadRequest("Запрос отклонён. Причина: Активная контрольная неделя");
+
         Token jwtToken = new Token(token);
         if (!await jwtToken.IsVerifiedAdmin(users))
             return TypedResults.Unauthorized();

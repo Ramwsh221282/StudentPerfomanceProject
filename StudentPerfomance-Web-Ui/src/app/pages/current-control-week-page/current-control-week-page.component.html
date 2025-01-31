@@ -1,0 +1,30 @@
+<section class="current-control-week-page-layout">
+  <strong @fadeIn *ngIf="viewModel.session != null" class="current-control-week-page-title">
+    Текущая контрольная неделя
+  </strong>
+  <strong @fadeIn *ngIf="viewModel.session == null" class="current-control-week-page-title">
+    Нет активной контрольной недели
+  </strong>
+  <app-control-week-table-info [session]="viewModel.session"
+                               (createSessionClicked)="isCreatingNewSession = true">
+  </app-control-week-table-info>
+  <app-control-week-item
+    *ngIf="viewModel.session"
+    (sessionCloseClicked)="closeAssignmentSessionRequest = $event"
+    [session]="viewModel.session">
+  </app-control-week-item>
+</section>
+<app-success-notification *ngIf="notifications.isSuccess() && notifications.isVisible()"
+                          [message]="notifications.message()">
+</app-success-notification>
+<app-failure-notification *ngIf="notifications.isFailure() && notifications.isVisible()"
+                          [message]="notifications.message()">
+</app-failure-notification>
+<app-close-control-week-dialog @fadeIn *ngIf="closeAssignmentSessionRequest"
+                               [session]="closeAssignmentSessionRequest"
+                               (visibilityChanged)="closeAssignmentSessionRequest = null">
+</app-close-control-week-dialog>
+<app-create-control-week-dialog @fadeIn *ngIf="isCreatingNewSession"
+                                (visibilityChanged)="isCreatingNewSession = false">
+</app-create-control-week-dialog>
+

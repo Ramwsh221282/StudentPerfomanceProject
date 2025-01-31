@@ -1,0 +1,22 @@
+<section class="assignment-item-layout" (click)="showMarks($event)">
+  <div [ngClass]="{'book-locked': viewModel.isLocked, 'mark-name-x ': isMarkX()}" @fadeIn
+       class="record-book-container">{{ student.recordbook }}
+  </div>
+  <div [ngClass]="{'locked': viewModel.isLocked, 'mark-name-x ': isMarkX() }" @fadeIn *ngIf="!isMarksShown"
+       class="assignment-item-student-info">
+    <img [ngSrc]="'assets/user_icon.svg'" [alt]="'img'" [width]="30" [height]="30">
+    <strong>
+      {{ student.surname + ' ' }}
+      {{ student.name[0] + '. ' }}
+      {{ student.patronymic!.trim().length == 0 ? '' : student.patronymic![0] + '.' }}
+    </strong>
+    <div class="student-grade-container">
+      <span class="student-grade-label">{{ markName }}</span>
+    </div>
+  </div>
+  <div @fadeIn *ngIf="isMarksShown" class="assignment-item-marks-info">
+    <div *ngFor="let mark of marks" class="student-grade-container" (click)="selectMark($event, mark)">
+      <span class="student-grade-selectable">{{ mark.name }}</span>
+    </div>
+  </div>
+</section>

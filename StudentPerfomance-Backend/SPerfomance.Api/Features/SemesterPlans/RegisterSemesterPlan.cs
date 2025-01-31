@@ -9,6 +9,7 @@ using SPerfomance.Api.Features.Semesters.Contracts;
 using SPerfomance.Application.Abstractions;
 using SPerfomance.Application.EducationDirections.Queries.GetEducationDirection;
 using SPerfomance.Application.EducationPlans.Queries.GetEducationPlan;
+using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Queries.HasActive;
 using SPerfomance.Application.Semesters.Commands.CreateDiscipline;
 using SPerfomance.Application.Semesters.DTO;
 using SPerfomance.Application.Semesters.Queries.GetSemester;
@@ -53,6 +54,7 @@ public static class RegisterSemesterPlan
     > Handler(
         [FromHeader(Name = "token")] string? token,
         Request request,
+        HasActiveAssignmentSessionRequestHandler guard,
         IUsersRepository users,
         IQueryDispatcher queryDispatcher,
         ICommandDispatcher commandDispatcher,
@@ -60,6 +62,12 @@ public static class RegisterSemesterPlan
         CancellationToken ct
     )
     {
+        HasActiveAssignmentSessionResponse response = await guard.Handle(
+            new HasActiveAssignmentSessionRequest()
+        );
+        if (response.Has)
+            return TypedResults.BadRequest("Запрос отклонён. Причина: Активная контрольная неделя");
+
         logger.LogInformation("Запрос на создание дисциплины в семестре");
         var jwtToken = new Token(token);
         if (!await jwtToken.IsVerifiedAdmin(users, ct))

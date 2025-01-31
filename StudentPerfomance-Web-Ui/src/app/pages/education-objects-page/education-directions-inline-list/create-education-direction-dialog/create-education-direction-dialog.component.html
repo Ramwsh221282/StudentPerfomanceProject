@@ -17,6 +17,7 @@
                               [showContent]="isSelectingType"
                               (click)="isSelectingType = true">
       <app-select-direction-type-dropdown
+        @fadeIn
         dropdown
         (directionTypeSelected)="directionType = $event; isSelectingType = false">
       </app-select-direction-type-dropdown>

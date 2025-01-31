@@ -1,0 +1,18 @@
+<strong class="assignment-journal-title">Проставление оценок</strong>
+<section class="assignment-journal-layout">
+  <div class="assignment-journal-controls">
+    <app-green-outline-button [label]="'Начать проставление'"
+                              (onClicked)="viewModel.unlock()">
+    </app-green-outline-button>
+    <app-yellow-outline-button [label]="'Завершить проставления'"
+                               (onClicked)="viewModel.handleFinish()">
+    </app-yellow-outline-button>
+    <strong>{{ getCurrentStatus() }}</strong>
+  </div>
+  <div *ngIf="viewModel.currentDiscipline" class="assignment-journal-content">
+    <app-assignment-item
+      *ngFor="let student of viewModel.currentStudents"
+      [student]="student">
+    </app-assignment-item>
+  </div>
+</section>

@@ -1,0 +1,15 @@
+<section class="admin-info-page-layout">
+  <section class="admin-info-content-layout">
+    <div class="admin-info-title-container">
+      <strong class="admin-info-page-title">Информация</strong>
+    </div>
+    <div class="info-topics-container">
+      <app-admin-info-item @fadeIn *ngFor="let item of items" [infoItem]="item">
+        
+      </app-admin-info-item>
+    </div>
+  </section>
+  <app-admin-info-description @fadeIn *ngIf="viewModel.currentTopic"
+                              [topic]="viewModel.currentTopic">
+  </app-admin-info-description>
+</section>

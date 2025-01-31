@@ -1,0 +1,19 @@
+<div class="admin-control-week-status-dummy"></div>
+<section class="admin-control-week-status-layout">
+  <strong class="admin-control-week-status-title">
+    <span>Статус текущей контрольной недели</span>
+    <app-blue-outline-button [label]="'Просмотреть оценки'"
+                             (onClicked)="navigateOnGradesPage()">
+    </app-blue-outline-button>
+  </strong>
+  <strong @fadeIn *ngIf="isLoading">Загрузка...</strong>
+  <strong @fadeIn *ngIf="statuses.length == 0 && !isLoading">Нет активной контрольной недели</strong>
+  <div class="short-info-container">
+    <strong class="short-info-label">Всего групп: {{ statuses.length }}</strong>
+    <strong class="short-info-label">Завершенные группы: {{ totalGroupsFullyCompleted }}</strong>
+    <strong class="short-info-label">Группы требующие проставлений: {{ totalNotCompletedGroups }}</strong>
+  </div>
+  <app-control-week-status-items-list @fadeIn *ngIf="!isLoading && statuses.length > 0" [items]="statuses">
+
+  </app-control-week-status-items-list>
+</section>

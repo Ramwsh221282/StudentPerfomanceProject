@@ -6,6 +6,7 @@ using SPerfomance.Api.Features.Common.Extensions;
 using SPerfomance.Application.Abstractions;
 using SPerfomance.Application.EducationDirections.Commands.CreateEducationDirection;
 using SPerfomance.Application.EducationDirections.DTO;
+using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Queries.HasActive;
 using SPerfomance.Domain.Models.EducationDirections;
 
 namespace SPerfomance.Api.Features.EducationDirections;
@@ -38,12 +39,19 @@ public static class CreateEducationDirection
     > Handler(
         Request request,
         [FromHeader(Name = "token")] string? token,
+        HasActiveAssignmentSessionRequestHandler guard,
         IUsersRepository users,
         ICommandDispatcher dispatcher,
         ILogger<Endpoint> logger,
         CancellationToken ct
     )
     {
+        HasActiveAssignmentSessionResponse response = await guard.Handle(
+            new HasActiveAssignmentSessionRequest()
+        );
+        if (response.Has)
+            return TypedResults.BadRequest("Запрос отклонён. Причина: Активная контрольная неделя");
+
         logger.LogInformation("Запрос на создание нового направления подготовки");
         var jwtToken = new Token(token);
 

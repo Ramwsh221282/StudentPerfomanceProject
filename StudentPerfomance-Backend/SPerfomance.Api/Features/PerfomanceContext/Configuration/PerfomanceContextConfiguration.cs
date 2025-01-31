@@ -6,6 +6,7 @@ using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Commands.Crea
 using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Commands.MakeAssignment;
 using SPerfomance.Application.PerfomanceContext.AssignmentSessions.DTO;
 using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Queries.GetInfo;
+using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Queries.HasActive;
 using SPerfomance.ControlWeekDocuments.Documents;
 using SPerfomance.DataAccess.Repositories;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSession;
@@ -53,10 +54,12 @@ public static class PerfomanceContextConfiguration
 
     private static IServiceCollection ConfigureQueries(this IServiceCollection services)
     {
-        services = services.AddTransient<
-            IQueryHandler<GetAssignmentSessionInfoQuery, AssignmentSessionInfoDTO>,
-            GetAssignmentSessionInfoQueryHandler
-        >();
+        services = services
+            .AddTransient<
+                IQueryHandler<GetAssignmentSessionInfoQuery, AssignmentSessionInfoDTO>,
+                GetAssignmentSessionInfoQueryHandler
+            >()
+            .AddScoped<HasActiveAssignmentSessionRequestHandler>();
         return services;
     }
 }

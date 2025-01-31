@@ -6,7 +6,8 @@
     <label class="label-info">Регистрация преподавателя</label>
     <label class="label-info">{{ registerTeacher.surname }}</label>
     <label class="label-info">{{ registerTeacher.name }}</label>
-    <label class="label-info" *ngIf="registerTeacher.patronymic != null">{{ registerTeacher.patronymic }}</label>
+    <label class="label-info" @fadeIn
+           *ngIf="registerTeacher.patronymic != null">{{ registerTeacher.patronymic }}</label>
     <app-floating-label-input [label]="'Почта'"
                               [value]="email"
                               (inputChange)="email = $event">

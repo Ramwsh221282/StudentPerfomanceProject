@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using SPerfomance.Api.Endpoints;
 using SPerfomance.Api.Features.Common.Extensions;
 using SPerfomance.Application.Abstractions;
+using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Queries.HasActive;
 using SPerfomance.Application.StudentGroups.Commands.DeattachEducationPlan;
 using SPerfomance.Application.StudentGroups.DTO;
 using SPerfomance.Application.StudentGroups.Queries.GetStudentGroupByName;
@@ -44,6 +45,7 @@ public static class DeattachGroupEducationPlan
     > Handler(
         [FromHeader(Name = "token")] string? token,
         [FromBody] Request request,
+        HasActiveAssignmentSessionRequestHandler guard,
         IQueryDispatcher queryDispatcher,
         ICommandDispatcher commandDispatcher,
         IUsersRepository users,
@@ -51,6 +53,12 @@ public static class DeattachGroupEducationPlan
         CancellationToken ct
     )
     {
+        HasActiveAssignmentSessionResponse response = await guard.Handle(
+            new HasActiveAssignmentSessionRequest()
+        );
+        if (response.Has)
+            return TypedResults.BadRequest("Запрос отклонён. Причина: Активная контрольная неделя");
+
         logger.LogInformation("Запрос на открепление учебного плана у группы");
         var jwtToken = new Token(token);
         if (!await jwtToken.IsVerifiedAdmin(users, ct))

@@ -17,7 +17,7 @@ export class BaseHttpService {
     this._config = inject(AppConfigService);
   }
 
-  public buildHttpHeaders(): HttpHeaders {
+  protected buildHttpHeaders(): HttpHeaders {
     return new HttpHeaders().set('token', this._auth.userData.token);
   }
 }

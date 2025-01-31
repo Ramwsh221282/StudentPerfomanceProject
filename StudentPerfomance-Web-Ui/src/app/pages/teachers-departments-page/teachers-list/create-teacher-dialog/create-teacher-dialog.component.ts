@@ -9,10 +9,10 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { FloatingLabelInputComponent } from '../../../../building-blocks/floating-label-input/floating-label-input.component';
 import { GreenOutlineButtonComponent } from '../../../../building-blocks/buttons/green-outline-button/green-outline-button.component';
 import { RedOutlineButtonComponent } from '../../../../building-blocks/buttons/red-outline-button/red-outline-button.component';
-import { SelectDirectionTypeDropdownComponent } from '../../../education-objects-page/education-directions-inline-list/create-education-direction-dialog/select-direction-type-dropdown/select-direction-type-dropdown.component';
 import { SelectJobTitleDropdownComponent } from './select-job-title-dropdown/select-job-title-dropdown.component';
 import { NgIf } from '@angular/common';
 import { SelectStateDropdownComponent } from './select-state-dropdown/select-state-dropdown.component';
+import { animate, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-create-teacher-dialog',
@@ -20,7 +20,6 @@ import { SelectStateDropdownComponent } from './select-state-dropdown/select-sta
     FloatingLabelInputComponent,
     GreenOutlineButtonComponent,
     RedOutlineButtonComponent,
-    SelectDirectionTypeDropdownComponent,
     SelectJobTitleDropdownComponent,
     NgIf,
     SelectStateDropdownComponent,
@@ -28,6 +27,23 @@ import { SelectStateDropdownComponent } from './select-state-dropdown/select-sta
   templateUrl: './create-teacher-dialog.component.html',
   styleUrl: './create-teacher-dialog.component.scss',
   standalone: true,
+  animations: [
+    trigger('fadeIn', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateY(-10px)' }),
+        animate(
+          '300ms ease-out',
+          style({ opacity: 1, transform: 'translateY(0)' }),
+        ),
+      ]),
+      transition(':leave', [
+        animate(
+          '300ms ease-in',
+          style({ opacity: 0, transform: 'translateY(-10px)' }),
+        ),
+      ]),
+    ]),
+  ],
 })
 export class CreateTeacherDialogComponent {
   @Input({ required: true }) department: Department;

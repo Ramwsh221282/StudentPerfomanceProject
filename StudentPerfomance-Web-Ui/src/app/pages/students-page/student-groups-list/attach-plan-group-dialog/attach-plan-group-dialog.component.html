@@ -1,1 +1,47 @@
-<p>attach-plan-group-dialog works!</p>
+<div id="container">
+  <div id="header">
+    <strong>Закрепление учебного плана абдубдеф</strong>
+  </div>
+  <div id="content">
+    <section class="attachment-dialog-layout">
+      <div class="attachment-dialog-part">
+        <strong class="label-info">Выберите направление</strong>
+        <strong class="label-info" *ngIf="directions.length == 0">Не найдено направлений подготовки</strong>
+        <div *ngIf="directions.length > 0" class="attachment-direction-items">
+          <strong *ngFor="let direction of directions"
+                  [ngClass]="{'selected': selectedEducationDirection != null && selectedEducationDirection.id == direction.id }"
+                  (click)="selectDirection(direction, $event)"
+                  class="attachment-item">{{ direction.name + ' ' + direction.code + ' ' + direction.type }}</strong>
+        </div>
+      </div>
+      <div *ngIf="selectedEducationDirection" class="attachment-dialog-part">
+        <strong class="label-info">Выберите учебный план</strong>
+        <strong class="label-info" *ngIf="selectedEducationDirection.plans.length == 0">Учебных планов нет</strong>
+        <div *ngIf="directions.length > 0" class="attachment-direction-items">
+          <strong *ngFor="let plan of selectedEducationDirection.plans"
+                  [ngClass]="{'selected': selectedEducationPlan != null && selectedEducationPlan.id == plan.id}"
+                  (click)="selectEducationPlan(plan, $event)"
+                  class="attachment-item">{{ plan.year + ' год' }}</strong>
+        </div>
+      </div>
+      <div *ngIf="selectedEducationPlan" class="attachment-dialog-part">
+        <strong class="label-info">Выберите семестр обучения</strong>
+        <div *ngIf="directions.length > 0" class="attachment-direction-items">
+          <strong *ngFor="let semester of selectedEducationPlan.semesters"
+                  [ngClass]="{'selected': selectedSemesterNumber != null && selectedSemesterNumber == semester.number}"
+                  (click)="selectSemesterNumber(semester.number, $event)"
+                  class="attachment-item">{{ semester.number + ' семестр' }}</strong>
+        </div>
+        <app-green-outline-button *ngIf="selectedSemesterNumber"
+                                  [label]="'Подтвердить'"
+                                  (onClicked)="attach()">
+        </app-green-outline-button>
+      </div>
+    </section>
+  </div>
+  <div id="controls">
+    <app-red-outline-button [label]="'Закрыть'"
+                            (onClicked)="visibilityChange.emit()">
+    </app-red-outline-button>
+  </div>
+</div>

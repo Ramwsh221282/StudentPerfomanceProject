@@ -8,6 +8,7 @@ using SPerfomance.Application.Abstractions;
 using SPerfomance.Application.Departments.Commands.RegisterTeacher;
 using SPerfomance.Application.Departments.DTO;
 using SPerfomance.Application.Departments.Queries.GetDepartmentByName;
+using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Queries.HasActive;
 using SPerfomance.Domain.Models.TeacherDepartments;
 using SPerfomance.Domain.Models.Teachers;
 
@@ -42,6 +43,7 @@ public static class RegisterTeacher
     > Handler(
         [FromHeader(Name = "token")] string? token,
         Request request,
+        HasActiveAssignmentSessionRequestHandler guard,
         IUsersRepository users,
         IQueryDispatcher queryDispatcher,
         ICommandDispatcher commandDispatcher,
@@ -49,6 +51,12 @@ public static class RegisterTeacher
         CancellationToken ct
     )
     {
+        HasActiveAssignmentSessionResponse response = await guard.Handle(
+            new HasActiveAssignmentSessionRequest()
+        );
+        if (response.Has)
+            return TypedResults.BadRequest("Запрос отклонён. Причина: Активная контрольная неделя");
+
         var jwtToken = new Token(token);
         logger.LogInformation("Запрос на добавление преподавателя в кафедру");
         if (!await jwtToken.IsVerifiedAdmin(users, ct))

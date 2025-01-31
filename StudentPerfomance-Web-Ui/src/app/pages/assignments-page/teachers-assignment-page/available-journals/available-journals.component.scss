@@ -1,0 +1,30 @@
+:host {
+  text-align: center;
+  align-self: center;
+  justify-self: center;
+}
+
+.available-journals-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  width: 70vw;
+  height: 22vh;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: #1a88ff;
+  box-shadow: 4.0px 8.0px 8.0px hsl(0deg 0% 0% / 0.38);
+  border-radius: 10px;
+  border: solid 1px #93c4fa;
+  overflow: auto;
+}
+
+.available-journals-label {
+  text-align: center;
+  align-self: center;
+  justify-self: center;
+  font-weight: bold;
+  font-size: 16px;
+  color: #1b274b;
+}

@@ -1,0 +1,17 @@
+:host {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+}
+
+.edit-student-data-part {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.edit-student-data-controls-layout {
+  display: inline-flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}

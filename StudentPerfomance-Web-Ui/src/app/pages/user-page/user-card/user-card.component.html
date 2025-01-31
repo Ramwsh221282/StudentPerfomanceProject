@@ -14,6 +14,7 @@
             <strong>Отчество: {{ user.patronymic }}</strong>
             <strong>Почта: {{ user.email }}</strong>
             <strong>Права: {{ user.role }}</strong>
+            <app-red-button [label]="'Выйти из учетной записи'" (onClicked)="dislogin()"></app-red-button>
           </div>
         </ng-container>
       }
@@ -36,21 +37,28 @@
           <div class="user-card-content-container">
             <app-floating-label-input [value]="currentPassword" [id]="'CurrentPassword'" [label]="'Текущий пароль'"
                                       [type]="'password'"
-                                      (inputChange)="currentPassword = $event"></app-floating-label-input>
+                                      (inputChange)="currentPassword = $event">
+            </app-floating-label-input>
             <app-floating-label-input [value]="newEmail" [id]="'NewEmail'" [label]="'Новая почта'"
-                                      (inputChange)="newEmail = $event"></app-floating-label-input>
-            <app-green-outline-button [label]="'Сменить'" (onClicked)="onEmailUpdateClick()"></app-green-outline-button>
+                                      (inputChange)="newEmail = $event">
+            </app-floating-label-input>
+            <app-green-outline-button [label]="'Сменить'" (onClicked)="onEmailUpdateClick()">
+
+            </app-green-outline-button>
           </div>
         </ng-container>
       }
     }
   </div>
 </div>
-<div *ngIf="notificationService.isSuccess">
+<div @fadeIn *ngIf="notificationService.isSuccess">
   <app-success-result-notification [message]="notificationService.Message"
-                                   (visibilityEmitter)="notificationService.reset()"></app-success-result-notification>
+                                   (visibilityEmitter)="notificationService.reset()">
+  </app-success-result-notification>
 </div>
-<div *ngIf="notificationService.isFailure">
+<div @fadeIn *ngIf="notificationService.isFailure">
   <app-failure-result-notification [message]="notificationService.Message"
-                                   (visibilityEmitter)="notificationService.reset()"></app-failure-result-notification>
+                                   (visibilityEmitter)="notificationService.reset()">
+  </app-failure-result-notification>
 </div>
+<ng-content></ng-content>

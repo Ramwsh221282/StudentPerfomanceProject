@@ -13,6 +13,7 @@ import { SemesterPlan } from '../../../../modules/administration/submodules/seme
 import { Semester } from '../../../../modules/administration/submodules/semesters/models/semester.interface';
 import { catchError, Observable, tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
+import { UnauthorizedErrorHandler } from '../../../../shared/models/common/401-error-handler/401-error-handler.service';
 
 @Component({
   selector: 'app-remove-discipline-dialog',
@@ -33,6 +34,7 @@ export class RemoveDisciplineDialogComponent {
   public constructor(
     private readonly _service: RemoveDisciplineService,
     private readonly _notifications: NotificationService,
+    private readonly _handler: UnauthorizedErrorHandler,
   ) {}
 
   public delete(): void {
@@ -49,16 +51,13 @@ export class RemoveDisciplineDialogComponent {
       )
       .pipe(
         tap(() => {
-          this._notifications.setMessage('Дисциплина была удалена');
-          this._notifications.success();
-          this._notifications.turn();
+          this._notifications.bulkSuccess('Дисциплина была удалена');
           this.disciplineRemoved.emit(this.discipline);
           this.visibilityChange.emit();
         }),
         catchError((error: HttpErrorResponse) => {
-          this._notifications.setMessage(error.error);
-          this._notifications.failure();
-          this._notifications.turn();
+          this._handler.tryHandle(error);
+          this._notifications.bulkFailure(error.error);
           this.visibilityChange.emit();
           return new Observable<never>();
         }),

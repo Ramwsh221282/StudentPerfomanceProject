@@ -8,6 +8,7 @@ using SPerfomance.Application.Abstractions;
 using SPerfomance.Application.EducationDirections.Commands.UpdateEducationDirection;
 using SPerfomance.Application.EducationDirections.DTO;
 using SPerfomance.Application.EducationDirections.Queries.GetEducationDirection;
+using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Queries.HasActive;
 using SPerfomance.Domain.Models.EducationDirections;
 
 namespace SPerfomance.Api.Features.EducationDirections;
@@ -45,6 +46,7 @@ public static class UpdateEducationDirection
     > Handler(
         [FromHeader(Name = "token")] string? token,
         [FromBody] Request request,
+        HasActiveAssignmentSessionRequestHandler guard,
         IUsersRepository users,
         ICommandDispatcher commandDispatcher,
         IQueryDispatcher queryDispatcher,
@@ -52,6 +54,12 @@ public static class UpdateEducationDirection
         CancellationToken ct
     )
     {
+        HasActiveAssignmentSessionResponse response = await guard.Handle(
+            new HasActiveAssignmentSessionRequest()
+        );
+        if (response.Has)
+            return TypedResults.BadRequest("Запрос отклонён. Причина: Активная контрольная неделя");
+
         var jwtToken = new Token(token);
         if (!await jwtToken.IsVerifiedAdmin(users, ct))
         {

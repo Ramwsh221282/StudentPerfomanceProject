@@ -1,0 +1,21 @@
+<section class="status-item-layout">
+  <strong>{{ item.groupName }}</strong>
+  <strong *ngIf="item.isCompleted">Полностью проставлена</strong>
+  <strong class="status-item-warning-label" *ngIf="!item.isCompleted">
+    Требует проставлений у {{ item.requiredDisciplines.length }} дисциплин
+  </strong>
+  <div [ngClass]="{'triangle_down': !isInfoShown, 'triangle_up': isInfoShown}"
+       (click)="showInfo($event)"></div>
+  <div class="full-width-wrapper" *ngIf="item.requiredDisciplines.length > 0"
+       [@expandCollapse]="isInfoShown">
+    <div class="control-week-description-item"
+         *ngFor="let required of item.requiredDisciplines">
+      <span class="discipline-part">{{ required.discipline }}</span>
+      <span class="teacher-part">
+        {{ required.teacher.teacherSurname }}
+        {{ required.teacher.teacherName ? required.teacher.teacherName[0] + '.' : '' }}
+        {{ required.teacher.teacherPatronymic ? required.teacher.teacherPatronymic[0] + '.' : '' }}
+      </span>
+    </div>
+  </div>
+</section>

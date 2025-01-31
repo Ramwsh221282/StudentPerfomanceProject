@@ -4,12 +4,13 @@ import { GreenOutlineButtonComponent } from '../../../../building-blocks/buttons
 import { RedOutlineButtonComponent } from '../../../../building-blocks/buttons/red-outline-button/red-outline-button.component';
 import { FloatingLabelInputComponent } from '../../../../building-blocks/floating-label-input/floating-label-input.component';
 import { SelectDirectionTypeDropdownComponent } from './select-direction-type-dropdown/select-direction-type-dropdown.component';
-import { NgIf } from '@angular/common';
 import { CreateEducationDirectionService } from './create-education-direction.service';
 import { NotificationService } from '../../../../building-blocks/notifications/notification.service';
 import { IsNullOrWhiteSpace } from '../../../../shared/utils/string-helper';
 import { catchError, Observable, tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
+import { UnauthorizedErrorHandler } from '../../../../shared/models/common/401-error-handler/401-error-handler.service';
+import { animate, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-create-education-direction-dialog',
@@ -21,7 +22,23 @@ import { HttpErrorResponse } from '@angular/common/http';
     RedOutlineButtonComponent,
     FloatingLabelInputComponent,
     SelectDirectionTypeDropdownComponent,
-    NgIf,
+  ],
+  animations: [
+    trigger('fadeIn', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateY(-10px)' }),
+        animate(
+          '300ms ease-out',
+          style({ opacity: 1, transform: 'translateY(0)' }),
+        ),
+      ]),
+      transition(':leave', [
+        animate(
+          '300ms ease-in',
+          style({ opacity: 0, transform: 'translateY(-10px)' }),
+        ),
+      ]),
+    ]),
   ],
 })
 export class CreateEducationDirectionDialogComponent {
@@ -34,6 +51,7 @@ export class CreateEducationDirectionDialogComponent {
   constructor(
     private readonly _service: CreateEducationDirectionService,
     private readonly _notifications: NotificationService,
+    private readonly _handler: UnauthorizedErrorHandler,
   ) {}
 
   public directionName: string = '';
@@ -43,21 +61,15 @@ export class CreateEducationDirectionDialogComponent {
 
   public create(): void {
     if (IsNullOrWhiteSpace(this.directionName)) {
-      this._notifications.setMessage('Наименование не должно быть пустым');
-      this._notifications.failure();
-      this._notifications.turn();
+      this._notifications.bulkFailure('Наименование не должно быть пустым');
       return;
     }
     if (IsNullOrWhiteSpace(this.directionCode)) {
-      this._notifications.setMessage('Код направления не должен быть пустым');
-      this._notifications.failure();
-      this._notifications.turn();
+      this._notifications.bulkFailure('Код направления не должен быть пустым');
       return;
     }
     if (IsNullOrWhiteSpace(this.directionType)) {
-      this._notifications.setMessage('Тип направления должен быть указан');
-      this._notifications.failure();
-      this._notifications.turn();
+      this._notifications.bulkFailure('Тип направления должен быть указан');
       return;
     }
 
@@ -71,16 +83,13 @@ export class CreateEducationDirectionDialogComponent {
         tap((response) => {
           this.directionCreated.emit(response);
           this.cleanInputs();
-          this._notifications.setMessage(
+          this._notifications.bulkSuccess(
             'Добавлено новое направление подготовки',
           );
-          this._notifications.success();
-          this._notifications.turn();
         }),
         catchError((error: HttpErrorResponse) => {
-          this._notifications.setMessage(error.error);
-          this._notifications.failure();
-          this._notifications.turn();
+          this._handler.tryHandle(error);
+          this._notifications.bulkFailure(error.error);
           return new Observable<never>();
         }),
       )

@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { AddIconButtonComponent } from '../../../building-blocks/buttons/add-icon-button/add-icon-button.component';
-import { DepartmentItemComponent } from '../departments-list/department-item/department-item.component';
 import { GreenOutlineButtonComponent } from '../../../building-blocks/buttons/green-outline-button/green-outline-button.component';
 import { NgForOf, NgIf } from '@angular/common';
 import { Department } from '../../../modules/administration/submodules/departments/models/departments.interface';
@@ -10,12 +9,12 @@ import { CreateTeacherDialogComponent } from './create-teacher-dialog/create-tea
 import { RemoveTeacherDialogComponent } from './remove-teacher-dialog/remove-teacher-dialog.component';
 import { EditTeacherDialogComponent } from './edit-teacher-dialog/edit-teacher-dialog.component';
 import { RegisterTeacherDialogComponent } from './register-teacher-dialog/register-teacher-dialog.component';
+import { animate, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-teachers-list',
   imports: [
     AddIconButtonComponent,
-    DepartmentItemComponent,
     GreenOutlineButtonComponent,
     NgForOf,
     TeacherCardComponent,
@@ -28,6 +27,23 @@ import { RegisterTeacherDialogComponent } from './register-teacher-dialog/regist
   templateUrl: './teachers-list.component.html',
   styleUrl: './teachers-list.component.scss',
   standalone: true,
+  animations: [
+    trigger('fadeIn', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateY(-10px)' }),
+        animate(
+          '300ms ease-out',
+          style({ opacity: 1, transform: 'translateY(0)' }),
+        ),
+      ]),
+      transition(':leave', [
+        animate(
+          '300ms ease-in',
+          style({ opacity: 0, transform: 'translateY(-10px)' }),
+        ),
+      ]),
+    ]),
+  ],
 })
 export class TeachersListComponent {
   @Input({ required: true }) department: Department;

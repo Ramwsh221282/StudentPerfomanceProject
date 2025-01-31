@@ -12,6 +12,7 @@ import { EducationDirection } from '../../../modules/administration/submodules/e
 import { CreateDisciplineDialogComponent } from './create-discipline-dialog/create-discipline-dialog.component';
 import { RemoveDisciplineDialogComponent } from './remove-discipline-dialog/remove-discipline-dialog.component';
 import { EditDisciplineDialogComponent } from './edit-discipline-dialog/edit-discipline-dialog.component';
+import { animate, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-disciplines-list',
@@ -28,6 +29,23 @@ import { EditDisciplineDialogComponent } from './edit-discipline-dialog/edit-dis
   templateUrl: './disciplines-list.component.html',
   styleUrl: './disciplines-list.component.scss',
   standalone: true,
+  animations: [
+    trigger('fadeIn', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateY(-10px)' }),
+        animate(
+          '300ms ease-out',
+          style({ opacity: 1, transform: 'translateY(0)' }),
+        ),
+      ]),
+      transition(':leave', [
+        animate(
+          '300ms ease-in',
+          style({ opacity: 0, transform: 'translateY(-10px)' }),
+        ),
+      ]),
+    ]),
+  ],
 })
 export class DisciplinesListComponent {
   @Input({ required: true }) semester: EducationPlanSemester;

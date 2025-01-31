@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { BaseHttpService } from '../../shared/models/common/base-http/base-http.service';
-import { AssignmentSession } from '../../modules/administration/submodules/assignment-sessions/models/assignment-session-interface';
-import { TokenPayloadBuilder } from '../../shared/models/common/token-contract/token-payload-builder';
+import { BaseHttpService } from '../../../shared/models/common/base-http/base-http.service';
+import { AssignmentSession } from '../../../modules/administration/submodules/assignment-sessions/models/assignment-session-interface';
+import { TokenPayloadBuilder } from '../../../shared/models/common/token-contract/token-payload-builder';
 import { Observable } from 'rxjs';
 
 @Injectable({

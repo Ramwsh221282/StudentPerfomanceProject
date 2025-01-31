@@ -12,7 +12,7 @@
     </div>
   </div>
   <div class="education-directions-inline-list">
-    <app-education-direction-item-block *ngFor="let direction of educationDirections"
+    <app-education-direction-item-block @fadeIn *ngFor="let direction of educationDirections"
                                         [direction]="direction"
                                         (selectedDirection)="currentDirection = $event; selectedEducationDirection.emit(currentDirection)"
                                         (selectDirectionForEdit)="educationDirectionEditRequest = $event"
@@ -21,16 +21,16 @@
     </app-education-direction-item-block>
   </div>
 </section>
-<app-create-education-direction-dialog *ngIf="createDialogVisbility" [visibility]="createDialogVisbility"
+<app-create-education-direction-dialog @fadeIn *ngIf="createDialogVisbility" [visibility]="createDialogVisbility"
                                        (visibilityChange)="createDialogVisbility = $event"
                                        (dialogClose)="createDialogVisbility = $event"
                                        (directionCreated)="handleDirectionCreated($event)">
 </app-create-education-direction-dialog>
-<app-edit-education-direction-dialog *ngIf="educationDirectionEditRequest"
+<app-edit-education-direction-dialog @fadeIn *ngIf="educationDirectionEditRequest"
                                      [educationDirection]="educationDirectionEditRequest"
                                      (dialogClose)="educationDirectionEditRequest = null">
 </app-edit-education-direction-dialog>
-<app-delete-education-direction-dialog *ngIf="educationDirectionRemoveRequest"
+<app-delete-education-direction-dialog @fadeIn *ngIf="educationDirectionRemoveRequest"
                                        [educationDirection]="educationDirectionRemoveRequest"
                                        (visibilityChanged)="educationDirectionRemoveRequest = null"
                                        (directionRemoved)="handleDirectionRemoved($event)">

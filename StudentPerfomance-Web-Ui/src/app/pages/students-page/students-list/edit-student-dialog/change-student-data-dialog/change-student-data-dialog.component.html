@@ -1,0 +1,28 @@
+<section class="edit-student-data-part">
+  <app-floating-label-input [label]="'Фамилия'"
+                            [value]="studentCopy.surname"
+                            (inputChange)="studentCopy.surname = $event">
+  </app-floating-label-input>
+  <app-floating-label-input [label]="'Имя'"
+                            [value]="studentCopy.name"
+                            (inputChange)="studentCopy.name = $event">
+  </app-floating-label-input>
+  <app-floating-label-input [label]="'Отчество'"
+                            [value]="newPatronymic"
+                            (inputChange)="newPatronymic = $event">
+  </app-floating-label-input>
+</section>
+<section class="edit-student-data-part">
+  <app-floating-label-input [label]="'Зачётная книжка'"
+                            [value]="newRecordbook"
+                            (inputChange)="newRecordbook = $event">
+  </app-floating-label-input>
+  <app-radio-button-list
+    [values]="[{ value: 'Активен', isChecked: this.studentCopy.state == 'Активен' }, { value: 'Неактивен', isChecked: this.studentCopy.state == 'Неактивен' }]"
+    (valueChecked)="studentCopy.state = $event">
+  </app-radio-button-list>
+</section>
+<div class="edit-student-data-controls-layout">
+  <app-green-outline-button [label]="'Применить'" (onClicked)="edit()"></app-green-outline-button>
+  <app-yellow-button [label]="'Сбросить'" (onClicked)="reset()"></app-yellow-button>
+</div>

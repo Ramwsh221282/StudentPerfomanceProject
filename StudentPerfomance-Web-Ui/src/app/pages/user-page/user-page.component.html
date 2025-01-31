@@ -2,6 +2,10 @@
   <a>Личный кабинет</a>
 </div>
 <section class="user-page-layout">
-  <app-user-card [user]="authService.userData"></app-user-card>
-  <app-admin-user-short-info *ngIf="authService.userData.role == 'Администратор'"></app-admin-user-short-info>
+  <app-user-card [user]="authService.userData">
+    <app-admin-control-week-status></app-admin-control-week-status>
+  </app-user-card>
+  <app-admin-user-short-info @fadeIn *ngIf="authService.userData.role == 'Администратор'"></app-admin-user-short-info>
+  <app-teacher-user-short-info @fadeIn
+                               *ngIf="authService.userData.role == 'Преподаватель'"></app-teacher-user-short-info>
 </section>

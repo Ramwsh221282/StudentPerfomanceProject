@@ -1,0 +1,14 @@
+<div [ngClass]="{'selected': viewModel.isSelected(user)}" (click)="select($event)"
+     class="user-list-item-info-container">
+  <div class="user-list-item-info-part">
+    <img [ngSrc]="'assets/user_icon.svg'" [width]="30" [height]="30" [alt]="'image'">
+    <strong>{{ user.role }}</strong>
+    <strong>{{ user.surname + ' ' + user.name[0] + '. ' + user.patronymic[0] + '.' ?? '' }}</strong>
+  </div>
+  <div class="user-list-controls-part">
+    <app-edit-icon-button [paramHeight]="30" [paramWidth]="30"
+                          (onClicked)="selectForEdit.emit(user)"></app-edit-icon-button>
+    <app-remove-icon-button [paramWidth]="30" [paramHeight]="30"
+                            (onClicked)="selectForRemove.emit(user)"></app-remove-icon-button>
+  </div>
+</div>

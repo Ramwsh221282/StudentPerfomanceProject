@@ -1,0 +1,8 @@
+<section [ngClass]="{'selected': viewModel.isCurrentJournal(journal)}" class="available-journal-group"
+         (click)="selectJournal($event)">
+  <img [ngSrc]="'assets/student_group_icon.svg'"
+       [alt]="'image'"
+       [width]="50"
+       [height]="50">
+  <strong>{{ journal.groupName.name }}</strong>
+</section>

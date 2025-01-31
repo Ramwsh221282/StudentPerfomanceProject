@@ -22,7 +22,7 @@
                               [isReadonly]="true"
                               [showContent]="isSelectingJobTitle"
                               (click)="isSelectingJobTitle = true">
-      <app-select-job-title-dropdown *ngIf="isSelectingJobTitle"
+      <app-select-job-title-dropdown @fadeIn *ngIf="isSelectingJobTitle"
                                      (jobTitleSelected)="jobTitle = $event; isSelectingJobTitle = false">
       </app-select-job-title-dropdown>
     </app-floating-label-input>
@@ -31,7 +31,8 @@
                               [isReadonly]="true"
                               [showContent]="isSelectingState"
                               (click)="isSelectingState = true">
-      <app-select-state-dropdown *ngIf="isSelectingState"
+      <app-select-state-dropdown @fadeIn
+                                 *ngIf="isSelectingState"
                                  (workingStateSelected)="state = $event; isSelectingState = false">
       </app-select-state-dropdown>
     </app-floating-label-input>

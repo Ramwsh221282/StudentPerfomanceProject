@@ -1,0 +1,34 @@
+:host {
+  align-self: flex-start;
+  text-align: center;
+}
+
+.available-disciplines-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #1c172e;
+  text-align: center;
+  align-self: center;
+}
+
+.available-disciplines-layout {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  gap: 0.5rem;
+  background: #1a88ff;
+  border-radius: 10px;
+  border: 1px solid #93c4fa;
+  height: 55vh;
+  box-shadow: 4.0px 8.0px 8.0px hsl(0deg 0% 0% / 0.38);
+  overflow: auto;
+}
+
+.available-disciplines-content {
+  padding: 0.5rem;
+  background: #FFFFFF;
+  border-radius: 10px;
+  gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+}

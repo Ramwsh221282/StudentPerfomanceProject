@@ -19,6 +19,28 @@ export class StudentPageViewModel {
     return this.currentGroup != null && this.currentGroup.id == group.id;
   }
 
+  public attachEducationPlan(
+    group: StudentGroup,
+    groupWithPlan: StudentGroup,
+  ): void {
+    const requested = this.getGroup(group);
+    if (requested == null) return;
+    if (groupWithPlan.plan == null) return;
+    if (groupWithPlan.activeSemesterNumber == null) return;
+    const index = this.groups.indexOf(requested);
+    this.groups[index].plan = { ...groupWithPlan.plan! };
+    this.groups[index].activeSemesterNumber =
+      groupWithPlan.activeSemesterNumber;
+  }
+
+  public detachEducationPlan(group: StudentGroup): void {
+    const requested = this.getGroup(group);
+    if (requested == null) return;
+    const index = this.groups.indexOf(requested);
+    this.groups[index].plan = null;
+    this.groups[index].activeSemesterNumber = null;
+  }
+
   public initializeGroups(groups: StudentGroup[]): void {
     if (this._isInitialized) return;
     this.groups = groups;

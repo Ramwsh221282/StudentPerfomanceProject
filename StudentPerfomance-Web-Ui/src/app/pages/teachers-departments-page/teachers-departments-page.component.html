@@ -3,7 +3,7 @@
   <app-departments-list (departmentSelected)="currentDepartment = $event"
                         (departmentRemoved)="currentDepartment = null">
   </app-departments-list>
-  <app-teachers-list *ngIf="currentDepartment" [department]="currentDepartment"></app-teachers-list>
+  <app-teachers-list @fadeIn *ngIf="currentDepartment" [department]="currentDepartment"></app-teachers-list>
 </section>
 <app-success-notification *ngIf="notifications.isSuccess() && notifications.isVisible()"
                           [message]="notifications.message()"

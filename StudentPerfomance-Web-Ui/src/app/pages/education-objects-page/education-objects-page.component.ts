@@ -12,6 +12,7 @@ import { DisciplinesListComponent } from './disciplines-list/disciplines-list.co
 import { NotificationService } from '../../building-blocks/notifications/notification.service';
 import { SuccessNotificationComponent } from '../../building-blocks/notifications/success-notification/success-notification.component';
 import { FailureNotificationComponent } from '../../building-blocks/notifications/failure-notification/failure-notification.component';
+import { animate, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-education-objects-page',
@@ -28,6 +29,23 @@ import { FailureNotificationComponent } from '../../building-blocks/notification
     FailureNotificationComponent,
   ],
   providers: [NotificationService],
+  animations: [
+    trigger('fadeIn', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateY(-10px)' }),
+        animate(
+          '300ms ease-out',
+          style({ opacity: 1, transform: 'translateY(0)' }),
+        ),
+      ]),
+      transition(':leave', [
+        animate(
+          '300ms ease-in',
+          style({ opacity: 0, transform: 'translateY(-10px)' }),
+        ),
+      ]),
+    ]),
+  ],
 })
 export class EducationObjectsPageComponent {
   public currentEducationDirection: EducationDirection | null;

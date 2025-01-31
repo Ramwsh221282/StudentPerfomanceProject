@@ -1,0 +1,8 @@
+<strong class="available-disciplines-title">Выберите дисциплину</strong>
+<div class="available-disciplines-layout">
+  <div class="available-disciplines-content" *ngIf="viewmodel.currentJournal">
+    <app-available-discipline-item *ngFor="let discipline of viewmodel.currentJournal.disciplines"
+                                   [discipline]="discipline">
+    </app-available-discipline-item>
+  </div>
+</div>

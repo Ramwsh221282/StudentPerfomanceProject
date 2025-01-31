@@ -1,0 +1,27 @@
+<section class="user-form-layout">
+  <strong class="user-form-title">Информация о пользователе</strong>
+  <div class="user-form-content-container">
+    <div class="user-data-role-section">
+      <strong class="user-data-label">Имя:</strong>
+      <strong class="user-data-label">{{ user.surname }}</strong>
+      <strong class="user-data-label">{{ user.name }}</strong>
+      <strong class="user-data-label" *ngIf="user.patronymic != null">{{ user.patronymic }}</strong>
+    </div>
+    <div class="user-data-role-section">
+      <strong class="user-data-label">Права: </strong>
+      <strong class="user-data-label">{{ user.role }}</strong>
+    </div>
+    <div class="user-data-role-section">
+      <strong class="user-data-label">Почта: </strong>
+      <strong class="user-data-label">{{ user.email }}</strong>
+    </div>
+    <div class="user-data-role-section">
+      <strong class="user-data-label">Последний раз был(а) в сети</strong>
+      <strong class="user-data-label">{{ user.lastTimeOnline | date: 'dd.MM.yyyy' }}</strong>
+    </div>
+    <div class="user-data-role-section">
+      <strong class="user-data-label">Дата регистрации: </strong>
+      <strong class="user-data-label">{{ user.registeredDate | date: 'dd.MM.yyyy' }}</strong>
+    </div>
+  </div>
+</section>

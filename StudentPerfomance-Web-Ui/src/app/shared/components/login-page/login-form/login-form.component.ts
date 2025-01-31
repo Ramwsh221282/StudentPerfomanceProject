@@ -5,7 +5,6 @@ import { UserOperationNotificationService } from '../../../services/user-notific
 import { NgClass, NgForOf, NgIf } from '@angular/common';
 import { SuccessResultNotificationComponent } from '../../success-result-notification/success-result-notification.component';
 import { FailureResultNotificationComponent } from '../../failure-result-notification/failure-result-notification.component';
-import { PasswordRecoveryModalComponent } from './password-recovery-modal/password-recovery-modal.component';
 import { FloatingLabelInputComponent } from '../../../../building-blocks/floating-label-input/floating-label-input.component';
 import { GreenOutlineButtonComponent } from '../../../../building-blocks/buttons/green-outline-button/green-outline-button.component';
 import { YellowOutlineButtonComponent } from '../../../../building-blocks/buttons/yellow-outline-button/yellow-outline-button.component';
@@ -22,7 +21,6 @@ import { Router } from '@angular/router';
     NgIf,
     SuccessResultNotificationComponent,
     FailureResultNotificationComponent,
-    PasswordRecoveryModalComponent,
     NgForOf,
     NgClass,
     FloatingLabelInputComponent,

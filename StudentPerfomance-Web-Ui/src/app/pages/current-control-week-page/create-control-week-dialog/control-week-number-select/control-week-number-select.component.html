@@ -1,0 +1,4 @@
+<section class="control-week-number-select-container">
+  <label class="number-select-label" @fadeIn *ngFor="let number of sessionNumbers"
+         (click)="select(number, $event)">{{ number }}</label>
+</section>

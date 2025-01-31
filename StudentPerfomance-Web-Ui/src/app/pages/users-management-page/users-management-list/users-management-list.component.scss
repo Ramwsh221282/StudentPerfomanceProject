@@ -1,0 +1,71 @@
+.users-management-list-layout {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  gap: 1rem;
+  background: #1a88ff;
+  border: 1px solid #93c4fa;
+  border-radius: 10px;
+  align-items: center;
+  box-shadow: 4.0px 8.0px 8.0px hsl(0deg 0% 0% / 0.38);
+}
+
+.users-management-list-header-container {
+  text-align: center;
+  width: 100%;
+  display: block;
+}
+
+.users-management-list-header {
+  color: #FFFFFF;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.users-management-controls-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0.5rem;
+  gap: 0.5rem;
+  background: #FFFFFF;
+  border: 1px solid #93c4fa;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.users-management-list-content {
+  border: 1px solid #93c4fa;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 0.5rem;
+  gap: 0.5rem;
+  background: #FFFFFF;
+  height: 70vh;
+  overflow: auto;
+  width: 100%;
+}
+
+.info-label {
+  font-weight: bold;
+  font-size: 16px;
+  color: #B34D43;
+}
+
+:host {
+  display: flex;
+  flex-direction: row;
+  padding: 0.5rem;
+  gap: 0.5rem;
+  background: #E0ECFF;
+  border: solid 1px #d9d9d9;
+  color: #1b274b;
+  font-weight: bold;
+  font-size: 14px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%; /* Добавлено */
+}

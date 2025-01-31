@@ -1,4 +1,4 @@
 <section class="working-state-selection-container">
-  <label class="working-state-select-label" *ngFor="let state of workingStates"
+  <label class="working-state-select-label" @fadeIn *ngFor="let state of workingStates"
          (click)="handleStateSelection(state, $event)">{{ state }}</label>
 </section>

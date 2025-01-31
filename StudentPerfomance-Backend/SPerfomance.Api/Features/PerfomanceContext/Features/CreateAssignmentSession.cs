@@ -8,6 +8,7 @@ using SPerfomance.Application.Abstractions;
 using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Abstractions;
 using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Commands.Create;
 using SPerfomance.Application.PerfomanceContext.AssignmentSessions.DTO;
+using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Queries.HasActive;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSession;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentSession.Errors;
 using SPerfomance.Domain.Models.PerfomanceContext.Models.AssignmentsWeeks.Errors;
@@ -49,10 +50,17 @@ public static class CreateAssignmentSession
         IUsersRepository users,
         ICommandDispatcher dispatcher,
         IControlWeekReportRepository controlWeeks,
+        HasActiveAssignmentSessionRequestHandler guard,
         ILogger<Endpoint> logger,
         CancellationToken ct
     )
     {
+        HasActiveAssignmentSessionResponse response = await guard.Handle(
+            new HasActiveAssignmentSessionRequest()
+        );
+        if (response.Has)
+            return TypedResults.BadRequest("Запрос отклонён. Причина: Активная контрольная неделя");
+
         logger.LogInformation("Запрос на создание сессии контрольной недели");
         var jwtToken = new Token(token);
         if (!await jwtToken.IsVerifiedAdmin(users, ct))

@@ -1,0 +1,34 @@
+<div id="container">
+  <div id="header">
+    <strong>Создание контрольной недели</strong>
+  </div>
+  <div id="content">
+    <app-floating-label-input [label]="'Номер'"
+                              [value]="selectedSessionNumber"
+                              (inputChange)="selectedSessionNumber = $event"
+                              [isReadonly]="true"
+                              [showContent]="isSelectingSessionNumber"
+                              (click)="isSelectingSessionNumber = true">
+      <app-control-week-number-select @fadeIn *ngIf="isSelectingSessionNumber"
+                                      (numberSelected)="selectedSessionNumber = $event; isSelectingSessionNumber = false">
+      </app-control-week-number-select>
+    </app-floating-label-input>
+    <app-floating-label-input [label]="'Сезон'"
+                              [value]="selectedSessionSeason"
+                              (inputChange)="selectedSessionSeason = $event"
+                              [isReadonly]="true"
+                              [showContent]="isSelectingSessionSeason"
+                              (click)="isSelectingSessionSeason = true">
+      <app-season-week-select @fadeIn *ngIf="isSelectingSessionSeason"
+                              (seasonSelected)="selectedSessionSeason = $event; isSelectingSessionSeason = false">
+      </app-season-week-select>
+    </app-floating-label-input>
+    <input *ngIf="selectedSessionSeason != '' && selectedSessionNumber != ''" [(ngModel)]="startDateInput"
+           placeholder="Дата начала"
+           type="date"/>
+    <app-green-outline-button [label]="'Создать'" (onClicked)="create()"></app-green-outline-button>
+  </div>
+  <div id="controls">
+    <app-red-outline-button [label]="'Закрыть'" (onClicked)="visibilityChanged.emit()"></app-red-outline-button>
+  </div>
+</div>

@@ -4,11 +4,11 @@ import { IsNullOrWhiteSpace } from '../../../../shared/utils/string-helper';
 import { FloatingLabelInputComponent } from '../../../../building-blocks/floating-label-input/floating-label-input.component';
 import { GreenOutlineButtonComponent } from '../../../../building-blocks/buttons/green-outline-button/green-outline-button.component';
 import { RedOutlineButtonComponent } from '../../../../building-blocks/buttons/red-outline-button/red-outline-button.component';
-import { SelectDirectionTypeDropdownComponent } from '../../../education-objects-page/education-directions-inline-list/create-education-direction-dialog/select-direction-type-dropdown/select-direction-type-dropdown.component';
 import { Department } from '../../../../modules/administration/submodules/departments/models/departments.interface';
 import { DepartmentCreateService } from './department-create.service';
 import { catchError, Observable, tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
+import { UnauthorizedErrorHandler } from '../../../../shared/models/common/401-error-handler/401-error-handler.service';
 
 @Component({
   selector: 'app-department-create-dialog',
@@ -16,7 +16,6 @@ import { HttpErrorResponse } from '@angular/common/http';
     FloatingLabelInputComponent,
     GreenOutlineButtonComponent,
     RedOutlineButtonComponent,
-    SelectDirectionTypeDropdownComponent,
   ],
   templateUrl: './department-create-dialog.component.html',
   styleUrl: './department-create-dialog.component.scss',
@@ -30,13 +29,12 @@ export class DepartmentCreateDialogComponent {
   public constructor(
     private readonly _service: DepartmentCreateService,
     private readonly _notifications: NotificationService,
+    private readonly _handler: UnauthorizedErrorHandler,
   ) {}
 
   public create(): void {
     if (IsNullOrWhiteSpace(this.name)) {
-      this._notifications.setMessage('Название кафедры не должно быть пустым');
-      this._notifications.failure();
-      this._notifications.turn();
+      this._notifications.bulkFailure('Название кафедры не должно быть пустым');
       return;
     }
     const department = {} as Department;
@@ -45,16 +43,13 @@ export class DepartmentCreateDialogComponent {
       .create(department)
       .pipe(
         tap((response) => {
-          this._notifications.setMessage('Добавлена новая кафедра');
-          this._notifications.success();
-          this._notifications.turn();
+          this._notifications.bulkSuccess('Добавлена новая кафедра');
           this.departmentCreated.emit(response);
           this.cleanInputs();
         }),
         catchError((error: HttpErrorResponse) => {
-          this._notifications.setMessage(error.error);
-          this._notifications.failure();
-          this._notifications.turn();
+          this._handler.tryHandle(error);
+          this._notifications.bulkFailure(error.error);
           return new Observable<never>();
         }),
       )

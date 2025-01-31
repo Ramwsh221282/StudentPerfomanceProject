@@ -1,0 +1,38 @@
+:host {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+}
+
+.move-student-dialog-part {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.student-groups-list {
+  border: 1px solid #d9d9d9;
+  display: block;
+  overflow: auto;
+  max-height: 20vh;
+}
+
+.move-student-label-info {
+  font-weight: bold;
+  font-size: 18px;
+  color: #1b274b;
+}
+
+.student-group-item {
+  margin: 0;
+  padding: 0.5rem;
+  color: #1b274b;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 15px;
+  background-color: #FFFFFF;
+
+  &:hover {
+    background-color: #E0ECFF;
+  }
+}

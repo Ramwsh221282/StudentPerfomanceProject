@@ -8,6 +8,10 @@ import { NgForOf, NgIf } from '@angular/common';
 import { DepartmentCreateDialogComponent } from './department-create-dialog/department-create-dialog.component';
 import { DepartmentRemoveDialogComponent } from './department-remove-dialog/department-remove-dialog.component';
 import { DepartmentEditDialogComponent } from './department-edit-dialog/department-edit-dialog.component';
+import { UnauthorizedErrorHandler } from '../../../shared/models/common/401-error-handler/401-error-handler.service';
+import { catchError, Observable, tap } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
+import { animate, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-departments-list',
@@ -24,6 +28,23 @@ import { DepartmentEditDialogComponent } from './department-edit-dialog/departme
   templateUrl: './departments-list.component.html',
   styleUrl: './departments-list.component.scss',
   standalone: true,
+  animations: [
+    trigger('fadeIn', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateY(-10px)' }),
+        animate(
+          '300ms ease-out',
+          style({ opacity: 1, transform: 'translateY(0)' }),
+        ),
+      ]),
+      transition(':leave', [
+        animate(
+          '300ms ease-in',
+          style({ opacity: 0, transform: 'translateY(-10px)' }),
+        ),
+      ]),
+    ]),
+  ],
 })
 export class DepartmentsListComponent implements OnInit {
   @Output() departmentSelected: EventEmitter<Department> = new EventEmitter();
@@ -36,6 +57,7 @@ export class DepartmentsListComponent implements OnInit {
 
   public constructor(
     private readonly _dataService: TeachersDepartmentsDataService,
+    private readonly _handler: UnauthorizedErrorHandler,
   ) {}
 
   public handleDepartmentSelection(department: Department): void {
@@ -59,8 +81,17 @@ export class DepartmentsListComponent implements OnInit {
   }
 
   public ngOnInit() {
-    this._dataService.getDepartments().subscribe((response) => {
-      this.departments = response;
-    });
+    this._dataService
+      .getDepartments()
+      .pipe(
+        tap((response) => {
+          this.departments = response;
+        }),
+        catchError((error: HttpErrorResponse) => {
+          this._handler.tryHandle(error);
+          return new Observable<never>();
+        }),
+      )
+      .subscribe();
   }
 }

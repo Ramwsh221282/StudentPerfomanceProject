@@ -2,7 +2,7 @@
   <strong class="discipline-teachers-list-title">Преподаватели:</strong>
   <strong class="discipline-teachers-list-title" *ngIf="teachers.length == 0">В кафедре нет преподавателей</strong>
   <div class="discipline-teachers-list">
-    <div class="teacher-item" *ngFor="let teacher of teachers" (click)="handleTeacherSelect(teacher, $event)">
+    <div class="teacher-item" @fadeIn *ngFor="let teacher of teachers" (click)="handleTeacherSelect(teacher, $event)">
       {{ teacher.surname + ' ' }}
       {{ teacher.name + ' ' }}
       {{ teacher.patronymic == null ? '' : teacher.patronymic + ' ' }}

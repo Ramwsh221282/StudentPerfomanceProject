@@ -1,0 +1,9 @@
+<section class="available-discipline-item-layout"
+         [ngClass]="{'selected': viewModel.isCurrentDiscipline(discipline)}"
+         (click)="selectDiscipline($event)">
+  <img style="margin-left: 5px" [ngSrc]="'assets/discipline_icon.svg'"
+       [alt]="'img'"
+       [width]="30"
+       [height]="30">
+  <strong class="item-label">{{ discipline.name.name }}</strong>
+</section>

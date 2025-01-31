@@ -12,6 +12,9 @@ import { SuccessResultNotificationComponent } from '../../../shared/components/s
 import { FailureResultNotificationComponent } from '../../../shared/components/failure-result-notification/failure-result-notification.component';
 import { UserEmailUpdateHandler } from '../user-email-update-form/user-email-update-handler';
 import { AuthService } from '../services/auth.service';
+import { RedButtonComponent } from '../../../building-blocks/buttons/red-button/red-button.component';
+import { Router } from '@angular/router';
+import { animate, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-user-card',
@@ -24,9 +27,27 @@ import { AuthService } from '../services/auth.service';
     NgIf,
     SuccessResultNotificationComponent,
     FailureResultNotificationComponent,
+    RedButtonComponent,
   ],
   templateUrl: './user-card.component.html',
   styleUrl: './user-card.component.scss',
+  animations: [
+    trigger('fadeIn', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateY(-10px)' }),
+        animate(
+          '300ms ease-out',
+          style({ opacity: 1, transform: 'translateY(0)' }),
+        ),
+      ]),
+      transition(':leave', [
+        animate(
+          '300ms ease-in',
+          style({ opacity: 0, transform: 'translateY(-10px)' }),
+        ),
+      ]),
+    ]),
+  ],
 })
 export class UserCardComponent {
   protected readonly tabs = [
@@ -57,7 +78,13 @@ export class UserCardComponent {
     private readonly _emailService: UserEmailUpdateService,
     private readonly _authService: AuthService,
     protected readonly notificationService: UserOperationNotificationService,
+    private readonly _router: Router,
   ) {}
+
+  public dislogin(): void {
+    this._authService.setNotAuthorized();
+    this._router.navigate(['login']);
+  }
 
   protected onPasswordUpdateClick(): void {
     if (this.isCurrentPasswordEmpty() || this.isNewPasswordEmpty()) {

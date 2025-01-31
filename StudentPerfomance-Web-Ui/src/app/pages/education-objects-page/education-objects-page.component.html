@@ -4,19 +4,19 @@
     (selectedEducationDirection)="currentEducationDirection = $event"
     (educationDirectionRemoved)="handleDirectionRemoved()">
   </app-education-directions-inline-list>
-  <strong class="education-objects-page-title" *ngIf="currentEducationDirection">Выбранное
+  <strong class="education-objects-page-title" @fadeIn *ngIf="currentEducationDirection">Выбранное
     направление: {{ currentEducationDirection.name }} {{ currentEducationDirection.type }}</strong>
   <div class="education-objects-page-workspace">
-    <app-education-plan-data-list *ngIf="currentEducationDirection"
+    <app-education-plan-data-list @fadeIn *ngIf="currentEducationDirection"
                                   [direction]="currentEducationDirection"
                                   (educationPlanRemoved)="handlePlanRemoved()"
                                   (selectedEducationPlan)="currentEducationPlan = $event; currentEducationPlan.direction = currentEducationDirection">
     </app-education-plan-data-list>
-    <app-education-plan-semester-list *ngIf="currentEducationPlan"
+    <app-education-plan-semester-list @fadeIn *ngIf="currentEducationPlan"
                                       [educationPlan]="currentEducationPlan"
                                       (semesterSelected)="currentSemester = $event">
     </app-education-plan-semester-list>
-    <app-disciplines-list *ngIf="currentSemester && currentEducationPlan && currentEducationDirection"
+    <app-disciplines-list @fadeIn *ngIf="currentSemester && currentEducationPlan && currentEducationDirection"
                           [semester]="currentSemester"
                           [educationPlan]="currentEducationPlan"
                           [direction]="currentEducationDirection">

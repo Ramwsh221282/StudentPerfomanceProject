@@ -1,0 +1,8 @@
+<section class="teacher-short-info-layout">
+  <app-teacher-assignments-status *ngIf="teacherAssignmentsInfo"
+                                  [journalsWithRequireAssignments]="journalsWithRequireAssignments">
+  </app-teacher-assignments-status>
+  <app-teacher-journal-navigation-block *ngIf="teacherAssignmentsInfo">
+    
+  </app-teacher-journal-navigation-block>
+</section>

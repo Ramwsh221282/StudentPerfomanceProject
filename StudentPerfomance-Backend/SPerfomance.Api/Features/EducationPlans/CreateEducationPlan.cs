@@ -8,6 +8,7 @@ using SPerfomance.Application.Abstractions;
 using SPerfomance.Application.EducationDirections.Queries.GetEducationDirection;
 using SPerfomance.Application.EducationPlans.Commands.CreateEducationPlan;
 using SPerfomance.Application.EducationPlans.DTO;
+using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Queries.HasActive;
 using SPerfomance.Domain.Models.EducationDirections;
 using SPerfomance.Domain.Models.EducationPlans;
 
@@ -42,12 +43,19 @@ public static class CreateEducationPlan
         [FromHeader(Name = "token")] string? token,
         Request request,
         IUsersRepository users,
+        HasActiveAssignmentSessionRequestHandler guard,
         ICommandDispatcher commandDispatcher,
         IQueryDispatcher queryDispatcher,
         ILogger<Endpoint> logger,
         CancellationToken ct
     )
     {
+        HasActiveAssignmentSessionResponse response = await guard.Handle(
+            new HasActiveAssignmentSessionRequest()
+        );
+        if (response.Has)
+            return TypedResults.BadRequest("Запрос отклонён. Причина: Активная контрольная неделя");
+
         logger.LogInformation("Запрос на создание учебного плана");
         var jwtToken = new Token(token);
         if (!await new Token(token).IsVerifiedAdmin(users, ct))

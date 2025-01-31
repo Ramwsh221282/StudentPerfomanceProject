@@ -12,7 +12,7 @@
                                 (onClicked)="isCreatingNewPlan = true">
       </app-green-outline-button>
     </div>
-    <app-education-plan-data-item *ngFor="let plan of direction.plans"
+    <app-education-plan-data-item @fadeIn *ngFor="let plan of direction.plans"
                                   [isCurrentPlan]="currentEducationPlan != null && currentEducationPlan.id == plan.id"
                                   [educationPlan]="plan"
                                   (selectPlanForRemove)="removeEducationPlanRequest = $event"
@@ -21,18 +21,18 @@
     </app-education-plan-data-item>
   </div>
 </section>
-<app-create-education-plan-dialog *ngIf="isCreatingNewPlan"
+<app-create-education-plan-dialog @fadeIn *ngIf="isCreatingNewPlan"
                                   [direction]="direction"
                                   (visibilityChange)="isCreatingNewPlan = false"
                                   (educationPlanCreated)="handleEducationPlanCreation($event)">
 </app-create-education-plan-dialog>
-<app-remove-education-plan-dialog *ngIf="removeEducationPlanRequest"
+<app-remove-education-plan-dialog @fadeIn *ngIf="removeEducationPlanRequest"
                                   [plan]="removeEducationPlanRequest"
                                   [direction]="direction"
                                   (visibilityChange)="removeEducationPlanRequest = null"
                                   (educationPlanRemoved)="handleEducationPlanRemoved($event)">
 </app-remove-education-plan-dialog>
-<app-edit-education-plan-dialog *ngIf="editEducationPlanRequest"
+<app-edit-education-plan-dialog @fadeIn *ngIf="editEducationPlanRequest"
                                 [plan]="editEducationPlanRequest"
                                 [direction]="direction"
                                 (visibilityChange)="editEducationPlanRequest = null">

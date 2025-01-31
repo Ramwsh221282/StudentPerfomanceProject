@@ -1,0 +1,44 @@
+* {
+  user-select: none;
+}
+
+:host {
+  text-align: center;
+}
+
+.assignment-journal-title {
+  font-weight: bold;
+  font-size: 18px;
+  color: #1c172e;
+}
+
+.assignment-journal-layout {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  gap: 0.5rem;
+  background: #1a88ff;
+  border-radius: 10px;
+  border: 1px solid #93c4fa;
+  box-shadow: 4.0px 8.0px 8.0px hsl(0deg 0% 0% / 0.38);
+}
+
+.assignment-journal-content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  padding: 1rem;
+  background: #FFFFFF;
+  overflow: auto;
+  height: 47vh;
+}
+
+.assignment-journal-controls {
+  display: flex;
+  flex-direction: row;
+  background: #FFFFFF;
+  padding: 0.5rem;
+  gap: 0.5rem;
+  border-radius: 10px;
+  align-items: center;
+}

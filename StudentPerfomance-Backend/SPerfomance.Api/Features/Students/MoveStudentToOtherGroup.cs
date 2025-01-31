@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using SPerfomance.Api.Endpoints;
 using SPerfomance.Api.Features.Common.Extensions;
 using SPerfomance.Application.Abstractions;
+using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Queries.HasActive;
 using SPerfomance.Application.StudentGroups.Commands.MoveStudentToOtherGroup;
 using SPerfomance.Application.StudentGroups.DTO;
 using SPerfomance.Domain.Models.Students;
@@ -38,12 +39,19 @@ public static class MoveStudentToOtherGroup
     > Handler(
         [FromHeader(Name = "token")] string? token,
         [FromBody] Request request,
+        HasActiveAssignmentSessionRequestHandler guard,
         ICommandDispatcher dispatcher,
         IUsersRepository users,
         CancellationToken ct,
         ILogger<Endpoint> logger
     )
     {
+        HasActiveAssignmentSessionResponse response = await guard.Handle(
+            new HasActiveAssignmentSessionRequest()
+        );
+        if (response.Has)
+            return TypedResults.BadRequest("Запрос отклонён. Причина: Активная контрольная неделя");
+
         logger.LogInformation("Запрос на получение только активных студентов группы");
         var jwtToken = new Token(token);
         if (!await jwtToken.IsVerifiedAdmin(users, ct))

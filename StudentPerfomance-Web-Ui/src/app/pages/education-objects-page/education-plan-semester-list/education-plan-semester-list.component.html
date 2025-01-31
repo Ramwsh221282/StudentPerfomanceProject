@@ -8,7 +8,7 @@
       <label>{{ educationPlan.direction.type }}</label>
       <label>{{ educationPlan.year }}</label>
     </div>
-    <app-semester-item *ngFor="let semester of educationPlan.semesters" [semester]="semester"
+    <app-semester-item @fadeIn *ngFor="let semester of educationPlan.semesters" [semester]="semester"
                        [isSelectedSemester]="selectedSemester != null && selectedSemester.id == semester.id"
                        (selectSemester)="selectedSemester = semester; semesterSelected.emit(selectedSemester)">
     </app-semester-item>

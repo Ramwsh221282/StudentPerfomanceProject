@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { BlueButtonComponent } from '../../../../../building-blocks/buttons/blue-button/blue-button.component';
 import {
   EducationPlan,
   EducationPlanSemester,
@@ -18,11 +17,12 @@ import { SemesterPlan } from '../../../../../modules/administration/submodules/s
 import { Semester } from '../../../../../modules/administration/submodules/semesters/models/semester.interface';
 import { catchError, Observable, tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
+import { UnauthorizedErrorHandler } from '../../../../../shared/models/common/401-error-handler/401-error-handler.service';
+import { animate, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-discipline-teacher-part',
   imports: [
-    BlueButtonComponent,
     NgIf,
     RedButtonComponent,
     DisciplineDepartmentsListComponent,
@@ -31,6 +31,23 @@ import { HttpErrorResponse } from '@angular/common/http';
   templateUrl: './discipline-teacher-part.component.html',
   styleUrl: './discipline-teacher-part.component.scss',
   standalone: true,
+  animations: [
+    trigger('fadeIn', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateY(-10px)' }),
+        animate(
+          '300ms ease-out',
+          style({ opacity: 1, transform: 'translateY(0)' }),
+        ),
+      ]),
+      transition(':leave', [
+        animate(
+          '300ms ease-in',
+          style({ opacity: 0, transform: 'translateY(-10px)' }),
+        ),
+      ]),
+    ]),
+  ],
 })
 export class DisciplineTeacherPartComponent {
   @Input({ required: true }) discipline: SemesterDiscipline;
@@ -48,13 +65,12 @@ export class DisciplineTeacherPartComponent {
   public constructor(
     private readonly _notifications: NotificationService,
     private readonly _service: DisciplineTeacherAttachmentService,
+    private readonly _handler: UnauthorizedErrorHandler,
   ) {}
 
   public handleSelectedTeacher(teacher: Teacher): void {
     if (!this.selectedDepartment) {
-      this._notifications.failure();
-      this._notifications.setMessage('Преподаватель не выбран');
-      this._notifications.turn();
+      this._notifications.bulkFailure('Преподаватель не выбран');
       return;
     }
     const disciplinePayload: SemesterPlan = {} as SemesterPlan;
@@ -72,18 +88,15 @@ export class DisciplineTeacherPartComponent {
       )
       .pipe(
         tap(() => {
-          this._notifications.setMessage(
+          this._notifications.bulkSuccess(
             'Закреплён преподаватель у дисциплины',
           );
-          this._notifications.success();
-          this._notifications.turn();
           this.selectedDepartment = null;
           this.discipline.teacher = teacher;
         }),
         catchError((error: HttpErrorResponse) => {
-          this._notifications.setMessage(error.error);
-          this._notifications.failure();
-          this._notifications.turn();
+          this._handler.tryHandle(error);
+          this._notifications.bulkFailure(error.error);
           return new Observable<never>();
         }),
       )
@@ -92,9 +105,7 @@ export class DisciplineTeacherPartComponent {
 
   public handleTeacherDetachment(): void {
     if (!this.discipline.teacher) {
-      this._notifications.setMessage('Преподаватель и так не закреплён');
-      this._notifications.failure();
-      this._notifications.turn();
+      this._notifications.bulkFailure('Преподаватель и так не закреплён');
       return;
     }
     const disciplinePayload: SemesterPlan = {} as SemesterPlan;
@@ -111,17 +122,14 @@ export class DisciplineTeacherPartComponent {
       )
       .pipe(
         tap(() => {
-          this._notifications.setMessage(
+          this._notifications.bulkSuccess(
             'Преподаватель откреплён от дисциплины',
           );
-          this._notifications.success();
-          this._notifications.turn();
           this.discipline.teacher = null;
         }),
         catchError((error: HttpErrorResponse) => {
-          this._notifications.setMessage(error.error);
-          this._notifications.failure();
-          this._notifications.turn();
+          this._handler.tryHandle(error);
+          this._notifications.bulkFailure(error.error);
           return new Observable<never>();
         }),
       )

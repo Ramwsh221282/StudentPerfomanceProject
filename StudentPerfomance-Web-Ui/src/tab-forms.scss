@@ -6,6 +6,7 @@
   border: 1px solid #cccccc;
   align-items: flex-start;
   box-shadow: 4.0px 8.0px 8.0px hsl(0deg 0% 0% / 0.38);
+  user-select: none;
 }
 
 .tab-form-ul {
@@ -14,6 +15,7 @@
   padding: 0;
   display: flex;
   border-bottom: 1px solid #cccccc;
+  cursor: pointer;
 }
 
 .tab-form-li {

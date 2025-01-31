@@ -1,13 +1,16 @@
 <div class="side-bar">
   <div class="side-bar-title-container">
-    <strong *ngIf="!isHidden" class="side-bar-title">Портал контрольных недель ЛФ СибГУ</strong>
+    <strong @fadeIn *ngIf="!isHidden" class="side-bar-title" (click)="navigateMainPage($event)">Портал контрольных
+      недель ЛФ
+      СибГУ</strong>
   </div>
   <div class="menu-header" (click)="hideMenu()">
-    <img class="side-bar-menu-button-icon" [ngSrc]="'assets/menu_icon.svg'" [alt]="'image'" [width]="50" height="50">
+    <img class="side-bar-menu-button-icon" [ngSrc]="'assets/menu_icon.svg'" [alt]="'img'" [width]="50" height="50">
     <label style="margin-left: 7px; cursor:pointer;">Меню</label>
   </div>
   <div class="menu-content-container">
     <button
+      @fadeIn
       *ngIf="!authService.isAuthorized"
       [ngClass]="{'focused': activeButton === menuButtons[0].id }"
       (click)="activeButton = menuButtons[0].id"
@@ -15,11 +18,12 @@
       [routerLink]="['/login']"
     >
       <img [ngClass]="{'side-bar-menu-button-icon-focused': activeButton === menuButtons[0].id}"
-           class="side-bar-menu-button-icon" [ngSrc]="'assets/sign_in_icon.svg'" [alt]="'image'" [width]="50"
+           class="side-bar-menu-button-icon" [ngSrc]="'assets/sign_in_icon.svg'" [alt]="'img'" [width]="50"
            [height]="50">
       <label class="menu-button-label">{{ menuButtons[0].label }}</label>
     </button>
     <button
+      @fadeIn
       [ngClass]="{'focused': activeButton === menuButtons[1].id }"
       (click)="activeButton = menuButtons[1].id"
       *ngIf="authService.isAuthorized"
@@ -27,11 +31,12 @@
       [routerLink]="['/user']"
     >
       <img [ngClass]="{'side-bar-menu-button-icon-focused': activeButton === menuButtons[1].id}"
-           class="side-bar-menu-button-icon" [ngSrc]="'assets/user_icon.svg'" [alt]="'image'" [width]="50"
+           class="side-bar-menu-button-icon" [ngSrc]="'assets/user_icon.svg'" [alt]="'img'" [width]="50"
            [height]="50">
       <label class="menu-button-label">{{ menuButtons[1].label }}</label>
     </button>
     <button
+      @fadeIn
       [ngClass]="{'focused': activeButton === menuButtons[2].id }"
       (click)="activeButton = menuButtons[2].id"
       *ngIf="
@@ -41,11 +46,12 @@
       [routerLink]="['/administration']"
     >
       <img [ngClass]="{'side-bar-menu-button-icon-focused': activeButton === menuButtons[2].id}"
-           class="side-bar-menu-button-icon" [ngSrc]="'assets/admin_management_icon.svg'" [alt]="'image'" [width]="50"
+           class="side-bar-menu-button-icon" [ngSrc]="'assets/admin_management_icon.svg'" [alt]="'img'" [width]="50"
            [height]="50">
       <label class="menu-button-label">{{ menuButtons[2].label }}</label>
     </button>
     <button
+      @fadeIn
       [ngClass]="{'focused': activeButton === menuButtons[4].id }"
       (click)="activeButton = menuButtons[4].id"
       *ngIf="
@@ -55,17 +61,20 @@
       [routerLink]="['/teacher-assignments']"
     >
       <img [ngClass]="{'side-bar-menu-button-icon-focused': activeButton === menuButtons[4].id}"
-           class="side-bar-menu-button-icon" [ngSrc]="'assets/teacher_icon.svg'" [alt]="'image'" [width]="50"
+           class="side-bar-menu-button-icon" [ngSrc]="'assets/teacher_icon.svg'" [alt]="'img'" [width]="50"
            [height]="50">
       <label class="menu-button-label">{{ menuButtons[4].label }}</label>
     </button>
-    <button class="side-bar-menu-button" *ngIf="authService.isAuthorized" [routerLink]="['/reports']"
+    <button class="side-bar-menu-button" @fadeIn *ngIf="authService.isAuthorized" [routerLink]="['/reports']"
             [ngClass]="{'focused': activeButton === menuButtons[3].id }"
             (click)="activeButton = menuButtons[3].id">
       <img [ngClass]="{'side-bar-menu-button-icon-focused': activeButton === menuButtons[3].id}"
-           class="side-bar-menu-button-icon" [ngSrc]="'assets/assignment_reports.svg'" [alt]="'image'" [width]="50"
+           class="side-bar-menu-button-icon" [ngSrc]="'assets/assignment_reports.svg'" [alt]="'img'" [width]="50"
            [height]="50">
       <label class="menu-button-label">{{ menuButtons[3].label }}</label>
     </button>
+  </div>
+  <div class="logo-container">
+    <img class="logo-image-monochrome" [ngSrc]="'assets/main_logo.svg'" [alt]="'img'" [width]="200" [height]="200">
   </div>
 </div>

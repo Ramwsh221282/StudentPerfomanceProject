@@ -3,9 +3,12 @@
   <app-student-groups-list></app-student-groups-list>
   <strong class="students-page-title"></strong>
   <div class="students-page-workspace">
-    <app-students-list *ngIf="viewModel.currentGroup" [group]="viewModel.currentGroup"></app-students-list>
-    <app-student-group-plan-info *ngIf="viewModel.currentGroup"
-                                 [group]="viewModel.currentGroup">
+    <app-students-list @fadeIn *ngIf="viewModel.currentGroup" [group]="viewModel.currentGroup"></app-students-list>
+    <app-student-group-plan-info @fadeIn
+                                 *ngIf="viewModel.currentGroup"
+                                 [group]="viewModel.currentGroup"
+                                 (attachPlanClicked)="attachGroupPlanRequest = $event"
+                                 (detachPlanClicked)="detachGroupPlanRequest = $event">
     </app-student-group-plan-info>
   </div>
 </section>
@@ -13,7 +16,18 @@
                           [message]="notifications.message()"
                           (visibilityChange)="notifications.turn()">
 </app-success-notification>
-<app-failure-notification *ngIf="notifications.isFailure() && notifications.isVisible()"
-                          [message]="notifications.message()"
-                          (visibilityChange)="notifications.turn()">
+<app-failure-notification
+  *ngIf="notifications.isFailure() && notifications.isVisible()"
+  [message]="notifications.message()"
+  (visibilityChange)="notifications.turn()">
 </app-failure-notification>
+<app-attach-plan-group-dialog @fadeIn
+                              *ngIf="attachGroupPlanRequest"
+                              [group]="attachGroupPlanRequest"
+                              (visibilityChange)="attachGroupPlanRequest = null">
+</app-attach-plan-group-dialog>
+<app-detach-plan-group-dialog @fadeIn
+                              *ngIf="detachGroupPlanRequest"
+                              [group]="detachGroupPlanRequest"
+                              (visibilityChange)="detachGroupPlanRequest = null">
+</app-detach-plan-group-dialog>

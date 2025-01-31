@@ -8,6 +8,7 @@ import { Student } from '../../../modules/administration/submodules/students/mod
 import { CreateStudentDialogComponent } from './create-student-dialog/create-student-dialog.component';
 import { EditStudentDialogComponent } from './edit-student-dialog/edit-student-dialog.component';
 import { RemoveStudentDialogComponent } from './remove-student-dialog/remove-student-dialog.component';
+import { animate, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-students-list',
@@ -24,6 +25,23 @@ import { RemoveStudentDialogComponent } from './remove-student-dialog/remove-stu
   templateUrl: './students-list.component.html',
   styleUrl: './students-list.component.scss',
   standalone: true,
+  animations: [
+    trigger('fadeIn', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateY(-10px)' }),
+        animate(
+          '300ms ease-out',
+          style({ opacity: 1, transform: 'translateY(0)' }),
+        ),
+      ]),
+      transition(':leave', [
+        animate(
+          '300ms ease-in',
+          style({ opacity: 0, transform: 'translateY(-10px)' }),
+        ),
+      ]),
+    ]),
+  ],
 })
 export class StudentsListComponent {
   @Input({ required: true }) group: StudentGroup;

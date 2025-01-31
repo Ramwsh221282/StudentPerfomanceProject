@@ -12,21 +12,21 @@
                                 (onClicked)="isCreatingDiscipline = true">
       </app-green-outline-button>
     </div>
-    <app-discipline-item *ngFor="let discipline of semester.disciplines"
+    <app-discipline-item @fadeIn *ngFor="let discipline of semester.disciplines"
                          [discipline]="discipline"
                          (selectForEdit)="editDisciplineRequest = $event"
                          (selectForRemove)="removeDisciplineRequest = $event">
     </app-discipline-item>
   </div>
 </section>
-<app-create-discipline-dialog *ngIf="isCreatingDiscipline"
+<app-create-discipline-dialog @fadeIn *ngIf="isCreatingDiscipline"
                               [direction]="direction"
                               [educationPlan]="educationPlan"
                               [semester]="semester"
                               (visibilityChange)="isCreatingDiscipline = false"
                               (disciplineCreated)="handleDisciplineCreated($event)">
 </app-create-discipline-dialog>
-<app-remove-discipline-dialog *ngIf="removeDisciplineRequest"
+<app-remove-discipline-dialog @fadeIn *ngIf="removeDisciplineRequest"
                               [discipline]="removeDisciplineRequest"
                               [semester]="semester"
                               [direction]="direction"
@@ -34,7 +34,7 @@
                               (visibilityChange)="removeDisciplineRequest = null"
                               (disciplineRemoved)="handleDisciplineRemoved($event)">
 </app-remove-discipline-dialog>
-<app-edit-discipline-dialog *ngIf="editDisciplineRequest"
+<app-edit-discipline-dialog @fadeIn *ngIf="editDisciplineRequest"
                             [discipline]="editDisciplineRequest"
                             [semester]="semester"
                             [educationPlan]="educationPlan"

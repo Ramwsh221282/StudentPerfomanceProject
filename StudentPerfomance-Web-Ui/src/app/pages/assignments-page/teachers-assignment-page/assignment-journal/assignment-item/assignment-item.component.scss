@@ -1,0 +1,110 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.assignment-item-layout {
+  display: flex;
+  flex-direction: column;
+  padding: 0.2rem;
+  height: 100%;
+}
+
+.assignment-item-student-info {
+  align-items: center;
+  border-radius: 10px;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  background: #5CE600;
+  color: #FFFFFF;
+  font-size: 14px;
+  font-weight: bold;
+  transition: 0.3s;
+  cursor: pointer;
+  justify-content: space-between;
+
+  &:hover {
+    transition: 0.3s;
+    background: #6BCE95;
+  }
+}
+
+.locked {
+  background-color: #d9a90d;
+  cursor: default;
+
+  &:hover {
+    transition: 0.3s;
+    background: #d9a90d;
+  }
+}
+
+.assignment-item-marks-info {
+  align-items: center;
+  border-radius: 10px;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  background: #FFFFFF;
+  font-size: 14px;
+  font-weight: bold;
+  border: 1px solid #CCCCCC;
+  transition: 0.3s;
+  justify-content: space-between;
+
+  &:hover {
+    transition: 0.3s;
+    background: #93c4fa;
+  }
+}
+
+.student-grade-container {
+  margin-left: auto;
+  background: #FFFFFF;
+  border-radius: 10px;
+  padding: 0.2rem;
+}
+
+.student-grade-label {
+  text-align: center;
+  font-weight: bold;
+  font-size: 14px;
+  color: #1c172e;
+}
+
+.student-grade-selectable {
+  text-align: center;
+  font-weight: bold;
+  font-size: 14px;
+  color: #1c172e;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.selected {
+  background: #6BCE95;
+}
+
+.record-book-container {
+  position: sticky;
+  margin-top: -18px;
+  background: #5CE600;
+  color: #FFFFFF;
+  align-self: flex-start;
+  justify-content: flex-start;
+  padding: 1px;
+  border-radius: 10px 10px 0 0;
+}
+
+.book-locked {
+  background: #d9a90d;
+  cursor: default;
+}
+
+.mark-name-x {
+  background: #BF6C38;
+}

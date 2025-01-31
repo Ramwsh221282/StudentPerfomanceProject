@@ -26,6 +26,18 @@
   font-weight: 800;
   border-bottom: 1px solid #ffffff;
   cursor: default;
+  transition: 0.3s;
+  cursor: pointer;
+
+  &:hover {
+    transition: 0.3s;
+    color: #5CE600;
+  }
+}
+
+.logo-container {
+  padding: 10px;
+  margin-top: auto;
 }
 
 .menu-header {
@@ -113,4 +125,8 @@
 .side-bar-menu-button-icon-focused {
   cursor: pointer;
   filter: invert(33%) sepia(35%) saturate(4250%) hue-rotate(199deg) brightness(100%) contrast(110%);
+}
+
+.logo-image-monochrome {
+  filter: brightness(0) invert(1);
 }

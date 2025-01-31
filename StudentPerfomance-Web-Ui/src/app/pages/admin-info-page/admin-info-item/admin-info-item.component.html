@@ -1,0 +1,14 @@
+<section class="info-item-layout">
+  <strong>{{ infoItem.title }}</strong>
+  <div [ngClass]="{'triangle_down': !isShown, 'triangle_up': isShown}"
+       (click)="showTopics($event)"></div>
+  <div class="full-width-wrapper"
+       [@expandCollapse]="isShown">
+    <div class="title-container"
+         [ngClass]="{'selected': viewModel.isCurrentTopic(topic)}"
+         (click)="selectTopic(topic, $event)"
+         *ngFor="let topic of infoItem.themes">
+      <span class="title-item">{{ topic.title }}</span>
+    </div>
+  </div>
+</section>

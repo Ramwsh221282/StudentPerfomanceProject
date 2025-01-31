@@ -1,0 +1,8 @@
+<div class="tab-form-ul">
+  <ul class="tab-form-ul">
+    <li [ngClass]="{'tab-form-li-active': activeGroupName === journal.groupName.name}" class="tab-form-li"
+        *ngFor="let journal of teacherJournals"
+        (click)="handleGroupSelect(journal)">{{ journal.groupName.name }}
+    </li>
+  </ul>
+</div>

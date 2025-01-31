@@ -9,30 +9,35 @@
     </app-green-outline-button>
   </div>
   <div class="teachers-list-content">
-    <app-teacher-card *ngFor="let teacher of department.teachers" [teacher]="teacher"
+    <app-teacher-card @fadeIn
+                      *ngFor="let teacher of department.teachers" [teacher]="teacher"
                       (selectedForRemove)="removeTeacherRequest = $event"
                       (selectedForEdit)="editTeacherRequest = $event"
                       (selectForRegister)="registerTeacherRequest = $event">
     </app-teacher-card>
   </div>
 </section>
-<app-create-teacher-dialog *ngIf="isCreatingTeacher"
+<app-create-teacher-dialog @fadeIn
+                           *ngIf="isCreatingTeacher"
                            [department]="department"
                            (visibilityChanged)="isCreatingTeacher = false"
                            (teacherCreated)="handleTeacherCreated($event)">
 </app-create-teacher-dialog>
-<app-remove-teacher-dialog *ngIf="removeTeacherRequest"
+<app-remove-teacher-dialog @fadeIn
+                           *ngIf="removeTeacherRequest"
                            [department]="department"
                            [teacher]="removeTeacherRequest"
                            (teacherRemoved)="handleTeacherRemoved($event)"
                            (visibilityChanged)="removeTeacherRequest = null">
 </app-remove-teacher-dialog>
-<app-edit-teacher-dialog *ngIf="editTeacherRequest"
+<app-edit-teacher-dialog @fadeIn
+                         *ngIf="editTeacherRequest"
                          [department]="department"
                          [teacher]="editTeacherRequest"
                          (visibilityChanged)="editTeacherRequest = null">
 </app-edit-teacher-dialog>
-<app-register-teacher-dialog *ngIf="registerTeacherRequest"
+<app-register-teacher-dialog @fadeIn
+                             *ngIf="registerTeacherRequest"
                              [registerTeacher]="registerTeacherRequest"
                              (visibilityChanged)="registerTeacherRequest = null">
 </app-register-teacher-dialog>

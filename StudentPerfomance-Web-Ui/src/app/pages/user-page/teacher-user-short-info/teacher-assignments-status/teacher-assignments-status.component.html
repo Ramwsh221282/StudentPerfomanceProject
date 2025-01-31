@@ -1,0 +1,16 @@
+<section class="teacher-assignment-info-status-layout">
+  <strong class="teacher-assignment-info-status-title">Информация о Ваших проставлениях</strong>
+  <div class="teacher-assignment-info-content">
+    <strong
+      *ngIf="journalsWithRequireAssignments.length == 0 &&
+       disciplinesCountThatRequireAssignments == 0 &&
+       studentsCountThatRequireAssignments == 0">Проставления выполнены. Спасибо
+    </strong>
+    <strong *ngIf="journalsWithRequireAssignments.length > 0">Требуется проставить
+      в {{ journalsWithRequireAssignments.length }} группах</strong>
+    <strong *ngIf="disciplinesCountThatRequireAssignments > 0">Требуется проставиить
+      в {{ disciplinesCountThatRequireAssignments }} дисциплинах</strong>
+    <strong *ngIf="studentsCountThatRequireAssignments > 0">Требуется проставить
+      у {{ studentsCountThatRequireAssignments }} студентов</strong>
+  </div>
+</section>

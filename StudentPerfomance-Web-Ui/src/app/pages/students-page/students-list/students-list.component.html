@@ -9,25 +9,29 @@
     </app-green-outline-button>
   </div>
   <div class="student-list-items-container">
-    <label class="no-students-label" *ngIf="group.students.length == 0">У группы нет студентов</label>
-    <app-student-list-item *ngFor="let student of group.students"
+    <p class="no-students-label" @fadeIn *ngIf="group.students.length == 0">У группы нет студентов</p>
+    <app-student-list-item @fadeIn
+                           *ngFor="let student of group.students"
                            [student]="student"
                            (selectForEdit)="editStudentRequest = $event"
                            (selectForDelete)="removeStudentRequest = $event">
     </app-student-list-item>
   </div>
 </section>
-<app-create-student-dialog *ngIf="isCreatingStudent"
+<app-create-student-dialog @fadeIn
+                           *ngIf="isCreatingStudent"
                            [group]="group"
                            (visibilityChanged)="isCreatingStudent = false">
 </app-create-student-dialog>
-<app-edit-student-dialog *ngIf="editStudentRequest"
-                         [student]="editStudentRequest"
-                         [group]="group"
-                         (visibilityChanged)="editStudentRequest = null">
+<app-edit-student-dialog @fadeIn
+                         *ngIf="editStudentRequest"
+                         (visibilityChanged)="editStudentRequest = null"
+                         [studentGroup]="group"
+                         [student]="editStudentRequest">
 </app-edit-student-dialog>
-<app-remove-student-dialog *ngIf="removeStudentRequest"
-                           [student]="removeStudentRequest"
+<app-remove-student-dialog @fadeIn
+                           (visibilityChanged)="removeStudentRequest = null"
+                           *ngIf="removeStudentRequest"
                            [group]="group"
-                           (visibilityChanged)="removeStudentRequest = null">
+                           [student]="removeStudentRequest">
 </app-remove-student-dialog>

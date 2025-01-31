@@ -1,0 +1,4 @@
+<section class="control-week-season-select-container">
+  <label class="control-week-select-label" @fadeIn *ngFor="let season of sessionSeasons"
+         (click)="selectSeason(season, $event)">{{ season }}</label>
+</section>

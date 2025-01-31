@@ -1,0 +1,28 @@
+* {
+  user-select: none;
+}
+
+.available-discipline-item-layout {
+  display: flex;
+  flex-direction: row;
+  background: #5CE600;
+  border-radius: 10px;
+  border: 1px solid #b3ff80;
+  color: #FFFFFF;
+  font-weight: bold;
+  align-items: center;
+  cursor: pointer;
+
+  &:hover {
+    transition: 0.3s;
+    background: #6BCE95;
+  }
+}
+
+.item-label {
+  padding: 0.5rem;
+}
+
+.selected {
+  background: #6BCE95;
+}

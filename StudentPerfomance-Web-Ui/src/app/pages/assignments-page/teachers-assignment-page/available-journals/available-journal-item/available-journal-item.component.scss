@@ -1,0 +1,24 @@
+.available-journal-group {
+  background: #5CE600;
+  color: #FFFFFF;
+  font-weight: bold;
+  font-size: 18px;
+  border-radius: 10px;
+  border: 1px solid #b3ff80;
+  transition: 0.3s;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  padding: 1rem;
+  align-items: center;
+
+  &:hover {
+    transition: 0.3s;
+    background: #6BCE95;
+  }
+}
+
+.selected {
+  background: #6BCE95;
+}

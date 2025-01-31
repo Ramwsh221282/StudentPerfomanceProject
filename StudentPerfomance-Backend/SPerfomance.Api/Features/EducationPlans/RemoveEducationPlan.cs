@@ -9,6 +9,7 @@ using SPerfomance.Application.EducationDirections.Queries.GetEducationDirection;
 using SPerfomance.Application.EducationPlans.Commands.RemoveEducationPlan;
 using SPerfomance.Application.EducationPlans.DTO;
 using SPerfomance.Application.EducationPlans.Queries.GetEducationPlan;
+using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Queries.HasActive;
 using SPerfomance.Domain.Models.EducationDirections;
 using SPerfomance.Domain.Models.EducationPlans;
 
@@ -43,6 +44,7 @@ public static class RemoveEducationPlan
     > Handler(
         [FromHeader(Name = "token")] string? token,
         [FromBody] Request request,
+        HasActiveAssignmentSessionRequestHandler guard,
         IUsersRepository users,
         ICommandDispatcher commandDispatcher,
         IQueryDispatcher queryDispatcher,
@@ -50,6 +52,12 @@ public static class RemoveEducationPlan
         CancellationToken ct
     )
     {
+        HasActiveAssignmentSessionResponse response = await guard.Handle(
+            new HasActiveAssignmentSessionRequest()
+        );
+        if (response.Has)
+            return TypedResults.BadRequest("Запрос отклонён. Причина: Активная контрольная неделя");
+
         logger.LogInformation("Запрос на удаление учебного плана");
         var jwtToken = new Token(token);
         if (!await jwtToken.IsVerifiedAdmin(users, ct))

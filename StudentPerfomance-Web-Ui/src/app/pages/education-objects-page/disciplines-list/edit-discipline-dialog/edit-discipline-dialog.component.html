@@ -6,7 +6,7 @@
     <label class="info-label">Выберите секцию</label>
     <div class="tab-form">
       <ul class="tab-form-ul">
-        <li class="tab-form-li" *ngFor="let item of sections" (click)="selectSection(item)"
+        <li class="tab-form-li" @fadeIn *ngFor="let item of sections" (click)="selectSection(item)"
             [ngClass]="{'tab-form-li-active': sectionId === item.id}">
           {{ item.name }}
         </li>

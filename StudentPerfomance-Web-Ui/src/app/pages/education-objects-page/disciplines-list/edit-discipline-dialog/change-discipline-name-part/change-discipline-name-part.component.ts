@@ -1,7 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { BlueButtonComponent } from '../../../../../building-blocks/buttons/blue-button/blue-button.component';
 import { GreenOutlineButtonComponent } from '../../../../../building-blocks/buttons/green-outline-button/green-outline-button.component';
-import { RedButtonComponent } from '../../../../../building-blocks/buttons/red-button/red-button.component';
 import { YellowButtonComponent } from '../../../../../building-blocks/buttons/yellow-button/yellow-button.component';
 import {
   EducationPlan,
@@ -16,13 +14,12 @@ import { catchError, Observable, tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { SemesterPlan } from '../../../../../modules/administration/submodules/semester-plans/models/semester-plan.interface';
 import { Semester } from '../../../../../modules/administration/submodules/semesters/models/semester.interface';
+import { UnauthorizedErrorHandler } from '../../../../../shared/models/common/401-error-handler/401-error-handler.service';
 
 @Component({
   selector: 'app-change-discipline-name-part',
   imports: [
-    BlueButtonComponent,
     GreenOutlineButtonComponent,
-    RedButtonComponent,
     YellowButtonComponent,
     FloatingLabelInputComponent,
   ],
@@ -40,6 +37,7 @@ export class ChangeDisciplineNamePartComponent implements OnInit {
   public constructor(
     private readonly _service: ChangeDisciplineNameService,
     private readonly _notifications: NotificationService,
+    private readonly _handler: UnauthorizedErrorHandler,
   ) {}
 
   public ngOnInit() {
@@ -63,15 +61,13 @@ export class ChangeDisciplineNamePartComponent implements OnInit {
       )
       .pipe(
         tap(() => {
-          this._notifications.setMessage('Изменено название дисциплины');
-          this._notifications.success();
-          this._notifications.turn();
+          this._notifications.bulkSuccess('Изменено название дисциплины');
           this.discipline.disciplineName = this.disciplineCopy.disciplineName;
         }),
         catchError((error: HttpErrorResponse) => {
+          this._handler.tryHandle(error);
           this._notifications.setMessage(error.error);
-          this._notifications.failure();
-          this._notifications.turn();
+          this._notifications.bulkFailure(error.error);
           return new Observable<never>();
         }),
       )

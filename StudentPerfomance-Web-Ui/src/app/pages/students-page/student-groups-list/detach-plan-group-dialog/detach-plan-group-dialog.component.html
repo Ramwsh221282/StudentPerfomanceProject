@@ -1,1 +1,13 @@
-<p>detach-plan-group-dialog works!</p>
+<div id="container">
+  <div id="header">
+    <strong>Открепление учебного плана у группы</strong>
+  </div>
+  <div id="content">
+    <label class="label-info">Вы действительно хотите открепить учебный план у группы {{ group.name }}?</label>
+    <label class="label-info">При наличии группы без учебного плана невозможно начать контрольную неделю</label>
+    <app-red-button [label]="'Подтвердить'" (onClicked)="detach()"></app-red-button>
+  </div>
+  <div id="controls">
+    <app-red-outline-button [label]="'Закрыть'" (onClicked)="visibilityChange.emit()"></app-red-outline-button>
+  </div>
+</div>

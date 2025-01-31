@@ -9,6 +9,7 @@ using SPerfomance.Application.Departments.Commands.FireTeacher;
 using SPerfomance.Application.Departments.DTO;
 using SPerfomance.Application.Departments.Queries.GetDepartmentByName;
 using SPerfomance.Application.Departments.Queries.GetTeacherFromDepartment;
+using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Queries.HasActive;
 using SPerfomance.Domain.Models.TeacherDepartments;
 using SPerfomance.Domain.Models.Teachers;
 
@@ -43,6 +44,7 @@ public static class FireTeacherFromDepartment
     > Handler(
         [FromHeader(Name = "token")] string? token,
         [FromBody] Request request,
+        HasActiveAssignmentSessionRequestHandler guard,
         IUsersRepository users,
         IQueryDispatcher queryDispatcher,
         ICommandDispatcher commandDispatcher,
@@ -50,6 +52,12 @@ public static class FireTeacherFromDepartment
         CancellationToken ct
     )
     {
+        HasActiveAssignmentSessionResponse response = await guard.Handle(
+            new HasActiveAssignmentSessionRequest()
+        );
+        if (response.Has)
+            return TypedResults.BadRequest("Запрос отклонён. Причина: Активная контрольная неделя");
+
         var jwtToken = new Token(token);
         logger.LogInformation("Запрос на удаление преподавателя из кафедры");
         if (!await jwtToken.IsVerifiedAdmin(users, ct))

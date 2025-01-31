@@ -1,0 +1,18 @@
+.current-control-week-page-layout {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 0.5rem;
+}
+
+.current-control-week-page-title {
+  color: #1b274b;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.current-control-week-content-layout {
+  align-self: stretch;
+  justify-content: center;
+}

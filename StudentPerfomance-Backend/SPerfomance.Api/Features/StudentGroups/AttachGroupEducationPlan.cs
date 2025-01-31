@@ -8,6 +8,7 @@ using SPerfomance.Api.Features.Semesters.Contracts;
 using SPerfomance.Application.Abstractions;
 using SPerfomance.Application.EducationDirections.Queries.GetEducationDirection;
 using SPerfomance.Application.EducationPlans.Queries.GetEducationPlan;
+using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Queries.HasActive;
 using SPerfomance.Application.StudentGroups.Commands.AttachEducationPlan;
 using SPerfomance.Application.StudentGroups.DTO;
 using SPerfomance.Application.StudentGroups.Queries.GetStudentGroupByName;
@@ -53,6 +54,7 @@ public static class AttachGroupEducationPlan
     > Handler(
         [FromBody] Request request,
         [FromHeader(Name = "token")] string? token,
+        HasActiveAssignmentSessionRequestHandler guard,
         IUsersRepository users,
         IQueryDispatcher queryDispatcher,
         ICommandDispatcher commandDispatcher,
@@ -60,6 +62,12 @@ public static class AttachGroupEducationPlan
         CancellationToken ct
     )
     {
+        HasActiveAssignmentSessionResponse response = await guard.Handle(
+            new HasActiveAssignmentSessionRequest()
+        );
+        if (response.Has)
+            return TypedResults.BadRequest("Запрос отклонён. Причина: Активная контрольная неделя");
+
         logger.LogInformation("Запрос на закрепление учебного плана для группы");
         var jwtToken = new Token(token);
         if (!await jwtToken.IsVerifiedAdmin(users, ct))

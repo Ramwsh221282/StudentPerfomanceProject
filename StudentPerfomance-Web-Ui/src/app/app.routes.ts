@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { canActivateAuthAdmin } from './pages/user-page/services/admin-access-guard';
-import { CanActivateAuthTeacher } from './modules/teachers/teachers/teachers-access-guard';
 import { CanActivateUserPage } from './pages/user-page/user-page-guard-access';
+import { CanActivateAuthTeacher } from './pages/assignments-page/teachers/teachers-access-guard';
 
 export const routes: Routes = [
   {
@@ -17,6 +17,14 @@ export const routes: Routes = [
       import('./shared/components/login-page/login-page.component').then(
         (mod) => mod.LoginPageComponent,
       ),
+  },
+  {
+    path: 'users',
+    loadComponent: () =>
+      import(
+        './pages/users-management-page/users-management-page.component'
+      ).then((component) => component.UsersManagementPageComponent),
+    canActivate: [canActivateAuthAdmin],
   },
   {
     path: 'education-objects',
@@ -74,6 +82,14 @@ export const routes: Routes = [
     canActivate: [CanActivateUserPage],
   },
   {
+    path: 'admin-info',
+    loadComponent: () =>
+      import('./pages/admin-info-page/admin-info-page.component').then(
+        (component) => component.AdminInfoPageComponent,
+      ),
+    canActivate: [canActivateAuthAdmin],
+  },
+  {
     path: 'user',
     loadComponent: () =>
       import('./pages/user-page/user-page.component').then(
@@ -83,122 +99,26 @@ export const routes: Routes = [
   },
   {
     path: 'teacher-assignments',
-    loadChildren: () =>
-      import('./modules/teachers/teachers/teachers.module').then(
-        (mod) => mod.TeachersModule,
-      ),
+    loadComponent: () =>
+      import(
+        './pages/assignments-page/teachers-assignment-page/teachers-assignment-page.component'
+      ).then((component) => component.TeachersAssignmentPageComponent),
     canActivate: [CanActivateAuthTeacher],
   },
   {
     path: 'administration',
-    loadChildren: () =>
-      import('./modules/administration/administration.module').then(
-        (mod) => mod.AdministrationModule,
-      ),
-    canActivate: [canActivateAuthAdmin],
-  },
-  {
-    path: 'administration-instructions',
     loadComponent: () =>
       import(
-        './modules/administration/submodules/instructions-module/instructions-page/instructions-page.component'
-      ).then((mod) => mod.InstructionsPageComponent),
+        './pages/user-page/admin-user-short-info/admin-user-short-info.component'
+      ).then((component) => component.AdminUserShortInfoComponent),
     canActivate: [canActivateAuthAdmin],
   },
   {
-    path: 'education-directions',
-    loadChildren: () =>
-      import(
-        './modules/administration/submodules/education-directions/education-directions.module'
-      ).then((mod) => mod.EducationDirectionsModule),
-    canActivate: [canActivateAuthAdmin],
-  },
-  {
-    path: 'education-directions-info',
+    path: 'current-control-week',
     loadComponent: () =>
       import(
-        './modules/administration/components/admin-page-informations/education-directions-info/education-directions-info.component'
-      ).then((mod) => mod.EducationDirectionsInfoComponent),
-    canActivate: [canActivateAuthAdmin],
-  },
-  {
-    path: 'education-plans',
-    loadChildren: () =>
-      import(
-        './modules/administration/submodules/education-plans/education-plans.module'
-      ).then((mod) => mod.EducationPlansModule),
-    canActivate: [canActivateAuthAdmin],
-  },
-  {
-    path: 'education-plans-info',
-    loadComponent: () =>
-      import(
-        './modules/administration/submodules/education-plans/education-plans-info/education-plans-info.component'
-      ).then((mod) => mod.EducationPlansInfoComponent),
-    canActivate: [canActivateAuthAdmin],
-  },
-  {
-    path: 'assignment-sessions',
-    loadChildren: () =>
-      import(
-        './modules/administration/submodules/assignment-sessions/assignment-sessions.module'
-      ).then((mod) => mod.AssignmentSessionsModule),
-    canActivate: [canActivateAuthAdmin],
-  },
-  {
-    path: 'assignment-sessions-info',
-    loadComponent: () =>
-      import(
-        './modules/administration/submodules/assignment-sessions/components/control-week-info/control-week-info.component'
-      ).then((mod) => mod.ControlWeekInfoComponent),
-    canActivate: [canActivateAuthAdmin],
-  },
-  {
-    path: 'groups',
-    loadChildren: () =>
-      import(
-        './modules/administration/submodules/student-groups/student-groups.module'
-      ).then((mod) => mod.StudentGroupsModule),
-    canActivate: [canActivateAuthAdmin],
-  },
-  {
-    path: 'groups-info',
-    loadComponent: () =>
-      import(
-        './modules/administration/submodules/student-groups/components/student-groups-info/student-groups-info.component'
-      ).then((mod) => mod.StudentGroupsInfoComponent),
-    canActivate: [canActivateAuthAdmin],
-  },
-  {
-    path: 'departments',
-    loadChildren: () =>
-      import(
-        './modules/administration/submodules/departments/departments.module'
-      ).then((mod) => mod.DepartmentsModule),
-    canActivate: [canActivateAuthAdmin],
-  },
-  {
-    path: 'departments-info',
-    loadComponent: () =>
-      import(
-        './modules/administration/submodules/departments/components/departments-info/departments-info.component'
-      ).then((mod) => mod.DepartmentsInfoComponent),
-    canActivate: [canActivateAuthAdmin],
-  },
-  {
-    path: 'users',
-    loadChildren: () =>
-      import('./modules/administration/submodules/users/users.module').then(
-        (mod) => mod.UsersModule,
-      ),
-    canActivate: [canActivateAuthAdmin],
-  },
-  {
-    path: 'users-info',
-    loadComponent: () =>
-      import(
-        './modules/administration/submodules/users/components/users-info/users-info.component'
-      ).then((mod) => mod.UsersInfoComponent),
-    canActivate: [canActivateAuthAdmin],
+        './pages/current-control-week-page/current-control-week-page.component'
+      ).then((component) => component.CurrentControlWeekPageComponent),
+    canActivate: [CanActivateUserPage],
   },
 ];

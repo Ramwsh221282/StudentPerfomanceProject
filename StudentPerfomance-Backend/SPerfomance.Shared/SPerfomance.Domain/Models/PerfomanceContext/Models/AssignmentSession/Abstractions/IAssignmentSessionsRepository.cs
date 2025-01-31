@@ -14,4 +14,5 @@ public interface IAssignmentSessionsRepository
         CancellationToken ct = default
     );
     Task<AssignmentSession?> GetById(Guid id, CancellationToken ct = default);
+    Task<bool> HasAnyActive(CancellationToken ct = default);
 }

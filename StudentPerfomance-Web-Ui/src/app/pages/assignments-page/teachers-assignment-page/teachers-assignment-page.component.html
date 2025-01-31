@@ -1,0 +1,34 @@
+<div class="navigation-links">
+  <strong>Проставление оценок</strong>
+</div>
+<section class="page-layout">
+  <app-available-journals @fadeIn *ngIf="_viewModel.journals.length > 0"
+                          [journals]="_viewModel.journals">
+  </app-available-journals>
+  <div class="workspace-container">
+    <app-available-disciplines *ngIf="_viewModel.currentJournal" @fadeIn>
+    </app-available-disciplines>
+    <app-assignment-journal (finishClicked)="handleFinish()"
+                            *ngIf="_viewModel.currentDiscipline" @fadeIn>
+    </app-assignment-journal>
+  </div>
+</section>
+<app-success-notification *ngIf="notifications.isSuccess() && notifications.isVisible()"
+                          [message]="notifications.message()">
+</app-success-notification>
+<app-failure-notification *ngIf="notifications.isFailure() && notifications.isVisible()"
+                          [message]="notifications.message()">
+</app-failure-notification>
+<app-completed-assignments-notification @fadeIn *ngIf="_viewModel.isFinished && !_viewModel.isNotFullyCompleted"
+                                        (visibilityChanged)="_viewModel.setFinishedFalse()">
+
+</app-completed-assignments-notification>
+<app-admin-assignments-not-completed-popup @fadeIn *ngIf="_viewModel.isNotFullyCompleted && !_viewModel.isFinished"
+                                           (visibilityChanged)="_viewModel.setNotFullyCompletedFalse()">
+
+</app-admin-assignments-not-completed-popup>
+<app-admin-assignments-access-resolver-dialog @fadeIn *ngIf="adminAccessRequest"
+                                              [isAdminAccess]="adminAccessRequest"
+                                              (visibilityChange)="handleAdminAccessClose()"
+                                              (accessGiven)="handleAdminAccessGiven($event)">
+</app-admin-assignments-access-resolver-dialog>

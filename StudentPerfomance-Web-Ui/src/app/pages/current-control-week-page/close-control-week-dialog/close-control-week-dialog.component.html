@@ -1,0 +1,13 @@
+<div id="container">
+  <div id="header">
+    <strong>Закрытие контрольной недели</strong>
+  </div>
+  <div id="content">
+    <label class="label-text">Вы уверены, что Вы хотите закрыть контрольную неделю?</label>
+    <label class="label-text">После закрытия контрольной недели, её проставления невозможно будет поменять.</label>
+    <app-red-button [label]="'Подтвердить'" (onClicked)="close()"></app-red-button>
+  </div>
+  <div id="controls">
+    <app-red-outline-button [label]="'Закрыть'" (onClicked)="visibilityChanged.emit()"></app-red-outline-button>
+  </div>
+</div>

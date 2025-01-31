@@ -4,8 +4,8 @@ import { Student } from '../../students/models/student.interface';
 export interface StudentGroup {
   entityNumber: number;
   name: string;
-  plan: EducationPlan;
-  activeSemesterNumber: number;
+  plan: EducationPlan | null;
+  activeSemesterNumber: number | null;
   students: Student[];
   id: string;
 }

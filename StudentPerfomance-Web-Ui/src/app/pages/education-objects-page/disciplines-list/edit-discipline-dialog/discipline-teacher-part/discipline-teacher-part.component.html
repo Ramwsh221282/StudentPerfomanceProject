@@ -10,12 +10,12 @@
     <app-red-button [label]="'Открепить преподавателя'" (onClicked)="handleTeacherDetachment()">
     </app-red-button>
   </div>
-  <label class="teacher-info-part-label" *ngIf="!discipline.teacher">Преподаватель не закреплён</label>
-  <div class="teacher-info-part-layout" *ngIf="!discipline.teacher">
+  <label class="teacher-info-part-label" @fadeIn *ngIf="!discipline.teacher">Преподаватель не закреплён</label>
+  <div class="teacher-info-part-layout" @fadeIn *ngIf="!discipline.teacher">
     <app-discipline-departments-list
       (departmentSelected)="handleDepartmentSelected($event)">
     </app-discipline-departments-list>
-    <app-discipline-teachers-list *ngIf="selectedDepartment && teachersOfSelectedDepartment"
+    <app-discipline-teachers-list @fadeIn *ngIf="selectedDepartment && teachersOfSelectedDepartment"
                                   [teachers]="teachersOfSelectedDepartment"
                                   (teacherSelected)="handleSelectedTeacher($event)">
     </app-discipline-teachers-list>

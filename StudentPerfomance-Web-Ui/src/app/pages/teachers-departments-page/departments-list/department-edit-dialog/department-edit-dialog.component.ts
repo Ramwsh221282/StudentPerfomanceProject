@@ -7,8 +7,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { FloatingLabelInputComponent } from '../../../../building-blocks/floating-label-input/floating-label-input.component';
 import { GreenOutlineButtonComponent } from '../../../../building-blocks/buttons/green-outline-button/green-outline-button.component';
 import { RedOutlineButtonComponent } from '../../../../building-blocks/buttons/red-outline-button/red-outline-button.component';
-import { SelectDirectionTypeDropdownComponent } from '../../../education-objects-page/education-directions-inline-list/create-education-direction-dialog/select-direction-type-dropdown/select-direction-type-dropdown.component';
 import { YellowButtonComponent } from '../../../../building-blocks/buttons/yellow-button/yellow-button.component';
+import { UnauthorizedErrorHandler } from '../../../../shared/models/common/401-error-handler/401-error-handler.service';
 
 @Component({
   selector: 'app-department-edit-dialog',
@@ -16,7 +16,6 @@ import { YellowButtonComponent } from '../../../../building-blocks/buttons/yello
     FloatingLabelInputComponent,
     GreenOutlineButtonComponent,
     RedOutlineButtonComponent,
-    SelectDirectionTypeDropdownComponent,
     YellowButtonComponent,
   ],
   templateUrl: './department-edit-dialog.component.html',
@@ -31,6 +30,7 @@ export class DepartmentEditDialogComponent implements OnInit {
   public constructor(
     private readonly _service: DepartmentEditService,
     private readonly _notifications: NotificationService,
+    private readonly _handler: UnauthorizedErrorHandler,
   ) {}
 
   public ngOnInit() {
@@ -42,16 +42,13 @@ export class DepartmentEditDialogComponent implements OnInit {
       .edit(this.department, this.departmentCopy)
       .pipe(
         tap(() => {
-          this._notifications.setMessage('Изменены данные кафедры');
-          this._notifications.success();
-          this._notifications.turn();
+          this._notifications.bulkSuccess('Изменены данные кафедры');
           this.department.name = this.departmentCopy.name;
           this.visibilityChanged.emit();
         }),
         catchError((error: HttpErrorResponse) => {
-          this._notifications.setMessage(error.error);
-          this._notifications.failure();
-          this._notifications.turn();
+          this._handler.tryHandle(error);
+          this._notifications.bulkFailure(error.error);
           return new Observable<never>();
         }),
       )

@@ -11,7 +11,7 @@
     <label class="teacher-card-data-label">Способ работы: {{ teacher.state }}</label>
   </div>
   <div class="teacher-card-controls-container">
-    <div class="teacher-card-control-label" *ngIf="teacher.userId == null">
+    <div class="teacher-card-control-label" @fadeIn *ngIf="teacher.userId == null">
       <app-add-icon-button [paramWidth]="40"
                            [paramHeight]="40"
                            (onClicked)="selectForRegister.emit(teacher)">
@@ -20,7 +20,7 @@
                                 (onClicked)="selectForRegister.emit(teacher)">
       </app-green-outline-button>
     </div>
-    <div class="teacher-card-control-label" *ngIf="teacher.userId != null">
+    <div class="teacher-card-control-label" @fadeIn *ngIf="teacher.userId != null">
       <label class="teacher-card-registered-hint">Зарегистрирован</label>
     </div>
     <div class="teacher-card-control-label">

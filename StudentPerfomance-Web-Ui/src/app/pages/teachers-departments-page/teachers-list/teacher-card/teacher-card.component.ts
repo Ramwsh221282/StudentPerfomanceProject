@@ -7,6 +7,7 @@ import { RedOutlineButtonComponent } from '../../../../building-blocks/buttons/r
 import { RemoveIconButtonComponent } from '../../../../building-blocks/buttons/remove-icon-button/remove-icon-button.component';
 import { GreenOutlineButtonComponent } from '../../../../building-blocks/buttons/green-outline-button/green-outline-button.component';
 import { AddIconButtonComponent } from '../../../../building-blocks/buttons/add-icon-button/add-icon-button.component';
+import { animate, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-teacher-card',
@@ -23,6 +24,23 @@ import { AddIconButtonComponent } from '../../../../building-blocks/buttons/add-
   templateUrl: './teacher-card.component.html',
   styleUrl: './teacher-card.component.scss',
   standalone: true,
+  animations: [
+    trigger('fadeIn', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateY(-10px)' }),
+        animate(
+          '300ms ease-out',
+          style({ opacity: 1, transform: 'translateY(0)' }),
+        ),
+      ]),
+      transition(':leave', [
+        animate(
+          '300ms ease-in',
+          style({ opacity: 0, transform: 'translateY(-10px)' }),
+        ),
+      ]),
+    ]),
+  ],
 })
 export class TeacherCardComponent {
   @Input({ required: true }) teacher: Teacher;

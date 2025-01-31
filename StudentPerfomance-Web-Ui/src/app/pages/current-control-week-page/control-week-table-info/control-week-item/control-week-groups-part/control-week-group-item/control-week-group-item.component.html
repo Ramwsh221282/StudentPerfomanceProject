@@ -1,0 +1,60 @@
+<section class="group-assignment-container">
+  <div class="week-assignment-table-container">
+    <table class="report-table-layout">
+      <tr>
+        <td colspan="2" style="text-align: center; background-color: #f0f0f0; font-weight: bold;">Итоги:</td>
+      </tr>
+      <tr>
+        <td>Успеваемость: {{ week.perfomance | number: '2.0-2' }}%</td>
+        <td>Среднее: {{ week.average | number: '1.1-2' }}</td>
+      </tr>
+      <tr>
+        <th>{{ week.groupName.name }}</th>
+        @for (discipline of week.disciplines; track discipline.discipline.name) {
+          <th><span class="rotate-sm-90">{{ discipline.discipline.name }}</span></th>
+        }
+        <th><span class="rotate-sm-90">% индивидуальной успеваемости</span></th>
+        <th><span class="rotate-sm-90">средний балл</span></th>
+      </tr>
+      <tbody>
+        @for (student of getStudents(); track student.id) {
+          <tr>
+            <td>
+              {{ student.name.surname }} {{ student.name.name[0] }}
+              {{
+                student.name.patronymic == null
+                  ? ""
+                  : student.name.patronymic[0]
+              }}
+            </td>
+            @for (discipline of week.disciplines; track discipline.discipline.name) {
+              <td
+                [ngClass]="{'red-background': isBadMark(getStudentGrade(discipline.discipline.name, student.recordbook.recordbook))}">{{ getStudentGrade(discipline.discipline.name, student.recordbook.recordbook) }}
+              </td>
+            }
+            <td>{{ student.perfomance | number: '2.0-2' }} {{ '%' }}</td>
+            <td>{{ student.average | number: '1.1-2' }}</td>
+          </tr>
+        }
+      <tr>
+        <span style="padding: 8px; text-align: center">средний балл</span>
+        @for (discipline of week.disciplines; track
+          discipline.discipline.name) {
+          <td>{{ discipline.average | number: '1.1-2' }}</td>
+        }
+        <td>-</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <span style="padding: 8px; text-align: center">% успеваемости</span>
+        @for (discipline of week.disciplines; track
+          discipline.discipline.name) {
+          <td>{{ discipline.perfomance | number: '2.0-2' }} {{ '%' }}</td>
+        }
+        <td>-</td>
+        <td>-</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</section>

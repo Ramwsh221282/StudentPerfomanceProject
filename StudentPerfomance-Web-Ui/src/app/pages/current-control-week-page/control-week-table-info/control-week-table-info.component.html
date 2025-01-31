@@ -1,0 +1,11 @@
+<div @fadeIn *ngIf="_auth.isAuthorized && _auth.userData.role=='Администратор'"
+     class="current-control-week-table-wrapper">
+  <div class="current-control-week-table-container">
+    <div class="dropdown-container">
+      <app-blue-button
+        [label]="'Начать новую контрольную неделю'"
+        (onClicked)="createSessionClicked.emit()">
+      </app-blue-button>
+    </div>
+  </div>
+</div>

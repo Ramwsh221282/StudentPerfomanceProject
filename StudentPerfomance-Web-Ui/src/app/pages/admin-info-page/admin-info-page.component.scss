@@ -1,0 +1,46 @@
+* {
+  user-select: none;
+}
+
+.admin-info-page-layout {
+  display: grid;
+  grid-template-columns: 500px 50%;
+  width: 100%;
+  align-items: flex-start;
+  grid-gap: 1rem;
+}
+
+.admin-info-title-container {
+  padding: 0.5rem;
+  background: #FFFFFF;
+  border-radius: 10px;
+}
+
+.admin-info-page-title {
+  color: #1c172e;
+  font-size: 24px;
+  display: inline-flex;
+  flex-direction: row;
+  text-decoration: underline;
+}
+
+.admin-info-content-layout {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  gap: 0.5rem;
+  background: #1a88ff;
+  border: solid 1px #93c4fa;
+  border-radius: 10px;
+  box-shadow: 4.0px 8.0px 8.0px hsl(0deg 0% 0% / 0.38);
+}
+
+.info-topics-container {
+  width: 100%;
+  display: inline-flex;
+  flex-direction: column;
+  padding: 0.2rem;
+  gap: 0.2rem;
+  border-radius: 10px;
+  background: #FFFFFF;
+}

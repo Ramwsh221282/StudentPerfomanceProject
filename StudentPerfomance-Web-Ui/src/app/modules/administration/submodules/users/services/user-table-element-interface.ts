@@ -1,4 +1,5 @@
 export interface UserRecord {
+  id: string;
   number: number;
   name: string;
   surname: string;

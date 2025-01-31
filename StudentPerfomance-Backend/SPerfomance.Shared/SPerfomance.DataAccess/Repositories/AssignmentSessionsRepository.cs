@@ -149,6 +149,12 @@ public class AssignmentSessionsRepository : IAssignmentSessionsRepository
             .AsSplitQuery()
             .FirstOrDefaultAsync(s => s.Id == id, cancellationToken: ct);
 
+    public async Task<bool> HasAnyActive(CancellationToken ct = default) =>
+        await _context.Sessions.AnyAsync(
+            s => s.State.State == AssignmentSessionState.Opened.State,
+            ct
+        );
+
     public async Task<int> Count(CancellationToken ct = default) =>
         await _context.Sessions.CountAsync(cancellationToken: ct);
 

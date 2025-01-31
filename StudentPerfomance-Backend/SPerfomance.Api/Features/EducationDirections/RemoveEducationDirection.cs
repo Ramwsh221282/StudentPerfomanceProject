@@ -7,6 +7,7 @@ using SPerfomance.Application.Abstractions;
 using SPerfomance.Application.EducationDirections.Commands.RemoveEducationDirection;
 using SPerfomance.Application.EducationDirections.DTO;
 using SPerfomance.Application.EducationDirections.Queries.GetEducationDirection;
+using SPerfomance.Application.PerfomanceContext.AssignmentSessions.Queries.HasActive;
 using SPerfomance.Domain.Models.EducationDirections;
 
 namespace SPerfomance.Api.Features.EducationDirections;
@@ -51,6 +52,7 @@ public static class RemoveEducationDirection
     > Handler(
         [FromHeader(Name = "token")] string? token,
         [FromBody] Request request,
+        HasActiveAssignmentSessionRequestHandler guard,
         IUsersRepository users,
         IQueryDispatcher queryDispatcher,
         ICommandDispatcher commandDispatcher,
@@ -58,6 +60,12 @@ public static class RemoveEducationDirection
         CancellationToken ct
     )
     {
+        HasActiveAssignmentSessionResponse response = await guard.Handle(
+            new HasActiveAssignmentSessionRequest()
+        );
+        if (response.Has)
+            return TypedResults.BadRequest("Запрос отклонён. Причина: Активная контрольная неделя");
+
         logger.LogInformation(
             "Запрос на удаление направления подготовки: {code}, {name}, {type}",
             request.Query.Code,

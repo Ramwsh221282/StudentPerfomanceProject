@@ -1,0 +1,9 @@
+<div class="tab-form">
+  <ul class="tab-form-ul" style="overflow: auto; max-width: 900px">
+    <li [ngClass]="{'tab-form-li-active': currentTab == tab}" class="tab-form-li"
+        *ngFor="let tab of groupTabs"
+        (click)="currentTab = tab">{{ tab }}
+    </li>
+  </ul>
+  <app-control-week-group-item [week]="resolveSelectedGroupTab()"></app-control-week-group-item>
+</div>

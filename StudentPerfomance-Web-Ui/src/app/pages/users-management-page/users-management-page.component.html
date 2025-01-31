@@ -1,0 +1,37 @@
+<section class="users-management-page-layout">
+  <div class="users-management-page-title-container">
+    <strong class="users-management-page-title">Управление пользователями</strong>
+  </div>
+  <div class="users-management-content-layout">
+    <app-users-management-list [users]="viewModel.users"
+                               (createUserClicked)="isCreatingNewUser = true"
+                               (removeUserRequested)="removeUserRequest = $event"
+                               (editUserRequested)="editUserRequest = $event">
+    </app-users-management-list>
+    <app-users-management-user-form @fadeIn
+                                    *ngIf="viewModel.currentUser"
+                                    [user]="viewModel.currentUser">
+    </app-users-management-user-form>
+  </div>
+</section>
+<app-success-notification
+  *ngIf="notifications.isVisible() && notifications.isSuccess()"
+  [message]="notifications.message()">
+</app-success-notification>
+<app-failure-notification *ngIf="notifications.isVisible() && notifications.isFailure()"
+                          [message]="notifications.message()">
+</app-failure-notification>
+<app-create-user-dialog @fadeIn
+                        *ngIf="isCreatingNewUser"
+                        (visibilityChanged)="isCreatingNewUser = false">
+</app-create-user-dialog>
+<app-remove-user-dialog @fadeIn
+                        *ngIf="removeUserRequest"
+                        [userRecord]="removeUserRequest"
+                        (visibilityChanged)="removeUserRequest = null">
+</app-remove-user-dialog>
+<app-edit-user-dialog @fadeIn
+                      *ngIf="editUserRequest"
+                      [initial]="editUserRequest"
+                      (visibilityChanged)="editUserRequest = null">
+</app-edit-user-dialog>

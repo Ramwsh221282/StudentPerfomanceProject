@@ -10,7 +10,8 @@
     </app-green-outline-button>
   </div>
   <div class="department-list-content">
-    <app-department-item *ngFor="let department of departments"
+    <app-department-item @fadeIn
+                         *ngFor="let department of departments"
                          [department]="department"
                          [isSelected]="selectedDepartment != null && selectedDepartment.name == department.name"
                          (selectDepartment)="handleDepartmentSelection($event)"
@@ -19,16 +20,19 @@
     </app-department-item>
   </div>
 </section>
-<app-department-create-dialog *ngIf="isCreatingDepartment"
+<app-department-create-dialog @fadeIn
+                              *ngIf="isCreatingDepartment"
                               (visibilityChanged)="isCreatingDepartment = false"
                               (departmentCreated)="handleDepartmentCreation($event)">
 </app-department-create-dialog>
-<app-department-remove-dialog *ngIf="removeDepartmentRequest"
+<app-department-remove-dialog @fadeIn
+                              *ngIf="removeDepartmentRequest"
                               [department]="removeDepartmentRequest"
                               (visibilityChanged)="removeDepartmentRequest = null"
                               (departmentRemoved)="handleDepartmentRemoved($event)">
 </app-department-remove-dialog>
-<app-department-edit-dialog *ngIf="editDepartmentRequest"
+<app-department-edit-dialog @fadeIn
+                            *ngIf="editDepartmentRequest"
                             [department]="editDepartmentRequest"
                             (visibilityChanged)="editDepartmentRequest = null">
 </app-department-edit-dialog>

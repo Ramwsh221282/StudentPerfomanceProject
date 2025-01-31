@@ -10,12 +10,12 @@ import { NotificationService } from '../../../../building-blocks/notifications/n
 import { FloatingLabelInputComponent } from '../../../../building-blocks/floating-label-input/floating-label-input.component';
 import { GreenOutlineButtonComponent } from '../../../../building-blocks/buttons/green-outline-button/green-outline-button.component';
 import { RedOutlineButtonComponent } from '../../../../building-blocks/buttons/red-outline-button/red-outline-button.component';
-import { SelectDirectionTypeDropdownComponent } from '../../education-directions-inline-list/create-education-direction-dialog/select-direction-type-dropdown/select-direction-type-dropdown.component';
 import { IsNullOrWhiteSpace } from '../../../../shared/utils/string-helper';
 import { SemesterPlan } from '../../../../modules/administration/submodules/semester-plans/models/semester-plan.interface';
 import { Semester } from '../../../../modules/administration/submodules/semesters/models/semester.interface';
 import { catchError, Observable, tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
+import { UnauthorizedErrorHandler } from '../../../../shared/models/common/401-error-handler/401-error-handler.service';
 
 @Component({
   selector: 'app-create-discipline-dialog',
@@ -23,7 +23,6 @@ import { HttpErrorResponse } from '@angular/common/http';
     FloatingLabelInputComponent,
     GreenOutlineButtonComponent,
     RedOutlineButtonComponent,
-    SelectDirectionTypeDropdownComponent,
   ],
   templateUrl: './create-discipline-dialog.component.html',
   styleUrl: './create-discipline-dialog.component.scss',
@@ -42,13 +41,14 @@ export class CreateDisciplineDialogComponent {
   public constructor(
     private readonly _service: CreateDisciplineService,
     private readonly _notifications: NotificationService,
+    private readonly _handler: UnauthorizedErrorHandler,
   ) {}
 
   public create(): void {
     if (IsNullOrWhiteSpace(this.discipline)) {
-      this._notifications.setMessage('Название дисциплины должно быть указано');
-      this._notifications.failure();
-      this._notifications.turn();
+      this._notifications.bulkFailure(
+        'Название дисциплины должно быть указано',
+      );
       return;
     }
     const disciplinePayload: SemesterPlan = {} as SemesterPlan;
@@ -64,9 +64,7 @@ export class CreateDisciplineDialogComponent {
       )
       .pipe(
         tap((response) => {
-          this._notifications.setMessage('Добавлена новая дисциплина');
-          this._notifications.success();
-          this._notifications.turn();
+          this._notifications.bulkSuccess('Добавлена новая дисциплина');
           const addedDiscipline: SemesterDiscipline = {} as SemesterDiscipline;
           addedDiscipline.disciplineName = response.discipline;
           addedDiscipline.teacher = response.teacher;
@@ -74,9 +72,7 @@ export class CreateDisciplineDialogComponent {
           this.updateInputs();
         }),
         catchError((error: HttpErrorResponse) => {
-          this._notifications.setMessage(error.error);
-          this._notifications.failure();
-          this._notifications.turn();
+          this._notifications.bulkFailure(error.error);
           return new Observable<never>();
         }),
       )

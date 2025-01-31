@@ -1,23 +1,15 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { AuthService } from '../../../user-page/services/auth.service';
-import { AppConfigService } from '../../../../app.config.service';
 import { EducationPlan } from '../../../../modules/administration/submodules/education-plans/models/education-plan-interface';
 import { EducationDirection } from '../../../../modules/administration/submodules/education-directions/models/education-direction-interface';
 import { DirectionPayloadBuilder } from '../../../../modules/administration/submodules/education-directions/models/contracts/direction-payload-builder';
 import { EducationPlanPayloadBuilder } from '../../../../modules/administration/submodules/education-plans/models/contracts/education-plan-contract/education-plan-payload-builder';
 import { Observable } from 'rxjs';
+import { BaseHttpService } from '../../../../shared/models/common/base-http/base-http.service';
 
 @Injectable({
   providedIn: 'any',
 })
-export class CreateEducationPlanService {
-  constructor(
-    private readonly _http: HttpClient,
-    private readonly _auth: AuthService,
-    private readonly _config: AppConfigService,
-  ) {}
-
+export class CreateEducationPlanService extends BaseHttpService {
   public create(
     plan: EducationPlan,
     direction: EducationDirection,
@@ -28,10 +20,6 @@ export class CreateEducationPlanService {
     return this._http.post<EducationPlan>(url, body, {
       headers: headers,
     });
-  }
-
-  private buildHttpHeaders(): HttpHeaders {
-    return new HttpHeaders().set('token', this._auth.userData.token);
   }
 
   private buildPayload(

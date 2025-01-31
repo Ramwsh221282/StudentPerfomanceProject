@@ -1,0 +1,15 @@
+<div class="tab-form">
+  <ul class="tab-form-ul">
+    <li class="tab-form-li" [ngClass]="{'tab-form-li-active': activeTab == tab.number}"
+        @fadeIn *ngFor="let tab of tabs" (click)="selectTab(tab, $event)">
+      {{ tab.label }}
+    </li>
+  </ul>
+  <div class="tab-form-content">
+    <app-control-week-general-part *ngIf="activeTab == 1"
+                                   [session]="session"
+                                   (assignmentSessionCloseClicked)="sessionCloseClicked.emit($event)">
+    </app-control-week-general-part>
+    <app-control-week-groups-part *ngIf="activeTab == 2" [session]="session"></app-control-week-groups-part>
+  </div>
+</div>
